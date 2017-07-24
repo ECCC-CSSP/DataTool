@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTool", "DataTool\DataTool.csproj", "{4D120334-E547-4A0E-9078-6AF4B02ED1B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldCSSPApps", "OldCSSPApps\OldCSSPApps.csproj", "{F5C724DA-26F9-4C40-AC61-F0285EEE6328}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldClimateHydrometric", "OldClimateHydrometric\OldClimateHydrometric.csproj", "{52E0ED02-50AB-461B-826B-9276C429E0A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCCSM", "PCCSM\PCCSM.csproj", "{FCB16C99-6D23-4AB1-9CAC-2E7478C562B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempData", "TempData\TempData.csproj", "{1451DDB6-0770-429A-A1BB-3FA1E3A6AA6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCCSM_DFO", "PCCSM_DFO\PCCSM_DFO.csproj", "{7CD2F110-C4A1-4464-A1A2-2A4407D65B33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportByFunction", "ImportByFunction\ImportByFunction.csproj", "{36E82A70-B60B-472C-A506-8457B4E014BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D120334-E547-4A0E-9078-6AF4B02ED1B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D120334-E547-4A0E-9078-6AF4B02ED1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D120334-E547-4A0E-9078-6AF4B02ED1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D120334-E547-4A0E-9078-6AF4B02ED1B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5C724DA-26F9-4C40-AC61-F0285EEE6328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5C724DA-26F9-4C40-AC61-F0285EEE6328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5C724DA-26F9-4C40-AC61-F0285EEE6328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5C724DA-26F9-4C40-AC61-F0285EEE6328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E0ED02-50AB-461B-826B-9276C429E0A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E0ED02-50AB-461B-826B-9276C429E0A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E0ED02-50AB-461B-826B-9276C429E0A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E0ED02-50AB-461B-826B-9276C429E0A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCB16C99-6D23-4AB1-9CAC-2E7478C562B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCB16C99-6D23-4AB1-9CAC-2E7478C562B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCB16C99-6D23-4AB1-9CAC-2E7478C562B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCB16C99-6D23-4AB1-9CAC-2E7478C562B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1451DDB6-0770-429A-A1BB-3FA1E3A6AA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1451DDB6-0770-429A-A1BB-3FA1E3A6AA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1451DDB6-0770-429A-A1BB-3FA1E3A6AA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1451DDB6-0770-429A-A1BB-3FA1E3A6AA6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CD2F110-C4A1-4464-A1A2-2A4407D65B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CD2F110-C4A1-4464-A1A2-2A4407D65B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CD2F110-C4A1-4464-A1A2-2A4407D65B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CD2F110-C4A1-4464-A1A2-2A4407D65B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36E82A70-B60B-472C-A506-8457B4E014BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36E82A70-B60B-472C-A506-8457B4E014BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36E82A70-B60B-472C-A506-8457B4E014BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36E82A70-B60B-472C-A506-8457B4E014BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
