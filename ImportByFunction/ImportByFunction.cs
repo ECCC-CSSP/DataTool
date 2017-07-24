@@ -8264,55 +8264,601 @@ namespace ImportByFunction
 
         private void button27_Click(object sender, EventArgs e)
         {
-            List<PolSourceSite> polSourceSiteList = null;
-            using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
-            {
-                polSourceSiteList = (from c in dd.PolSourceSites
-                                     select c).ToList();
-            }
+            //List<PolSourceSite> polSourceSiteList = null;
+            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //{
+            //    polSourceSiteList = (from c in dd.PolSourceSites
+            //                         select c).ToList();
+            //}
 
-            while (true)
-            {
-                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
-                {
-                    List<PolSourceObservation> polSourceObsList = (from c in dd.PolSourceObservations
-                                                                   where c.PolSourceSiteID == null
-                                                                   orderby c.PolSourceObservationID
-                                                                   select c).Take(200).ToList();
+            //while (true)
+            //{
+            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    {
+            //        List<PolSourceObservation> polSourceObsList = (from c in dd.PolSourceObservations
+            //                                                       where c.PolSourceSiteID == null
+            //                                                       orderby c.PolSourceObservationID
+            //                                                       select c).Take(200).ToList();
 
 
-                    if (polSourceObsList.Count == 0)
-                    {
-                        break;
-                    }
+            //        if (polSourceObsList.Count == 0)
+            //        {
+            //            break;
+            //        }
 
-                    lblStatus.Text = "Doing PolSourceObservation " + polSourceObsList[0].PolSourceObservationID;
-                    lblStatus.Refresh();
-                    Application.DoEvents();
+            //        lblStatus.Text = "Doing PolSourceObservation " + polSourceObsList[0].PolSourceObservationID;
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
 
-                    foreach (PolSourceObservation pso in polSourceObsList)
-                    {
-                        PolSourceSite pss = (from c in polSourceSiteList
-                                             where c.PolSourceSiteTVItemID == pso.PolSourceSiteTVItemID
-                                             select c).FirstOrDefault();
+            //        foreach (PolSourceObservation pso in polSourceObsList)
+            //        {
+            //            PolSourceSite pss = (from c in polSourceSiteList
+            //                                 where c.PolSourceSiteTVItemID == pso.PolSourceSiteTVItemID
+            //                                 select c).FirstOrDefault();
 
-                        if (pss == null)
-                        {
-                            int slefji = 23;
-                        }
+            //            if (pss == null)
+            //            {
+            //                int slefji = 23;
+            //            }
 
-                        pso.PolSourceSiteID = pss.PolSourceSiteID;
-                    }
-                    try
-                    {
-                        dd.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-                        string err = ex.Message;
-                    }
-                }
-            }
+            //            pso.PolSourceSiteID = pss.PolSourceSiteID;
+            //        }
+            //        try
+            //        {
+            //            dd.SaveChanges();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            string err = ex.Message;
+            //        }
+            //    }
+            //}
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            //string FileName = @"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Data_inputs\Final NB Station Master List In WGS 84.xlsx";
+
+            //string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties=Excel 12.0";
+
+            //OleDbConnection conn = new OleDbConnection(connectionString);
+
+            //conn.Open();
+            //OleDbDataReader reader;
+            //OleDbCommand comm = new OleDbCommand("Select * from [Sheet1$];");
+
+            //comm.Connection = conn;
+            //reader = comm.ExecuteReader();
+
+            //int CountRead = 0;
+            //while (reader.Read())
+            //{
+            //    CountRead += 1;
+            //    if (CountRead < 0)
+            //        continue;
+
+            //    Application.DoEvents();
+
+            //    string Subsector = "";
+            //    string STAT_NBR = "";
+            //    float Lat = 0.0f;
+            //    float Lng = 0.0f;
+
+            //    // Subsector
+            //    if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+            //    {
+            //        Subsector = "";
+            //    }
+            //    else
+            //    {
+            //        Subsector = reader.GetValue(0).ToString().Trim();
+            //    }
+
+            //    // STAT_NBR
+            //    if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+            //    {
+            //        STAT_NBR = "";
+            //    }
+            //    else
+            //    {
+            //        STAT_NBR = reader.GetValue(1).ToString().Trim();
+            //        if (STAT_NBR.Length < 4)
+            //        {
+            //            STAT_NBR = "0000".Substring(0, 4 - STAT_NBR.Length) + STAT_NBR;
+            //        }
+            //        else if (STAT_NBR.Length > 4)
+            //        {
+            //            STAT_NBR = STAT_NBR + " ------- Too long";
+            //        }
+            //        else
+            //        {
+            //            // nothing
+            //        }
+            //    }
+
+            //    // lat_wgs
+            //    if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+            //    {
+            //        Lat = 0.0f;
+            //    }
+            //    else
+            //    {
+            //        Lat = float.Parse(reader.GetValue(2).ToString());
+            //    }
+
+            //    // long_wgs
+            //    if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+            //    {
+            //        Lng = 0.0f;
+            //    }
+            //    else
+            //    {
+            //        Lng = float.Parse(reader.GetValue(3).ToString());
+            //    }
+
+            //    richTextBoxStatus.AppendText(CountRead + "\t");
+            //    richTextBoxStatus.AppendText(Subsector + "\t");
+            //    richTextBoxStatus.AppendText(STAT_NBR + "\t");
+            //    richTextBoxStatus.AppendText(Lat + "\t");
+            //    richTextBoxStatus.AppendText(Lng + "\r\n");
+
+            //    if (string.IsNullOrWhiteSpace(STAT_NBR))
+            //    {
+            //        richTextBoxStatus.AppendText("STAT_NBR is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
+
+            //    if (Lat == 0.0f)
+            //    {
+            //        richTextBoxStatus.AppendText("Subsector is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
+
+            //    if (Lng == 0.0f)
+            //    {
+            //        richTextBoxStatus.AppendText("Lng is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
+            //    if (string.IsNullOrWhiteSpace(Subsector))
+            //    {
+            //        richTextBoxStatus.AppendText("Subsector is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
+
+            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    {
+            //        TVItem tvItemSS = (from t in dd.TVItems
+            //                           from c in dd.TVItemLanguages
+            //                           where t.TVItemID == c.TVItemID
+            //                           && c.TVText.StartsWith(Subsector)
+            //                           && c.Language == (int)LanguageEnum.en
+            //                           select t).FirstOrDefault();
+
+            //        if (tvItemSS == null)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find subsector " + Subsector + " at line " + CountRead.ToString());
+            //            continue;
+            //        }
+
+            //        TVItem tvItemSite = (from t in dd.TVItems
+            //                             from tl in dd.TVItemLanguages
+            //                             where t.TVItemID == tl.TVItemID
+            //                             && tl.Language == (int)LanguageEnum.en
+            //                             && t.TVType == (int)TVTypeEnum.MWQMSite
+            //                             && tl.TVText == STAT_NBR
+            //                             && t.ParentID == tvItemSS.TVItemID
+            //                             select t).FirstOrDefault();
+
+            //        if (tvItemSite == null)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find site with STAT_NBR and Subsector " + STAT_NBR + " -- " + Subsector + " at line " + CountRead.ToString());
+            //            continue;
+            //        }
+
+            //        MapInfoPoint mapInfoPoint = (from m in dd.MapInfos
+            //                                     from mp in dd.MapInfoPoints
+            //                                     where m.MapInfoID == mp.MapInfoID
+            //                                     && m.TVItemID == tvItemSite.TVItemID
+            //                                     && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+            //                                     && m.TVType == (int)TVTypeEnum.MWQMSite
+            //                                     select mp).FirstOrDefault();
+
+            //        if (mapInfoPoint != null)
+            //        {
+            //            mapInfoPoint.Lat = Lat;
+            //            mapInfoPoint.Lng = Lng;
+
+            //            try
+            //            {
+            //                dd.SaveChanges();
+            //                richTextBoxStatus.AppendText("Saved " + STAT_NBR + " -- " + Subsector + "\r\n");
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                richTextBoxStatus.AppendText("Error while saving MapInfoPoint " + ex.Message + (ex.InnerException == null ? "" : " Inner: " + ex.InnerException.Message) + " at line " + CountRead.ToString());
+            //                continue;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find MapInfoPoint for " + STAT_NBR + " --- " + Subsector);
+            //            continue;
+            //        }
+            //    }
+            //}
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            //StringBuilder sb = new StringBuilder();
+            //List<MonitorSiteKML> MonitorSiteKMLList = new List<MonitorSiteKML>();
+
+            //string FileName = @"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Data_inputs\Final NB Station Master List In WGS 84.xlsx";
+
+            //string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties=Excel 12.0";
+
+            //OleDbConnection conn = new OleDbConnection(connectionString);
+
+            //conn.Open();
+            //OleDbDataReader reader;
+            //OleDbCommand comm = new OleDbCommand("Select * from [Sheet1$];");
+
+            //comm.Connection = conn;
+            //reader = comm.ExecuteReader();
+
+            //int CountRead = 0;
+            //while (reader.Read())
+            //{
+            //    CountRead += 1;
+            //    if (CountRead < 0)
+            //        continue;
+
+            //    Application.DoEvents();
+
+            //    string Subsector = "";
+            //    string STAT_NBR = "";
+            //    float Lat = 0.0f;
+            //    float Lng = 0.0f;
+            //    string Monitor = "";
+
+            //    // Subsector
+            //    if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+            //    {
+            //        Subsector = "";
+            //    }
+            //    else
+            //    {
+            //        Subsector = reader.GetValue(0).ToString().Trim();
+            //    }
+
+            //    // STAT_NBR
+            //    if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+            //    {
+            //        STAT_NBR = "";
+            //    }
+            //    else
+            //    {
+            //        STAT_NBR = reader.GetValue(1).ToString().Trim();
+            //        if (STAT_NBR.Length < 4)
+            //        {
+            //            STAT_NBR = "0000".Substring(0, 4 - STAT_NBR.Length) + STAT_NBR;
+            //        }
+            //        else if (STAT_NBR.Length > 4)
+            //        {
+            //            STAT_NBR = STAT_NBR + " ------- Too long";
+            //        }
+            //        else
+            //        {
+            //            // nothing
+            //        }
+
+            //        while (true)
+            //        {
+            //            if (STAT_NBR.First().ToString() == "0")
+            //            {
+            //                STAT_NBR = STAT_NBR.Substring(1);
+            //            }
+            //            else
+            //            {
+            //                break;
+            //            }
+            //        }
+            //    }
+
+            //    // lat_wgs
+            //    if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+            //    {
+            //        Lat = 0.0f;
+            //    }
+            //    else
+            //    {
+            //        Lat = float.Parse(reader.GetValue(2).ToString());
+            //    }
+
+            //    // long_wgs
+            //    if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+            //    {
+            //        Lng = 0.0f;
+            //    }
+            //    else
+            //    {
+            //        Lng = float.Parse(reader.GetValue(3).ToString());
+            //    }
+
+            //    // Monitor
+            //    if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+            //    {
+            //        Monitor = "";
+            //    }
+            //    else
+            //    {
+            //        Monitor = reader.GetValue(4).ToString().Trim();
+            //    }
+
+            //    //richTextBoxStatus.AppendText(CountRead + "\t");
+            //    //richTextBoxStatus.AppendText(Subsector + "\t");
+            //    //richTextBoxStatus.AppendText(STAT_NBR + "\t");
+            //    //richTextBoxStatus.AppendText(Lat + "\t");
+            //    //richTextBoxStatus.AppendText(Lng + "\t");
+            //    //richTextBoxStatus.AppendText(Monitor + "\r\n");
+
+            //    if (string.IsNullOrWhiteSpace(STAT_NBR))
+            //    {
+            //        richTextBoxStatus.AppendText("STAT_NBR is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
+
+            //    if (Lat == 0.0f)
+            //    {
+            //        richTextBoxStatus.AppendText("Subsector is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
+
+            //    if (Lng == 0.0f)
+            //    {
+            //        richTextBoxStatus.AppendText("Lng is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
+            //    if (string.IsNullOrWhiteSpace(Subsector))
+            //    {
+            //        richTextBoxStatus.AppendText("Subsector is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
+            //    if (!string.IsNullOrWhiteSpace(Monitor))
+            //    {
+            //        MonitorSiteKML monitorSiteKML = new MonitorSiteKML()
+            //        {
+            //            Subsector = Subsector,
+            //            MWQMSite = STAT_NBR,
+            //            Lat = Lat,
+            //            Lng = Lng
+            //        };
+
+            //        MonitorSiteKMLList.Add(monitorSiteKML);
+            //    }
+            //}
+
+            //conn.Close();
+
+            //List<string> SSList = (from c in MonitorSiteKMLList
+            //                       select c.Subsector).Distinct().ToList();
+
+            //sb.AppendLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+            //sb.AppendLine(@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+            //sb.AppendLine(@"<Document>");
+            //sb.AppendLine(@"	<name>NB Monitoring Sites</name>");
+            //sb.AppendLine(@"	<StyleMap id=""m_ylw-pushpin0"">");
+            //sb.AppendLine(@"		<Pair>");
+            //sb.AppendLine(@"			<key>normal</key>");
+            //sb.AppendLine(@"			<styleUrl>#s_ylw-pushpin</styleUrl>");
+            //sb.AppendLine(@"		</Pair>");
+            //sb.AppendLine(@"		<Pair>");
+            //sb.AppendLine(@"			<key>highlight</key>");
+            //sb.AppendLine(@"			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>");
+            //sb.AppendLine(@"		</Pair>");
+            //sb.AppendLine(@"	</StyleMap>");
+            //sb.AppendLine(@"	<StyleMap id=""msn_placemark_circle"">");
+            //sb.AppendLine(@"		<Pair>");
+            //sb.AppendLine(@"			<key>normal</key>");
+            //sb.AppendLine(@"			<styleUrl>#sn_placemark_circle</styleUrl>");
+            //sb.AppendLine(@"		</Pair>");
+            //sb.AppendLine(@"		<Pair>");
+            //sb.AppendLine(@"			<key>highlight</key>");
+            //sb.AppendLine(@"			<styleUrl>#sh_placemark_circle_highlight</styleUrl>");
+            //sb.AppendLine(@"		</Pair>");
+            //sb.AppendLine(@"	</StyleMap>");
+            //sb.AppendLine(@"	<Style id=""sn_placemark_circle"">");
+            //sb.AppendLine(@"		<IconStyle>");
+            //sb.AppendLine(@"			<color>ff00ffff</color>");
+            //sb.AppendLine(@"			<scale>1.2</scale>");
+            //sb.AppendLine(@"			<Icon>");
+            //sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>");
+            //sb.AppendLine(@"			</Icon>");
+            //sb.AppendLine(@"		</IconStyle>");
+            //sb.AppendLine(@"		<LabelStyle>");
+            //sb.AppendLine(@"			<color>ff00ffff</color>");
+            //sb.AppendLine(@"		</LabelStyle>");
+            //sb.AppendLine(@"		<ListStyle>");
+            //sb.AppendLine(@"		</ListStyle>");
+            //sb.AppendLine(@"		<LineStyle>");
+            //sb.AppendLine(@"			<color>ff00ff00</color>");
+            //sb.AppendLine(@"			<width>2</width>");
+            //sb.AppendLine(@"		</LineStyle>");
+            //sb.AppendLine(@"		<PolyStyle>");
+            //sb.AppendLine(@"			<fill>0</fill>");
+            //sb.AppendLine(@"		</PolyStyle>");
+            //sb.AppendLine(@"	</Style>");
+            //sb.AppendLine(@"	<Style id=""sh_placemark_circle_highlight"">");
+            //sb.AppendLine(@"		<IconStyle>");
+            //sb.AppendLine(@"			<color>ff00ffff</color>");
+            //sb.AppendLine(@"			<scale>1.2</scale>");
+            //sb.AppendLine(@"			<Icon>");
+            //sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>");
+            //sb.AppendLine(@"			</Icon>");
+            //sb.AppendLine(@"		</IconStyle>");
+            //sb.AppendLine(@"		<LabelStyle>");
+            //sb.AppendLine(@"			<color>ff00ffff</color>");
+            //sb.AppendLine(@"		</LabelStyle>");
+            //sb.AppendLine(@"		<ListStyle>");
+            //sb.AppendLine(@"		</ListStyle>");
+            //sb.AppendLine(@"		<LineStyle>");
+            //sb.AppendLine(@"			<color>ff00ff00</color>");
+            //sb.AppendLine(@"			<width>2</width>");
+            //sb.AppendLine(@"		</LineStyle>");
+            //sb.AppendLine(@"		<PolyStyle>");
+            //sb.AppendLine(@"			<fill>0</fill>");
+            //sb.AppendLine(@"		</PolyStyle>");
+            //sb.AppendLine(@"	</Style>");
+            //sb.AppendLine(@"	<Style id=""s_ylw-pushpin_hl0"">");
+            //sb.AppendLine(@"		<IconStyle>");
+            //sb.AppendLine(@"			<color>ff00ff00</color>");
+            //sb.AppendLine(@"			<scale>1.3</scale>");
+            //sb.AppendLine(@"			<Icon>");
+            //sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sb.AppendLine(@"			</Icon>");
+            //sb.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sb.AppendLine(@"		</IconStyle>");
+            //sb.AppendLine(@"		<LabelStyle>");
+            //sb.AppendLine(@"			<color>ff00ff00</color>");
+            //sb.AppendLine(@"		</LabelStyle>");
+            //sb.AppendLine(@"		<LineStyle>");
+            //sb.AppendLine(@"			<color>ff00ff00</color>");
+            //sb.AppendLine(@"			<width>2</width>");
+            //sb.AppendLine(@"		</LineStyle>");
+            //sb.AppendLine(@"		<PolyStyle>");
+            //sb.AppendLine(@"			<fill>0</fill>");
+            //sb.AppendLine(@"		</PolyStyle>");
+            //sb.AppendLine(@"	</Style>");
+            //sb.AppendLine(@"	<Style id=""s_ylw-pushpin"">");
+            //sb.AppendLine(@"		<IconStyle>");
+            //sb.AppendLine(@"			<color>ff00ff00</color>");
+            //sb.AppendLine(@"			<scale>1.1</scale>");
+            //sb.AppendLine(@"			<Icon>");
+            //sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sb.AppendLine(@"			</Icon>");
+            //sb.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sb.AppendLine(@"		</IconStyle>");
+            //sb.AppendLine(@"		<LabelStyle>");
+            //sb.AppendLine(@"			<color>ff00ff00</color>");
+            //sb.AppendLine(@"		</LabelStyle>");
+            //sb.AppendLine(@"		<LineStyle>");
+            //sb.AppendLine(@"			<color>ff00ff00</color>");
+            //sb.AppendLine(@"			<width>2</width>");
+            //sb.AppendLine(@"		</LineStyle>");
+            //sb.AppendLine(@"		<PolyStyle>");
+            //sb.AppendLine(@"			<fill>0</fill>");
+            //sb.AppendLine(@"		</PolyStyle>");
+            //sb.AppendLine(@" </Style>");
+
+
+            //foreach (string ss in SSList.OrderBy(c => c))
+            //{
+            //    lblStatus.Text = ss;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+
+            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    {
+            //        var tvItemSS = (from t in dd.TVItems
+            //                           from c in dd.TVItemLanguages
+            //                           where t.TVItemID == c.TVItemID
+            //                           && c.TVText.StartsWith(ss)
+            //                           && c.Language == (int)LanguageEnum.en
+            //                           select new { t, c}).FirstOrDefault();
+
+            //        if (tvItemSS == null)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find subsector " + ss + " at line " + CountRead.ToString());
+            //            continue;
+            //        }
+
+            //        MapInfoPoint mapInfoPointSS = (from m in dd.MapInfos
+            //                                               from mp in dd.MapInfoPoints
+            //                                               where m.MapInfoID == mp.MapInfoID
+            //                                               && m.TVItemID == tvItemSS.t.TVItemID
+            //                                               && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+            //                                               && m.TVType == (int)TVTypeEnum.Subsector
+            //                                               select mp).FirstOrDefault();
+
+
+            //        sb.AppendLine(@"    <Folder>");
+            //        sb.AppendLine(@"    <name>" + tvItemSS.c.TVText + "</name>");
+            //        sb.AppendLine(@"    <open>1</open>");
+
+            //        sb.AppendLine(@"    <Placemark>");
+            //        sb.AppendLine(@"        <name>" + tvItemSS.c.TVText + "</name>");
+            //        sb.AppendLine(@"        <styleUrl>s_ylw-pushpin_hl0</styleUrl>");
+            //        sb.AppendLine(@"        <Point>");
+            //        sb.AppendLine(@"        <coordinates>" + mapInfoPointSS.Lng.ToString("F5") + ", " + mapInfoPointSS.Lat.ToString("F5") + ", 0 </coordinates>");
+            //        sb.AppendLine(@"        </Point>");
+            //        sb.AppendLine(@"    </Placemark>");
+
+            //        List<MapInfoPoint> mapInfoPointList = (from m in dd.MapInfos
+            //                                     from mp in dd.MapInfoPoints
+            //                                     where m.MapInfoID == mp.MapInfoID
+            //                                     && m.TVItemID == tvItemSS.t.TVItemID
+            //                                     && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Polygon
+            //                                     && m.TVType == (int)TVTypeEnum.Subsector
+            //                                     select mp).ToList();
+
+
+            //        if (mapInfoPointList.Count == 0)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find MapInfoPoint for " + ss);
+            //            continue;
+            //        }
+
+            //        sb.AppendLine(@"	<Placemark>");
+            //        sb.AppendLine(@"		<name>Polygon</name>");
+            //        sb.AppendLine(@"		<styleUrl>s_ylw-pushpin_hl0</styleUrl>");
+            //        sb.AppendLine(@"		<Polygon>");
+            //        sb.AppendLine(@"			<tessellate>1</tessellate>");
+            //        sb.AppendLine(@"			<outerBoundaryIs>");
+            //        sb.AppendLine(@"				<LinearRing>");
+            //        sb.AppendLine(@"					<coordinates>");
+            //        sb.AppendLine(@"						");
+            //        foreach (MapInfoPoint mapInfoPoint in mapInfoPointList)
+            //        {
+            //            sb.AppendLine(@"" + mapInfoPoint.Lng + "," + mapInfoPoint.Lat + ",0 ");
+            //        }
+            //        sb.AppendLine(@"");
+            //        sb.AppendLine(@"					</coordinates>");
+            //        sb.AppendLine(@"				</LinearRing>");
+            //        sb.AppendLine(@"			</outerBoundaryIs>");
+            //        sb.AppendLine(@"		</Polygon>");
+            //        sb.AppendLine(@" </Placemark>");
+
+
+            //    }
+
+            //    foreach (MonitorSiteKML monitorSiteKML in (from c in MonitorSiteKMLList
+            //                                              where c.Subsector == ss
+            //                                              orderby c.MWQMSite
+            //                                              select c).ToList())
+            //    {
+            //        sb.AppendLine(@"    <Placemark>");
+            //        sb.AppendLine(@"        <name>" + monitorSiteKML.MWQMSite + "</name>");
+            //        sb.AppendLine(@"        <styleUrl>sn_placemark_circle</styleUrl>");
+            //        sb.AppendLine(@"        <Point>");
+            //        sb.AppendLine(@"        <coordinates>" + monitorSiteKML.Lng.ToString("F5") + ", " + monitorSiteKML.Lat.ToString("F5") + ", 0 </coordinates>");  
+            //        sb.AppendLine(@"        </Point>");
+            //        sb.AppendLine(@"    </Placemark>");
+            //    }
+
+            //    sb.AppendLine(@"    </Folder>");
+            //}
+
+
+            //sb.AppendLine(@"</Document>");
+            //sb.AppendLine(@"</kml>");
+
+            //FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\NBMonitoring.kml");
+            //StreamWriter sw = fi.CreateText();
+            //sw.Write(sb.ToString());
+            //sw.Close();
+
+            //lblStatus.Text = "done ...";
         }
 
         //private void button18_Click(object sender, EventArgs e)
@@ -8402,6 +8948,19 @@ namespace ImportByFunction
         //        }
         //    }
         //}
+    }
+
+    public class MonitorSiteKML
+    {
+        public MonitorSiteKML()
+        {
+
+        }
+
+        public string Subsector { get; set; }
+        public string MWQMSite { get; set; }
+        public float Lat { get; set; }
+        public float Lng { get; set; }
     }
     public class TTT
     {

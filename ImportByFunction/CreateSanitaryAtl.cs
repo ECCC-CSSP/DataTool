@@ -535,7 +535,7 @@ namespace ImportByFunction
                         polSourceObservationModelNew.Observation_ToBeDeleted = TVTextObs; 
 
                         polSourceObservationModelNew.ContactTVItemID = tvItemModelRet.TVItemID;
-                        polSourceObservationModelNew.PolSourceSiteTVItemID = tvItemModelPolSourceSiteRet.TVItemID;
+                        polSourceObservationModelNew.PolSourceSiteID = polSourceSiteModelRet.PolSourceSiteID;
 
                         polSourceObsInfoList = GetPolSourceType(sdo.Type.Trim(), "--", "AT");
                         ObservationInfo = (int)polSourceObsInfoList[0] + "," + (int)polSourceObsInfoList[1] + ",";
@@ -562,7 +562,7 @@ namespace ImportByFunction
                         polSourceObsInfo = GetPolSourceRisk(sdo.Risk_Assessment.Trim(), "--", "AT");
                         ObservationInfo += (int)polSourceObsInfo + ",";
 
-                        polSourceObservationModelNew.PolSourceSiteTVItemID = polSourceSiteModelRet.PolSourceSiteTVItemID;
+                        polSourceObservationModelNew.PolSourceSiteID = polSourceSiteModelRet.PolSourceSiteID;
                         polSourceObservationModelNew.Observation_ToBeDeleted = TVTextObs;
 
                         PolSourceSiteModel polSourceSiteModel = polSourceSiteService.PostUpdatePolSourceSiteDB(polSourceSiteModelRet);

@@ -230,7 +230,7 @@ namespace ImportByFunction
                     Observation = LCODE.Trim().ToUpper() + " - " + ICODE.Trim().ToUpper() + " - " + bcps.Remarks;
                 }
                 polSourceObservationModelNew.Observation_ToBeDeleted = Observation;
-                polSourceObservationModelNew.PolSourceSiteTVItemID = polSourceSiteModelRet.PolSourceSiteTVItemID;
+                polSourceObservationModelNew.PolSourceSiteID = polSourceSiteModelRet.PolSourceSiteID;
 
                 PolSourceObservationModel polSourceObservationModelRet = polSourceObservationService.GetPolSourceObservationModelExistDB(polSourceObservationModelNew);
                 if (!string.IsNullOrWhiteSpace(polSourceObservationModelRet.Error))

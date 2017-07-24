@@ -375,7 +375,7 @@ namespace ImportByFunction
 
                         polSourceObservationModelNew.ContactTVItemID = tvItemModelContact.TVItemID;
 
-                        polSourceObservationModelNew.PolSourceSiteTVItemID = polSourceSiteModelRet.PolSourceSiteTVItemID;
+                        polSourceObservationModelNew.PolSourceSiteID = polSourceSiteModelRet.PolSourceSiteID;
                         polSourceObservationModelNew.Observation_ToBeDeleted = observation;
 
                         PolSourceObservationModel polSourceObservationModelRet = polSourceObservationService.GetPolSourceObservationModelExistDB(polSourceObservationModelNew);
@@ -459,7 +459,7 @@ namespace ImportByFunction
 
                             polSourceObservationModelNew2.ContactTVItemID = tvItemModelContact.TVItemID;
 
-                            polSourceObservationModelNew2.PolSourceSiteTVItemID = polSourceSiteModelRet.PolSourceSiteTVItemID;
+                            polSourceObservationModelNew2.PolSourceSiteID = polSourceSiteModelRet.PolSourceSiteID;
                             polSourceObservationModelNew2.Observation_ToBeDeleted = observation;
 
                             PolSourceObservationModel polSourceObservationModelRet2 = polSourceObservationService.GetPolSourceObservationModelExistDB(polSourceObservationModelNew2);
@@ -680,7 +680,7 @@ namespace ImportByFunction
 
                 polSourceObservationModelNew.ContactTVItemID = tvItemModelContact.TVItemID;
                 polSourceObservationModelNew.Observation_ToBeDeleted = TVTextObservation;
-                polSourceObservationModelNew.PolSourceSiteTVItemID = tvItemModelPolSourceSite.TVItemID;
+                polSourceObservationModelNew.PolSourceSiteID = polSourceSiteModelRet.PolSourceSiteID;
 
                 PolSourceObservationModel polSourceObservationModelRet = polSourceObservationService.GetPolSourceObservationModelExistDB(polSourceObservationModelNew);
                 if (!string.IsNullOrWhiteSpace(polSourceObservationModelRet.Error))
@@ -753,7 +753,7 @@ namespace ImportByFunction
                     polSourceObservationModelNew2.ContactTVItemID = tvItemModelContact2.TVItemID;
 
                     polSourceObservationModelNew2.Observation_ToBeDeleted = TVTextObservation;
-                    polSourceObservationModelNew2.PolSourceSiteTVItemID = tvItemModelPolSourceSite.TVItemID;
+                    polSourceObservationModelNew2.PolSourceSiteID = polSourceSiteModelRet.PolSourceSiteID;
 
                     PolSourceObservationModel polSourceObservationModelRet2 = polSourceObservationService.GetPolSourceObservationModelExistDB(polSourceObservationModelNew2);
                     if (!string.IsNullOrWhiteSpace(polSourceObservationModelRet2.Error))
