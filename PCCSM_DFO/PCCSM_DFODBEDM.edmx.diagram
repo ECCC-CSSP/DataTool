@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="66c8e9e8f1f34fe783e1b49752e0664c" Name="Diagram1">
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause" Width="1.5" PointX="10.5" PointY="19" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_espece" Width="1.5" PointX="12.75" PointY="23.625" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_interdiction" Width="1.5" PointX="12.75" PointY="17.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_methode" Width="1.5" PointX="15.75" PointY="20.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_periode" Width="1.5" PointX="12.75" PointY="20.5" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_secteur" Width="1.5" PointX="12.75" PointY="27.5" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.codification" Width="1.5" PointX="0.75" PointY="18.5" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.codification_description" Width="1.5" PointX="3" PointY="32.625" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.contact" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.contact_communication" Width="1.5" PointX="5.25" PointY="17.375" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.contact_groupe" Width="1.5" PointX="5.25" PointY="14.5" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.db_histo_operation" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.dtproperty" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.groupe_secteur" Width="1.5" PointX="5.25" PointY="29.375" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.historique_operation" Width="1.5" PointX="10.5" PointY="13.125" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.language" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.ordonnance" Width="1.5" PointX="8.25" PointY="16.25" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.point_legal" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur" Width="1.5" PointX="3" PointY="25.625" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_description" Width="1.5" PointX="5.25" PointY="26" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_historique" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_point_archive" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_point_legal" Width="1.5" PointX="5.25" PointY="22.125" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.signalisation" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.sysdiagram" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.db_tournee" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.organisation" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.point_legal_20131118" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_20131118" Width="1.5" PointX="5.75" PointY="8.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_description_20131021" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_description_20131118" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_description_20140210" Width="1.5" PointX="10.75" PointY="8.75" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_clause_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_clause_interdiction_clause" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_clause_methode_clause" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_clause_secteur_clause" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_occurance_espece_ordonnance_occurance" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_occurance_periode_ordonnance_occurance" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_ordonnance_occurance_ordonnance" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_clause_espece_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_clause_interdiction_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_clause_methode_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_clause_periode_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_clause_secteur_secteur" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_codification_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_codification_description_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_codification_description_codification2" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_codification_description_codification3" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_contact_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_contact_codification1" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_contact_codification2" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_contact_codification3" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_contact_communication_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_contact_groupe_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_ordonnance_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_ordonnance_codification1" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_ordonnance_codification2" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_point_legal_codification" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_secteur_codification1" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_secteur_codification2" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_contact_communication_contact" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_contact_groupe_contact" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_ordonnance_contact" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_groupe_secteur_secteur" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_groupe_secteur_secteur1" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_historique_operation_ordonnance" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_secteur_point_legal_point_legal" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_secteur_description_secteur" />
+        <AssociationConnector Association="pccsm_mpoModel.FK_secteur_point_legal_secteur" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

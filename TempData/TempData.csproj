@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1451DDB6-0770-429A-A1BB-3FA1E3A6AA6C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TempData</RootNamespace>
+    <AssemblyName>TempData</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ASGADMPNTable.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADPrecData.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADPrecStn.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADRun.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADRunMOU.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADSampCode.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADSample.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADSampleMOU.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADStation.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADSubsect.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASGADTide.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCLandSample.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCLandSampleStation.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCMarineSample.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCMarineSampleStation.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCName.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCPolSource.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCPrecipitation.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCSurvey.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationNameLatLng.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Nomenclature.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QCClimateSite.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QCSecteurMPol.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QCSubSector.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QCSubsectorAssociation.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryDavCOb.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryDavCSite.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryDavOb.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryDavSite.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryDonOb.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryDonSite.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryJoeOb.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryJoeSite.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryPatOb.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SanitaryPatSite.cs">
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TempDataDBEDM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TempDataDBEDM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TempDataDBEDM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TempDataDBEDM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TempDataDBEDM.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="TempDataDBEDM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TempDataDBEDM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="TempDataDBEDM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TempDataDBEDM.edmx</DependentUpon>
+      <LastGenOutput>TempDataDBEDM.Context.cs</LastGenOutput>
+    </None>
+    <None Include="TempDataDBEDM.edmx.diagram">
+      <DependentUpon>TempDataDBEDM.edmx</DependentUpon>
+    </None>
+    <None Include="TempDataDBEDM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TempDataDBEDM.edmx</DependentUpon>
+      <LastGenOutput>TempDataDBEDM.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

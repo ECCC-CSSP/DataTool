@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36E82A70-B60B-472C-A506-8457B4E014BA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImportByFunction</RootNamespace>
+    <AssemblyName>ImportByFunction</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSSPEnumsDLL">
+      <HintPath>..\..\CSSPEnumsDLL\CSSPEnumsDLL\bin\Debug\CSSPEnumsDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="CSSPModelsDLL">
+      <HintPath>..\..\CSSPModelsDLL\CSSPModelsDLL\bin\Debug\CSSPModelsDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="CSSPWebToolsDBDLL">
+      <HintPath>..\..\CSSPWebToolsDBDLL\CSSPWebToolsDBDLL\bin\Debug\CSSPWebToolsDBDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CreateNewUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateFirstNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CleanDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateBCTVItemsFromAreasSectorsAndSubsectorFinalKML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateClimate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateHydrometric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateMapInfoFromLocationNameLatLongXLSAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateMapInfoFromLocationNameLatLongXLSJustProv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateMapInfosFromAreas_Sectors_SubsectorsKML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateQCTVItemsFromAreasSectorsAndSubsectorFinalKML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCountryTVItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CSSPAppsMVCDBisOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportByFunction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportByFunction.Designer.cs">
+      <DependentUpon>ImportByFunction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateClimateSitesAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateHydrometricSitesAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNomenclature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatePrecipitationsAtl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatePrecipitationsBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatePrecipitationsQC.cs" />
+    <Compile Include="CreateRootTVItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateRunsAtl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateRunsBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateRunsQC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSamplesAtl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSamplesBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSamplesQC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSanitaryAtl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSanitaryBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSanitaryQC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateStationsAtl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateStationsBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateStationsQC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateTVItemJustRootAndProvinces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateTVItemsAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUseOfClimateSitesAtl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUseOfClimateSitesBC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUseOfClimateSitesQC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateWQMLookupMPNs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateWQMTVSubSectorsAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ImportByFunction.resx">
+      <DependentUpon>ImportByFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Data_inputs\Areas_Sectors_Subsectors.kml" />
+    <None Include="Data_inputs\Areas_Sectors_SubsectorsFinal.kml" />
+    <None Include="Data_inputs\BC Area.kml" />
+    <None Include="Data_inputs\BC Zone_GrowingArea_Sector_List_20140422.xlsx" />
+    <None Include="Data_inputs\BCSectorGroups.kml" />
+    <None Include="Data_inputs\BCSectorGroups_final.kml" />
+    <None Include="Data_inputs\BC_EC Growing Area.kml" />
+    <None Include="Data_inputs\BC_Marine Sample Site.kml" />
+    <None Include="Data_inputs\BC_Pollution Source Inventory.kml" />
+    <None Include="Data_inputs\BC_SECTOR.kml" />
+    <None Include="Data_inputs\BC_Sectors.kml" />
+    <None Include="Data_inputs\BC_Sectors_Final.kml" />
+    <None Include="Data_inputs\BC_Sectors_ManualFinal.kml" />
+    <None Include="Data_inputs\CentroidArea.kml" />
+    <None Include="Data_inputs\CentroidMunicipality.kml" />
+    <None Include="Data_inputs\CentroidProvince.kml" />
+    <None Include="Data_inputs\CentroidSector.kml" />
+    <None Include="Data_inputs\CentroidSubsector.kml" />
+    <None Include="Data_inputs\CreateQCPolSource subsector not exist for polsourceobs.docx" />
+    <None Include="Data_inputs\CSSP Tools Location Hierarchy.kml" />
+    <None Include="Data_inputs\LocationNameLatLong.xls" />
+    <None Include="Data_inputs\Locator Nomenclature.xls" />
+    <None Include="Data_inputs\Missing Sectors and Subsectors.xlsx" />
+    <None Include="Data_inputs\MuniAreaAll.kml" />
+    <None Include="Data_inputs\Municipalities.kml" />
+    <None Include="Data_inputs\NB_Subsectors.KML" />
+    <None Include="Data_inputs\Newfoundland subsectors.kml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data_inputs\Newfoundland subsectors_Pins.kml" />
+    <None Include="Data_inputs\NF_Areas_Sectors_Subsectors.kml" />
+    <None Include="Data_inputs\NL Areas Final.kml" />
+    <None Include="Data_inputs\NL Areas Pin Final.kml" />
+    <None Include="Data_inputs\NL Sectors Final.kml" />
+    <None Include="Data_inputs\NL Sectors Pin Final.kml" />
+    <None Include="Data_inputs\NL Subsectors Final.kml" />
+    <None Include="Data_inputs\NL Subsectors Pin Final.kml" />
+    <None Include="Data_inputs\NS_Subsectors.KML" />
+    <None Include="Data_inputs\PCCSM_QC.kml" />
+    <None Include="Data_inputs\PCCSM_QC_Fixed.kml" />
+    <None Include="Data_inputs\PCCSM_QC_Fixed_o.kml" />
+    <None Include="Data_inputs\PCCSM_QC_Fixed_old.kml" />
+    <None Include="Data_inputs\PEI_Subsectors.KML" />
+    <None Include="Data_inputs\QC Climate Sites.xlsx" />
+    <None Include="Data_inputs\QC Group de secteur et nom FR et EN.xlsx" />
+    <None Include="Data_inputs\QCPollution.kml" />
+    <None Include="Data_inputs\QCPolSourceWithNullSector.kml" />
+    <None Include="Data_inputs\QCPolSourceWithSectorStartingWithM.kml" />
+    <None Include="Data_inputs\QCStation.kml" />
+    <None Include="Data_inputs\QCStationWithSectorStartingWithL.kml" />
+    <None Include="Data_inputs\QCStationWithSectorStartingWithM.kml" />
+    <None Include="Data_inputs\QC_Areas.kml" />
+    <None Include="Data_inputs\QC_Areas_Final.kml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data_inputs\QC_SecteurCoquiller_final.kml" />
+    <None Include="Data_inputs\QC_secteur_2.kml" />
+    <None Include="Data_inputs\QC_secteur_3.kml" />
+    <None Include="Data_inputs\QC_Sectors.kml" />
+    <None Include="Data_inputs\QC_Sectors_Final.kml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data_inputs\QC_Subsectors.kml" />
+    <None Include="Data_inputs\QC_Subsectors_Final.kml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data_inputs\QuebecInfrastructures.kml" />
+    <None Include="Data_inputs\TreatmentType.xlsx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OldClimateHydrometric\OldClimateHydrometric.csproj">
+      <Project>{52e0ed02-50ab-461b-826b-9276c429e0a8}</Project>
+      <Name>OldClimateHydrometric</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OldCSSPApps\OldCSSPApps.csproj">
+      <Project>{f5c724da-26f9-4c40-ac61-f0285eee6328}</Project>
+      <Name>OldCSSPApps</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PCCSM\PCCSM.csproj">
+      <Project>{fcb16c99-6d23-4ab1-9cac-2e7478c562b0}</Project>
+      <Name>PCCSM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PCCSM_DFO\PCCSM_DFO.csproj">
+      <Project>{7cd2f110-c4a1-4464-a1a2-2a4407d65b33}</Project>
+      <Name>PCCSM_DFO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TempData\TempData.csproj">
+      <Project>{1451ddb6-0770-429a-a1bb-3fa1e3a6aa6c}</Project>
+      <Name>TempData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data_inputs\LocationNameLatLong.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data_inputs\LocationNameLatLong1.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

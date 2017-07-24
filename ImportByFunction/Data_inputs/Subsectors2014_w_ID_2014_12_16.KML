@@ -1,0 +1,5004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Folder>
+	<name>Subsectors2014_w_ID_2014_12_16.KML</name>
+	<description>Subsectors2014_w_id</description>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-012</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.671681,49.753536,0 -56.670646,49.749926,0 -56.652449,49.721964,0 -56.461026,49.835784,0 -56.58214,49.84652000000001,0 -56.598885,49.85631900000001,0 -56.671681,49.753536,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-010</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.77187,49.832837,0 -56.85379799999999,49.83350400000001,0 -56.959222,49.780746,0 -56.865965,49.674854,0 -56.796718,49.73676,0 -56.679307,49.832274,0 -56.771925,49.833071,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-011</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.671681,49.753536,0 -56.670494,49.749809,0 -56.652449,49.721964,0 -56.83826,49.53122,0 -56.901535,49.53744799999999,0 -56.820041,49.708493,0 -56.796718,49.73676,0 -56.77598100000001,49.753782,0 -56.671681,49.753536,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-009</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.731718,49.957258,0 -56.678478,49.95716,0 -56.679307,49.832274,0 -56.771925,49.833071,0 -56.85379799999999,49.83350400000001,0 -56.852363,49.858092,0 -56.73172,49.956899,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-013</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.58214,49.84652000000001,0 -56.598885,49.85631900000001,0 -56.431867,49.94591700000001,0 -56.408191,49.943233,0 -56.335565,49.93509600000001,0 -56.38927300000001,49.829313,0 -56.58214,49.84652000000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-008</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.56108,50.124663,0 -56.73172,49.956899,0 -56.852363,49.858092,0 -56.827856,50.11838400000001,0 -56.761444,50.179187,0 -56.59755999999999,50.139701,0 -56.56108,50.124663,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.48873,50.2563,0 -56.62093000000001,50.340594,0 -56.455496,50.48982,0 -56.42659,50.37032,0 -56.38396000000001,50.352589,0 -56.46444000000001,50.244413,0 -56.489504,50.256088,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-007</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.48873,50.2563,0 -56.62093000000001,50.340594,0 -56.761444,50.179187,0 -56.59755999999999,50.139701,0 -56.56108,50.124663,0 -56.46444000000001,50.244413,0 -56.489504,50.256088,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.171153,50.75678,0 -56.26175,50.758753,0 -56.26019299999999,50.66528199999999,0 -56.144526,50.66473100000001,0 -56.113131,50.69114399999999,0 -56.113455,50.720491,0 -56.171153,50.75678,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.11320000000001,50.691244,0 -56.144526,50.66473100000001,0 -56.26019299999999,50.66528199999999,0 -56.308991,50.562653,0 -56.260287,50.520741,0 -56.225991,50.515075,0 -56.06658100000001,50.668397,0 -56.112885,50.690648,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.260287,50.520741,0 -56.309039,50.562257,0 -56.455986,50.49011,0 -56.42659,50.37032,0 -56.38396000000001,50.352589,0 -56.225991,50.515075,0 -56.260287,50.520741,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>0</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.171264,50.756916,0 -56.26175,50.758753,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.040653,50.882918,0 -56.09974,50.73340799999999,0 -56.10963099999999,50.730841,0 -56.11352099999999,50.720762,0 -56.032183,50.686497,0 -55.88036399999999,50.820225,0 -55.967156,50.848635,0 -56.040653,50.882918,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-05-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.010055,50.045069,0 -56.0202,50.03828299999999,0 -56.09042599999999,49.935496,0 -55.960624,49.93074099999999,0 -55.879517,50.01792399999999,0 -55.855698,50.027086,0 -55.91720600000001,50.04409299999999,0 -56.010055,50.045069,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.824838,49.612021,0 -55.789268,49.609016,0 -55.755611,49.566439,0 -55.76844100000001,49.522305,0 -55.78220400000001,49.512188,0 -55.789115,49.505811,0 -55.95886,49.462898,0 -56.119088,49.332291,0 -56.29107400000001,49.383611,0 -56.022117,49.539093,0 -55.824387,49.61201700000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-05-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.159907,50.15806400000001,0 -56.15858999999999,50.16797499999999,0 -56.15858999999999,50.16797499999999,0 -56.060461,50.12141700000001,0 -56.061165,50.073784,0 -56.072377,50.074292,0 -56.16161300000001,50.086426,0 -56.17438899999999,50.09860999999999,0 -56.159655,50.158062,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-014</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.408191,49.943233,0 -56.431867,49.94591700000001,0 -56.196924,50.16824699999999,0 -56.15858999999999,50.16797499999999,0 -56.159655,50.158062,0 -56.17438899999999,50.09860999999999,0 -56.335565,49.93509600000001,0 -56.407759,49.943267,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-05-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.072377,50.074292,0 -56.061165,50.073784,0 -56.010055,50.045069,0 -56.01986,50.038559,0 -56.09042599999999,49.935496,0 -56.241643,49.908733,0 -56.16161300000001,50.086426,0 -56.07243499999999,50.074203,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.927808,49.707866,0 -55.945876,49.69809999999999,0 -56.031438,49.660056,0 -56.164568,49.56346700000001,0 -56.228053,49.564747,0 -56.162384,49.714399,0 -55.882758,49.792346,0 -55.853167,49.785113,0 -55.829823,49.76172399999999,0 -55.927874,49.707862,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-03-010-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.78108499999999,51.040486,0 -55.676938,51.065861,0 -55.767127,50.943297,0 -55.822098,50.96212,0 -55.83727600000001,50.951464,0 -55.968627,50.997145,0 -55.868686,51.067574,0 -55.803133,51.025705,0 -55.780844,51.04040300000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-03-010-007</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.822098,50.96212,0 -55.767127,50.943297,0 -55.88036399999999,50.820225,0 -55.967156,50.848635,0 -56.040653,50.882918,0 -55.968627,50.997145,0 -55.83727600000001,50.951464,0 -55.822098,50.96212,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-04-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.113455,50.720491,0 -56.171153,50.75678,0 -56.26175,50.758753,0 -56.271823,50.914981,0 -56.120677,50.969438,0 -56.040653,50.882918,0 -56.09974,50.73340799999999,0 -56.10963099999999,50.730841,0 -56.11352099999999,50.720762,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-03-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.722554,51.189834,0 -55.711863,51.249738,0 -55.620371,51.24972,0 -55.676938,51.065861,0 -55.78108499999999,51.040486,0 -55.803133,51.025705,0 -55.936491,51.110951,0 -55.722554,51.189834,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-03-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.863735,51.231334,0 -55.868811,51.249919,0 -55.711863,51.249738,0 -55.722554,51.189834,0 -55.936491,51.110951,0 -55.863735,51.231334,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-03-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.886081,51.311466,0 -55.863735,51.231334,0 -55.936491,51.110951,0 -56.176653,51.11747400000001,0 -56.149724,51.295716,0 -56.022809,51.262837,0 -56.00736599999999,51.256012,0 -55.886081,51.311466,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-03-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.543226,51.292327,0 -55.601597,51.275501,0 -55.886081,51.311466,0 -55.883379,51.331573,0 -55.872109,51.36538600000001,0 -55.815468,51.44849,0 -55.659754,51.422308,0 -55.629966,51.416138,0 -55.65738300000001,51.345824,0 -55.618267,51.303359,0 -55.59750900000001,51.302879,0 -55.592358,51.305713,0 -55.543226,51.292327,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>0</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.722554,51.189834,0 -55.711863,51.249738,0 -55.626111,51.249784,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-01-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.898714,51.631636,0 -55.898862,51.641487,0 -55.792326,51.64044,0 -55.81953500000001,51.514355,0 -55.815468,51.44849,0 -55.991227,51.49818,0 -55.958724,51.590144,0 -55.89966,51.624438,0 -55.898714,51.631636,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-03-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.886081,51.311466,0 -55.88317500000001,51.331715,0 -55.872109,51.36538600000001,0 -55.90959599999999,51.402857,0 -56.119835,51.415195,0 -56.18442200000001,51.304675,0 -56.022809,51.262837,0 -56.00736599999999,51.256012,0 -55.886081,51.311466,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-02-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.438531,51.441612,0 -55.469831,51.44553100000001,0 -55.47593200000001,51.43826099999999,0 -55.549465,51.431993,0 -55.56432,51.402199,0 -55.629966,51.416138,0 -55.65738300000001,51.345824,0 -55.618267,51.303359,0 -55.59750900000001,51.302879,0 -55.592358,51.305713,0 -55.543226,51.292327,0 -55.438531,51.441612,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>0</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.55749,51.521515,0 -55.663132,51.569732,0 -55.671348,51.592047,0 -55.627857,51.614609,0 -55.627125,51.638864,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-02-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.47951599999999,51.64833699999999,0 -55.379352,51.646997,0 -55.33612800000001,51.58296899999999,0 -55.443439,51.508949,0 -55.465566,51.506655,0 -55.55749,51.521515,0 -55.501321,51.578468,0 -55.49157,51.599232,0 -55.47951599999999,51.64833699999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-02-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.443439,51.508949,0 -55.419359,51.506942,0 -55.438531,51.441612,0 -55.469831,51.44553100000001,0 -55.47593200000001,51.43826099999999,0 -55.549465,51.431993,0 -55.57735900000001,51.452328,0 -55.55749,51.521515,0 -55.465566,51.506655,0 -55.443439,51.508949,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-05-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.879486,50.01804,0 -55.855698,50.027086,0 -55.710757,49.95822,0 -55.68730200000001,49.95018600000001,0 -55.74727100000001,49.89046799999999,0 -55.960624,49.93074099999999,0 -55.87951199999999,50.018149,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-05-010-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.710757,49.95822,0 -55.737487,49.97078,0 -55.658713,50.024719,0 -55.476739,50.023059,0 -55.508577,50.003072,0 -55.62502899999999,49.929336,0 -55.686404,49.9504,0 -55.710757,49.95822,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.508577,50.003072,0 -55.476739,50.023059,0 -55.434641,49.932163,0 -55.61548300000001,49.834489,0 -55.647654,49.853182,0 -55.711846,49.858468,0 -55.62502899999999,49.929336,0 -55.50872699999999,50.00320000000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.64738300000001,49.85343,0 -55.61548300000001,49.834489,0 -55.829823,49.76172399999999,0 -55.85270600000001,49.784623,0 -55.882866,49.792455,0 -55.711846,49.858468,0 -55.647654,49.853182,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.92774899999999,49.707939,0 -55.87979300000001,49.734036,0 -55.733264,49.646036,0 -55.789716,49.609112,0 -55.82449900000001,49.61188199999999,0 -56.02256599999999,49.539189,0 -56.031438,49.660056,0 -55.946162,49.697956,0 -55.92774899999999,49.707939,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-010-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.781755,49.51211,0 -55.790032,49.505161,0 -55.824901,49.496724,0 -55.801429,49.480944,0 -55.767142,49.484395,0 -55.731438,49.472868,0 -55.722358,49.47599300000001,0 -55.69837,49.481296,0 -55.691086,49.484439,0 -55.558085,49.538565,0 -55.557964,49.54266799999999,0 -55.52926500000001,49.56810899999999,0 -55.622033,49.683595,0 -55.720939,49.685609,0 -55.733264,49.646036,0 -55.789268,49.609016,0 -55.755611,49.566439,0 -55.76844100000001,49.522305,0 -55.781755,49.51211,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-010-007</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.557561,49.54265,0 -55.52926500000001,49.56810899999999,0 -55.50018599999999,49.531379,0 -55.54226,49.49195,0 -55.61695799999999,49.431973,0 -55.64945700000001,49.34527600000001,0 -55.955291,49.39799600000001,0 -55.949683,49.46465,0 -55.824901,49.496724,0 -55.801429,49.480944,0 -55.767142,49.484395,0 -55.731438,49.472868,0 -55.722358,49.47599300000001,0 -55.69837,49.481296,0 -55.690931,49.48457999999999,0 -55.558085,49.538565,0 -55.557964,49.54266799999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-010-008</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.54226,49.49195,0 -55.50018599999999,49.531379,0 -55.369832,49.52965199999999,0 -55.392407,49.504015,0 -55.57685299999999,49.34194899999999,0 -55.64945700000001,49.34527600000001,0 -55.61695799999999,49.431973,0 -55.54226,49.49195,0 -55.54226,49.49195,0 -55.54226,49.49195,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-010-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.300502,49.225005,0 -55.337228,49.251359,0 -55.474406,49.123097,0 -55.45316,48.993411,0 -55.134156,49.113423,0 -55.202948,49.244939,0 -55.300431,49.225076,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-020-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.301793,49.403068,0 -55.282472,49.40371799999999,0 -55.249392,49.414439,0 -55.254321,49.32611,0 -55.324236,49.295039,0 -55.373216,49.298378,0 -55.363183,49.357611,0 -55.326947,49.367208,0 -55.304875,49.401925,0 -55.301793,49.403068,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.392407,49.504015,0 -55.369832,49.52965199999999,0 -55.353818,49.54373700000001,0 -55.338734,49.535739,0 -55.246877,49.484991,0 -55.251161,49.446865,0 -55.295873,49.46932300000001,0 -55.330991,49.462323,0 -55.455544,49.389742,0 -55.497545,49.4117,0 -55.392935,49.503509,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-06-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.249392,49.414439,0 -55.282472,49.40371799999999,0 -55.301793,49.403068,0 -55.304875,49.401925,0 -55.326947,49.367208,0 -55.363183,49.357611,0 -55.373216,49.298378,0 -55.524177,49.34028099999999,0 -55.455544,49.389742,0 -55.330877,49.462439,0 -55.295873,49.46932300000001,0 -55.251161,49.446865,0 -55.249392,49.414439,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.23654,49.324853,0 -55.23654,49.324853,0 -55.203613,49.244796,0 -55.300431,49.225076,0 -55.337228,49.251359,0 -55.243268,49.317926,0 -55.23654,49.324853,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.338566,49.535403,0 -55.353818,49.54373700000001,0 -55.229326,49.559784,0 -55.132597,49.555038,0 -55.158818,49.544124,0 -55.198508,49.515327,0 -55.199905,49.48339,0 -55.246877,49.484991,0 -55.338663,49.53579199999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-010-007</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.20360599999999,49.244625,0 -55.208832,49.257808,0 -55.19600199999999,49.262111,0 -55.10346800000001,49.29546800000001,0 -55.114136,49.367216,0 -55.08374,49.37429899999999,0 -55.086128,49.364209,0 -55.077811,49.327755,0 -55.04330499999999,49.27740000000001,0 -55.19535,49.230343,0 -55.202656,49.24506,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.132597,49.555038,0 -55.158818,49.544124,0 -55.198508,49.515327,0 -55.201021,49.465228,0 -55.137419,49.46378099999999,0 -55.13214,49.464617,0 -55.120301,49.464384,0 -55.132597,49.555038,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>0</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.128041,49.555021,0 -55.111186,49.472511,0 -54.981999,49.509907,0 -55.021961,49.55681100000001,0 -55.128041,49.555021,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-010-008</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.137706,49.415708,0 -55.214935,49.32947500000001,0 -55.208842,49.267525,0 -55.19600199999999,49.262111,0 -55.10346800000001,49.29546800000001,0 -55.114136,49.367216,0 -55.087719,49.412048,0 -55.137706,49.415708,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.085499,49.364091,0 -55.08374,49.37429899999999,0 -54.962251,49.39823199999999,0 -54.931081,49.370897,0 -55.011975,49.28069900000001,0 -55.04330499999999,49.27740000000001,0 -55.077811,49.327755,0 -55.086128,49.364209,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-010-009</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.103927,49.47215500000001,0 -55.047587,49.48970299999999,0 -54.97002100000001,49.465142,0 -54.964264,49.402237,0 -55.044771,49.3868,0 -55.11663699999999,49.43468100000001,0 -55.103927,49.47215500000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.131998,49.464731,0 -55.137419,49.46378099999999,0 -55.201021,49.465228,0 -55.249287,49.401547,0 -55.254321,49.32611,0 -55.243268,49.317926,0 -55.23654,49.324853,0 -55.15292399999999,49.40705,0 -55.120301,49.464384,0 -55.131998,49.464731,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.011975,49.28069900000001,0 -55.04330499999999,49.27740000000001,0 -55.08881,49.226698,0 -55.053112,49.203088,0 -54.874897,49.268203,0 -54.867544,49.34627900000001,0 -54.86336299999999,49.413417,0 -54.935584,49.436626,0 -54.962251,49.39823199999999,0 -54.931081,49.370897,0 -55.011975,49.28069900000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-040-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.01827,49.557992,0 -54.977966,49.510607,0 -54.962928,49.443273,0 -54.916258,49.438175,0 -54.907755,49.47570399999999,0 -54.942031,49.568984,0 -55.01827,49.557992,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-030-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.777725,49.391394,0 -54.768396,49.404961,0 -54.754358,49.41014,0 -54.677729,49.471431,0 -54.66127599999999,49.465649,0 -54.660319,49.460115,0 -54.655994,49.454402,0 -54.660601,49.449282,0 -54.64343,49.435898,0 -54.683457,49.36536799999999,0 -54.792162,49.271747,0 -54.785601,49.36097299999999,0 -54.769589,49.380924,0 -54.777725,49.391394,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-030-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.86336299999999,49.413417,0 -54.881823,49.41918200000001,0 -54.868999,49.43008499999999,0 -54.81613500000001,49.39893300000001,0 -54.777725,49.391394,0 -54.769589,49.380924,0 -54.785695,49.361029,0 -54.792162,49.271747,0 -54.847502,49.265207,0 -54.874897,49.268203,0 -54.86336299999999,49.413417,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-030-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.81596399999999,49.399046,0 -54.89168599999999,49.443358,0 -54.886762,49.480147,0 -54.88207599999999,49.485013,0 -54.83734199999999,49.484777,0 -54.78426000000001,49.500244,0 -54.763286,49.485383,0 -54.762555,49.481458,0 -54.75939300000001,49.479027,0 -54.761111,49.473254,0 -54.75238800000001,49.46823,0 -54.73884,49.468686,0 -54.737776,49.466638,0 -54.702676,49.451251,0 -54.754358,49.41014,0 -54.768396,49.404961,0 -54.777725,49.391394,0 -54.815961,49.398794,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-050-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.795235,49.60088,0 -54.80925300000001,49.592378,0 -54.840421,49.55943,0 -54.78426000000001,49.500244,0 -54.757782,49.530188,0 -54.667495,49.579594,0 -54.66691600000001,49.59937200000001,0 -54.689933,49.598412,0 -54.706133,49.598971,0 -54.763218,49.646303,0 -54.769899,49.647854,0 -54.802993,49.686998,0 -54.802051,49.69148799999999,0 -54.801681,49.69988900000001,0 -54.843482,49.700675,0 -54.791009,49.616916,0 -54.78284800000001,49.603844,0 -54.79523699999999,49.600853,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-040-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.886882,49.48023,0 -54.88733200000001,49.476992,0 -54.89878,49.4772,0 -54.918075,49.54106400000001,0 -54.90308099999999,49.54378299999999,0 -54.889585,49.55145,0 -54.840421,49.55943,0 -54.78426000000001,49.500244,0 -54.83734199999999,49.484777,0 -54.88207599999999,49.485013,0 -54.886882,49.48023,0 -54.886762,49.480147,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-040-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.902976,49.543646,0 -54.918075,49.54106400000001,0 -54.939714,49.61100900000001,0 -54.791009,49.616916,0 -54.78284800000001,49.603844,0 -54.795235,49.60088,0 -54.80925300000001,49.592378,0 -54.840421,49.55943,0 -54.889585,49.55145,0 -54.90308099999999,49.54378299999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-050-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.801681,49.69988900000001,0 -54.801828,49.69211399999999,0 -54.802993,49.686998,0 -54.769899,49.647854,0 -54.763218,49.646303,0 -54.706133,49.598971,0 -54.689933,49.598412,0 -54.66691600000001,49.59937200000001,0 -54.646795,49.63481000000001,0 -54.617471,49.644994,0 -54.603121,49.655641,0 -54.60259199999999,49.66554200000001,0 -54.724718,49.697039,0 -54.801681,49.69988900000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-060-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.619373,49.545434,0 -54.625261,49.544844,0 -54.735372,49.542371,0 -54.757782,49.530188,0 -54.78426000000001,49.500244,0 -54.763286,49.485383,0 -54.762555,49.481458,0 -54.75939300000001,49.479027,0 -54.761111,49.473254,0 -54.752144,49.468153,0 -54.73884,49.468686,0 -54.737776,49.466638,0 -54.702676,49.451251,0 -54.677729,49.471431,0 -54.66127599999999,49.465649,0 -54.660704,49.46102299999999,0 -54.655994,49.454402,0 -54.660601,49.449282,0 -54.64343,49.435898,0 -54.537074,49.531062,0 -54.55549,49.540098,0 -54.619202,49.545548,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-08-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.363346,49.737898,0 -54.482941,49.716386,0 -54.464251,49.597951,0 -54.41529000000001,49.558472,0 -54.359786,49.54726400000001,0 -54.341144,49.675769,0 -54.363346,49.737898,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-050-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.60259199999999,49.66554200000001,0 -54.602947,49.655529,0 -54.617471,49.644994,0 -54.646795,49.63481000000001,0 -54.66691600000001,49.59937200000001,0 -54.639204,49.591818,0 -54.585352,49.637633,0 -54.583384,49.64422700000001,0 -54.585654,49.646289,0 -54.546107,49.663351,0 -54.537965,49.669413,0 -54.47840000000001,49.68761,0 -54.482941,49.716386,0 -54.558387,49.702478,0 -54.60259199999999,49.66554200000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-050-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.47840000000001,49.68761,0 -54.537965,49.669413,0 -54.546107,49.663351,0 -54.585654,49.646289,0 -54.583384,49.64422700000001,0 -54.58575200000001,49.63692999999999,0 -54.639204,49.591818,0 -54.625261,49.544844,0 -54.619373,49.545434,0 -54.600175,49.543911,0 -54.464251,49.597951,0 -54.47840000000001,49.68761,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-07-060-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.55549,49.540098,0 -54.600175,49.543911,0 -54.464251,49.597951,0 -54.41529000000001,49.558472,0 -54.359786,49.54726400000001,0 -54.363051,49.51368299999999,0 -54.425362,49.50897,0 -54.46179900000001,49.544737,0 -54.537074,49.531062,0 -54.55549,49.540098,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-09-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.425362,49.50897,0 -54.46179900000001,49.544737,0 -54.537074,49.531062,0 -54.64343,49.435898,0 -54.52519399999999,49.236679,0 -54.47544599999999,49.23560199999999,0 -54.320621,49.441405,0 -54.425362,49.50897,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-10-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.546206,49.14926799999999,0 -53.518503,49.13316200000001,0 -53.44625700000001,49.130342,0 -53.425141,49.260693,0 -53.46390400000001,49.2559,0 -53.49666400000001,49.236579,0 -53.580664,49.251791,0 -53.639345,49.168111,0 -53.546206,49.14926799999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-08-030-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.363346,49.737898,0 -54.09445199999999,49.77033100000001,0 -53.968309,49.65712,0 -54.119216,49.58702799999999,0 -54.359786,49.54726400000001,0 -54.341144,49.675769,0 -54.363346,49.737898,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-08-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.359786,49.54726400000001,0 -54.363051,49.51368299999999,0 -54.134436,49.513931,0 -54.119216,49.58702799999999,0 -54.359786,49.54726400000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-09-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.425362,49.50897,0 -54.3209,49.441357,0 -54.383705,49.357853,0 -54.188585,49.360037,0 -54.005636,49.472466,0 -53.98956,49.495009,0 -54.134436,49.513931,0 -54.363051,49.51368299999999,0 -54.425362,49.50897,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-09-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.98956,49.495009,0 -53.785656,49.456674,0 -53.425141,49.260693,0 -53.46390400000001,49.2559,0 -53.49666400000001,49.236579,0 -54.188585,49.360037,0 -54.005636,49.472466,0 -53.98956,49.495009,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-11-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.981149,48.844188,0 -54.047962,48.84730400000001,0 -54.097401,48.875112,0 -54.255948,48.816293,0 -54.260687,48.729332,0 -53.970017,48.752203,0 -53.94303900000001,48.80564400000001,0 -53.820752,48.819588,0 -53.788712,48.873383,0 -53.981149,48.844188,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-11-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.862198,48.917285,0 -53.941278,48.957485,0 -54.097401,48.875112,0 -54.047962,48.84730400000001,0 -53.981149,48.844188,0 -53.788712,48.873383,0 -53.745491,48.914016,0 -53.862198,48.917285,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-11-030-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.970017,48.752203,0 -54.064443,48.74480300000001,0 -54.07176,48.618835,0 -53.876694,48.613706,0 -53.78688099999999,48.668774,0 -53.785258,48.694268,0 -53.904509,48.697537,0 -53.846023,48.755769,0 -53.863929,48.778466,0 -53.91189,48.751582,0 -53.970017,48.752203,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-11-030-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.846023,48.755769,0 -53.904509,48.697537,0 -53.785258,48.694268,0 -53.78688099999999,48.668774,0 -53.72241699999999,48.68514100000001,0 -53.692414,48.713753,0 -53.846023,48.755769,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-11-030-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.820752,48.819588,0 -53.94303900000001,48.80564400000001,0 -53.970017,48.752203,0 -53.91189,48.751582,0 -53.863929,48.778466,0 -53.846023,48.755769,0 -53.780151,48.737838,0 -53.752187,48.785515,0 -53.782645,48.793447,0 -53.798726,48.804203,0 -53.80642,48.818725,0 -53.820752,48.819588,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-11-030-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.745491,48.914016,0 -53.61320800000001,48.910151,0 -53.566574,48.83397800000001,0 -53.637513,48.73514400000001,0 -53.692414,48.713753,0 -53.780151,48.737838,0 -53.752187,48.785515,0 -53.782645,48.793447,0 -53.798726,48.804203,0 -53.80642,48.818725,0 -53.820752,48.819588,0 -53.788712,48.873383,0 -53.745491,48.914016,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-11-040-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.72241699999999,48.68514100000001,0 -53.78688099999999,48.668774,0 -53.751766,48.644133,0 -53.657753,48.678981,0 -53.65208499999999,48.701448,0 -53.617733,48.717968,0 -53.637513,48.73514400000001,0 -53.692414,48.713753,0 -53.72241699999999,48.68514100000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-10-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.639345,49.168111,0 -53.709843,49.090313,0 -53.603863,49.035386,0 -53.57100599999999,49.01444399999999,0 -53.44625700000001,49.130342,0 -53.518503,49.13316200000001,0 -53.546206,49.14926799999999,0 -53.639345,49.168111,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-11-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.709843,49.090313,0 -53.93270699999999,49.096341,0 -53.936815,49.02199100000001,0 -53.781402,48.994372,0 -53.777488,48.990039,0 -53.71994800000001,48.968946,0 -53.57100599999999,49.01444399999999,0 -53.603863,49.035386,0 -53.709843,49.090313,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-11-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.777488,48.990039,0 -53.781495,48.994345,0 -53.936815,49.02199100000001,0 -53.941278,48.957485,0 -53.862198,48.917285,0 -53.61320800000001,48.910151,0 -53.612405,48.928897,0 -53.777488,48.990039,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-12-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.76549499999999,48.625639,0 -53.790967,48.632451,0 -53.823664,48.627549,0 -53.982209,48.57469800000001,0 -53.985566,48.518259,0 -53.82818,48.514026,0 -53.767336,48.547109,0 -53.56844,48.574916,0 -53.565386,48.619931,0 -53.76549499999999,48.625639,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-12-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.617733,48.717968,0 -53.65208499999999,48.701448,0 -53.657753,48.678981,0 -53.751766,48.644133,0 -53.790967,48.632451,0 -53.76549499999999,48.625639,0 -53.565386,48.619931,0 -53.581801,48.693494,0 -53.617733,48.717968,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-12-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.720121,48.55367399999999,0 -53.767336,48.547109,0 -53.82818,48.514026,0 -53.985566,48.518259,0 -54.2277,48.39475300000001,0 -54.175334,48.29893799999999,0 -53.821991,48.472333,0 -53.71351700000001,48.538121,0 -53.720121,48.55367399999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-12-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.633854,48.537439,0 -53.56844,48.574916,0 -53.597083,48.53240900000001,0 -53.598817,48.522555,0 -53.605949,48.515674,0 -53.605051,48.504716,0 -53.626973,48.440165,0 -53.708009,48.372054,0 -53.800371,48.436637,0 -53.67692200000001,48.527482,0 -53.633854,48.537439,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-12-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.56844,48.574916,0 -53.597083,48.53240900000001,0 -53.598817,48.522555,0 -53.605949,48.515674,0 -53.605051,48.504716,0 -53.626973,48.440165,0 -53.708009,48.372054,0 -53.521874,48.366522,0 -53.511577,48.515512,0 -53.56844,48.574916,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-12-020-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.446864,48.62573700000001,0 -53.461938,48.600332,0 -53.47002500000001,48.484324,0 -53.51372600000001,48.48565799999999,0 -53.511577,48.515512,0 -53.56844,48.574916,0 -53.565386,48.619931,0 -53.447476,48.64267600000001,0 -53.446864,48.62573700000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-13-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.447476,48.64267600000001,0 -53.24099400000001,48.63601599999999,0 -53.238473,48.567287,0 -53.204255,48.532422,0 -53.278814,48.50262,0 -53.461938,48.600332,0 -53.446864,48.62573700000001,0 -53.447476,48.64267600000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-13-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.24099400000001,48.63601599999999,0 -53.238473,48.567287,0 -53.204255,48.532422,0 -53.09844,48.578914,0 -53.09635800000001,48.682208,0 -53.088108,48.69345599999999,0 -53.086617,48.703169,0 -53.084537,48.731827,0 -53.24099400000001,48.63601599999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL14-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.084537,48.731827,0 -52.96433900000001,48.61356,0 -52.96972600000001,48.545945,0 -53.002547,48.54711700000001,0 -53.09844,48.578914,0 -53.09635800000001,48.682208,0 -53.088108,48.69345599999999,0 -53.086617,48.703169,0 -53.084537,48.731827,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-14-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.002547,48.54711700000001,0 -52.96972600000001,48.545945,0 -53.01839400000001,48.45834299999999,0 -53.05241,48.45989300000001,0 -53.158485,48.470536,0 -53.09844,48.578914,0 -53.002547,48.54711700000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-15-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.01839400000001,48.45834299999999,0 -53.18571299999999,48.326849,0 -53.290762,48.34494399999999,0 -53.274393,48.367175,0 -53.242072,48.37325700000001,0 -53.158485,48.470536,0 -53.05241,48.45989300000001,0 -53.01839400000001,48.45834299999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-15-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.290762,48.34494399999999,0 -53.274393,48.367175,0 -53.242072,48.37325700000001,0 -53.27624800000001,48.419311,0 -53.434656,48.404014,0 -53.39068200000001,48.345391,0 -53.36206499999999,48.356212,0 -53.347784,48.35107,0 -53.290762,48.34494399999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-15-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.290762,48.34494399999999,0 -53.347784,48.35107,0 -53.36206499999999,48.356212,0 -53.39068200000001,48.345391,0 -53.454232,48.308194,0 -53.392425,48.27206,0 -53.371423,48.26164299999999,0 -53.290762,48.34494399999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-16-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.454232,48.308194,0 -53.559,48.26161900000001,0 -53.513033,48.238681,0 -53.508155,48.24193300000001,0 -53.417767,48.22645000000001,0 -53.371423,48.26164299999999,0 -53.393032,48.272353,0 -53.454232,48.308194,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-16-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.508155,48.24193300000001,0 -53.513033,48.238681,0 -53.559,48.26161900000001,0 -53.696418,48.184027,0 -53.682925,48.167369,0 -53.696815,48.150092,0 -53.70524000000001,48.13940700000001,0 -53.55519700000001,48.15375,0 -53.52833300000001,48.139951,0 -53.526392,48.140389,0 -53.461658,48.128173,0 -53.417767,48.22645000000001,0 -53.508155,48.24193300000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-16-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.696418,48.184027,0 -53.965549,48.250051,0 -53.988612,48.211101,0 -53.939433,48.20625900000001,0 -53.87477000000001,48.143999,0 -53.70524000000001,48.13940700000001,0 -53.696815,48.150092,0 -53.682925,48.167369,0 -53.696418,48.184027,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-16-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.526392,48.140389,0 -53.52833300000001,48.139951,0 -53.55519700000001,48.15375,0 -53.616688,48.147893,0 -53.61913299999999,48.110703,0 -53.54833,48.092026,0 -53.507647,48.067805,0 -53.461658,48.128173,0 -53.526392,48.140389,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-16-030-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.988612,48.211101,0 -54.00259699999999,48.066031,0 -53.674687,48.059621,0 -53.507647,48.067805,0 -53.54833,48.092026,0 -53.61913299999999,48.110703,0 -53.87477000000001,48.143999,0 -53.939433,48.20625900000001,0 -53.988612,48.211101,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-16-030-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.00259699999999,48.066031,0 -53.999459,47.98580700000001,0 -53.69692599999999,47.982481,0 -53.683494,48.01686,0 -53.623396,48.05011399999999,0 -53.612739,48.051608,0 -53.507647,48.067805,0 -53.674687,48.059621,0 -54.00259699999999,48.066031,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-17-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.507647,48.067805,0 -53.612739,48.051608,0 -53.623396,48.05011399999999,0 -53.683494,48.01686,0 -53.69692599999999,47.982481,0 -53.999459,47.98580700000001,0 -53.998005,47.881777,0 -53.736853,47.886639,0 -53.72716699999999,47.88867,0 -53.652154,47.86576300000001,0 -53.507647,48.067805,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-17-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.652154,47.86576300000001,0 -53.72716699999999,47.88867,0 -53.736853,47.886639,0 -53.80768,47.885354,0 -53.800917,47.773175,0 -53.799072,47.771145,0 -53.75602300000001,47.730824,0 -53.652154,47.86576300000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-17-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.75602300000001,47.730824,0 -53.799072,47.771145,0 -53.800917,47.773175,0 -53.80768,47.885354,0 -53.998005,47.881777,0 -53.832272,47.717625,0 -53.75602300000001,47.730824,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-17-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.698194,47.698524,0 -53.697035,47.717941,0 -53.75602300000001,47.730824,0 -53.832272,47.717625,0 -53.85552,47.740721,0 -53.890339,47.723792,0 -53.775119,47.588886,0 -53.711927,47.635003,0 -53.698106,47.698382,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-17-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.697035,47.717941,0 -53.698194,47.698524,0 -53.711927,47.635003,0 -53.775119,47.588886,0 -53.677339,47.495146,0 -53.509502,47.504395,0 -53.514847,47.578952,0 -53.563456,47.63374799999999,0 -53.697035,47.717941,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-18-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.563456,47.63374799999999,0 -53.60453800000001,47.659783,0 -53.442185,47.902732,0 -53.401133,47.880145,0 -53.363046,47.82637699999999,0 -53.514847,47.578952,0 -53.563456,47.63374799999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-18-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.159557,48.06394900000001,0 -53.16542000000001,47.987897,0 -53.363046,47.82637699999999,0 -53.401133,47.880145,0 -53.442185,47.902732,0 -53.210039,48.114578,0 -53.159557,48.06394900000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-19-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.210039,48.114578,0 -53.159557,48.06394900000001,0 -53.16542000000001,47.987897,0 -52.947695,48.110053,0 -52.941989,48.17393300000001,0 -52.939868,48.200484,0 -53.210039,48.114578,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-20-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.941989,48.17393300000001,0 -52.939868,48.200484,0 -52.75890600000001,48.19381899999999,0 -52.76795200000001,48.08408000000001,0 -52.902079,48.017744,0 -52.964314,48.019416,0 -53.02237699999999,48.000321,0 -52.948038,48.109885,0 -52.941989,48.17393300000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-20-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.964314,48.019416,0 -53.02237699999999,48.000321,0 -53.16761,47.865843,0 -53.094161,47.86342500000001,0 -53.055144,47.887231,0 -53.012249,47.885169,0 -52.902079,48.017744,0 -52.964314,48.019416,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-21-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.055144,47.887231,0 -53.094161,47.86342500000001,0 -53.16761,47.865843,0 -53.220844,47.762867,0 -53.148301,47.78166999999999,0 -53.112771,47.775273,0 -53.012249,47.885169,0 -53.055144,47.887231,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-21-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.16370600000001,47.69859699999999,0 -53.280214,47.65362400000001,0 -53.220844,47.762867,0 -53.148301,47.78166999999999,0 -53.112771,47.775273,0 -53.11885,47.696615,0 -53.16370600000001,47.69859699999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-22-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.16370600000001,47.69859699999999,0 -53.280214,47.65362400000001,0 -53.323534,47.566889,0 -53.264155,47.5666,0 -53.21479500000001,47.587711,0 -53.174391,47.609347,0 -53.142304,47.61107,0 -53.11885,47.696615,0 -53.16370600000001,47.69859699999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-22-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.174391,47.609347,0 -53.21479500000001,47.587711,0 -53.264155,47.5666,0 -53.323534,47.566889,0 -53.242406,47.434346,0 -53.177006,47.472504,0 -53.16844,47.50881200000001,0 -53.142304,47.61107,0 -53.174391,47.609347,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-22-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.16844,47.50881200000001,0 -53.177006,47.472504,0 -53.242406,47.434346,0 -53.175822,47.370316,0 -53.112403,47.368179,0 -53.012208,47.465932,0 -53.023272,47.50443000000001,0 -53.057675,47.526145,0 -53.16312599999999,47.528939,0 -53.16844,47.50881200000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-22-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.023272,47.50443000000001,0 -53.057675,47.526145,0 -53.046161,47.618754,0 -52.95884700000001,47.67466,0 -52.851568,47.66814000000001,0 -52.800075,47.658072,0 -52.89113900000001,47.523447,0 -53.012208,47.465932,0 -53.023272,47.50443000000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-23-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.800075,47.658072,0 -52.851619,47.66804,0 -52.95884700000001,47.67466,0 -52.784378,47.841248,0 -52.785521,47.81001499999999,0 -52.793721,47.79524899999999,0 -52.800075,47.658072,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-24-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.784378,47.841248,0 -52.785521,47.81001499999999,0 -52.793721,47.79524899999999,0 -52.71519600000001,47.521051,0 -52.631684,47.517894,0 -52.62022999999999,47.525322,0 -52.592503,47.52726899999999,0 -52.67681900000001,47.766307,0 -52.784378,47.841248,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-25-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.592503,47.52726899999999,0 -52.62022999999999,47.525322,0 -52.631684,47.517894,0 -52.71519600000001,47.521051,0 -52.797345,47.34478599999999,0 -52.751504,47.30692499999999,0 -52.71664,47.298916,0 -52.592503,47.52726899999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-25-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.71664,47.298916,0 -52.751504,47.30692499999999,0 -52.797345,47.34478599999999,0 -52.884244,47.26376800000001,0 -52.889689,47.1935,0 -52.83932800000001,47.17423,0 -52.778314,47.17194499999999,0 -52.71664,47.298916,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-25-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.778314,47.17194499999999,0 -52.839228,47.174366,0 -52.889689,47.1935,0 -52.98558500000001,47.068866,0 -52.862904,47.062128,0 -52.85103900000001,47.069501,0 -52.81698300000001,47.06818100000001,0 -52.778314,47.17194499999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-26-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.81698300000001,47.06818100000001,0 -52.85103900000001,47.069501,0 -52.862904,47.062128,0 -52.98558500000001,47.068866,0 -52.994754,46.946545,0 -52.894928,46.93953499999999,0 -52.892968,46.94345800000001,0 -52.860088,46.940643,0 -52.81698300000001,47.06818100000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-26-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.860088,46.940643,0 -52.892968,46.94345800000001,0 -52.894928,46.93953499999999,0 -52.994754,46.946545,0 -53.02292899999999,46.783741,0 -52.981454,46.75986699999999,0 -52.93839999999999,46.74514000000001,0 -52.860088,46.940643,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-26-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-52.93839999999999,46.74514000000001,0 -52.981454,46.75986699999999,0 -53.02292899999999,46.783741,0 -53.107995,46.682942,0 -53.072833,46.65837999999999,0 -53.043146,46.639412,0 -52.93839999999999,46.74514000000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-27-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.043146,46.639412,0 -53.072833,46.65837999999999,0 -53.107995,46.682942,0 -53.225458,46.683572,0 -53.252695,46.672672,0 -53.274018,46.653638,0 -53.174676,46.61126099999999,0 -53.043146,46.639412,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-27-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.274018,46.653638,0 -53.252695,46.672672,0 -53.225458,46.683572,0 -53.25103,46.78388499999999,0 -53.415449,46.78916,0 -53.47619999999999,46.677708,0 -53.464139,46.660679,0 -53.445268,46.64301499999999,0 -53.274018,46.653638,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-27-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.445268,46.64301499999999,0 -53.464139,46.660679,0 -53.47619999999999,46.677708,0 -53.608152,46.72473500000001,0 -53.647512,46.722531,0 -53.677,46.723447,0 -53.634667,46.611705,0 -53.54283,46.599032,0 -53.445268,46.64301499999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-28-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.677,46.723447,0 -53.647512,46.722531,0 -53.608152,46.72473500000001,0 -53.44407499999999,46.93959,0 -53.615662,46.903347,0 -53.68561400000001,46.900502,0 -53.677,46.723447,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-28-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.68561400000001,46.900502,0 -53.615662,46.903347,0 -53.44407499999999,46.93959,0 -53.450722,47.019953,0 -53.560014,47.022977,0 -53.626957,46.941543,0 -53.68561400000001,46.900502,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-28-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.68561400000001,46.900502,0 -53.626887,46.94145499999999,0 -53.560014,47.022977,0 -53.509356,47.08569600000001,0 -53.56693800000001,47.08743800000001,0 -53.595157,47.070726,0 -53.665241,47.072849,0 -53.753481,46.95716599999999,0 -53.68561400000001,46.900502,0 -53.68561400000001,46.900502,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-28-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.665241,47.072849,0 -53.595157,47.070726,0 -53.56693800000001,47.08743800000001,0 -53.509356,47.08569600000001,0 -53.365479,47.192109,0 -53.499644,47.226556,0 -53.570914,47.148541,0 -53.665241,47.072849,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-28-020-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.499644,47.226556,0 -53.570901,47.148559,0 -53.665241,47.072849,0 -53.661454,47.09749800000001,0 -53.59517799999999,47.237871,0 -53.499644,47.226556,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-28-020-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.59517799999999,47.237871,0 -53.66146700000001,47.097479,0 -53.665241,47.072849,0 -53.753481,46.95716599999999,0 -53.85891100000001,46.913124,0 -53.874242,46.918724,0 -53.906059,46.933138,0 -53.59517799999999,47.237871,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-28-020-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.85891100000001,46.913124,0 -53.874242,46.918724,0 -53.905818,46.933045,0 -54.062576,46.81465900000001,0 -54.062789,46.78916600000001,0 -54.063779,46.771499,0 -53.85891100000001,46.913124,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-28-020-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.063779,46.771499,0 -54.062789,46.78916600000001,0 -54.062576,46.81465900000001,0 -54.174747,46.882368,0 -54.199285,46.886745,0 -54.224376,46.887366,0 -54.209319,46.81417600000001,0 -54.10273000000001,46.772434,0 -54.063779,46.771499,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-29-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.224376,46.887366,0 -54.199285,46.886745,0 -54.174747,46.882368,0 -54.09557599999999,47.041243,0 -54.122021,47.041024,0 -54.155497,47.04180300000001,0 -54.224376,46.887366,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-29-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.155497,47.04180300000001,0 -54.122021,47.041024,0 -54.09557599999999,47.041243,0 -53.991029,47.21886299999999,0 -54.015071,47.239034,0 -54.046149,47.246937,0 -54.155497,47.04180300000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-29-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.046149,47.246937,0 -54.015071,47.239034,0 -53.991029,47.21886299999999,0 -53.891586,47.210295,0 -53.82047,47.27769600000001,0 -53.994134,47.282545,0 -53.996318,47.30939800000001,0 -54.004932,47.31612800000001,0 -54.026583,47.31933,0 -54.046149,47.246937,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-29-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.026583,47.31933,0 -54.004932,47.31612800000001,0 -53.996318,47.30939800000001,0 -53.994134,47.282545,0 -53.82047,47.27769600000001,0 -53.81403,47.384778,0 -53.93000899999999,47.38273999999999,0 -53.990832,47.369228,0 -54.026583,47.31933,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-29-010-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.93000899999999,47.38273999999999,0 -53.937504,47.452444,0 -53.945938,47.463517,0 -53.986461,47.466166,0 -54.00365500000001,47.384498,0 -53.990832,47.369228,0 -53.93000899999999,47.38273999999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-29-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.937504,47.452444,0 -53.93000899999999,47.38273999999999,0 -53.81403,47.384778,0 -53.77094199999999,47.44799900000001,0 -53.912995,47.462476,0 -53.937504,47.452444,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-30-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.945938,47.463517,0 -53.937504,47.452444,0 -53.912995,47.462476,0 -53.859641,47.61651000000001,0 -53.92271600000001,47.618143,0 -53.939286,47.601745,0 -53.959321,47.59796,0 -53.945938,47.463517,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-30-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.959321,47.59796,0 -53.939286,47.601745,0 -53.92271600000001,47.618143,0 -53.936695,47.729831,0 -53.965115,47.72317900000001,0 -53.971923,47.714533,0 -53.97889399999999,47.713307,0 -54.00925299999999,47.7111,0 -53.959321,47.59796,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-30-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.00925299999999,47.7111,0 -53.97889399999999,47.713307,0 -53.971923,47.714533,0 -53.965115,47.72317900000001,0 -53.936695,47.729831,0 -53.998085,47.88129800000001,0 -54.075292,47.89102,0 -54.120943,47.881521,0 -54.098019,47.820314,0 -54.099222,47.802421,0 -54.00925299999999,47.7111,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-30-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.099222,47.802421,0 -54.098019,47.820314,0 -54.120943,47.881521,0 -54.280432,47.929359,0 -54.36365800000001,47.661796,0 -54.31557,47.657364,0 -54.284248,47.65001399999999,0 -54.19390099999999,47.708045,0 -54.099222,47.802421,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-30-030-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.092805,47.729286,0 -54.159858,47.445137,0 -54.079394,47.433894,0 -54.034099,47.495776,0 -54.032391,47.641368,0 -54.071309,47.72937,0 -54.092805,47.729286,0 -54.092805,47.729286,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-30-030-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.092805,47.729286,0 -54.293452,47.589828,0 -54.388144,47.390912,0 -54.242327,47.374255,0 -54.159858,47.445137,0 -54.092805,47.729286,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-30-030-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.079394,47.433894,0 -54.159858,47.445137,0 -54.242327,47.374255,0 -54.180084,47.34492,0 -54.12482499999999,47.376016,0 -54.079394,47.433894,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-30-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.284248,47.65001399999999,0 -54.31557,47.657364,0 -54.36365800000001,47.661796,0 -54.488678,47.479145,0 -54.40436,47.45200599999999,0 -54.37198400000001,47.445117,0 -54.284248,47.65001399999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-31-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.37198400000001,47.445117,0 -54.40436,47.45200599999999,0 -54.488678,47.479145,0 -54.552279,47.39667899999999,0 -54.609594,47.36457899999999,0 -54.610304,47.36024399999999,0 -54.628067,47.32508700000001,0 -54.562876,47.318714,0 -54.37198400000001,47.445117,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-31-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.628067,47.32508700000001,0 -54.610304,47.36024399999999,0 -54.609594,47.36457899999999,0 -54.552279,47.39667899999999,0 -54.488678,47.479145,0 -54.389856,47.623588,0 -54.438795,47.626105,0 -54.657429,47.38618,0 -54.65805100000001,47.370429,0 -54.628067,47.32508700000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-31-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.628067,47.32508700000001,0 -54.65805100000001,47.370429,0 -54.657429,47.38618,0 -54.603617,47.445233,0 -54.684861,47.446903,0 -54.735528,47.356102,0 -54.736341,47.336131,0 -54.708334,47.29149699999999,0 -54.628067,47.32508700000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-31-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.736341,47.336131,0 -54.86919199999999,47.37400800000001,0 -54.892319,47.389242,0 -54.84437199999999,47.449502,0 -54.684861,47.446903,0 -54.735528,47.356102,0 -54.736341,47.336131,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-31-020-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.736341,47.336131,0 -54.86919199999999,47.37400800000001,0 -54.892319,47.389242,0 -54.96777900000001,47.358201,0 -54.976647,47.277106,0 -54.976769,47.273192,0 -54.736341,47.336131,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-31-020-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.708334,47.29149699999999,0 -54.736341,47.336131,0 -54.976769,47.273192,0 -54.97882800000001,47.226713,0 -54.782322,47.200695,0 -54.708334,47.29149699999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-31-020-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.97882800000001,47.226713,0 -54.976647,47.277106,0 -54.973493,47.305897,0 -55.029996,47.306883,0 -55.08890000000001,47.215521,0 -55.01748499999999,47.179526,0 -55.005275,47.17548,0 -54.97882800000001,47.226713,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-32-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.005275,47.17548,0 -55.01748499999999,47.179526,0 -55.08890000000001,47.215521,0 -55.254669,47.168854,0 -55.242099,47.115546,0 -55.11533000000001,47.063566,0 -55.09913,47.06557,0 -55.072506,47.05497199999999,0 -55.005275,47.17548,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-32-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.072506,47.05497199999999,0 -55.099172,47.065481,0 -55.11533000000001,47.063566,0 -55.217497,47.105551,0 -55.255763,46.986984,0 -55.202385,46.98791199999999,0 -55.158845,46.97206899999999,0 -55.072506,47.05497199999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-32-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.158845,46.97206899999999,0 -55.202385,46.98791199999999,0 -55.255763,46.986984,0 -55.255763,46.986984,0 -55.288569,46.95501000000001,0 -55.23325100000001,46.938411,0 -55.219624,46.930789,0 -55.158845,46.97206899999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-32-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.219624,46.930789,0 -55.23325100000001,46.938411,0 -55.288569,46.95501000000001,0 -55.405174,46.942981,0 -55.38283200000001,46.874344,0 -55.383245,46.861028,0 -55.219624,46.930789,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-32-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.383245,46.861028,0 -55.382734,46.874549,0 -55.405174,46.942981,0 -55.56262,46.950426,0 -55.56918,46.901447,0 -55.56957100000001,46.879585,0 -55.383245,46.861028,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-32-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.56957100000001,46.879585,0 -55.56921100000001,46.900808,0 -55.56262,46.950426,0 -55.820467,46.895528,0 -55.825402,46.86123900000001,0 -55.840411,46.834261,0 -55.663381,46.832331,0 -55.56957100000001,46.879585,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-32-020-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.840411,46.834261,0 -55.825402,46.86123900000001,0 -55.820467,46.895528,0 -55.940241,46.93153300000001,0 -55.977289,46.930271,0 -56.00675399999999,46.930553,0 -55.984212,46.893631,0 -55.840411,46.834261,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-33-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.00675399999999,46.930553,0 -55.977289,46.930271,0 -55.940241,46.93153300000001,0 -55.84028599999999,47.05318700000001,0 -55.842296,47.079509,0 -55.858078,47.09466000000001,0 -55.99829,46.989584,0 -56.00675399999999,46.930553,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-33-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.858078,47.09466000000001,0 -55.842364,47.079456,0 -55.84028599999999,47.05318700000001,0 -55.721911,47.065797,0 -55.718089,47.102438,0 -55.717609,47.120124,0 -55.782079,47.117991,0 -55.858078,47.09466000000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-33-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.721911,47.065797,0 -55.718089,47.102438,0 -55.717609,47.120124,0 -55.479019,47.195379,0 -55.463131,47.188838,0 -55.416131,47.148505,0 -55.721911,47.065797,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-33-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.479019,47.195379,0 -55.463131,47.188838,0 -55.416131,47.148505,0 -55.274849,47.259313,0 -55.33572400000001,47.26466299999999,0 -55.35255300000001,47.26944,0 -55.479019,47.195379,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-33-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.35255300000001,47.26944,0 -55.33572400000001,47.26466299999999,0 -55.274849,47.259313,0 -55.24133,47.38347099999999,0 -55.294774,47.388304,0 -55.318918,47.395511,0 -55.35255300000001,47.26944,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.318918,47.395511,0 -55.294774,47.388304,0 -55.24133,47.38347099999999,0 -54.920411,47.51566900000001,0 -54.96766100000001,47.525335,0 -54.976962,47.533328,0 -55.205027,47.48208200000001,0 -55.318918,47.395511,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.976962,47.533328,0 -54.96766100000001,47.525335,0 -54.920411,47.51566900000001,0 -54.816158,47.55841099999999,0 -54.814375,47.601246,0 -54.87457899999999,47.60272499999999,0 -54.89406000000001,47.607259,0 -54.976962,47.533328,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.89406000000001,47.607259,0 -54.87457899999999,47.60272499999999,0 -54.814375,47.601246,0 -54.678961,47.67292499999999,0 -54.73029500000001,47.713275,0 -54.911766,47.64249199999999,0 -54.882698,47.62571300000001,0 -54.89406000000001,47.607259,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-54.911766,47.64249199999999,0 -54.882698,47.62571300000001,0 -54.89406000000001,47.607259,0 -55.08008700000001,47.567499,0 -55.078984,47.58471800000001,0 -55.06225000000001,47.609121,0 -54.911766,47.64249199999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-020-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.08008700000001,47.567499,0 -55.078984,47.58471800000001,0 -55.06225000000001,47.609121,0 -54.8942,47.80079600000001,0 -54.955278,47.817976,0 -55.112086,47.623112,0 -55.118864,47.576722,0 -55.11973100000001,47.565949,0 -55.08008700000001,47.567499,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-020-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.11973100000001,47.565949,0 -55.118864,47.576722,0 -55.112086,47.623112,0 -55.107428,47.706879,0 -55.258654,47.709117,0 -55.268917,47.644458,0 -55.269186,47.623699,0 -55.11973100000001,47.565949,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-020-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.269186,47.623699,0 -55.268917,47.644458,0 -55.258654,47.709117,0 -55.32119200000001,47.710325,0 -55.35738800000001,47.656106,0 -55.37357899999999,47.655132,0 -55.38475,47.645949,0 -55.37138,47.62830899999999,0 -55.269186,47.623699,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-020-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.401032,47.61767199999999,0 -55.38488100000001,47.646041,0 -55.37357899999999,47.655132,0 -55.35738800000001,47.656106,0 -55.32119200000001,47.710325,0 -55.36049200000001,47.74524899999999,0 -55.451113,47.746508,0 -55.493443,47.623673,0 -55.468574,47.597182,0 -55.401032,47.61767199999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-020-007</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.401032,47.61767199999999,0 -55.468574,47.597182,0 -55.471343,47.51810300000001,0 -55.401242,47.519081,0 -55.339411,47.51879000000001,0 -55.336265,47.618191,0 -55.401032,47.61767199999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-34-020-008</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.339411,47.51879000000001,0 -55.401242,47.519081,0 -55.471343,47.51810300000001,0 -55.57420999999999,47.482363,0 -55.593367,47.409156,0 -55.584322,47.403458,0 -55.584687,47.386512,0 -55.40085000000001,47.472196,0 -55.339411,47.51879000000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-35-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.584687,47.386512,0 -55.584322,47.403458,0 -55.593367,47.409156,0 -55.569289,47.500899,0 -55.612799,47.5015,0 -55.682921,47.43023600000001,0 -55.655296,47.402335,0 -55.584687,47.386512,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-35-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.569289,47.500899,0 -55.612799,47.5015,0 -55.68087300000001,47.474972,0 -55.684956,47.48441699999999,0 -55.632192,47.58614,0 -55.575148,47.58513000000001,0 -55.569289,47.500899,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-35-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.68087300000001,47.474972,0 -55.77893,47.4365,0 -55.778123,47.449122,0 -55.72821,47.516956,0 -55.667946,47.51737399999999,0 -55.684956,47.48441699999999,0 -55.68087300000001,47.474972,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-35-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.77893,47.4365,0 -55.930357,47.42607400000001,0 -55.930056,47.435767,0 -55.92452200000001,47.45031500000001,0 -55.796504,47.511231,0 -55.777438,47.550902,0 -55.715526,47.598135,0 -55.700445,47.586145,0 -55.72821,47.516956,0 -55.778255,47.449169,0 -55.77893,47.4365,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-35-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.930357,47.42607400000001,0 -55.930056,47.435767,0 -55.92452200000001,47.45031500000001,0 -55.796504,47.511231,0 -55.777438,47.550902,0 -55.715526,47.598135,0 -55.71330799999999,47.62206500000001,0 -55.77222299999999,47.604745,0 -55.87956999999999,47.553836,0 -55.881249,47.534703,0 -55.84640700000001,47.526795,0 -55.872184,47.507509,0 -55.947753,47.43880400000001,0 -55.930357,47.42607400000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-35-010-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.87956999999999,47.553836,0 -55.881249,47.534703,0 -55.84640700000001,47.526795,0 -55.872184,47.507509,0 -56.12544599999999,47.453378,0 -56.23708,47.47828799999999,0 -56.236468,47.50620399999999,0 -56.18772700000001,47.50594400000001,0 -56.143714,47.501742,0 -55.87956999999999,47.553836,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.236468,47.50620399999999,0 -56.18772700000001,47.50594400000001,0 -56.143714,47.501742,0 -55.87956999999999,47.553836,0 -55.84331899999999,47.571038,0 -55.87941100000001,47.592237,0 -55.875583,47.598776,0 -56.236468,47.50620399999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.87941100000001,47.592237,0 -55.84331899999999,47.571038,0 -55.77222299999999,47.604745,0 -55.71330799999999,47.62206500000001,0 -55.601534,47.687817,0 -55.691322,47.688876,0 -55.862734,47.626218,0 -55.866056,47.615014,0 -55.87941100000001,47.592237,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.862734,47.626218,0 -55.866056,47.615014,0 -55.875583,47.598776,0 -55.923655,47.586451,0 -56.115879,47.616193,0 -56.114951,47.67117,0 -55.905724,47.715455,0 -55.898689,47.706643,0 -55.862734,47.626218,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.905724,47.715455,0 -55.898689,47.706643,0 -55.88692,47.68093,0 -55.677737,47.82342700000001,0 -55.696341,47.859621,0 -55.826726,47.799488,0 -55.850378,47.78040899999999,0 -55.85085500000001,47.758785,0 -55.905724,47.715455,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.850378,47.78040899999999,0 -55.826726,47.799488,0 -55.696341,47.859621,0 -55.678588,47.931735,0 -55.78346500000001,47.961497,0 -55.866418,47.884016,0 -55.867937,47.814292,0 -55.85305500000001,47.795041,0 -55.856142,47.78625300000001,0 -55.850378,47.78040899999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-010-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.850378,47.78040899999999,0 -55.856142,47.78625300000001,0 -55.85305500000001,47.795041,0 -55.867937,47.814292,0 -55.90694499999999,47.814569,0 -56.060174,47.738302,0 -56.066376,47.70985000000001,0 -56.11030399999999,47.69807000000001,0 -56.116586,47.692583,0 -56.114951,47.67117,0 -56.03863200000001,47.68758700000001,0 -56.03596700000001,47.718493,0 -55.965054,47.75972,0 -55.915232,47.762494,0 -55.86871599999999,47.77841800000001,0 -55.850378,47.78040899999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-010-007</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.850378,47.78040899999999,0 -55.86871599999999,47.77841800000001,0 -55.915232,47.762494,0 -55.965054,47.75972,0 -56.03596700000001,47.718493,0 -56.03863200000001,47.68758700000001,0 -55.905724,47.715455,0 -55.85085500000001,47.758785,0 -55.850378,47.78040899999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-010-008</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.116586,47.692583,0 -56.11030399999999,47.69807000000001,0 -56.066376,47.70985000000001,0 -56.060174,47.738302,0 -55.995727,47.770428,0 -55.99469,47.824189,0 -56.102132,47.790311,0 -56.171985,47.88705600000001,0 -56.199567,47.842499,0 -56.201036,47.69785300000001,0 -56.152826,47.682437,0 -56.114951,47.67117,0 -56.116586,47.692583,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-010-009</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.115879,47.616193,0 -56.114951,47.67117,0 -56.152826,47.682437,0 -56.201036,47.69785300000001,0 -56.312469,47.62823999999999,0 -56.312673,47.610592,0 -56.115879,47.616193,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.312673,47.610592,0 -56.312469,47.62823999999999,0 -56.201036,47.69785300000001,0 -56.33188499999999,47.80350200000001,0 -56.40512,47.643402,0 -56.38434700000001,47.60314,0 -56.38444300000001,47.59568700000001,0 -56.312673,47.610592,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.38444300000001,47.59568700000001,0 -56.38434700000001,47.60314,0 -56.40512,47.643402,0 -56.504667,47.728877,0 -56.60113599999999,47.729657,0 -56.601875,47.614296,0 -56.60195199999999,47.602712,0 -56.38444300000001,47.59568700000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-020-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.60195199999999,47.602712,0 -56.601875,47.614296,0 -56.601448,47.669065,0 -56.73327299999999,47.66944699999999,0 -56.71568700000001,47.601282,0 -56.646334,47.586467,0 -56.631991,47.581233,0 -56.60195199999999,47.602712,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-020-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.631991,47.581233,0 -56.646334,47.586467,0 -56.71568700000001,47.601282,0 -56.73327299999999,47.66944699999999,0 -56.79013400000001,47.66956499999999,0 -56.793533,47.56637499999999,0 -56.80642,47.554572,0 -56.806409,47.532538,0 -56.802651,47.524445,0 -56.631991,47.581233,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-36-020-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.889347,47.525118,0 -56.802651,47.524445,0 -56.806409,47.532538,0 -56.80642,47.554572,0 -56.793533,47.56637499999999,0 -56.79013400000001,47.66956499999999,0 -56.925162,47.62864699999999,0 -56.92928899999999,47.564271,0 -56.939007,47.552344,0 -56.889347,47.525118,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-37-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.939007,47.552344,0 -56.92928899999999,47.564271,0 -56.925162,47.62864699999999,0 -57.01114900000001,47.691285,0 -57.110114,47.698914,0 -57.129627,47.600355,0 -57.178972,47.59754400000001,0 -57.18458900000001,47.589862,0 -57.115651,47.56185299999999,0 -56.939007,47.552344,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-37-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.18458900000001,47.589862,0 -57.178972,47.59754400000001,0 -57.129627,47.600355,0 -57.110114,47.698914,0 -57.19172799999999,47.703557,0 -57.317372,47.593602,0 -57.343461,47.592622,0 -57.34723000000001,47.58072900000001,0 -57.281644,47.575477,0 -57.18458900000001,47.589862,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-37-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.345918,47.584637,0 -57.34346,47.592452,0 -57.317372,47.593659,0 -57.19172799999999,47.703557,0 -57.269465,47.795597,0 -57.324481,47.766347,0 -57.483117,47.63985199999999,0 -57.488164,47.63056699999999,0 -57.493828,47.617924,0 -57.34723000000001,47.58072900000001,0 -57.34608400000001,47.584523,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-37-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.493828,47.617924,0 -57.488164,47.63056699999999,0 -57.483117,47.63985199999999,0 -57.51521,47.66407099999999,0 -57.640658,47.645044,0 -57.655814,47.601244,0 -57.66173200000001,47.596315,0 -57.711785,47.585117,0 -57.67415200000001,47.551358,0 -57.61840200000001,47.558747,0 -57.493828,47.617924,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-37-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.310906,47.538136,0 -57.458894,47.537664,0 -57.458575,47.501076,0 -57.310615,47.501572,0 -57.310906,47.538136,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-38-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.711785,47.585117,0 -57.66173200000001,47.596315,0 -57.655814,47.601244,0 -57.640658,47.645044,0 -57.690766,47.713331,0 -57.71277900000001,47.713197,0 -57.771081,47.645202,0 -57.77560900000001,47.627711,0 -57.783238,47.623009,0 -57.78442,47.61953,0 -57.78430599999999,47.609433,0 -57.711785,47.585117,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-38-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.78430599999999,47.609433,0 -57.78442,47.61953,0 -57.783238,47.623009,0 -57.77560900000001,47.627711,0 -57.771081,47.645202,0 -57.867523,47.670565,0 -57.913706,47.65216199999999,0 -57.922652,47.640065,0 -57.78430599999999,47.609433,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-38-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.922652,47.640065,0 -57.913706,47.65216199999999,0 -57.867523,47.670565,0 -57.85495,47.725289,0 -57.909122,47.75661,0 -58.042021,47.746585,0 -58.087,47.675619,0 -58.086641,47.671736,0 -58.086172,47.650156,0 -57.922652,47.640065,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-38-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.086172,47.650156,0 -58.086641,47.671736,0 -58.087,47.675619,0 -58.06612100000001,47.708073,0 -58.294405,47.706202,0 -58.36226700000001,47.651284,0 -58.362033,47.642718,0 -58.266194,47.634656,0 -58.086172,47.650156,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-38-030-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.362033,47.642718,0 -58.36226700000001,47.651284,0 -58.294409,47.706363,0 -58.23496200000001,47.76867899999999,0 -58.326356,47.813547,0 -58.429375,47.663326,0 -58.433866,47.642922,0 -58.43969899999999,47.641586,0 -58.44384000000001,47.63668199999999,0 -58.443566,47.62723500000001,0 -58.362033,47.642718,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-38-030-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.443566,47.62723500000001,0 -58.44384000000001,47.63668199999999,0 -58.43969899999999,47.641586,0 -58.433866,47.642922,0 -58.429375,47.663326,0 -58.536332,47.73390299999999,0 -58.57822100000001,47.69715,0 -58.56233,47.643809,0 -58.56711200000001,47.641167,0 -58.567193,47.63967,0 -58.557485,47.6192,0 -58.443566,47.62723500000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-38-030-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.557485,47.6192,0 -58.56722,47.639651,0 -58.56711200000001,47.641167,0 -58.56233,47.643809,0 -58.57822100000001,47.69715,0 -58.698651,47.634316,0 -58.68356800000001,47.611695,0 -58.694943,47.601122,0 -58.694729,47.59394300000001,0 -58.557485,47.6192,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-39-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.694729,47.59394300000001,0 -58.694943,47.601122,0 -58.68356800000001,47.611695,0 -58.698651,47.634316,0 -58.967429,47.615818,0 -58.96143200000001,47.583574,0 -58.951407,47.566867,0 -58.694729,47.59394300000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-39-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.951407,47.566867,0 -58.96149199999999,47.583411,0 -58.967429,47.615818,0 -59.287179,47.639554,0 -59.309561,47.62120999999999,0 -59.33319199999999,47.611537,0 -59.175354,47.55055500000001,0 -58.951407,47.566867,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-40-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-59.33319199999999,47.611537,0 -59.309209,47.62137000000001,0 -59.287179,47.639554,0 -59.243084,47.79012299999999,0 -59.318128,47.767607,0 -59.33183600000001,47.767801,0 -59.35380099999999,47.767386,0 -59.33319199999999,47.611537,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-40-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-59.35380099999999,47.767386,0 -59.33183600000001,47.767801,0 -59.318128,47.767607,0 -59.243084,47.79012299999999,0 -59.182756,47.84662599999999,0 -59.233173,47.859807,0 -59.32752000000001,47.857023,0 -59.367156,47.840241,0 -59.381515,47.838515,0 -59.399339,47.838158,0 -59.35380099999999,47.767386,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-40-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-59.399339,47.838158,0 -59.381515,47.838515,0 -59.367156,47.840241,0 -59.286932,47.961897,0 -59.313472,47.96426,0 -59.324154,47.969741,0 -59.428767,47.91531799999999,0 -59.399339,47.838158,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-40-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-59.324154,47.969741,0 -59.313472,47.96426,0 -59.286932,47.961897,0 -58.941394,48.13780799999999,0 -58.966112,48.14660200000001,0 -58.98319500000001,48.156702,0 -59.21965,48.049283,0 -59.324154,47.969741,0 -59.324154,47.969741,0 -59.324154,47.969741,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-40-010-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.941394,48.13780799999999,0 -58.966112,48.14660200000001,0 -58.98319500000001,48.156702,0 -58.83404800000001,48.269446,0 -58.81094400000001,48.26099,0 -58.772118,48.247172,0 -58.941394,48.13780799999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-40-010-006</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.83404800000001,48.269446,0 -58.81094400000001,48.26099,0 -58.772118,48.247172,0 -58.64891300000001,48.349667,0 -58.68930400000001,48.361279,0 -58.716045,48.371121,0 -58.83404800000001,48.269446,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-40-010-007</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.716045,48.371121,0 -58.68930400000001,48.361279,0 -58.64891300000001,48.349667,0 -58.42419999999999,48.436299,0 -58.428708,48.477881,0 -58.42675499999999,48.486347,0 -58.48227,48.479831,0 -58.716045,48.371121,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-41-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.530976,48.499736,0 -58.501501,48.523645,0 -58.271409,48.53349100000001,0 -58.270217,48.48580299999999,0 -58.42789,48.470413,0 -58.428708,48.477881,0 -58.42675499999999,48.486347,0 -58.48227,48.479831,0 -58.54647800000001,48.481816,0 -58.530976,48.499736,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-41-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.501501,48.523645,0 -58.530976,48.499736,0 -58.54647800000001,48.481816,0 -58.94197700000001,48.482523,0 -58.942366,48.508084,0 -58.93972,48.534912,0 -58.73294,48.55802000000001,0 -58.666195,48.562056,0 -58.53589,48.546467,0 -58.501501,48.523645,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-42-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.93972,48.534912,0 -58.942366,48.508084,0 -58.94197700000001,48.482523,0 -59.306829,48.44223099999999,0 -59.265922,48.546942,0 -59.218624,48.546771,0 -58.93972,48.534912,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-42-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-59.265922,48.546942,0 -59.218624,48.546771,0 -59.16536,48.54463299999999,0 -59.004229,48.634669,0 -59.013886,48.652102,0 -59.051554,48.673655,0 -59.243788,48.56961,0 -59.265922,48.546942,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-42-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-59.004229,48.634669,0 -58.780435,48.774375,0 -58.764127,48.78907,0 -58.750451,48.800301,0 -58.76612500000001,48.802286,0 -59.051554,48.673655,0 -59.013789,48.652077,0 -59.004229,48.634669,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-43-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.750451,48.800301,0 -58.764059,48.789071,0 -58.780435,48.774375,0 -58.974166,48.65358200000001,0 -58.958587,48.64773,0 -58.928509,48.648292,0 -58.752492,48.779856,0 -58.750451,48.800301,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-43-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.974166,48.65358200000001,0 -58.958587,48.64773,0 -58.842043,48.64971599999999,0 -58.84723100000001,48.545296,0 -58.93972,48.534912,0 -59.004229,48.634669,0 -58.974166,48.65358200000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-43-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.842043,48.64971599999999,0 -58.84723100000001,48.545296,0 -58.73294,48.55802000000001,0 -58.666195,48.562056,0 -58.623803,48.74394600000001,0 -58.650994,48.750379,0 -58.695928,48.762108,0 -58.842043,48.64971599999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-44-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.695928,48.762108,0 -58.650922,48.750272,0 -58.623803,48.74394600000001,0 -58.46176200000001,48.9534,0 -58.512247,48.952469,0 -58.55155,48.959099,0 -58.695928,48.762108,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-44-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.55155,48.959099,0 -58.512247,48.952469,0 -58.46176200000001,48.9534,0 -58.367983,49.137355,0 -58.369325,49.14721599999999,0 -58.36479,49.1669,0 -58.40080900000001,49.165458,0 -58.55155,48.959099,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-44-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.369325,49.14721599999999,0 -58.367983,49.137355,0 -58.421074,49.033438,0 -58.196776,49.035563,0 -58.18839199999999,49.06323,0 -58.18749099999999,49.068305,0 -58.36479,49.1669,0 -58.369325,49.14721599999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-44-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.18839199999999,49.06323,0 -58.196776,49.035563,0 -58.07084499999999,48.95577200000001,0 -57.869294,48.942512,0 -57.870274,48.998891,0 -58.11556900000001,49.089545,0 -58.145142,49.076172,0 -58.157223,49.076191,0 -58.18749099999999,49.068305,0 -58.18839199999999,49.06323,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-44-020-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.11556900000001,49.089545,0 -58.145142,49.076172,0 -58.157223,49.076191,0 -58.159764,49.18519800000001,0 -58.118969,49.18555499999999,0 -58.057913,49.15121299999999,0 -57.92414600000001,49.198035,0 -57.809747,49.198894,0 -57.940299,49.106557,0 -58.11556900000001,49.089545,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-44-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.18749099999999,49.068305,0 -58.157223,49.076191,0 -58.15860799999999,49.135696,0 -58.305721,49.134124,0 -58.18749099999999,49.068305,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-44-020-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.159764,49.18519800000001,0 -58.118969,49.18555499999999,0 -58.057913,49.15121299999999,0 -57.92414600000001,49.198035,0 -57.925207,49.256484,0 -58.197601,49.24034,0 -58.203796,49.230345,0 -58.209013,49.221022,0 -58.159764,49.18519800000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-44-030-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.197601,49.24034,0 -58.203796,49.230345,0 -58.209013,49.221022,0 -58.312901,49.281679,0 -58.25863400000001,49.394849,0 -58.23463,49.393692,0 -58.21296300000001,49.38846599999999,0 -58.197601,49.24034,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-44-020-005</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.209013,49.221022,0 -58.222389,49.194154,0 -58.37387,49.174464,0 -58.38433899999999,49.196166,0 -58.327637,49.255238,0 -58.246117,49.242605,0 -58.209013,49.221022,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-45-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-58.25863400000001,49.394849,0 -58.23463,49.393692,0 -58.21296300000001,49.38846599999999,0 -57.981277,49.545514,0 -57.97939100000001,49.55935099999999,0 -57.982646,49.567327,0 -58.033748,49.566882,0 -58.159224,49.492538,0 -58.25863400000001,49.394849,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-45-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.982646,49.567327,0 -57.97939100000001,49.55935099999999,0 -57.981277,49.545514,0 -57.907383,49.429261,0 -57.699492,49.45152,0 -57.694126,49.477622,0 -57.831892,49.572904,0 -57.942399,49.582919,0 -57.957937,49.58284199999999,0 -57.982646,49.567327,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-45-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.957937,49.58284199999999,0 -57.942399,49.582919,0 -57.91235499999999,49.58023000000001,0 -57.914159,49.684994,0 -57.9657,49.68323599999999,0 -57.99454100000001,49.686252,0 -57.957937,49.58284199999999,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-45-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.99454100000001,49.686252,0 -57.9657,49.68323599999999,0 -57.914159,49.684994,0 -57.83498999999999,49.83596799999999,0 -57.87319699999999,49.83732800000001,0 -57.897613,49.843381,0 -57.99454100000001,49.686252,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-46-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.897613,49.843381,0 -57.873031,49.837338,0 -57.83498999999999,49.83596799999999,0 -57.790415,49.803898,0 -57.65516100000001,49.810703,0 -57.649204,49.832257,0 -57.74013800000001,49.96689700000001,0 -57.75940400000001,49.966873,0 -57.771337,49.960014,0 -57.800326,49.959829,0 -57.841285,49.93761500000001,0 -57.897613,49.843381,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-46-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.74013800000001,49.96689700000001,0 -57.75940400000001,49.966873,0 -57.771337,49.960014,0 -57.800326,49.959829,0 -57.616839,50.246009,0 -57.592766,50.240885,0 -57.534042,50.22434400000001,0 -57.74013800000001,49.96689700000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-47-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.616839,50.246009,0 -57.592766,50.240885,0 -57.534042,50.22434400000001,0 -57.448845,50.47535,0 -57.475094,50.476265,0 -57.50241500000001,50.481193,0 -57.616839,50.246009,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-47-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.50241500000001,50.481193,0 -57.475094,50.476265,0 -57.448845,50.47535,0 -57.317164,50.574533,0 -57.37063499999999,50.603998,0 -57.390447,50.611992,0 -57.50241500000001,50.481193,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-47-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.390447,50.611992,0 -57.37063499999999,50.603998,0 -57.317164,50.574533,0 -57.14859300000001,50.594872,0 -57.150946,50.635682,0 -57.375359,50.71094000000001,0 -57.412212,50.696442,0 -57.437273,50.69638000000001,0 -57.390447,50.611992,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-48-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.437273,50.69638000000001,0 -57.412212,50.696442,0 -57.375359,50.71094000000001,0 -57.31109899999999,50.68936,0 -57.155553,50.731998,0 -57.22313400000001,50.756643,0 -57.23212699999999,50.766824,0 -57.41607499999999,50.72742,0 -57.437273,50.69638000000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-48-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.23212699999999,50.766824,0 -57.22313400000001,50.756643,0 -57.155553,50.731998,0 -56.91537300000001,50.903548,0 -56.996117,50.907971,0 -57.03775,50.910139,0 -57.092399,50.83172,0 -57.23212699999999,50.766824,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-48-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.03775,50.910139,0 -57.151441,50.93752300000001,0 -57.296364,50.899667,0 -57.34105099999999,50.80661,0 -57.23212699999999,50.766824,0 -57.092399,50.83172,0 -57.03775,50.910139,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-49-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.999081,51.05020200000001,0 -56.986447,51.04802899999999,0 -56.975843,51.051412,0 -56.969434,51.04858200000001,0 -56.963023,51.050297,0 -56.943636,51.046855,0 -56.93177300000001,51.05008099999999,0 -56.840177,51.029082,0 -56.820967,51.06754,0 -56.857341,51.12547,0 -56.875393,51.120262,0 -56.894746,51.123793,0 -56.999081,51.05020200000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-49-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.894746,51.123793,0 -56.875393,51.120262,0 -56.857341,51.12547,0 -56.820967,51.06754,0 -56.719185,51.22284799999999,0 -56.784347,51.237052,0 -56.802681,51.233995,0 -56.832703,51.235995,0 -56.894746,51.123793,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-49-020-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.832703,51.235995,0 -56.802681,51.233995,0 -56.784347,51.237052,0 -56.719185,51.22284799999999,0 -56.661613,51.330448,0 -56.705139,51.334852,0 -56.733133,51.34214800000001,0 -56.797242,51.286822,0 -56.832703,51.235995,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-49-020-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.733133,51.34214800000001,0 -56.705139,51.334852,0 -56.661613,51.330448,0 -56.46856799999999,51.404175,0 -56.470398,51.419135,0 -56.479885,51.431599,0 -56.591968,51.40204299999999,0 -56.733133,51.34214800000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-49-020-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-56.479885,51.431599,0 -56.470398,51.419135,0 -56.46856799999999,51.404175,0 -56.426316,51.39938,0 -55.958724,51.590144,0 -55.89966,51.624438,0 -55.898714,51.631636,0 -55.898862,51.641487,0 -56.479885,51.431599,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-01-010-002</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.792326,51.64044,0 -55.627125,51.638864,0 -55.627857,51.614609,0 -55.671348,51.592047,0 -55.663132,51.569732,0 -55.55749,51.521515,0 -55.57735900000001,51.452328,0 -55.549465,51.431993,0 -55.56432,51.402199,0 -55.629966,51.416138,0 -55.659754,51.422308,0 -55.815468,51.44849,0 -55.81953500000001,51.514355,0 -55.792326,51.64044,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-01-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.627125,51.638864,0 -55.47951599999999,51.64833699999999,0 -55.49157,51.599232,0 -55.501321,51.578468,0 -55.55749,51.521515,0 -55.663132,51.569732,0 -55.671348,51.592047,0 -55.627857,51.614609,0 -55.627125,51.638864,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-12-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-53.56844,48.574916,0 -53.720121,48.55367399999999,0 -53.71351700000001,48.538121,0 -53.822025,48.472207,0 -53.96515599999999,48.402419,0 -53.877618,48.329724,0 -53.82483000000001,48.364464,0 -53.800371,48.436637,0 -53.67692200000001,48.527482,0 -53.633854,48.537439,0 -53.56844,48.574916,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-48-010-004</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.151441,50.93752300000001,0 -57.03775,50.910139,0 -56.996117,50.907971,0 -56.91537300000001,50.903548,0 -56.907269,50.95182200000001,0 -57.080628,51.027004,0 -57.100321,51.017531,0 -57.128114,51.018801,0 -57.151441,50.93752300000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-49-010-001</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-57.128114,51.018801,0 -57.100321,51.017531,0 -57.080628,51.027004,0 -56.907269,50.95182200000001,0 -56.840177,51.029082,0 -56.93177300000001,51.05008099999999,0 -56.943636,51.046855,0 -56.963023,51.050297,0 -56.969434,51.04858200000001,0 -56.975843,51.051412,0 -56.986447,51.04802899999999,0 -56.999081,51.05020200000001,0 -57.10177100000001,51.039832,0 -57.128114,51.018801,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-03-010-008</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.634468,51.014181,0 -55.72181400000001,50.758213,0 -55.58003,50.63532800000001,0 -55.39063900000001,50.76497100000001,0 -55.497121,51.003448,0 -55.637333,51.01421500000001,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark>
+		<name>NL Subsectors 2014 w ID</name>
+		<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+      <tr><td>Locator</td><td>NL-05-010-003</td></tr>]]></description>
+		<Style>
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>1.5</width>
+			</LineStyle>
+		</Style>
+		<LineString>
+			<extrude>1</extrude>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-55.941835,50.234716,0 -55.723767,50.265101,0 -55.638487,50.186313,0 -55.853301,50.16148599999999,0 -55.947476,50.234767,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Folder>
+</kml>

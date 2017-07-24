@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0f06949af1b2497cb49f706a01540474" Name="Diagram1">
+        <EntityTypeShape EntityType="OldClimateHydrometricDBModel.ClimateDataStartDate" Width="1.5" PointX="10" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldClimateHydrometricDBModel.ClimateDataValue" Width="1.5" PointX="12.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldClimateHydrometricDBModel.ClimateStation" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldClimateHydrometricDBModel.HydrometricDataStartDate" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldClimateHydrometricDBModel.HydrometricDataValue" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldClimateHydrometricDBModel.HydrometricStation" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldClimateHydrometricDBModel.RatingCurve" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldClimateHydrometricDBModel.RatingCurveValue" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="OldClimateHydrometricDBModel.FK_ClimateDataStartDate_ClimateStations" ManuallyRouted="false" />
+        <AssociationConnector Association="OldClimateHydrometricDBModel.FK_ClimateDataValues_ClimateDataStartDates" ManuallyRouted="false" />
+        <AssociationConnector Association="OldClimateHydrometricDBModel.FK_HydrometricDataStartDates_HydrometricStations" ManuallyRouted="false" />
+        <AssociationConnector Association="OldClimateHydrometricDBModel.FK_HydrometricDataValues_HydrometricDataStartDates" ManuallyRouted="false" />
+        <AssociationConnector Association="OldClimateHydrometricDBModel.FK_RatingCurves_HydrometricStations" ManuallyRouted="false" />
+        <AssociationConnector Association="OldClimateHydrometricDBModel.FK_RatingCurveValues_RatingCurves" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

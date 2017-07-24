@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ClimateHydrometricDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ClimateHydrometricDBModelStoreContainer">
+          <EntitySet Name="ClimateDataStartDates" EntityType="ClimateHydrometricDBModel.Store.ClimateDataStartDates" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClimateDataValues" EntityType="ClimateHydrometricDBModel.Store.ClimateDataValues" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClimateStations" EntityType="ClimateHydrometricDBModel.Store.ClimateStations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HydrometricDataStartDates" EntityType="ClimateHydrometricDBModel.Store.HydrometricDataStartDates" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HydrometricDataValues" EntityType="ClimateHydrometricDBModel.Store.HydrometricDataValues" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HydrometricStations" EntityType="ClimateHydrometricDBModel.Store.HydrometricStations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RatingCurves" EntityType="ClimateHydrometricDBModel.Store.RatingCurves" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RatingCurveValues" EntityType="ClimateHydrometricDBModel.Store.RatingCurveValues" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ClimateDataStartDate_ClimateStations" Association="ClimateHydrometricDBModel.Store.FK_ClimateDataStartDate_ClimateStations">
+            <End Role="ClimateStations" EntitySet="ClimateStations" />
+            <End Role="ClimateDataStartDates" EntitySet="ClimateDataStartDates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClimateDataValues_ClimateDataStartDates" Association="ClimateHydrometricDBModel.Store.FK_ClimateDataValues_ClimateDataStartDates">
+            <End Role="ClimateDataStartDates" EntitySet="ClimateDataStartDates" />
+            <End Role="ClimateDataValues" EntitySet="ClimateDataValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HydrometricDataStartDates_HydrometricStations" Association="ClimateHydrometricDBModel.Store.FK_HydrometricDataStartDates_HydrometricStations">
+            <End Role="HydrometricStations" EntitySet="HydrometricStations" />
+            <End Role="HydrometricDataStartDates" EntitySet="HydrometricDataStartDates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HydrometricDataValues_HydrometricDataStartDates" Association="ClimateHydrometricDBModel.Store.FK_HydrometricDataValues_HydrometricDataStartDates">
+            <End Role="HydrometricDataStartDates" EntitySet="HydrometricDataStartDates" />
+            <End Role="HydrometricDataValues" EntitySet="HydrometricDataValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatingCurves_HydrometricStations" Association="ClimateHydrometricDBModel.Store.FK_RatingCurves_HydrometricStations">
+            <End Role="HydrometricStations" EntitySet="HydrometricStations" />
+            <End Role="RatingCurves" EntitySet="RatingCurves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatingCurveValues_RatingCurves" Association="ClimateHydrometricDBModel.Store.FK_RatingCurveValues_RatingCurves">
+            <End Role="RatingCurves" EntitySet="RatingCurves" />
+            <End Role="RatingCurveValues" EntitySet="RatingCurveValues" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ClimateDataStartDates">
+          <Key>
+            <PropertyRef Name="ClimateDataStartDateID" />
+          </Key>
+          <Property Name="ClimateDataStartDateID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClimateStationID" Type="int" Nullable="false" />
+          <Property Name="ClimateDataDate" Type="datetime" Nullable="false" />
+          <Property Name="FromForcastDate" Type="datetime" />
+          <Property Name="ClimateDataType" Type="int" Nullable="false" />
+          <Property Name="IsForcastData" Type="bit" Nullable="false" />
+          <Property Name="IsObservationData" Type="bit" Nullable="false" />
+          <Property Name="IsArchivedData" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClimateDataValues">
+          <Key>
+            <PropertyRef Name="ClimateDataValueID" />
+          </Key>
+          <Property Name="ClimateDataValueID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClimateDataStartDateID" Type="int" Nullable="false" />
+          <Property Name="ClimateDataDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Temperature_C" Type="float" />
+          <Property Name="RelativeHumidity_Perc" Type="float" />
+          <Property Name="WindSpeed_kph" Type="float" />
+          <Property Name="WindDirection_0North" Type="float" />
+          <Property Name="AtmPressure_kpa" Type="float" />
+          <Property Name="Snow_cm" Type="float" />
+          <Property Name="Rainfall_mm" Type="float" />
+          <Property Name="TotalPrecip_mm_cm" Type="float" />
+          <Property Name="DewPointTemp_C" Type="float" />
+          <Property Name="MaxTemp_C" Type="float" />
+          <Property Name="MinTemp_C" Type="float" />
+          <Property Name="HeatDegDays_C" Type="float" />
+          <Property Name="CoolDegDays_C" Type="float" />
+          <Property Name="SnowOnGround_cm" Type="float" />
+          <Property Name="DirMaxGust_0North" Type="float" />
+          <Property Name="SpdMaxGust_kmh" Type="float" />
+        </EntityType>
+        <EntityType Name="ClimateStations">
+          <Key>
+            <PropertyRef Name="ClimateStationID" />
+          </Key>
+          <Property Name="ClimateStationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ECDBID" Type="int" Nullable="false" />
+          <Property Name="ClimateStationName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Province" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="Elevation" Type="float" />
+          <Property Name="ClimateID" Type="nvarchar" MaxLength="10" />
+          <Property Name="WMOID" Type="int" />
+          <Property Name="TCID" Type="nvarchar" MaxLength="3" />
+          <Property Name="TimeOffset_hour" Type="float" />
+          <Property Name="File_desc" Type="nvarchar" MaxLength="50" />
+          <Property Name="HourlyStartDate" Type="datetime" />
+          <Property Name="HourlyEndDate" Type="datetime" />
+          <Property Name="HourlyNow" Type="bit" />
+          <Property Name="DailyStartDate" Type="datetime" />
+          <Property Name="DailyEndDate" Type="datetime" />
+          <Property Name="DailyNow" Type="bit" />
+          <Property Name="MonthlyStartDate" Type="datetime" />
+          <Property Name="MonthlyEndDate" Type="datetime" />
+          <Property Name="MonthlyNow" Type="bit" />
+        </EntityType>
+        <EntityType Name="HydrometricDataStartDates">
+          <Key>
+            <PropertyRef Name="HydroMetricDataStartDateID" />
+          </Key>
+          <Property Name="HydroMetricDataStartDateID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HydrometricStationID" Type="int" Nullable="false" />
+          <Property Name="HydrometricDataDate" Type="datetime" Nullable="false" />
+          <Property Name="FromForcastDate" Type="datetime" />
+          <Property Name="HydrometricDataType" Type="int" Nullable="false" />
+          <Property Name="IsForcastData" Type="bit" Nullable="false" />
+          <Property Name="IsObservationData" Type="bit" Nullable="false" />
+          <Property Name="IsArchivedData" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HydrometricDataValues">
+          <Key>
+            <PropertyRef Name="HydrometricDataValueID" />
+          </Key>
+          <Property Name="HydrometricDataValueID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HydrometricDataStartDateID" Type="int" Nullable="false" />
+          <Property Name="HydrometricDataDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Flow_m3ps" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HydrometricStations">
+          <Key>
+            <PropertyRef Name="HydrometricStationID" />
+          </Key>
+          <Property Name="HydrometricStationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FedStationNumber" Type="nvarchar" MaxLength="7" />
+          <Property Name="QuebecStationNumber" Type="nvarchar" MaxLength="7" />
+          <Property Name="HydrometricStationName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Province" Type="nvarchar" MaxLength="4" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="Elevation" Type="float" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="TimeOffset_hour" Type="float" />
+          <Property Name="DrainageArea" Type="float" />
+          <Property Name="IsNatural" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Sediment" Type="bit" />
+          <Property Name="RHBN" Type="bit" />
+          <Property Name="RealTime" Type="bit" />
+          <Property Name="HasRatingCurve" Type="bit" />
+        </EntityType>
+        <EntityType Name="RatingCurves">
+          <Key>
+            <PropertyRef Name="RatingCurveID" />
+          </Key>
+          <Property Name="RatingCurveID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HydrometricStationID" Type="int" Nullable="false" />
+          <Property Name="RatingCurveNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RatingCurveValues">
+          <Key>
+            <PropertyRef Name="RatingCurveValueID" />
+          </Key>
+          <Property Name="RatingCurveValueID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RatingCurveID" Type="int" Nullable="false" />
+          <Property Name="StageValue" Type="float" Nullable="false" />
+          <Property Name="DischargeValue" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ClimateDataStartDate_ClimateStations">
+          <End Role="ClimateStations" Type="ClimateHydrometricDBModel.Store.ClimateStations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClimateDataStartDates" Type="ClimateHydrometricDBModel.Store.ClimateDataStartDates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClimateStations">
+              <PropertyRef Name="ClimateStationID" />
+            </Principal>
+            <Dependent Role="ClimateDataStartDates">
+              <PropertyRef Name="ClimateStationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClimateDataValues_ClimateDataStartDates">
+          <End Role="ClimateDataStartDates" Type="ClimateHydrometricDBModel.Store.ClimateDataStartDates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClimateDataValues" Type="ClimateHydrometricDBModel.Store.ClimateDataValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClimateDataStartDates">
+              <PropertyRef Name="ClimateDataStartDateID" />
+            </Principal>
+            <Dependent Role="ClimateDataValues">
+              <PropertyRef Name="ClimateDataStartDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HydrometricDataStartDates_HydrometricStations">
+          <End Role="HydrometricStations" Type="ClimateHydrometricDBModel.Store.HydrometricStations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HydrometricDataStartDates" Type="ClimateHydrometricDBModel.Store.HydrometricDataStartDates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HydrometricStations">
+              <PropertyRef Name="HydrometricStationID" />
+            </Principal>
+            <Dependent Role="HydrometricDataStartDates">
+              <PropertyRef Name="HydrometricStationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HydrometricDataValues_HydrometricDataStartDates">
+          <End Role="HydrometricDataStartDates" Type="ClimateHydrometricDBModel.Store.HydrometricDataStartDates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HydrometricDataValues" Type="ClimateHydrometricDBModel.Store.HydrometricDataValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HydrometricDataStartDates">
+              <PropertyRef Name="HydroMetricDataStartDateID" />
+            </Principal>
+            <Dependent Role="HydrometricDataValues">
+              <PropertyRef Name="HydrometricDataStartDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatingCurves_HydrometricStations">
+          <End Role="HydrometricStations" Type="ClimateHydrometricDBModel.Store.HydrometricStations" Multiplicity="1" />
+          <End Role="RatingCurves" Type="ClimateHydrometricDBModel.Store.RatingCurves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HydrometricStations">
+              <PropertyRef Name="HydrometricStationID" />
+            </Principal>
+            <Dependent Role="RatingCurves">
+              <PropertyRef Name="HydrometricStationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatingCurveValues_RatingCurves">
+          <End Role="RatingCurves" Type="ClimateHydrometricDBModel.Store.RatingCurves" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RatingCurveValues" Type="ClimateHydrometricDBModel.Store.RatingCurveValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RatingCurves">
+              <PropertyRef Name="RatingCurveID" />
+            </Principal>
+            <Dependent Role="RatingCurveValues">
+              <PropertyRef Name="RatingCurveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClimateHydrometricDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ClimateHydrometricDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ClimateDataStartDates" EntityType="ClimateHydrometricDBModel.ClimateDataStartDate" />
+          <EntitySet Name="ClimateDataValues" EntityType="ClimateHydrometricDBModel.ClimateDataValue" />
+          <EntitySet Name="ClimateStations" EntityType="ClimateHydrometricDBModel.ClimateStation" />
+          <EntitySet Name="HydrometricDataStartDates" EntityType="ClimateHydrometricDBModel.HydrometricDataStartDate" />
+          <EntitySet Name="HydrometricDataValues" EntityType="ClimateHydrometricDBModel.HydrometricDataValue" />
+          <EntitySet Name="HydrometricStations" EntityType="ClimateHydrometricDBModel.HydrometricStation" />
+          <EntitySet Name="RatingCurves" EntityType="ClimateHydrometricDBModel.RatingCurve" />
+          <EntitySet Name="RatingCurveValues" EntityType="ClimateHydrometricDBModel.RatingCurveValue" />
+          <AssociationSet Name="FK_ClimateDataStartDate_ClimateStations" Association="ClimateHydrometricDBModel.FK_ClimateDataStartDate_ClimateStations">
+            <End Role="ClimateStations" EntitySet="ClimateStations" />
+            <End Role="ClimateDataStartDates" EntitySet="ClimateDataStartDates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClimateDataValues_ClimateDataStartDates" Association="ClimateHydrometricDBModel.FK_ClimateDataValues_ClimateDataStartDates">
+            <End Role="ClimateDataStartDates" EntitySet="ClimateDataStartDates" />
+            <End Role="ClimateDataValues" EntitySet="ClimateDataValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HydrometricDataStartDates_HydrometricStations" Association="ClimateHydrometricDBModel.FK_HydrometricDataStartDates_HydrometricStations">
+            <End Role="HydrometricStations" EntitySet="HydrometricStations" />
+            <End Role="HydrometricDataStartDates" EntitySet="HydrometricDataStartDates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HydrometricDataValues_HydrometricDataStartDates" Association="ClimateHydrometricDBModel.FK_HydrometricDataValues_HydrometricDataStartDates">
+            <End Role="HydrometricDataStartDates" EntitySet="HydrometricDataStartDates" />
+            <End Role="HydrometricDataValues" EntitySet="HydrometricDataValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatingCurves_HydrometricStations" Association="ClimateHydrometricDBModel.FK_RatingCurves_HydrometricStations">
+            <End Role="HydrometricStations" EntitySet="HydrometricStations" />
+            <End Role="RatingCurves" EntitySet="RatingCurves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatingCurveValues_RatingCurves" Association="ClimateHydrometricDBModel.FK_RatingCurveValues_RatingCurves">
+            <End Role="RatingCurves" EntitySet="RatingCurves" />
+            <End Role="RatingCurveValues" EntitySet="RatingCurveValues" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ClimateDataStartDate">
+          <Key>
+            <PropertyRef Name="ClimateDataStartDateID" />
+          </Key>
+          <Property Name="ClimateDataStartDateID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ClimateStationID" Type="Int32" Nullable="false" />
+          <Property Name="ClimateDataDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FromForcastDate" Type="DateTime" Precision="3" />
+          <Property Name="ClimateDataType" Type="Int32" Nullable="false" />
+          <Property Name="IsForcastData" Type="Boolean" Nullable="false" />
+          <Property Name="IsObservationData" Type="Boolean" Nullable="false" />
+          <Property Name="IsArchivedData" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClimateStation" Relationship="ClimateHydrometricDBModel.FK_ClimateDataStartDate_ClimateStations" FromRole="ClimateDataStartDates" ToRole="ClimateStations" />
+          <NavigationProperty Name="ClimateDataValues" Relationship="ClimateHydrometricDBModel.FK_ClimateDataValues_ClimateDataStartDates" FromRole="ClimateDataStartDates" ToRole="ClimateDataValues" />
+        </EntityType>
+        <EntityType Name="ClimateDataValue">
+          <Key>
+            <PropertyRef Name="ClimateDataValueID" />
+          </Key>
+          <Property Name="ClimateDataValueID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ClimateDataStartDateID" Type="Int32" Nullable="false" />
+          <Property Name="ClimateDataDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Temperature_C" Type="Double" />
+          <Property Name="RelativeHumidity_Perc" Type="Double" />
+          <Property Name="WindSpeed_kph" Type="Double" />
+          <Property Name="WindDirection_0North" Type="Double" />
+          <Property Name="AtmPressure_kpa" Type="Double" />
+          <Property Name="Snow_cm" Type="Double" />
+          <Property Name="Rainfall_mm" Type="Double" />
+          <Property Name="TotalPrecip_mm_cm" Type="Double" />
+          <Property Name="DewPointTemp_C" Type="Double" />
+          <Property Name="MaxTemp_C" Type="Double" />
+          <Property Name="MinTemp_C" Type="Double" />
+          <Property Name="HeatDegDays_C" Type="Double" />
+          <Property Name="CoolDegDays_C" Type="Double" />
+          <Property Name="SnowOnGround_cm" Type="Double" />
+          <Property Name="DirMaxGust_0North" Type="Double" />
+          <Property Name="SpdMaxGust_kmh" Type="Double" />
+          <NavigationProperty Name="ClimateDataStartDate" Relationship="ClimateHydrometricDBModel.FK_ClimateDataValues_ClimateDataStartDates" FromRole="ClimateDataValues" ToRole="ClimateDataStartDates" />
+        </EntityType>
+        <EntityType Name="ClimateStation">
+          <Key>
+            <PropertyRef Name="ClimateStationID" />
+          </Key>
+          <Property Name="ClimateStationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ECDBID" Type="Int32" Nullable="false" />
+          <Property Name="ClimateStationName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Province" Type="String" Nullable="false" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="Elevation" Type="Double" />
+          <Property Name="ClimateID" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="WMOID" Type="Int32" />
+          <Property Name="TCID" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="TimeOffset_hour" Type="Double" />
+          <Property Name="File_desc" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="HourlyStartDate" Type="DateTime" Precision="3" />
+          <Property Name="HourlyEndDate" Type="DateTime" Precision="3" />
+          <Property Name="HourlyNow" Type="Boolean" />
+          <Property Name="DailyStartDate" Type="DateTime" Precision="3" />
+          <Property Name="DailyEndDate" Type="DateTime" Precision="3" />
+          <Property Name="DailyNow" Type="Boolean" />
+          <Property Name="MonthlyStartDate" Type="DateTime" Precision="3" />
+          <Property Name="MonthlyEndDate" Type="DateTime" Precision="3" />
+          <Property Name="MonthlyNow" Type="Boolean" />
+          <NavigationProperty Name="ClimateDataStartDates" Relationship="ClimateHydrometricDBModel.FK_ClimateDataStartDate_ClimateStations" FromRole="ClimateStations" ToRole="ClimateDataStartDates" />
+        </EntityType>
+        <EntityType Name="HydrometricDataStartDate">
+          <Key>
+            <PropertyRef Name="HydroMetricDataStartDateID" />
+          </Key>
+          <Property Name="HydroMetricDataStartDateID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="HydrometricStationID" Type="Int32" Nullable="false" />
+          <Property Name="HydrometricDataDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FromForcastDate" Type="DateTime" Precision="3" />
+          <Property Name="HydrometricDataType" Type="Int32" Nullable="false" />
+          <Property Name="IsForcastData" Type="Boolean" Nullable="false" />
+          <Property Name="IsObservationData" Type="Boolean" Nullable="false" />
+          <Property Name="IsArchivedData" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="HydrometricStation" Relationship="ClimateHydrometricDBModel.FK_HydrometricDataStartDates_HydrometricStations" FromRole="HydrometricDataStartDates" ToRole="HydrometricStations" />
+          <NavigationProperty Name="HydrometricDataValues" Relationship="ClimateHydrometricDBModel.FK_HydrometricDataValues_HydrometricDataStartDates" FromRole="HydrometricDataStartDates" ToRole="HydrometricDataValues" />
+        </EntityType>
+        <EntityType Name="HydrometricDataValue">
+          <Key>
+            <PropertyRef Name="HydrometricDataValueID" />
+          </Key>
+          <Property Name="HydrometricDataValueID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="HydrometricDataStartDateID" Type="Int32" Nullable="false" />
+          <Property Name="HydrometricDataDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Flow_m3ps" Type="Double" Nullable="false" />
+          <NavigationProperty Name="HydrometricDataStartDate" Relationship="ClimateHydrometricDBModel.FK_HydrometricDataValues_HydrometricDataStartDates" FromRole="HydrometricDataValues" ToRole="HydrometricDataStartDates" />
+        </EntityType>
+        <EntityType Name="HydrometricStation">
+          <Key>
+            <PropertyRef Name="HydrometricStationID" />
+          </Key>
+          <Property Name="HydrometricStationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FedStationNumber" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
+          <Property Name="QuebecStationNumber" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
+          <Property Name="HydrometricStationName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Province" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="Elevation" Type="Double" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="TimeOffset_hour" Type="Double" />
+          <Property Name="DrainageArea" Type="Double" />
+          <Property Name="IsNatural" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Sediment" Type="Boolean" />
+          <Property Name="RHBN" Type="Boolean" />
+          <Property Name="RealTime" Type="Boolean" />
+          <Property Name="HasRatingCurve" Type="Boolean" />
+          <NavigationProperty Name="HydrometricDataStartDates" Relationship="ClimateHydrometricDBModel.FK_HydrometricDataStartDates_HydrometricStations" FromRole="HydrometricStations" ToRole="HydrometricDataStartDates" />
+          <NavigationProperty Name="RatingCurves" Relationship="ClimateHydrometricDBModel.FK_RatingCurves_HydrometricStations" FromRole="HydrometricStations" ToRole="RatingCurves" />
+        </EntityType>
+        <EntityType Name="RatingCurve">
+          <Key>
+            <PropertyRef Name="RatingCurveID" />
+          </Key>
+          <Property Name="RatingCurveID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="HydrometricStationID" Type="Int32" Nullable="false" />
+          <Property Name="RatingCurveNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="HydrometricStation" Relationship="ClimateHydrometricDBModel.FK_RatingCurves_HydrometricStations" FromRole="RatingCurves" ToRole="HydrometricStations" />
+          <NavigationProperty Name="RatingCurveValues" Relationship="ClimateHydrometricDBModel.FK_RatingCurveValues_RatingCurves" FromRole="RatingCurves" ToRole="RatingCurveValues" />
+        </EntityType>
+        <EntityType Name="RatingCurveValue">
+          <Key>
+            <PropertyRef Name="RatingCurveValueID" />
+          </Key>
+          <Property Name="RatingCurveValueID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RatingCurveID" Type="Int32" Nullable="false" />
+          <Property Name="StageValue" Type="Double" Nullable="false" />
+          <Property Name="DischargeValue" Type="Double" Nullable="false" />
+          <NavigationProperty Name="RatingCurve" Relationship="ClimateHydrometricDBModel.FK_RatingCurveValues_RatingCurves" FromRole="RatingCurveValues" ToRole="RatingCurves" />
+        </EntityType>
+        <Association Name="FK_ClimateDataStartDate_ClimateStations">
+          <End Role="ClimateStations" Type="ClimateHydrometricDBModel.ClimateStation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClimateDataStartDates" Type="ClimateHydrometricDBModel.ClimateDataStartDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClimateStations">
+              <PropertyRef Name="ClimateStationID" />
+            </Principal>
+            <Dependent Role="ClimateDataStartDates">
+              <PropertyRef Name="ClimateStationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClimateDataValues_ClimateDataStartDates">
+          <End Role="ClimateDataStartDates" Type="ClimateHydrometricDBModel.ClimateDataStartDate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClimateDataValues" Type="ClimateHydrometricDBModel.ClimateDataValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClimateDataStartDates">
+              <PropertyRef Name="ClimateDataStartDateID" />
+            </Principal>
+            <Dependent Role="ClimateDataValues">
+              <PropertyRef Name="ClimateDataStartDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HydrometricDataStartDates_HydrometricStations">
+          <End Role="HydrometricStations" Type="ClimateHydrometricDBModel.HydrometricStation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HydrometricDataStartDates" Type="ClimateHydrometricDBModel.HydrometricDataStartDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HydrometricStations">
+              <PropertyRef Name="HydrometricStationID" />
+            </Principal>
+            <Dependent Role="HydrometricDataStartDates">
+              <PropertyRef Name="HydrometricStationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HydrometricDataValues_HydrometricDataStartDates">
+          <End Role="HydrometricDataStartDates" Type="ClimateHydrometricDBModel.HydrometricDataStartDate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HydrometricDataValues" Type="ClimateHydrometricDBModel.HydrometricDataValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HydrometricDataStartDates">
+              <PropertyRef Name="HydroMetricDataStartDateID" />
+            </Principal>
+            <Dependent Role="HydrometricDataValues">
+              <PropertyRef Name="HydrometricDataStartDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatingCurves_HydrometricStations">
+          <End Role="HydrometricStations" Type="ClimateHydrometricDBModel.HydrometricStation" Multiplicity="1" />
+          <End Role="RatingCurves" Type="ClimateHydrometricDBModel.RatingCurve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HydrometricStations">
+              <PropertyRef Name="HydrometricStationID" />
+            </Principal>
+            <Dependent Role="RatingCurves">
+              <PropertyRef Name="HydrometricStationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatingCurveValues_RatingCurves">
+          <End Role="RatingCurves" Type="ClimateHydrometricDBModel.RatingCurve" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RatingCurveValues" Type="ClimateHydrometricDBModel.RatingCurveValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RatingCurves">
+              <PropertyRef Name="RatingCurveID" />
+            </Principal>
+            <Dependent Role="RatingCurveValues">
+              <PropertyRef Name="RatingCurveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClimateHydrometricDBModelStoreContainer" CdmEntityContainer="ClimateHydrometricDBEntities">
+          <EntitySetMapping Name="ClimateDataStartDates">
+            <EntityTypeMapping TypeName="ClimateHydrometricDBModel.ClimateDataStartDate">
+              <MappingFragment StoreEntitySet="ClimateDataStartDates">
+                <ScalarProperty Name="ClimateDataStartDateID" ColumnName="ClimateDataStartDateID" />
+                <ScalarProperty Name="ClimateStationID" ColumnName="ClimateStationID" />
+                <ScalarProperty Name="ClimateDataDate" ColumnName="ClimateDataDate" />
+                <ScalarProperty Name="FromForcastDate" ColumnName="FromForcastDate" />
+                <ScalarProperty Name="ClimateDataType" ColumnName="ClimateDataType" />
+                <ScalarProperty Name="IsForcastData" ColumnName="IsForcastData" />
+                <ScalarProperty Name="IsObservationData" ColumnName="IsObservationData" />
+                <ScalarProperty Name="IsArchivedData" ColumnName="IsArchivedData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClimateDataValues">
+            <EntityTypeMapping TypeName="ClimateHydrometricDBModel.ClimateDataValue">
+              <MappingFragment StoreEntitySet="ClimateDataValues">
+                <ScalarProperty Name="ClimateDataValueID" ColumnName="ClimateDataValueID" />
+                <ScalarProperty Name="ClimateDataStartDateID" ColumnName="ClimateDataStartDateID" />
+                <ScalarProperty Name="ClimateDataDateTime" ColumnName="ClimateDataDateTime" />
+                <ScalarProperty Name="Temperature_C" ColumnName="Temperature_C" />
+                <ScalarProperty Name="RelativeHumidity_Perc" ColumnName="RelativeHumidity_Perc" />
+                <ScalarProperty Name="WindSpeed_kph" ColumnName="WindSpeed_kph" />
+                <ScalarProperty Name="WindDirection_0North" ColumnName="WindDirection_0North" />
+                <ScalarProperty Name="AtmPressure_kpa" ColumnName="AtmPressure_kpa" />
+                <ScalarProperty Name="Snow_cm" ColumnName="Snow_cm" />
+                <ScalarProperty Name="Rainfall_mm" ColumnName="Rainfall_mm" />
+                <ScalarProperty Name="TotalPrecip_mm_cm" ColumnName="TotalPrecip_mm_cm" />
+                <ScalarProperty Name="DewPointTemp_C" ColumnName="DewPointTemp_C" />
+                <ScalarProperty Name="MaxTemp_C" ColumnName="MaxTemp_C" />
+                <ScalarProperty Name="MinTemp_C" ColumnName="MinTemp_C" />
+                <ScalarProperty Name="HeatDegDays_C" ColumnName="HeatDegDays_C" />
+                <ScalarProperty Name="CoolDegDays_C" ColumnName="CoolDegDays_C" />
+                <ScalarProperty Name="SnowOnGround_cm" ColumnName="SnowOnGround_cm" />
+                <ScalarProperty Name="DirMaxGust_0North" ColumnName="DirMaxGust_0North" />
+                <ScalarProperty Name="SpdMaxGust_kmh" ColumnName="SpdMaxGust_kmh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClimateStations">
+            <EntityTypeMapping TypeName="ClimateHydrometricDBModel.ClimateStation">
+              <MappingFragment StoreEntitySet="ClimateStations">
+                <ScalarProperty Name="ClimateStationID" ColumnName="ClimateStationID" />
+                <ScalarProperty Name="ECDBID" ColumnName="ECDBID" />
+                <ScalarProperty Name="ClimateStationName" ColumnName="ClimateStationName" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Elevation" ColumnName="Elevation" />
+                <ScalarProperty Name="ClimateID" ColumnName="ClimateID" />
+                <ScalarProperty Name="WMOID" ColumnName="WMOID" />
+                <ScalarProperty Name="TCID" ColumnName="TCID" />
+                <ScalarProperty Name="TimeOffset_hour" ColumnName="TimeOffset_hour" />
+                <ScalarProperty Name="File_desc" ColumnName="File_desc" />
+                <ScalarProperty Name="HourlyStartDate" ColumnName="HourlyStartDate" />
+                <ScalarProperty Name="HourlyEndDate" ColumnName="HourlyEndDate" />
+                <ScalarProperty Name="HourlyNow" ColumnName="HourlyNow" />
+                <ScalarProperty Name="DailyStartDate" ColumnName="DailyStartDate" />
+                <ScalarProperty Name="DailyEndDate" ColumnName="DailyEndDate" />
+                <ScalarProperty Name="DailyNow" ColumnName="DailyNow" />
+                <ScalarProperty Name="MonthlyStartDate" ColumnName="MonthlyStartDate" />
+                <ScalarProperty Name="MonthlyEndDate" ColumnName="MonthlyEndDate" />
+                <ScalarProperty Name="MonthlyNow" ColumnName="MonthlyNow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HydrometricDataStartDates">
+            <EntityTypeMapping TypeName="ClimateHydrometricDBModel.HydrometricDataStartDate">
+              <MappingFragment StoreEntitySet="HydrometricDataStartDates">
+                <ScalarProperty Name="HydroMetricDataStartDateID" ColumnName="HydroMetricDataStartDateID" />
+                <ScalarProperty Name="HydrometricStationID" ColumnName="HydrometricStationID" />
+                <ScalarProperty Name="HydrometricDataDate" ColumnName="HydrometricDataDate" />
+                <ScalarProperty Name="FromForcastDate" ColumnName="FromForcastDate" />
+                <ScalarProperty Name="HydrometricDataType" ColumnName="HydrometricDataType" />
+                <ScalarProperty Name="IsForcastData" ColumnName="IsForcastData" />
+                <ScalarProperty Name="IsObservationData" ColumnName="IsObservationData" />
+                <ScalarProperty Name="IsArchivedData" ColumnName="IsArchivedData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HydrometricDataValues">
+            <EntityTypeMapping TypeName="ClimateHydrometricDBModel.HydrometricDataValue">
+              <MappingFragment StoreEntitySet="HydrometricDataValues">
+                <ScalarProperty Name="HydrometricDataValueID" ColumnName="HydrometricDataValueID" />
+                <ScalarProperty Name="HydrometricDataStartDateID" ColumnName="HydrometricDataStartDateID" />
+                <ScalarProperty Name="HydrometricDataDateTime" ColumnName="HydrometricDataDateTime" />
+                <ScalarProperty Name="Flow_m3ps" ColumnName="Flow_m3ps" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HydrometricStations">
+            <EntityTypeMapping TypeName="ClimateHydrometricDBModel.HydrometricStation">
+              <MappingFragment StoreEntitySet="HydrometricStations">
+                <ScalarProperty Name="HydrometricStationID" ColumnName="HydrometricStationID" />
+                <ScalarProperty Name="FedStationNumber" ColumnName="FedStationNumber" />
+                <ScalarProperty Name="QuebecStationNumber" ColumnName="QuebecStationNumber" />
+                <ScalarProperty Name="HydrometricStationName" ColumnName="HydrometricStationName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Elevation" ColumnName="Elevation" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TimeOffset_hour" ColumnName="TimeOffset_hour" />
+                <ScalarProperty Name="DrainageArea" ColumnName="DrainageArea" />
+                <ScalarProperty Name="IsNatural" ColumnName="IsNatural" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Sediment" ColumnName="Sediment" />
+                <ScalarProperty Name="RHBN" ColumnName="RHBN" />
+                <ScalarProperty Name="RealTime" ColumnName="RealTime" />
+                <ScalarProperty Name="HasRatingCurve" ColumnName="HasRatingCurve" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RatingCurves">
+            <EntityTypeMapping TypeName="ClimateHydrometricDBModel.RatingCurve">
+              <MappingFragment StoreEntitySet="RatingCurves">
+                <ScalarProperty Name="RatingCurveID" ColumnName="RatingCurveID" />
+                <ScalarProperty Name="HydrometricStationID" ColumnName="HydrometricStationID" />
+                <ScalarProperty Name="RatingCurveNumber" ColumnName="RatingCurveNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RatingCurveValues">
+            <EntityTypeMapping TypeName="ClimateHydrometricDBModel.RatingCurveValue">
+              <MappingFragment StoreEntitySet="RatingCurveValues">
+                <ScalarProperty Name="RatingCurveValueID" ColumnName="RatingCurveValueID" />
+                <ScalarProperty Name="RatingCurveID" ColumnName="RatingCurveID" />
+                <ScalarProperty Name="StageValue" ColumnName="StageValue" />
+                <ScalarProperty Name="DischargeValue" ColumnName="DischargeValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

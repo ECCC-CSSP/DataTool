@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CD2F110-C4A1-4464-A1A2-2A4407D65B33}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PCCSM_DFO</RootNamespace>
+    <AssemblyName>PCCSM_DFO</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clause.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="clause_espece.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="clause_interdiction.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="clause_methode.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="clause_periode.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="clause_secteur.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="codification.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="codification_description.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contact.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contact_communication.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contact_groupe.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_histo_operation.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_tournee.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dtproperty.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="groupe_secteur.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="historique_operation.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="language.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ordonnance.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="organisation.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PCCSM_DFODBEDM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCCSM_DFODBEDM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PCCSM_DFODBEDM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PCCSM_DFODBEDM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCCSM_DFODBEDM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="point_legal.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="point_legal_20131118.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="secteur.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_20131118.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_description.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_description_20131021.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_description_20131118.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_description_20140210.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_historique.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_point_archive.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_point_legal.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="signalisation.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="PCCSM_DFODBEDM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PCCSM_DFODBEDM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="PCCSM_DFODBEDM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PCCSM_DFODBEDM.edmx</DependentUpon>
+      <LastGenOutput>PCCSM_DFODBEDM.Context.cs</LastGenOutput>
+    </None>
+    <None Include="PCCSM_DFODBEDM.edmx.diagram">
+      <DependentUpon>PCCSM_DFODBEDM.edmx</DependentUpon>
+    </None>
+    <None Include="PCCSM_DFODBEDM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PCCSM_DFODBEDM.edmx</DependentUpon>
+      <LastGenOutput>PCCSM_DFODBEDM.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

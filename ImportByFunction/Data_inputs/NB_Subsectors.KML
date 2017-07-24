@@ -1,0 +1,3284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>NB_Subsectors.KML</name>
+	<Style id="style">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>1.5</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="stylemap_id0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#style0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#style</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="style0">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>1.5</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Folder>
+		<name>NB_Subsectors.KML</name>
+		<description>NB Shellfish Growing Area Subsector boundaries</description>
+		<Placemark>
+			<name>NB-01-010-001-RESTIGOUCHE RIVER (UPPER)</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-01-010-001-RESTIGOUCHE RIVER (UPPER)</td></tr>
+    <tr><td>S_area</td><td>1</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.68331499999999,48.015746,0 -66.683314,48.028026,0 -66.94700899999999,48.028481,0 -66.946579,47.973665,0 -66.942211,47.965086,0 -66.941407,47.96373,0 -66.78799600000001,47.961232,0 -66.71409300000001,47.985213,0 -66.70639900000001,47.99954,0 -66.677733,48.00621,0 -66.678072,48.008412,0 -66.682266,48.014254,0 -66.68331499999999,48.015746,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-01-010-002-RESTIGOUCHE RIVER ESTUARY</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-01-010-002-RESTIGOUCHE RIVER ESTUARY</td></tr>
+    <tr><td>S_area</td><td>1</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.68331499999999,48.015746,0 -66.682266,48.014254,0 -66.678072,48.008412,0 -66.677733,48.00621,0 -66.70639900000001,47.99954,0 -66.71409300000001,47.985213,0 -66.78799600000001,47.961232,0 -66.70099399999999,47.954204,0 -66.627937,47.97375199999999,0 -66.548931,48.011147,0 -66.484199,48.041336,0 -66.37078700000001,48.047057,0 -66.367913,48.047638,0 -66.29516,48.064348,0 -66.289351,48.07543,0 -66.329582,48.114547,0 -66.50422399999999,48.174445,0 -66.72733,48.062598,0 -66.683314,48.028026,0 -66.68331499999999,48.015746,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-01-020-001-EEL BAY &amp; RIVER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-01-020-001-EEL BAY & RIVER</td></tr>
+    <tr><td>S_area</td><td>1</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.478561,47.940001,0 -66.35820800000001,47.96027999999999,0 -66.332827,47.987544,0 -66.37728300000001,48.005505,0 -66.362127,48.015912,0 -66.293638,48.024661,0 -66.29516,48.064348,0 -66.367913,48.047638,0 -66.37078700000001,48.047057,0 -66.484199,48.041336,0 -66.548931,48.011147,0 -66.478561,47.940001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-01-020-002-CHARLO</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-01-020-002-CHARLO</td></tr>
+    <tr><td>S_area</td><td>1</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.362127,48.015912,0 -66.37728300000001,48.005505,0 -66.332827,47.987544,0 -66.35820800000001,47.96027999999999,0 -66.478561,47.940001,0 -66.323989,47.92764999999999,0 -66.314993,47.947544,0 -66.278142,47.962633,0 -66.262698,47.991555,0 -66.258825,47.99374599999999,0 -66.238597,48.004837,0 -66.293638,48.024661,0 -66.362127,48.015912,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-01-020-003-NEW MILLS</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-01-020-003-NEW MILLS</td></tr>
+    <tr><td>S_area</td><td>1</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.179273,47.871248,0 -66.10967599999999,47.955823,0 -66.10902400000001,47.95656100000001,0 -66.1043,47.961616,0 -66.146055,47.974938,0 -66.152055,47.97684,0 -66.238597,48.004837,0 -66.258825,47.99374599999999,0 -66.262698,47.991555,0 -66.278142,47.962633,0 -66.314993,47.947544,0 -66.323989,47.92764999999999,0 -66.179273,47.871248,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-01-020-004-HERON ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-01-020-004-HERON ISLAND</td></tr>
+    <tr><td>S_area</td><td>1</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>4</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.152055,47.97684,0 -66.146055,47.974938,0 -66.1043,47.961616,0 -66.075615,47.997425,0 -66.20243000000001,48.040861,0 -66.238597,48.004837,0 -66.152055,47.97684,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-01-030-001-NASH CREEK</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-01-030-001-NASH CREEK</td></tr>
+    <tr><td>S_area</td><td>1</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.27809499999999,47.730026,0 -66.10560099999999,47.748107,0 -66.017048,47.801368,0 -66.01469,47.927852,0 -66.01178299999999,47.931952,0 -65.978115,47.97926799999999,0 -66.075615,47.997425,0 -66.1043,47.961616,0 -66.10902400000001,47.95656100000001,0 -66.10967599999999,47.955823,0 -66.179273,47.871248,0 -66.27809499999999,47.730026,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-01-030-002-ARMSTRONG BROOK / JACQUET R</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-01-030-002-ARMSTRONG BROOK / JACQUET R</td></tr>
+    <tr><td>S_area</td><td>1</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.89918299999999,47.921131,0 -65.89375699999999,47.923911,0 -65.826741,47.955291,0 -65.978115,47.97926799999999,0 -66.01178299999999,47.931952,0 -66.01469,47.927852,0 -66.017048,47.801368,0 -65.89918299999999,47.921131,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-010-001-BELLEDUNE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-010-001-BELLEDUNE</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.958714,47.815084,0 -65.875503,47.834471,0 -65.891448,47.837479,0 -65.893939,47.852521,0 -65.799286,47.883117,0 -65.73692699999999,47.917746,0 -65.826741,47.955291,0 -65.89375699999999,47.923911,0 -65.89918299999999,47.921131,0 -66.017048,47.801368,0 -65.958714,47.815084,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-010-002-POINTE-VERTE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-010-002-POINTE-VERTE</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.783052,47.82916300000001,0 -65.734483,47.814896,0 -65.72385800000001,47.814069,0 -65.62055100000001,47.815266,0 -65.73692699999999,47.917746,0 -65.799286,47.883117,0 -65.893939,47.852521,0 -65.891448,47.837479,0 -65.875503,47.834471,0 -65.783052,47.82916300000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-010-003-PETIT ROCHER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-010-003-PETIT ROCHER</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.955844,47.76818800000001,0 -65.95323999999999,47.75159800000001,0 -65.923069,47.76418999999999,0 -65.857803,47.7647,0 -65.842626,47.755525,0 -65.76218400000001,47.75807300000001,0 -65.708105,47.747959,0 -65.700925,47.750044,0 -65.621171,47.773424,0 -65.62055100000001,47.815266,0 -65.72385800000001,47.814069,0 -65.734483,47.814896,0 -65.783052,47.82916300000001,0 -65.875503,47.834471,0 -65.958714,47.815084,0 -65.955844,47.76818800000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-010-004-BERESFORD BEACH</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-010-004-BERESFORD BEACH</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>4</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.924819,47.644814,0 -65.841723,47.619745,0 -65.750314,47.648256,0 -65.681183,47.662243,0 -65.667895,47.654376,0 -65.647492,47.67191699999999,0 -65.65959599999999,47.67989399999999,0 -65.655761,47.68371100000001,0 -65.596316,47.739571,0 -65.621171,47.773424,0 -65.700925,47.750044,0 -65.708105,47.747959,0 -65.76218400000001,47.75807300000001,0 -65.842626,47.755525,0 -65.857803,47.7647,0 -65.923069,47.76418999999999,0 -65.95323999999999,47.75159800000001,0 -65.924819,47.644814,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-020-001-BATHURST HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-020-001-BATHURST HARBOUR</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.070189,47.628811,0 -66.06750200000001,47.43755400000001,0 -65.492758,47.430996,0 -65.484425,47.512164,0 -65.565596,47.66890599999999,0 -65.566436,47.683066,0 -65.552854,47.722047,0 -65.596316,47.739571,0 -65.655761,47.68371100000001,0 -65.65959599999999,47.67989399999999,0 -65.647492,47.67191699999999,0 -65.667895,47.654376,0 -65.681183,47.662243,0 -65.750314,47.648256,0 -65.841723,47.619745,0 -65.924819,47.644814,0 -66.070189,47.628811,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-030-001-SALMON BEACH</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-030-001-SALMON BEACH</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.40418099999999,47.618557,0 -65.340158,47.686033,0 -65.31190700000001,47.695543,0 -65.33907000000001,47.721149,0 -65.369495,47.694812,0 -65.42344,47.710097,0 -65.46515100000001,47.744192,0 -65.552854,47.722047,0 -65.566436,47.683066,0 -65.565596,47.66890599999999,0 -65.484425,47.512164,0 -65.40418099999999,47.618557,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-030-002-STONEHAVEN</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-030-002-STONEHAVEN</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.28800200000001,47.70066300000001,0 -65.358772,47.755763,0 -65.387053,47.78076100000001,0 -65.46515100000001,47.744192,0 -65.42344,47.710097,0 -65.369495,47.694812,0 -65.33907000000001,47.721149,0 -65.31190700000001,47.695543,0 -65.28800200000001,47.70066300000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-030-003-POKESHAW</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-030-003-POKESHAW</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.253231,47.74821600000001,0 -65.228239,47.792111,0 -65.22178200000001,47.807421,0 -65.231245,47.859341,0 -65.387053,47.78076100000001,0 -65.358772,47.755763,0 -65.28800200000001,47.70066300000001,0 -65.253231,47.74821600000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-040-001-GRANDE ANSE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-040-001-GRANDE ANSE</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.16956399999999,47.79357400000001,0 -65.11694300000001,47.805715,0 -65.127071,47.826492,0 -65.109802,47.868196,0 -65.231245,47.859341,0 -65.22178200000001,47.807421,0 -65.228239,47.792111,0 -65.16956399999999,47.79357400000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-02-040-002-ANSE BLEUE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-02-040-002-ANSE BLEUE</td></tr>
+    <tr><td>S_area</td><td>2</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.98792400000001,47.830357,0 -64.986965,47.834384,0 -64.978307,47.867113,0 -65.109802,47.868196,0 -65.127071,47.826492,0 -65.11694300000001,47.805715,0 -64.98792400000001,47.830357,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-010-001-BAIE DE CARAQUET</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-010-001-BAIE DE CARAQUET</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.16956399999999,47.79357400000001,0 -65.228239,47.792111,0 -65.253231,47.74821600000001,0 -65.28800200000001,47.70066300000001,0 -65.31190700000001,47.695543,0 -65.340158,47.686033,0 -65.40418099999999,47.618557,0 -65.20759700000001,47.60043700000001,0 -65.102198,47.69919900000001,0 -65.010925,47.747484,0 -64.875187,47.776565,0 -64.901551,47.79945000000001,0 -64.913111,47.822252,0 -64.92597499999999,47.847405,0 -64.978307,47.867113,0 -64.986965,47.834384,0 -64.98792400000001,47.830357,0 -65.11694300000001,47.805715,0 -65.16956399999999,47.79357400000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-010-002-BAS-CARAQUET</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-010-002-BAS-CARAQUET</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.849777,47.78946,0 -64.801649,47.80345499999999,0 -64.80046299999999,47.803536,0 -64.792013,47.804537,0 -64.782292,47.822006,0 -64.78814300000001,47.825499,0 -64.797495,47.823207,0 -64.79784600000001,47.84678,0 -64.92597499999999,47.847405,0 -64.913111,47.822252,0 -64.901551,47.79945000000001,0 -64.875187,47.776565,0 -64.849777,47.78946,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-020-001-POKESUDIE ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-020-001-POKESUDIE ISLAND</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.814769,47.765554,0 -64.782494,47.76625900000001,0 -64.76581400000001,47.766862,0 -64.752495,47.774499,0 -64.72634100000001,47.789661,0 -64.726337,47.810961,0 -64.728714,47.815044,0 -64.733502,47.82290200000001,0 -64.747148,47.84678,0 -64.79784600000001,47.84678,0 -64.797495,47.823207,0 -64.78814300000001,47.825499,0 -64.782292,47.822006,0 -64.792013,47.804537,0 -64.80046299999999,47.803536,0 -64.801649,47.80345499999999,0 -64.849777,47.78946,0 -64.875187,47.776565,0 -64.814769,47.765554,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-020-002-BAIE ST-SIMON (NORTH)</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-020-002-BAIE ST-SIMON (NORTH)</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.782494,47.76625900000001,0 -64.814769,47.765554,0 -64.875187,47.776565,0 -65.010925,47.747484,0 -64.82954700000001,47.712732,0 -64.807481,47.742041,0 -64.76581400000001,47.766862,0 -64.782494,47.76625900000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-020-003-BAIE ST-SIMON (SOUTH)</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-020-003-BAIE ST-SIMON (SOUTH)</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.76581400000001,47.766862,0 -64.807481,47.742041,0 -64.82954700000001,47.712732,0 -64.78406,47.685816,0 -64.73742300000001,47.70275100000001,0 -64.737307,47.76578599999999,0 -64.744592,47.76829,0 -64.752495,47.774499,0 -64.76581400000001,47.766862,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-020-004-HAVRE DE SHIPPAGAN</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-020-004-HAVRE DE SHIPPAGAN</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>4</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.752495,47.774499,0 -64.744592,47.76829,0 -64.737307,47.76578599999999,0 -64.73742300000001,47.70275100000001,0 -64.70816000000001,47.71809400000001,0 -64.676924,47.71307399999999,0 -64.66952600000001,47.718712,0 -64.66598999999999,47.717565,0 -64.6632,47.718694,0 -64.658096,47.72192,0 -64.650182,47.725918,0 -64.634995,47.737672,0 -64.655115,47.7595,0 -64.692933,47.763547,0 -64.72634100000001,47.789661,0 -64.752495,47.774499,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-030-001-BAIE DE LAMEQUE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-030-001-BAIE DE LAMEQUE</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.628503,47.835026,0 -64.697069,47.789347,0 -64.72634100000001,47.789661,0 -64.692933,47.763547,0 -64.655115,47.7595,0 -64.588911,47.815817,0 -64.628503,47.835026,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-030-002-BAIE DE PETITE-LAMEQUE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-030-002-BAIE DE PETITE-LAMEQUE</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.648421,47.842028,0 -64.70621300000001,47.81011400000001,0 -64.726337,47.810961,0 -64.72634100000001,47.789661,0 -64.697069,47.789347,0 -64.628503,47.835026,0 -64.648421,47.842028,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-030-003-GRANDE BATTURE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-030-003-GRANDE BATTURE</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.70621300000001,47.81011400000001,0 -64.648421,47.842028,0 -64.582655,47.88213,0 -64.577502,47.88909399999999,0 -64.601651,47.895051,0 -64.64712,47.90620300000001,0 -64.747148,47.84678,0 -64.733502,47.82290200000001,0 -64.728714,47.815044,0 -64.726337,47.810961,0 -64.70621300000001,47.81011400000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-030-004-MISCOU HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-030-004-MISCOU HARBOUR</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>4</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.535681,47.855452,0 -64.51598900000001,47.85682,0 -64.502143,47.87894599999999,0 -64.501392,47.882888,0 -64.501193,47.88631,0 -64.497709,47.905021,0 -64.49631100000001,47.908844,0 -64.492757,47.914304,0 -64.492857,47.915454,0 -64.488641,47.925016,0 -64.488586,47.94462,0 -64.52627,47.956408,0 -64.591568,47.898578,0 -64.588984,47.89692,0 -64.583269,47.895336,0 -64.582278,47.89438199999999,0 -64.580281,47.892335,0 -64.577502,47.88909399999999,0 -64.582655,47.88213,0 -64.648421,47.842028,0 -64.628503,47.835026,0 -64.588911,47.815817,0 -64.535681,47.855452,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-030-005-MISCOU ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-030-005-MISCOU ISLAND</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>5</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.580281,47.892335,0 -64.582278,47.89438199999999,0 -64.583269,47.895336,0 -64.588984,47.89692,0 -64.591568,47.898578,0 -64.52627,47.956408,0 -64.488586,47.94462,0 -64.488641,47.925016,0 -64.492857,47.915454,0 -64.48782199999999,47.91246400000001,0 -64.424149,47.87498800000001,0 -64.405327,47.998623,0 -64.543019,48.04524900000001,0 -64.64712,47.90620300000001,0 -64.601651,47.895051,0 -64.577502,47.88909399999999,0 -64.580281,47.892335,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-030-006-LAMEQUE ISLAND (EAST)</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-030-006-LAMEQUE ISLAND (EAST)</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>6</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.492757,47.914304,0 -64.49631100000001,47.908844,0 -64.497709,47.905021,0 -64.501193,47.88631,0 -64.501392,47.882888,0 -64.502143,47.87894599999999,0 -64.51598900000001,47.85682,0 -64.535681,47.855452,0 -64.588911,47.815817,0 -64.655115,47.7595,0 -64.634995,47.737672,0 -64.650182,47.725918,0 -64.658096,47.72192,0 -64.6632,47.718694,0 -64.60235400000001,47.690759,0 -64.424149,47.87498800000001,0 -64.48782199999999,47.91246400000001,0 -64.492857,47.915454,0 -64.492757,47.914304,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-040-001-SHIPPEGAN BEACH</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-040-001-SHIPPEGAN BEACH</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.70816000000001,47.71809400000001,0 -64.73742300000001,47.70275100000001,0 -64.78406,47.685816,0 -64.768688,47.680396,0 -64.760884,47.67428500000001,0 -64.76308899999999,47.668941,0 -64.771795,47.66165100000001,0 -64.776961,47.66005800000001,0 -64.706254,47.621896,0 -64.60235400000001,47.690759,0 -64.6632,47.718694,0 -64.66598999999999,47.717565,0 -64.66952600000001,47.718712,0 -64.676924,47.71307399999999,0 -64.70816000000001,47.71809400000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-040-002-BAIE DE POKEMOUCHE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-040-002-BAIE DE POKEMOUCHE</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.771795,47.66165100000001,0 -64.76308899999999,47.668941,0 -64.760884,47.67428500000001,0 -64.768688,47.680396,0 -64.78406,47.685816,0 -64.82954700000001,47.712732,0 -65.010925,47.747484,0 -65.102198,47.69919900000001,0 -65.20759700000001,47.60043700000001,0 -65.40418099999999,47.618557,0 -65.484425,47.512164,0 -65.155778,47.49666899999999,0 -65.070092,47.570061,0 -65.00626200000001,47.613064,0 -64.92477700000001,47.586529,0 -64.817808,47.605068,0 -64.76495,47.57868500000001,0 -64.706254,47.621896,0 -64.776961,47.66005800000001,0 -64.771795,47.66165100000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-050-001-BAIE DE TRACADIE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-050-001-BAIE DE TRACADIE</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>5</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.92477700000001,47.586529,0 -65.00626200000001,47.613064,0 -65.070092,47.570061,0 -65.155778,47.49666899999999,0 -65.108475,47.46267400000001,0 -64.942809,47.49588599999999,0 -64.894192,47.496553,0 -64.88229200000001,47.503546,0 -64.874056,47.503479,0 -64.871679,47.503428,0 -64.797282,47.500824,0 -64.76495,47.57868500000001,0 -64.817808,47.605068,0 -64.92477700000001,47.586529,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-03-050-002-GRANDE RIVIERE TRACADIE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-03-050-002-GRANDE RIVIERE TRACADIE</td></tr>
+    <tr><td>S_area</td><td>3</td></tr>
+    <tr><td>S_sec</td><td>5</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.484425,47.512164,0 -65.492758,47.430996,0 -65.386096,47.474939,0 -65.316503,47.432528,0 -64.999291,47.384141,0 -64.88486500000001,47.433995,0 -64.8172,47.418038,0 -64.797282,47.500824,0 -64.871679,47.503428,0 -64.874056,47.503479,0 -64.88229200000001,47.503546,0 -64.894192,47.496553,0 -64.942809,47.49588599999999,0 -65.108475,47.46267400000001,0 -65.155778,47.49666899999999,0 -65.484425,47.512164,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-04-010-001-TABUSINTAC BAY</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-04-010-001-TABUSINTAC BAY</td></tr>
+    <tr><td>S_area</td><td>4</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.316503,47.432528,0 -65.386096,47.474939,0 -65.492758,47.430996,0 -65.470568,47.339964,0 -65.38912500000001,47.226699,0 -65.321043,47.28391000000001,0 -65.24993600000001,47.260411,0 -65.20606100000001,47.267563,0 -65.08956499999999,47.307405,0 -65.006355,47.29821,0 -64.972071,47.28076,0 -64.969673,47.280139,0 -64.964882,47.280734,0 -64.961128,47.28089600000001,0 -64.960886,47.27851699999999,0 -64.86228199999999,47.283974,0 -64.8172,47.418038,0 -64.88486500000001,47.433995,0 -64.999291,47.384141,0 -65.316503,47.432528,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-04-020-001-NEGUAC BAY</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-04-020-001-NEGUAC BAY</td></tr>
+    <tr><td>S_area</td><td>4</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.960886,47.27851699999999,0 -64.961128,47.28089600000001,0 -64.964882,47.280734,0 -64.969673,47.280139,0 -64.972071,47.28076,0 -65.006355,47.29821,0 -65.08956499999999,47.307405,0 -65.20606100000001,47.267563,0 -65.24993600000001,47.260411,0 -65.105288,47.23455500000001,0 -65.10339500000001,47.233711,0 -65.099144,47.228607,0 -65.094649,47.226142,0 -65.094668,47.225962,0 -65.094837,47.225905,0 -65.09517,47.225971,0 -65.095095,47.225738,0 -65.093835,47.225275,0 -65.07739599999999,47.220559,0 -65.03229399999999,47.207395,0 -64.976733,47.17882400000001,0 -64.86228199999999,47.283974,0 -64.960886,47.27851699999999,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-04-020-002-BURNT CHURCH</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-04-020-002-BURNT CHURCH</td></tr>
+    <tr><td>S_area</td><td>4</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.07739599999999,47.220559,0 -65.093835,47.225275,0 -65.094037,47.225371,0 -65.095095,47.225738,0 -65.09517,47.225971,0 -65.094837,47.225905,0 -65.094668,47.225962,0 -65.094649,47.226142,0 -65.094649,47.226142,0 -65.099144,47.228607,0 -65.10339500000001,47.233711,0 -65.105288,47.23455500000001,0 -65.24993600000001,47.260411,0 -65.321043,47.28391000000001,0 -65.38912500000001,47.226699,0 -65.296967,47.178107,0 -65.235882,47.194527,0 -65.183369,47.185833,0 -65.163388,47.17035200000001,0 -65.106633,47.190519,0 -65.047933,47.208211,0 -65.03229399999999,47.207395,0 -65.07739599999999,47.220559,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-04-020-003-PORTAGE ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-04-020-003-PORTAGE ISLAND</td></tr>
+    <tr><td>S_area</td><td>4</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.047933,47.208211,0 -65.106633,47.190519,0 -65.053304,47.13340300000001,0 -65.000275,47.15073699999999,0 -64.976733,47.17882400000001,0 -65.03229399999999,47.207395,0 -65.047933,47.208211,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-04-030-001-MIRAMICHI RIVER ESTUARY</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-04-030-001-MIRAMICHI RIVER ESTUARY</td></tr>
+    <tr><td>S_area</td><td>4</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.163388,47.17035200000001,0 -65.183369,47.185833,0 -65.235882,47.194527,0 -65.296967,47.178107,0 -65.38912500000001,47.226699,0 -65.470568,47.339964,0 -65.95495800000001,47.246114,0 -65.995814,46.846659,0 -65.852087,46.74143099999999,0 -65.454713,46.953394,0 -65.205311,47.082014,0 -65.125444,47.087972,0 -65.118972,47.094615,0 -65.116473,47.095792,0 -65.09357900000001,47.105579,0 -65.076798,47.106947,0 -65.053304,47.13340300000001,0 -65.106633,47.190519,0 -65.163388,47.17035200000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-04-040-001-BAY DU VIN</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-04-040-001-BAY DU VIN</td></tr>
+    <tr><td>S_area</td><td>4</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.205175,46.927776,0 -65.04391,46.90637,0 -65.10130599999999,47.074124,0 -65.120402,47.076512,0 -65.125444,47.087972,0 -65.205311,47.082014,0 -65.454713,46.953394,0 -65.205175,46.927776,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-04-040-002-BAY DU VIN, EGG &amp; FOX ISLANDS</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-04-040-002-BAY DU VIN, EGG & FOX ISLANDS</td></tr>
+    <tr><td>S_area</td><td>4</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.053304,47.13340300000001,0 -65.076798,47.106947,0 -65.09357900000001,47.105579,0 -65.116473,47.095792,0 -65.118972,47.094615,0 -65.125444,47.087972,0 -65.120402,47.076512,0 -65.019446,47.101111,0 -64.973871,47.063918,0 -64.95072999999999,47.07370999999999,0 -64.952462,47.10014100000001,0 -65.000275,47.15073699999999,0 -65.053304,47.13340300000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-04-040-003-BAIE STE-ANNE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-04-040-003-BAIE STE-ANNE</td></tr>
+    <tr><td>S_area</td><td>4</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.04391,46.90637,0 -64.943911,46.983611,0 -64.890862,47.037504,0 -64.92650500000001,47.074992,0 -64.95072999999999,47.07370999999999,0 -64.973871,47.063918,0 -65.019446,47.101111,0 -65.120402,47.076512,0 -65.10130599999999,47.074124,0 -65.04391,46.90637,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-04-040-004-ESCUMINAC</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-04-040-004-ESCUMINAC</td></tr>
+    <tr><td>S_area</td><td>4</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>4</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.92650500000001,47.074992,0 -64.890862,47.037504,0 -64.81719699999999,47.07058099999999,0 -64.796627,47.071758,0 -64.748606,47.07151,0 -64.79117700000001,47.100492,0 -64.952462,47.10014100000001,0 -64.95072999999999,47.07370999999999,0 -64.92650500000001,47.074992,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-05-010-001-MOCAUQUE D&apos;ESCUMINAC</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-05-010-001-MOCAUQUE D'ESCUMINAC</td></tr>
+    <tr><td>S_area</td><td>5</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.943911,46.983611,0 -64.91561400000001,46.946388,0 -64.81262700000001,46.97475600000001,0 -64.760193,46.963335,0 -64.748606,47.07151,0 -64.796627,47.071758,0 -64.81719699999999,47.07058099999999,0 -64.890862,47.037504,0 -64.943911,46.983611,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-05-010-002-NORTH KOUCHIBOUGUAC BEACH</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-05-010-002-NORTH KOUCHIBOUGUAC BEACH</td></tr>
+    <tr><td>S_area</td><td>5</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.04391,46.90637,0 -64.90392900000001,46.88605700000001,0 -64.902132,46.883995,0 -64.832632,46.86809900000001,0 -64.760193,46.963335,0 -64.81262700000001,46.97475600000001,0 -64.91561400000001,46.946388,0 -64.943911,46.983611,0 -65.04391,46.90637,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-05-010-003-KOUCHIBOUGUAC BAY</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-05-010-003-KOUCHIBOUGUAC BAY</td></tr>
+    <tr><td>S_area</td><td>5</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.205175,46.927776,0 -65.205012,46.746447,0 -65.06405,46.75284300000001,0 -64.94448300000001,46.815641,0 -64.910595,46.82730100000001,0 -64.905041,46.827808,0 -64.83269,46.82537799999999,0 -64.832632,46.86809900000001,0 -64.902132,46.883995,0 -64.90392900000001,46.88605700000001,0 -65.04391,46.90637,0 -65.205175,46.927776,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-05-020-001-BAIE DE ST-LOUIS</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-05-020-001-BAIE DE ST-LOUIS</td></tr>
+    <tr><td>S_area</td><td>5</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.20501299999999,46.663286,0 -65.033174,46.686131,0 -64.91225900000001,46.752441,0 -64.89158999999999,46.734205,0 -64.83874,46.716049,0 -64.815229,46.724233,0 -64.80756,46.72422,0 -64.804068,46.724302,0 -64.792282,46.716317,0 -64.789564,46.71508,0 -64.739542,46.731593,0 -64.83269,46.82537799999999,0 -64.905041,46.827808,0 -64.910595,46.82730100000001,0 -64.94448300000001,46.815641,0 -65.06405,46.75284300000001,0 -65.205012,46.746447,0 -65.20501299999999,46.663286,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-05-030-001-RICHIBUCTO RIVER &amp; HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-05-030-001-RICHIBUCTO RIVER & HARBOUR</td></tr>
+    <tr><td>S_area</td><td>5</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.789564,46.71508,0 -64.792282,46.716317,0 -64.804068,46.724302,0 -64.80756,46.72422,0 -64.815229,46.724233,0 -64.83874,46.716049,0 -64.843704,46.708101,0 -64.842938,46.701292,0 -64.850807,46.694208,0 -64.853313,46.697745,0 -64.9812,46.65203,0 -65.03183199999999,46.634042,0 -65.01900000000001,46.568679,0 -65.01904,46.436958,0 -64.89525500000001,46.443638,0 -64.88258999999999,46.4794,0 -64.81973600000001,46.499645,0 -64.844663,46.60965,0 -64.832437,46.65733599999999,0 -64.816718,46.692522,0 -64.804318,46.70665,0 -64.79126100000001,46.70922099999999,0 -64.79070299999999,46.71074299999999,0 -64.789564,46.71508,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-05-030-002-ALDOUANE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-05-030-002-ALDOUANE</td></tr>
+    <tr><td>S_area</td><td>5</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.89158999999999,46.734205,0 -64.91225900000001,46.752441,0 -65.033174,46.686131,0 -65.03183199999999,46.634042,0 -64.9812,46.65203,0 -64.853313,46.697745,0 -64.850807,46.694208,0 -64.842938,46.701292,0 -64.843704,46.708101,0 -64.83874,46.716049,0 -64.89158999999999,46.734205,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-05-030-003-BAIE DU VILLAGE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-05-030-003-BAIE DU VILLAGE</td></tr>
+    <tr><td>S_area</td><td>5</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.79126100000001,46.70922099999999,0 -64.804318,46.70665,0 -64.816718,46.692522,0 -64.832437,46.65733599999999,0 -64.844663,46.60965,0 -64.75917699999999,46.624502,0 -64.724158,46.643235,0 -64.724158,46.658783,0 -64.724158,46.69017199999999,0 -64.736543,46.696355,0 -64.741193,46.697427,0 -64.76044899999999,46.706293,0 -64.77204999999999,46.70833399999999,0 -64.786598,46.707751,0 -64.79070299999999,46.71074299999999,0 -64.79126100000001,46.70922099999999,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-05-030-004-SOUTH RICHIBUCTO BEACH</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-05-030-004-SOUTH RICHIBUCTO BEACH</td></tr>
+    <tr><td>S_area</td><td>5</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>4</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.789564,46.71508,0 -64.79070299999999,46.71074299999999,0 -64.786598,46.707751,0 -64.77204999999999,46.70833399999999,0 -64.76044899999999,46.706293,0 -64.741193,46.697427,0 -64.736543,46.696355,0 -64.724158,46.69017199999999,0 -64.724158,46.658783,0 -64.70758100000001,46.659995,0 -64.665352,46.660027,0 -64.739542,46.731593,0 -64.789564,46.71508,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-06-010-001-DUNE DE CHOCKPISH</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-06-010-001-DUNE DE CHOCKPISH</td></tr>
+    <tr><td>S_area</td><td>6</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.81973600000001,46.499645,0 -64.720483,46.519086,0 -64.706868,46.529721,0 -64.70401800000001,46.541705,0 -64.698888,46.540832,0 -64.640522,46.550815,0 -64.665352,46.660027,0 -64.70758100000001,46.659995,0 -64.724158,46.658783,0 -64.724158,46.643235,0 -64.75917699999999,46.624502,0 -64.844663,46.60965,0 -64.81973600000001,46.499645,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-06-010-002-DUNE DE BOUCTOUCHE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-06-010-002-DUNE DE BOUCTOUCHE</td></tr>
+    <tr><td>S_area</td><td>6</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.698888,46.540832,0 -64.70401800000001,46.541705,0 -64.706868,46.529721,0 -64.695774,46.534838,0 -64.677335,46.52345,0 -64.668423,46.51620800000001,0 -64.655917,46.50983699999999,0 -64.646025,46.50171,0 -64.635931,46.492134,0 -64.624351,46.48547300000001,0 -64.617018,46.480236,0 -64.608498,46.461078,0 -64.56217599999999,46.46326000000001,0 -64.640522,46.550815,0 -64.698888,46.540832,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-06-020-001-BAIE DE BOUCTOUCHE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-06-020-001-BAIE DE BOUCTOUCHE</td></tr>
+    <tr><td>S_area</td><td>6</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.720483,46.519086,0 -64.718698,46.50979100000001,0 -64.67244599999999,46.488357,0 -64.666848,46.46632600000001,0 -64.60930000000001,46.444607,0 -64.565977,46.443199,0 -64.56217599999999,46.46326000000001,0 -64.608498,46.461078,0 -64.617018,46.480236,0 -64.624351,46.48547300000001,0 -64.635931,46.492134,0 -64.646025,46.50171,0 -64.655917,46.50983699999999,0 -64.668423,46.51620800000001,0 -64.677335,46.52345,0 -64.695774,46.534838,0 -64.706868,46.529721,0 -64.720483,46.519086,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-06-020-002-BOUCTOUCHE RIVER &amp; HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-06-020-002-BOUCTOUCHE RIVER & HARBOUR</td></tr>
+    <tr><td>S_area</td><td>6</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.67244599999999,46.488357,0 -64.718698,46.50979100000001,0 -64.720483,46.519086,0 -64.81973600000001,46.499645,0 -64.88258999999999,46.4794,0 -64.89525500000001,46.443638,0 -65.01904,46.436958,0 -65.02879900000001,46.342236,0 -64.931985,46.275731,0 -64.701488,46.37690899999999,0 -64.666848,46.46632600000001,0 -64.67244599999999,46.488357,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-06-020-003-ST-THOMAS-DE-KENT</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-06-020-003-ST-THOMAS-DE-KENT</td></tr>
+    <tr><td>S_area</td><td>6</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.666848,46.46632600000001,0 -64.701488,46.37690899999999,0 -64.62319599999999,46.427957,0 -64.610103,46.427964,0 -64.561742,46.427441,0 -64.565977,46.443199,0 -64.60930000000001,46.444607,0 -64.666848,46.46632600000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-06-030-001-COCAGNE ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-06-030-001-COCAGNE ISLAND</td></tr>
+    <tr><td>S_area</td><td>6</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.701488,46.37690899999999,0 -64.701489,46.359901,0 -64.670461,46.35946499999999,0 -64.66412800000001,46.369059,0 -64.63753199999999,46.364262,0 -64.61291900000001,46.355679,0 -64.58440400000001,46.368381,0 -64.574917,46.37589300000001,0 -64.559595,46.387828,0 -64.561742,46.427441,0 -64.610103,46.427964,0 -64.62319599999999,46.427957,0 -64.701488,46.37690899999999,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-06-030-002-COCAGNE RIVER &amp; HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-06-030-002-COCAGNE RIVER & HARBOUR</td></tr>
+    <tr><td>S_area</td><td>6</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.574917,46.37589300000001,0 -64.58440400000001,46.368381,0 -64.61291900000001,46.355679,0 -64.63753199999999,46.364262,0 -64.66412800000001,46.369059,0 -64.670461,46.35946499999999,0 -64.701489,46.359901,0 -64.701488,46.37690899999999,0 -64.931985,46.275731,0 -64.89161799999999,46.257975,0 -64.85917000000001,46.23064100000001,0 -64.691992,46.274857,0 -64.549103,46.322582,0 -64.562703,46.366528,0 -64.561166,46.37589799999999,0 -64.559595,46.387828,0 -64.574917,46.37589300000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-06-040-001-CAP-DES-CAISSIE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-06-040-001-CAP-DES-CAISSIE</td></tr>
+    <tr><td>S_area</td><td>6</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.561166,46.37589799999999,0 -64.562703,46.366528,0 -64.549103,46.322582,0 -64.510437,46.313814,0 -64.509877,46.31348,0 -64.478025,46.32184,0 -64.559595,46.387828,0 -64.561166,46.37589799999999,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-010-001-SHEDIAC RIVER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-010-001-SHEDIAC RIVER</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.691992,46.274857,0 -64.85917000000001,46.23064100000001,0 -64.66793,46.16102900000001,0 -64.614105,46.168879,0 -64.572293,46.267343,0 -64.56591400000001,46.269608,0 -64.56076299999999,46.26903800000001,0 -64.552598,46.272814,0 -64.536755,46.28407799999999,0 -64.52821299999999,46.28570500000001,0 -64.519577,46.287349,0 -64.478025,46.32184,0 -64.509877,46.31348,0 -64.510437,46.313814,0 -64.549103,46.322582,0 -64.691992,46.274857,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-010-002-SHEDIAC HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-010-002-SHEDIAC HARBOUR</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.56591400000001,46.269608,0 -64.572293,46.267343,0 -64.614105,46.168879,0 -64.66793,46.16102900000001,0 -64.619805,46.112184,0 -64.440495,46.12001200000001,0 -64.453266,46.195918,0 -64.51215500000001,46.210746,0 -64.504783,46.23155600000001,0 -64.523802,46.239017,0 -64.52642,46.239757,0 -64.528915,46.240538,0 -64.52965,46.240784,0 -64.52995199999999,46.24190500000001,0 -64.535651,46.245779,0 -64.549975,46.25599,0 -64.550068,46.256061,0 -64.552598,46.272814,0 -64.56076299999999,46.26903800000001,0 -64.56591400000001,46.269608,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-010-003-SHEDIAC ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-010-003-SHEDIAC ISLAND</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.550068,46.256061,0 -64.549975,46.25599,0 -64.535651,46.245779,0 -64.525193,46.25031400000001,0 -64.516781,46.264803,0 -64.52821299999999,46.28570500000001,0 -64.536755,46.28407799999999,0 -64.552598,46.272814,0 -64.550068,46.256061,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-020-001-SHEDIAC BAY</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-020-001-SHEDIAC BAY</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.52995199999999,46.24190500000001,0 -64.52965,46.240784,0 -64.528915,46.240538,0 -64.52642,46.239757,0 -64.523802,46.239017,0 -64.504783,46.23155600000001,0 -64.51215500000001,46.210746,0 -64.453266,46.195918,0 -64.440495,46.12001200000001,0 -64.28119599999999,46.154646,0 -64.349031,46.22561400000001,0 -64.34912799999999,46.228615,0 -64.349176,46.25336000000001,0 -64.525193,46.25031400000001,0 -64.535651,46.245779,0 -64.52995199999999,46.24190500000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-020-002-DUPUIS CORNER &amp; BAS CAP-PELE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-020-002-DUPUIS CORNER & BAS CAP-PELE</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.34912799999999,46.228615,0 -64.349031,46.22561400000001,0 -64.28119599999999,46.154646,0 -64.234365,46.176276,0 -64.243413,46.189765,0 -64.23960099999999,46.21578699999999,0 -64.226739,46.224057,0 -64.22156,46.227635,0 -64.18644999999999,46.250233,0 -64.349176,46.25336000000001,0 -64.34912799999999,46.228615,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-030-001-PETIT-CAP</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-030-001-PETIT-CAP</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.22156,46.227635,0 -64.226739,46.224057,0 -64.23960099999999,46.21578699999999,0 -64.243413,46.189765,0 -64.234365,46.176276,0 -64.18339899999999,46.19503499999999,0 -64.158196,46.182813,0 -64.15030299999999,46.188329,0 -64.149491,46.192493,0 -64.148349,46.21637,0 -64.18644999999999,46.250233,0 -64.22156,46.227635,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-030-002-SHEMOGUE HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-030-002-SHEMOGUE HARBOUR</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.149491,46.192493,0 -64.15030299999999,46.188329,0 -64.158196,46.182813,0 -64.18339899999999,46.19503499999999,0 -64.234365,46.176276,0 -64.20769199999999,46.12322600000001,0 -64.15768,46.12125,0 -64.104336,46.090945,0 -64.10446399999999,46.131328,0 -64.11676199999999,46.180055,0 -64.120237,46.18374,0 -64.120012,46.192468,0 -64.11979700000001,46.214642,0 -64.148349,46.21637,0 -64.149491,46.192493,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-030-003-LITTLE SHEMOGUE HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-030-003-LITTLE SHEMOGUE HARBOUR</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.120012,46.192468,0 -64.120237,46.18374,0 -64.11676199999999,46.180055,0 -64.10446399999999,46.131328,0 -64.104336,46.090945,0 -63.954302,46.105437,0 -63.984785,46.14694200000001,0 -63.979032,46.182686,0 -63.97956299999999,46.19183,0 -63.979408,46.208021,0 -64.11979700000001,46.214642,0 -64.120012,46.192468,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-040-001-SPENCE COVE &amp; PEACOCK COVE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-040-001-SPENCE COVE & PEACOCK COVE</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-63.97956299999999,46.19183,0 -63.979032,46.182686,0 -63.984785,46.14694200000001,0 -63.954302,46.105437,0 -63.91619799999999,46.106425,0 -63.876933,46.118356,0 -63.81816,46.15999299999999,0 -63.815032,46.164278,0 -63.807581,46.17032800000001,0 -63.786645,46.19074999999999,0 -63.979408,46.208021,0 -63.97956299999999,46.19183,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-040-002-CAPE TORMENTINE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-040-002-CAPE TORMENTINE</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-63.807581,46.17032800000001,0 -63.815032,46.164278,0 -63.81816,46.15999299999999,0 -63.876933,46.118356,0 -63.805097,46.083218,0 -63.804578,46.082314,0 -63.80285,46.076654,0 -63.719538,46.08249,0 -63.71953599999999,46.18648,0 -63.786645,46.19074999999999,0 -63.807581,46.17032800000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-050-001-BAIE VERTE (NORTH)</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-050-001-BAIE VERTE (NORTH)</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>5</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-63.80285,46.076654,0 -63.804578,46.082314,0 -63.805097,46.083218,0 -63.876933,46.118356,0 -63.91619799999999,46.106425,0 -63.954302,46.105437,0 -63.965257,46.089956,0 -64.000642,46.078127,0 -64.007947,46.054423,0 -64.018525,46.045769,0 -64.04331500000001,46.02385099999999,0 -63.915556,46.02372999999999,0 -63.719538,46.08249,0 -63.80285,46.076654,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-050-002-BAIE VERTE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-050-002-BAIE VERTE</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>5</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.092283,46.005282,0 -64.08043499999999,46.016067,0 -64.07072599999999,46.019119,0 -64.056448,46.02176600000001,0 -64.04331500000001,46.02385099999999,0 -64.018525,46.045769,0 -64.00775299999999,46.05441499999999,0 -64.000642,46.078127,0 -63.965257,46.089956,0 -63.954302,46.105437,0 -64.104336,46.090945,0 -64.15768,46.12125,0 -64.20769199999999,46.12322600000001,0 -64.187926,46.01465400000001,0 -64.12789100000001,46.001173,0 -64.092283,46.005282,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-07-050-003-TIDNISH RIVER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-07-050-003-TIDNISH RIVER</td></tr>
+    <tr><td>S_area</td><td>7</td></tr>
+    <tr><td>S_sec</td><td>5</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.056448,46.02176600000001,0 -64.07072599999999,46.019119,0 -64.08043499999999,46.016067,0 -64.092283,46.005282,0 -64.12789100000001,46.001173,0 -64.081829,45.936944,0 -64.070781,45.934757,0 -64.04248699999999,45.9633,0 -64.027723,45.973544,0 -64.025403,46.004953,0 -64.035107,46.01528600000001,0 -64.04331500000001,46.02385099999999,0 -64.056448,46.02176600000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-08-010-001-CUMBERLAND BASIN</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-08-010-001-CUMBERLAND BASIN</td></tr>
+    <tr><td>S_area</td><td>8</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.45678700000001,45.800016,0 -64.525228,45.73241899999999,0 -64.55250599999999,45.727261,0 -64.521817,45.689574,0 -64.457919,45.746808,0 -64.402002,45.791413,0 -64.38621999999999,45.802457,0 -64.32911300000001,45.842416,0 -64.274419,45.837397,0 -64.207003,45.92177900000001,0 -64.319158,45.969838,0 -64.424781,45.92091600000001,0 -64.45678700000001,45.800016,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-08-020-001-SHEPODY BAY</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-08-020-001-SHEPODY BAY</td></tr>
+    <tr><td>S_area</td><td>8</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-64.619805,46.112184,0 -64.66793,46.16102900000001,0 -65.068124,46.157262,0 -65.058261,46.016349,0 -64.70426000000001,45.89957400000001,0 -64.916715,45.798427,0 -64.874899,45.67699,0 -64.730362,45.675636,0 -64.72779900000001,45.66964,0 -64.77932300000001,45.607211,0 -64.77962599999999,45.593237,0 -64.755216,45.570543,0 -64.608818,45.63400299999999,0 -64.521817,45.689574,0 -64.55250599999999,45.727261,0 -64.525228,45.73241899999999,0 -64.45678700000001,45.800016,0 -64.424781,45.92091600000001,0 -64.619805,46.112184,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-08-030-001-FUNDY PARK /LOCKHART LAKE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-08-030-001-FUNDY PARK /LOCKHART LAKE</td></tr>
+    <tr><td>S_area</td><td>8</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.053776,45.693927,0 -65.008037,45.553158,0 -65.021328,45.541366,0 -65.004777,45.462021,0 -64.755216,45.570543,0 -64.77962599999999,45.593237,0 -64.77932300000001,45.607211,0 -64.72779900000001,45.66964,0 -64.730362,45.675636,0 -64.874899,45.67699,0 -64.916715,45.798427,0 -65.053776,45.693927,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-08-030-002-ST MARTINS</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-08-030-002-ST MARTINS</td></tr>
+    <tr><td>S_area</td><td>8</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.59581,45.50605600000001,0 -65.56335799999999,45.323961,0 -65.53573400000001,45.32313499999999,0 -65.490336,45.227223,0 -65.004777,45.462021,0 -65.021328,45.541366,0 -65.008037,45.553158,0 -65.053776,45.693927,0 -65.59581,45.50605600000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-08-040-001-GARDNER CREEK/BLACK RIVER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-08-040-001-GARDNER CREEK/BLACK RIVER</td></tr>
+    <tr><td>S_area</td><td>8</td></tr>
+    <tr><td>S_sec</td><td>4</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.900076,45.366641,0 -65.91157699999999,45.193664,0 -65.87776700000001,45.102036,0 -65.490336,45.227223,0 -65.53573400000001,45.32313499999999,0 -65.56335799999999,45.323961,0 -65.59581,45.50605600000001,0 -65.900076,45.366641,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-09-010-001-SAINT JOHN HARBOUR &amp; RIVER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-09-010-001-SAINT JOHN HARBOUR & RIVER</td></tr>
+    <tr><td>S_area</td><td>9</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<styleUrl>#stylemap_id0</styleUrl>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-65.996275,45.511777,0 -65.70671900000001,45.695076,0 -65.93515549050997,46.2135009621641,0 -66.96231570592765,46.03901476560905,0 -66.342271,45.540204,0 -66.38689700000001,45.412168,0 -66.273307,45.286978,0 -66.23633599999999,45.203669,0 -66.166623,45.168609,0 -66.090752,45.062203,0 -65.87776700000001,45.102036,0 -65.91157699999999,45.193664,0 -65.900076,45.366641,0 -65.996275,45.511777,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-09-020-001-MUSQUASH HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-09-020-001-MUSQUASH HARBOUR</td></tr>
+    <tr><td>S_area</td><td>9</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.46866900000001,45.252259,0 -66.458455,45.214196,0 -66.423064,45.218411,0 -66.359037,45.16960100000001,0 -66.287508,45.154674,0 -66.282057,45.134618,0 -66.228685,45.047978,0 -66.090752,45.062203,0 -66.166623,45.168609,0 -66.23633599999999,45.203669,0 -66.273307,45.286978,0 -66.46866900000001,45.252259,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-09-020-002-CHANCE &amp; DIPPER HARBOURS</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-09-020-002-CHANCE & DIPPER HARBOURS</td></tr>
+    <tr><td>S_area</td><td>9</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.423221,45.116193,0 -66.455392,45.118052,0 -66.451747,45.100485,0 -66.46642900000001,45.06656700000001,0 -66.479984,45.049798,0 -66.228685,45.047978,0 -66.282057,45.134618,0 -66.287508,45.154674,0 -66.359037,45.16960100000001,0 -66.423221,45.116193,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-09-020-003-LITTLE LEPREAU BASIN</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-09-020-003-LITTLE LEPREAU BASIN</td></tr>
+    <tr><td>S_area</td><td>9</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.423064,45.218411,0 -66.458455,45.214196,0 -66.446102,45.167723,0 -66.47238,45.14461300000001,0 -66.499886,45.127393,0 -66.499886,45.125759,0 -66.497344,45.066465,0 -66.479984,45.049798,0 -66.46642900000001,45.06656700000001,0 -66.451747,45.100485,0 -66.455392,45.118052,0 -66.423221,45.116193,0 -66.359037,45.16960100000001,0 -66.423064,45.218411,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-10-010-001-LEPREAU HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-10-010-001-LEPREAU HARBOUR</td></tr>
+    <tr><td>S_area</td><td>10</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.46866900000001,45.252259,0 -66.546423,45.254074,0 -66.53269,45.23990799999999,0 -66.497303,45.163728,0 -66.522768,45.136203,0 -66.520601,45.123205,0 -66.521264,45.11914399999999,0 -66.52517899999999,45.117403,0 -66.52333400000001,45.086647,0 -66.497344,45.066465,0 -66.499886,45.125759,0 -66.499886,45.127393,0 -66.47238,45.14461300000001,0 -66.446102,45.167723,0 -66.458455,45.214196,0 -66.46866900000001,45.252259,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-11-010-001-NEW RIVER HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-11-010-001-NEW RIVER HARBOUR</td></tr>
+    <tr><td>S_area</td><td>11</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.62408600000001,45.25407499999999,0 -66.62408600000001,45.20802,0 -66.566985,45.1566,0 -66.57433,45.12583100000001,0 -66.544731,45.117159,0 -66.544893,45.11098799999999,0 -66.54488000000001,45.088658,0 -66.52333400000001,45.086647,0 -66.52517899999999,45.117403,0 -66.521264,45.11914399999999,0 -66.520601,45.123205,0 -66.522768,45.136203,0 -66.497303,45.163728,0 -66.53269,45.23990799999999,0 -66.546423,45.254074,0 -66.62408600000001,45.25407499999999,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-12-010-001-POCOLOGAN HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-12-010-001-POCOLOGAN HARBOUR</td></tr>
+    <tr><td>S_area</td><td>12</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.65261200000001,45.190803,0 -66.62971400000001,45.160431,0 -66.605842,45.12971,0 -66.600483,45.119035,0 -66.58559,45.09971099999999,0 -66.58178,45.09878499999999,0 -66.581895,45.088713,0 -66.54488000000001,45.088658,0 -66.544893,45.11098799999999,0 -66.544731,45.117159,0 -66.57433,45.12583100000001,0 -66.566985,45.1566,0 -66.62408600000001,45.20802,0 -66.65261200000001,45.190803,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-13-010-001-RED HD TO SEELEYS HD</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-13-010-001-RED HD TO SEELEYS HD</td></tr>
+    <tr><td>S_area</td><td>13</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.657928,45.14055900000001,0 -66.644538,45.12222899999999,0 -66.66849000000001,45.09745600000001,0 -66.66157699999999,45.081919,0 -66.646545,45.077247,0 -66.63402499999999,45.05761399999999,0 -66.581895,45.088713,0 -66.58178,45.09878499999999,0 -66.58559,45.09971099999999,0 -66.600483,45.119035,0 -66.605842,45.12971,0 -66.62971400000001,45.160431,0 -66.657928,45.14055900000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-13-010-002-SEELEYS HD TO EAST HD</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-13-010-002-SEELEYS HD TO EAST HD</td></tr>
+    <tr><td>S_area</td><td>13</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.709869,45.06145699999999,0 -66.717893,45.05659699999999,0 -66.718796,45.04173600000001,0 -66.63402499999999,45.05761399999999,0 -66.646545,45.077247,0 -66.66157699999999,45.081919,0 -66.66849000000001,45.09745600000001,0 -66.709869,45.06145699999999,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-13-010-003-BEAVER HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-13-010-003-BEAVER HARBOUR</td></tr>
+    <tr><td>S_area</td><td>13</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.716576,45.124877,0 -66.742947,45.117995,0 -66.747333,45.07337699999999,0 -66.748565,45.058583,0 -66.749095,45.04925,0 -66.751031,45.037262,0 -66.718796,45.04173600000001,0 -66.717893,45.05659699999999,0 -66.709869,45.06145699999999,0 -66.66849000000001,45.09745600000001,0 -66.644538,45.12222899999999,0 -66.657928,45.14055900000001,0 -66.716576,45.124877,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-13-010-004-MOOSE ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-13-010-004-MOOSE ISLAND</td></tr>
+    <tr><td>S_area</td><td>13</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>4</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.755037,45.058368,0 -66.769092,45.047644,0 -66.784226,45.04052200000001,0 -66.784927,45.03182399999999,0 -66.751031,45.037262,0 -66.749095,45.04925,0 -66.748565,45.058583,0 -66.755037,45.058368,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-13-010-005-DEADMANS HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-13-010-005-DEADMANS HARBOUR</td></tr>
+    <tr><td>S_area</td><td>13</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>5</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.775374,45.057931,0 -66.80612000000001,45.040396,0 -66.806715,45.040109,0 -66.808335,45.038583,0 -66.81187300000001,45.03664499999999,0 -66.784927,45.03182399999999,0 -66.784226,45.04052200000001,0 -66.769092,45.047644,0 -66.755037,45.058366,0 -66.748565,45.058583,0 -66.747333,45.07337699999999,0 -66.775374,45.057931,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-13-010-006-BLACKS HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-13-010-006-BLACKS HARBOUR</td></tr>
+    <tr><td>S_area</td><td>13</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>6</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.785687,45.06193600000001,0 -66.791821,45.062745,0 -66.81820500000001,45.04912499999999,0 -66.821809,45.046501,0 -66.81187300000001,45.03664499999999,0 -66.808335,45.038583,0 -66.806715,45.040109,0 -66.80612000000001,45.040396,0 -66.775374,45.057931,0 -66.785687,45.06193600000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-14-010-001-LETANG HARBOUR &amp; RIVER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-14-010-001-LETANG HARBOUR & RIVER</td></tr>
+    <tr><td>S_area</td><td>14</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.747333,45.07337699999999,0 -66.742947,45.117995,0 -66.716576,45.124877,0 -66.729075,45.162624,0 -66.770105,45.154306,0 -66.774511,45.14434,0 -66.82532000000001,45.115338,0 -66.82943899999999,45.087917,0 -66.823594,45.077935,0 -66.81588499999999,45.071293,0 -66.818944,45.061632,0 -66.81966,45.060288,0 -66.819793,45.060129,0 -66.832223,45.052488,0 -66.821809,45.046501,0 -66.81820500000001,45.04912499999999,0 -66.791821,45.062745,0 -66.785687,45.06193600000001,0 -66.775374,45.057931,0 -66.747333,45.07337699999999,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-14-010-002-BACK BAY</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-14-010-002-BACK BAY</td></tr>
+    <tr><td>S_area</td><td>14</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.885874,45.09286,0 -66.87992,45.073228,0 -66.87884099999999,45.06008,0 -66.885852,45.043693,0 -66.892172,45.03810899999999,0 -66.898003,45.03303,0 -66.89684200000001,45.015321,0 -66.86754999999999,45.015323,0 -66.866843,45.02311900000001,0 -66.863218,45.025295,0 -66.862242,45.026402,0 -66.857227,45.029762,0 -66.851895,45.036855,0 -66.841128,45.046702,0 -66.832223,45.052488,0 -66.819793,45.060129,0 -66.81966,45.060288,0 -66.818944,45.061632,0 -66.81588499999999,45.071293,0 -66.823594,45.077935,0 -66.82943899999999,45.087917,0 -66.82532000000001,45.115338,0 -66.885874,45.09286,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-14-010-003-BLISS HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-14-010-003-BLISS HARBOUR</td></tr>
+    <tr><td>S_area</td><td>14</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.821809,45.046501,0 -66.832223,45.052488,0 -66.841128,45.046702,0 -66.851895,45.036855,0 -66.857227,45.029762,0 -66.862242,45.026402,0 -66.863218,45.025295,0 -66.866843,45.02311900000001,0 -66.86754999999999,45.015323,0 -66.82987300000001,45.01533600000001,0 -66.81187300000001,45.03664499999999,0 -66.821809,45.046501,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-15-010-001-LETETE PASS. TO MIDJIC BLUFF</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-15-010-001-LETETE PASS. TO MIDJIC BLUFF</td></tr>
+    <tr><td>S_area</td><td>15</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.901504,45.098087,0 -66.908875,45.1155,0 -66.91110500000001,45.11628200000001,0 -66.925596,45.120539,0 -66.933033,45.064224,0 -66.90324,45.038556,0 -66.898003,45.03303,0 -66.892172,45.03810899999999,0 -66.885852,45.043693,0 -66.87884099999999,45.06008,0 -66.87992,45.073228,0 -66.885874,45.09286,0 -66.901504,45.098087,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-16-010-001-MAGAGUADAVIC RIVER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-16-010-001-MAGAGUADAVIC RIVER</td></tr>
+    <tr><td>S_area</td><td>16</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.894893,45.170188,0 -66.913431,45.16031499999999,0 -66.92379800000001,45.13888799999999,0 -66.924977,45.137038,0 -66.925157,45.133941,0 -66.925596,45.120539,0 -66.91110500000001,45.11628200000001,0 -66.908875,45.1155,0 -66.901504,45.098087,0 -66.885874,45.09286,0 -66.82532000000001,45.115338,0 -66.774511,45.14434,0 -66.770105,45.154306,0 -66.729075,45.162624,0 -66.689466,45.202304,0 -66.756725,45.25523699999999,0 -66.958219,45.25783100000001,0 -66.894893,45.170188,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-16-010-002-DIGDEGUASH HARBOUR</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-16-010-002-DIGDEGUASH HARBOUR</td></tr>
+    <tr><td>S_area</td><td>16</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.996668,45.258323,0 -67.0189,45.24885,0 -66.99911299999999,45.229106,0 -66.974885,45.16020900000001,0 -66.968971,45.149972,0 -66.96887099999999,45.1498,0 -66.97108299999999,45.13696999999999,0 -66.97237,45.120601,0 -66.9256,45.120479,0 -66.925157,45.133941,0 -66.924977,45.137038,0 -66.92379800000001,45.13888799999999,0 -66.913431,45.16031499999999,0 -66.894893,45.170188,0 -66.958219,45.25783100000001,0 -66.996668,45.258323,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-16-010-003-BOCABEC RIVER &amp; MILL COVE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-16-010-003-BOCABEC RIVER & MILL COVE</td></tr>
+    <tr><td>S_area</td><td>16</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-67.07383400000001,45.231169,0 -67.089428,45.20321500000001,0 -67.065293,45.183316,0 -67.042096,45.185516,0 -67.02538300000001,45.17702400000001,0 -67.013408,45.174116,0 -67.00252999999999,45.145065,0 -66.993262,45.132887,0 -66.984577,45.120272,0 -66.97237,45.120601,0 -66.97108299999999,45.13696999999999,0 -66.96887099999999,45.1498,0 -66.968971,45.149972,0 -66.974885,45.16020900000001,0 -66.99911299999999,45.229106,0 -67.07383400000001,45.231169,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-16-020-001-BOCABEC &amp; BIRCH COVE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-16-020-001-BOCABEC & BIRCH COVE</td></tr>
+    <tr><td>S_area</td><td>16</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-67.09216000000001,45.17150800000001,0 -67.062527,45.152606,0 -67.04377100000001,45.14150900000001,0 -67.032256,45.125121,0 -67.01178899999999,45.119086,0 -66.984577,45.120272,0 -66.993262,45.132887,0 -67.00252999999999,45.145065,0 -67.013408,45.174116,0 -67.02538300000001,45.17702400000001,0 -67.042096,45.185516,0 -67.065293,45.183316,0 -67.089428,45.20321500000001,0 -67.09216000000001,45.17150800000001,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-16-020-002-CHAMCOOK HBR / McCANN COVE</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-16-020-002-CHAMCOOK HBR / McCANN COVE</td></tr>
+    <tr><td>S_area</td><td>16</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-67.12260499999999,45.168072,0 -67.12260499999999,45.154324,0 -67.088101,45.129693,0 -67.07521,45.095878,0 -67.053539,45.09458999999999,0 -67.02004700000001,45.09476100000001,0 -67.009325,45.094621,0 -67.01178899999999,45.119086,0 -67.032256,45.125121,0 -67.04377100000001,45.14150900000001,0 -67.062527,45.152606,0 -67.09216000000001,45.17150800000001,0 -67.12260499999999,45.168072,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-16-020-003-ST. ANDREWS</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-16-020-003-ST. ANDREWS</td></tr>
+    <tr><td>S_area</td><td>16</td></tr>
+    <tr><td>S_sec</td><td>2</td></tr>
+    <tr><td>S_sub</td><td>3</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-67.082932,45.076445,0 -67.09429400000001,45.07413600000001,0 -67.076263,45.044331,0 -67.03656599999999,45.048689,0 -67.022188,45.06318499999999,0 -67.009325,45.094621,0 -67.02004700000001,45.09476100000001,0 -67.053539,45.09458999999999,0 -67.07521,45.095878,0 -67.082932,45.076445,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-16-030-001-ST CROIX RIVER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-16-030-001-ST CROIX RIVER</td></tr>
+    <tr><td>S_area</td><td>16</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-67.3479,45.254102,0 -67.42136100000001,45.250896,0 -67.472067,45.250896,0 -67.396981,45.141708,0 -67.336539,45.122071,0 -67.29264499999999,45.147329,0 -67.280942,45.18536400000001,0 -67.228695,45.160945,0 -67.223038,45.163223,0 -67.21783499999999,45.166436,0 -67.213517,45.167404,0 -67.20849800000001,45.169198,0 -67.204959,45.171267,0 -67.202657,45.17122200000001,0 -67.19256300000001,45.166048,0 -67.190635,45.16546,0 -67.16772400000001,45.164518,0 -67.158661,45.16185200000001,0 -67.144768,45.14576399999999,0 -67.12864,45.13212399999999,0 -67.112427,45.11244099999999,0 -67.112075,45.111696,0 -67.094435,45.074369,0 -67.09429400000001,45.07413600000001,0 -67.082932,45.076445,0 -67.07521,45.095878,0 -67.088101,45.129693,0 -67.12260499999999,45.154324,0 -67.12260499999999,45.168072,0 -67.139798,45.169476,0 -67.160248,45.17183200000001,0 -67.204826,45.180203,0 -67.247137,45.19865399999999,0 -67.254938,45.25181099999999,0 -67.3479,45.254102,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-16-030-002-OAK BAY AND WAWEIG RIVER</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-16-030-002-OAK BAY AND WAWEIG RIVER</td></tr>
+    <tr><td>S_area</td><td>16</td></tr>
+    <tr><td>S_sec</td><td>3</td></tr>
+    <tr><td>S_sub</td><td>2</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-67.123434,45.235978,0 -67.211381,45.255019,0 -67.254938,45.25181099999999,0 -67.247137,45.19865399999999,0 -67.204826,45.180203,0 -67.160248,45.17183200000001,0 -67.139798,45.169476,0 -67.12260499999999,45.168072,0 -67.09216000000001,45.17150800000001,0 -67.089428,45.20321500000001,0 -67.07383400000001,45.231169,0 -67.123434,45.235978,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-17-010-001-DEER ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-17-010-001-DEER ISLAND</td></tr>
+    <tr><td>S_area</td><td>17</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-67.023678,44.983861,0 -67.029038,44.966103,0 -67.02229,44.954912,0 -67.021777,44.95385,0 -67.01931399999999,44.952317,0 -67.009597,44.944578,0 -67.008719,44.943658,0 -67.00157299999999,44.93413,0 -66.99988000000001,44.932176,0 -66.999301,44.931084,0 -66.996746,44.928113,0 -66.968647,44.90995,0 -66.928978,44.955056,0 -66.903407,44.974212,0 -66.90026500000001,44.983823,0 -66.896171,45.004569,0 -66.89608699999999,45.00546799999999,0 -66.89684200000001,45.015321,0 -66.898003,45.03303,0 -66.90324,45.038556,0 -66.933033,45.064224,0 -67.023678,44.983861,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-18-010-001-CAMPOBELLO ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-18-010-001-CAMPOBELLO ISLAND</td></tr>
+    <tr><td>S_area</td><td>18</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.968647,44.90995,0 -66.972105,44.894633,0 -66.979879,44.877306,0 -66.98200900000001,44.867117,0 -66.980588,44.860341,0 -66.979944,44.859308,0 -66.974656,44.850828,0 -66.974744,44.841459,0 -66.96518399999999,44.828722,0 -66.93244,44.825361,0 -66.92147900000001,44.818114,0 -66.874875,44.910283,0 -66.879058,44.950857,0 -66.90116999999999,44.967341,0 -66.928978,44.955056,0 -66.968647,44.90995,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NB-19-010-001-GRAND MANAN ISLAND</name>
+			<description><![CDATA[<br><br><br>
+    <table border="1" padding="0">
+    <tr><td>Prov</td><td>NB</td></tr>
+    <tr><td>Area_label</td><td>NB-19-010-001-GRAND MANAN ISLAND</td></tr>
+    <tr><td>S_area</td><td>19</td></tr>
+    <tr><td>S_sec</td><td>1</td></tr>
+    <tr><td>S_sub</td><td>1</td></tr>]]></description>
+			<Style>
+				<LineStyle>
+					<color>ff000000</color>
+					<width>1.5</width>
+				</LineStyle>
+				<PolyStyle>
+					<fill>0</fill>
+					<outline>1</outline>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-66.962129,44.609719,0 -66.80077900000001,44.533274,0 -66.63464399999999,44.622457,0 -66.69918300000001,44.801675,0 -66.780456,44.827156,0 -66.849778,44.800826,0 -66.962129,44.609719,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>L Sector Pollution Source</name>
+	<Folder>
+		<name>aaaaaaaaaa</name>
+		<open>1</open>
+		<Placemark>
+			<name>L-01 -- 5</name>
+			<Point>
+				<coordinates>-71.94449625227,48.6143382804763,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-01 -- 1</name>
+			<Point>
+				<coordinates>-71.99101216458,48.5631709143988,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-01 -- 2</name>
+			<Point>
+				<coordinates>-71.96206902093,48.5362948960256,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-01 -- 3</name>
+			<Point>
+				<coordinates>-71.91400251021,48.5523170658158,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-01 -- 4</name>
+			<Point>
+				<coordinates>-71.96413614545,48.5931477894789,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-01 -- 66</name>
+			<Point>
+				<coordinates>-72.088196,48.621224,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-01 -- 6</name>
+			<Point>
+				<coordinates>-71.87678984838,48.5807433425207,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-02 -- 1</name>
+			<Point>
+				<coordinates>-72.15071615073,48.6226074583904,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-02 -- 2</name>
+			<Point>
+				<coordinates>-72.10730160529,48.6096864853507,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-02 -- 3</name>
+			<Point>
+				<coordinates>-72.09489715798,48.6370793698489,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-02 -- 4</name>
+			<Point>
+				<coordinates>-72.12694149846,48.6298432440979,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-02 -- 5</name>
+			<Point>
+				<coordinates>-72.14296349868,48.6587867269713,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-03 -- 12</name>
+			<Point>
+				<coordinates>-72.1339883902,48.6836197639765,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-03 -- 7</name>
+			<Point>
+				<coordinates>-72.10572924408,48.6744243075593,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-03 -- 8</name>
+			<Point>
+				<coordinates>-72.08240395932,48.6654532798542,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-03 -- 9</name>
+			<Point>
+				<coordinates>-72.07410587747,48.680255713598,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-03 -- 10</name>
+			<Point>
+				<coordinates>-72.09989783788,48.6930396491059,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-03 -- 11</name>
+			<Point>
+				<coordinates>-72.12456867483,48.7053750672329,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>L-02 -- 6</name>
+			<Point>
+				<coordinates>-72.11958329688,48.6483208680257,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

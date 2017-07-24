@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCB16C99-6D23-4AB1-9CAC-2E7478C562B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PCCSM</RootNamespace>
+    <AssemblyName>PCCSM</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="box_model_dilution_s.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BV_N1H_S_old.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BV_N1M_S.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BV_N1M_S_occupation_sup.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BV_N2H_S_old.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BV_N2M_S.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BV_N3M_S.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BV_N4_S.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C2013_Municipalité.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C2013_Toponymes_officiels.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C2013_TypesEntitesToponymiques.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="calendrier.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="calendrier_lunaire.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CCG_Nav_Aid.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHS_PIPSOL_line.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHS_sounding.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="codification.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="codification_description.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contact.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contact_groupe.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cour_flotteur_p.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cour_trajectoire_l.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cour_zone_etude.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_banc_espece.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_banc_espece_exploitation.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_banc_secteur.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_banc_source_info.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_depuration.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_document.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_echantillonnage_planification.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_echantillonnage_planification_mensuelle.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_ec_recommandation.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_ec_recommandation_note.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_ed_donnees_gisement.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_ed_echantillonnage.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_ed_granulometrie.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_ed_taille.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_feedback.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_histo_operation.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_log_terrain.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_mesure.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_rapport.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_station_no_georef.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_tournee.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_tournee_maree_temporaire.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_tournee_maree_temporaire_validation.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_zone.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_zone_secteur_station_meteo.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dec.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EvaluationRisqueSecteur.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="evaluation_risque.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_banc_coquillier_s.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_ed_quadrat_p.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_feedback_ap.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_photographie_p.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_pollution_baie_gaspe_p.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_pollution_p.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_pollution_p_fosse_septique_gaspe.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_ressource_coquillliere_s.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_secteur_s.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_stations_p.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_station_audit_p.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_terrain_l_s.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_terrain_p.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_transect_l.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gps_log.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hyperlien.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="impact_evaluation.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inf_Infrastructures.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inf_Municipalite.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inf_Reseau.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inf_Traitement.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inf_TypeEntite.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="laboratoire_operateur.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mactre2012_inventaire_idm.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="maree.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MarineChartIndex.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="methode_description.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modele.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modele_dilution.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mod_contamination_s.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="municipalite.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NetworkID.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="No_Civ_region_ll83mdb.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="organisation.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PCCSMDBEDM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCCSMDBEDM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PCCSMDBEDM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PCCSMDBEDM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCCSMDBEDM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PCCSM_CSSP_Tools_ID.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="position_peche_espece_ziff.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QC_MRNF_SIEF_PEEFO.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QC_MRNF_SIEF_PEEFO_CDR_CO.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QC_MRNF_SIEF_PEEFO_CLP_CO.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="releve_sanitaire.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="releve_sanitaire_secteur.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="romm.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="romm_espece_code.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="romm_observation.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RRN_QC_4_0_SEGMROUT.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCF_BIOMQ.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCF_Colonies.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCF_Especes.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCF_RivesPoints2.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCF_sauvagine_DonneesOiseau.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCF_sauvagine_NoSEC_ZONE.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="statcan_recensement_2011_lot.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="statcan_recensement_2016_lot.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="statcan_recensement_ilot.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_climato_atl_qc.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_dans_buffer.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_hydrometrique.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_hydrometrique_debit.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_hydrometrique_secteur.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_maree.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_maree_moyenne_marnage.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_maree_port_secondaire_diff.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_maree_secteur.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_meteo.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_meteo_mddep.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="station_meteo_precipitation_journaliere.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblRapportTournee.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_precipitation_journaliere.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="toponyme.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tournee_planification.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="treaser.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tributaire_par_secteur_par_annee.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_agent_technique.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_bearing.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_code.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_cueilleur.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_espece.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_geo_pollution_baie_gaspe.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_geo_terrain.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_llc_typecouv.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_ordonnance_type.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_pollution_code.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_recommandation.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_recommandation_mpo.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_reference.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_region.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_tr_code_type_entite_matrice.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="waypoint.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="PCCSMDBEDM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PCCSMDBEDM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="PCCSMDBEDM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PCCSMDBEDM.edmx</DependentUpon>
+      <LastGenOutput>PCCSMDBEDM.Context.cs</LastGenOutput>
+    </None>
+    <None Include="PCCSMDBEDM.edmx.diagram">
+      <DependentUpon>PCCSMDBEDM.edmx</DependentUpon>
+    </None>
+    <None Include="PCCSMDBEDM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PCCSMDBEDM.edmx</DependentUpon>
+      <LastGenOutput>PCCSMDBEDM.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

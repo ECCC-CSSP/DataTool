@@ -1,0 +1,1985 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TempDataToolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ASGADMPNTables">
+          <Key>
+            <PropertyRef Name="ASGADMPNTableID" />
+          </Key>
+          <Property Name="ASGADMPNTableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="TUBE5_10" Type="nvarchar" MaxLength="50" />
+          <Property Name="TUBE5_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="TUBE5_01" Type="nvarchar" MaxLength="50" />
+          <Property Name="MPN" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ASGADPrecDatas">
+          <Key>
+            <PropertyRef Name="ASGADPrecDataID" />
+          </Key>
+          <Property Name="ASGADPrecDataID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRECIPID" Type="nvarchar" MaxLength="50" />
+          <Property Name="SAMP_DATE" Type="datetime" />
+          <Property Name="PRECIP" Type="float" />
+        </EntityType>
+        <EntityType Name="ASGADPrecStns">
+          <Key>
+            <PropertyRef Name="ASGADPrecStnID" />
+          </Key>
+          <Property Name="ASGADPrecStnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAT" Type="nvarchar" MaxLength="50" />
+          <Property Name="LONG" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAT_DEG" Type="float" />
+          <Property Name="LONG_DEG" Type="float" />
+          <Property Name="ELEV" Type="float" />
+        </EntityType>
+        <EntityType Name="ASGADRunMOUs">
+          <Key>
+            <PropertyRef Name="ASGADRunMOUID" />
+          </Key>
+          <Property Name="ASGADRunMOUID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="50" />
+          <Property Name="AREA" Type="nvarchar" MaxLength="50" />
+          <Property Name="SECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SUBSECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SAMP_DATE" Type="datetime" />
+          <Property Name="RUN_NUMBER" Type="int" />
+          <Property Name="START_TIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIN_TIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="TIDE_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="TIDEF_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="AUTOCALC" Type="nvarchar" MaxLength="50" />
+          <Property Name="PPT24" Type="float" />
+          <Property Name="PPT48" Type="float" />
+          <Property Name="PPT72" Type="float" />
+          <Property Name="NOTE" Type="text" />
+          <Property Name="UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ASGADRuns">
+          <Key>
+            <PropertyRef Name="ASGADRunID" />
+          </Key>
+          <Property Name="ASGADRunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="50" />
+          <Property Name="AREA" Type="nvarchar" MaxLength="50" />
+          <Property Name="SECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SUBSECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SAMP_DATE" Type="datetime" />
+          <Property Name="RUN_NUMBER" Type="int" />
+          <Property Name="START_TIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIN_TIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="TIDE_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="TIDEF_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="AUTOCALC" Type="nvarchar" MaxLength="50" />
+          <Property Name="PPT24" Type="float" />
+          <Property Name="PPT48" Type="float" />
+          <Property Name="PPT72" Type="float" />
+          <Property Name="NOTE" Type="text" />
+          <Property Name="UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ASGADSampCodes">
+          <Key>
+            <PropertyRef Name="ASGADSampCodeID" />
+          </Key>
+          <Property Name="ASGADSampCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="SAMPCODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="OTH_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SAMPNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="UNITS" Type="nvarchar" MaxLength="50" />
+          <Property Name="LOW_LIMIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="HIGH_LIMIT" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ASGADSampleMOUs">
+          <Key>
+            <PropertyRef Name="ASGADSampleMOUID" />
+          </Key>
+          <Property Name="ASGADSampleMOUID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="50" />
+          <Property Name="AREA" Type="nvarchar" MaxLength="50" />
+          <Property Name="SECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SUBSECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SAMP_DATE" Type="datetime" />
+          <Property Name="RUN_NUMBER" Type="int" />
+          <Property Name="STAT_NBR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SAMP_TIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="FEC_COL" Type="float" />
+          <Property Name="SALINITY" Type="float" />
+          <Property Name="WATERTEMP" Type="float" />
+          <Property Name="UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ASGADSamples">
+          <Key>
+            <PropertyRef Name="ASGADSampleID" />
+          </Key>
+          <Property Name="ASGADSampleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="50" />
+          <Property Name="AREA" Type="nvarchar" MaxLength="50" />
+          <Property Name="SECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SUBSECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SAMP_DATE" Type="datetime" />
+          <Property Name="RUN_NUMBER" Type="int" />
+          <Property Name="STAT_NBR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SAMP_TIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="FEC_COL" Type="float" />
+          <Property Name="SALINITY" Type="float" />
+          <Property Name="WATERTEMP" Type="float" />
+          <Property Name="UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ASGADStations">
+          <Key>
+            <PropertyRef Name="ASGADStationID" />
+          </Key>
+          <Property Name="ASGADStationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="50" />
+          <Property Name="AREA" Type="nvarchar" MaxLength="50" />
+          <Property Name="SECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SUBSECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="STAT_NBR" Type="nvarchar" MaxLength="50" />
+          <Property Name="STAT_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="STAT_TYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SORT_ORDER" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="EASTING" Type="nvarchar" MaxLength="50" />
+          <Property Name="NORTHING" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAT" Type="float" />
+          <Property Name="LONG" Type="float" />
+          <Property Name="ACTIVE" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ASGADSubsects">
+          <Key>
+            <PropertyRef Name="ASGADSubsectID" />
+          </Key>
+          <Property Name="ASGADSubsectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="50" />
+          <Property Name="AREA" Type="nvarchar" MaxLength="50" />
+          <Property Name="SECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SUBSECTOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="DFO_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DESCRIPT" Type="nvarchar" MaxLength="250" />
+          <Property Name="MAP" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRECIPID" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRECIPID2" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRECIPID3" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ASGADTides">
+          <Key>
+            <PropertyRef Name="ASGADSTideID" />
+          </Key>
+          <Property Name="ASGADSTideID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p" Type="nvarchar" MaxLength="50" />
+          <Property Name="TIDE_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="TIDE_NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BCLandSamples">
+          <Key>
+            <PropertyRef Name="BCLandSampleID" />
+          </Key>
+          <Property Name="BCLandSampleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="SR_SURVEY" Type="int" />
+          <Property Name="SR_STATION_CODE" Type="nvarchar" MaxLength="6" />
+          <Property Name="SR_STATION_TYPE" Type="nvarchar" MaxLength="2" />
+          <Property Name="SR_ANALYSIS_TYPE" Type="nvarchar" MaxLength="4" />
+          <Property Name="SR_READING_DATE" Type="datetime" />
+          <Property Name="SR_READING_TIME" Type="nvarchar" MaxLength="5" />
+          <Property Name="SR_SAMPLE_TYPE" Type="nvarchar" MaxLength="2" />
+          <Property Name="SR_FECAL_COLIFORM_IND" Type="nvarchar" MaxLength="2" />
+          <Property Name="SR_FECAL_COLIFORM" Type="int" />
+          <Property Name="SR_ENTEROCOCCI_IND" Type="nvarchar" MaxLength="2" />
+          <Property Name="SR_ENTEROCOCCI" Type="int" />
+          <Property Name="SR_FLOW" Type="nvarchar" MaxLength="50" />
+          <Property Name="SR_SAMPLE_AGENCY" Type="int" />
+          <Property Name="SR_OLD_KEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="SR_SAMPLE_DEPTH" Type="float" />
+          <Property Name="SR_SALINITY" Type="float" />
+          <Property Name="SR_TEMPERATURE" Type="float" />
+          <Property Name="SR_TIDE_CODE" Type="nvarchar" MaxLength="2" />
+          <Property Name="SR_OBS" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="BCLandSampleStations">
+          <Key>
+            <PropertyRef Name="BCLandSampleStationID" />
+          </Key>
+          <Property Name="BCLandSampleStationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OID" Type="int" />
+          <Property Name="SS_STATION_CODE" Type="nvarchar" MaxLength="7" />
+          <Property Name="SS_DESCRIPTION" Type="nvarchar" MaxLength="151" />
+          <Property Name="SS_LATITUDE_DEGREES" Type="float" />
+          <Property Name="SS_LATITUDE_MINUTES" Type="float" />
+          <Property Name="SS_LONGITUDE_DEGREES" Type="float" />
+          <Property Name="SS_LONGITUDE_MINUTES" Type="float" />
+          <Property Name="SS_SHELLFISH_SECTOR" Type="nvarchar" MaxLength="5" />
+          <Property Name="SS_DFO_SUBAREA" Type="nvarchar" MaxLength="5" />
+          <Property Name="SS_HARVEST_TYPE" Type="nvarchar" MaxLength="2" />
+          <Property Name="SS_STATUS" Type="nvarchar" MaxLength="9" />
+          <Property Name="SS_REMOTE_STATUS" Type="nvarchar" MaxLength="2" />
+          <Property Name="SS_LASTUPDATE" Type="datetime" />
+          <Property Name="SS_ENTEREDBY" Type="nvarchar" MaxLength="21" />
+          <Property Name="LAT" Type="float" />
+          <Property Name="LON" Type="float" />
+          <Property Name="METADATA" Type="nvarchar" MaxLength="256" />
+          <Property Name="DATALINK" Type="nvarchar" MaxLength="101" />
+          <Property Name="SS_STATION_TYPE" Type="nvarchar" MaxLength="6" />
+          <Property Name="OLD_KEY" Type="nvarchar" MaxLength="13" />
+          <Property Name="OLD_KEY2" Type="nvarchar" MaxLength="13" />
+          <Property Name="QA" Type="nvarchar" MaxLength="51" />
+        </EntityType>
+        <EntityType Name="BCMarineSamples">
+          <Key>
+            <PropertyRef Name="BCMarineSampleID" />
+          </Key>
+          <Property Name="BCMarineSampleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SR_SURVEY" Type="int" />
+          <Property Name="SR_STATION_CODE" Type="nvarchar" MaxLength="6" />
+          <Property Name="SR_ANALYSIS_TYPE" Type="nvarchar" MaxLength="4" />
+          <Property Name="SR_READING_DATE" Type="datetime" />
+          <Property Name="SR_READING_TIME" Type="nvarchar" MaxLength="5" />
+          <Property Name="SR_SAMPLE_TYPE" Type="nvarchar" MaxLength="2" />
+          <Property Name="SR_SAMPLE_DEPTH" Type="float" />
+          <Property Name="SR_FECAL_COLIFORM_IND" Type="nvarchar" MaxLength="2" />
+          <Property Name="SR_FECAL_COLIFORM" Type="int" />
+          <Property Name="SR_ENTEROCOCCI_IND" Type="nvarchar" MaxLength="2" />
+          <Property Name="SR_ENTEROCOCCI" Type="int" />
+          <Property Name="SR_SALINITY" Type="float" />
+          <Property Name="SR_TEMPERATURE" Type="float" />
+          <Property Name="SR_TURBIDITY" Type="float" />
+          <Property Name="SR_TIDE_CODE" Type="nvarchar" MaxLength="2" />
+          <Property Name="SR_SPECIES" Type="nvarchar" MaxLength="3" />
+          <Property Name="SR_SAMPLE_AGENCY" Type="int" />
+          <Property Name="SR_OBS" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="BCMarineSampleStations">
+          <Key>
+            <PropertyRef Name="BCMarineSampleStationID" />
+          </Key>
+          <Property Name="BCMarineSampleStationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OID" Type="int" />
+          <Property Name="SS_STATION_CODE" Type="nvarchar" MaxLength="7" />
+          <Property Name="SS_DESCRIPTION" Type="nvarchar" MaxLength="151" />
+          <Property Name="SS_LATITUDE_DEGREES" Type="float" />
+          <Property Name="SS_LATITUDE_MINUTES" Type="float" />
+          <Property Name="SS_LONGITUDE_DEGREES" Type="float" />
+          <Property Name="SS_LONGITUDE_MINUTES" Type="float" />
+          <Property Name="SS_SHELLFISH_SECTOR" Type="nvarchar" MaxLength="5" />
+          <Property Name="SS_DFO_SUBAREA" Type="nvarchar" MaxLength="5" />
+          <Property Name="SS_HARVEST_TYPE" Type="nvarchar" MaxLength="2" />
+          <Property Name="SS_STATUS" Type="nvarchar" MaxLength="9" />
+          <Property Name="SS_REMOTE_STATUS" Type="nvarchar" MaxLength="2" />
+          <Property Name="SS_LASTUPDATE" Type="datetime" />
+          <Property Name="SS_ENTEREDBY" Type="nvarchar" MaxLength="21" />
+          <Property Name="LAT" Type="float" />
+          <Property Name="LON" Type="float" />
+          <Property Name="METADATA" Type="nvarchar" MaxLength="256" />
+          <Property Name="DATALINK" Type="nvarchar" MaxLength="101" />
+        </EntityType>
+        <EntityType Name="BCNames">
+          <Key>
+            <PropertyRef Name="BCNameID" />
+          </Key>
+          <Property Name="BCNameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Accronym" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BCPolSources">
+          <Key>
+            <PropertyRef Name="BCPolSourceID" />
+          </Key>
+          <Property Name="BCPolSourceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="int" />
+          <Property Name="Verified" Type="nvarchar" MaxLength="6" />
+          <Property Name="Source_nme" Type="nvarchar" MaxLength="11" />
+          <Property Name="Label" Type="nvarchar" MaxLength="7" />
+          <Property Name="Name" Type="nvarchar" MaxLength="61" />
+          <Property Name="Location" Type="nvarchar" MaxLength="61" />
+          <Property Name="LCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="ICode" Type="nvarchar" MaxLength="3" />
+          <Property Name="Key_" Type="nvarchar" MaxLength="7" />
+          <Property Name="X_calc" Type="float" />
+          <Property Name="Y_calc" Type="float" />
+          <Property Name="DATALINK" Type="nvarchar" MaxLength="57" />
+          <Property Name="yyyymmdd" Type="datetime" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="251" />
+          <Property Name="LatDegMin" Type="nvarchar" MaxLength="15" />
+          <Property Name="LonDegMin" Type="nvarchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="BCPrecipitations">
+          <Key>
+            <PropertyRef Name="BCPrecipitationID" />
+          </Key>
+          <Property Name="BCPrecipitationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WR_DATE" Type="datetime" />
+          <Property Name="WR_SURVEY" Type="int" />
+          <Property Name="WR_PRECIPITATION_RAIN" Type="float" />
+          <Property Name="WR_PRECIPITATION_SNOW" Type="float" />
+          <Property Name="WR_TOTAL_PRECIPITATION" Type="float" />
+          <Property Name="WR_RECORDING_STATION" Type="nvarchar" MaxLength="50" />
+          <Property Name="WR_RECORDING_STATION_CL" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClimateID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BCSurveys">
+          <Key>
+            <PropertyRef Name="BCSurveyID" />
+          </Key>
+          <Property Name="BCSurveyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_ID_NUMBER" Type="int" />
+          <Property Name="S_SHELLFISH_SECTOR" Type="nvarchar" MaxLength="5" />
+          <Property Name="S_DESCRIPTION" Type="nvarchar" MaxLength="51" />
+          <Property Name="S_SURVEY_TYPE" Type="nvarchar" MaxLength="2" />
+          <Property Name="S_START_DATE" Type="datetime" />
+          <Property Name="S_END_DATE" Type="datetime" />
+          <Property Name="S_COMMENT" Type="text" />
+        </EntityType>
+        <EntityType Name="LocationNameLatLng">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Municipality" Type="nvarchar" MaxLength="100" />
+          <Property Name="Province" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Lng" Type="float" />
+        </EntityType>
+        <EntityType Name="Nomenclature">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Locator" Type="nvarchar" MaxLength="50" />
+          <Property Name="Area" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sector" Type="nvarchar" MaxLength="250" />
+          <Property Name="DFO" Type="nvarchar" MaxLength="250" />
+          <Property Name="Subsector" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubsectorDesc" Type="nvarchar" MaxLength="250" />
+          <Property Name="Map" Type="nvarchar" MaxLength="250" />
+          <Property Name="Updated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QCClimateSites">
+          <Key>
+            <PropertyRef Name="QCClimateSiteID" />
+          </Key>
+          <Property Name="QCClimateSiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="station_meteo" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClimateSiteName" Type="nchar" MaxLength="100" />
+          <Property Name="ClimateID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="QCSecteurMPols">
+          <Key>
+            <PropertyRef Name="QCSecteurMPolID" />
+          </Key>
+          <Property Name="QCSecteurMPolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subsector" Type="nvarchar" MaxLength="50" />
+          <Property Name="geo_pollution_id" Type="int" />
+        </EntityType>
+        <EntityType Name="QCSubsectorAssociations">
+          <Key>
+            <PropertyRef Name="QCSubsectorAssociationID" />
+          </Key>
+          <Property Name="QCSubsectorAssociationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubsectorText" Type="nvarchar" MaxLength="50" />
+          <Property Name="QCSectorText" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="QCSubSectors">
+          <Key>
+            <PropertyRef Name="QCSubSectorID" />
+          </Key>
+          <Property Name="QCSubSectorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QCSubSectorLetter" Type="nvarchar" MaxLength="50" />
+          <Property Name="QCSubSectorTextEN" Type="nvarchar" MaxLength="250" />
+          <Property Name="QCSubSectorTextFR" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="SanitaryDavCObs">
+          <Key>
+            <PropertyRef Name="SanitaryDavCObsID" />
+          </Key>
+          <Property Name="SanitaryDavCObsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SanitaryDavCSiteID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="ObsDate" Type="datetime" />
+          <Property Name="Name_Inspector" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="nvarchar" MaxLength="9" />
+          <Property Name="Status" Type="nvarchar" MaxLength="9" />
+          <Property Name="Risk_Assessment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observations" Type="text" />
+        </EntityType>
+        <EntityType Name="SanitaryDavCSites">
+          <Key>
+            <PropertyRef Name="SanitaryDavCSiteID" />
+          </Key>
+          <Property Name="SanitaryDavCSiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="Locator" Type="nvarchar" MaxLength="150" />
+          <Property Name="Site" Type="int" />
+          <Property Name="Zone" Type="int" />
+          <Property Name="easting" Type="float" />
+          <Property Name="northing" Type="float" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="150" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+        </EntityType>
+        <EntityType Name="SanitaryDavObs">
+          <Key>
+            <PropertyRef Name="SanitaryDavObsID" />
+          </Key>
+          <Property Name="SanitaryDavObsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SanitaryDavSiteID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="ObsDate" Type="datetime" />
+          <Property Name="Name_Inspector" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="nvarchar" MaxLength="150" />
+          <Property Name="Status" Type="nvarchar" MaxLength="5" />
+          <Property Name="Risk_Assessment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observations" Type="text" />
+        </EntityType>
+        <EntityType Name="SanitaryDavSites">
+          <Key>
+            <PropertyRef Name="SanitaryDavSiteID" />
+          </Key>
+          <Property Name="SanitaryDavSiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="Locator" Type="nvarchar" MaxLength="150" />
+          <Property Name="Site" Type="int" />
+          <Property Name="Zone" Type="int" />
+          <Property Name="easting" Type="float" />
+          <Property Name="northing" Type="float" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="150" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+        </EntityType>
+        <EntityType Name="SanitaryDonObs">
+          <Key>
+            <PropertyRef Name="SanitaryDonObsID" />
+          </Key>
+          <Property Name="SanitaryDonObsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SanitaryDonSiteID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="ObsDate" Type="datetime" />
+          <Property Name="Name_Inspector" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="nvarchar" MaxLength="5" />
+          <Property Name="Status" Type="nvarchar" MaxLength="5" />
+          <Property Name="Risk_Assessment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observations" Type="text" />
+        </EntityType>
+        <EntityType Name="SanitaryDonSites">
+          <Key>
+            <PropertyRef Name="SanitaryDonSiteID" />
+          </Key>
+          <Property Name="SanitaryDonSiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="Locator" Type="nvarchar" MaxLength="150" />
+          <Property Name="Site" Type="int" />
+          <Property Name="Zone" Type="int" />
+          <Property Name="easting" Type="float" />
+          <Property Name="northing" Type="float" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="150" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+        </EntityType>
+        <EntityType Name="SanitaryJoeObs">
+          <Key>
+            <PropertyRef Name="SanitaryJoeObsID" />
+          </Key>
+          <Property Name="SanitaryJoeObsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SanitaryJoeSiteID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="ObsDate" Type="datetime" />
+          <Property Name="Name_Inspector" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="nvarchar" MaxLength="150" />
+          <Property Name="Status" Type="nvarchar" MaxLength="5" />
+          <Property Name="Risk_Assessment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observations" Type="text" />
+        </EntityType>
+        <EntityType Name="SanitaryJoeSites">
+          <Key>
+            <PropertyRef Name="SanitaryJoeSiteID" />
+          </Key>
+          <Property Name="SanitaryJoeSiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="Locator" Type="nvarchar" MaxLength="150" />
+          <Property Name="Site" Type="int" />
+          <Property Name="Zone" Type="int" />
+          <Property Name="easting" Type="float" />
+          <Property Name="northing" Type="float" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="150" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+        </EntityType>
+        <EntityType Name="SanitaryPatObs">
+          <Key>
+            <PropertyRef Name="SanitaryPatObsID" />
+          </Key>
+          <Property Name="SanitaryPatObsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SanitaryPatSiteID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="ObsDate" Type="datetime" />
+          <Property Name="Name_Inspector" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="nvarchar" MaxLength="5" />
+          <Property Name="Status" Type="nvarchar" MaxLength="5" />
+          <Property Name="Risk_Assessment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observations" Type="text" />
+        </EntityType>
+        <EntityType Name="SanitaryPatSites">
+          <Key>
+            <PropertyRef Name="SanitaryPatSiteID" />
+          </Key>
+          <Property Name="SanitaryPatSiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="siteid" Type="int" />
+          <Property Name="Locator" Type="nvarchar" MaxLength="150" />
+          <Property Name="Site" Type="int" />
+          <Property Name="Zone" Type="int" />
+          <Property Name="easting" Type="float" />
+          <Property Name="northing" Type="float" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="150" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+        </EntityType>
+        <Association Name="FK_SanitaryDavCObs_SanitaryDavCSites">
+          <End Role="SanitaryDavCSites" Type="Self.SanitaryDavCSites" Multiplicity="1" />
+          <End Role="SanitaryDavCObs" Type="Self.SanitaryDavCObs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryDavCSites">
+              <PropertyRef Name="SanitaryDavCSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryDavCObs">
+              <PropertyRef Name="SanitaryDavCSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanitaryDavObs_SanitaryDavSites">
+          <End Role="SanitaryDavSites" Type="Self.SanitaryDavSites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SanitaryDavObs" Type="Self.SanitaryDavObs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryDavSites">
+              <PropertyRef Name="SanitaryDavSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryDavObs">
+              <PropertyRef Name="SanitaryDavSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanitaryDonObs_SanitaryDonSites">
+          <End Role="SanitaryDonSites" Type="Self.SanitaryDonSites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SanitaryDonObs" Type="Self.SanitaryDonObs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryDonSites">
+              <PropertyRef Name="SanitaryDonSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryDonObs">
+              <PropertyRef Name="SanitaryDonSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanitaryJoeObs_SanitaryJoeSites">
+          <End Role="SanitaryJoeSites" Type="Self.SanitaryJoeSites" Multiplicity="1" />
+          <End Role="SanitaryJoeObs" Type="Self.SanitaryJoeObs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryJoeSites">
+              <PropertyRef Name="SanitaryJoeSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryJoeObs">
+              <PropertyRef Name="SanitaryJoeSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanitaryPatObs_SanitaryPatSites">
+          <End Role="SanitaryPatSites" Type="Self.SanitaryPatSites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SanitaryPatObs" Type="Self.SanitaryPatObs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryPatSites">
+              <PropertyRef Name="SanitaryPatSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryPatObs">
+              <PropertyRef Name="SanitaryPatSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TempDataToolDBModelStoreContainer">
+          <EntitySet Name="ASGADMPNTables" EntityType="Self.ASGADMPNTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADPrecDatas" EntityType="Self.ASGADPrecDatas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADPrecStns" EntityType="Self.ASGADPrecStns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADRunMOUs" EntityType="Self.ASGADRunMOUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADRuns" EntityType="Self.ASGADRuns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADSampCodes" EntityType="Self.ASGADSampCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADSampleMOUs" EntityType="Self.ASGADSampleMOUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADSamples" EntityType="Self.ASGADSamples" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADStations" EntityType="Self.ASGADStations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADSubsects" EntityType="Self.ASGADSubsects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASGADTides" EntityType="Self.ASGADTides" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BCLandSamples" EntityType="Self.BCLandSamples" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BCLandSampleStations" EntityType="Self.BCLandSampleStations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BCMarineSamples" EntityType="Self.BCMarineSamples" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BCMarineSampleStations" EntityType="Self.BCMarineSampleStations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BCNames" EntityType="Self.BCNames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BCPolSources" EntityType="Self.BCPolSources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BCPrecipitations" EntityType="Self.BCPrecipitations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BCSurveys" EntityType="Self.BCSurveys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationNameLatLng" EntityType="Self.LocationNameLatLng" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nomenclature" EntityType="Self.Nomenclature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QCClimateSites" EntityType="Self.QCClimateSites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QCSecteurMPols" EntityType="Self.QCSecteurMPols" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QCSubsectorAssociations" EntityType="Self.QCSubsectorAssociations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QCSubSectors" EntityType="Self.QCSubSectors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryDavCObs" EntityType="Self.SanitaryDavCObs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryDavCSites" EntityType="Self.SanitaryDavCSites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryDavObs" EntityType="Self.SanitaryDavObs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryDavSites" EntityType="Self.SanitaryDavSites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryDonObs" EntityType="Self.SanitaryDonObs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryDonSites" EntityType="Self.SanitaryDonSites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryJoeObs" EntityType="Self.SanitaryJoeObs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryJoeSites" EntityType="Self.SanitaryJoeSites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryPatObs" EntityType="Self.SanitaryPatObs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanitaryPatSites" EntityType="Self.SanitaryPatSites" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SanitaryDavCObs_SanitaryDavCSites" Association="Self.FK_SanitaryDavCObs_SanitaryDavCSites">
+            <End Role="SanitaryDavCSites" EntitySet="SanitaryDavCSites" />
+            <End Role="SanitaryDavCObs" EntitySet="SanitaryDavCObs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanitaryDavObs_SanitaryDavSites" Association="Self.FK_SanitaryDavObs_SanitaryDavSites">
+            <End Role="SanitaryDavSites" EntitySet="SanitaryDavSites" />
+            <End Role="SanitaryDavObs" EntitySet="SanitaryDavObs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanitaryDonObs_SanitaryDonSites" Association="Self.FK_SanitaryDonObs_SanitaryDonSites">
+            <End Role="SanitaryDonSites" EntitySet="SanitaryDonSites" />
+            <End Role="SanitaryDonObs" EntitySet="SanitaryDonObs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanitaryJoeObs_SanitaryJoeSites" Association="Self.FK_SanitaryJoeObs_SanitaryJoeSites">
+            <End Role="SanitaryJoeSites" EntitySet="SanitaryJoeSites" />
+            <End Role="SanitaryJoeObs" EntitySet="SanitaryJoeObs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanitaryPatObs_SanitaryPatSites" Association="Self.FK_SanitaryPatObs_SanitaryPatSites">
+            <End Role="SanitaryPatSites" EntitySet="SanitaryPatSites" />
+            <End Role="SanitaryPatObs" EntitySet="SanitaryPatObs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TempDataToolDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TempDataToolDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ASGADMPNTables" EntityType="TempDataToolDBModel.ASGADMPNTable" />
+          <EntitySet Name="ASGADPrecDatas" EntityType="TempDataToolDBModel.ASGADPrecData" />
+          <EntitySet Name="ASGADPrecStns" EntityType="TempDataToolDBModel.ASGADPrecStn" />
+          <EntitySet Name="ASGADRunMOUs" EntityType="TempDataToolDBModel.ASGADRunMOU" />
+          <EntitySet Name="ASGADRuns" EntityType="TempDataToolDBModel.ASGADRun" />
+          <EntitySet Name="ASGADSampCodes" EntityType="TempDataToolDBModel.ASGADSampCode" />
+          <EntitySet Name="ASGADSampleMOUs" EntityType="TempDataToolDBModel.ASGADSampleMOU" />
+          <EntitySet Name="ASGADSamples" EntityType="TempDataToolDBModel.ASGADSample" />
+          <EntitySet Name="ASGADStations" EntityType="TempDataToolDBModel.ASGADStation" />
+          <EntitySet Name="ASGADSubsects" EntityType="TempDataToolDBModel.ASGADSubsect" />
+          <EntitySet Name="ASGADTides" EntityType="TempDataToolDBModel.ASGADTide" />
+          <EntitySet Name="BCLandSamples" EntityType="TempDataToolDBModel.BCLandSample" />
+          <EntitySet Name="BCLandSampleStations" EntityType="TempDataToolDBModel.BCLandSampleStation" />
+          <EntitySet Name="BCMarineSamples" EntityType="TempDataToolDBModel.BCMarineSample" />
+          <EntitySet Name="BCMarineSampleStations" EntityType="TempDataToolDBModel.BCMarineSampleStation" />
+          <EntitySet Name="BCNames" EntityType="TempDataToolDBModel.BCName" />
+          <EntitySet Name="BCPolSources" EntityType="TempDataToolDBModel.BCPolSource" />
+          <EntitySet Name="BCPrecipitations" EntityType="TempDataToolDBModel.BCPrecipitation" />
+          <EntitySet Name="BCSurveys" EntityType="TempDataToolDBModel.BCSurvey" />
+          <EntitySet Name="LocationNameLatLngs" EntityType="TempDataToolDBModel.LocationNameLatLng" />
+          <EntitySet Name="Nomenclatures" EntityType="TempDataToolDBModel.Nomenclature" />
+          <EntitySet Name="QCClimateSites" EntityType="TempDataToolDBModel.QCClimateSite" />
+          <EntitySet Name="QCSecteurMPols" EntityType="TempDataToolDBModel.QCSecteurMPol" />
+          <EntitySet Name="QCSubsectorAssociations" EntityType="TempDataToolDBModel.QCSubsectorAssociation" />
+          <EntitySet Name="QCSubSectors" EntityType="TempDataToolDBModel.QCSubSector" />
+          <EntitySet Name="SanitaryDavCObs" EntityType="TempDataToolDBModel.SanitaryDavCOb" />
+          <EntitySet Name="SanitaryDavCSites" EntityType="TempDataToolDBModel.SanitaryDavCSite" />
+          <EntitySet Name="SanitaryDavObs" EntityType="TempDataToolDBModel.SanitaryDavOb" />
+          <EntitySet Name="SanitaryDavSites" EntityType="TempDataToolDBModel.SanitaryDavSite" />
+          <EntitySet Name="SanitaryDonObs" EntityType="TempDataToolDBModel.SanitaryDonOb" />
+          <EntitySet Name="SanitaryDonSites" EntityType="TempDataToolDBModel.SanitaryDonSite" />
+          <EntitySet Name="SanitaryJoeObs" EntityType="TempDataToolDBModel.SanitaryJoeOb" />
+          <EntitySet Name="SanitaryJoeSites" EntityType="TempDataToolDBModel.SanitaryJoeSite" />
+          <EntitySet Name="SanitaryPatObs" EntityType="TempDataToolDBModel.SanitaryPatOb" />
+          <EntitySet Name="SanitaryPatSites" EntityType="TempDataToolDBModel.SanitaryPatSite" />
+          <AssociationSet Name="FK_SanitaryDavCObs_SanitaryDavCSites" Association="TempDataToolDBModel.FK_SanitaryDavCObs_SanitaryDavCSites">
+            <End Role="SanitaryDavCSite" EntitySet="SanitaryDavCSites" />
+            <End Role="SanitaryDavCOb" EntitySet="SanitaryDavCObs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanitaryDavObs_SanitaryDavSites" Association="TempDataToolDBModel.FK_SanitaryDavObs_SanitaryDavSites">
+            <End Role="SanitaryDavSite" EntitySet="SanitaryDavSites" />
+            <End Role="SanitaryDavOb" EntitySet="SanitaryDavObs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanitaryDonObs_SanitaryDonSites" Association="TempDataToolDBModel.FK_SanitaryDonObs_SanitaryDonSites">
+            <End Role="SanitaryDonSite" EntitySet="SanitaryDonSites" />
+            <End Role="SanitaryDonOb" EntitySet="SanitaryDonObs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanitaryJoeObs_SanitaryJoeSites" Association="TempDataToolDBModel.FK_SanitaryJoeObs_SanitaryJoeSites">
+            <End Role="SanitaryJoeSite" EntitySet="SanitaryJoeSites" />
+            <End Role="SanitaryJoeOb" EntitySet="SanitaryJoeObs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanitaryPatObs_SanitaryPatSites" Association="TempDataToolDBModel.FK_SanitaryPatObs_SanitaryPatSites">
+            <End Role="SanitaryPatSite" EntitySet="SanitaryPatSites" />
+            <End Role="SanitaryPatOb" EntitySet="SanitaryPatObs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ASGADMPNTable">
+          <Key>
+            <PropertyRef Name="ASGADMPNTableID" />
+          </Key>
+          <Property Name="ASGADMPNTableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TUBE5_10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TUBE5_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TUBE5_01" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ASGADPrecData">
+          <Key>
+            <PropertyRef Name="ASGADPrecDataID" />
+          </Key>
+          <Property Name="ASGADPrecDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRECIPID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SAMP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="PRECIP" Type="Double" />
+        </EntityType>
+        <EntityType Name="ASGADPrecStn">
+          <Key>
+            <PropertyRef Name="ASGADPrecStnID" />
+          </Key>
+          <Property Name="ASGADPrecStnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LAT_DEG" Type="Double" />
+          <Property Name="LONG_DEG" Type="Double" />
+          <Property Name="ELEV" Type="Double" />
+        </EntityType>
+        <EntityType Name="ASGADRunMOU">
+          <Key>
+            <PropertyRef Name="ASGADRunMOUID" />
+          </Key>
+          <Property Name="ASGADRunMOUID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AREA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SUBSECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SAMP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RUN_NUMBER" Type="Int32" />
+          <Property Name="START_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIN_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TIDE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TIDEF_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AUTOCALC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PPT24" Type="Double" />
+          <Property Name="PPT48" Type="Double" />
+          <Property Name="PPT72" Type="Double" />
+          <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATED" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ASGADRun">
+          <Key>
+            <PropertyRef Name="ASGADRunID" />
+          </Key>
+          <Property Name="ASGADRunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AREA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SUBSECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SAMP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RUN_NUMBER" Type="Int32" />
+          <Property Name="START_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIN_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TIDE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TIDEF_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AUTOCALC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PPT24" Type="Double" />
+          <Property Name="PPT48" Type="Double" />
+          <Property Name="PPT72" Type="Double" />
+          <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATED" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ASGADSampCode">
+          <Key>
+            <PropertyRef Name="ASGADSampCodeID" />
+          </Key>
+          <Property Name="ASGADSampCodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SAMPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OTH_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SAMPNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UNITS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LOW_LIMIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HIGH_LIMIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ASGADSampleMOU">
+          <Key>
+            <PropertyRef Name="ASGADSampleMOUID" />
+          </Key>
+          <Property Name="ASGADSampleMOUID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AREA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SUBSECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SAMP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RUN_NUMBER" Type="Int32" />
+          <Property Name="STAT_NBR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SAMP_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FEC_COL" Type="Double" />
+          <Property Name="SALINITY" Type="Double" />
+          <Property Name="WATERTEMP" Type="Double" />
+          <Property Name="UPDATED" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ASGADSample">
+          <Key>
+            <PropertyRef Name="ASGADSampleID" />
+          </Key>
+          <Property Name="ASGADSampleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AREA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SUBSECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SAMP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RUN_NUMBER" Type="Int32" />
+          <Property Name="STAT_NBR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SAMP_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FEC_COL" Type="Double" />
+          <Property Name="SALINITY" Type="Double" />
+          <Property Name="WATERTEMP" Type="Double" />
+          <Property Name="UPDATED" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ASGADStation">
+          <Key>
+            <PropertyRef Name="ASGADStationID" />
+          </Key>
+          <Property Name="ASGADStationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AREA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SUBSECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STAT_NBR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STAT_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="STAT_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SORT_ORDER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EASTING" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NORTHING" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LAT" Type="Double" />
+          <Property Name="LONG" Type="Double" />
+          <Property Name="ACTIVE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATED" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ASGADSubsect">
+          <Key>
+            <PropertyRef Name="ASGADSubsectID" />
+          </Key>
+          <Property Name="ASGADSubsectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AREA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SUBSECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DFO_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MAP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRECIPID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRECIPID2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRECIPID3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATED" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ASGADTide">
+          <Key>
+            <PropertyRef Name="ASGADSTideID" />
+          </Key>
+          <Property Name="ASGADSTideID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TIDE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TIDE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BCLandSample">
+          <Key>
+            <PropertyRef Name="BCLandSampleID" />
+          </Key>
+          <Property Name="BCLandSampleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="SR_SURVEY" Type="Int32" />
+          <Property Name="SR_STATION_CODE" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="SR_STATION_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SR_ANALYSIS_TYPE" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="SR_READING_DATE" Type="DateTime" Precision="3" />
+          <Property Name="SR_READING_TIME" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SR_SAMPLE_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SR_FECAL_COLIFORM_IND" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SR_FECAL_COLIFORM" Type="Int32" />
+          <Property Name="SR_ENTEROCOCCI_IND" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SR_ENTEROCOCCI" Type="Int32" />
+          <Property Name="SR_FLOW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SR_SAMPLE_AGENCY" Type="Int32" />
+          <Property Name="SR_OLD_KEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SR_SAMPLE_DEPTH" Type="Double" />
+          <Property Name="SR_SALINITY" Type="Double" />
+          <Property Name="SR_TEMPERATURE" Type="Double" />
+          <Property Name="SR_TIDE_CODE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SR_OBS" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BCLandSampleStation">
+          <Key>
+            <PropertyRef Name="BCLandSampleStationID" />
+          </Key>
+          <Property Name="BCLandSampleStationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OID" Type="Int32" />
+          <Property Name="SS_STATION_CODE" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="SS_DESCRIPTION" Type="String" MaxLength="151" FixedLength="false" Unicode="true" />
+          <Property Name="SS_LATITUDE_DEGREES" Type="Double" />
+          <Property Name="SS_LATITUDE_MINUTES" Type="Double" />
+          <Property Name="SS_LONGITUDE_DEGREES" Type="Double" />
+          <Property Name="SS_LONGITUDE_MINUTES" Type="Double" />
+          <Property Name="SS_SHELLFISH_SECTOR" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SS_DFO_SUBAREA" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SS_HARVEST_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SS_STATUS" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="SS_REMOTE_STATUS" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SS_LASTUPDATE" Type="DateTime" Precision="3" />
+          <Property Name="SS_ENTEREDBY" Type="String" MaxLength="21" FixedLength="false" Unicode="true" />
+          <Property Name="LAT" Type="Double" />
+          <Property Name="LON" Type="Double" />
+          <Property Name="METADATA" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DATALINK" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="SS_STATION_TYPE" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="OLD_KEY" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="OLD_KEY2" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="QA" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BCMarineSample">
+          <Key>
+            <PropertyRef Name="BCMarineSampleID" />
+          </Key>
+          <Property Name="BCMarineSampleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SR_SURVEY" Type="Int32" />
+          <Property Name="SR_STATION_CODE" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="SR_ANALYSIS_TYPE" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="SR_READING_DATE" Type="DateTime" Precision="3" />
+          <Property Name="SR_READING_TIME" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SR_SAMPLE_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SR_SAMPLE_DEPTH" Type="Double" />
+          <Property Name="SR_FECAL_COLIFORM_IND" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SR_FECAL_COLIFORM" Type="Int32" />
+          <Property Name="SR_ENTEROCOCCI_IND" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SR_ENTEROCOCCI" Type="Int32" />
+          <Property Name="SR_SALINITY" Type="Double" />
+          <Property Name="SR_TEMPERATURE" Type="Double" />
+          <Property Name="SR_TURBIDITY" Type="Double" />
+          <Property Name="SR_TIDE_CODE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SR_SPECIES" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="SR_SAMPLE_AGENCY" Type="Int32" />
+          <Property Name="SR_OBS" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BCMarineSampleStation">
+          <Key>
+            <PropertyRef Name="BCMarineSampleStationID" />
+          </Key>
+          <Property Name="BCMarineSampleStationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OID" Type="Int32" />
+          <Property Name="SS_STATION_CODE" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="SS_DESCRIPTION" Type="String" MaxLength="151" FixedLength="false" Unicode="true" />
+          <Property Name="SS_LATITUDE_DEGREES" Type="Double" />
+          <Property Name="SS_LATITUDE_MINUTES" Type="Double" />
+          <Property Name="SS_LONGITUDE_DEGREES" Type="Double" />
+          <Property Name="SS_LONGITUDE_MINUTES" Type="Double" />
+          <Property Name="SS_SHELLFISH_SECTOR" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SS_DFO_SUBAREA" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SS_HARVEST_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SS_STATUS" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="SS_REMOTE_STATUS" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SS_LASTUPDATE" Type="DateTime" Precision="3" />
+          <Property Name="SS_ENTEREDBY" Type="String" MaxLength="21" FixedLength="false" Unicode="true" />
+          <Property Name="LAT" Type="Double" />
+          <Property Name="LON" Type="Double" />
+          <Property Name="METADATA" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DATALINK" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BCName">
+          <Key>
+            <PropertyRef Name="BCNameID" />
+          </Key>
+          <Property Name="BCNameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Accronym" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BCPolSource">
+          <Key>
+            <PropertyRef Name="BCPolSourceID" />
+          </Key>
+          <Property Name="BCPolSourceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="Int32" />
+          <Property Name="Verified" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Source_nme" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Label" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="LCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ICode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Key_" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="X_calc" Type="Double" />
+          <Property Name="Y_calc" Type="Double" />
+          <Property Name="DATALINK" Type="String" MaxLength="57" FixedLength="false" Unicode="true" />
+          <Property Name="yyyymmdd" Type="DateTime" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="251" FixedLength="false" Unicode="true" />
+          <Property Name="LatDegMin" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LonDegMin" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BCPrecipitation">
+          <Key>
+            <PropertyRef Name="BCPrecipitationID" />
+          </Key>
+          <Property Name="BCPrecipitationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WR_DATE" Type="DateTime" Precision="3" />
+          <Property Name="WR_SURVEY" Type="Int32" />
+          <Property Name="WR_PRECIPITATION_RAIN" Type="Double" />
+          <Property Name="WR_PRECIPITATION_SNOW" Type="Double" />
+          <Property Name="WR_TOTAL_PRECIPITATION" Type="Double" />
+          <Property Name="WR_RECORDING_STATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WR_RECORDING_STATION_CL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClimateID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BCSurvey">
+          <Key>
+            <PropertyRef Name="BCSurveyID" />
+          </Key>
+          <Property Name="BCSurveyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_ID_NUMBER" Type="Int32" />
+          <Property Name="S_SHELLFISH_SECTOR" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="S_DESCRIPTION" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+          <Property Name="S_SURVEY_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="S_START_DATE" Type="DateTime" Precision="3" />
+          <Property Name="S_END_DATE" Type="DateTime" Precision="3" />
+          <Property Name="S_COMMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LocationNameLatLng">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Municipality" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="Lng" Type="Double" />
+        </EntityType>
+        <EntityType Name="Nomenclature">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Locator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sector" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DFO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Subsector" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubsectorDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Map" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Updated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="QCClimateSite">
+          <Key>
+            <PropertyRef Name="QCClimateSiteID" />
+          </Key>
+          <Property Name="QCClimateSiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="station_meteo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClimateSiteName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ClimateID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QCSecteurMPol">
+          <Key>
+            <PropertyRef Name="QCSecteurMPolID" />
+          </Key>
+          <Property Name="QCSecteurMPolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subsector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="geo_pollution_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QCSubsectorAssociation">
+          <Key>
+            <PropertyRef Name="QCSubsectorAssociationID" />
+          </Key>
+          <Property Name="QCSubsectorAssociationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubsectorText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QCSectorText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QCSubSector">
+          <Key>
+            <PropertyRef Name="QCSubSectorID" />
+          </Key>
+          <Property Name="QCSubSectorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QCSubSectorLetter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QCSubSectorTextEN" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="QCSubSectorTextFR" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SanitaryDavCOb">
+          <Key>
+            <PropertyRef Name="SanitaryDavCObsID" />
+          </Key>
+          <Property Name="SanitaryDavCObsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SanitaryDavCSiteID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="ObsDate" Type="DateTime" Precision="3" />
+          <Property Name="Name_Inspector" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Risk_Assessment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observations" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SanitaryDavCSite" Relationship="TempDataToolDBModel.FK_SanitaryDavCObs_SanitaryDavCSites" FromRole="SanitaryDavCOb" ToRole="SanitaryDavCSite" />
+        </EntityType>
+        <EntityType Name="SanitaryDavCSite">
+          <Key>
+            <PropertyRef Name="SanitaryDavCSiteID" />
+          </Key>
+          <Property Name="SanitaryDavCSiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="Locator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Site" Type="Int32" />
+          <Property Name="Zone" Type="Int32" />
+          <Property Name="easting" Type="Double" />
+          <Property Name="northing" Type="Double" />
+          <Property Name="Datum" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="longitude" Type="Double" />
+          <NavigationProperty Name="SanitaryDavCObs" Relationship="TempDataToolDBModel.FK_SanitaryDavCObs_SanitaryDavCSites" FromRole="SanitaryDavCSite" ToRole="SanitaryDavCOb" />
+        </EntityType>
+        <EntityType Name="SanitaryDavOb">
+          <Key>
+            <PropertyRef Name="SanitaryDavObsID" />
+          </Key>
+          <Property Name="SanitaryDavObsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SanitaryDavSiteID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="ObsDate" Type="DateTime" Precision="3" />
+          <Property Name="Name_Inspector" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Risk_Assessment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observations" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SanitaryDavSite" Relationship="TempDataToolDBModel.FK_SanitaryDavObs_SanitaryDavSites" FromRole="SanitaryDavOb" ToRole="SanitaryDavSite" />
+        </EntityType>
+        <EntityType Name="SanitaryDavSite">
+          <Key>
+            <PropertyRef Name="SanitaryDavSiteID" />
+          </Key>
+          <Property Name="SanitaryDavSiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="Locator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Site" Type="Int32" />
+          <Property Name="Zone" Type="Int32" />
+          <Property Name="easting" Type="Double" />
+          <Property Name="northing" Type="Double" />
+          <Property Name="Datum" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="longitude" Type="Double" />
+          <NavigationProperty Name="SanitaryDavObs" Relationship="TempDataToolDBModel.FK_SanitaryDavObs_SanitaryDavSites" FromRole="SanitaryDavSite" ToRole="SanitaryDavOb" />
+        </EntityType>
+        <EntityType Name="SanitaryDonOb">
+          <Key>
+            <PropertyRef Name="SanitaryDonObsID" />
+          </Key>
+          <Property Name="SanitaryDonObsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SanitaryDonSiteID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="ObsDate" Type="DateTime" Precision="3" />
+          <Property Name="Name_Inspector" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Risk_Assessment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observations" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SanitaryDonSite" Relationship="TempDataToolDBModel.FK_SanitaryDonObs_SanitaryDonSites" FromRole="SanitaryDonOb" ToRole="SanitaryDonSite" />
+        </EntityType>
+        <EntityType Name="SanitaryDonSite">
+          <Key>
+            <PropertyRef Name="SanitaryDonSiteID" />
+          </Key>
+          <Property Name="SanitaryDonSiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="Locator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Site" Type="Int32" />
+          <Property Name="Zone" Type="Int32" />
+          <Property Name="easting" Type="Double" />
+          <Property Name="northing" Type="Double" />
+          <Property Name="Datum" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="longitude" Type="Double" />
+          <NavigationProperty Name="SanitaryDonObs" Relationship="TempDataToolDBModel.FK_SanitaryDonObs_SanitaryDonSites" FromRole="SanitaryDonSite" ToRole="SanitaryDonOb" />
+        </EntityType>
+        <EntityType Name="SanitaryJoeOb">
+          <Key>
+            <PropertyRef Name="SanitaryJoeObsID" />
+          </Key>
+          <Property Name="SanitaryJoeObsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SanitaryJoeSiteID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="ObsDate" Type="DateTime" Precision="3" />
+          <Property Name="Name_Inspector" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Risk_Assessment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observations" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SanitaryJoeSite" Relationship="TempDataToolDBModel.FK_SanitaryJoeObs_SanitaryJoeSites" FromRole="SanitaryJoeOb" ToRole="SanitaryJoeSite" />
+        </EntityType>
+        <EntityType Name="SanitaryJoeSite">
+          <Key>
+            <PropertyRef Name="SanitaryJoeSiteID" />
+          </Key>
+          <Property Name="SanitaryJoeSiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="Locator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Site" Type="Int32" />
+          <Property Name="Zone" Type="Int32" />
+          <Property Name="easting" Type="Double" />
+          <Property Name="northing" Type="Double" />
+          <Property Name="Datum" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="longitude" Type="Double" />
+          <NavigationProperty Name="SanitaryJoeObs" Relationship="TempDataToolDBModel.FK_SanitaryJoeObs_SanitaryJoeSites" FromRole="SanitaryJoeSite" ToRole="SanitaryJoeOb" />
+        </EntityType>
+        <EntityType Name="SanitaryPatOb">
+          <Key>
+            <PropertyRef Name="SanitaryPatObsID" />
+          </Key>
+          <Property Name="SanitaryPatObsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SanitaryPatSiteID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="ObsDate" Type="DateTime" Precision="3" />
+          <Property Name="Name_Inspector" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Risk_Assessment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observations" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SanitaryPatSite" Relationship="TempDataToolDBModel.FK_SanitaryPatObs_SanitaryPatSites" FromRole="SanitaryPatOb" ToRole="SanitaryPatSite" />
+        </EntityType>
+        <EntityType Name="SanitaryPatSite">
+          <Key>
+            <PropertyRef Name="SanitaryPatSiteID" />
+          </Key>
+          <Property Name="SanitaryPatSiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="siteid" Type="Int32" />
+          <Property Name="Locator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Site" Type="Int32" />
+          <Property Name="Zone" Type="Int32" />
+          <Property Name="easting" Type="Double" />
+          <Property Name="northing" Type="Double" />
+          <Property Name="Datum" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="longitude" Type="Double" />
+          <NavigationProperty Name="SanitaryPatObs" Relationship="TempDataToolDBModel.FK_SanitaryPatObs_SanitaryPatSites" FromRole="SanitaryPatSite" ToRole="SanitaryPatOb" />
+        </EntityType>
+        <Association Name="FK_SanitaryDavCObs_SanitaryDavCSites">
+          <End Type="TempDataToolDBModel.SanitaryDavCSite" Role="SanitaryDavCSite" Multiplicity="1" />
+          <End Type="TempDataToolDBModel.SanitaryDavCOb" Role="SanitaryDavCOb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryDavCSite">
+              <PropertyRef Name="SanitaryDavCSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryDavCOb">
+              <PropertyRef Name="SanitaryDavCSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanitaryDavObs_SanitaryDavSites">
+          <End Type="TempDataToolDBModel.SanitaryDavSite" Role="SanitaryDavSite" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TempDataToolDBModel.SanitaryDavOb" Role="SanitaryDavOb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryDavSite">
+              <PropertyRef Name="SanitaryDavSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryDavOb">
+              <PropertyRef Name="SanitaryDavSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanitaryDonObs_SanitaryDonSites">
+          <End Type="TempDataToolDBModel.SanitaryDonSite" Role="SanitaryDonSite" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TempDataToolDBModel.SanitaryDonOb" Role="SanitaryDonOb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryDonSite">
+              <PropertyRef Name="SanitaryDonSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryDonOb">
+              <PropertyRef Name="SanitaryDonSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanitaryJoeObs_SanitaryJoeSites">
+          <End Type="TempDataToolDBModel.SanitaryJoeSite" Role="SanitaryJoeSite" Multiplicity="1" />
+          <End Type="TempDataToolDBModel.SanitaryJoeOb" Role="SanitaryJoeOb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryJoeSite">
+              <PropertyRef Name="SanitaryJoeSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryJoeOb">
+              <PropertyRef Name="SanitaryJoeSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanitaryPatObs_SanitaryPatSites">
+          <End Type="TempDataToolDBModel.SanitaryPatSite" Role="SanitaryPatSite" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TempDataToolDBModel.SanitaryPatOb" Role="SanitaryPatOb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanitaryPatSite">
+              <PropertyRef Name="SanitaryPatSiteID" />
+            </Principal>
+            <Dependent Role="SanitaryPatOb">
+              <PropertyRef Name="SanitaryPatSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TempDataToolDBModelStoreContainer" CdmEntityContainer="TempDataToolDBEntities">
+          <EntitySetMapping Name="ASGADMPNTables">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADMPNTable">
+              <MappingFragment StoreEntitySet="ASGADMPNTables">
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="TUBE5_01" ColumnName="TUBE5_01" />
+                <ScalarProperty Name="TUBE5_1" ColumnName="TUBE5_1" />
+                <ScalarProperty Name="TUBE5_10" ColumnName="TUBE5_10" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADMPNTableID" ColumnName="ASGADMPNTableID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADPrecDatas">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADPrecData">
+              <MappingFragment StoreEntitySet="ASGADPrecDatas">
+                <ScalarProperty Name="PRECIP" ColumnName="PRECIP" />
+                <ScalarProperty Name="SAMP_DATE" ColumnName="SAMP_DATE" />
+                <ScalarProperty Name="PRECIPID" ColumnName="PRECIPID" />
+                <ScalarProperty Name="PROV" ColumnName="PROV" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADPrecDataID" ColumnName="ASGADPrecDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADPrecStns">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADPrecStn">
+              <MappingFragment StoreEntitySet="ASGADPrecStns">
+                <ScalarProperty Name="ELEV" ColumnName="ELEV" />
+                <ScalarProperty Name="LONG_DEG" ColumnName="LONG_DEG" />
+                <ScalarProperty Name="LAT_DEG" ColumnName="LAT_DEG" />
+                <ScalarProperty Name="LONG" ColumnName="LONG" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PROV" ColumnName="PROV" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADPrecStnID" ColumnName="ASGADPrecStnID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADRunMOUs">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADRunMOU">
+              <MappingFragment StoreEntitySet="ASGADRunMOUs">
+                <ScalarProperty Name="UPDATED" ColumnName="UPDATED" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="PPT72" ColumnName="PPT72" />
+                <ScalarProperty Name="PPT48" ColumnName="PPT48" />
+                <ScalarProperty Name="PPT24" ColumnName="PPT24" />
+                <ScalarProperty Name="AUTOCALC" ColumnName="AUTOCALC" />
+                <ScalarProperty Name="TIDEF_CODE" ColumnName="TIDEF_CODE" />
+                <ScalarProperty Name="TIDE_CODE" ColumnName="TIDE_CODE" />
+                <ScalarProperty Name="FIN_TIME" ColumnName="FIN_TIME" />
+                <ScalarProperty Name="START_TIME" ColumnName="START_TIME" />
+                <ScalarProperty Name="RUN_NUMBER" ColumnName="RUN_NUMBER" />
+                <ScalarProperty Name="SAMP_DATE" ColumnName="SAMP_DATE" />
+                <ScalarProperty Name="SUBSECTOR" ColumnName="SUBSECTOR" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="PROV" ColumnName="PROV" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADRunMOUID" ColumnName="ASGADRunMOUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADRuns">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADRun">
+              <MappingFragment StoreEntitySet="ASGADRuns">
+                <ScalarProperty Name="UPDATED" ColumnName="UPDATED" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="PPT72" ColumnName="PPT72" />
+                <ScalarProperty Name="PPT48" ColumnName="PPT48" />
+                <ScalarProperty Name="PPT24" ColumnName="PPT24" />
+                <ScalarProperty Name="AUTOCALC" ColumnName="AUTOCALC" />
+                <ScalarProperty Name="TIDEF_CODE" ColumnName="TIDEF_CODE" />
+                <ScalarProperty Name="TIDE_CODE" ColumnName="TIDE_CODE" />
+                <ScalarProperty Name="FIN_TIME" ColumnName="FIN_TIME" />
+                <ScalarProperty Name="START_TIME" ColumnName="START_TIME" />
+                <ScalarProperty Name="RUN_NUMBER" ColumnName="RUN_NUMBER" />
+                <ScalarProperty Name="SAMP_DATE" ColumnName="SAMP_DATE" />
+                <ScalarProperty Name="SUBSECTOR" ColumnName="SUBSECTOR" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="PROV" ColumnName="PROV" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADRunID" ColumnName="ASGADRunID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADSampCodes">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADSampCode">
+              <MappingFragment StoreEntitySet="ASGADSampCodes">
+                <ScalarProperty Name="HIGH_LIMIT" ColumnName="HIGH_LIMIT" />
+                <ScalarProperty Name="LOW_LIMIT" ColumnName="LOW_LIMIT" />
+                <ScalarProperty Name="UNITS" ColumnName="UNITS" />
+                <ScalarProperty Name="SAMPNAME" ColumnName="SAMPNAME" />
+                <ScalarProperty Name="OTH_CODE" ColumnName="OTH_CODE" />
+                <ScalarProperty Name="SAMPCODE" ColumnName="SAMPCODE" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADSampCodeID" ColumnName="ASGADSampCodeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADSampleMOUs">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADSampleMOU">
+              <MappingFragment StoreEntitySet="ASGADSampleMOUs">
+                <ScalarProperty Name="UPDATED" ColumnName="UPDATED" />
+                <ScalarProperty Name="WATERTEMP" ColumnName="WATERTEMP" />
+                <ScalarProperty Name="SALINITY" ColumnName="SALINITY" />
+                <ScalarProperty Name="FEC_COL" ColumnName="FEC_COL" />
+                <ScalarProperty Name="SAMP_TIME" ColumnName="SAMP_TIME" />
+                <ScalarProperty Name="STAT_NBR" ColumnName="STAT_NBR" />
+                <ScalarProperty Name="RUN_NUMBER" ColumnName="RUN_NUMBER" />
+                <ScalarProperty Name="SAMP_DATE" ColumnName="SAMP_DATE" />
+                <ScalarProperty Name="SUBSECTOR" ColumnName="SUBSECTOR" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="PROV" ColumnName="PROV" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADSampleMOUID" ColumnName="ASGADSampleMOUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADSamples">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADSample">
+              <MappingFragment StoreEntitySet="ASGADSamples">
+                <ScalarProperty Name="UPDATED" ColumnName="UPDATED" />
+                <ScalarProperty Name="WATERTEMP" ColumnName="WATERTEMP" />
+                <ScalarProperty Name="SALINITY" ColumnName="SALINITY" />
+                <ScalarProperty Name="FEC_COL" ColumnName="FEC_COL" />
+                <ScalarProperty Name="SAMP_TIME" ColumnName="SAMP_TIME" />
+                <ScalarProperty Name="STAT_NBR" ColumnName="STAT_NBR" />
+                <ScalarProperty Name="RUN_NUMBER" ColumnName="RUN_NUMBER" />
+                <ScalarProperty Name="SAMP_DATE" ColumnName="SAMP_DATE" />
+                <ScalarProperty Name="SUBSECTOR" ColumnName="SUBSECTOR" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="PROV" ColumnName="PROV" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADSampleID" ColumnName="ASGADSampleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADStations">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADStation">
+              <MappingFragment StoreEntitySet="ASGADStations">
+                <ScalarProperty Name="UPDATED" ColumnName="UPDATED" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="LONG" ColumnName="LONG" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="NORTHING" ColumnName="NORTHING" />
+                <ScalarProperty Name="EASTING" ColumnName="EASTING" />
+                <ScalarProperty Name="ZONE" ColumnName="ZONE" />
+                <ScalarProperty Name="SORT_ORDER" ColumnName="SORT_ORDER" />
+                <ScalarProperty Name="STAT_TYPE" ColumnName="STAT_TYPE" />
+                <ScalarProperty Name="STAT_NAME" ColumnName="STAT_NAME" />
+                <ScalarProperty Name="STAT_NBR" ColumnName="STAT_NBR" />
+                <ScalarProperty Name="SUBSECTOR" ColumnName="SUBSECTOR" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="PROV" ColumnName="PROV" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADStationID" ColumnName="ASGADStationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADSubsects">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADSubsect">
+              <MappingFragment StoreEntitySet="ASGADSubsects">
+                <ScalarProperty Name="UPDATED" ColumnName="UPDATED" />
+                <ScalarProperty Name="PRECIPID3" ColumnName="PRECIPID3" />
+                <ScalarProperty Name="PRECIPID2" ColumnName="PRECIPID2" />
+                <ScalarProperty Name="PRECIPID" ColumnName="PRECIPID" />
+                <ScalarProperty Name="MAP" ColumnName="MAP" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DFO_CODE" ColumnName="DFO_CODE" />
+                <ScalarProperty Name="SUBSECTOR" ColumnName="SUBSECTOR" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="PROV" ColumnName="PROV" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADSubsectID" ColumnName="ASGADSubsectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADTides">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.ASGADTide">
+              <MappingFragment StoreEntitySet="ASGADTides">
+                <ScalarProperty Name="TIDE_NAME" ColumnName="TIDE_NAME" />
+                <ScalarProperty Name="TIDE_CODE" ColumnName="TIDE_CODE" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="ASGADSTideID" ColumnName="ASGADSTideID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BCLandSamples">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.BCLandSample">
+              <MappingFragment StoreEntitySet="BCLandSamples">
+                <ScalarProperty Name="SR_OBS" ColumnName="SR_OBS" />
+                <ScalarProperty Name="SR_TIDE_CODE" ColumnName="SR_TIDE_CODE" />
+                <ScalarProperty Name="SR_TEMPERATURE" ColumnName="SR_TEMPERATURE" />
+                <ScalarProperty Name="SR_SALINITY" ColumnName="SR_SALINITY" />
+                <ScalarProperty Name="SR_SAMPLE_DEPTH" ColumnName="SR_SAMPLE_DEPTH" />
+                <ScalarProperty Name="SR_OLD_KEY" ColumnName="SR_OLD_KEY" />
+                <ScalarProperty Name="SR_SAMPLE_AGENCY" ColumnName="SR_SAMPLE_AGENCY" />
+                <ScalarProperty Name="SR_FLOW" ColumnName="SR_FLOW" />
+                <ScalarProperty Name="SR_ENTEROCOCCI" ColumnName="SR_ENTEROCOCCI" />
+                <ScalarProperty Name="SR_ENTEROCOCCI_IND" ColumnName="SR_ENTEROCOCCI_IND" />
+                <ScalarProperty Name="SR_FECAL_COLIFORM" ColumnName="SR_FECAL_COLIFORM" />
+                <ScalarProperty Name="SR_FECAL_COLIFORM_IND" ColumnName="SR_FECAL_COLIFORM_IND" />
+                <ScalarProperty Name="SR_SAMPLE_TYPE" ColumnName="SR_SAMPLE_TYPE" />
+                <ScalarProperty Name="SR_READING_TIME" ColumnName="SR_READING_TIME" />
+                <ScalarProperty Name="SR_READING_DATE" ColumnName="SR_READING_DATE" />
+                <ScalarProperty Name="SR_ANALYSIS_TYPE" ColumnName="SR_ANALYSIS_TYPE" />
+                <ScalarProperty Name="SR_STATION_TYPE" ColumnName="SR_STATION_TYPE" />
+                <ScalarProperty Name="SR_STATION_CODE" ColumnName="SR_STATION_CODE" />
+                <ScalarProperty Name="SR_SURVEY" ColumnName="SR_SURVEY" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BCLandSampleID" ColumnName="BCLandSampleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BCLandSampleStations">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.BCLandSampleStation">
+              <MappingFragment StoreEntitySet="BCLandSampleStations">
+                <ScalarProperty Name="QA" ColumnName="QA" />
+                <ScalarProperty Name="OLD_KEY2" ColumnName="OLD_KEY2" />
+                <ScalarProperty Name="OLD_KEY" ColumnName="OLD_KEY" />
+                <ScalarProperty Name="SS_STATION_TYPE" ColumnName="SS_STATION_TYPE" />
+                <ScalarProperty Name="DATALINK" ColumnName="DATALINK" />
+                <ScalarProperty Name="METADATA" ColumnName="METADATA" />
+                <ScalarProperty Name="LON" ColumnName="LON" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="SS_ENTEREDBY" ColumnName="SS_ENTEREDBY" />
+                <ScalarProperty Name="SS_LASTUPDATE" ColumnName="SS_LASTUPDATE" />
+                <ScalarProperty Name="SS_REMOTE_STATUS" ColumnName="SS_REMOTE_STATUS" />
+                <ScalarProperty Name="SS_STATUS" ColumnName="SS_STATUS" />
+                <ScalarProperty Name="SS_HARVEST_TYPE" ColumnName="SS_HARVEST_TYPE" />
+                <ScalarProperty Name="SS_DFO_SUBAREA" ColumnName="SS_DFO_SUBAREA" />
+                <ScalarProperty Name="SS_SHELLFISH_SECTOR" ColumnName="SS_SHELLFISH_SECTOR" />
+                <ScalarProperty Name="SS_LONGITUDE_MINUTES" ColumnName="SS_LONGITUDE_MINUTES" />
+                <ScalarProperty Name="SS_LONGITUDE_DEGREES" ColumnName="SS_LONGITUDE_DEGREES" />
+                <ScalarProperty Name="SS_LATITUDE_MINUTES" ColumnName="SS_LATITUDE_MINUTES" />
+                <ScalarProperty Name="SS_LATITUDE_DEGREES" ColumnName="SS_LATITUDE_DEGREES" />
+                <ScalarProperty Name="SS_DESCRIPTION" ColumnName="SS_DESCRIPTION" />
+                <ScalarProperty Name="SS_STATION_CODE" ColumnName="SS_STATION_CODE" />
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="BCLandSampleStationID" ColumnName="BCLandSampleStationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BCMarineSamples">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.BCMarineSample">
+              <MappingFragment StoreEntitySet="BCMarineSamples">
+                <ScalarProperty Name="SR_OBS" ColumnName="SR_OBS" />
+                <ScalarProperty Name="SR_SAMPLE_AGENCY" ColumnName="SR_SAMPLE_AGENCY" />
+                <ScalarProperty Name="SR_SPECIES" ColumnName="SR_SPECIES" />
+                <ScalarProperty Name="SR_TIDE_CODE" ColumnName="SR_TIDE_CODE" />
+                <ScalarProperty Name="SR_TURBIDITY" ColumnName="SR_TURBIDITY" />
+                <ScalarProperty Name="SR_TEMPERATURE" ColumnName="SR_TEMPERATURE" />
+                <ScalarProperty Name="SR_SALINITY" ColumnName="SR_SALINITY" />
+                <ScalarProperty Name="SR_ENTEROCOCCI" ColumnName="SR_ENTEROCOCCI" />
+                <ScalarProperty Name="SR_ENTEROCOCCI_IND" ColumnName="SR_ENTEROCOCCI_IND" />
+                <ScalarProperty Name="SR_FECAL_COLIFORM" ColumnName="SR_FECAL_COLIFORM" />
+                <ScalarProperty Name="SR_FECAL_COLIFORM_IND" ColumnName="SR_FECAL_COLIFORM_IND" />
+                <ScalarProperty Name="SR_SAMPLE_DEPTH" ColumnName="SR_SAMPLE_DEPTH" />
+                <ScalarProperty Name="SR_SAMPLE_TYPE" ColumnName="SR_SAMPLE_TYPE" />
+                <ScalarProperty Name="SR_READING_TIME" ColumnName="SR_READING_TIME" />
+                <ScalarProperty Name="SR_READING_DATE" ColumnName="SR_READING_DATE" />
+                <ScalarProperty Name="SR_ANALYSIS_TYPE" ColumnName="SR_ANALYSIS_TYPE" />
+                <ScalarProperty Name="SR_STATION_CODE" ColumnName="SR_STATION_CODE" />
+                <ScalarProperty Name="SR_SURVEY" ColumnName="SR_SURVEY" />
+                <ScalarProperty Name="BCMarineSampleID" ColumnName="BCMarineSampleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BCMarineSampleStations">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.BCMarineSampleStation">
+              <MappingFragment StoreEntitySet="BCMarineSampleStations">
+                <ScalarProperty Name="DATALINK" ColumnName="DATALINK" />
+                <ScalarProperty Name="METADATA" ColumnName="METADATA" />
+                <ScalarProperty Name="LON" ColumnName="LON" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="SS_ENTEREDBY" ColumnName="SS_ENTEREDBY" />
+                <ScalarProperty Name="SS_LASTUPDATE" ColumnName="SS_LASTUPDATE" />
+                <ScalarProperty Name="SS_REMOTE_STATUS" ColumnName="SS_REMOTE_STATUS" />
+                <ScalarProperty Name="SS_STATUS" ColumnName="SS_STATUS" />
+                <ScalarProperty Name="SS_HARVEST_TYPE" ColumnName="SS_HARVEST_TYPE" />
+                <ScalarProperty Name="SS_DFO_SUBAREA" ColumnName="SS_DFO_SUBAREA" />
+                <ScalarProperty Name="SS_SHELLFISH_SECTOR" ColumnName="SS_SHELLFISH_SECTOR" />
+                <ScalarProperty Name="SS_LONGITUDE_MINUTES" ColumnName="SS_LONGITUDE_MINUTES" />
+                <ScalarProperty Name="SS_LONGITUDE_DEGREES" ColumnName="SS_LONGITUDE_DEGREES" />
+                <ScalarProperty Name="SS_LATITUDE_MINUTES" ColumnName="SS_LATITUDE_MINUTES" />
+                <ScalarProperty Name="SS_LATITUDE_DEGREES" ColumnName="SS_LATITUDE_DEGREES" />
+                <ScalarProperty Name="SS_DESCRIPTION" ColumnName="SS_DESCRIPTION" />
+                <ScalarProperty Name="SS_STATION_CODE" ColumnName="SS_STATION_CODE" />
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="BCMarineSampleStationID" ColumnName="BCMarineSampleStationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BCNames">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.BCName">
+              <MappingFragment StoreEntitySet="BCNames">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Accronym" ColumnName="Accronym" />
+                <ScalarProperty Name="BCNameID" ColumnName="BCNameID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BCPolSources">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.BCPolSource">
+              <MappingFragment StoreEntitySet="BCPolSources">
+                <ScalarProperty Name="LonDegMin" ColumnName="LonDegMin" />
+                <ScalarProperty Name="LatDegMin" ColumnName="LatDegMin" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="yyyymmdd" ColumnName="yyyymmdd" />
+                <ScalarProperty Name="DATALINK" ColumnName="DATALINK" />
+                <ScalarProperty Name="Y_calc" ColumnName="Y_calc" />
+                <ScalarProperty Name="X_calc" ColumnName="X_calc" />
+                <ScalarProperty Name="Key_" ColumnName="Key_" />
+                <ScalarProperty Name="ICode" ColumnName="ICode" />
+                <ScalarProperty Name="LCode" ColumnName="LCode" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="Source_nme" ColumnName="Source_nme" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="BCPolSourceID" ColumnName="BCPolSourceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BCPrecipitations">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.BCPrecipitation">
+              <MappingFragment StoreEntitySet="BCPrecipitations">
+                <ScalarProperty Name="ClimateID" ColumnName="ClimateID" />
+                <ScalarProperty Name="WR_RECORDING_STATION_CL" ColumnName="WR_RECORDING_STATION_CL" />
+                <ScalarProperty Name="WR_RECORDING_STATION" ColumnName="WR_RECORDING_STATION" />
+                <ScalarProperty Name="WR_TOTAL_PRECIPITATION" ColumnName="WR_TOTAL_PRECIPITATION" />
+                <ScalarProperty Name="WR_PRECIPITATION_SNOW" ColumnName="WR_PRECIPITATION_SNOW" />
+                <ScalarProperty Name="WR_PRECIPITATION_RAIN" ColumnName="WR_PRECIPITATION_RAIN" />
+                <ScalarProperty Name="WR_SURVEY" ColumnName="WR_SURVEY" />
+                <ScalarProperty Name="WR_DATE" ColumnName="WR_DATE" />
+                <ScalarProperty Name="BCPrecipitationID" ColumnName="BCPrecipitationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BCSurveys">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.BCSurvey">
+              <MappingFragment StoreEntitySet="BCSurveys">
+                <ScalarProperty Name="S_COMMENT" ColumnName="S_COMMENT" />
+                <ScalarProperty Name="S_END_DATE" ColumnName="S_END_DATE" />
+                <ScalarProperty Name="S_START_DATE" ColumnName="S_START_DATE" />
+                <ScalarProperty Name="S_SURVEY_TYPE" ColumnName="S_SURVEY_TYPE" />
+                <ScalarProperty Name="S_DESCRIPTION" ColumnName="S_DESCRIPTION" />
+                <ScalarProperty Name="S_SHELLFISH_SECTOR" ColumnName="S_SHELLFISH_SECTOR" />
+                <ScalarProperty Name="S_ID_NUMBER" ColumnName="S_ID_NUMBER" />
+                <ScalarProperty Name="BCSurveyID" ColumnName="BCSurveyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationNameLatLngs">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.LocationNameLatLng">
+              <MappingFragment StoreEntitySet="LocationNameLatLng">
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nomenclatures">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.Nomenclature">
+              <MappingFragment StoreEntitySet="Nomenclature">
+                <ScalarProperty Name="Updated" ColumnName="Updated" />
+                <ScalarProperty Name="Map" ColumnName="Map" />
+                <ScalarProperty Name="SubsectorDesc" ColumnName="SubsectorDesc" />
+                <ScalarProperty Name="Subsector" ColumnName="Subsector" />
+                <ScalarProperty Name="DFO" ColumnName="DFO" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Locator" ColumnName="Locator" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QCClimateSites">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.QCClimateSite">
+              <MappingFragment StoreEntitySet="QCClimateSites">
+                <ScalarProperty Name="ClimateID" ColumnName="ClimateID" />
+                <ScalarProperty Name="ClimateSiteName" ColumnName="ClimateSiteName" />
+                <ScalarProperty Name="station_meteo" ColumnName="station_meteo" />
+                <ScalarProperty Name="QCClimateSiteID" ColumnName="QCClimateSiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QCSecteurMPols">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.QCSecteurMPol">
+              <MappingFragment StoreEntitySet="QCSecteurMPols">
+                <ScalarProperty Name="geo_pollution_id" ColumnName="geo_pollution_id" />
+                <ScalarProperty Name="Subsector" ColumnName="Subsector" />
+                <ScalarProperty Name="QCSecteurMPolID" ColumnName="QCSecteurMPolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QCSubsectorAssociations">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.QCSubsectorAssociation">
+              <MappingFragment StoreEntitySet="QCSubsectorAssociations">
+                <ScalarProperty Name="QCSectorText" ColumnName="QCSectorText" />
+                <ScalarProperty Name="SubsectorText" ColumnName="SubsectorText" />
+                <ScalarProperty Name="QCSubsectorAssociationID" ColumnName="QCSubsectorAssociationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QCSubSectors">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.QCSubSector">
+              <MappingFragment StoreEntitySet="QCSubSectors">
+                <ScalarProperty Name="QCSubSectorTextFR" ColumnName="QCSubSectorTextFR" />
+                <ScalarProperty Name="QCSubSectorTextEN" ColumnName="QCSubSectorTextEN" />
+                <ScalarProperty Name="QCSubSectorLetter" ColumnName="QCSubSectorLetter" />
+                <ScalarProperty Name="QCSubSectorID" ColumnName="QCSubSectorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryDavCObs">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryDavCOb">
+              <MappingFragment StoreEntitySet="SanitaryDavCObs">
+                <ScalarProperty Name="Observations" ColumnName="Observations" />
+                <ScalarProperty Name="Risk_Assessment" ColumnName="Risk_Assessment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name_Inspector" ColumnName="Name_Inspector" />
+                <ScalarProperty Name="ObsDate" ColumnName="ObsDate" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SanitaryDavCSiteID" ColumnName="SanitaryDavCSiteID" />
+                <ScalarProperty Name="SanitaryDavCObsID" ColumnName="SanitaryDavCObsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryDavCSites">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryDavCSite">
+              <MappingFragment StoreEntitySet="SanitaryDavCSites">
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="northing" ColumnName="northing" />
+                <ScalarProperty Name="easting" ColumnName="easting" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Locator" ColumnName="Locator" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="SanitaryDavCSiteID" ColumnName="SanitaryDavCSiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryDavObs">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryDavOb">
+              <MappingFragment StoreEntitySet="SanitaryDavObs">
+                <ScalarProperty Name="Observations" ColumnName="Observations" />
+                <ScalarProperty Name="Risk_Assessment" ColumnName="Risk_Assessment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name_Inspector" ColumnName="Name_Inspector" />
+                <ScalarProperty Name="ObsDate" ColumnName="ObsDate" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SanitaryDavSiteID" ColumnName="SanitaryDavSiteID" />
+                <ScalarProperty Name="SanitaryDavObsID" ColumnName="SanitaryDavObsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryDavSites">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryDavSite">
+              <MappingFragment StoreEntitySet="SanitaryDavSites">
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="northing" ColumnName="northing" />
+                <ScalarProperty Name="easting" ColumnName="easting" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Locator" ColumnName="Locator" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="SanitaryDavSiteID" ColumnName="SanitaryDavSiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryDonObs">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryDonOb">
+              <MappingFragment StoreEntitySet="SanitaryDonObs">
+                <ScalarProperty Name="Observations" ColumnName="Observations" />
+                <ScalarProperty Name="Risk_Assessment" ColumnName="Risk_Assessment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name_Inspector" ColumnName="Name_Inspector" />
+                <ScalarProperty Name="ObsDate" ColumnName="ObsDate" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SanitaryDonSiteID" ColumnName="SanitaryDonSiteID" />
+                <ScalarProperty Name="SanitaryDonObsID" ColumnName="SanitaryDonObsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryDonSites">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryDonSite">
+              <MappingFragment StoreEntitySet="SanitaryDonSites">
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="northing" ColumnName="northing" />
+                <ScalarProperty Name="easting" ColumnName="easting" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Locator" ColumnName="Locator" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="SanitaryDonSiteID" ColumnName="SanitaryDonSiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryJoeObs">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryJoeOb">
+              <MappingFragment StoreEntitySet="SanitaryJoeObs">
+                <ScalarProperty Name="Observations" ColumnName="Observations" />
+                <ScalarProperty Name="Risk_Assessment" ColumnName="Risk_Assessment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name_Inspector" ColumnName="Name_Inspector" />
+                <ScalarProperty Name="ObsDate" ColumnName="ObsDate" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SanitaryJoeSiteID" ColumnName="SanitaryJoeSiteID" />
+                <ScalarProperty Name="SanitaryJoeObsID" ColumnName="SanitaryJoeObsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryJoeSites">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryJoeSite">
+              <MappingFragment StoreEntitySet="SanitaryJoeSites">
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="northing" ColumnName="northing" />
+                <ScalarProperty Name="easting" ColumnName="easting" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Locator" ColumnName="Locator" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="SanitaryJoeSiteID" ColumnName="SanitaryJoeSiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryPatObs">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryPatOb">
+              <MappingFragment StoreEntitySet="SanitaryPatObs">
+                <ScalarProperty Name="Observations" ColumnName="Observations" />
+                <ScalarProperty Name="Risk_Assessment" ColumnName="Risk_Assessment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name_Inspector" ColumnName="Name_Inspector" />
+                <ScalarProperty Name="ObsDate" ColumnName="ObsDate" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SanitaryPatSiteID" ColumnName="SanitaryPatSiteID" />
+                <ScalarProperty Name="SanitaryPatObsID" ColumnName="SanitaryPatObsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanitaryPatSites">
+            <EntityTypeMapping TypeName="TempDataToolDBModel.SanitaryPatSite">
+              <MappingFragment StoreEntitySet="SanitaryPatSites">
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="northing" ColumnName="northing" />
+                <ScalarProperty Name="easting" ColumnName="easting" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Locator" ColumnName="Locator" />
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="SanitaryPatSiteID" ColumnName="SanitaryPatSiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,6462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Document>
+<name>QuebecInfrastructures.kml</name>
+<Style id="s_ylw-pushpin_hl">
+<IconStyle>
+<scale>1.3</scale>
+<Icon>
+<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+</Icon>
+<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+</IconStyle>
+<LineStyle>
+<color>ff000000</color>
+<width>2</width>
+</LineStyle>
+<PolyStyle>
+<color>00ffffff</color>
+</PolyStyle>
+</Style>
+<StyleMap id="m_ylw-pushpin">
+<Pair>
+<key>normal</key>
+<styleUrl>#s_ylw-pushpin</styleUrl>
+</Pair>
+<Pair>
+<key>highlight</key>
+<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+</Pair>
+</StyleMap>
+<Style id="s_ylw-pushpin">
+<IconStyle>
+<scale>1.1</scale>
+<Icon>
+<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+</Icon>
+<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+</IconStyle>
+<LineStyle>
+<color>ff000000</color>
+<width>2</width>
+</LineStyle>
+<PolyStyle>
+<color>00ffffff</color>
+</PolyStyle>
+</Style>
+<Folder>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.527043566983,47.5622035560214,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.87139,47.37114,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.87167,47.37175,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.868443,47.370753,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.828993,47.235796,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sept-Îles (Secteur Gallix) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.610791,50.146699,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.036329,50.287818,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- PRINCIPAL (ÉMISSAIRE K) POMPÉ</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.603217,50.237653,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Natashquan (Pointe Parent) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.802673317308,50.1449398874094,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>La Romaine (ancien site) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.661241,50.216902,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.977805,48.175308,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.97686317788,48.1859793585409,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.847333,48.169167,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.481734,48.04122,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.97484,48.16191,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PORT-DANIEL-GASCONS --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.992333,48.172,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Gaspé --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.44601,48.823842,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-SAINTE-CATHERINE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.72096260292,48.0891696532282,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.749164,48.079693,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-SAINTE-CATHERINE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.72792,48.10831,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.72035630534,48.1375898078422,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PORTNEUF-SUR-MER --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.093794,48.631314,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PORTNEUF-SUR-MER --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.096695,48.625791,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.684319,48.931768,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BETSIAMITES --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.66100412778,48.9348279221964,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Franquelin --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.89269,49.29233,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>COLOMBIER --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.84975,48.87232,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.078188,48.730412,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>FORESTVILLE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.082871,48.730115,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.99185,48.185813,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.986444,48.169856,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Ananie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.75924,47.42319,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. No. 2 (Havre-aux-Maisons)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.78396,47.41774,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.644569,48.939484,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- DE LA GRAVE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.833609,47.237743,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Polyvalente (Étang-du-Nord)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.913501659201,47.3696001953839,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Centre d'Achat (Étang-du-Nord)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.88412,47.37024,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Principal (Étang-du-Nord)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.89072,47.36127,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Les Îles-de-la-Madeleine (secteur L'étang-du-Nord) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.87923,47.36313,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8717,47.360027,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Les Îles-de-la-Madeleine (secteur Cap-aux-Meules) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.87101,47.37139,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Garderie (Cap-aux-Meules)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.87267,47.366354,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.859610203105,47.3805784998891,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- 120 John Aucoin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.89056,47.40186,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- 563 Chemin des Caps</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.887046,47.409765,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Principale (65 du rivage)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.90345,47.41354,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Les Îles-de-la-Madeleine (secteur Fatima) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.91233,47.41309,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.91502,47.41441,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Les Îles-de-la-Madeleine (secteur Havre-aux-Maisons) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.76283,47.42713,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sept-Îles (Secteur Clarke) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.633528,50.17798,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. du Banc</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.970333,48.18,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.961833,48.183667,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.961504,48.186808,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.84391,48.15179,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.82172,48.13844,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8545,48.160333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.86704,48.16597,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.872507,48.169643,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.875333,48.172,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.877333,48.173333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.868167,48.181167,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8445,48.173333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Maria --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.992881,48.193001,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Gesgapegiaq --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.92731611771,48.1992172521258,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.92489,48.19485,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>New-Richmond --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.848,48.179333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MINGAN --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.04025,50.29259,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.024999,50.288094,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.306515,48.130953,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LONGUE-POINTE-DE-MINGAN --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.12888,50.2758,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.129045,50.274489,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.140647,50.268292,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.149716,50.263198,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.133788,50.271822,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.02051,50.29113,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.604328581966,50.2524468512718,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- DE L'ANSE OUEST</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.58581,50.24458,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.57535,50.2502,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.572457663677,50.2519905128903,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.60217,50.23532,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.988,48.170333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.299296,48.123635,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Nouvelle --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.298167,48.126167,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.634918,50.177066,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> Les Îles-de-la-Madeleine (secteur Havre-aubert) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.828152,47.235847,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Regard D-1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.33791,48.01652,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>L'Isle-Verte --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.34119,48.01881,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.34282,48.01915,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. de la rivière</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.963715,48.195154,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- MARINA</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.47856,48.82694,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- RUE DU HAVRE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.48257,48.8296,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- RUE DU QUAI</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.44125,48.82457,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- BOUL YORK</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.49589070866,48.8143923343154,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.53507,48.8145,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- ROUTE 198</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.50445,48.82494,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- WAKEHAM</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.52655,48.82537,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- DE LA REINE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.49077373387,48.8262122464914,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- CÔTE CARTER</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.48383276569,48.8292447544541,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- ADAMS</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.48365,48.8316,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4804,48.83321,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.49177,48.82888,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Percé --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.21482,48.52905,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bonaventure --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.47068,48.04831,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.470269,48.047555,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.47518,48.05196,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.50612,48.05236,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.51276,48.05687,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.52175,48.06172,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- PRINCIPAL</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.48626,48.04264,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.522911,48.062403,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.54747,48.07049,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.545776,48.070603,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Saint-Siméon-de-Bonaventure --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.54684,48.07854,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.555623,48.077027,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.5637,48.06996,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.563669,48.069283,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.59823,48.0773,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.61254,48.08127,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.613442,48.08171,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. Maria</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.030681,48.135173,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.030336,48.135035,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. MARCEL</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.06074,48.10682,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. CLEMENT BERNARD</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.06773,48.10457,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. PAUL-OMER LEBLANC</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.07421,48.10333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. VERMETTE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.09904,48.09744,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.09890411457,48.0899276101971,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.117252,48.089171,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Carleton-sur-Mer (secteur Carleton) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.09397,48.10652,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. DE LA MONTAGNE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.12649,48.10967,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. DU QUAI</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.12855,48.10472,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.123337,48.100649,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.12148,48.10055,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. MARC LEBLANC</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.139337,48.109839,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.1801,48.12841,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Ragueneau --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.47613,49.07155,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RAGUENEAU --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.47623,49.0719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RAGUENEAU --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.4456,49.07715,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chute-aux-outardes --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.40058,49.11503,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chute-aux-outardes --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.38738,49.127736,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chute-aux-outardes --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.39286,49.119,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.39166,49.11824,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- La Baie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.40377,48.35319,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES BERGERONNES --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.54987,48.246798,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.54887,48.24736,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.5377,48.24906,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES BERGERONNES --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.53638,48.25195,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Cale-sèche</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.71976,48.13903,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SACRÉ-COEUR --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.78563,48.23167,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.78474,48.2316,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.785178,48.233709,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.79678,48.23288,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Bateau Passeur</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.72435045644,48.1423534772804,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Le plateau</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.392,48.3665,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- La rivière</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.40515,48.34676,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- T.P. Dégrilleur</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.39657,48.33153,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- TP de PP3</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.390631,48.3654,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.394465,48.331658,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- TP de SP1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.538107,48.249214,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.139342,48.109619,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. No. 3 (Piscine)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.21554,48.51926,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. No. 1  (de la Baleine)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.21369675836,48.520993278419,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. No. 2 (Biard)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.210982,48.526196,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.6133,50.13721,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.620346,50.133232,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.629769,50.1311,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.09719,49.22739,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.097153,49.228165,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.11592,49.22713,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.12545,49.22455,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.13667,49.22707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.148731,49.192482,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.15149,49.19864,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.143491,49.20784,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- RTE 138</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09808585794,48.7275118993001,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- 1ère AVENUE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.068052,48.73568,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. Principal</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.613938,50.13998,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- 1ère Avenue</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.08474459075,48.7386160199015,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Du Golf</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.07904,48.7376,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- 3e rue</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.07054,48.73777,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.398,50.212833,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.39,50.229333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4035,50.2505,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.384667,50.208833,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.415333,50.267,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.381333,50.220333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- PP des Galets</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.297,50.206167,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- PP des Pionniers</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.309833,50.205667,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- PP aéroport</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.304333,50.212667,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.349167,50.204333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> SEPT-ÎLES (secteur ville) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.353833,50.208333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.142167,50.189667,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.14241,50.18475,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0955,50.191333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.194167,50.2125,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- TP du PP1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.19472089554,50.2095821573935,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.205167,50.212833,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.803933,50.288618,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-JOHAN-BEETZ --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.808167,50.287167,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> RIVIÈRE-AU-TONNERRE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.746,50.2765,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.787352,50.275503,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.47547041562,48.8221949725429,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.399339,50.209624,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.644198115702,50.2332869300546,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.660094,50.21615,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. du Quai</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.469434,48.516909,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.502139,48.435445,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Tessier</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.535693,48.442821,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- St-Germain</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.540891,48.444299,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Laurier</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.559446,48.441958,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Rouer</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.554221,48.443567,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Lavoie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.536187,48.447029,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. Mgr Bolduc</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.473144,48.504305,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. Pointe à Pouliot</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.492697,48.491807,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. Parc Villageois (vanne man.)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.439838,48.526197,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. Beaudin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.450906,48.522947,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. du Parc</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.462611,48.516853,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Julien Rehel</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.521959,48.457579,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Dieppe</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.571824,48.438752,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Rocher-Blanc</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.594394,48.429874,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Le Bic (secteur des Berges - roulottes) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.68037,48.391158,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Le Bic --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.70303,48.37699,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. Principal</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.705945,48.374242,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.8774,50.01221,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- TP de la SP des Casades</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.860774,50.021214,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- MC CORMICK</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.87784,50.014027,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- DES PINS</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.88453112551,50.0175748930174,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- DES ÎLES</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.89780642426,50.0164367674117,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. du Pénitencier</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.87526561988,50.0322098553357,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- DES CASCADES</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.861564,50.021775,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-TRINITÉ --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.30591848738,49.4171177437609,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.991667,48.192167,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Rivière Ouest</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.73356616225,48.3401414812133,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Riv. Nord</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.70336281735,48.3454689427801,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.71169660376,48.3456889509267,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Rivière du Nord</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.70582677264,48.3441312116379,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.549641,48.076683,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.521644,48.061914,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.512541,48.05703,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.505881,48.052355,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P. Clemville</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.979333,48.165333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.978667,48.1625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8425,48.1505,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.885833,48.174667,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.980591,48.176775,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.025667,50.290667,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>La Romaine --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.675787,50.215932,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>La Romaine --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.677023,50.217458,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>La Romaine --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.676057,50.217342,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>La Romaine --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.676213,50.218367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>La Romaine --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.645132555275,50.2349942884848,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.72247,48.36761,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.71323,48.37316,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.85710382123,48.2896824257533,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.857265,48.28986,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.860829,48.301716,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.861543,48.30208,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.099178,48.09763,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.870953,48.297518,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-FABIEN --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.872747,48.299016,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.873454,48.294412,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.52861,48.45218,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Cathédrale</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.527646,48.451133,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Rimouski (Incluant Rimouski-Est et secteur Pointe-aux-Pères)  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.489163,48.473992,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.492128,48.490927,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- T.P. Richelieu</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.49265198499,48.4878988845004,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.498062,48.48475,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.50346128818,48.4817158734792,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.507035,48.479745,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.51584567292,48.4732528707682,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.514877,48.472736,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.51761389918,48.4703420983796,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.51831,48.46201,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Leonidas</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.510972,48.463955,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.338445,48.019462,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.345231,48.023927,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.122688,51.422582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.12426,51.42141,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.130830455717,51.4258089549052,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.130805972584,51.4256003382159,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Intermédiaire</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.135478170451,51.4285347436279,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.135469,51.428342,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.16996266318,51.4063146009025,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.182887037018,51.411044521023,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.181715927159,51.4092771449144,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.201017,51.411215,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.199715110383,51.4098049774425,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.817654,51.423688,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.818173,51.423418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.827707469976,51.4197199659127,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- P.P RSP-2</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.712544,51.467439,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.70948,51.46771,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- T.P P.P RSP-2</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.712318,51.467439,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>KUUJJUARAAPIK --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-77.746025,55.291987,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Metsheteu </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.640166,48.935861,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Penshu</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.640004,48.939013,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.640139,48.938609,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- Pisto</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.647466,48.940979,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.64734,48.94094,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.66315864348,48.9343862056856,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.66137,48.93262,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>FRANQUELIN --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.893144,49.292826,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- HLM</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.47511,48.82235,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.47795953413,48.8282212235091,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.49871034946,48.8139203539328,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.50468444824,48.8244819641113,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.49149938673,48.8255923471848,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- (Rue du Havre)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.48209650351,48.829130499837,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.440726,48.824763,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.44201,48.82737,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.52704481522,48.8250285550562,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.52291,47.55986,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>ÎLE DE LA GRANDE ENTRÉE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.525696,47.559516,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.52645,47.56,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.510975,47.6168533333333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.882831,47.386722,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.511538942969,47.6152948882408,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.76,47.43,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-DES-SABLES --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.883685,48.724692,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Caplan --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.683516,48.102279,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>CHANDLER (incluant secteurs Pabos-Mills, Pabos et Saint-François-de-Pabos) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.71314,48.34568,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Grande-Rivière --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.521762,48.392046,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GRANDE-VALLÉE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.097152,49.227345,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> LES MÉCHINS --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.985437,49.000636,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> SAINTE-LUCE (secteur Luceville) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.355104,48.531825,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-LUCE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.410164,48.537121,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MARSOUI --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.063256,49.210499,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MATANE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.56916,48.830578,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> SAINT-ALEXANDRE-DE-KAMOURASKA --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.635892,47.682146,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MONT-SAINT-PIERRE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.80099,49.22079,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chandler (Secteur Newport) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.74848251098,48.2572167722723,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> PASPÉBIAC (incluant le secteur ouest), NEW CARLISLE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.270859,48.027901,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PERCÉ (secteur Cap d'Espoir) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.32743451255,48.4247976916733,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> POINTE-À-LA-CROIX, LISTUGUJ --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.684320306,48.022747935591,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GASPÉ (secteur Rivière-au-Renard) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.37207950544,48.9902556933272,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Saint-Anne-des-Monts (incluant secteur Tourelle) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.456588,49.130398,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-FÉLICITÉ --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.347132,48.895738,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MATANE (secteur Petit-Matane) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.446208,48.860572,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-THÉRÈSE-DE-GASPÉ --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.401922,48.420594,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-ULRIC  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.685923,48.790589,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Trois-Pistoles, Notre-Dame-des-Neiges --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.168778,48.132287,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>B.S.2 BLANC-SABLON (secteur Blanc-Sablon) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.122625885838,51.4224526405164,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BLANC-SABLON (secteur Lourdes) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.18241777697,51.4111075990929,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BONNE-ESPÉRANCE (secteur Vieux-Fort) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.83035,51.420386,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BONNE-ESPÉRANCE (secteur Rivière Saint-Paul) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.712786,51.467213,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-COMEAU (incluant secteur Marquette) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.201373,49.200817,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-COMEAU (secteur Mingan) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.291375,49.204491,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> BAIE-SAINT-PAUL (incluant secteurs village, paroisse et Rivière du Gouffre) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.501042,47.454812,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Havre-Saint-Pierre --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.603652,50.237582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> LA MALBAIE (incluant secteur Pointe-au-Pic) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.136351,47.654079,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> LES ÉBOULEMENTS --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.326209,47.471154,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ÉBOULEMENTS (secteur Saint-Joseph-de-la-Rive)  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.367882,47.452026,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> SEPT-ÎLES (secteur Moisie), MALIOTENAM --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.140703,50.189979,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Port-Cartier --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.883616,50.035644,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-IRÉNÉE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.204962,47.560354,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-SIMÉON --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.87775,47.8522,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>TADOUSSAC --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.7198605219,48.1390404334274,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-LOUISE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.142812,47.279699,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-ONÉSIME-D'IXWORTH --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.985103,47.325026,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-PACÔME --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.956541,47.421576,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>KAMOURASKA --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.856328,47.566632,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-PASCAL --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.826964,47.535148,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-HÉLÈNE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.722373,47.595996,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> RIVIÈRE-DU-LOUP (incluant secteurs Saint-Patrice P-1 et P-2) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.551484,47.835443,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>CACOUNA --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.498374,47.92661,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-ARSÈNE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.448103,47.914682,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-ANTONIN (secteur Rivière-Verte) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.467221,47.802323,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-ANTONIN (secteur village) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.476989,47.755214,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> SAINT-ANACLET-DE-LESSARD --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.440318,48.488041,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> SAINTE-FLAVIE, MONT-JOLI --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.225793,48.602935,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-OCTAVE-DE-MÉTIS  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.08847,48.601823,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MATANE (secteur Saint-Luc-de-Matane) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.477558,48.796522,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GASPÉ (secteur Petit-Cap) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.45134092795,49.0374435302851,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>CLERMONT --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.205409,47.692694,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ESCOUMINS, ESSIPIT --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.39657,48.3315,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.808150700901,50.2847511541105,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.807816098084,50.2871979371387,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.803979,50.288331,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP SP1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.139803,50.267701,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- TP SP3</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.133992,50.271758,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.76398333333,50.2747,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.764443,50.274206,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.777373,50.273834,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.778062,50.273763,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.78755,50.27477,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Ragueneau --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.4455328355,49.0767542594883,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>FORESTVILLE - Golf --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.077464,48.736555,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.067632,48.735185,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.250387,48.540095,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Saint-Augustin (Pakua Shipi) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.663962,51.219987,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.662607,51.221482,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.66565,50.21665,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.95362,48.18206,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.95311049573,48.1820736188616,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.963785,48.195188,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.48595,48.04243,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.505693,48.052128,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.998866,48.164243,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.97803,48.182844,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.88549,48.17454,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.875532,48.171933,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.877402,48.1733,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.872838,48.169552,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.867201,48.165545,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8537,48.15993,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.844726,48.173107,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.832433,48.163717,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.832556,48.163531,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.522264,48.062212,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.56118533739,48.2445712344702,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.53033,48.25076,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.81672,48.2439,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.79983,48.22719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.791,48.22996,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.38922,48.36965,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.41857,49.08785,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.40833,48.33704,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.223928,48.503697,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.06743,48.10458,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.099178,48.09763,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.537373,48.241765,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.094484,49.227769,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1851,49.17986,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.14193,49.22382,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.14005,49.22547,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.04646,49.2216,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.844667,47.236333333333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.888166666667,47.368666666667,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.901667,47.407333333333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.918167,47.374,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.914333,47.369333333333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.907667,47.3745,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.893,47.361666666667,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.764101501554,47.4116224314826,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.91411,47.39749,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.89766,47.39617,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.273167,50.210667,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.84564163449,48.874903755821,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.85168,48.86752,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.85013,48.87301,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.0983,48.7271,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.10145,48.73744,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.08286,48.7549,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09934537911,48.6404747042297,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09462,48.63507,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09796,48.62781,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09754,48.62617,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09906,48.62614,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09483640213,48.6316787989289,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9865,48.1675,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.982833,48.1535,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.95387559363,48.1896994344674,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.963833,48.205833,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.88432,48.177339,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.868305,48.181413,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.839035,48.177292,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.005285,48.161511,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.972833,48.187833,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.976167,48.184833,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.297,48.129333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.304333,48.132333,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.729245,48.364731,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.69291,48.37711,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.70516,48.37027,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.71327,48.36443,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.854779,48.288959,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.859814,48.302412,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.865303,48.300079,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.879258,48.291366,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.34043486957,48.0136252484835,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.33919711118,48.0120335048444,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.3379148071,48.0189312873096,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.32892,48.02105,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.32687,48.01549,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.32629,48.01158,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.180958,51.418479,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.186921,51.414684,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.828963,51.425865,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.706517,51.478116,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.728153,48.107538,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.725161,48.089306,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.701217,48.141171,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.709752,48.15321,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.651356,48.93996,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.030471,48.135298,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.15122,48.113073,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.440172,48.820585,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.505113,48.814464,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.529738,48.825203,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.454066,48.822051,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.84839,47.237474,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.830765,48.166261,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.327706,48.151824,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.49282,48.84259,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.217266,48.530218,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>  --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.543442,48.238627,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.16360279628,49.7873696918027,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.172677,49.780012,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.159356,49.78682,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.723681,48.094837,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.722351,48.100422,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.403635,48.353282,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- PP4</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.39974,48.35495,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.39944,48.35518,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.412026,48.349057,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RAGUENEAU --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.53144006842,49.0682586126009,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RAGUENEAU --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.5327043502,49.0700397604714,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>COLOMBIER --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.85137,48.872593,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-TRINITÉ --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.304688,49.414243,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RIVIÈRE-AU-TONNERRE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.741,50.272892,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-COMEAU (incluant secteur Marquette) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.201241,49.205876,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-COMEAU (secteur Mingan) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.274355,49.181435,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>L'ÎLE-D'ANTICOSTI (secteur Port-Menier) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.34861,49.816389,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.354684,49.816867,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.804183333333,50.1339,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.814683,50.145719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.867863,47.848469,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.125129,47.649475,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.986649,47.729318,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.20434446,47.69450223,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.20379,47.55873,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.36654,47.44729,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.328675,47.470991,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.50667793,47.45148886,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.435408,47.392032,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>L'ISLE-AUX-COUDRES --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.4218222068,47.3949701610808,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.304053,47.691675,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>NOTRE-DAME-DES-MONTS --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.377806,47.680219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.153348,47.284596,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.98569,47.325796,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.050666,47.384774,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.953852,47.421244,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-AIMÉ-DES-LACS --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.30667293199,47.692076031207,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LA POCATIÈRE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.00892539142,47.3621971082728,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.006583,47.420664,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RIVIÈRE-OUELLE --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.01500842982,47.4236354883685,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.927482,47.500166,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.895525,47.471838,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-PHILIPPE-DE-NÉRI --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.89684602944,47.4716414699955,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.855083,47.567543,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.83123,47.535869,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.729781,47.600691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.653852,47.687391,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.588856,47.806608,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.467382,47.803133,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.475192,47.754261,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.552701,47.839542,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.499868,47.92736,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.452171,47.91347,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.17242508,48.13076641,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.050966,48.201435,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-SIMON --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.03627478843,48.1984484137647,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.708157,48.375632,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.68147,48.39119,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.4992,48.49644,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.46372695,48.38011676,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RIMOUSKI (secteur Sainte-Blandine) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.45807023982,48.379868763708,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.460942,48.485306,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.40601,48.53605,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.359864,48.532432,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.233845,48.61299,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.109275,48.591096,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.885696,48.725621,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.98405,49.00328,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.171391,48.942771,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.349071,48.903265,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.45628579,48.86402389,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.57744973,48.83697479,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.486074,48.795805,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.690646,48.79491,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.636239,49.110261,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.660457,49.104747,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.686465,49.098732,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.679729,49.097035,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.668593,49.100705,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.641059,49.111453,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.696065,49.096404,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.691166,49.097232,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.681069,49.098555,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.678747,49.095931,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.653339,49.109,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.646956,49.114,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4579,49.132251,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.062914,49.210234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.80123,49.22159,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.44986173866,49.0379865797599,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.37139,48.9925,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.21139,48.52922,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.32359,48.42781,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.39624776,48.41391894,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.520133,48.387487,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.706329,48.344718,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.749473,48.255717,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PORT-DANIEL-GASCONS --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.96144768258,48.1868151854721,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PORT-DANIEL--GASCONS --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.96169047365,48.1836772640233,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.275708,48.02080931,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.68556286231,48.0993920410255,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.67758,48.02279,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.60726712607,50.1459897717259,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.39452,48.33488,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Ch. Côte à Langlois</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.67763376499,48.3482875633792,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.853334360031,47.3940625849704,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.67065,48.35085,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Giroux</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.65787383645,48.3481342037592,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Cap-Rouge</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.515205,48.390718,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Des Sables</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.49969511548,48.3980838740512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Bujold</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.52914288369,48.3857066305733,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Tessier</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.52862994883,48.4349313281162,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.14488336358,49.2264689531805,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.14408,49.22641,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.13361024104,49.2474543979454,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.18548,49.20119,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P. Morel</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.31031997329,49.1889033272365,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P. Fafard</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.30604562634,49.1985745045149,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. Normandie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.29483439172,49.1911374130534,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. Labrie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.25364424091,49.1865522664544,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Principal Lejeune</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.28962628527,49.1938043742501,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. Lejeune</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.28924407637,49.1908551769457,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. Papineau</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.27730786898,49.186864766434,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Principal Papineau</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.27533017591,49.1954005384547,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.24909377863,49.1950479133418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.25978610684,49.1943018578955,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.25928896323,49.1904474647852,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.26824094875,49.192312603401,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Principal (Amédée)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.26015947462,49.1880851825675,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- R-3A-29</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.59660203864,48.077223244869,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.21705756188,48.0999187684121,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P.VANNE MANUELLE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.21423656089,48.0966438094315,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.19694602835,48.1158861911983,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- MANOIR ST-CHARLES</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.670937,48.098703,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6454057637,48.0997810507933,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- LE RUISSELET</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.62876675452,48.0910232303648,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> ---  B.B. AUDET</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.69902858542,48.1067869670925,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- RUE DES SAPINS</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7189694171,48.1115700190104,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P.DEGRILLEUR</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6854424869,48.1020171768712,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.71568,48.30021,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- SPN</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.72252222904,48.2874017539764,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.72894,48.28624,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.74073972019,48.2827809028096,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Principal</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.75272353368,48.256624756533,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7587606662,48.2456977985968,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7644536747,48.2388683648758,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.78711,48.22746,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- DÉGRILLEUR</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.74803841416,48.2571980698796,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Grand Ruisseau</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.87838196519,47.3909137821295,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.39454,48.33498,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.76437002399,48.2388125977412,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.75880351169,48.2457158209024,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.75269633019,48.2566451591432,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.74042347973,48.2828733946425,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Chemin de la plage</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.70217878583,48.311413585921,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Blanchard</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.66521,48.34723,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.48293233047,48.8286017321893,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- La Rivière</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.40544,48.34707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.756415157989,47.4243767832058,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.BPABF</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.70322748003,48.3165302205157,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Route Olson</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.72318,48.31539,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Gaspésia</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.68426,48.34621,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P. 2 (Principal)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.808018764018,50.2873412654754,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.47917144921,48.832600303745,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.90854972169,48.7137663207647,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.89323416187,48.7192991686075,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.90143,48.718309,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.9016720016,48.7185670549448,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.890996,48.72524,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.89100959721,48.7250078189415,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.888883,48.726157,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.887724,48.726736,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Déversoir en V</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.883765,48.724902,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P du Banc</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9701949619,48.1802326233345,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP-2 (SPN)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.72173,48.28664,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP-2</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.72879,48.28585,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP P.P-7</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.78708,48.22742,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP-1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.71564,48.30033,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP (P.P.2 PM)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.72297,48.31519,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP P.P.1-CH</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.66526,48.34624,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP P.P.1.B-P</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.65607,48.34729,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP (P.P.1-P)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.65089,48.35291,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.65137,48.35283,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP (P.P.2-P)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.63904,48.35572,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.60259,48.3641,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.60255,48.36401,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.59425,48.37054,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP (P.P.4-P)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.59272,48.37073,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- PP-6</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.4829982616,48.0499826998602,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP PP-2</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.51314583936,48.0571144322557,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- S.P-8 TP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8249956645,48.1357273895744,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.91986,48.19715,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- station de pompage 1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.92008,48.19714,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.92741,48.19831,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP-P.P.-2b</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.86807985767,48.1813693887662,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.06084508443,48.1073565399606,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP (P.P PAUL-OMER LEBLANC)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0744,48.10339,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP (Regard)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3046,48.13276,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP (regard)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.30576958563,48.1308317832569,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.298332834,48.1268471534848,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.63955229198,48.3562649839675,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.47549418135,48.0520722671882,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.91649,48.19892,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.99395716527,48.1805825280995,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.95184757412,48.1803244350804,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.4860538926,48.0421242944981,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.92928360947,48.2011728423135,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.12554584371,48.1107171899041,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP P.P. 4-CH</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.70098727336,48.3426282193532,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.46415769878,49.0741743494285,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.39417946418,49.1267841800471,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.40144687414,49.1140274480194,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.40671346807,49.0466804720097,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.44157744935,49.0790543137448,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.4596119971,49.0815471726678,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.48064912907,49.07167706994,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09948819738,48.6320021803006,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.10052124958,48.6321844436184,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09541515619,48.6315767858779,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.10193447042,48.6180304728355,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09433,48.638613,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.093221,48.64007,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.07419780116,48.7311371030891,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.0982,48.7262,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09801,48.72649,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09820215282,48.726839633294,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09847486772,48.7264808873979,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.39852318001,49.111684208238,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.11735612381,48.5972466738681,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.809199395094,50.2866332949014,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP SP2</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.14851,50.26225,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.609341,50.146325,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.609341,50.146325,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.609341,50.146325,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.608293,50.146132,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.613838,50.139817,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.612744,50.137065,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.61978,50.13256,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.629561,50.13056,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.637678,50.129636,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.61378712038,50.1452030810809,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.63181010665,50.1788672178895,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.61898978613,50.2011070831381,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.669165545217,51.2242168843005,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.668222944599,51.2246880145744,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-AUGUSTIN (CÔTE-NORD) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.644113,51.222965,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.64482,51.222524,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Principal</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.64931,51.22508,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.63433,51.22633,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P RSP-1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.703775211271,51.4732567551214,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P P.P RSP-1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.703741206919,51.4729000494864,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Ananie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.759519075175,47.423487229401,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Chemin des bas</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.784123263593,47.4180189898239,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.69987125056,48.3110919047668,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.73436866494,48.339292732629,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Rivière du nord</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.70575944402,48.3443087143467,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- (Riv. Nord)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.70390144627,48.3456746690996,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Côte à Langlois</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.67661907514,48.3445491251035,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.66411091457,48.3461690923534,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.4077617849,48.0413279126133,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.34580007612,48.0067057032342,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.71300018134,48.3752904179791,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.70553282579,48.3745644250995,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.45945096573,48.8002523053162,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP-PP1 (principal)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.79639105495,48.2328716976944,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.49754891431,48.2664380719957,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.18528,49.20098,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.36619728351,49.2590145168848,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP de SP4</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.39000992525,50.2294029531595,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. de P.P. No. 6</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.41452162183,50.2667489110004,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP de PP5</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.40403672016,50.2503193690932,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Des Pins</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.88474535293,50.0170136512151,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP PP1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.89780166365,50.016394091952,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP de PP2</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.20405,50.21117,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP de PP1 Mosie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.09568254233,50.1867948221045,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.805020977721,50.1456133435677,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.87472563078,50.0231308638184,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.87400949914,50.0274616578768,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.877883,50.014079,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.42354,50.162312,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SEPT-ÎLES (Alouette) --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.433635,50.163128,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.140697,48.610119,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.96468,48.683953,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1011,48.09053,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.09969834428,48.6191733590502,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- 359 route principale</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.093794,48.631314,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. P.P. de la Grave</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.833501662186,47.2376191104341,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP du P.P.1 </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4473440565,49.0341012426908,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP du P.P.2 (RTE 132)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.44333630365,49.0307212102677,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> ---  poste principal (DU FLEUVE)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.44792213047,49.033911498416,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- RTE 132</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.44375183683,49.0300421433915,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P. Cap d'Espoir </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.32784188468,48.4281726234439,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. du P.P. Cap d'Espoir</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.32778407728,48.4282008470547,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Pierre-Mercier</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.79549,49.22387,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Cloutier/Kiosque</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.79666,49.22355,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Cloutier/Kiosque</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7963,49.2235,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. Pierre-Mercier</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7959,49.2238,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Bernatchez</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.80191419094,49.2224220954473,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Coulombe/Cloutier</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.80774,49.2223,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. Coulombe/Cloutier</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.80769901118,49.2224829632344,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. du P.P.2 (Biard) de Percé</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.21082679111,48.5264468961255,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. du P.P.1 (de la Baleine) de Percé</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.21338051789,48.5207909525345,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. Camping prov. Baie-de-Percé</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.21508,48.52074,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.46504944212,48.9596504178529,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.42295069506,49.0144511487636,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3580071447,48.9743953842446,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.43679590673,49.0252461698205,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.46130080244,49.0396687749709,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P. 9-B (Montée-Morris)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.40873619613,48.993442921084,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.9-A (Montée-Morris)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4058390254,48.9941780951382,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.-2 (Pétro Canada)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.39907011923,48.995637221811,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.-1 (Robin)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.39728149035,48.9949136092359,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.-4 (Pêcherie)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.37900483162,48.9957827604304,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.-7 (Industriel)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.38202169767,48.9941740146161,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.-5 (Côté)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.36982093643,48.9873013953702,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.-6 (Reeves)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.35817988681,48.9740492199582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.-3 (Bernier)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.39290649052,48.9989689680567,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. du P.P.-2 (Pétro Canada )</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.39889669704,48.9958609704362,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.37522830837,48.9957895613005,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. du P.P.-5 (Côté)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.36802074607,48.9877791564924,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. du P.P.-3 (Bernier)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.39228285072,48.9986857118184,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.-8 (Petite Rivière-au-Renard)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.41786228393,49.0130311270936,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. du P.P.-8 (Petite Rivière-au-Renard)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.41659732206,49.0129029306929,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P. 9 B Montée Morris</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.43363554232,48.9794712136189,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.35761881501,48.9742263826234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. du P.P. No 1 (Robin)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3911464253,48.9956314410714,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP d'urgence du P.P.1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.44762221209,49.0338091453215,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.829305674487,51.4224756784638,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.827736033631,51.4231422487412,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.826384020624,51.4233574112679,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.824263509278,51.4236144841564,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.818821452897,51.4238501343042,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.818197133008,51.4237897765824,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.817893814194,51.4235171467036,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.82042373793,51.4260559114995,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.824040440733,51.4247435986093,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.827850288251,51.4252516236032,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.831151430675,51.4281302618807,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.837434074619,51.436580087906,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.828270582033,51.4239845364989,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.816082062358,51.4253175920429,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.70978446023,51.4719305004476,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.710701217541,51.4714438131834,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.712232773523,51.4691820988318,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.712333426403,51.4683089521262,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.712819008539,51.4675073845779,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.712757800707,51.4674241589305,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.717040988795,51.4669333061334,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.713059759346,51.4667251995094,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.718178094302,51.4660023520321,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.706896810719,51.4726299699339,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.70622896526,51.4730567245306,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.705736582253,51.4735501276539,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.705629128503,51.4738168917823,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.707143002222,51.4714460234662,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.70730350276,51.4762295854494,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.706635657301,51.4754290380316,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.70640034719,51.4751831015678,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.705882120876,51.4744925582234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.205903902318,51.4190071497189,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.205225175466,51.4171827313126,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.201132411745,51.4128755702776,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.201484696824,51.4133968569682,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.201850583644,51.4139702553257,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.202163423676,51.414647877017,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.189449876816,51.4133938815875,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.189262172797,51.4128109620119,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.18948796169,51.414145972806,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.18854808142,51.4145031885063,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.187137580929,51.4149544262352,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.185784207747,51.4111187355176,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.18185058439,51.4103453065693,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.180177570307,51.4113450344691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.17595,51.40846,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.17118,51.40786,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.17068,51.40723,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.18111,51.40869,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.18174,51.40943,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.205596502982,51.4120094794746,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.190026590614,51.4146242439935,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-57.830503987826,51.4211977099673,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P de P.P No. 3</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.886551170543,47.4098684870924,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. de P.P No.1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.903742410381,47.4135936636715,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P de P.P. No. 4</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8905215186,47.401927451159,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P de P.P No. 2 (Grand Ruisseau)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.878414609367,47.3906808523297,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.855714664621,47.3801619465975,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.85335,47.39082,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P.3 (Polyvalente) (Étang-du-Nord)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.913501659201,47.3696001953839,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP PP2 (PRINCIPAL) (Étang-du-Nord)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.89057,47.36115,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Trop plein PP1 (Garderie)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8727,47.36569,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP PP1 Centre d'Achat </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.88443,47.3699,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.890654815657,47.3705400756271,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.579385710209,50.2523348069374,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.581137614387,50.2509926552298,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.579766558943,50.2485552233979,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.576939437177,50.2500918799894,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- TP PP2 Anse ouest</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.58463,50.24378,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- T.P. Principal (émissaire K) Pompé</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.60247,50.23729,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.522765819591,47.5597793858861,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- SP-1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.87426850036,47.8418702950791,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Piscine</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2150365298,48.5189159526572,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P. No 1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.87499,47.84178,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- P.P. No 1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.87499,47.84178,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Château Madelinot</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.852042194682,47.3911592935389,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.526432848834,47.5600078951204,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.786747039338,47.4123644064069,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.759633329795,47.4233998382207,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Wharf</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.68324,48.01624,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.68192503949,48.0143230177524,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.68324,48.01619,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Chouinard</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.69764321083,48.0227758191583,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Isaac Lane</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.71247522878,48.0200275875644,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.7116509633,48.0200758737418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Riverside Ouest</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.70626671432,48.0131393263173,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.70636328668,48.0126057980605,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Pacific</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.70417068611,48.0171232760024,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Pacific second</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.70584642054,48.0200289477384,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- Alpine</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.70016225318,48.0127268535477,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.69998339029,48.0131740107546,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.70005003882,48.011123208386,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name> --- </name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.14456712311,49.2476771264401,0</coordinates>
+</Point>
+</Placemark>
+</Folder>
+</Document>
+</kml>

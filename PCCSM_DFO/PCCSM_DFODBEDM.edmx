@@ -1,0 +1,2931 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="pccsm_mpoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="clause">
+          <Key>
+            <PropertyRef Name="clause_id" />
+          </Key>
+          <Property Name="clause_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ordonnance_id" Type="int" />
+          <Property Name="clause_type" Type="int" />
+          <Property Name="clause_no" Type="int" />
+        </EntityType>
+        <EntityType Name="clause_espece">
+          <Key>
+            <PropertyRef Name="clause_espece_id" />
+          </Key>
+          <Property Name="clause_espece_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="espece_id" Type="int" />
+          <Property Name="clause_id" Type="int" />
+          <Property Name="interdiction" Type="bit" />
+        </EntityType>
+        <EntityType Name="clause_interdiction">
+          <Key>
+            <PropertyRef Name="clause_interdiction_id" />
+          </Key>
+          <Property Name="clause_interdiction_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clause_id" Type="int" />
+          <Property Name="type_peche" Type="int" />
+        </EntityType>
+        <EntityType Name="clause_methode">
+          <Key>
+            <PropertyRef Name="clause_methode_id" />
+          </Key>
+          <Property Name="clause_methode_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clause_id" Type="int" />
+          <Property Name="methode_id" Type="int" />
+        </EntityType>
+        <EntityType Name="clause_periode">
+          <Key>
+            <PropertyRef Name="clause_periode_id" />
+          </Key>
+          <Property Name="clause_periode_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clause_id" Type="int" />
+          <Property Name="debut" Type="datetime" />
+          <Property Name="fin" Type="datetime" />
+          <Property Name="periode_format_id" Type="int" />
+        </EntityType>
+        <EntityType Name="clause_secteur">
+          <Key>
+            <PropertyRef Name="clause_secteur_id" />
+          </Key>
+          <Property Name="clause_secteur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clause_id" Type="int" />
+          <Property Name="secteur_id" Type="int" />
+        </EntityType>
+        <EntityType Name="codification">
+          <Key>
+            <PropertyRef Name="codification_id" />
+          </Key>
+          <Property Name="codification_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_id" Type="int" />
+          <Property Name="parent_id" Type="int" />
+          <Property Name="description" Type="text" />
+          <Property Name="etat" Type="int" />
+          <Property Name="codification_old" Type="int" />
+        </EntityType>
+        <EntityType Name="codification_description">
+          <Key>
+            <PropertyRef Name="codification_description_id" />
+          </Key>
+          <Property Name="codification_description_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codification_id" Type="int" />
+          <Property Name="valeur" Type="text" />
+          <Property Name="langue" Type="int" />
+          <Property Name="etat" Type="int" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="contact_id" />
+          </Key>
+          <Property Name="contact_id" Type="int" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="organisation" Type="int" />
+          <Property Name="titre" Type="int" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="cellulaire" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="courriel" Type="nvarchar" MaxLength="250" />
+          <Property Name="adresse_postale" Type="nvarchar" MaxLength="250" />
+          <Property Name="ville" Type="int" />
+          <Property Name="code_postal" Type="nvarchar" MaxLength="8" />
+          <Property Name="province" Type="int" />
+          <Property Name="nom_user" Type="nvarchar" MaxLength="20" />
+          <Property Name="commentaire" Type="ntext" />
+          <Property Name="ID_Infra" Type="int" />
+          <Property Name="contact_primaire" Type="int" />
+          <Property Name="infrastrure_id" Type="int" />
+        </EntityType>
+        <EntityType Name="contact_communication">
+          <Key>
+            <PropertyRef Name="contact_communication_id" />
+          </Key>
+          <Property Name="contact_communication_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="communication" Type="int" />
+          <Property Name="communication_valeur" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_id" Type="int" />
+        </EntityType>
+        <EntityType Name="contact_groupe">
+          <Key>
+            <PropertyRef Name="contact_groupe_id" />
+          </Key>
+          <Property Name="contact_groupe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contact_id" Type="int" />
+          <Property Name="groupe_id" Type="int" />
+        </EntityType>
+        <EntityType Name="db_histo_operation">
+          <Key>
+            <PropertyRef Name="id_db_histo_operation" />
+          </Key>
+          <Property Name="id_db_histo_operation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type_operation" Type="int" />
+          <Property Name="auteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_operation" Type="datetime" />
+          <Property Name="description_operation" Type="text" />
+          <Property Name="ordonnance_id" Type="int" />
+          <Property Name="point_legal_id" Type="int" />
+          <Property Name="secteur_id" Type="int" />
+          <Property Name="id_geo_pollution_p" Type="int" />
+          <Property Name="id_geo_terrain_p" Type="int" />
+          <Property Name="id_geo_banc_coquillier_s" Type="int" />
+          <Property Name="id_geo_station_p" Type="int" />
+          <Property Name="ID_infrastructures" Type="int" />
+          <Property Name="id_cour_zone_etude" Type="int" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+          <Property Name="contact_principal" Type="int" />
+          <Property Name="contact_secondaire" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'pccsm_mpo.dbo.db_tournee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="db_tournee">
+          <Key>
+            <PropertyRef Name="ID_Tournee" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="mois" />
+            <PropertyRef Name="jour" />
+          </Key>
+          <Property Name="ID_Tournee" Type="int" Nullable="false" />
+          <Property Name="tournee" Type="smallint" />
+          <Property Name="annee" Type="int" Nullable="false" />
+          <Property Name="mois" Type="int" Nullable="false" />
+          <Property Name="jour" Type="int" Nullable="false" />
+          <Property Name="hre_deb" Type="datetime" />
+          <Property Name="hre_fin" Type="datetime" />
+          <Property Name="hre_recep_lab" Type="datetime" />
+          <Property Name="temp_glace_recep" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="hre_maree_h" Type="datetime" />
+          <Property Name="hre_maree_b" Type="datetime" />
+          <Property Name="maree_princ" Type="varchar" MaxLength="1" />
+          <Property Name="maree_principale" Type="int" />
+          <Property Name="pmaree_deb" Type="nvarchar" MaxLength="15" />
+          <Property Name="pmaree_fin" Type="nvarchar" MaxLength="15" />
+          <Property Name="maree_ve" Type="bit" />
+          <Property Name="maree_me" Type="bit" />
+          <Property Name="marnage" Type="float" />
+          <Property Name="precipit" Type="float" />
+          <Property Name="precipit_3jant" Type="float" />
+          <Property Name="t_air_deb" Type="float" />
+          <Property Name="t_air_fin" Type="float" />
+          <Property Name="v_vent_deb" Type="float" />
+          <Property Name="v_vent_fin" Type="float" />
+          <Property Name="vent_direction_debut" Type="int" />
+          <Property Name="vent_direction_fin" Type="int" />
+          <Property Name="couvert_nuage" Type="float" />
+          <Property Name="couvert_nuage_fin" Type="float" />
+          <Property Name="mer_etat" Type="float" />
+          <Property Name="mer_etat_fin" Type="float" />
+          <Property Name="niveau_eau" Type="float" />
+          <Property Name="vague_hauteur" Type="float" />
+          <Property Name="vague_hauteur_fin" Type="float" />
+          <Property Name="consultant" Type="nvarchar" MaxLength="50" />
+          <Property Name="commentaire" Type="nvarchar(max)" />
+          <Property Name="date_creation" Type="datetime" />
+          <Property Name="status" Type="int" />
+          <Property Name="date_echantillonnage" Type="datetime" />
+          <Property Name="notification" Type="bit" />
+          <Property Name="cf_methode_analytique" Type="int" />
+          <Property Name="laboratoire_operateur_id" Type="int" />
+          <Property Name="validation" Type="int" />
+          <Property Name="analyse_datetime" Type="datetime" />
+          <Property Name="validation_datetime" Type="datetime" />
+          <Property Name="approbation" Type="int" />
+          <Property Name="approbation_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="objectid" Type="int" />
+          <Property Name="property" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="value" Type="varchar" MaxLength="255" />
+          <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
+          <Property Name="lvalue" Type="image" />
+          <Property Name="version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="groupe_secteur">
+          <Key>
+            <PropertyRef Name="groupe_secteur_id" />
+          </Key>
+          <Property Name="groupe_secteur_id" Type="int" Nullable="false" />
+          <Property Name="groupe_id" Type="int" />
+          <Property Name="secteur_id" Type="int" />
+          <Property Name="etat" Type="int" />
+        </EntityType>
+        <EntityType Name="historique_operation">
+          <Key>
+            <PropertyRef Name="historique_id" />
+          </Key>
+          <Property Name="historique_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type_operation" Type="int" />
+          <Property Name="auteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_operation" Type="datetime" />
+          <Property Name="description_operation" Type="text" />
+          <Property Name="ordonnance_id" Type="int" />
+          <Property Name="point_legal_id" Type="int" />
+          <Property Name="secteur_id" Type="int" />
+          <Property Name="id_geo_pollution_p" Type="int" />
+          <Property Name="id_geo_terrain_p" Type="int" />
+          <Property Name="id_geo_banc_coquillier_s" Type="int" />
+          <Property Name="id_geo_station_p" Type="int" />
+          <Property Name="ID_infrastructures" Type="int" />
+          <Property Name="id_cour_zone_etude" Type="int" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+          <Property Name="contact_principal" Type="int" />
+          <Property Name="contact_secondaire" Type="int" />
+        </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="language_id" />
+          </Key>
+          <Property Name="language_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="langue" Type="int" />
+          <Property Name="page" Type="varchar" MaxLength="100" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="LanguageText" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ordonnance">
+          <Key>
+            <PropertyRef Name="ordonnance_id" />
+          </Key>
+          <Property Name="ordonnance_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="abrogation_id" Type="int" />
+          <Property Name="ordonnance_no" Type="nvarchar" MaxLength="15" />
+          <Property Name="ordonnance_type" Type="int" />
+          <Property Name="etat" Type="int" />
+          <Property Name="date_en_vigueur" Type="datetime" />
+          <Property Name="date_abrogation" Type="datetime" />
+          <Property Name="raison" Type="int" />
+          <Property Name="communique" Type="nvarchar" MaxLength="15" />
+          <Property Name="ordonnance_signataire" Type="int" />
+          <Property Name="communique_signataire" Type="int" />
+          <Property Name="description" Type="ntext" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'pccsm_mpo.dbo.organisation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="organisation">
+          <Key>
+            <PropertyRef Name="ID_organisation" />
+          </Key>
+          <Property Name="ID_organisation" Type="int" Nullable="false" />
+          <Property Name="organisation_fr" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="point_legal">
+          <Key>
+            <PropertyRef Name="point_legal_id" />
+          </Key>
+          <Property Name="point_legal_id" Type="int" Nullable="false" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+          <Property Name="etat" Type="int" />
+          <Property Name="commentaire" Type="ntext" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'pccsm_mpo.dbo.point_legal_20131118' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="point_legal_20131118">
+          <Key>
+            <PropertyRef Name="point_legal_id" />
+          </Key>
+          <Property Name="point_legal_id" Type="int" Nullable="false" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+          <Property Name="etat" Type="int" />
+          <Property Name="commentaire" Type="ntext" />
+        </EntityType>
+        <EntityType Name="secteur">
+          <Key>
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_id" Type="int" Nullable="false" />
+          <Property Name="secteur_id_parent" Type="int" />
+          <Property Name="secteur" Type="nvarchar" MaxLength="15" />
+          <Property Name="secteur_ltr" Type="nvarchar" MaxLength="1" />
+          <Property Name="secteur_no1" Type="int" />
+          <Property Name="secteur_no2" Type="int" />
+          <Property Name="secteur_no3" Type="int" />
+          <Property Name="secteur_no4" Type="int" />
+          <Property Name="longueur_rive" Type="float" />
+          <Property Name="superficie" Type="float" />
+          <Property Name="geometry" Type="image" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+          <Property Name="x_min" Type="float" />
+          <Property Name="y_min" Type="float" />
+          <Property Name="x_max" Type="float" />
+          <Property Name="y_max" Type="float" />
+          <Property Name="secteur_type" Type="int" />
+          <Property Name="etat" Type="int" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'pccsm_mpo.dbo.secteur_20131118' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="secteur_20131118">
+          <Key>
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_id" Type="int" Nullable="false" />
+          <Property Name="secteur_id_parent" Type="int" />
+          <Property Name="secteur" Type="nvarchar" MaxLength="15" />
+          <Property Name="secteur_ltr" Type="nvarchar" MaxLength="1" />
+          <Property Name="secteur_no1" Type="int" />
+          <Property Name="secteur_no2" Type="int" />
+          <Property Name="secteur_no3" Type="int" />
+          <Property Name="secteur_no4" Type="int" />
+          <Property Name="longueur_rive" Type="float" />
+          <Property Name="superficie" Type="float" />
+          <Property Name="geometry" Type="image" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+          <Property Name="x_min" Type="float" />
+          <Property Name="y_min" Type="float" />
+          <Property Name="x_max" Type="float" />
+          <Property Name="y_max" Type="float" />
+          <Property Name="secteur_type" Type="int" />
+          <Property Name="etat" Type="int" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="secteur_description">
+          <Key>
+            <PropertyRef Name="secteur_description_id" />
+          </Key>
+          <Property Name="secteur_description_id" Type="int" Nullable="false" />
+          <Property Name="secteur_id" Type="int" Nullable="false" />
+          <Property Name="secteur_text" Type="text" />
+          <Property Name="langue" Type="int" />
+          <Property Name="parametre" Type="int" />
+          <Property Name="etat" Type="int" />
+          <Property Name="modification_date" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20131021' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="secteur_description_20131021">
+          <Key>
+            <PropertyRef Name="secteur_description_id" />
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_description_id" Type="int" Nullable="false" />
+          <Property Name="secteur_id" Type="int" Nullable="false" />
+          <Property Name="secteur_text" Type="text" />
+          <Property Name="langue" Type="int" />
+          <Property Name="parametre" Type="int" />
+          <Property Name="etat" Type="int" />
+          <Property Name="modification_date" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20131118' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="secteur_description_20131118">
+          <Key>
+            <PropertyRef Name="secteur_description_id" />
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_description_id" Type="int" Nullable="false" />
+          <Property Name="secteur_id" Type="int" Nullable="false" />
+          <Property Name="secteur_text" Type="text" />
+          <Property Name="langue" Type="int" />
+          <Property Name="parametre" Type="int" />
+          <Property Name="etat" Type="int" />
+          <Property Name="modification_date" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20140210' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="secteur_description_20140210">
+          <Key>
+            <PropertyRef Name="secteur_description_id" />
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_description_id" Type="int" Nullable="false" />
+          <Property Name="secteur_id" Type="int" Nullable="false" />
+          <Property Name="secteur_text" Type="text" />
+          <Property Name="langue" Type="int" />
+          <Property Name="parametre" Type="int" />
+          <Property Name="etat" Type="int" />
+          <Property Name="modification_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="secteur_historique">
+          <Key>
+            <PropertyRef Name="secteur_historique_id" />
+          </Key>
+          <Property Name="secteur_historique_id" Type="int" Nullable="false" />
+          <Property Name="operation" Type="int" />
+          <Property Name="auteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_operation" Type="datetime" />
+          <Property Name="description" Type="text" />
+          <Property Name="point_legal_id" Type="int" />
+          <Property Name="secteur_id" Type="int" />
+        </EntityType>
+        <EntityType Name="secteur_point_archive">
+          <Key>
+            <PropertyRef Name="secteur_point_archive_id" />
+          </Key>
+          <Property Name="secteur_point_archive_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="point_legal_id" Type="int" />
+          <Property Name="secteur1" Type="nvarchar" MaxLength="15" />
+          <Property Name="secteur2" Type="nvarchar" MaxLength="15" />
+          <Property Name="secteur3" Type="nvarchar" MaxLength="15" />
+          <Property Name="secteur4" Type="nvarchar" MaxLength="15" />
+          <Property Name="secteur5" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="secteur_point_legal">
+          <Key>
+            <PropertyRef Name="secteur_point_legal_id" />
+          </Key>
+          <Property Name="secteur_point_legal_id" Type="int" Nullable="false" />
+          <Property Name="secteur_id" Type="int" />
+          <Property Name="point_legal_id" Type="int" />
+          <Property Name="secteur_point_legal_no" Type="int" />
+        </EntityType>
+        <EntityType Name="signalisation">
+          <Key>
+            <PropertyRef Name="signalisation_id" />
+          </Key>
+          <Property Name="signalisation_id" Type="int" Nullable="false" />
+          <Property Name="date_installation" Type="datetime" />
+          <Property Name="date_observation" Type="datetime" />
+          <Property Name="date_update" Type="datetime" />
+          <Property Name="auteur_installation" Type="char" MaxLength="10" />
+          <Property Name="auteur_update" Type="char" MaxLength="10" />
+          <Property Name="type_panneau" Type="int" />
+          <Property Name="description" Type="text" />
+          <Property Name="status_actif" Type="bit" />
+          <Property Name="secteur" Type="nvarchar" MaxLength="15" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_clause_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="clause" Type="Self.clause" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause">
+              <PropertyRef Name="clause_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_espece_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="clause_espece" Type="Self.clause_espece" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause_espece">
+              <PropertyRef Name="espece_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_interdiction_clause">
+          <End Role="clause" Type="Self.clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clause_interdiction" Type="Self.clause_interdiction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_interdiction">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_interdiction_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="clause_interdiction" Type="Self.clause_interdiction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause_interdiction">
+              <PropertyRef Name="type_peche" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_methode_clause">
+          <End Role="clause" Type="Self.clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clause_methode" Type="Self.clause_methode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_methode">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_methode_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="clause_methode" Type="Self.clause_methode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause_methode">
+              <PropertyRef Name="methode_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_periode_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="clause_periode" Type="Self.clause_periode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause_periode">
+              <PropertyRef Name="periode_format_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_secteur_clause">
+          <End Role="clause" Type="Self.clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clause_secteur" Type="Self.clause_secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_secteur">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_secteur_secteur">
+          <End Role="secteur" Type="Self.secteur" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clause_secteur" Type="Self.clause_secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="clause_secteur">
+              <PropertyRef Name="secteur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_codification_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="codification1" Type="Self.codification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="codification1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_codification_description_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="codification_description" Type="Self.codification_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="codification_description">
+              <PropertyRef Name="codification_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_codification_description_codification2">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="codification_description" Type="Self.codification_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="codification_description">
+              <PropertyRef Name="langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_codification_description_codification3">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="codification_description" Type="Self.codification_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="codification_description">
+              <PropertyRef Name="etat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="contact" Type="Self.contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact">
+              <PropertyRef Name="organisation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_codification1">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="contact" Type="Self.contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact">
+              <PropertyRef Name="ville" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_codification2">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="contact" Type="Self.contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact">
+              <PropertyRef Name="province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_codification3">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="contact" Type="Self.contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact">
+              <PropertyRef Name="titre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_communication_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="contact_communication" Type="Self.contact_communication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact_communication">
+              <PropertyRef Name="communication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_communication_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="contact_communication" Type="Self.contact_communication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="contact_communication">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_groupe_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="contact_groupe" Type="Self.contact_groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact_groupe">
+              <PropertyRef Name="groupe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_groupe_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="contact_groupe" Type="Self.contact_groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="contact_groupe">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groupe_secteur_secteur">
+          <End Role="secteur" Type="Self.secteur" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="groupe_secteur" Type="Self.groupe_secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="groupe_secteur">
+              <PropertyRef Name="secteur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groupe_secteur_secteur1">
+          <End Role="secteur" Type="Self.secteur" Multiplicity="0..1" />
+          <End Role="groupe_secteur" Type="Self.groupe_secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="groupe_secteur">
+              <PropertyRef Name="groupe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historique_operation_ordonnance">
+          <End Role="ordonnance" Type="Self.ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="historique_operation" Type="Self.historique_operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordonnance">
+              <PropertyRef Name="ordonnance_id" />
+            </Principal>
+            <Dependent Role="historique_operation">
+              <PropertyRef Name="ordonnance_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_occurance_espece_ordonnance_occurance">
+          <End Role="clause" Type="Self.clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clause_espece" Type="Self.clause_espece" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_espece">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_occurance_periode_ordonnance_occurance">
+          <End Role="clause" Type="Self.clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clause_periode" Type="Self.clause_periode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_periode">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="ordonnance" Type="Self.ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="ordonnance">
+              <PropertyRef Name="ordonnance_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_codification1">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="ordonnance" Type="Self.ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="ordonnance">
+              <PropertyRef Name="etat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_codification2">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="ordonnance" Type="Self.ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="ordonnance">
+              <PropertyRef Name="raison" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="0..1" />
+          <End Role="ordonnance" Type="Self.ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="ordonnance">
+              <PropertyRef Name="ordonnance_signataire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_occurance_ordonnance">
+          <End Role="ordonnance" Type="Self.ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clause" Type="Self.clause" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordonnance">
+              <PropertyRef Name="ordonnance_id" />
+            </Principal>
+            <Dependent Role="clause">
+              <PropertyRef Name="ordonnance_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_point_legal_codification">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="point_legal" Type="Self.point_legal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="point_legal">
+              <PropertyRef Name="etat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_codification1">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="secteur" Type="Self.secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="secteur">
+              <PropertyRef Name="secteur_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_codification2">
+          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
+          <End Role="secteur" Type="Self.secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="secteur">
+              <PropertyRef Name="etat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_description_secteur">
+          <End Role="secteur" Type="Self.secteur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="secteur_description" Type="Self.secteur_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="secteur_description">
+              <PropertyRef Name="secteur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_point_legal_point_legal">
+          <End Role="point_legal" Type="Self.point_legal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="secteur_point_legal" Type="Self.secteur_point_legal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="point_legal">
+              <PropertyRef Name="point_legal_id" />
+            </Principal>
+            <Dependent Role="secteur_point_legal">
+              <PropertyRef Name="point_legal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_point_legal_secteur">
+          <End Role="secteur" Type="Self.secteur" Multiplicity="0..1" />
+          <End Role="secteur_point_legal" Type="Self.secteur_point_legal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="secteur_point_legal">
+              <PropertyRef Name="secteur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pccsm_mpoModelStoreContainer">
+          <EntitySet Name="clause" EntityType="Self.clause" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clause_espece" EntityType="Self.clause_espece" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clause_interdiction" EntityType="Self.clause_interdiction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clause_methode" EntityType="Self.clause_methode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clause_periode" EntityType="Self.clause_periode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clause_secteur" EntityType="Self.clause_secteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="codification" EntityType="Self.codification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="codification_description" EntityType="Self.codification_description" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contact" EntityType="Self.contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contact_communication" EntityType="Self.contact_communication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contact_groupe" EntityType="Self.contact_groupe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_histo_operation" EntityType="Self.db_histo_operation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groupe_secteur" EntityType="Self.groupe_secteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="historique_operation" EntityType="Self.historique_operation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="language" EntityType="Self.language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ordonnance" EntityType="Self.ordonnance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="point_legal" EntityType="Self.point_legal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secteur" EntityType="Self.secteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secteur_description" EntityType="Self.secteur_description" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secteur_historique" EntityType="Self.secteur_historique" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secteur_point_archive" EntityType="Self.secteur_point_archive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secteur_point_legal" EntityType="Self.secteur_point_legal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="signalisation" EntityType="Self.signalisation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_tournee" EntityType="Self.db_tournee" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[db_tournee].[ID_Tournee] AS [ID_Tournee], 
+[db_tournee].[tournee] AS [tournee], 
+[db_tournee].[annee] AS [annee], 
+[db_tournee].[mois] AS [mois], 
+[db_tournee].[jour] AS [jour], 
+[db_tournee].[hre_deb] AS [hre_deb], 
+[db_tournee].[hre_fin] AS [hre_fin], 
+[db_tournee].[hre_recep_lab] AS [hre_recep_lab], 
+[db_tournee].[temp_glace_recep] AS [temp_glace_recep], 
+[db_tournee].[hre_maree_h] AS [hre_maree_h], 
+[db_tournee].[hre_maree_b] AS [hre_maree_b], 
+[db_tournee].[maree_princ] AS [maree_princ], 
+[db_tournee].[maree_principale] AS [maree_principale], 
+[db_tournee].[pmaree_deb] AS [pmaree_deb], 
+[db_tournee].[pmaree_fin] AS [pmaree_fin], 
+[db_tournee].[maree_ve] AS [maree_ve], 
+[db_tournee].[maree_me] AS [maree_me], 
+[db_tournee].[marnage] AS [marnage], 
+[db_tournee].[precipit] AS [precipit], 
+[db_tournee].[precipit_3jant] AS [precipit_3jant], 
+[db_tournee].[t_air_deb] AS [t_air_deb], 
+[db_tournee].[t_air_fin] AS [t_air_fin], 
+[db_tournee].[v_vent_deb] AS [v_vent_deb], 
+[db_tournee].[v_vent_fin] AS [v_vent_fin], 
+[db_tournee].[vent_direction_debut] AS [vent_direction_debut], 
+[db_tournee].[vent_direction_fin] AS [vent_direction_fin], 
+[db_tournee].[couvert_nuage] AS [couvert_nuage], 
+[db_tournee].[couvert_nuage_fin] AS [couvert_nuage_fin], 
+[db_tournee].[mer_etat] AS [mer_etat], 
+[db_tournee].[mer_etat_fin] AS [mer_etat_fin], 
+[db_tournee].[niveau_eau] AS [niveau_eau], 
+[db_tournee].[vague_hauteur] AS [vague_hauteur], 
+[db_tournee].[vague_hauteur_fin] AS [vague_hauteur_fin], 
+[db_tournee].[consultant] AS [consultant], 
+[db_tournee].[commentaire] AS [commentaire], 
+[db_tournee].[date_creation] AS [date_creation], 
+[db_tournee].[status] AS [status], 
+[db_tournee].[date_echantillonnage] AS [date_echantillonnage], 
+[db_tournee].[notification] AS [notification], 
+[db_tournee].[cf_methode_analytique] AS [cf_methode_analytique], 
+[db_tournee].[laboratoire_operateur_id] AS [laboratoire_operateur_id], 
+[db_tournee].[validation] AS [validation], 
+[db_tournee].[analyse_datetime] AS [analyse_datetime], 
+[db_tournee].[validation_datetime] AS [validation_datetime], 
+[db_tournee].[approbation] AS [approbation], 
+[db_tournee].[approbation_date] AS [approbation_date]
+FROM [dbo].[db_tournee] AS [db_tournee]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="organisation" EntityType="Self.organisation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[organisation].[ID_organisation] AS [ID_organisation], 
+[organisation].[organisation_fr] AS [organisation_fr]
+FROM [dbo].[organisation] AS [organisation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="point_legal_20131118" EntityType="Self.point_legal_20131118" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[point_legal_20131118].[point_legal_id] AS [point_legal_id], 
+[point_legal_20131118].[x] AS [x], 
+[point_legal_20131118].[y] AS [y], 
+[point_legal_20131118].[etat] AS [etat], 
+[point_legal_20131118].[commentaire] AS [commentaire]
+FROM [dbo].[point_legal_20131118] AS [point_legal_20131118]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="secteur_20131118" EntityType="Self.secteur_20131118" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[secteur_20131118].[secteur_id] AS [secteur_id], 
+[secteur_20131118].[secteur_id_parent] AS [secteur_id_parent], 
+[secteur_20131118].[secteur] AS [secteur], 
+[secteur_20131118].[secteur_ltr] AS [secteur_ltr], 
+[secteur_20131118].[secteur_no1] AS [secteur_no1], 
+[secteur_20131118].[secteur_no2] AS [secteur_no2], 
+[secteur_20131118].[secteur_no3] AS [secteur_no3], 
+[secteur_20131118].[secteur_no4] AS [secteur_no4], 
+[secteur_20131118].[longueur_rive] AS [longueur_rive], 
+[secteur_20131118].[superficie] AS [superficie], 
+[secteur_20131118].[geometry] AS [geometry], 
+[secteur_20131118].[x] AS [x], 
+[secteur_20131118].[y] AS [y], 
+[secteur_20131118].[x_min] AS [x_min], 
+[secteur_20131118].[y_min] AS [y_min], 
+[secteur_20131118].[x_max] AS [x_max], 
+[secteur_20131118].[y_max] AS [y_max], 
+[secteur_20131118].[secteur_type] AS [secteur_type], 
+[secteur_20131118].[etat] AS [etat], 
+[secteur_20131118].[description] AS [description]
+FROM [dbo].[secteur_20131118] AS [secteur_20131118]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="secteur_description_20131021" EntityType="Self.secteur_description_20131021" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[secteur_description_20131021].[secteur_description_id] AS [secteur_description_id], 
+[secteur_description_20131021].[secteur_id] AS [secteur_id], 
+[secteur_description_20131021].[secteur_text] AS [secteur_text], 
+[secteur_description_20131021].[langue] AS [langue], 
+[secteur_description_20131021].[parametre] AS [parametre], 
+[secteur_description_20131021].[etat] AS [etat], 
+[secteur_description_20131021].[modification_date] AS [modification_date]
+FROM [dbo].[secteur_description_20131021] AS [secteur_description_20131021]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="secteur_description_20131118" EntityType="Self.secteur_description_20131118" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[secteur_description_20131118].[secteur_description_id] AS [secteur_description_id], 
+[secteur_description_20131118].[secteur_id] AS [secteur_id], 
+[secteur_description_20131118].[secteur_text] AS [secteur_text], 
+[secteur_description_20131118].[langue] AS [langue], 
+[secteur_description_20131118].[parametre] AS [parametre], 
+[secteur_description_20131118].[etat] AS [etat], 
+[secteur_description_20131118].[modification_date] AS [modification_date]
+FROM [dbo].[secteur_description_20131118] AS [secteur_description_20131118]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="secteur_description_20140210" EntityType="Self.secteur_description_20140210" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[secteur_description_20140210].[secteur_description_id] AS [secteur_description_id], 
+[secteur_description_20140210].[secteur_id] AS [secteur_id], 
+[secteur_description_20140210].[secteur_text] AS [secteur_text], 
+[secteur_description_20140210].[langue] AS [langue], 
+[secteur_description_20140210].[parametre] AS [parametre], 
+[secteur_description_20140210].[etat] AS [etat], 
+[secteur_description_20140210].[modification_date] AS [modification_date]
+FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_clause_codification" Association="Self.FK_clause_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="clause" EntitySet="clause" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_espece_codification" Association="Self.FK_clause_espece_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="clause_espece" EntitySet="clause_espece" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_interdiction_clause" Association="Self.FK_clause_interdiction_clause">
+            <End Role="clause" EntitySet="clause" />
+            <End Role="clause_interdiction" EntitySet="clause_interdiction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_interdiction_codification" Association="Self.FK_clause_interdiction_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="clause_interdiction" EntitySet="clause_interdiction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_methode_clause" Association="Self.FK_clause_methode_clause">
+            <End Role="clause" EntitySet="clause" />
+            <End Role="clause_methode" EntitySet="clause_methode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_methode_codification" Association="Self.FK_clause_methode_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="clause_methode" EntitySet="clause_methode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_periode_codification" Association="Self.FK_clause_periode_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="clause_periode" EntitySet="clause_periode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_secteur_clause" Association="Self.FK_clause_secteur_clause">
+            <End Role="clause" EntitySet="clause" />
+            <End Role="clause_secteur" EntitySet="clause_secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_secteur_secteur" Association="Self.FK_clause_secteur_secteur">
+            <End Role="secteur" EntitySet="secteur" />
+            <End Role="clause_secteur" EntitySet="clause_secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_codification_codification" Association="Self.FK_codification_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="codification1" EntitySet="codification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_codification_description_codification" Association="Self.FK_codification_description_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="codification_description" EntitySet="codification_description" />
+          </AssociationSet>
+          <AssociationSet Name="FK_codification_description_codification2" Association="Self.FK_codification_description_codification2">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="codification_description" EntitySet="codification_description" />
+          </AssociationSet>
+          <AssociationSet Name="FK_codification_description_codification3" Association="Self.FK_codification_description_codification3">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="codification_description" EntitySet="codification_description" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_codification" Association="Self.FK_contact_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="contact" EntitySet="contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_codification1" Association="Self.FK_contact_codification1">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="contact" EntitySet="contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_codification2" Association="Self.FK_contact_codification2">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="contact" EntitySet="contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_codification3" Association="Self.FK_contact_codification3">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="contact" EntitySet="contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_communication_codification" Association="Self.FK_contact_communication_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="contact_communication" EntitySet="contact_communication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_communication_contact" Association="Self.FK_contact_communication_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="contact_communication" EntitySet="contact_communication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_groupe_codification" Association="Self.FK_contact_groupe_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="contact_groupe" EntitySet="contact_groupe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_groupe_contact" Association="Self.FK_contact_groupe_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="contact_groupe" EntitySet="contact_groupe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groupe_secteur_secteur" Association="Self.FK_groupe_secteur_secteur">
+            <End Role="secteur" EntitySet="secteur" />
+            <End Role="groupe_secteur" EntitySet="groupe_secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groupe_secteur_secteur1" Association="Self.FK_groupe_secteur_secteur1">
+            <End Role="secteur" EntitySet="secteur" />
+            <End Role="groupe_secteur" EntitySet="groupe_secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_operation_ordonnance" Association="Self.FK_historique_operation_ordonnance">
+            <End Role="ordonnance" EntitySet="ordonnance" />
+            <End Role="historique_operation" EntitySet="historique_operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_occurance_espece_ordonnance_occurance" Association="Self.FK_occurance_espece_ordonnance_occurance">
+            <End Role="clause" EntitySet="clause" />
+            <End Role="clause_espece" EntitySet="clause_espece" />
+          </AssociationSet>
+          <AssociationSet Name="FK_occurance_periode_ordonnance_occurance" Association="Self.FK_occurance_periode_ordonnance_occurance">
+            <End Role="clause" EntitySet="clause" />
+            <End Role="clause_periode" EntitySet="clause_periode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_codification" Association="Self.FK_ordonnance_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="ordonnance" EntitySet="ordonnance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_codification1" Association="Self.FK_ordonnance_codification1">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="ordonnance" EntitySet="ordonnance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_codification2" Association="Self.FK_ordonnance_codification2">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="ordonnance" EntitySet="ordonnance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_contact" Association="Self.FK_ordonnance_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="ordonnance" EntitySet="ordonnance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_occurance_ordonnance" Association="Self.FK_ordonnance_occurance_ordonnance">
+            <End Role="ordonnance" EntitySet="ordonnance" />
+            <End Role="clause" EntitySet="clause" />
+          </AssociationSet>
+          <AssociationSet Name="FK_point_legal_codification" Association="Self.FK_point_legal_codification">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="point_legal" EntitySet="point_legal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_codification1" Association="Self.FK_secteur_codification1">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="secteur" EntitySet="secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_codification2" Association="Self.FK_secteur_codification2">
+            <End Role="codification" EntitySet="codification" />
+            <End Role="secteur" EntitySet="secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_description_secteur" Association="Self.FK_secteur_description_secteur">
+            <End Role="secteur" EntitySet="secteur" />
+            <End Role="secteur_description" EntitySet="secteur_description" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_point_legal_point_legal" Association="Self.FK_secteur_point_legal_point_legal">
+            <End Role="point_legal" EntitySet="point_legal" />
+            <End Role="secteur_point_legal" EntitySet="secteur_point_legal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_point_legal_secteur" Association="Self.FK_secteur_point_legal_secteur">
+            <End Role="secteur" EntitySet="secteur" />
+            <End Role="secteur_point_legal" EntitySet="secteur_point_legal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pccsm_mpoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="pccsm_mpoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clauses" EntityType="pccsm_mpoModel.clause" />
+          <EntitySet Name="clause_espece" EntityType="pccsm_mpoModel.clause_espece" />
+          <EntitySet Name="clause_interdiction" EntityType="pccsm_mpoModel.clause_interdiction" />
+          <EntitySet Name="clause_methode" EntityType="pccsm_mpoModel.clause_methode" />
+          <EntitySet Name="clause_periode" EntityType="pccsm_mpoModel.clause_periode" />
+          <EntitySet Name="clause_secteur" EntityType="pccsm_mpoModel.clause_secteur" />
+          <EntitySet Name="codifications" EntityType="pccsm_mpoModel.codification" />
+          <EntitySet Name="codification_description" EntityType="pccsm_mpoModel.codification_description" />
+          <EntitySet Name="contacts" EntityType="pccsm_mpoModel.contact" />
+          <EntitySet Name="contact_communication" EntityType="pccsm_mpoModel.contact_communication" />
+          <EntitySet Name="contact_groupe" EntityType="pccsm_mpoModel.contact_groupe" />
+          <EntitySet Name="db_histo_operation" EntityType="pccsm_mpoModel.db_histo_operation" />
+          <EntitySet Name="dtproperties" EntityType="pccsm_mpoModel.dtproperty" />
+          <EntitySet Name="groupe_secteur" EntityType="pccsm_mpoModel.groupe_secteur" />
+          <EntitySet Name="historique_operation" EntityType="pccsm_mpoModel.historique_operation" />
+          <EntitySet Name="languages" EntityType="pccsm_mpoModel.language" />
+          <EntitySet Name="ordonnances" EntityType="pccsm_mpoModel.ordonnance" />
+          <EntitySet Name="point_legal" EntityType="pccsm_mpoModel.point_legal" />
+          <EntitySet Name="secteurs" EntityType="pccsm_mpoModel.secteur" />
+          <EntitySet Name="secteur_description" EntityType="pccsm_mpoModel.secteur_description" />
+          <EntitySet Name="secteur_historique" EntityType="pccsm_mpoModel.secteur_historique" />
+          <EntitySet Name="secteur_point_archive" EntityType="pccsm_mpoModel.secteur_point_archive" />
+          <EntitySet Name="secteur_point_legal" EntityType="pccsm_mpoModel.secteur_point_legal" />
+          <EntitySet Name="signalisations" EntityType="pccsm_mpoModel.signalisation" />
+          <EntitySet Name="sysdiagrams" EntityType="pccsm_mpoModel.sysdiagram" />
+          <EntitySet Name="db_tournee" EntityType="pccsm_mpoModel.db_tournee" />
+          <EntitySet Name="organisations" EntityType="pccsm_mpoModel.organisation" />
+          <EntitySet Name="point_legal_20131118" EntityType="pccsm_mpoModel.point_legal_20131118" />
+          <EntitySet Name="secteur_20131118" EntityType="pccsm_mpoModel.secteur_20131118" />
+          <EntitySet Name="secteur_description_20131021" EntityType="pccsm_mpoModel.secteur_description_20131021" />
+          <EntitySet Name="secteur_description_20131118" EntityType="pccsm_mpoModel.secteur_description_20131118" />
+          <EntitySet Name="secteur_description_20140210" EntityType="pccsm_mpoModel.secteur_description_20140210" />
+          <AssociationSet Name="FK_clause_codification" Association="pccsm_mpoModel.FK_clause_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="clause" EntitySet="clauses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_interdiction_clause" Association="pccsm_mpoModel.FK_clause_interdiction_clause">
+            <End Role="clause" EntitySet="clauses" />
+            <End Role="clause_interdiction" EntitySet="clause_interdiction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_methode_clause" Association="pccsm_mpoModel.FK_clause_methode_clause">
+            <End Role="clause" EntitySet="clauses" />
+            <End Role="clause_methode" EntitySet="clause_methode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_secteur_clause" Association="pccsm_mpoModel.FK_clause_secteur_clause">
+            <End Role="clause" EntitySet="clauses" />
+            <End Role="clause_secteur" EntitySet="clause_secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_occurance_espece_ordonnance_occurance" Association="pccsm_mpoModel.FK_occurance_espece_ordonnance_occurance">
+            <End Role="clause" EntitySet="clauses" />
+            <End Role="clause_espece" EntitySet="clause_espece" />
+          </AssociationSet>
+          <AssociationSet Name="FK_occurance_periode_ordonnance_occurance" Association="pccsm_mpoModel.FK_occurance_periode_ordonnance_occurance">
+            <End Role="clause" EntitySet="clauses" />
+            <End Role="clause_periode" EntitySet="clause_periode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_occurance_ordonnance" Association="pccsm_mpoModel.FK_ordonnance_occurance_ordonnance">
+            <End Role="ordonnance" EntitySet="ordonnances" />
+            <End Role="clause" EntitySet="clauses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_espece_codification" Association="pccsm_mpoModel.FK_clause_espece_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="clause_espece" EntitySet="clause_espece" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_interdiction_codification" Association="pccsm_mpoModel.FK_clause_interdiction_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="clause_interdiction" EntitySet="clause_interdiction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_methode_codification" Association="pccsm_mpoModel.FK_clause_methode_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="clause_methode" EntitySet="clause_methode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_periode_codification" Association="pccsm_mpoModel.FK_clause_periode_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="clause_periode" EntitySet="clause_periode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clause_secteur_secteur" Association="pccsm_mpoModel.FK_clause_secteur_secteur">
+            <End Role="secteur" EntitySet="secteurs" />
+            <End Role="clause_secteur" EntitySet="clause_secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_codification_codification" Association="pccsm_mpoModel.FK_codification_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="codification1" EntitySet="codifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_codification_description_codification" Association="pccsm_mpoModel.FK_codification_description_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="codification_description" EntitySet="codification_description" />
+          </AssociationSet>
+          <AssociationSet Name="FK_codification_description_codification2" Association="pccsm_mpoModel.FK_codification_description_codification2">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="codification_description" EntitySet="codification_description" />
+          </AssociationSet>
+          <AssociationSet Name="FK_codification_description_codification3" Association="pccsm_mpoModel.FK_codification_description_codification3">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="codification_description" EntitySet="codification_description" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_codification" Association="pccsm_mpoModel.FK_contact_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="contact" EntitySet="contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_codification1" Association="pccsm_mpoModel.FK_contact_codification1">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="contact" EntitySet="contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_codification2" Association="pccsm_mpoModel.FK_contact_codification2">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="contact" EntitySet="contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_codification3" Association="pccsm_mpoModel.FK_contact_codification3">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="contact" EntitySet="contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_communication_codification" Association="pccsm_mpoModel.FK_contact_communication_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="contact_communication" EntitySet="contact_communication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_groupe_codification" Association="pccsm_mpoModel.FK_contact_groupe_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="contact_groupe" EntitySet="contact_groupe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_codification" Association="pccsm_mpoModel.FK_ordonnance_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="ordonnance" EntitySet="ordonnances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_codification1" Association="pccsm_mpoModel.FK_ordonnance_codification1">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="ordonnance" EntitySet="ordonnances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_codification2" Association="pccsm_mpoModel.FK_ordonnance_codification2">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="ordonnance" EntitySet="ordonnances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_point_legal_codification" Association="pccsm_mpoModel.FK_point_legal_codification">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="point_legal" EntitySet="point_legal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_codification1" Association="pccsm_mpoModel.FK_secteur_codification1">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="secteur" EntitySet="secteurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_codification2" Association="pccsm_mpoModel.FK_secteur_codification2">
+            <End Role="codification" EntitySet="codifications" />
+            <End Role="secteur" EntitySet="secteurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_communication_contact" Association="pccsm_mpoModel.FK_contact_communication_contact">
+            <End Role="contact" EntitySet="contacts" />
+            <End Role="contact_communication" EntitySet="contact_communication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contact_groupe_contact" Association="pccsm_mpoModel.FK_contact_groupe_contact">
+            <End Role="contact" EntitySet="contacts" />
+            <End Role="contact_groupe" EntitySet="contact_groupe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ordonnance_contact" Association="pccsm_mpoModel.FK_ordonnance_contact">
+            <End Role="contact" EntitySet="contacts" />
+            <End Role="ordonnance" EntitySet="ordonnances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groupe_secteur_secteur" Association="pccsm_mpoModel.FK_groupe_secteur_secteur">
+            <End Role="secteur" EntitySet="secteurs" />
+            <End Role="groupe_secteur" EntitySet="groupe_secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groupe_secteur_secteur1" Association="pccsm_mpoModel.FK_groupe_secteur_secteur1">
+            <End Role="secteur" EntitySet="secteurs" />
+            <End Role="groupe_secteur" EntitySet="groupe_secteur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_operation_ordonnance" Association="pccsm_mpoModel.FK_historique_operation_ordonnance">
+            <End Role="ordonnance" EntitySet="ordonnances" />
+            <End Role="historique_operation" EntitySet="historique_operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_point_legal_point_legal" Association="pccsm_mpoModel.FK_secteur_point_legal_point_legal">
+            <End Role="point_legal" EntitySet="point_legal" />
+            <End Role="secteur_point_legal" EntitySet="secteur_point_legal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_description_secteur" Association="pccsm_mpoModel.FK_secteur_description_secteur">
+            <End Role="secteur" EntitySet="secteurs" />
+            <End Role="secteur_description" EntitySet="secteur_description" />
+          </AssociationSet>
+          <AssociationSet Name="FK_secteur_point_legal_secteur" Association="pccsm_mpoModel.FK_secteur_point_legal_secteur">
+            <End Role="secteur" EntitySet="secteurs" />
+            <End Role="secteur_point_legal" EntitySet="secteur_point_legal" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="clause">
+          <Key>
+            <PropertyRef Name="clause_id" />
+          </Key>
+          <Property Name="clause_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ordonnance_id" Type="Int32" />
+          <Property Name="clause_type" Type="Int32" />
+          <Property Name="clause_no" Type="Int32" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_clause_codification" FromRole="clause" ToRole="codification" />
+          <NavigationProperty Name="clause_interdiction" Relationship="pccsm_mpoModel.FK_clause_interdiction_clause" FromRole="clause" ToRole="clause_interdiction" />
+          <NavigationProperty Name="clause_methode" Relationship="pccsm_mpoModel.FK_clause_methode_clause" FromRole="clause" ToRole="clause_methode" />
+          <NavigationProperty Name="clause_secteur" Relationship="pccsm_mpoModel.FK_clause_secteur_clause" FromRole="clause" ToRole="clause_secteur" />
+          <NavigationProperty Name="clause_espece" Relationship="pccsm_mpoModel.FK_occurance_espece_ordonnance_occurance" FromRole="clause" ToRole="clause_espece" />
+          <NavigationProperty Name="clause_periode" Relationship="pccsm_mpoModel.FK_occurance_periode_ordonnance_occurance" FromRole="clause" ToRole="clause_periode" />
+          <NavigationProperty Name="ordonnance" Relationship="pccsm_mpoModel.FK_ordonnance_occurance_ordonnance" FromRole="clause" ToRole="ordonnance" />
+        </EntityType>
+        <EntityType Name="clause_espece">
+          <Key>
+            <PropertyRef Name="clause_espece_id" />
+          </Key>
+          <Property Name="clause_espece_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="espece_id" Type="Int32" />
+          <Property Name="clause_id" Type="Int32" />
+          <Property Name="interdiction" Type="Boolean" />
+          <NavigationProperty Name="clause" Relationship="pccsm_mpoModel.FK_occurance_espece_ordonnance_occurance" FromRole="clause_espece" ToRole="clause" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_clause_espece_codification" FromRole="clause_espece" ToRole="codification" />
+        </EntityType>
+        <EntityType Name="clause_interdiction">
+          <Key>
+            <PropertyRef Name="clause_interdiction_id" />
+          </Key>
+          <Property Name="clause_interdiction_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clause_id" Type="Int32" />
+          <Property Name="type_peche" Type="Int32" />
+          <NavigationProperty Name="clause" Relationship="pccsm_mpoModel.FK_clause_interdiction_clause" FromRole="clause_interdiction" ToRole="clause" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_clause_interdiction_codification" FromRole="clause_interdiction" ToRole="codification" />
+        </EntityType>
+        <EntityType Name="clause_methode">
+          <Key>
+            <PropertyRef Name="clause_methode_id" />
+          </Key>
+          <Property Name="clause_methode_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clause_id" Type="Int32" />
+          <Property Name="methode_id" Type="Int32" />
+          <NavigationProperty Name="clause" Relationship="pccsm_mpoModel.FK_clause_methode_clause" FromRole="clause_methode" ToRole="clause" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_clause_methode_codification" FromRole="clause_methode" ToRole="codification" />
+        </EntityType>
+        <EntityType Name="clause_periode">
+          <Key>
+            <PropertyRef Name="clause_periode_id" />
+          </Key>
+          <Property Name="clause_periode_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clause_id" Type="Int32" />
+          <Property Name="debut" Type="DateTime" Precision="3" />
+          <Property Name="fin" Type="DateTime" Precision="3" />
+          <Property Name="periode_format_id" Type="Int32" />
+          <NavigationProperty Name="clause" Relationship="pccsm_mpoModel.FK_occurance_periode_ordonnance_occurance" FromRole="clause_periode" ToRole="clause" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_clause_periode_codification" FromRole="clause_periode" ToRole="codification" />
+        </EntityType>
+        <EntityType Name="clause_secteur">
+          <Key>
+            <PropertyRef Name="clause_secteur_id" />
+          </Key>
+          <Property Name="clause_secteur_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clause_id" Type="Int32" />
+          <Property Name="secteur_id" Type="Int32" />
+          <NavigationProperty Name="clause" Relationship="pccsm_mpoModel.FK_clause_secteur_clause" FromRole="clause_secteur" ToRole="clause" />
+          <NavigationProperty Name="secteur" Relationship="pccsm_mpoModel.FK_clause_secteur_secteur" FromRole="clause_secteur" ToRole="secteur" />
+        </EntityType>
+        <EntityType Name="codification">
+          <Key>
+            <PropertyRef Name="codification_id" />
+          </Key>
+          <Property Name="codification_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_id" Type="Int32" />
+          <Property Name="parent_id" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="codification_old" Type="Int32" />
+          <NavigationProperty Name="clauses" Relationship="pccsm_mpoModel.FK_clause_codification" FromRole="codification" ToRole="clause" />
+          <NavigationProperty Name="clause_espece" Relationship="pccsm_mpoModel.FK_clause_espece_codification" FromRole="codification" ToRole="clause_espece" />
+          <NavigationProperty Name="clause_interdiction" Relationship="pccsm_mpoModel.FK_clause_interdiction_codification" FromRole="codification" ToRole="clause_interdiction" />
+          <NavigationProperty Name="clause_methode" Relationship="pccsm_mpoModel.FK_clause_methode_codification" FromRole="codification" ToRole="clause_methode" />
+          <NavigationProperty Name="clause_periode" Relationship="pccsm_mpoModel.FK_clause_periode_codification" FromRole="codification" ToRole="clause_periode" />
+          <NavigationProperty Name="codification1" Relationship="pccsm_mpoModel.FK_codification_codification" FromRole="codification" ToRole="codification1" />
+          <NavigationProperty Name="codification2" Relationship="pccsm_mpoModel.FK_codification_codification" FromRole="codification1" ToRole="codification" />
+          <NavigationProperty Name="codification_description" Relationship="pccsm_mpoModel.FK_codification_description_codification" FromRole="codification" ToRole="codification_description" />
+          <NavigationProperty Name="codification_description1" Relationship="pccsm_mpoModel.FK_codification_description_codification2" FromRole="codification" ToRole="codification_description" />
+          <NavigationProperty Name="codification_description2" Relationship="pccsm_mpoModel.FK_codification_description_codification3" FromRole="codification" ToRole="codification_description" />
+          <NavigationProperty Name="contacts" Relationship="pccsm_mpoModel.FK_contact_codification" FromRole="codification" ToRole="contact" />
+          <NavigationProperty Name="contacts1" Relationship="pccsm_mpoModel.FK_contact_codification1" FromRole="codification" ToRole="contact" />
+          <NavigationProperty Name="contacts2" Relationship="pccsm_mpoModel.FK_contact_codification2" FromRole="codification" ToRole="contact" />
+          <NavigationProperty Name="contacts3" Relationship="pccsm_mpoModel.FK_contact_codification3" FromRole="codification" ToRole="contact" />
+          <NavigationProperty Name="contact_communication" Relationship="pccsm_mpoModel.FK_contact_communication_codification" FromRole="codification" ToRole="contact_communication" />
+          <NavigationProperty Name="contact_groupe" Relationship="pccsm_mpoModel.FK_contact_groupe_codification" FromRole="codification" ToRole="contact_groupe" />
+          <NavigationProperty Name="ordonnances" Relationship="pccsm_mpoModel.FK_ordonnance_codification" FromRole="codification" ToRole="ordonnance" />
+          <NavigationProperty Name="ordonnances1" Relationship="pccsm_mpoModel.FK_ordonnance_codification1" FromRole="codification" ToRole="ordonnance" />
+          <NavigationProperty Name="ordonnances2" Relationship="pccsm_mpoModel.FK_ordonnance_codification2" FromRole="codification" ToRole="ordonnance" />
+          <NavigationProperty Name="point_legal" Relationship="pccsm_mpoModel.FK_point_legal_codification" FromRole="codification" ToRole="point_legal" />
+          <NavigationProperty Name="secteurs" Relationship="pccsm_mpoModel.FK_secteur_codification1" FromRole="codification" ToRole="secteur" />
+          <NavigationProperty Name="secteurs1" Relationship="pccsm_mpoModel.FK_secteur_codification2" FromRole="codification" ToRole="secteur" />
+        </EntityType>
+        <EntityType Name="codification_description">
+          <Key>
+            <PropertyRef Name="codification_description_id" />
+          </Key>
+          <Property Name="codification_description_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codification_id" Type="Int32" />
+          <Property Name="valeur" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="langue" Type="Int32" />
+          <Property Name="etat" Type="Int32" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_codification_description_codification" FromRole="codification_description" ToRole="codification" />
+          <NavigationProperty Name="codification1" Relationship="pccsm_mpoModel.FK_codification_description_codification2" FromRole="codification_description" ToRole="codification" />
+          <NavigationProperty Name="codification2" Relationship="pccsm_mpoModel.FK_codification_description_codification3" FromRole="codification_description" ToRole="codification" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="contact_id" />
+          </Key>
+          <Property Name="contact_id" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="organisation" Type="Int32" />
+          <Property Name="titre" Type="Int32" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cellulaire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="courriel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="adresse_postale" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ville" Type="Int32" />
+          <Property Name="code_postal" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="province" Type="Int32" />
+          <Property Name="nom_user" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Infra" Type="Int32" />
+          <Property Name="contact_primaire" Type="Int32" />
+          <Property Name="infrastrure_id" Type="Int32" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_contact_codification" FromRole="contact" ToRole="codification" />
+          <NavigationProperty Name="codification1" Relationship="pccsm_mpoModel.FK_contact_codification1" FromRole="contact" ToRole="codification" />
+          <NavigationProperty Name="codification2" Relationship="pccsm_mpoModel.FK_contact_codification2" FromRole="contact" ToRole="codification" />
+          <NavigationProperty Name="codification3" Relationship="pccsm_mpoModel.FK_contact_codification3" FromRole="contact" ToRole="codification" />
+          <NavigationProperty Name="contact_communication" Relationship="pccsm_mpoModel.FK_contact_communication_contact" FromRole="contact" ToRole="contact_communication" />
+          <NavigationProperty Name="contact_groupe" Relationship="pccsm_mpoModel.FK_contact_groupe_contact" FromRole="contact" ToRole="contact_groupe" />
+          <NavigationProperty Name="ordonnances" Relationship="pccsm_mpoModel.FK_ordonnance_contact" FromRole="contact" ToRole="ordonnance" />
+        </EntityType>
+        <EntityType Name="contact_communication">
+          <Key>
+            <PropertyRef Name="contact_communication_id" />
+          </Key>
+          <Property Name="contact_communication_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="communication" Type="Int32" />
+          <Property Name="communication_valeur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_id" Type="Int32" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_contact_communication_codification" FromRole="contact_communication" ToRole="codification" />
+          <NavigationProperty Name="contact" Relationship="pccsm_mpoModel.FK_contact_communication_contact" FromRole="contact_communication" ToRole="contact" />
+        </EntityType>
+        <EntityType Name="contact_groupe">
+          <Key>
+            <PropertyRef Name="contact_groupe_id" />
+          </Key>
+          <Property Name="contact_groupe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contact_id" Type="Int32" />
+          <Property Name="groupe_id" Type="Int32" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_contact_groupe_codification" FromRole="contact_groupe" ToRole="codification" />
+          <NavigationProperty Name="contact" Relationship="pccsm_mpoModel.FK_contact_groupe_contact" FromRole="contact_groupe" ToRole="contact" />
+        </EntityType>
+        <EntityType Name="db_histo_operation">
+          <Key>
+            <PropertyRef Name="id_db_histo_operation" />
+          </Key>
+          <Property Name="id_db_histo_operation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type_operation" Type="Int32" />
+          <Property Name="auteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_operation" Type="DateTime" Precision="3" />
+          <Property Name="description_operation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ordonnance_id" Type="Int32" />
+          <Property Name="point_legal_id" Type="Int32" />
+          <Property Name="secteur_id" Type="Int32" />
+          <Property Name="id_geo_pollution_p" Type="Int32" />
+          <Property Name="id_geo_terrain_p" Type="Int32" />
+          <Property Name="id_geo_banc_coquillier_s" Type="Int32" />
+          <Property Name="id_geo_station_p" Type="Int32" />
+          <Property Name="ID_infrastructures" Type="Int32" />
+          <Property Name="id_cour_zone_etude" Type="Int32" />
+          <Property Name="x" Type="Double" />
+          <Property Name="y" Type="Double" />
+          <Property Name="contact_principal" Type="Int32" />
+          <Property Name="contact_secondaire" Type="Int32" />
+        </EntityType>
+        <EntityType Name="dtproperty">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="objectid" Type="Int32" />
+          <Property Name="property" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="uvalue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="groupe_secteur">
+          <Key>
+            <PropertyRef Name="groupe_secteur_id" />
+          </Key>
+          <Property Name="groupe_secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="groupe_id" Type="Int32" />
+          <Property Name="secteur_id" Type="Int32" />
+          <Property Name="etat" Type="Int32" />
+          <NavigationProperty Name="secteur" Relationship="pccsm_mpoModel.FK_groupe_secteur_secteur" FromRole="groupe_secteur" ToRole="secteur" />
+          <NavigationProperty Name="secteur1" Relationship="pccsm_mpoModel.FK_groupe_secteur_secteur1" FromRole="groupe_secteur" ToRole="secteur" />
+        </EntityType>
+        <EntityType Name="historique_operation">
+          <Key>
+            <PropertyRef Name="historique_id" />
+          </Key>
+          <Property Name="historique_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type_operation" Type="Int32" />
+          <Property Name="auteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_operation" Type="DateTime" Precision="3" />
+          <Property Name="description_operation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ordonnance_id" Type="Int32" />
+          <Property Name="point_legal_id" Type="Int32" />
+          <Property Name="secteur_id" Type="Int32" />
+          <Property Name="id_geo_pollution_p" Type="Int32" />
+          <Property Name="id_geo_terrain_p" Type="Int32" />
+          <Property Name="id_geo_banc_coquillier_s" Type="Int32" />
+          <Property Name="id_geo_station_p" Type="Int32" />
+          <Property Name="ID_infrastructures" Type="Int32" />
+          <Property Name="id_cour_zone_etude" Type="Int32" />
+          <Property Name="x" Type="Double" />
+          <Property Name="y" Type="Double" />
+          <Property Name="contact_principal" Type="Int32" />
+          <Property Name="contact_secondaire" Type="Int32" />
+          <NavigationProperty Name="ordonnance" Relationship="pccsm_mpoModel.FK_historique_operation_ordonnance" FromRole="historique_operation" ToRole="ordonnance" />
+        </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="language_id" />
+          </Key>
+          <Property Name="language_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="langue" Type="Int32" />
+          <Property Name="page" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LanguageText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ordonnance">
+          <Key>
+            <PropertyRef Name="ordonnance_id" />
+          </Key>
+          <Property Name="ordonnance_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="abrogation_id" Type="Int32" />
+          <Property Name="ordonnance_no" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ordonnance_type" Type="Int32" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="date_en_vigueur" Type="DateTime" Precision="3" />
+          <Property Name="date_abrogation" Type="DateTime" Precision="3" />
+          <Property Name="raison" Type="Int32" />
+          <Property Name="communique" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ordonnance_signataire" Type="Int32" />
+          <Property Name="communique_signataire" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="clauses" Relationship="pccsm_mpoModel.FK_ordonnance_occurance_ordonnance" FromRole="ordonnance" ToRole="clause" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_ordonnance_codification" FromRole="ordonnance" ToRole="codification" />
+          <NavigationProperty Name="codification1" Relationship="pccsm_mpoModel.FK_ordonnance_codification1" FromRole="ordonnance" ToRole="codification" />
+          <NavigationProperty Name="codification2" Relationship="pccsm_mpoModel.FK_ordonnance_codification2" FromRole="ordonnance" ToRole="codification" />
+          <NavigationProperty Name="contact" Relationship="pccsm_mpoModel.FK_ordonnance_contact" FromRole="ordonnance" ToRole="contact" />
+          <NavigationProperty Name="historique_operation" Relationship="pccsm_mpoModel.FK_historique_operation_ordonnance" FromRole="ordonnance" ToRole="historique_operation" />
+        </EntityType>
+        <EntityType Name="point_legal">
+          <Key>
+            <PropertyRef Name="point_legal_id" />
+          </Key>
+          <Property Name="point_legal_id" Type="Int32" Nullable="false" />
+          <Property Name="x" Type="Double" />
+          <Property Name="y" Type="Double" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_point_legal_codification" FromRole="point_legal" ToRole="codification" />
+          <NavigationProperty Name="secteur_point_legal" Relationship="pccsm_mpoModel.FK_secteur_point_legal_point_legal" FromRole="point_legal" ToRole="secteur_point_legal" />
+        </EntityType>
+        <EntityType Name="secteur">
+          <Key>
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_id_parent" Type="Int32" />
+          <Property Name="secteur1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="secteur_ltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="secteur_no1" Type="Int32" />
+          <Property Name="secteur_no2" Type="Int32" />
+          <Property Name="secteur_no3" Type="Int32" />
+          <Property Name="secteur_no4" Type="Int32" />
+          <Property Name="longueur_rive" Type="Double" />
+          <Property Name="superficie" Type="Double" />
+          <Property Name="geometry" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="x" Type="Double" />
+          <Property Name="y" Type="Double" />
+          <Property Name="x_min" Type="Double" />
+          <Property Name="y_min" Type="Double" />
+          <Property Name="x_max" Type="Double" />
+          <Property Name="y_max" Type="Double" />
+          <Property Name="secteur_type" Type="Int32" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="clause_secteur" Relationship="pccsm_mpoModel.FK_clause_secteur_secteur" FromRole="secteur" ToRole="clause_secteur" />
+          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_secteur_codification1" FromRole="secteur" ToRole="codification" />
+          <NavigationProperty Name="codification1" Relationship="pccsm_mpoModel.FK_secteur_codification2" FromRole="secteur" ToRole="codification" />
+          <NavigationProperty Name="groupe_secteur" Relationship="pccsm_mpoModel.FK_groupe_secteur_secteur" FromRole="secteur" ToRole="groupe_secteur" />
+          <NavigationProperty Name="groupe_secteur1" Relationship="pccsm_mpoModel.FK_groupe_secteur_secteur1" FromRole="secteur" ToRole="groupe_secteur" />
+          <NavigationProperty Name="secteur_description" Relationship="pccsm_mpoModel.FK_secteur_description_secteur" FromRole="secteur" ToRole="secteur_description" />
+          <NavigationProperty Name="secteur_point_legal" Relationship="pccsm_mpoModel.FK_secteur_point_legal_secteur" FromRole="secteur" ToRole="secteur_point_legal" />
+        </EntityType>
+        <EntityType Name="secteur_description">
+          <Key>
+            <PropertyRef Name="secteur_description_id" />
+          </Key>
+          <Property Name="secteur_description_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="langue" Type="Int32" />
+          <Property Name="parametre" Type="Int32" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="modification_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="secteur" Relationship="pccsm_mpoModel.FK_secteur_description_secteur" FromRole="secteur_description" ToRole="secteur" />
+        </EntityType>
+        <EntityType Name="secteur_historique">
+          <Key>
+            <PropertyRef Name="secteur_historique_id" />
+          </Key>
+          <Property Name="secteur_historique_id" Type="Int32" Nullable="false" />
+          <Property Name="operation" Type="Int32" />
+          <Property Name="auteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_operation" Type="DateTime" Precision="3" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="point_legal_id" Type="Int32" />
+          <Property Name="secteur_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="secteur_point_archive">
+          <Key>
+            <PropertyRef Name="secteur_point_archive_id" />
+          </Key>
+          <Property Name="secteur_point_archive_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="point_legal_id" Type="Int32" />
+          <Property Name="secteur1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="secteur2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="secteur3" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="secteur4" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="secteur5" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="secteur_point_legal">
+          <Key>
+            <PropertyRef Name="secteur_point_legal_id" />
+          </Key>
+          <Property Name="secteur_point_legal_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_id" Type="Int32" />
+          <Property Name="point_legal_id" Type="Int32" />
+          <Property Name="secteur_point_legal_no" Type="Int32" />
+          <NavigationProperty Name="point_legal" Relationship="pccsm_mpoModel.FK_secteur_point_legal_point_legal" FromRole="secteur_point_legal" ToRole="point_legal" />
+          <NavigationProperty Name="secteur" Relationship="pccsm_mpoModel.FK_secteur_point_legal_secteur" FromRole="secteur_point_legal" ToRole="secteur" />
+        </EntityType>
+        <EntityType Name="signalisation">
+          <Key>
+            <PropertyRef Name="signalisation_id" />
+          </Key>
+          <Property Name="signalisation_id" Type="Int32" Nullable="false" />
+          <Property Name="date_installation" Type="DateTime" Precision="3" />
+          <Property Name="date_observation" Type="DateTime" Precision="3" />
+          <Property Name="date_update" Type="DateTime" Precision="3" />
+          <Property Name="auteur_installation" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="auteur_update" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="type_panneau" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_actif" Type="Boolean" />
+          <Property Name="secteur" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="x" Type="Double" />
+          <Property Name="y" Type="Double" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="db_tournee">
+          <Key>
+            <PropertyRef Name="ID_Tournee" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="mois" />
+            <PropertyRef Name="jour" />
+          </Key>
+          <Property Name="ID_Tournee" Type="Int32" Nullable="false" />
+          <Property Name="tournee" Type="Int16" />
+          <Property Name="annee" Type="Int32" Nullable="false" />
+          <Property Name="mois" Type="Int32" Nullable="false" />
+          <Property Name="jour" Type="Int32" Nullable="false" />
+          <Property Name="hre_deb" Type="DateTime" Precision="3" />
+          <Property Name="hre_fin" Type="DateTime" Precision="3" />
+          <Property Name="hre_recep_lab" Type="DateTime" Precision="3" />
+          <Property Name="temp_glace_recep" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="hre_maree_h" Type="DateTime" Precision="3" />
+          <Property Name="hre_maree_b" Type="DateTime" Precision="3" />
+          <Property Name="maree_princ" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="maree_principale" Type="Int32" />
+          <Property Name="pmaree_deb" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="pmaree_fin" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="maree_ve" Type="Boolean" />
+          <Property Name="maree_me" Type="Boolean" />
+          <Property Name="marnage" Type="Double" />
+          <Property Name="precipit" Type="Double" />
+          <Property Name="precipit_3jant" Type="Double" />
+          <Property Name="t_air_deb" Type="Double" />
+          <Property Name="t_air_fin" Type="Double" />
+          <Property Name="v_vent_deb" Type="Double" />
+          <Property Name="v_vent_fin" Type="Double" />
+          <Property Name="vent_direction_debut" Type="Int32" />
+          <Property Name="vent_direction_fin" Type="Int32" />
+          <Property Name="couvert_nuage" Type="Double" />
+          <Property Name="couvert_nuage_fin" Type="Double" />
+          <Property Name="mer_etat" Type="Double" />
+          <Property Name="mer_etat_fin" Type="Double" />
+          <Property Name="niveau_eau" Type="Double" />
+          <Property Name="vague_hauteur" Type="Double" />
+          <Property Name="vague_hauteur_fin" Type="Double" />
+          <Property Name="consultant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date_creation" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="date_echantillonnage" Type="DateTime" Precision="3" />
+          <Property Name="notification" Type="Boolean" />
+          <Property Name="cf_methode_analytique" Type="Int32" />
+          <Property Name="laboratoire_operateur_id" Type="Int32" />
+          <Property Name="validation" Type="Int32" />
+          <Property Name="analyse_datetime" Type="DateTime" Precision="3" />
+          <Property Name="validation_datetime" Type="DateTime" Precision="3" />
+          <Property Name="approbation" Type="Int32" />
+          <Property Name="approbation_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="organisation">
+          <Key>
+            <PropertyRef Name="ID_organisation" />
+          </Key>
+          <Property Name="ID_organisation" Type="Int32" Nullable="false" />
+          <Property Name="organisation_fr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="point_legal_20131118">
+          <Key>
+            <PropertyRef Name="point_legal_id" />
+          </Key>
+          <Property Name="point_legal_id" Type="Int32" Nullable="false" />
+          <Property Name="x" Type="Double" />
+          <Property Name="y" Type="Double" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="secteur_20131118">
+          <Key>
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_id_parent" Type="Int32" />
+          <Property Name="secteur" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="secteur_ltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="secteur_no1" Type="Int32" />
+          <Property Name="secteur_no2" Type="Int32" />
+          <Property Name="secteur_no3" Type="Int32" />
+          <Property Name="secteur_no4" Type="Int32" />
+          <Property Name="longueur_rive" Type="Double" />
+          <Property Name="superficie" Type="Double" />
+          <Property Name="geometry" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="x" Type="Double" />
+          <Property Name="y" Type="Double" />
+          <Property Name="x_min" Type="Double" />
+          <Property Name="y_min" Type="Double" />
+          <Property Name="x_max" Type="Double" />
+          <Property Name="y_max" Type="Double" />
+          <Property Name="secteur_type" Type="Int32" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="secteur_description_20131021">
+          <Key>
+            <PropertyRef Name="secteur_description_id" />
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_description_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="langue" Type="Int32" />
+          <Property Name="parametre" Type="Int32" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="modification_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="secteur_description_20131118">
+          <Key>
+            <PropertyRef Name="secteur_description_id" />
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_description_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="langue" Type="Int32" />
+          <Property Name="parametre" Type="Int32" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="modification_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="secteur_description_20140210">
+          <Key>
+            <PropertyRef Name="secteur_description_id" />
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_description_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="langue" Type="Int32" />
+          <Property Name="parametre" Type="Int32" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="modification_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_clause_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.clause" Role="clause" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause">
+              <PropertyRef Name="clause_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_interdiction_clause">
+          <End Type="pccsm_mpoModel.clause" Role="clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.clause_interdiction" Role="clause_interdiction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_interdiction">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_methode_clause">
+          <End Type="pccsm_mpoModel.clause" Role="clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.clause_methode" Role="clause_methode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_methode">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_secteur_clause">
+          <End Type="pccsm_mpoModel.clause" Role="clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.clause_secteur" Role="clause_secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_secteur">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_occurance_espece_ordonnance_occurance">
+          <End Type="pccsm_mpoModel.clause" Role="clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.clause_espece" Role="clause_espece" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_espece">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_occurance_periode_ordonnance_occurance">
+          <End Type="pccsm_mpoModel.clause" Role="clause" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.clause_periode" Role="clause_periode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clause">
+              <PropertyRef Name="clause_id" />
+            </Principal>
+            <Dependent Role="clause_periode">
+              <PropertyRef Name="clause_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_occurance_ordonnance">
+          <End Type="pccsm_mpoModel.ordonnance" Role="ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.clause" Role="clause" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordonnance">
+              <PropertyRef Name="ordonnance_id" />
+            </Principal>
+            <Dependent Role="clause">
+              <PropertyRef Name="ordonnance_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_espece_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.clause_espece" Role="clause_espece" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause_espece">
+              <PropertyRef Name="espece_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_interdiction_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.clause_interdiction" Role="clause_interdiction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause_interdiction">
+              <PropertyRef Name="type_peche" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_methode_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.clause_methode" Role="clause_methode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause_methode">
+              <PropertyRef Name="methode_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_periode_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.clause_periode" Role="clause_periode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="clause_periode">
+              <PropertyRef Name="periode_format_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clause_secteur_secteur">
+          <End Type="pccsm_mpoModel.secteur" Role="secteur" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.clause_secteur" Role="clause_secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="clause_secteur">
+              <PropertyRef Name="secteur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_codification_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.codification" Role="codification1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="codification1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_codification_description_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.codification_description" Role="codification_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="codification_description">
+              <PropertyRef Name="codification_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_codification_description_codification2">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.codification_description" Role="codification_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="codification_description">
+              <PropertyRef Name="langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_codification_description_codification3">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.codification_description" Role="codification_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="codification_description">
+              <PropertyRef Name="etat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.contact" Role="contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact">
+              <PropertyRef Name="organisation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_codification1">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.contact" Role="contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact">
+              <PropertyRef Name="ville" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_codification2">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.contact" Role="contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact">
+              <PropertyRef Name="province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_codification3">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.contact" Role="contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact">
+              <PropertyRef Name="titre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_communication_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.contact_communication" Role="contact_communication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact_communication">
+              <PropertyRef Name="communication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_groupe_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.contact_groupe" Role="contact_groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="contact_groupe">
+              <PropertyRef Name="groupe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.ordonnance" Role="ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="ordonnance">
+              <PropertyRef Name="ordonnance_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_codification1">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.ordonnance" Role="ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="ordonnance">
+              <PropertyRef Name="etat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_codification2">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.ordonnance" Role="ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="ordonnance">
+              <PropertyRef Name="raison" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_point_legal_codification">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.point_legal" Role="point_legal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="point_legal">
+              <PropertyRef Name="etat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_codification1">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.secteur" Role="secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="secteur">
+              <PropertyRef Name="secteur_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_codification2">
+          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.secteur" Role="secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="codification">
+              <PropertyRef Name="codification_id" />
+            </Principal>
+            <Dependent Role="secteur">
+              <PropertyRef Name="etat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_communication_contact">
+          <End Type="pccsm_mpoModel.contact" Role="contact" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.contact_communication" Role="contact_communication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="contact_communication">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contact_groupe_contact">
+          <End Type="pccsm_mpoModel.contact" Role="contact" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.contact_groupe" Role="contact_groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="contact_groupe">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ordonnance_contact">
+          <End Type="pccsm_mpoModel.contact" Role="contact" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.ordonnance" Role="ordonnance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="contact_id" />
+            </Principal>
+            <Dependent Role="ordonnance">
+              <PropertyRef Name="ordonnance_signataire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groupe_secteur_secteur">
+          <End Type="pccsm_mpoModel.secteur" Role="secteur" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.groupe_secteur" Role="groupe_secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="groupe_secteur">
+              <PropertyRef Name="secteur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groupe_secteur_secteur1">
+          <End Type="pccsm_mpoModel.secteur" Role="secteur" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.groupe_secteur" Role="groupe_secteur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="groupe_secteur">
+              <PropertyRef Name="groupe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historique_operation_ordonnance">
+          <End Type="pccsm_mpoModel.ordonnance" Role="ordonnance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.historique_operation" Role="historique_operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordonnance">
+              <PropertyRef Name="ordonnance_id" />
+            </Principal>
+            <Dependent Role="historique_operation">
+              <PropertyRef Name="ordonnance_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_point_legal_point_legal">
+          <End Type="pccsm_mpoModel.point_legal" Role="point_legal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.secteur_point_legal" Role="secteur_point_legal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="point_legal">
+              <PropertyRef Name="point_legal_id" />
+            </Principal>
+            <Dependent Role="secteur_point_legal">
+              <PropertyRef Name="point_legal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_description_secteur">
+          <End Type="pccsm_mpoModel.secteur" Role="secteur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="pccsm_mpoModel.secteur_description" Role="secteur_description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="secteur_description">
+              <PropertyRef Name="secteur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_secteur_point_legal_secteur">
+          <End Type="pccsm_mpoModel.secteur" Role="secteur" Multiplicity="0..1" />
+          <End Type="pccsm_mpoModel.secteur_point_legal" Role="secteur_point_legal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="secteur_id" />
+            </Principal>
+            <Dependent Role="secteur_point_legal">
+              <PropertyRef Name="secteur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pccsm_mpoModelStoreContainer" CdmEntityContainer="pccsm_mpoEntities">
+          <EntitySetMapping Name="clauses">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.clause">
+              <MappingFragment StoreEntitySet="clause">
+                <ScalarProperty Name="clause_no" ColumnName="clause_no" />
+                <ScalarProperty Name="clause_type" ColumnName="clause_type" />
+                <ScalarProperty Name="ordonnance_id" ColumnName="ordonnance_id" />
+                <ScalarProperty Name="clause_id" ColumnName="clause_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clause_espece">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.clause_espece">
+              <MappingFragment StoreEntitySet="clause_espece">
+                <ScalarProperty Name="interdiction" ColumnName="interdiction" />
+                <ScalarProperty Name="clause_id" ColumnName="clause_id" />
+                <ScalarProperty Name="espece_id" ColumnName="espece_id" />
+                <ScalarProperty Name="clause_espece_id" ColumnName="clause_espece_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clause_interdiction">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.clause_interdiction">
+              <MappingFragment StoreEntitySet="clause_interdiction">
+                <ScalarProperty Name="type_peche" ColumnName="type_peche" />
+                <ScalarProperty Name="clause_id" ColumnName="clause_id" />
+                <ScalarProperty Name="clause_interdiction_id" ColumnName="clause_interdiction_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clause_methode">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.clause_methode">
+              <MappingFragment StoreEntitySet="clause_methode">
+                <ScalarProperty Name="methode_id" ColumnName="methode_id" />
+                <ScalarProperty Name="clause_id" ColumnName="clause_id" />
+                <ScalarProperty Name="clause_methode_id" ColumnName="clause_methode_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clause_periode">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.clause_periode">
+              <MappingFragment StoreEntitySet="clause_periode">
+                <ScalarProperty Name="periode_format_id" ColumnName="periode_format_id" />
+                <ScalarProperty Name="fin" ColumnName="fin" />
+                <ScalarProperty Name="debut" ColumnName="debut" />
+                <ScalarProperty Name="clause_id" ColumnName="clause_id" />
+                <ScalarProperty Name="clause_periode_id" ColumnName="clause_periode_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clause_secteur">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.clause_secteur">
+              <MappingFragment StoreEntitySet="clause_secteur">
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="clause_id" ColumnName="clause_id" />
+                <ScalarProperty Name="clause_secteur_id" ColumnName="clause_secteur_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="codifications">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.codification">
+              <MappingFragment StoreEntitySet="codification">
+                <ScalarProperty Name="codification_old" ColumnName="codification_old" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="codification_id" ColumnName="codification_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="codification_description">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.codification_description">
+              <MappingFragment StoreEntitySet="codification_description">
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="langue" ColumnName="langue" />
+                <ScalarProperty Name="valeur" ColumnName="valeur" />
+                <ScalarProperty Name="codification_id" ColumnName="codification_id" />
+                <ScalarProperty Name="codification_description_id" ColumnName="codification_description_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contacts">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.contact">
+              <MappingFragment StoreEntitySet="contact">
+                <ScalarProperty Name="infrastrure_id" ColumnName="infrastrure_id" />
+                <ScalarProperty Name="contact_primaire" ColumnName="contact_primaire" />
+                <ScalarProperty Name="ID_Infra" ColumnName="ID_Infra" />
+                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
+                <ScalarProperty Name="nom_user" ColumnName="nom_user" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="adresse_postale" ColumnName="adresse_postale" />
+                <ScalarProperty Name="courriel" ColumnName="courriel" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="cellulaire" ColumnName="cellulaire" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="titre" ColumnName="titre" />
+                <ScalarProperty Name="organisation" ColumnName="organisation" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contact_communication">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.contact_communication">
+              <MappingFragment StoreEntitySet="contact_communication">
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+                <ScalarProperty Name="communication_valeur" ColumnName="communication_valeur" />
+                <ScalarProperty Name="communication" ColumnName="communication" />
+                <ScalarProperty Name="contact_communication_id" ColumnName="contact_communication_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contact_groupe">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.contact_groupe">
+              <MappingFragment StoreEntitySet="contact_groupe">
+                <ScalarProperty Name="groupe_id" ColumnName="groupe_id" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+                <ScalarProperty Name="contact_groupe_id" ColumnName="contact_groupe_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_histo_operation">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.db_histo_operation">
+              <MappingFragment StoreEntitySet="db_histo_operation">
+                <ScalarProperty Name="contact_secondaire" ColumnName="contact_secondaire" />
+                <ScalarProperty Name="contact_principal" ColumnName="contact_principal" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="id_cour_zone_etude" ColumnName="id_cour_zone_etude" />
+                <ScalarProperty Name="ID_infrastructures" ColumnName="ID_infrastructures" />
+                <ScalarProperty Name="id_geo_station_p" ColumnName="id_geo_station_p" />
+                <ScalarProperty Name="id_geo_banc_coquillier_s" ColumnName="id_geo_banc_coquillier_s" />
+                <ScalarProperty Name="id_geo_terrain_p" ColumnName="id_geo_terrain_p" />
+                <ScalarProperty Name="id_geo_pollution_p" ColumnName="id_geo_pollution_p" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="point_legal_id" ColumnName="point_legal_id" />
+                <ScalarProperty Name="ordonnance_id" ColumnName="ordonnance_id" />
+                <ScalarProperty Name="description_operation" ColumnName="description_operation" />
+                <ScalarProperty Name="date_operation" ColumnName="date_operation" />
+                <ScalarProperty Name="auteur" ColumnName="auteur" />
+                <ScalarProperty Name="type_operation" ColumnName="type_operation" />
+                <ScalarProperty Name="id_db_histo_operation" ColumnName="id_db_histo_operation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dtproperties">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.dtproperty">
+              <MappingFragment StoreEntitySet="dtproperties">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+                <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="property" ColumnName="property" />
+                <ScalarProperty Name="objectid" ColumnName="objectid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groupe_secteur">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.groupe_secteur">
+              <MappingFragment StoreEntitySet="groupe_secteur">
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="groupe_id" ColumnName="groupe_id" />
+                <ScalarProperty Name="groupe_secteur_id" ColumnName="groupe_secteur_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="historique_operation">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.historique_operation">
+              <MappingFragment StoreEntitySet="historique_operation">
+                <ScalarProperty Name="contact_secondaire" ColumnName="contact_secondaire" />
+                <ScalarProperty Name="contact_principal" ColumnName="contact_principal" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="id_cour_zone_etude" ColumnName="id_cour_zone_etude" />
+                <ScalarProperty Name="ID_infrastructures" ColumnName="ID_infrastructures" />
+                <ScalarProperty Name="id_geo_station_p" ColumnName="id_geo_station_p" />
+                <ScalarProperty Name="id_geo_banc_coquillier_s" ColumnName="id_geo_banc_coquillier_s" />
+                <ScalarProperty Name="id_geo_terrain_p" ColumnName="id_geo_terrain_p" />
+                <ScalarProperty Name="id_geo_pollution_p" ColumnName="id_geo_pollution_p" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="point_legal_id" ColumnName="point_legal_id" />
+                <ScalarProperty Name="ordonnance_id" ColumnName="ordonnance_id" />
+                <ScalarProperty Name="description_operation" ColumnName="description_operation" />
+                <ScalarProperty Name="date_operation" ColumnName="date_operation" />
+                <ScalarProperty Name="auteur" ColumnName="auteur" />
+                <ScalarProperty Name="type_operation" ColumnName="type_operation" />
+                <ScalarProperty Name="historique_id" ColumnName="historique_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="languages">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.language">
+              <MappingFragment StoreEntitySet="language">
+                <ScalarProperty Name="LanguageText" ColumnName="LanguageText" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="page" ColumnName="page" />
+                <ScalarProperty Name="langue" ColumnName="langue" />
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ordonnances">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.ordonnance">
+              <MappingFragment StoreEntitySet="ordonnance">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="communique_signataire" ColumnName="communique_signataire" />
+                <ScalarProperty Name="ordonnance_signataire" ColumnName="ordonnance_signataire" />
+                <ScalarProperty Name="communique" ColumnName="communique" />
+                <ScalarProperty Name="raison" ColumnName="raison" />
+                <ScalarProperty Name="date_abrogation" ColumnName="date_abrogation" />
+                <ScalarProperty Name="date_en_vigueur" ColumnName="date_en_vigueur" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="ordonnance_type" ColumnName="ordonnance_type" />
+                <ScalarProperty Name="ordonnance_no" ColumnName="ordonnance_no" />
+                <ScalarProperty Name="abrogation_id" ColumnName="abrogation_id" />
+                <ScalarProperty Name="ordonnance_id" ColumnName="ordonnance_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="point_legal">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.point_legal">
+              <MappingFragment StoreEntitySet="point_legal">
+                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="point_legal_id" ColumnName="point_legal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteurs">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur">
+              <MappingFragment StoreEntitySet="secteur">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="secteur_type" ColumnName="secteur_type" />
+                <ScalarProperty Name="y_max" ColumnName="y_max" />
+                <ScalarProperty Name="x_max" ColumnName="x_max" />
+                <ScalarProperty Name="y_min" ColumnName="y_min" />
+                <ScalarProperty Name="x_min" ColumnName="x_min" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="geometry" ColumnName="geometry" />
+                <ScalarProperty Name="superficie" ColumnName="superficie" />
+                <ScalarProperty Name="longueur_rive" ColumnName="longueur_rive" />
+                <ScalarProperty Name="secteur_no4" ColumnName="secteur_no4" />
+                <ScalarProperty Name="secteur_no3" ColumnName="secteur_no3" />
+                <ScalarProperty Name="secteur_no2" ColumnName="secteur_no2" />
+                <ScalarProperty Name="secteur_no1" ColumnName="secteur_no1" />
+                <ScalarProperty Name="secteur_ltr" ColumnName="secteur_ltr" />
+                <ScalarProperty Name="secteur1" ColumnName="secteur" />
+                <ScalarProperty Name="secteur_id_parent" ColumnName="secteur_id_parent" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_description">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_description">
+              <MappingFragment StoreEntitySet="secteur_description">
+                <ScalarProperty Name="modification_date" ColumnName="modification_date" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="parametre" ColumnName="parametre" />
+                <ScalarProperty Name="langue" ColumnName="langue" />
+                <ScalarProperty Name="secteur_text" ColumnName="secteur_text" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="secteur_description_id" ColumnName="secteur_description_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_historique">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_historique">
+              <MappingFragment StoreEntitySet="secteur_historique">
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="point_legal_id" ColumnName="point_legal_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="date_operation" ColumnName="date_operation" />
+                <ScalarProperty Name="auteur" ColumnName="auteur" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="secteur_historique_id" ColumnName="secteur_historique_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_point_archive">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_point_archive">
+              <MappingFragment StoreEntitySet="secteur_point_archive">
+                <ScalarProperty Name="secteur5" ColumnName="secteur5" />
+                <ScalarProperty Name="secteur4" ColumnName="secteur4" />
+                <ScalarProperty Name="secteur3" ColumnName="secteur3" />
+                <ScalarProperty Name="secteur2" ColumnName="secteur2" />
+                <ScalarProperty Name="secteur1" ColumnName="secteur1" />
+                <ScalarProperty Name="point_legal_id" ColumnName="point_legal_id" />
+                <ScalarProperty Name="secteur_point_archive_id" ColumnName="secteur_point_archive_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_point_legal">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_point_legal">
+              <MappingFragment StoreEntitySet="secteur_point_legal">
+                <ScalarProperty Name="secteur_point_legal_no" ColumnName="secteur_point_legal_no" />
+                <ScalarProperty Name="point_legal_id" ColumnName="point_legal_id" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="secteur_point_legal_id" ColumnName="secteur_point_legal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="signalisations">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.signalisation">
+              <MappingFragment StoreEntitySet="signalisation">
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="secteur" ColumnName="secteur" />
+                <ScalarProperty Name="status_actif" ColumnName="status_actif" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="type_panneau" ColumnName="type_panneau" />
+                <ScalarProperty Name="auteur_update" ColumnName="auteur_update" />
+                <ScalarProperty Name="auteur_installation" ColumnName="auteur_installation" />
+                <ScalarProperty Name="date_update" ColumnName="date_update" />
+                <ScalarProperty Name="date_observation" ColumnName="date_observation" />
+                <ScalarProperty Name="date_installation" ColumnName="date_installation" />
+                <ScalarProperty Name="signalisation_id" ColumnName="signalisation_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_tournee">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.db_tournee">
+              <MappingFragment StoreEntitySet="db_tournee">
+                <ScalarProperty Name="approbation_date" ColumnName="approbation_date" />
+                <ScalarProperty Name="approbation" ColumnName="approbation" />
+                <ScalarProperty Name="validation_datetime" ColumnName="validation_datetime" />
+                <ScalarProperty Name="analyse_datetime" ColumnName="analyse_datetime" />
+                <ScalarProperty Name="validation" ColumnName="validation" />
+                <ScalarProperty Name="laboratoire_operateur_id" ColumnName="laboratoire_operateur_id" />
+                <ScalarProperty Name="cf_methode_analytique" ColumnName="cf_methode_analytique" />
+                <ScalarProperty Name="notification" ColumnName="notification" />
+                <ScalarProperty Name="date_echantillonnage" ColumnName="date_echantillonnage" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date_creation" ColumnName="date_creation" />
+                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
+                <ScalarProperty Name="consultant" ColumnName="consultant" />
+                <ScalarProperty Name="vague_hauteur_fin" ColumnName="vague_hauteur_fin" />
+                <ScalarProperty Name="vague_hauteur" ColumnName="vague_hauteur" />
+                <ScalarProperty Name="niveau_eau" ColumnName="niveau_eau" />
+                <ScalarProperty Name="mer_etat_fin" ColumnName="mer_etat_fin" />
+                <ScalarProperty Name="mer_etat" ColumnName="mer_etat" />
+                <ScalarProperty Name="couvert_nuage_fin" ColumnName="couvert_nuage_fin" />
+                <ScalarProperty Name="couvert_nuage" ColumnName="couvert_nuage" />
+                <ScalarProperty Name="vent_direction_fin" ColumnName="vent_direction_fin" />
+                <ScalarProperty Name="vent_direction_debut" ColumnName="vent_direction_debut" />
+                <ScalarProperty Name="v_vent_fin" ColumnName="v_vent_fin" />
+                <ScalarProperty Name="v_vent_deb" ColumnName="v_vent_deb" />
+                <ScalarProperty Name="t_air_fin" ColumnName="t_air_fin" />
+                <ScalarProperty Name="t_air_deb" ColumnName="t_air_deb" />
+                <ScalarProperty Name="precipit_3jant" ColumnName="precipit_3jant" />
+                <ScalarProperty Name="precipit" ColumnName="precipit" />
+                <ScalarProperty Name="marnage" ColumnName="marnage" />
+                <ScalarProperty Name="maree_me" ColumnName="maree_me" />
+                <ScalarProperty Name="maree_ve" ColumnName="maree_ve" />
+                <ScalarProperty Name="pmaree_fin" ColumnName="pmaree_fin" />
+                <ScalarProperty Name="pmaree_deb" ColumnName="pmaree_deb" />
+                <ScalarProperty Name="maree_principale" ColumnName="maree_principale" />
+                <ScalarProperty Name="maree_princ" ColumnName="maree_princ" />
+                <ScalarProperty Name="hre_maree_b" ColumnName="hre_maree_b" />
+                <ScalarProperty Name="hre_maree_h" ColumnName="hre_maree_h" />
+                <ScalarProperty Name="temp_glace_recep" ColumnName="temp_glace_recep" />
+                <ScalarProperty Name="hre_recep_lab" ColumnName="hre_recep_lab" />
+                <ScalarProperty Name="hre_fin" ColumnName="hre_fin" />
+                <ScalarProperty Name="hre_deb" ColumnName="hre_deb" />
+                <ScalarProperty Name="jour" ColumnName="jour" />
+                <ScalarProperty Name="mois" ColumnName="mois" />
+                <ScalarProperty Name="annee" ColumnName="annee" />
+                <ScalarProperty Name="tournee" ColumnName="tournee" />
+                <ScalarProperty Name="ID_Tournee" ColumnName="ID_Tournee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="organisations">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.organisation">
+              <MappingFragment StoreEntitySet="organisation">
+                <ScalarProperty Name="organisation_fr" ColumnName="organisation_fr" />
+                <ScalarProperty Name="ID_organisation" ColumnName="ID_organisation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="point_legal_20131118">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.point_legal_20131118">
+              <MappingFragment StoreEntitySet="point_legal_20131118">
+                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="point_legal_id" ColumnName="point_legal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_20131118">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_20131118">
+              <MappingFragment StoreEntitySet="secteur_20131118">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="secteur_type" ColumnName="secteur_type" />
+                <ScalarProperty Name="y_max" ColumnName="y_max" />
+                <ScalarProperty Name="x_max" ColumnName="x_max" />
+                <ScalarProperty Name="y_min" ColumnName="y_min" />
+                <ScalarProperty Name="x_min" ColumnName="x_min" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="geometry" ColumnName="geometry" />
+                <ScalarProperty Name="superficie" ColumnName="superficie" />
+                <ScalarProperty Name="longueur_rive" ColumnName="longueur_rive" />
+                <ScalarProperty Name="secteur_no4" ColumnName="secteur_no4" />
+                <ScalarProperty Name="secteur_no3" ColumnName="secteur_no3" />
+                <ScalarProperty Name="secteur_no2" ColumnName="secteur_no2" />
+                <ScalarProperty Name="secteur_no1" ColumnName="secteur_no1" />
+                <ScalarProperty Name="secteur_ltr" ColumnName="secteur_ltr" />
+                <ScalarProperty Name="secteur" ColumnName="secteur" />
+                <ScalarProperty Name="secteur_id_parent" ColumnName="secteur_id_parent" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_description_20131021">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_description_20131021">
+              <MappingFragment StoreEntitySet="secteur_description_20131021">
+                <ScalarProperty Name="modification_date" ColumnName="modification_date" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="parametre" ColumnName="parametre" />
+                <ScalarProperty Name="langue" ColumnName="langue" />
+                <ScalarProperty Name="secteur_text" ColumnName="secteur_text" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="secteur_description_id" ColumnName="secteur_description_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_description_20131118">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_description_20131118">
+              <MappingFragment StoreEntitySet="secteur_description_20131118">
+                <ScalarProperty Name="modification_date" ColumnName="modification_date" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="parametre" ColumnName="parametre" />
+                <ScalarProperty Name="langue" ColumnName="langue" />
+                <ScalarProperty Name="secteur_text" ColumnName="secteur_text" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="secteur_description_id" ColumnName="secteur_description_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_description_20140210">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_description_20140210">
+              <MappingFragment StoreEntitySet="secteur_description_20140210">
+                <ScalarProperty Name="modification_date" ColumnName="modification_date" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="parametre" ColumnName="parametre" />
+                <ScalarProperty Name="langue" ColumnName="langue" />
+                <ScalarProperty Name="secteur_text" ColumnName="secteur_text" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+                <ScalarProperty Name="secteur_description_id" ColumnName="secteur_description_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

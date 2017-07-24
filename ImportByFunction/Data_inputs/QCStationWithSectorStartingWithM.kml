@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>M Sector Pollution Source</name>
+	<Folder>
+		<name>aaaaaaaaaa</name>
+		<open>1</open>
+		<Placemark>
+			<name>MS09 -- 1</name>
+			<Point>
+				<coordinates>-69.17631667,48.53455,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 2</name>
+			<Point>
+				<coordinates>-69.16538333,48.54255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 3</name>
+			<Point>
+				<coordinates>-69.14981667,48.54581667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 4</name>
+			<Point>
+				<coordinates>-69.13396667,48.54781667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 5</name>
+			<Point>
+				<coordinates>-69.1176,48.55236667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 6</name>
+			<Point>
+				<coordinates>-69.10523333,48.55898333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 7</name>
+			<Point>
+				<coordinates>-69.09531667,48.56826667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 8</name>
+			<Point>
+				<coordinates>-69.08968333,48.57811667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 9</name>
+			<Point>
+				<coordinates>-69.08128333,48.58751667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 10</name>
+			<Point>
+				<coordinates>-69.07573333,48.5977,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 11</name>
+			<Point>
+				<coordinates>-69.07355,48.60295,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 12</name>
+			<Point>
+				<coordinates>-69.06955,48.60826667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 13</name>
+			<Point>
+				<coordinates>-69.06676667,48.61328333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 14</name>
+			<Point>
+				<coordinates>-69.067,48.61853333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 15</name>
+			<Point>
+				<coordinates>-69.06398333,48.62361667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 16</name>
+			<Point>
+				<coordinates>-69.06016667,48.62833333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 17</name>
+			<Point>
+				<coordinates>-69.05798333,48.63358333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 18</name>
+			<Point>
+				<coordinates>-69.05606667,48.63883333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 19</name>
+			<Point>
+				<coordinates>-69.05415,48.64408333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 20</name>
+			<Point>
+				<coordinates>-69.05415,48.64951667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 21</name>
+			<Point>
+				<coordinates>-69.05361667,48.66038333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 22</name>
+			<Point>
+				<coordinates>-69.04705,48.6727,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 23</name>
+			<Point>
+				<coordinates>-69.04378333,48.68391667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 24</name>
+			<Point>
+				<coordinates>-69.0405,48.69531667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS09 -- 25</name>
+			<Point>
+				<coordinates>-69.03776667,48.70691667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 1</name>
+			<Point>
+				<coordinates>-68.450083,49.012267,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 2</name>
+			<Point>
+				<coordinates>-68.4355666666667,49.0169833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 3</name>
+			<Point>
+				<coordinates>-68.42035,49.0198166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 4</name>
+			<Point>
+				<coordinates>-68.4050666666667,49.0225666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 5</name>
+			<Point>
+				<coordinates>-68.3918166666667,49.0265666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 6</name>
+			<Point>
+				<coordinates>-68.3757333333333,49.0286333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 7</name>
+			<Point>
+				<coordinates>-68.3626833333333,49.0334833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 8</name>
+			<Point>
+				<coordinates>-68.3451166666667,49.0367333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 9</name>
+			<Point>
+				<coordinates>-68.3336333333333,49.04445,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 10</name>
+			<Point>
+				<coordinates>-68.3202333333333,49.05075,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 11</name>
+			<Point>
+				<coordinates>-68.3043333333333,49.0536333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 12</name>
+			<Point>
+				<coordinates>-68.2942666666667,49.0530666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 13</name>
+			<Point>
+				<coordinates>-68.2776,49.0552333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 14</name>
+			<Point>
+				<coordinates>-68.2620166666667,49.0554166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 15</name>
+			<Point>
+				<coordinates>-68.2488833333333,49.0546333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 16</name>
+			<Point>
+				<coordinates>-68.2311833333333,49.0515666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 17</name>
+			<Point>
+				<coordinates>-68.2168833333333,49.048,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 18</name>
+			<Point>
+				<coordinates>-68.2016,49.0529166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 19</name>
+			<Point>
+				<coordinates>-68.1931166666667,49.06225,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 20</name>
+			<Point>
+				<coordinates>-68.1778166666667,49.06745,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 21</name>
+			<Point>
+				<coordinates>-68.1630666666667,49.0683666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 22</name>
+			<Point>
+				<coordinates>-68.1496666666667,49.0744666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 23</name>
+			<Point>
+				<coordinates>-68.13845,49.08255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 24</name>
+			<Point>
+				<coordinates>-68.1323,49.0918666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 25</name>
+			<Point>
+				<coordinates>-68.1242333333333,49.0999833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 26</name>
+			<Point>
+				<coordinates>-68.1186,49.1092833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 27</name>
+			<Point>
+				<coordinates>-68.1117333333333,49.1194833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 28</name>
+			<Point>
+				<coordinates>-68.1045333333333,49.1294,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 29</name>
+			<Point>
+				<coordinates>-68.1010666666667,49.1395166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 30</name>
+			<Point>
+				<coordinates>-68.0947333333333,49.1500166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 31</name>
+			<Point>
+				<coordinates>-68.0909,49.1607666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 32</name>
+			<Point>
+				<coordinates>-68.0899833333333,49.1704166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 33</name>
+			<Point>
+				<coordinates>-68.0865333333333,49.1810333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 34</name>
+			<Point>
+				<coordinates>-68.0862666666667,49.19195,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS10 -- 35</name>
+			<Point>
+				<coordinates>-68.0886166666667,49.2032166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 1</name>
+			<Point>
+				<coordinates>-67.1401333333333,49.6601166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 2</name>
+			<Point>
+				<coordinates>-67.1370833333333,49.6726833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 3</name>
+			<Point>
+				<coordinates>-67.1398,49.6847166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 4</name>
+			<Point>
+				<coordinates>-67.1404166666667,49.6952166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 5</name>
+			<Point>
+				<coordinates>-67.14145,49.7057333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 6</name>
+			<Point>
+				<coordinates>-67.1442166666667,49.7207166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 7</name>
+			<Point>
+				<coordinates>-67.1465333333333,49.7332333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 8</name>
+			<Point>
+				<coordinates>-67.1423,49.7486166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 9</name>
+			<Point>
+				<coordinates>-67.1326333333333,49.7605166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 10</name>
+			<Point>
+				<coordinates>-67.12215,49.7726166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 11</name>
+			<Point>
+				<coordinates>-67.10875,49.7836166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 12</name>
+			<Point>
+				<coordinates>-67.0961166666667,49.7912333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 13</name>
+			<Point>
+				<coordinates>-67.0822,49.7973833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 14</name>
+			<Point>
+				<coordinates>-67.0690833333333,49.8009333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 15</name>
+			<Point>
+				<coordinates>-67.0509833333333,49.8040166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 1</name>
+			<Point>
+				<coordinates>-67.0161833333333,49.8113166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 2</name>
+			<Point>
+				<coordinates>-67.0046166666667,49.8193666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 3</name>
+			<Point>
+				<coordinates>-67.0022666666667,49.8364666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 4</name>
+			<Point>
+				<coordinates>-67.005,49.8482666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 5</name>
+			<Point>
+				<coordinates>-66.9931,49.86145,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 6</name>
+			<Point>
+				<coordinates>-66.9788,49.8727333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 7</name>
+			<Point>
+				<coordinates>-66.975,49.8844333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 8</name>
+			<Point>
+				<coordinates>-66.9717666666667,49.8947333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 9</name>
+			<Point>
+				<coordinates>-66.96085,49.9077666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 10</name>
+			<Point>
+				<coordinates>-66.95685,49.9193333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 11</name>
+			<Point>
+				<coordinates>-66.958,49.9317666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 12</name>
+			<Point>
+				<coordinates>-66.9557833333333,49.9430666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 13</name>
+			<Point>
+				<coordinates>-66.95005,49.9575833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 14</name>
+			<Point>
+				<coordinates>-66.94625,49.9704166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS02 -- 15</name>
+			<Point>
+				<coordinates>-66.9416333333333,49.9807,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 1</name>
+			<Point>
+				<coordinates>-66.7324,50.0376166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 2</name>
+			<Point>
+				<coordinates>-66.7225,50.0522833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 3</name>
+			<Point>
+				<coordinates>-66.7195333333333,50.0681166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 4</name>
+			<Point>
+				<coordinates>-66.7136833333333,50.0791166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 5</name>
+			<Point>
+				<coordinates>-66.7037833333333,50.0922833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 6</name>
+			<Point>
+				<coordinates>-66.68245,50.1072333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 7</name>
+			<Point>
+				<coordinates>-66.6622666666667,50.1157666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 8</name>
+			<Point>
+				<coordinates>-66.6273166666667,50.1203166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 9</name>
+			<Point>
+				<coordinates>-66.6002166666667,50.1246833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 10</name>
+			<Point>
+				<coordinates>-66.5804333333333,50.1341833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 11</name>
+			<Point>
+				<coordinates>-66.5554333333333,50.13775,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 12</name>
+			<Point>
+				<coordinates>-66.5311166666667,50.1385833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 13</name>
+			<Point>
+				<coordinates>-66.5051166666667,50.1377666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 14</name>
+			<Point>
+				<coordinates>-66.48475,50.1282833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS03 -- 15</name>
+			<Point>
+				<coordinates>-66.46515,50.1234333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 1</name>
+			<Point>
+				<coordinates>-66.3798333333333,50.17025,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 2</name>
+			<Point>
+				<coordinates>-66.3753833333333,50.1487833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 3</name>
+			<Point>
+				<coordinates>-66.3643833333333,50.13085,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 4</name>
+			<Point>
+				<coordinates>-66.3462333333333,50.1244,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 5</name>
+			<Point>
+				<coordinates>-66.3527833333333,50.1403,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 6</name>
+			<Point>
+				<coordinates>-66.3504166666667,50.15865,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 7</name>
+			<Point>
+				<coordinates>-66.3579166666667,50.17505,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 8</name>
+			<Point>
+				<coordinates>-66.31315,50.1637166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 9</name>
+			<Point>
+				<coordinates>-66.3027,50.1745833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 10</name>
+			<Point>
+				<coordinates>-66.2906833333333,50.1937666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 11</name>
+			<Point>
+				<coordinates>-66.2407333333333,50.1893333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 12</name>
+			<Point>
+				<coordinates>-66.209,50.1902166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 13</name>
+			<Point>
+				<coordinates>-66.1765833333333,50.1808,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 14</name>
+			<Point>
+				<coordinates>-66.1456833333333,50.1645,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS04 -- 15</name>
+			<Point>
+				<coordinates>-66.1125333333333,50.1615166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 1</name>
+			<Point>
+				<coordinates>-66.03975,50.1969833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 2</name>
+			<Point>
+				<coordinates>-66.0282666666667,50.2054166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 3</name>
+			<Point>
+				<coordinates>-66.0189,50.21535,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 4</name>
+			<Point>
+				<coordinates>-66.00655,50.2246166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 5</name>
+			<Point>
+				<coordinates>-66.0036333333333,50.2365,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 6</name>
+			<Point>
+				<coordinates>-65.9959,50.2460666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 7</name>
+			<Point>
+				<coordinates>-65.9875,50.2518,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 8</name>
+			<Point>
+				<coordinates>-65.9726666666667,50.2555666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 9</name>
+			<Point>
+				<coordinates>-65.95245,50.25755,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 10</name>
+			<Point>
+				<coordinates>-65.9316833333333,50.2598666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 11</name>
+			<Point>
+				<coordinates>-65.9134333333333,50.2603,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 12</name>
+			<Point>
+				<coordinates>-65.8938666666667,50.2594333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 13</name>
+			<Point>
+				<coordinates>-65.86555,50.2531166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 14</name>
+			<Point>
+				<coordinates>-65.84255,50.2429166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS05 -- 15</name>
+			<Point>
+				<coordinates>-65.8197166666667,50.23555,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 1</name>
+			<Point>
+				<coordinates>-64.9636,50.2548333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 2</name>
+			<Point>
+				<coordinates>-64.95045,50.2558333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 3</name>
+			<Point>
+				<coordinates>-64.9368166666667,50.2568333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 4</name>
+			<Point>
+				<coordinates>-64.92175,50.2557666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 5</name>
+			<Point>
+				<coordinates>-64.9083333333333,50.2524833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 6</name>
+			<Point>
+				<coordinates>-64.8932666666667,50.2508333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 7</name>
+			<Point>
+				<coordinates>-64.8789333333333,50.2496666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 8</name>
+			<Point>
+				<coordinates>-64.86435,50.2491666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 9</name>
+			<Point>
+				<coordinates>-64.84795,50.25,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 10</name>
+			<Point>
+				<coordinates>-64.83155,50.255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 11</name>
+			<Point>
+				<coordinates>-64.8133,50.255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 12</name>
+			<Point>
+				<coordinates>-64.7971666666667,50.255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 13</name>
+			<Point>
+				<coordinates>-64.7815,50.255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 14</name>
+			<Point>
+				<coordinates>-64.7646166666667,50.255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 15</name>
+			<Point>
+				<coordinates>-64.7440666666667,50.255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 1</name>
+			<Point>
+				<coordinates>-64.3669333333333,50.2644333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 2</name>
+			<Point>
+				<coordinates>-64.3579833333333,50.2575333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 3</name>
+			<Point>
+				<coordinates>-64.3488666666667,50.2514833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 4</name>
+			<Point>
+				<coordinates>-64.3391166666667,50.2448833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 5</name>
+			<Point>
+				<coordinates>-64.32665,50.2373166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 6</name>
+			<Point>
+				<coordinates>-64.3104333333333,50.2341166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 7</name>
+			<Point>
+				<coordinates>-64.2953666666667,50.2356166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 8</name>
+			<Point>
+				<coordinates>-64.2810833333333,50.2386166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 9</name>
+			<Point>
+				<coordinates>-64.2637666666667,50.2413833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 10</name>
+			<Point>
+				<coordinates>-64.2480833333333,50.2424666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 11</name>
+			<Point>
+				<coordinates>-64.2322666666667,50.2431333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 12</name>
+			<Point>
+				<coordinates>-64.2176166666667,50.2412,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 13</name>
+			<Point>
+				<coordinates>-64.2054833333333,50.2402333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 14</name>
+			<Point>
+				<coordinates>-64.1887666666667,50.2375666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS07 -- 15</name>
+			<Point>
+				<coordinates>-64.1713833333333,50.2364333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 1</name>
+			<Point>
+				<coordinates>-64.1247666666667,50.264,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 2</name>
+			<Point>
+				<coordinates>-64.1195,50.2653833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 3</name>
+			<Point>
+				<coordinates>-64.1126166666667,50.2670666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 4</name>
+			<Point>
+				<coordinates>-64.1057,50.2683166666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 5</name>
+			<Point>
+				<coordinates>-64.0997833333333,50.2690833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 6</name>
+			<Point>
+				<coordinates>-64.09245,50.2697333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 7</name>
+			<Point>
+				<coordinates>-64.0845166666667,50.2706833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 8</name>
+			<Point>
+				<coordinates>-64.0772333333333,50.2730333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 9</name>
+			<Point>
+				<coordinates>-64.07025,50.2750333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 10</name>
+			<Point>
+				<coordinates>-64.0649166666667,50.2771666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 11</name>
+			<Point>
+				<coordinates>-64.0588833333333,50.2801666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 12</name>
+			<Point>
+				<coordinates>-64.0534333333333,50.2817333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 13</name>
+			<Point>
+				<coordinates>-64.0479,50.2817666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 14</name>
+			<Point>
+				<coordinates>-64.0412,50.2830833333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS08 -- 15</name>
+			<Point>
+				<coordinates>-64.0330666666667,50.28415,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 16</name>
+			<Point>
+				<coordinates>-67.293842,49.385627,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 29</name>
+			<Point>
+				<coordinates>-67.21791658642,49.5412689870029,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 25</name>
+			<Point>
+				<coordinates>-64.60475699948,50.2636944702316,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 16</name>
+			<Point>
+				<coordinates>-64.73033,50.25507,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 17</name>
+			<Point>
+				<coordinates>-64.716876,50.25576,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 18</name>
+			<Point>
+				<coordinates>-64.70247802412,50.2563070251217,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 19</name>
+			<Point>
+				<coordinates>-64.688657,50.25728,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 20</name>
+			<Point>
+				<coordinates>-64.6744461971,50.2582536041565,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 21</name>
+			<Point>
+				<coordinates>-64.660235,50.259616,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 22</name>
+			<Point>
+				<coordinates>-64.646219,50.26059,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 23</name>
+			<Point>
+				<coordinates>-64.632398,50.261758,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS06 -- 24</name>
+			<Point>
+				<coordinates>-64.617798,50.262731,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 17</name>
+			<Point>
+				<coordinates>-67.2934314095,49.3975672825801,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 18</name>
+			<Point>
+				<coordinates>-67.28813965235,49.4112043872379,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 19</name>
+			<Point>
+				<coordinates>-67.27022752026,49.4171072024123,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 20</name>
+			<Point>
+				<coordinates>-67.25882926171,49.4283021146291,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 21</name>
+			<Point>
+				<coordinates>-67.24844841335,49.4392936808309,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 22</name>
+			<Point>
+				<coordinates>-67.23481062822,49.4490638107688,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 23</name>
+			<Point>
+				<coordinates>-67.22422643384,49.4616835052646,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 24</name>
+			<Point>
+				<coordinates>-67.21913802271,49.4747102318339,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 25</name>
+			<Point>
+				<coordinates>-67.21608511206,49.4879406444617,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 26</name>
+			<Point>
+				<coordinates>-67.21527104789,49.501578089163,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 27</name>
+			<Point>
+				<coordinates>-67.21567773993,49.5141977836588,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 28</name>
+			<Point>
+				<coordinates>-67.21710252225,49.5280385743751,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>MS01 -- 30</name>
+			<Point>
+				<coordinates>-67.21893467669,49.5540923675572,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

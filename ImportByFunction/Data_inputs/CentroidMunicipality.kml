@@ -1,0 +1,3165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Document>
+<name>CentroidMunicipality.kml</name>
+<Style id="s_ylw-pushpin_hl">
+<IconStyle>
+<scale>1.3</scale>
+<Icon>
+<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+</Icon>
+<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+</IconStyle>
+<LineStyle>
+<color>ff000000</color>
+<width>2</width>
+</LineStyle>
+<PolyStyle>
+<color>00ffffff</color>
+</PolyStyle>
+</Style>
+<StyleMap id="m_ylw-pushpin">
+<Pair>
+<key>normal</key>
+<styleUrl>#s_ylw-pushpin</styleUrl>
+</Pair>
+<Pair>
+<key>highlight</key>
+<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+</Pair>
+</StyleMap>
+<Style id="s_ylw-pushpin">
+<IconStyle>
+<scale>1.1</scale>
+<Icon>
+<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+</Icon>
+<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+</IconStyle>
+<LineStyle>
+<color>ff000000</color>
+<width>2</width>
+</LineStyle>
+<PolyStyle>
+<color>00ffffff</color>
+</PolyStyle>
+</Style>
+<Folder>
+<Placemark>
+<name>Pilley's Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-55.7238883972168,49.5074501037598,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Robert's Arm</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-55.8191680908203,49.4854850769043,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Trinity</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-53.3587875366211,48.367805480957,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Backeddy Marina</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.940719604492,49.756763458252,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BC Ferries</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.847465515137,49.5260581970215,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bella Bella</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-128.145553588867,52.1603622436523,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bowen Island Municipality</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.344879150391,49.3802261352539,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Brentwood College</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.555335998535,48.6525611877441,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Campbell River STP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-122.678497314453,45.5218315124512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cape Mudge Band</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.7366693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Capital Regional District - Clover Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.349510192871,48.4043960571289,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Capital Regional District - Macaulay Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.410537719727,48.4204063415527,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Capital Regional District - N. Pender Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.255615234375,48.7758750915527,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Capital Regional District - Pender Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.255615234375,48.7758750915527,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Capital Regional District - Port Renfrew</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.422302246094,48.5529670715332,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Catalyst site --Crofton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-122.194000244141,49.7487754821777,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>City of Port Alberni</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.805549621582,49.23388671875,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>City of Prince Rupert (industrial)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-98.4689025878906,50.0508117675781,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>City of Prince Rupert Sewage</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-130.327102661133,54.3103370666504,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Comox Regional District STP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.993804931641,49.6874542236328,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cormorant Island-Alert Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-126.925407409668,50.5844841003418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Corporation of the Village of Zeballos</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-126.845832824707,49.9845733642578,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cowichan Valley Regional District</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.03099822998,48.7569007873535,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>CRD - Ganges Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.117652893066,49.2905044555664,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>CRD - Malaview STP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.7466693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cumberland</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-125.026107788086,49.6205558776855,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of Campbell River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-125.242584228516,49.9949150085449,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of Central Squamish</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.042449951172,49.2056121826172,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of Lantzville</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.075180053711,49.2507171630859,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of N. Cowichan - Chemainus</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.734481811523,48.9301643371582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of N. Cowichan - Crofton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.645797729492,48.8638458251953,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of Port Edward</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-130.291397094727,54.2283554077148,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of Port Hardy</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.491714477539,50.7124862670898,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of Tofino</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-125.902496337891,49.1524353027344,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of Ucluelet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-125.546340942383,48.9416007995605,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>District of West Vancouver - Howe Sound</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.159973144531,49.3310241699219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Gillies bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.484794616699,49.6815071105957,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GVRD - Annacis Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.072059631348,49.0977096557617,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GVRD - Iona Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.201377868652,49.2153167724609,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GVRD - Lions Gate</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.027534484863,49.313159942627,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GVRD - Lulu Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.072059631348,49.0977096557617,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GVRD - Northwest Langley</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.122291564941,49.2757568359375,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Halfmoon Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.90592956543,49.5139656066895,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Halfmoon Bay - Square Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.979682922363,49.5476303100586,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Hartley Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-129.253509521484,53.4239196777344,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Hot Springs Cove (Hesquiaht FN)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.7566693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Kitamaat</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-128.63835144043,54.0629119873047,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Kitkatla</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-130.433212280273,53.7944793701172,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Klahoose Band</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.969245910645,50.072883605957,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Klemtu</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-128.526962280273,52.5903358459473,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Ladysmith</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.821098327637,48.9904289245605,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lax Kw'Alaams</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-130.433929443359,54.5543823242188,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Marktosis (Ahousaht FN)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.7666693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>McLoughlin Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-122.605728149414,45.3572044372559,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Metlakatla</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-130.444671630859,54.3373222351074,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Nanoose FN</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.7766693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Nisga'a Village of Gingolx</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-129.083938598633,55.208438873291,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Oceans Falls Improvement District 1</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.693748474121,52.3540191650391,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Oceans Falls Improvement District 2</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.141090393066,49.2887802124023,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Opitsat (Tla-o-qui-aht First Nations)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.7866693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Port Clements</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-132.313583374023,53.6128005981445,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Port Hardy</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.49666595459,50.7208213806152,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Powell River Regional District - Lund</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.759071350098,49.9818458557129,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Powell River Townsite</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.553466796875,49.8744506835938,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Quathiaski Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-125.218559265137,50.0510559082031,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RD of Mount Waddington - Coal Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.573623657227,50.5646438598633,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RD of Mount Waddington - Hyde Creek</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.06421661377,50.581241607666,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RD of Nanaimo - Duke Point STP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-122.185287475586,47.6158447265625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RD of Nanaimo - French Creek</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.193794250488,49.2625350952148,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RD of Nanaimo - Hammond Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.955955505371,49.2260093688965,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RD of Nanaimo - Nanoose</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.193794250488,49.2625350952148,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Saanich Peninsula</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.409889221191,48.5942726135254,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sechelt STP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.7966693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Secret Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.949996948242,49.533332824707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Shearwater</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-128.091598510742,52.1484794616699,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Skidegate - Slarkedus Creek</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.8066693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Skidegate Landing</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-132.008331298828,53.2472229003906,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Skidgate - Smith Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.500953674316,48.8576622009277,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sliammon</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.603324890137,49.8984870910645,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sooke</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.737777709961,48.3761100769043,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sundowner</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-122.890953063965,49.1191902160645,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sunshine Coast RD - Pender Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.02555847168,49.6236114501953,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Town of Duncan</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.707939147949,48.7786903381348,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Town of Gibsons</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.507820129395,49.4037628173828,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Town of Ladysmith STP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.8166693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Town of Port McNeill</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.084754943848,50.5901412963867,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Tsawassen FN</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.097770690918,49.0379219055176,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Tsawout FN</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.637621154785,53.8266693115234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Ucluelet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-125.546340942383,48.9416007995605,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Vananda</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.554061889648,49.7561225891113,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Village of Alert Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-126.925407409668,50.5844841003418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Village of Masset</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-132.147201538086,54.0114593505859,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Village of Port Alice</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-127.487548828125,50.4188690185547,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Village of Sayward</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-125.949867248535,50.3762359619141,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Village of Tahsis</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-126.661331176758,49.9234313964844,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Walters Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-119.651588439941,49.5930442810059,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Westview</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.527191162109,49.8365440368652,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Wildwood</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-124.552299499512,49.8895950317383,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Wilson Creek</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-123.711631774902,49.4474296569824,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Young Life</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-122.664344787598,49.1743507385254,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Acadian Village</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.4045944213867,44.5330123901367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Alma</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9414367675781,45.6037940979004,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Anchorage Campground-Grand Manan</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.575315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Atholville</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.7171936035156,47.9908485412598,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Baie St Anne School</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.965576171875,47.04736328125,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bas Caraquet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8319931030273,47.8006210327148,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bathurst</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6513366699219,47.618350982666,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bay Vista Lodge</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5691604614258,46.2502212524414,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Beresford-Nigadoo</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7126922607422,47.7395362854004,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Blacks Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.7849731445313,45.0588874816895,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bouctouche</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7242660522461,46.4722747802734,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Burnt Church</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1347885131836,47.2293815612793,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Campbellton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.6722030639648,48.0074005126953,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cap Pele</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.270751953125,46.2153053283691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Caraquet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9628295898438,47.7897300720215,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Champlain Industrial Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-88.8738479614258,48.5548439025879,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Charlo</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3184432983398,47.9973602294922,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chatham Generating Station</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.5113677978516,44.7415428161621,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chatham private lagoon</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.585315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chauleur Mall</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6349716186523,47.5994148254395,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Dalhousie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3731155395508,48.0657768249512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Dalhousie Chemical Plant</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.595315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Eel Ground</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6338424682617,46.9678153991699,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Eel River Crossing</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4220962524414,48.0159606933594,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Elsipogtog (Big Cove)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9182052612305,46.5892906188965,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Enclosure Provincial Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.605315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Grand Digue</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5590972900391,46.3222732543945,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Grand Manan Hospital</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.7637176513672,44.7621154785156,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Grand Manan Nursing Home</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.7638931274414,44.7621688842773,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Grand Manan School</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.760986328125,44.7408142089844,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Hastings Hill campground</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.615315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Hazen Creek</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0097198486328,45.2654418945313,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Headquarters campground</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9520568847656,45.5967025756836,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Kouchibouguac Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9669418334961,46.849723815918,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lameque</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6478958129883,47.7934188842773,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lancaster</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1458129882813,45.2430801391602,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Loggieville</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.3717956542969,47.0707817077637,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Marsh Creek</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7564392089844,45.7123718261719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Metz Pig Farm</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.625315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Miramichi - North Side (Strawberry Field Marsh)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.635315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Miramichi (Chatham head) - Nelson</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.5487670898438,46.9738426208496,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Miramichi City South Side Lagoon</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.645315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Miramichi Waste Liquids Pond</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.655315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Miriamichi Bay - Family land campground</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.6808471679688,45.9445991516113,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Miriamichi Bay - Repab pulp &amp; paper mill</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.665315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Murray Beach Park Lagoon</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.675315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Musquash</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3340530395508,45.1802139282227,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Neguac</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0708847045898,47.2553062438965,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>New River Beach Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.5442962646484,45.1451568603516,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Oak Bay Provincial Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.1952285766602,45.2225608825684,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Petit Rocher</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7194061279297,47.7839088439941,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Pointe Verte</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7635192871094,47.8545761108398,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Pointe Wolfe</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1492385864258,45.5955467224121,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Port Elgin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0878219604492,46.0496444702148,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Rexton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.87646484375,46.643985748291,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Richibucto</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8659820556641,46.6817855834961,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Saint-Louis-de-Kent</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.972541809082,46.7374458312988,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Scoudouc Village</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5615310668945,46.1683349609375,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Shediac</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5346832275391,46.2201957702637,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Shippagan</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.705696105957,47.7439270019531,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St Antoine</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7526702880859,46.3629188537598,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St Antoine 2</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.9308471679688,47.1636352539063,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St Marie De Kent</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8272933959961,46.4160842895508,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St Stephen-Atlantic Trailer Home Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4519140625,46.685315246582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St. Andrews</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.053092956543,45.073844909668,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St. Andrews - Huntsman Institute</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.0801620483398,45.0846862792969,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St. Andrews Biological Station</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.0515975952148,45.0752105712891,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St. George</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.8313598632813,45.1290092468262,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St. Margarets</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1964569091797,46.9062194824219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St. Stephen</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.2755584716797,45.194164276123,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Ste-Anne du Bocage</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0148468017578,47.7732467651367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Ste-Marie-de-Kent</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8267974853516,46.4163284301758,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Town of Minto</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0749130249023,46.0761642456055,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Tracadie Sheila (old)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9179840087891,47.5070991516113,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Tracadie-Sheila</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9120864868164,47.5120697021484,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Village Gedaique</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5642395019531,46.2934341430664,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-COMEAU (secteur Marquette)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.1834564208984,49.2174224853516,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-COMEAU (secteur Mingan)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-73.5391333007812,52.9499147033691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-DES-SABLES</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.8937683105469,48.7192001342773,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-JOHAN-BEETZ</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7458038330078,50.3384666442871,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BAIE-SAINT-PAUL (secteurs village, paroisse et Rivière du Gouffre)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-73.5391333007812,52.9599147033691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BERGERONNES</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.5448532104492,48.2425651550293,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BETSIAMITES</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.6423187255859,48.9407653808594,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BETSIAMITES_test</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-73.5391333007812,52.9699147033691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BLANC-SABLON (secteur Blanc-Sablon)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-73.5391333007812,52.9799147033691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BLANC-SABLON (secteur Lourdes)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-71.3080596923828,46.8236656188965,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BONAVENTURE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.4596862792969,48.0513381958008,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BONNE-ESPÉRANCE (secteur Rivière Saint-Paul)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-73.5391333007812,52.9899147033691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>BONNE-ESPÉRANCE (secteur Vieux-Fort)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-73.5391333007812,52.9999147033691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>CAPLAN</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6834945678711,48.1024513244629,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>CARLETON-SUR-MER (secteur Carleton)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.2045974731445,48.1077194213867,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>CHANDLER (secteur Newport)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6841430664063,48.3483428955078,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>CHANDLER (secteurs Pabos-Mills, Pabos et Saint-François-de-Pabos)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-73.5391333007812,53.0099147033691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>FORESTVILLE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.0876388549805,48.7391738891602,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GASPÉ</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4869003295898,48.8316345214844,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GASPÉ (secteur Petit-Cap)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.6390228271484,47.5090370178223,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GASPÉ (secteur Rivière-au-Renard)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4929122924805,48.8130798339844,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Gaspe_DHI</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-73.5391333007812,53.0199147033691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GESGAPEGIAQ</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.9271087646484,48.2016181945801,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GRANDE-RIVIÈRE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4912643432617,48.395866394043,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>GRANDE-VALLÉE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1334686279297,49.2245903015137,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>HAVRE-SAINT-PIERRE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5985679626465,50.241813659668,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LA MALBAIE (secteur Pointe-au-Pic)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.1003875732422,47.6647605895996,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LA ROMAINE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.6689872741699,50.215950012207,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ÉBOULEMENTS</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.3235702514648,47.478702545166,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ÉBOULEMENTS (secteur Saint-Joseph-de-la-Rive)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.3235244750977,47.478458404541,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ESCOUMINS</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.4057312011719,48.3477668762207,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ÎLES-DE-LA-MADELEINE (secteur Cap-aux-Meules)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.6390228271484,47.5090370178223,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ÎLES-DE-LA-MADELEINE (secteur Fatima)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8766021728516,47.3738327026367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ÎLES-DE-LA-MADELEINE (secteur Havre-Aubert)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8766021728516,47.3738327026367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ÎLES-DE-LA-MADELEINE (secteur Havre-aux-Maisons)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8766021728516,47.3738327026367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES ÎLES-DE-LA-MADELEINE (secteur L'étang-du-Nord)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8697853088379,47.374870300293,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LES MÉCHINS</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.9808807373047,48.998649597168,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>L'ISLE-AUX-COUDRES</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.4110488891602,47.3695602416992,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>L'ISLE-VERTE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.3336563110352,48.0168609619141,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LONGUE-POINTE-DE-MINGAN</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1551818847656,50.2611885070801,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MARIA</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.9864959716797,48.1752624511719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MARSOUI</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0677032470703,49.2147369384766,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MATANE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.5305786132813,48.8445167541504,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MATANE (secteur Petit-Matane)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.4610214233398,48.8529396057129,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MINGAN</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0231628417969,50.2914581298828,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>MONT-SAINT-PIERRE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8070602416992,49.2222099304199,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>NATASHQUAN (Pointe Parent)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8000640869141,50.1342391967773,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>NEW RICHMOND</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8567657470703,48.1621170043945,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>NOUVELLE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3120727539063,48.1368637084961,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PASPÉBIAC (le secteur ouest), NEW CARLISLE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-73.5391333007812,53.0299147033691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PERCÉ</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2126770019531,48.5244445800781,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PERCÉ (secteur Cap d'Espoir)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.263786315918,48.4916763305664,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>POINTE-À-LA-CROIX</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.684455871582,48.0160217285156,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PORT-CARTIER</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.8759994506836,50.0212516784668,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PORT-DANIEL-GASCONS</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9599533081055,48.1166381835938,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PORT-MENIER</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3526840209961,49.8188133239746,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>PORTNEUF-SUR-MER</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.1014862060547,48.6159172058105,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RIMOUSKI (secteur des Berges - roulottes)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-74.0604019165039,45.473934173584,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RIMOUSKI (secteur LE BIC)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.5217514038086,48.4580993652344,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RIMOUSKI (secteurs Rimouski-Est et Pointe-au-Père)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.5217514038086,48.4580993652344,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>RIVIÈRE-AU-TONNERRE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7686004638672,50.2751922607422,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-AUGUSTIN (Côte-Nord)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.650463104248,51.2305374145508,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-AUGUSTIN (Pakua Shipi)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-58.3417778015137,51.3390197753906,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-ANNE-DES-MONTS (secteur Tourelle)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.29150390625,48.9243011474609,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-FÉLICITÉ</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.3358535766602,48.8993186950684,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-FLAVIE, MONT-JOLI</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.1901016235352,48.5856132507324,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-LUCE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-68.3466262817383,48.5288734436035,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINTE-THÉRÈSE-DE-GASPÉ</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4192733764648,48.4086952209473,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-IRÉNÉE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-70.2053451538086,47.5661964416504,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-SIMÉON</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.8890151977539,47.8474884033203,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-SIMÉON-DE-BONAVENTURE</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.5684814453125,48.0702247619629,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SAINT-ULRIC</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.7019729614258,48.786937713623,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SEPT-ÎLES (secteur Clarke)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.6307830810547,50.1990928649902,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SEPT-ÎLES (secteur Gallix)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3752593994141,50.213134765625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SEPT-ÎLES (secteurs Moisie), MALIOTENAM</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3752593994141,50.213134765625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>SEPT-ÎLES (ville)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3757934570313,50.2132949829102,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>TADOUSSAC</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.7128372192383,48.1459770202637,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Test</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-75.8154067993164,45.4429740905762,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>TROIS-PISTOLES, NOTRE-DAME-DES-NEIGES</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.1847915649414,48.1295738220215,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Abram Village</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0768508911133,46.4538154602051,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Acadian Fishermens Co-op</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2483215332031,46.8220024108887,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Acadian Village Tourist Resort and Restaurant</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5482025146484,46.2193222045898,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Alberton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.064826965332,46.8131294250488,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Borden Carleton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6921615600586,46.2537612915039,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Brookvale Provincial Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4071502685547,46.2750434875488,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Brudenell-Park Resort</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5875968933105,46.2021560668945,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cabot Provincial Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7042503356934,46.5572509765625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cavendish Community Resorts</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7691612243652,46.3935966491699,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cavendish Farms</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6891479492188,46.4221420288086,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cavendish Farms (RBC)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4068128967285,46.5207116699219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Charlottetown Pollution Control Plant</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4068128967285,46.5307116699219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Circle M Trailer Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8124809265137,46.4216041564941,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cornwall</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.2169914245605,46.2294960021973,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Crapaud</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5002746582031,46.2398948669434,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Crystal Beach Campground &amp; Cottages</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7126693725586,46.4363212585449,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Dalvay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.073429107666,46.4151191711426,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>East Royalty</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1106033325195,46.2800445556641,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Ellerslie School</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9343070983887,46.6065483093262,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Fortune Bay Inn</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.3622398376465,46.3297157287598,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Georgetown</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5335540771484,46.1843719482422,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Hunter River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.3489799499512,46.3549461364746,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Inn at Spry Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.379280090332,46.2538642883301,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Kensington</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6373519897461,46.4368934631348,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Kinkora</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6026878356934,46.3228759765625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lennox Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8509254455566,46.6103897094727,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Linkletter Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8499450683594,46.402458190918,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>McCain Foods Ltd.</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7359657287598,46.2238616943359,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Meadowvale Mobile Home Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4068128967285,46.5407116699219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Mill River Resort</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1658325195313,46.7418899536133,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Miscouche-East</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8680267333984,46.4322700500488,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Miscouche-West</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8680267333984,46.4322700500488,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Montague</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.648021697998,46.1650657653809,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Moonlight Camping Campground</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0730438232422,46.4150085449219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Morell</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7059707641602,46.4159889221191,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Mt. Stewart</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.8668594360352,46.3658027648926,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Murray Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5198822021484,46.0020141601563,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>North River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1933403015137,46.2551689147949,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>North Rustico</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.3131942749023,46.4582748413086,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Northumberland Ferries</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7160606384277,46.0535202026367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Northumberland Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7173728942871,45.9663887023926,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>O Leary</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2269439697266,46.7070579528809,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Red Point Provincial Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.1333084106445,46.3680191040039,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Riverview Estates</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8379974365234,46.0818061828613,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sleepy Hollow Correctional Centre</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4068128967285,46.5507116699219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Slemon Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8219375610352,46.4339904785156,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Souris</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.2518348693848,46.35498046875,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Souris Agriwest Food Plant</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4068128967285,46.5607116699219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St Louis School</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1447067260742,46.8860282897949,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St.Eleanors</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.810733795166,46.4246292114258,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St.Peters</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6625061035156,46.429817199707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Stratford</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.0886116027832,46.2159271240234,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Summerside</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7902336120605,46.3933792114258,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Tignish</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0330429077148,46.9504852294922,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Tyne Valley</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9290657043457,46.5764656066895,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Vacationland RV Park (2000) Ltd</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4068128967285,46.5707116699219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Victoria</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4903373718262,46.2150382995605,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Wellington</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9995307922363,46.4538307189941,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Abercrombie Pulp Plant</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7160186767578,45.6538619995117,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Admiral Digby Inn</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.757942199707,44.6471176147461,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Afton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1833343505859,46.1833343505859,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Annapolis Royal</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.5158233642578,44.7422256469727,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Antigonish</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.9928016662598,45.6226615905762,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Arichat</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0118408203125,45.5137329101563,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Baddeck</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7546768188477,46.0999183654785,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Barrington Bay-Brass Hill</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6093826293945,43.5277671813965,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bay Ferries Terminal</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7573547363281,44.6607475280762,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bear River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6419525146484,44.5725364685059,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Belliveau's Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0613632202148,44.3865623474121,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Birch Grove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-59.9634704589844,46.1215667724609,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bras d'Or Lakes Campground Baddeck</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7641639709473,46.0925178527832,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Bridgewater</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.520881652832,44.3721160888672,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cabot High School</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.3755073547363,46.8328857421875,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cabot Trail Campground</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.8514823913574,46.090389251709,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Canning</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4241638183594,45.1579170227051,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Canso</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.994441986084,45.3362846374512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chapel Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.124340057373,44.7882118225098,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chester</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.238883972168,44.5421142578125,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cheticamp</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0148162841797,46.6249580383301,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Chezzetcook-Eastern Shore Industrial Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.6919877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Church Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1144943237305,44.3385047912598,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Clarks Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6167221069336,43.4318313598633,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Cornwallis</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.630973815918,44.6515312194824,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Debert Industrial Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-88.8738479614258,48.5548439025879,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Digby</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7575531005859,44.6215286254883,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Dover Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0361251831055,45.288402557373,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Dundee Marina</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7535552978516,46.0996780395508,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Dundee Resort</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0824966430664,45.7021675109863,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>East Antigonish Academy</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.6216278076172,45.6086311340332,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>East River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.166374206543,44.5864067077637,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Eskasoni</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.6026191711426,45.9488754272461,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Evanston</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.216667175293,45.6166687011719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Evelyn Richardson Elementary School</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7284164428711,43.4954261779785,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Fox Harbour Resort</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4563407897949,45.8553619384766,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Gaelic College</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.6049423217773,46.2124481201172,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Great Village</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5998458862305,45.4166069030762,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Guysborough - Chedabucto Mall</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5055847167969,45.3866004943848,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Guysborough - Lagoon</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.7451286315918,45.2639389038086,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Guysborough - RBC</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.499397277832,45.3931732177734,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Guysborough - School</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5055847167969,45.3866004943848,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Havre Boucher</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5390243530273,45.6809120178223,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Heatherton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.7920341491699,45.5880546569824,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Inverness</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.3043823242188,46.230827331543,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Iona Marina</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.4208946228027,46.2500877380371,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Judique</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.4904975891113,45.876335144043,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Keltic Point Lodge</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7609634399414,46.0943984985352,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lewis Lumber</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8242988586426,44.7222900390625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Linwood</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5745124816895,45.6507682800293,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Liscombe Lodge (RSF)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7019877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Little Dover</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0494766235352,45.2897071838379,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Liverpool</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7176818847656,44.0329780578613,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lobster Galley-Saint Anns Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7119877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lockeport</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1138000488281,43.6997756958008,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Louisdale</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0624885559082,45.6069564819336,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lousiana-Pacific Corporation (Canexel)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.9579162597656,46.114128112793,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lower South River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.9132499694824,45.6011695861816,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>LP East River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6423187255859,45.5738410949707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Lunenburg</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3188323974609,44.3770065307617,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Mabou</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.3917655944824,46.0720977783203,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Mahone Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3821487426758,44.44921875,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Markland Resort</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.450740814209,46.899299621582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Martins Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3138885498047,44.4934959411621,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Meteghan</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1623382568359,44.1874656677246,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Middleton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0687713623047,44.942626953125,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Mill Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0633163452148,44.5865745544434,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Mobile Home Park (Troy)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8996162414551,45.5962829589844,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Mountain Gap Inn</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7289810180664,44.6077766418457,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Mulgrave</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.391731262207,45.6118545532227,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Musquodoboit Harbour High school</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1336059570313,45.0521278381348,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Musquodoboit Hospital</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1563491821289,45.0496406555176,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Nayanza Prov Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7219877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Northumberland Ferries Caribou</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7230339050293,45.671802520752,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Northumberland Ferries Terminal</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1199035644531,43.8332786560059,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Otter Pt Subdiv, Chester</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7319877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Oxford</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8672866821289,45.7363128662109,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Petit de Grat</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.9568252563477,45.5056686401367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Pictou Landing</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6880493164063,45.6633338928223,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Pictou Landing reserve</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6219177246094,45.611270904541,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Pictou Municipal</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6447944641113,45.5843353271484,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Pomquet Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8007926940918,45.6188011169434,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Port Hastings</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.4039268493652,45.6468925476074,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Port Hawkesbury</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.3589668273926,45.6181755065918,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Port Hood</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5289306640625,46.0151062011719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Port Maitland</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1471710205078,43.9819564819336,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Port Williams</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.410026550293,45.0979957580566,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Provincial Campground-Whycocomagh</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.8658676147461,45.6571311950684,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Pugwash</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6613082885742,45.849609375,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Pugwash Re-hab Hospital</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.848503112793,45.025936126709,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Pugwash-Windsor Salt Plant</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7419877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>River Hebert</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3779830932617,45.6902236938477,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>River John-town</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.0578498840332,45.7502632141113,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Riverview Hts Subdiv STP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7519877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sambro / Ketch Hbr Cons. School</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7619877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Seal Island Campground-TP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7719877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sheet Harbour – Fairwinds Motel</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5388565063477,44.9238166809082,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sheet Harbour – Hospital</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5332260131836,44.9204521179199,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sheet Harbour Elmhurst Senior Citizens</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7819877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sheet Harbour Motel</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5442390441895,44.9278526306152,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sheet Harbour-First Nation Reserve-wharf Peat Moss</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.7919877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sheet Hbr Duncan MacMillan school</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5184211730957,44.9191703796387,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Shelburne</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.3240203857422,43.7643585205078,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Shelburne – Sandy Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.3166656494141,43.7000007629395,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Shelburne Development Agency</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5723342895508,44.6466217041016,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sherbrooke</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.9838905334473,45.1405563354492,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sherose Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6034469604492,43.5385398864746,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Smiths Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7026672363281,44.6125755310059,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St Ann's – Gaelic College</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.6056747436523,46.2140235900879,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>St. Peters</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.8750686645508,45.6560325622559,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Stewiacke</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.3493499755859,45.1378326416016,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sydney-Battery Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.8019877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Tatamagouche</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.2941856384277,45.7092056274414,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Trenton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6376266479492,45.6168479919434,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Troy Cottages</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.3531341552734,45.6133346557617,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Truro - Colchester Regional</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.2866020202637,45.3657913208008,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Truro-Tidal Bore Subdivision</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.8119877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Tusket</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.9687576293945,43.8676452636719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Upper Clements Theme Park</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.5600967407227,44.705753326416,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Wagmatcook new lagoon TP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.8219877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Wagmatook old lagoon TP</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.8319877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Wallace</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.473461151123,45.8137474060059,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Wallace - Drysdale Abatoir</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.734312286377,44.8419877624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>West Pubnico</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7981262207031,43.6727828979492,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Western Shore</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3144989013672,44.5314025878906,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Weymouth</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.9986190795898,44.4048881530762,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Whycocomagh – Campground</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.1082191467285,46.050952911377,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Whycocomagh Village</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.12158203125,45.9751014709473,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Windsor Textile Mill</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-69.3234558105469,44.9200592041016,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Windsor town</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1310348510742,44.9902877807617,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Woods Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7332611083984,43.5305023193359,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Yarmouth</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1173782348633,43.8374557495117,0</coordinates>
+</Point>
+</Placemark>
+</Folder>
+</Document>
+</kml>

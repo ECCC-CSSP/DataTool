@@ -1,0 +1,2836 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Document>
+<name>CentroidSubsector.kml</name>
+<Style id="s_ylw-pushpin_hl">
+<IconStyle>
+<scale>1.3</scale>
+<Icon>
+<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+</Icon>
+<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+</IconStyle>
+<LineStyle>
+<color>ff000000</color>
+<width>2</width>
+</LineStyle>
+<PolyStyle>
+<color>00ffffff</color>
+</PolyStyle>
+</Style>
+<StyleMap id="m_ylw-pushpin">
+<Pair>
+<key>normal</key>
+<styleUrl>#s_ylw-pushpin</styleUrl>
+</Pair>
+<Pair>
+<key>highlight</key>
+<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+</Pair>
+</StyleMap>
+<Style id="s_ylw-pushpin">
+<IconStyle>
+<scale>1.1</scale>
+<Icon>
+<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+</Icon>
+<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+</IconStyle>
+<LineStyle>
+<color>ff000000</color>
+<width>2</width>
+</LineStyle>
+<PolyStyle>
+<color>00ffffff</color>
+</PolyStyle>
+</Style>
+<Folder>
+<Placemark>
+<name>001 Restigouche River (Upper)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.77490234375,47.9973335266113,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Restigouche River Estuary</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.5771484375,48.0300445556641,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Eel Bay AND River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3956832885742,48.0071182250977,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Charlo</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3263092041016,47.9829063415527,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 New Mills</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.2043762207031,47.953556060791,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Heron Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1530075073242,47.9904823303223,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Nash Creek</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.105110168457,47.8826065063477,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Armstrong Brook - Jacquet r</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.9425659179688,47.920238494873,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Belledune</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8864822387695,47.8688354492188,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Pointe-Verte</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7842102050781,47.8427886962891,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Petit Rocher</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8110580444336,47.7828025817871,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Beresford Beach</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7621688842773,47.7063789367676,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Bathurst Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7232360839844,47.6304054260254,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Salmon Beach</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.4355773925781,47.6729278564453,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Stonehaven</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.3589859008789,47.7226257324219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Pokeshaw</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.2776947021484,47.7740592956543,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Grande Anse</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1717758178711,47.818302154541,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Anse Bleue</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0421295166016,47.8375129699707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Baie de Caraquet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1142883300781,47.7609786987305,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Bas-Caraquet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8365631103516,47.8118171691895,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Pokesudie Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7830123901367,47.8010063171387,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Baie St-Simon (North)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8335876464844,47.7554664611816,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Baie St-Simon (South)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7693939208984,47.7428512573242,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Havre de Shippagan</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6953582763672,47.741886138916,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Baie de Lamèque</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6596221923828,47.7982749938965,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Baie de Petite-Lamèque</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6830444335938,47.817024230957,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Grande Batture</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.673225402832,47.8482208251953,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Miscou Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.544677734375,47.8881378173828,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Miscou Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5405654907227,47.9195899963379,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Lamèque Island (East)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5470352172852,47.8355827331543,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Shippagan Beach</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7175674438477,47.6900520324707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Baie de Pokemouche</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9441070556641,47.6327667236328,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Baie de Tracadie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9310836791992,47.5359268188477,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Grande Rivière Tracadie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0870056152344,47.4726257324219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Tabusintac Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1318359375,47.3338165283203,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Neguac Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0487060546875,47.2513542175293,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Burnt Church</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1481399536133,47.2186470031738,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Portage Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0378799438477,47.1824722290039,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Miramichi River Estuary</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.3187789916992,47.1131706237793,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Bay du Vin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1826782226563,47.0044937133789,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Bay du Vin, Egg AND Fox Islands</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0503921508789,47.1018333435059,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Baie Ste-Anne</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0014877319336,47.0298194885254,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Escuminac</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8667449951172,47.0750732421875,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Mocauque d'Escuminac</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8477249145508,47.0114479064941,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 North Kouchibouguac Beach</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9065399169922,46.9243316650391,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Kouchibouguac Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9962310791016,46.8496246337891,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Baie de St-Louis</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9275512695313,46.7414741516113,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Richibucto River AND Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8565216064453,46.6515464782715,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Aldouane</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9064636230469,46.7009506225586,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Baie du Village</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7749938964844,46.6830101013184,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 South Richibucto Beach</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7482681274414,46.6967391967773,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Dune de Chockpish</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7334899902344,46.5798187255859,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Dune de Bouctouche</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6560440063477,46.511474609375,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Baie de Bouctouche</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6540298461914,46.4938011169434,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Bouctouche River AND Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8108139038086,46.4438705444336,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 St-Thomas-de-Kent</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6256866455078,46.4350929260254,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Cocagne Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6310348510742,46.3828964233398,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Cocagne River AND Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6664428710938,46.3410301208496,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Cap-des-Caissie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.536506652832,46.3472328186035,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Shediac River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5880508422852,46.2698707580566,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Shediac Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5449676513672,46.2238159179688,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Shediac Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5383682250977,46.2635116577148,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Shediac Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.466796875,46.2225303649902,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Dupuis Corner AND Bas Cap-Pelé</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2754364013672,46.2158737182617,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Petit-Cap</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1969528198242,46.207202911377,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Shemogue Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.148307800293,46.1720962524414,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Little Shemogue Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0568923950195,46.1683807373047,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Spence Cove AND Peacock Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9064331054688,46.1614074707031,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Cape Tormentine</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7966842651367,46.1350173950195,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Baie Verte (North)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9023971557617,46.0748138427734,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Baie Verte</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0729675292969,46.0510215759277,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Tidnish River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0623779296875,45.9952163696289,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Cumberland Basin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4087524414063,45.8140258789063,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Shepody Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7048416137695,45.8186569213867,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Fundy Park -Lockhart Lake</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8921356201172,45.6280097961426,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 St Martins</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.3187713623047,45.459659576416,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Gardner Creek-Black River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7218399047852,45.3011703491211,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Saint John Harbour AND River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0792922973633,45.3729553222656,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Musquash Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3119354248047,45.1804542541504,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Chance AND Dipper Harbours</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.3857269287109,45.1074180603027,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Little Lepreau Basin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.4540023803711,45.1359748840332,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Lepreau Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.5000610351563,45.1619338989258,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 New River Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.5523529052734,45.1597328186035,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Pocologan Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.592170715332,45.1346588134766,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Red hd to Seeleys hd</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.6274108886719,45.1087684631348,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Seeleys hd to East hd</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.6833877563477,45.0669364929199,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Beaver Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.7145919799805,45.0850982666016,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Moose Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.7621307373047,45.0477256774902,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Deadmans Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.7810821533203,45.0484924316406,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Blacks Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.8011627197266,45.0495910644531,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Letang Harbour AND River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.790283203125,45.085807800293,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Back Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.8564529418945,45.053897857666,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Bliss Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.8439712524414,45.0334091186523,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Letete Pass. to Midjic Bluff</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.9004211425781,45.0763282775879,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Magaguadavic River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.8618621826172,45.1525459289551,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Digdeguash Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.9583511352539,45.176929473877,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Bocabec River AND Mill Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.0136795043945,45.1706504821777,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Bocabec AND Birch Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.0393295288086,45.157341003418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Chamcook Hbr - McCann Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.0658874511719,45.1315269470215,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 St. Andrews</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.0553283691406,45.0763092041016,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 St Croix River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.2082901000977,45.1623115539551,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Oak Bay and Waweig River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-67.1536026000977,45.2060775756836,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Deer Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.96728515625,44.9724006652832,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Campobello Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.9490280151367,44.8829154968262,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Grand Manan Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.8127288818359,44.6864051818848,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Baie Verte</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9903259277344,45.9773330688477,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Shiminicas River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8659362792969,45.9250984191895,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Linden - Goose River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7983360290527,45.8962554931641,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 River Philip</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7559394836426,45.8397521972656,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Pugwash Harbour AND Basin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6874465942383,45.845573425293,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Upper and Lower Gulf Shore</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5415115356445,45.8696365356445,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Fox Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4270210266113,45.8472900390625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Wallace Bay - Wallace Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4734916687012,45.8147239685059,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 North Shore</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.3466262817383,45.8097915649414,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Tatamagouche Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.3098030090332,45.7365608215332,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Barrachois Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.2269859313965,45.7518539428711,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Brule Harbour - John Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1448440551758,45.7692375183105,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Seafoam - Toney River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.9989356994629,45.7802467346191,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Caribou Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7581214904785,45.7709197998047,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Caribou Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7355346679688,45.750919342041,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Pictou Harbour - Pictou Road</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6847724914551,45.6296653747559,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Chance Harbour-Little Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.566047668457,45.6698799133301,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Merigomish Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.4241104125977,45.6595497131348,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Big Merigomish Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.3631706237793,45.6775817871094,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Pictou Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5497512817383,45.8182678222656,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Arisaig</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.2346534729004,45.7278823852539,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Malignant Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.002628326416,45.8336448669434,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Ballantynes-North AND South Lake</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.9134101867676,45.8114547729492,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Antigonish Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8908500671387,45.6796798706055,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Pomquet Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8094139099121,45.6509208679199,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Bayfield</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.733226776123,45.642162322998,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Tracadie Harbour AND West arm</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.6598815917969,45.6407470703125,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Little Tracadie Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.587287902832,45.6646881103516,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Havre Boucher</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5331001281738,45.6879730224609,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Aulds Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.4604644775391,45.6658172607422,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Long Pond - Creignish</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.4611053466797,45.729663848877,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Judique - Port Hood</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5281944274902,45.965087890625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Mabou Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.4711761474609,46.0446166992188,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Inverness</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.4048309326172,46.1696166992188,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Dunvegan</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.2096405029297,46.3442840576172,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Margaree Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.1040306091309,46.4250030517578,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Cheticamp</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0321426391602,46.585075378418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Cap Rouge</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.8975524902344,46.7393684387207,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Pleasant Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.8078346252441,46.8386878967285,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Bay St Lawrence</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.6227531433105,46.9559020996094,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 North Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.4404792785645,46.9588012695313,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 South Harbour - White Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.4118385314941,46.8881034851074,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 New Haven - Neils Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.3451995849609,46.7616729736328,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 North and South Bay Ingonish</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.3583068847656,46.6650314331055,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Wreck Cove - Skir dhu</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.3947257995605,46.553897857666,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 St Anns Bay - St Anns Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.5178108215332,46.3327941894531,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Cape Dauphin - Black Rock</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.3695220947266,46.3323936462402,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Great Bras d'Or (West)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.4657974243164,46.2574157714844,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Great Bras d'Or (Centre)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.5547103881836,46.1839179992676,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Great Bras d'Or (East)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.6497001647949,46.1130294799805,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Baddeck Bay - St Patrick's ch.</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7769546508789,46.0793647766113,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Nyanza Bay - St Patrick's ch.</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.8733520507813,46.0678749084473,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>007 Little Narrows</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.9547958374023,46.0006828308105,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>008 Whycocomagh Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0878677368164,45.9622573852539,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Little Bras d'Or - St Andrews</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.3128967285156,46.2680282592773,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 St Andrews Channel (East)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.384521484375,46.2211036682129,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 St Andrews Channel (Centre)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.5173301696777,46.1495628356934,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 St Andrews Channel (West)</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.5731582641602,46.1154365539551,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Great Bras d'Or-Grand Narrows</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7776908874512,46.0103073120117,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Great Bras d'Or-Christmas isl</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7390441894531,45.9819984436035,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>007 Great Bras d'Or - Shunacadie</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.5907592773438,46.0525703430176,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>008 St Andrews Channel - Boisdale</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.4980430603027,46.1062431335449,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>009 St Andrews Channel-Long Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.4031791687012,46.1811485290527,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>010 Bras d'or Lake  North</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.8745269775391,45.9415817260742,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>011 North Basin - The Boom</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.9897155761719,45.9094657897949,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>012 Denys Basin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0328330993652,45.8861503601074,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>013 Malagawatch Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.960132598877,45.8806495666504,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>014 Mackinnons Cove - Marble mtn</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.9920387268066,45.831111907959,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>015 Head of West Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.1318283081055,45.7583618164063,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 West Bay - Dundee</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0652618408203,45.7064323425293,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 West Bay - Pringle Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.9815368652344,45.7490043640137,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Southwest Bras d'Or Lake</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.860050201416,45.7508392333984,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 St Peters Inlet-Chapel Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7818832397461,45.7241592407227,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 St Peters Inlet - St Peters</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.8258323669434,45.6868019104004,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Hay Cove - Red Islands</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7411003112793,45.7787017822266,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Irish Cove - MacPhersons Pond</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.6168441772461,45.828727722168,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 East Bay - Big Pond</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.5364151000977,45.9059104919434,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 East Bay - Ben Eoin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.4692344665527,45.9758377075195,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Head of East Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.4213790893555,46.0205268859863,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Eskasoni</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.5798034667969,45.9577941894531,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Castle Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.6858978271484,45.9209022521973,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>007 Pipers Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7729911804199,45.9209747314453,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Sydney Harbour - Spanish Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.258228302002,46.2242240905762,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 New Waterford - Indian Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.0733604431152,46.2305374145508,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Glace Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-59.9331550598145,46.1973419189453,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Morien Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-59.8511505126953,46.1406211853027,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Mira Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-59.8816871643066,46.0592155456543,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Mira River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.115104675293,45.9674072265625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Main a Dieu Passage</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-59.7891578674316,45.9923553466797,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Louisbourg Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-59.8739547729492,45.9264717102051,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Gabarus Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.041259765625,45.8608551025391,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Fourchu Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.1437911987305,45.7705764770508,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Framboise Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.2554626464844,45.7101821899414,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Grand River - St Esprit Beach</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.5508995056152,45.701416015625,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Little Harbour - L'Ardoise</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.7331161499023,45.5944976806641,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 St Peters Bay - Grand Goulet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.8869667053223,45.6395072937012,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Lennox Passage - Louisdale</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.037166595459,45.5980949401855,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Bay of Rocks</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.9365043640137,45.531078338623,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Petit-de-Grat Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.9134292602539,45.495719909668,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Petit-de-Grat Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.9667205810547,45.4935646057129,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>007 Arichat Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.047607421875,45.4938888549805,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>008 West Arichat - Leblanc Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.1155471801758,45.5301895141602,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>009 Janvrin Island-Haddock Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.1422157287598,45.5388031005859,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>010 Lennox Passage</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.1515197753906,45.5689086914063,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Inhabitants Bay AND River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.2136917114258,45.5760498046875,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Strait of Canso</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.3537635803223,45.5921669006348,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Middle Melford - Sand Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.2813110351563,45.5220527648926,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Chedabucto Bay-Guysborough Hbr</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.3465385437012,45.4455184936523,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Guysborough Hbr-Milford Haven</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5751724243164,45.4558792114258,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Half Island Cove - Fox Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.1343841552734,45.3637428283691,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Canso Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.9862480163574,45.356575012207,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Glasgow Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-60.970043182373,45.2999801635742,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Andrew Passage</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0133972167969,45.2676391601563,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Dover Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.0807075500488,45.2223052978516,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Whitehead Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.1685829162598,45.2360458374023,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Tor Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.2801284790039,45.2146224975586,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Bones Ledge - Little Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.3482551574707,45.1731452941895,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 New Harbour River AND Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.4590034484863,45.1907348632813,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Coddles Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5125579833984,45.1484718322754,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Seal Harbour - The Sound</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.5890693664551,45.14404296875,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Isaac's Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.6411285400391,45.1751976013184,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Country Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.7180442810059,45.1823577880859,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Fisherman's Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.6784019470215,45.1133499145508,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Barachois Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.6676445007324,45.0830078125,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Port Bickerton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.7083892822266,45.0860748291016,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Holland Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.7497825622559,45.0834655761719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Indian Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.7841758728027,45.0862197875977,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Wine Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.8335647583008,45.0544319152832,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 St Marys River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.9051513671875,45.0813293457031,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Gegogan Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-61.9348220825195,45.0383453369141,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Liscomb Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.0152397155762,45.0070457458496,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Marie Joseph Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.0687370300293,44.9632301330566,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Ecum Secum Harbour - Back Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.1423568725586,44.9512519836426,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Necum Teuch Bay - Mitchell Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.2211303710938,44.9343109130859,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Bay of Islands-Quoddy Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.2904815673828,44.9156913757324,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>007 Beaver Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.3829879760742,44.8954467773438,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Sheet Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5012969970703,44.8615493774414,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Mushaboom Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5613746643066,44.8420829772949,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Spry Bay - Spry Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5972442626953,44.8122138977051,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Popes Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6373291015625,44.7935371398926,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Tangier Harbour - Shoal Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7064208984375,44.7844047546387,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Ship Harbour - Owls Head Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.8262481689453,44.7761306762695,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Clam Harbour - Clam Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.861701965332,44.7129745483398,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Jeddore Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.0268859863281,44.7143173217773,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Musquodoboit Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1004180908203,44.7041282653809,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Petpeswick Inlet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1761093139648,44.7156295776367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Chezzetcook Inlet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.2319564819336,44.6834564208984,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Three Fathom Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.2867431640625,44.660327911377,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Lawrencetown Lake - West Marsh</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.3426742553711,44.6476974487305,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Cole Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4019622802734,44.6518058776855,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Cow Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4392280578613,44.6134757995605,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Halifax Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5067405700684,44.6084785461426,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Duncans Cove - Ketch Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5116500854492,44.4851913452148,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Sambro Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5748596191406,44.4578285217285,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Pennant Harbour - Terence Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6946716308594,44.4533309936523,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Back Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7362213134766,44.4610481262207,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Prospect Bay - Prospect</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7655487060547,44.4675064086914,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Shad Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.809196472168,44.4892082214355,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>007 Blind Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8272285461426,44.4929885864258,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>008 Dover Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8845596313477,44.4900283813477,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 East St Margarets Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9259300231934,44.5504493713379,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Head of St Margarets Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9627494812012,44.6424026489258,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Mill Cove - West St Margarets</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0591812133789,44.5294418334961,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Blandford - East River Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1346130371094,44.5145530700684,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Chester - Western Shore</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2530899047852,44.5253982543945,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Mahone Hbr - Second Peninsula</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2795867919922,44.4198417663574,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Lunenburg Bay - South Coves</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2548904418945,44.3574829101563,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Rose Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2142105102539,44.3046951293945,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Deep Hole - Kings Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1970520019531,44.2761306762695,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Hartling Bay -  Hirtles Beach</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2486572265625,44.2523307800293,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Lahave River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3638763427734,44.2837409973145,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Lahave Islands</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3717346191406,44.2271575927734,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Green Bay - Petite Rivière</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3959884643555,44.217227935791,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Broad Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4323196411133,44.1684646606445,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Medway Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5858535766602,44.1506652832031,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Ragged Harbour-Eagle Head Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.559211730957,44.0788040161133,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Liverpool Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6789398193359,44.0385856628418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Gull Bay - White Point</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7226333618164,43.988468170166,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Summerville - Port Mouton</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7925567626953,43.9266242980957,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Western Channel</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.7597274780273,43.8707160949707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 St Catherines River Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.793815612793,43.8463821411133,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Port Joli</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.8642120361328,43.8529777526855,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Port l'Hebert</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9188537597656,43.8184776306152,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>007 Little Port l'Hebert</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.9443969726563,43.7602233886719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>008 Sable River - Little Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0006332397461,43.7604942321777,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>009 Lockeport Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.076286315918,43.7050666809082,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Green Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.1351623535156,43.7136383056641,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Jordan Bay - Berrys Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.2001953125,43.7139282226563,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Shelburne Hbr - Roseway Hbr</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.3238372802734,43.6502532958984,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Negro Hbr - NorthEast Hbr</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.4114379882813,43.541431427002,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Port Latour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.4437103271484,43.504940032959,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Barrington Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.5668411254883,43.5106658935547,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Clarks Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6137466430664,43.4462585449219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Barrington Passage</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.6298522949219,43.499439239502,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Shag Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7089538574219,43.4686660766602,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Woods Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7475891113281,43.5476379394531,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Pubnico Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.7836380004883,43.6145439147949,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Grand Etang - Argyle Sound</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8286819458008,43.6737937927246,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Argyle River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8526611328125,43.7574424743652,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Morris Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.9012680053711,43.7497215270996,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Eel Lake - Big Sluice Salt Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.9169464111328,43.809684753418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Tusket River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.9420547485352,43.7828483581543,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Goose Bay - Tusket Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0159149169922,43.6917610168457,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Little River Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0677795410156,43.7158851623535,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>007 Chebogue Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0830688476563,43.7542915344238,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Yarmouth Sound AND Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1418304443359,43.8040237426758,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Yarmouth Bar - Chegoggin River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1545028686523,43.8400459289551,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Pembroke Cove - Port Maitland</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1597061157227,43.909366607666,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Salmon River - Cape Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1597442626953,44.0531044006348,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Meteghan - Saulnierville</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.1413497924805,44.1889343261719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Grosses Coques-Belliveau Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0646514892578,44.3676376342773,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Weymouth Hbr - Sissiboo River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0073471069336,44.4297676086426,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 St Marys Bay - Gilbert Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.938606262207,44.475284576416,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Head of St Marys Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.8684158325195,44.5578956604004,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Northwest Shore St Marys Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.9813385009766,44.5573997497559,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Sandy Cove - Mink Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0805130004883,44.4665641784668,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Long Island - Brier Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.2251205444336,44.3580703735352,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Digby Neck Fundy Shore</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-66.0129623413086,44.5501861572266,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Annapolis Basin</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.5798034667969,44.7293510437012,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 North Mountain - Parkers Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.5626754760742,44.8065872192383,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 North Mountain-Margaretsville</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-65.0762023925781,45.0368118286133,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Halls Harbour - Scots Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.5839920043945,45.2374153137207,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Minas Basin - Cornwallis River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4353408813477,45.2173309326172,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Avon River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1873321533203,45.0586051940918,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Walton - Noel Shore</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8913040161133,45.2524795532227,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Shubenacadie River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4381904602051,45.2197914123535,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Salmon River - Debert River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.365966796875,45.3697814941406,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Portapique River - Bass River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6936225891113,45.3958396911621,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Upper AND Lower Economy</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9094848632813,45.4028854370117,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Five Islands</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1023712158203,45.3901863098145,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Clarke Head - Parrsboro</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3236999511719,45.3971176147461,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Diligent River - Fox River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.4621963500977,45.3957481384277,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Greville Bay - Advocate Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.6802749633789,45.4286766052246,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Cumberland Basin-Maccan River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.308349609375,45.7890319824219,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Tignish River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9993362426758,46.9457359313965,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Kildare River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0489196777344,46.8393402099609,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Dock River - Alberton Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0497665405273,46.8011322021484,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Mill River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1679382324219,46.766487121582,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Cascumpec Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0368804931641,46.7537612915039,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 Trout River - Foxley River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1007690429688,46.7062339782715,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Conway Narrows - Freeland crk</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9794120788574,46.7093467712402,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Lennox Channel</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8269691467285,46.6201553344727,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Bideford River - NW Malpeque</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8557014465332,46.5932312011719,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Grand River - West Malpeque</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.896915435791,46.520923614502,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Bentick Cove - SW Malpeque Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.8286094665527,46.4744453430176,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Platte River - SE Malpeque Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7873916625977,46.4350242614746,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Webber Cove - SW Malpeque Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6864471435547,46.4285659790039,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>004 Chichester Cove - se Malpeque</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6728668212891,46.4731674194336,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>005 March Water - NE Malpeque Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7121315002441,46.5198364257813,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>006 Darnley Basin - Malpeque Hbr</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.664665222168,46.5434875488281,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 French River - East New London</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5513610839844,46.5100250244141,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 SouthWest River - New London</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5757942199707,46.4528121948242,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Stanley River - New London Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4183921813965,46.4256591796875,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Rustico Harbour - Rustico Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.3204956054688,46.3874664306641,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Brackley Bay - Covehead Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1529197692871,46.3731575012207,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Tracadie Bay - Winter Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.0544509887695,46.3537101745605,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Savage Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.7900047302246,46.3859596252441,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 St Peters Bay - Morell River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6415557861328,46.3399848937988,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 North Kings Shore - North Lake Hbr</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.1770553588867,46.4274101257324,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 South Lake</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.0373725891113,46.4185600280762,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Little Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.1728477478027,46.3775520324707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Souris River - Colville Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.2869262695313,46.378532409668,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Rollo Bay - Fortune River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.4174118041992,46.3600425720215,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Howe Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.375617980957,46.293815612793,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Little Pond - Spry Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.3814315795898,46.2695808410645,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Boughton River - Boughton Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5071144104004,46.2986831665039,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Cardigan River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.5615005493164,46.2329025268555,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Brudenell r - Montague r</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6859283447266,46.1419868469238,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 St.Marys Bay - panmure Island</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.592227935791,46.1037864685059,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Murray River - Murray Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6320648193359,46.0256004333496,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Northumberland - Wood isl Hbr</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.6092071533203,45.979606628418,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Gascoigne Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.8049087524414,46.017707824707,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Pinette Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.911018371582,46.0612297058105,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Orwell Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.8636283874512,46.1623306274414,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Pownal Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.9728088378906,46.1827545166016,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Hillsborough Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.1372413635254,46.1721000671387,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 WeSt - Clyde - North Rivers</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.2777900695801,46.2523002624512,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Hillsborough River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.9524765014648,46.2827568054199,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Desable River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4061393737793,46.2158355712891,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Victoria Harbour</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.4755630493164,46.269157409668,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>003 Tyron River - Cumberland Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5800971984863,46.2718620300293,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Port borden - Seven Mile Bay</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.7090072631836,46.282958984375,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Dunk River - Summerside Hbr</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.6150779724121,46.3503952026367,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>002 Sunbury Cove</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.9399032592773,46.4005889892578,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Cap Egmont - Haldimand River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0716400146484,46.4285736083984,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Percival Bay - Enmore River</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.0514450073242,46.5558547973633,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Brae Harbour - Wolfe Inlet</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2560958862305,46.6464691162109,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001 Miminegash Pond</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.2455825805664,46.8314743041992,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.5755386352539,46.5341339111328,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-62.4574584960938,46.4178924560547,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-63.3167037963867,46.1601753234863,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.3607559204102,46.7116279602051,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>001</name>
+<styleUrl>#m_ylw-pushpin</styleUrl>
+<Point>
+<coordinates>-64.1122207641602,46.9507369995117,0</coordinates>
+</Point>
+</Placemark>
+</Folder>
+</Document>
+</kml>

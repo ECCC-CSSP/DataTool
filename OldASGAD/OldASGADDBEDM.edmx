@@ -1,0 +1,890 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OldASGADModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="OldASGADModelStoreContainer">
+          <EntitySet Name="ASGADDefPrecipStations" EntityType="OldASGADModel.Store.ASGADDefPrecipStations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADMPNs" EntityType="OldASGADModel.Store.ASGADMPNs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADPrecipStations" EntityType="OldASGADModel.Store.ASGADPrecipStations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADPrecipValues" EntityType="OldASGADModel.Store.ASGADPrecipValues" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADRuns" EntityType="OldASGADModel.Store.ASGADRuns" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADSampleCodes" EntityType="OldASGADModel.Store.ASGADSampleCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADSamples" EntityType="OldASGADModel.Store.ASGADSamples" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADStations" EntityType="OldASGADModel.Store.ASGADStations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADSubsecDefPrecipStations" EntityType="OldASGADModel.Store.ASGADSubsecDefPrecipStations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADSubsectors" EntityType="OldASGADModel.Store.ASGADSubsectors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ASGADTides" EntityType="OldASGADModel.Store.ASGADTides" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="OldASGADModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ASGADRuns_ASGADSubsectors" Association="OldASGADModel.Store.FK_ASGADRuns_ASGADSubsectors">
+            <End Role="ASGADSubsectors" EntitySet="ASGADSubsectors" />
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASGADStations_ASGADSubsectors" Association="OldASGADModel.Store.FK_ASGADStations_ASGADSubsectors">
+            <End Role="ASGADSubsectors" EntitySet="ASGADSubsectors" />
+            <End Role="ASGADStations" EntitySet="ASGADStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASGADSubsecDefPrecipStations_ASGADSubsectors" Association="OldASGADModel.Store.FK_ASGADSubsecDefPrecipStations_ASGADSubsectors">
+            <End Role="ASGADSubsectors" EntitySet="ASGADSubsectors" />
+            <End Role="ASGADSubsecDefPrecipStations" EntitySet="ASGADSubsecDefPrecipStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRECDATA_PRECSTN" Association="OldASGADModel.Store.FK_PRECDATA_PRECSTN">
+            <End Role="ASGADPrecipStations" EntitySet="ASGADPrecipStations" />
+            <End Role="ASGADPrecipValues" EntitySet="ASGADPrecipValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RUN_TIDE_END" Association="OldASGADModel.Store.FK_RUN_TIDE_END">
+            <End Role="ASGADTides" EntitySet="ASGADTides" />
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RUN_TIDE_START" Association="OldASGADModel.Store.FK_RUN_TIDE_START">
+            <End Role="ASGADTides" EntitySet="ASGADTides" />
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SAMPLE_RUN" Association="OldASGADModel.Store.FK_SAMPLE_RUN">
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+            <End Role="ASGADSamples" EntitySet="ASGADSamples" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SAMPLE_STATION" Association="OldASGADModel.Store.FK_SAMPLE_STATION">
+            <End Role="ASGADStations" EntitySet="ASGADStations" />
+            <End Role="ASGADSamples" EntitySet="ASGADSamples" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDefPrecSta_tblPrecipStn" Association="OldASGADModel.Store.FK_tblDefPrecSta_tblPrecipStn">
+            <End Role="ASGADPrecipStations" EntitySet="ASGADPrecipStations" />
+            <End Role="ASGADDefPrecipStations" EntitySet="ASGADDefPrecipStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDefPrecSta_tblSubsecDefPrecSta" Association="OldASGADModel.Store.FK_tblDefPrecSta_tblSubsecDefPrecSta">
+            <End Role="ASGADSubsecDefPrecipStations" EntitySet="ASGADSubsecDefPrecipStations" />
+            <End Role="ASGADDefPrecipStations" EntitySet="ASGADDefPrecipStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRun_tblPrecipStn" Association="OldASGADModel.Store.FK_tblRun_tblPrecipStn">
+            <End Role="ASGADPrecipStations" EntitySet="ASGADPrecipStations" />
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ASGADDefPrecipStations">
+          <Key>
+            <PropertyRef Name="DefPreStaId" />
+          </Key>
+          <Property Name="DefPreStaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubsecDefPrecStaId" Type="int" Nullable="false" />
+          <Property Name="PrecipStnCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="SelectionOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ASGADMPNs">
+          <Key>
+            <PropertyRef Name="Tubes10" />
+            <PropertyRef Name="Tubes1" />
+            <PropertyRef Name="Tubes01" />
+          </Key>
+          <Property Name="Tubes10" Type="int" Nullable="false" />
+          <Property Name="Tubes1" Type="int" Nullable="false" />
+          <Property Name="Tubes01" Type="int" Nullable="false" />
+          <Property Name="MPN" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ASGADPrecipStations">
+          <Key>
+            <PropertyRef Name="PrecipStnCode" />
+          </Key>
+          <Property Name="PrecipStnCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="PrecipStnName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Lat" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Long" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="LatDeg" Type="decimal" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="LongDeg" Type="decimal" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Elevation" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ASGADPrecipValues">
+          <Key>
+            <PropertyRef Name="PrecipStnCode" />
+            <PropertyRef Name="PrecipDate" />
+          </Key>
+          <Property Name="PrecipStnCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="PrecipDate" Type="date" Nullable="false" />
+          <Property Name="Precipitation" Type="decimal" Nullable="false" Precision="9" Scale="1" />
+        </EntityType>
+        <EntityType Name="ASGADRuns">
+          <Key>
+            <PropertyRef Name="RunId" />
+          </Key>
+          <Property Name="RunId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubsectorId" Type="int" Nullable="false" />
+          <Property Name="RunNumber" Type="int" Nullable="false" />
+          <Property Name="RunStartDateTime" Type="datetime" />
+          <Property Name="RunEndDateTime" Type="datetime" />
+          <Property Name="TideStartCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="TideEndCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="Autocalc" Type="bit" />
+          <Property Name="SelectedPrecipStnCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="PPT24" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="PPT48" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="PPT72" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="Updated" Type="date" Nullable="false" />
+          <Property Name="OldRunDate" Type="date" Nullable="false" />
+          <Property Name="OldStartTime" Type="nvarchar" MaxLength="4" />
+          <Property Name="OldEndTime" Type="nvarchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="ASGADSampleCodes">
+          <Key>
+            <PropertyRef Name="SampCode" />
+          </Key>
+          <Property Name="SampCode" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="OthCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="SampName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Units" Type="nvarchar" MaxLength="20" />
+          <Property Name="LowLimit" Type="float" />
+          <Property Name="HighLimit" Type="float" />
+        </EntityType>
+        <EntityType Name="ASGADSamples">
+          <Key>
+            <PropertyRef Name="SampleId" />
+          </Key>
+          <Property Name="SampleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RunId" Type="int" Nullable="false" />
+          <Property Name="StationId" Type="int" Nullable="false" />
+          <Property Name="FecCol" Type="decimal" Nullable="false" Precision="9" Scale="1" />
+          <Property Name="Salinity" Type="decimal" Precision="9" />
+          <Property Name="WaterTemp" Type="decimal" Precision="9" Scale="1" />
+          <Property Name="Updated" Type="date" Nullable="false" />
+          <Property Name="SampleTimeOld" Type="nvarchar" MaxLength="5" />
+          <Property Name="SampleDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ASGADStations">
+          <Key>
+            <PropertyRef Name="StationID" />
+          </Key>
+          <Property Name="StationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubsectorId" Type="int" Nullable="false" />
+          <Property Name="StationNumber" Type="nvarchar" Nullable="false" MaxLength="8" />
+          <Property Name="StationName" Type="nvarchar" MaxLength="255" />
+          <Property Name="StationType" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="SortOrder" Type="nvarchar" MaxLength="5" />
+          <Property Name="Zone" Type="int" Nullable="false" />
+          <Property Name="Easting" Type="float" Nullable="false" />
+          <Property Name="Northing" Type="float" Nullable="false" />
+          <Property Name="Lat" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Long" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Updated" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ASGADSubsecDefPrecipStations">
+          <Key>
+            <PropertyRef Name="SubsecDefPrecStaId" />
+          </Key>
+          <Property Name="SubsecDefPrecStaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubsectorId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ASGADSubsectors">
+          <Key>
+            <PropertyRef Name="SubsectorId" />
+          </Key>
+          <Property Name="CSSPItemId" Type="int" />
+          <Property Name="SubsectorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubsectorHistoricKey" Type="nvarchar" Nullable="false" MaxLength="17" />
+          <Property Name="SubsectorCode" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="DfoCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="SubsectorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubsectorDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="Map" Type="nvarchar" MaxLength="10" />
+          <Property Name="Updated" Type="date" />
+        </EntityType>
+        <EntityType Name="ASGADTides">
+          <Key>
+            <PropertyRef Name="TideCode" />
+          </Key>
+          <Property Name="TideCode" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="TideName" Type="nvarchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_ASGADRuns_ASGADSubsectors">
+          <End Role="ASGADSubsectors" Type="OldASGADModel.Store.ASGADSubsectors" Multiplicity="1" />
+          <End Role="ASGADRuns" Type="OldASGADModel.Store.ASGADRuns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADSubsectors">
+              <PropertyRef Name="SubsectorId" />
+            </Principal>
+            <Dependent Role="ASGADRuns">
+              <PropertyRef Name="SubsectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASGADStations_ASGADSubsectors">
+          <End Role="ASGADSubsectors" Type="OldASGADModel.Store.ASGADSubsectors" Multiplicity="1" />
+          <End Role="ASGADStations" Type="OldASGADModel.Store.ASGADStations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADSubsectors">
+              <PropertyRef Name="SubsectorId" />
+            </Principal>
+            <Dependent Role="ASGADStations">
+              <PropertyRef Name="SubsectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASGADSubsecDefPrecipStations_ASGADSubsectors">
+          <End Role="ASGADSubsectors" Type="OldASGADModel.Store.ASGADSubsectors" Multiplicity="1" />
+          <End Role="ASGADSubsecDefPrecipStations" Type="OldASGADModel.Store.ASGADSubsecDefPrecipStations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADSubsectors">
+              <PropertyRef Name="SubsectorId" />
+            </Principal>
+            <Dependent Role="ASGADSubsecDefPrecipStations">
+              <PropertyRef Name="SubsectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRECDATA_PRECSTN">
+          <End Role="ASGADPrecipStations" Type="OldASGADModel.Store.ASGADPrecipStations" Multiplicity="1" />
+          <End Role="ASGADPrecipValues" Type="OldASGADModel.Store.ASGADPrecipValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADPrecipStations">
+              <PropertyRef Name="PrecipStnCode" />
+            </Principal>
+            <Dependent Role="ASGADPrecipValues">
+              <PropertyRef Name="PrecipStnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RUN_TIDE_END">
+          <End Role="ASGADTides" Type="OldASGADModel.Store.ASGADTides" Multiplicity="0..1" />
+          <End Role="ASGADRuns" Type="OldASGADModel.Store.ASGADRuns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADTides">
+              <PropertyRef Name="TideCode" />
+            </Principal>
+            <Dependent Role="ASGADRuns">
+              <PropertyRef Name="TideEndCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RUN_TIDE_START">
+          <End Role="ASGADTides" Type="OldASGADModel.Store.ASGADTides" Multiplicity="0..1" />
+          <End Role="ASGADRuns" Type="OldASGADModel.Store.ASGADRuns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADTides">
+              <PropertyRef Name="TideCode" />
+            </Principal>
+            <Dependent Role="ASGADRuns">
+              <PropertyRef Name="TideStartCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SAMPLE_RUN">
+          <End Role="ASGADRuns" Type="OldASGADModel.Store.ASGADRuns" Multiplicity="1" />
+          <End Role="ASGADSamples" Type="OldASGADModel.Store.ASGADSamples" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADRuns">
+              <PropertyRef Name="RunId" />
+            </Principal>
+            <Dependent Role="ASGADSamples">
+              <PropertyRef Name="RunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SAMPLE_STATION">
+          <End Role="ASGADStations" Type="OldASGADModel.Store.ASGADStations" Multiplicity="1" />
+          <End Role="ASGADSamples" Type="OldASGADModel.Store.ASGADSamples" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADStations">
+              <PropertyRef Name="StationID" />
+            </Principal>
+            <Dependent Role="ASGADSamples">
+              <PropertyRef Name="StationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDefPrecSta_tblPrecipStn">
+          <End Role="ASGADPrecipStations" Type="OldASGADModel.Store.ASGADPrecipStations" Multiplicity="1" />
+          <End Role="ASGADDefPrecipStations" Type="OldASGADModel.Store.ASGADDefPrecipStations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADPrecipStations">
+              <PropertyRef Name="PrecipStnCode" />
+            </Principal>
+            <Dependent Role="ASGADDefPrecipStations">
+              <PropertyRef Name="PrecipStnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDefPrecSta_tblSubsecDefPrecSta">
+          <End Role="ASGADSubsecDefPrecipStations" Type="OldASGADModel.Store.ASGADSubsecDefPrecipStations" Multiplicity="1" />
+          <End Role="ASGADDefPrecipStations" Type="OldASGADModel.Store.ASGADDefPrecipStations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADSubsecDefPrecipStations">
+              <PropertyRef Name="SubsecDefPrecStaId" />
+            </Principal>
+            <Dependent Role="ASGADDefPrecipStations">
+              <PropertyRef Name="SubsecDefPrecStaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRun_tblPrecipStn">
+          <End Role="ASGADPrecipStations" Type="OldASGADModel.Store.ASGADPrecipStations" Multiplicity="0..1" />
+          <End Role="ASGADRuns" Type="OldASGADModel.Store.ASGADRuns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADPrecipStations">
+              <PropertyRef Name="PrecipStnCode" />
+            </Principal>
+            <Dependent Role="ASGADRuns">
+              <PropertyRef Name="SelectedPrecipStnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OldASGADModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OldASGADEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ASGADDefPrecipStations" EntityType="OldASGADModel.ASGADDefPrecipStation" />
+          <EntitySet Name="ASGADMPNs" EntityType="OldASGADModel.ASGADMPN" />
+          <EntitySet Name="ASGADPrecipStations" EntityType="OldASGADModel.ASGADPrecipStation" />
+          <EntitySet Name="ASGADPrecipValues" EntityType="OldASGADModel.ASGADPrecipValue" />
+          <EntitySet Name="ASGADRuns" EntityType="OldASGADModel.ASGADRun" />
+          <EntitySet Name="ASGADSampleCodes" EntityType="OldASGADModel.ASGADSampleCode" />
+          <EntitySet Name="ASGADSamples" EntityType="OldASGADModel.ASGADSample" />
+          <EntitySet Name="ASGADStations" EntityType="OldASGADModel.ASGADStation" />
+          <EntitySet Name="ASGADSubsecDefPrecipStations" EntityType="OldASGADModel.ASGADSubsecDefPrecipStation" />
+          <EntitySet Name="ASGADSubsectors" EntityType="OldASGADModel.ASGADSubsector" />
+          <EntitySet Name="ASGADTides" EntityType="OldASGADModel.ASGADTide" />
+          <EntitySet Name="sysdiagrams" EntityType="OldASGADModel.sysdiagram" />
+          <AssociationSet Name="FK_tblDefPrecSta_tblPrecipStn" Association="OldASGADModel.FK_tblDefPrecSta_tblPrecipStn">
+            <End Role="ASGADPrecipStations" EntitySet="ASGADPrecipStations" />
+            <End Role="ASGADDefPrecipStations" EntitySet="ASGADDefPrecipStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDefPrecSta_tblSubsecDefPrecSta" Association="OldASGADModel.FK_tblDefPrecSta_tblSubsecDefPrecSta">
+            <End Role="ASGADSubsecDefPrecipStations" EntitySet="ASGADSubsecDefPrecipStations" />
+            <End Role="ASGADDefPrecipStations" EntitySet="ASGADDefPrecipStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRECDATA_PRECSTN" Association="OldASGADModel.FK_PRECDATA_PRECSTN">
+            <End Role="ASGADPrecipStations" EntitySet="ASGADPrecipStations" />
+            <End Role="ASGADPrecipValues" EntitySet="ASGADPrecipValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRun_tblPrecipStn" Association="OldASGADModel.FK_tblRun_tblPrecipStn">
+            <End Role="ASGADPrecipStations" EntitySet="ASGADPrecipStations" />
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASGADRuns_ASGADSubsectors" Association="OldASGADModel.FK_ASGADRuns_ASGADSubsectors">
+            <End Role="ASGADSubsectors" EntitySet="ASGADSubsectors" />
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RUN_TIDE_END" Association="OldASGADModel.FK_RUN_TIDE_END">
+            <End Role="ASGADTides" EntitySet="ASGADTides" />
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RUN_TIDE_START" Association="OldASGADModel.FK_RUN_TIDE_START">
+            <End Role="ASGADTides" EntitySet="ASGADTides" />
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SAMPLE_RUN" Association="OldASGADModel.FK_SAMPLE_RUN">
+            <End Role="ASGADRuns" EntitySet="ASGADRuns" />
+            <End Role="ASGADSamples" EntitySet="ASGADSamples" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SAMPLE_STATION" Association="OldASGADModel.FK_SAMPLE_STATION">
+            <End Role="ASGADStations" EntitySet="ASGADStations" />
+            <End Role="ASGADSamples" EntitySet="ASGADSamples" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASGADStations_ASGADSubsectors" Association="OldASGADModel.FK_ASGADStations_ASGADSubsectors">
+            <End Role="ASGADSubsectors" EntitySet="ASGADSubsectors" />
+            <End Role="ASGADStations" EntitySet="ASGADStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASGADSubsecDefPrecipStations_ASGADSubsectors" Association="OldASGADModel.FK_ASGADSubsecDefPrecipStations_ASGADSubsectors">
+            <End Role="ASGADSubsectors" EntitySet="ASGADSubsectors" />
+            <End Role="ASGADSubsecDefPrecipStations" EntitySet="ASGADSubsecDefPrecipStations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ASGADDefPrecipStation">
+          <Key>
+            <PropertyRef Name="DefPreStaId" />
+          </Key>
+          <Property Name="DefPreStaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SubsecDefPrecStaId" Type="Int32" Nullable="false" />
+          <Property Name="PrecipStnCode" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="SelectionOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ASGADPrecipStation" Relationship="OldASGADModel.FK_tblDefPrecSta_tblPrecipStn" FromRole="ASGADDefPrecipStations" ToRole="ASGADPrecipStations" />
+          <NavigationProperty Name="ASGADSubsecDefPrecipStation" Relationship="OldASGADModel.FK_tblDefPrecSta_tblSubsecDefPrecSta" FromRole="ASGADDefPrecipStations" ToRole="ASGADSubsecDefPrecipStations" />
+        </EntityType>
+        <EntityType Name="ASGADMPN">
+          <Key>
+            <PropertyRef Name="Tubes10" />
+            <PropertyRef Name="Tubes1" />
+            <PropertyRef Name="Tubes01" />
+          </Key>
+          <Property Name="Tubes10" Type="Int32" Nullable="false" />
+          <Property Name="Tubes1" Type="Int32" Nullable="false" />
+          <Property Name="Tubes01" Type="Int32" Nullable="false" />
+          <Property Name="MPN" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ASGADPrecipStation">
+          <Key>
+            <PropertyRef Name="PrecipStnCode" />
+          </Key>
+          <Property Name="PrecipStnCode" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PrecipStnName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Lat" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Long" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="LatDeg" Type="Decimal" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="LongDeg" Type="Decimal" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Elevation" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ASGADDefPrecipStations" Relationship="OldASGADModel.FK_tblDefPrecSta_tblPrecipStn" FromRole="ASGADPrecipStations" ToRole="ASGADDefPrecipStations" />
+          <NavigationProperty Name="ASGADPrecipValues" Relationship="OldASGADModel.FK_PRECDATA_PRECSTN" FromRole="ASGADPrecipStations" ToRole="ASGADPrecipValues" />
+          <NavigationProperty Name="ASGADRuns" Relationship="OldASGADModel.FK_tblRun_tblPrecipStn" FromRole="ASGADPrecipStations" ToRole="ASGADRuns" />
+        </EntityType>
+        <EntityType Name="ASGADPrecipValue">
+          <Key>
+            <PropertyRef Name="PrecipStnCode" />
+            <PropertyRef Name="PrecipDate" />
+          </Key>
+          <Property Name="PrecipStnCode" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PrecipDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Precipitation" Type="Decimal" Nullable="false" Precision="9" Scale="1" />
+          <NavigationProperty Name="ASGADPrecipStation" Relationship="OldASGADModel.FK_PRECDATA_PRECSTN" FromRole="ASGADPrecipValues" ToRole="ASGADPrecipStations" />
+        </EntityType>
+        <EntityType Name="ASGADRun">
+          <Key>
+            <PropertyRef Name="RunId" />
+          </Key>
+          <Property Name="RunId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SubsectorId" Type="Int32" Nullable="false" />
+          <Property Name="RunNumber" Type="Int32" Nullable="false" />
+          <Property Name="RunStartDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RunEndDateTime" Type="DateTime" Precision="3" />
+          <Property Name="TideStartCode" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="TideEndCode" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Autocalc" Type="Boolean" />
+          <Property Name="SelectedPrecipStnCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PPT24" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="PPT48" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="PPT72" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="Note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OldRunDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OldStartTime" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="OldEndTime" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ASGADPrecipStation" Relationship="OldASGADModel.FK_tblRun_tblPrecipStn" FromRole="ASGADRuns" ToRole="ASGADPrecipStations" />
+          <NavigationProperty Name="ASGADSubsector" Relationship="OldASGADModel.FK_ASGADRuns_ASGADSubsectors" FromRole="ASGADRuns" ToRole="ASGADSubsectors" />
+          <NavigationProperty Name="ASGADTide" Relationship="OldASGADModel.FK_RUN_TIDE_END" FromRole="ASGADRuns" ToRole="ASGADTides" />
+          <NavigationProperty Name="ASGADTide1" Relationship="OldASGADModel.FK_RUN_TIDE_START" FromRole="ASGADRuns" ToRole="ASGADTides" />
+          <NavigationProperty Name="ASGADSamples" Relationship="OldASGADModel.FK_SAMPLE_RUN" FromRole="ASGADRuns" ToRole="ASGADSamples" />
+        </EntityType>
+        <EntityType Name="ASGADSampleCode">
+          <Key>
+            <PropertyRef Name="SampCode" />
+          </Key>
+          <Property Name="SampCode" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="OthCode" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="SampName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Units" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="LowLimit" Type="Double" />
+          <Property Name="HighLimit" Type="Double" />
+        </EntityType>
+        <EntityType Name="ASGADSample">
+          <Key>
+            <PropertyRef Name="SampleId" />
+          </Key>
+          <Property Name="SampleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RunId" Type="Int32" Nullable="false" />
+          <Property Name="StationId" Type="Int32" Nullable="false" />
+          <Property Name="FecCol" Type="Decimal" Nullable="false" Precision="9" Scale="1" />
+          <Property Name="Salinity" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="WaterTemp" Type="Decimal" Precision="9" Scale="1" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SampleTimeOld" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="SampleDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ASGADRun" Relationship="OldASGADModel.FK_SAMPLE_RUN" FromRole="ASGADSamples" ToRole="ASGADRuns" />
+          <NavigationProperty Name="ASGADStation" Relationship="OldASGADModel.FK_SAMPLE_STATION" FromRole="ASGADSamples" ToRole="ASGADStations" />
+        </EntityType>
+        <EntityType Name="ASGADStation">
+          <Key>
+            <PropertyRef Name="StationID" />
+          </Key>
+          <Property Name="StationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SubsectorId" Type="Int32" Nullable="false" />
+          <Property Name="StationNumber" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="StationName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="StationType" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="SortOrder" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="Zone" Type="Int32" Nullable="false" />
+          <Property Name="Easting" Type="Double" Nullable="false" />
+          <Property Name="Northing" Type="Double" Nullable="false" />
+          <Property Name="Lat" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Long" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ASGADSamples" Relationship="OldASGADModel.FK_SAMPLE_STATION" FromRole="ASGADStations" ToRole="ASGADSamples" />
+          <NavigationProperty Name="ASGADSubsector" Relationship="OldASGADModel.FK_ASGADStations_ASGADSubsectors" FromRole="ASGADStations" ToRole="ASGADSubsectors" />
+        </EntityType>
+        <EntityType Name="ASGADSubsecDefPrecipStation">
+          <Key>
+            <PropertyRef Name="SubsecDefPrecStaId" />
+          </Key>
+          <Property Name="SubsecDefPrecStaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SubsectorId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ASGADDefPrecipStations" Relationship="OldASGADModel.FK_tblDefPrecSta_tblSubsecDefPrecSta" FromRole="ASGADSubsecDefPrecipStations" ToRole="ASGADDefPrecipStations" />
+          <NavigationProperty Name="ASGADSubsector" Relationship="OldASGADModel.FK_ASGADSubsecDefPrecipStations_ASGADSubsectors" FromRole="ASGADSubsecDefPrecipStations" ToRole="ASGADSubsectors" />
+        </EntityType>
+        <EntityType Name="ASGADSubsector">
+          <Key>
+            <PropertyRef Name="SubsectorId" />
+          </Key>
+          <Property Name="CSSPItemId" Type="Int32" />
+          <Property Name="SubsectorId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SubsectorHistoricKey" Type="String" Nullable="false" MaxLength="17" Unicode="true" FixedLength="false" />
+          <Property Name="SubsectorCode" Type="String" Nullable="false" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="DfoCode" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="SubsectorName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SubsectorDesc" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Map" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Updated" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ASGADRuns" Relationship="OldASGADModel.FK_ASGADRuns_ASGADSubsectors" FromRole="ASGADSubsectors" ToRole="ASGADRuns" />
+          <NavigationProperty Name="ASGADStations" Relationship="OldASGADModel.FK_ASGADStations_ASGADSubsectors" FromRole="ASGADSubsectors" ToRole="ASGADStations" />
+          <NavigationProperty Name="ASGADSubsecDefPrecipStations" Relationship="OldASGADModel.FK_ASGADSubsecDefPrecipStations_ASGADSubsectors" FromRole="ASGADSubsectors" ToRole="ASGADSubsecDefPrecipStations" />
+        </EntityType>
+        <EntityType Name="ASGADTide">
+          <Key>
+            <PropertyRef Name="TideCode" />
+          </Key>
+          <Property Name="TideCode" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="TideName" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ASGADRuns" Relationship="OldASGADModel.FK_RUN_TIDE_END" FromRole="ASGADTides" ToRole="ASGADRuns" />
+          <NavigationProperty Name="ASGADRuns1" Relationship="OldASGADModel.FK_RUN_TIDE_START" FromRole="ASGADTides" ToRole="ASGADRuns" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_tblDefPrecSta_tblPrecipStn">
+          <End Role="ASGADPrecipStations" Type="OldASGADModel.ASGADPrecipStation" Multiplicity="1" />
+          <End Role="ASGADDefPrecipStations" Type="OldASGADModel.ASGADDefPrecipStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADPrecipStations">
+              <PropertyRef Name="PrecipStnCode" />
+            </Principal>
+            <Dependent Role="ASGADDefPrecipStations">
+              <PropertyRef Name="PrecipStnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDefPrecSta_tblSubsecDefPrecSta">
+          <End Role="ASGADSubsecDefPrecipStations" Type="OldASGADModel.ASGADSubsecDefPrecipStation" Multiplicity="1" />
+          <End Role="ASGADDefPrecipStations" Type="OldASGADModel.ASGADDefPrecipStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADSubsecDefPrecipStations">
+              <PropertyRef Name="SubsecDefPrecStaId" />
+            </Principal>
+            <Dependent Role="ASGADDefPrecipStations">
+              <PropertyRef Name="SubsecDefPrecStaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRECDATA_PRECSTN">
+          <End Role="ASGADPrecipStations" Type="OldASGADModel.ASGADPrecipStation" Multiplicity="1" />
+          <End Role="ASGADPrecipValues" Type="OldASGADModel.ASGADPrecipValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADPrecipStations">
+              <PropertyRef Name="PrecipStnCode" />
+            </Principal>
+            <Dependent Role="ASGADPrecipValues">
+              <PropertyRef Name="PrecipStnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRun_tblPrecipStn">
+          <End Role="ASGADPrecipStations" Type="OldASGADModel.ASGADPrecipStation" Multiplicity="0..1" />
+          <End Role="ASGADRuns" Type="OldASGADModel.ASGADRun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADPrecipStations">
+              <PropertyRef Name="PrecipStnCode" />
+            </Principal>
+            <Dependent Role="ASGADRuns">
+              <PropertyRef Name="SelectedPrecipStnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASGADRuns_ASGADSubsectors">
+          <End Role="ASGADSubsectors" Type="OldASGADModel.ASGADSubsector" Multiplicity="1" />
+          <End Role="ASGADRuns" Type="OldASGADModel.ASGADRun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADSubsectors">
+              <PropertyRef Name="SubsectorId" />
+            </Principal>
+            <Dependent Role="ASGADRuns">
+              <PropertyRef Name="SubsectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RUN_TIDE_END">
+          <End Role="ASGADTides" Type="OldASGADModel.ASGADTide" Multiplicity="0..1" />
+          <End Role="ASGADRuns" Type="OldASGADModel.ASGADRun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADTides">
+              <PropertyRef Name="TideCode" />
+            </Principal>
+            <Dependent Role="ASGADRuns">
+              <PropertyRef Name="TideEndCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RUN_TIDE_START">
+          <End Role="ASGADTides" Type="OldASGADModel.ASGADTide" Multiplicity="0..1" />
+          <End Role="ASGADRuns" Type="OldASGADModel.ASGADRun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADTides">
+              <PropertyRef Name="TideCode" />
+            </Principal>
+            <Dependent Role="ASGADRuns">
+              <PropertyRef Name="TideStartCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SAMPLE_RUN">
+          <End Role="ASGADRuns" Type="OldASGADModel.ASGADRun" Multiplicity="1" />
+          <End Role="ASGADSamples" Type="OldASGADModel.ASGADSample" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADRuns">
+              <PropertyRef Name="RunId" />
+            </Principal>
+            <Dependent Role="ASGADSamples">
+              <PropertyRef Name="RunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SAMPLE_STATION">
+          <End Role="ASGADStations" Type="OldASGADModel.ASGADStation" Multiplicity="1" />
+          <End Role="ASGADSamples" Type="OldASGADModel.ASGADSample" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADStations">
+              <PropertyRef Name="StationID" />
+            </Principal>
+            <Dependent Role="ASGADSamples">
+              <PropertyRef Name="StationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASGADStations_ASGADSubsectors">
+          <End Role="ASGADSubsectors" Type="OldASGADModel.ASGADSubsector" Multiplicity="1" />
+          <End Role="ASGADStations" Type="OldASGADModel.ASGADStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADSubsectors">
+              <PropertyRef Name="SubsectorId" />
+            </Principal>
+            <Dependent Role="ASGADStations">
+              <PropertyRef Name="SubsectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASGADSubsecDefPrecipStations_ASGADSubsectors">
+          <End Role="ASGADSubsectors" Type="OldASGADModel.ASGADSubsector" Multiplicity="1" />
+          <End Role="ASGADSubsecDefPrecipStations" Type="OldASGADModel.ASGADSubsecDefPrecipStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASGADSubsectors">
+              <PropertyRef Name="SubsectorId" />
+            </Principal>
+            <Dependent Role="ASGADSubsecDefPrecipStations">
+              <PropertyRef Name="SubsectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OldASGADModelStoreContainer" CdmEntityContainer="OldASGADEntities">
+          <EntitySetMapping Name="ASGADDefPrecipStations">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADDefPrecipStation">
+              <MappingFragment StoreEntitySet="ASGADDefPrecipStations">
+                <ScalarProperty Name="DefPreStaId" ColumnName="DefPreStaId" />
+                <ScalarProperty Name="SubsecDefPrecStaId" ColumnName="SubsecDefPrecStaId" />
+                <ScalarProperty Name="PrecipStnCode" ColumnName="PrecipStnCode" />
+                <ScalarProperty Name="SelectionOrder" ColumnName="SelectionOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADMPNs">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADMPN">
+              <MappingFragment StoreEntitySet="ASGADMPNs">
+                <ScalarProperty Name="Tubes10" ColumnName="Tubes10" />
+                <ScalarProperty Name="Tubes1" ColumnName="Tubes1" />
+                <ScalarProperty Name="Tubes01" ColumnName="Tubes01" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADPrecipStations">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADPrecipStation">
+              <MappingFragment StoreEntitySet="ASGADPrecipStations">
+                <ScalarProperty Name="PrecipStnCode" ColumnName="PrecipStnCode" />
+                <ScalarProperty Name="PrecipStnName" ColumnName="PrecipStnName" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="LatDeg" ColumnName="LatDeg" />
+                <ScalarProperty Name="LongDeg" ColumnName="LongDeg" />
+                <ScalarProperty Name="Elevation" ColumnName="Elevation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADPrecipValues">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADPrecipValue">
+              <MappingFragment StoreEntitySet="ASGADPrecipValues">
+                <ScalarProperty Name="PrecipStnCode" ColumnName="PrecipStnCode" />
+                <ScalarProperty Name="PrecipDate" ColumnName="PrecipDate" />
+                <ScalarProperty Name="Precipitation" ColumnName="Precipitation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADRuns">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADRun">
+              <MappingFragment StoreEntitySet="ASGADRuns">
+                <ScalarProperty Name="RunId" ColumnName="RunId" />
+                <ScalarProperty Name="SubsectorId" ColumnName="SubsectorId" />
+                <ScalarProperty Name="RunNumber" ColumnName="RunNumber" />
+                <ScalarProperty Name="RunStartDateTime" ColumnName="RunStartDateTime" />
+                <ScalarProperty Name="RunEndDateTime" ColumnName="RunEndDateTime" />
+                <ScalarProperty Name="TideStartCode" ColumnName="TideStartCode" />
+                <ScalarProperty Name="TideEndCode" ColumnName="TideEndCode" />
+                <ScalarProperty Name="Autocalc" ColumnName="Autocalc" />
+                <ScalarProperty Name="SelectedPrecipStnCode" ColumnName="SelectedPrecipStnCode" />
+                <ScalarProperty Name="PPT24" ColumnName="PPT24" />
+                <ScalarProperty Name="PPT48" ColumnName="PPT48" />
+                <ScalarProperty Name="PPT72" ColumnName="PPT72" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Updated" ColumnName="Updated" />
+                <ScalarProperty Name="OldRunDate" ColumnName="OldRunDate" />
+                <ScalarProperty Name="OldStartTime" ColumnName="OldStartTime" />
+                <ScalarProperty Name="OldEndTime" ColumnName="OldEndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADSampleCodes">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADSampleCode">
+              <MappingFragment StoreEntitySet="ASGADSampleCodes">
+                <ScalarProperty Name="SampCode" ColumnName="SampCode" />
+                <ScalarProperty Name="OthCode" ColumnName="OthCode" />
+                <ScalarProperty Name="SampName" ColumnName="SampName" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+                <ScalarProperty Name="LowLimit" ColumnName="LowLimit" />
+                <ScalarProperty Name="HighLimit" ColumnName="HighLimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADSamples">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADSample">
+              <MappingFragment StoreEntitySet="ASGADSamples">
+                <ScalarProperty Name="SampleId" ColumnName="SampleId" />
+                <ScalarProperty Name="RunId" ColumnName="RunId" />
+                <ScalarProperty Name="StationId" ColumnName="StationId" />
+                <ScalarProperty Name="FecCol" ColumnName="FecCol" />
+                <ScalarProperty Name="Salinity" ColumnName="Salinity" />
+                <ScalarProperty Name="WaterTemp" ColumnName="WaterTemp" />
+                <ScalarProperty Name="Updated" ColumnName="Updated" />
+                <ScalarProperty Name="SampleTimeOld" ColumnName="SampleTimeOld" />
+                <ScalarProperty Name="SampleDateTime" ColumnName="SampleDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADStations">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADStation">
+              <MappingFragment StoreEntitySet="ASGADStations">
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+                <ScalarProperty Name="SubsectorId" ColumnName="SubsectorId" />
+                <ScalarProperty Name="StationNumber" ColumnName="StationNumber" />
+                <ScalarProperty Name="StationName" ColumnName="StationName" />
+                <ScalarProperty Name="StationType" ColumnName="StationType" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Easting" ColumnName="Easting" />
+                <ScalarProperty Name="Northing" ColumnName="Northing" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Updated" ColumnName="Updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADSubsecDefPrecipStations">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADSubsecDefPrecipStation">
+              <MappingFragment StoreEntitySet="ASGADSubsecDefPrecipStations">
+                <ScalarProperty Name="SubsecDefPrecStaId" ColumnName="SubsecDefPrecStaId" />
+                <ScalarProperty Name="SubsectorId" ColumnName="SubsectorId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADSubsectors">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADSubsector">
+              <MappingFragment StoreEntitySet="ASGADSubsectors">
+                <ScalarProperty Name="CSSPItemId" ColumnName="CSSPItemId" />
+                <ScalarProperty Name="SubsectorId" ColumnName="SubsectorId" />
+                <ScalarProperty Name="SubsectorHistoricKey" ColumnName="SubsectorHistoricKey" />
+                <ScalarProperty Name="SubsectorCode" ColumnName="SubsectorCode" />
+                <ScalarProperty Name="DfoCode" ColumnName="DfoCode" />
+                <ScalarProperty Name="SubsectorName" ColumnName="SubsectorName" />
+                <ScalarProperty Name="SubsectorDesc" ColumnName="SubsectorDesc" />
+                <ScalarProperty Name="Map" ColumnName="Map" />
+                <ScalarProperty Name="Updated" ColumnName="Updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASGADTides">
+            <EntityTypeMapping TypeName="OldASGADModel.ASGADTide">
+              <MappingFragment StoreEntitySet="ASGADTides">
+                <ScalarProperty Name="TideCode" ColumnName="TideCode" />
+                <ScalarProperty Name="TideName" ColumnName="TideName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="OldASGADModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
