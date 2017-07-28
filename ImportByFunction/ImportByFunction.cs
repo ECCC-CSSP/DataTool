@@ -8761,11 +8761,11 @@ namespace ImportByFunction
             //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
             //    {
             //        var tvItemSS = (from t in dd.TVItems
-            //                           from c in dd.TVItemLanguages
-            //                           where t.TVItemID == c.TVItemID
-            //                           && c.TVText.StartsWith(ss)
-            //                           && c.Language == (int)LanguageEnum.en
-            //                           select new { t, c}).FirstOrDefault();
+            //                        from c in dd.TVItemLanguages
+            //                        where t.TVItemID == c.TVItemID
+            //                        && c.TVText.StartsWith(ss)
+            //                        && c.Language == (int)LanguageEnum.en
+            //                        select new { t, c }).FirstOrDefault();
 
             //        if (tvItemSS == null)
             //        {
@@ -8774,12 +8774,12 @@ namespace ImportByFunction
             //        }
 
             //        MapInfoPoint mapInfoPointSS = (from m in dd.MapInfos
-            //                                               from mp in dd.MapInfoPoints
-            //                                               where m.MapInfoID == mp.MapInfoID
-            //                                               && m.TVItemID == tvItemSS.t.TVItemID
-            //                                               && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
-            //                                               && m.TVType == (int)TVTypeEnum.Subsector
-            //                                               select mp).FirstOrDefault();
+            //                                       from mp in dd.MapInfoPoints
+            //                                       where m.MapInfoID == mp.MapInfoID
+            //                                       && m.TVItemID == tvItemSS.t.TVItemID
+            //                                       && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+            //                                       && m.TVType == (int)TVTypeEnum.Subsector
+            //                                       select mp).FirstOrDefault();
 
 
             //        sb.AppendLine(@"    <Folder>");
@@ -8795,12 +8795,12 @@ namespace ImportByFunction
             //        sb.AppendLine(@"    </Placemark>");
 
             //        List<MapInfoPoint> mapInfoPointList = (from m in dd.MapInfos
-            //                                     from mp in dd.MapInfoPoints
-            //                                     where m.MapInfoID == mp.MapInfoID
-            //                                     && m.TVItemID == tvItemSS.t.TVItemID
-            //                                     && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Polygon
-            //                                     && m.TVType == (int)TVTypeEnum.Subsector
-            //                                     select mp).ToList();
+            //                                               from mp in dd.MapInfoPoints
+            //                                               where m.MapInfoID == mp.MapInfoID
+            //                                               && m.TVItemID == tvItemSS.t.TVItemID
+            //                                               && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Polygon
+            //                                               && m.TVType == (int)TVTypeEnum.Subsector
+            //                                               select mp).ToList();
 
 
             //        if (mapInfoPointList.Count == 0)
@@ -8833,15 +8833,15 @@ namespace ImportByFunction
             //    }
 
             //    foreach (MonitorSiteKML monitorSiteKML in (from c in MonitorSiteKMLList
-            //                                              where c.Subsector == ss
-            //                                              orderby c.MWQMSite
-            //                                              select c).ToList())
+            //                                               where c.Subsector == ss
+            //                                               orderby c.MWQMSite
+            //                                               select c).ToList())
             //    {
             //        sb.AppendLine(@"    <Placemark>");
             //        sb.AppendLine(@"        <name>" + monitorSiteKML.MWQMSite + "</name>");
             //        sb.AppendLine(@"        <styleUrl>sn_placemark_circle</styleUrl>");
             //        sb.AppendLine(@"        <Point>");
-            //        sb.AppendLine(@"        <coordinates>" + monitorSiteKML.Lng.ToString("F5") + ", " + monitorSiteKML.Lat.ToString("F5") + ", 0 </coordinates>");  
+            //        sb.AppendLine(@"        <coordinates>" + monitorSiteKML.Lng.ToString("F5") + ", " + monitorSiteKML.Lat.ToString("F5") + ", 0 </coordinates>");
             //        sb.AppendLine(@"        </Point>");
             //        sb.AppendLine(@"    </Placemark>");
             //    }
@@ -8853,7 +8853,7 @@ namespace ImportByFunction
             //sb.AppendLine(@"</Document>");
             //sb.AppendLine(@"</kml>");
 
-            //FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\NBMonitoring.kml");
+            //FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\NBSouthWestMonitoring.kml");
             //StreamWriter sw = fi.CreateText();
             //sw.Write(sb.ToString());
             //sw.Close();
