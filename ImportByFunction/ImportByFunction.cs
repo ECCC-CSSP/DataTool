@@ -8861,6 +8861,331 @@ namespace ImportByFunction
             //lblStatus.Text = "done ...";
         }
 
+        private void button30_Click(object sender, EventArgs e)
+        {
+            //StringBuilder sbKML = new StringBuilder();
+            //StringBuilder sbSubsectorSites = new StringBuilder();
+            //StringBuilder sbSubsectorSiteData = new StringBuilder();
+
+            //DirectoryInfo di = new DirectoryInfo(@"C:\Users\leblancc\Desktop\NBData\");
+            //if (!di.Exists)
+            //{
+            //    try
+            //    {
+            //        di.Create();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        int sef = 34;
+            //    }
+            //}
+
+            //List<string> SSList = new List<string>();
+            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //{
+            //    SSList = (from c in dd.TVItems
+            //              from cl in dd.TVItemLanguages
+            //              where c.TVItemID == cl.TVItemID
+            //              && c.TVType == (int)TVTypeEnum.Subsector
+            //              && c.TVPath.StartsWith("p1p5p7p")
+            //              select cl.TVText).Distinct().ToList();
+            //}
+
+            //sbKML.AppendLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+            //sbKML.AppendLine(@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+            //sbKML.AppendLine(@"<Document>");
+            //sbKML.AppendLine(@"	<name>NB Monitoring Sites</name>");
+            //sbKML.AppendLine(@"	<StyleMap id=""m_ylw-pushpin0"">");
+            //sbKML.AppendLine(@"		<Pair>");
+            //sbKML.AppendLine(@"			<key>normal</key>");
+            //sbKML.AppendLine(@"			<styleUrl>#s_ylw-pushpin</styleUrl>");
+            //sbKML.AppendLine(@"		</Pair>");
+            //sbKML.AppendLine(@"		<Pair>");
+            //sbKML.AppendLine(@"			<key>highlight</key>");
+            //sbKML.AppendLine(@"			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>");
+            //sbKML.AppendLine(@"		</Pair>");
+            //sbKML.AppendLine(@"	</StyleMap>");
+            //sbKML.AppendLine(@"	<StyleMap id=""msn_placemark_circle"">");
+            //sbKML.AppendLine(@"		<Pair>");
+            //sbKML.AppendLine(@"			<key>normal</key>");
+            //sbKML.AppendLine(@"			<styleUrl>#sn_placemark_circle</styleUrl>");
+            //sbKML.AppendLine(@"		</Pair>");
+            //sbKML.AppendLine(@"		<Pair>");
+            //sbKML.AppendLine(@"			<key>highlight</key>");
+            //sbKML.AppendLine(@"			<styleUrl>#sh_placemark_circle_highlight</styleUrl>");
+            //sbKML.AppendLine(@"		</Pair>");
+            //sbKML.AppendLine(@"	</StyleMap>");
+            //sbKML.AppendLine(@"	<Style id=""sn_placemark_circle"">");
+            //sbKML.AppendLine(@"		<IconStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ffff</color>");
+            //sbKML.AppendLine(@"			<scale>1.2</scale>");
+            //sbKML.AppendLine(@"			<Icon>");
+            //sbKML.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>");
+            //sbKML.AppendLine(@"			</Icon>");
+            //sbKML.AppendLine(@"		</IconStyle>");
+            //sbKML.AppendLine(@"		<LabelStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ffff</color>");
+            //sbKML.AppendLine(@"		</LabelStyle>");
+            //sbKML.AppendLine(@"		<ListStyle>");
+            //sbKML.AppendLine(@"		</ListStyle>");
+            //sbKML.AppendLine(@"		<LineStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ff00</color>");
+            //sbKML.AppendLine(@"			<width>2</width>");
+            //sbKML.AppendLine(@"		</LineStyle>");
+            //sbKML.AppendLine(@"		<PolyStyle>");
+            //sbKML.AppendLine(@"			<fill>0</fill>");
+            //sbKML.AppendLine(@"		</PolyStyle>");
+            //sbKML.AppendLine(@"	</Style>");
+            //sbKML.AppendLine(@"	<Style id=""sh_placemark_circle_highlight"">");
+            //sbKML.AppendLine(@"		<IconStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ffff</color>");
+            //sbKML.AppendLine(@"			<scale>1.2</scale>");
+            //sbKML.AppendLine(@"			<Icon>");
+            //sbKML.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>");
+            //sbKML.AppendLine(@"			</Icon>");
+            //sbKML.AppendLine(@"		</IconStyle>");
+            //sbKML.AppendLine(@"		<LabelStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ffff</color>");
+            //sbKML.AppendLine(@"		</LabelStyle>");
+            //sbKML.AppendLine(@"		<ListStyle>");
+            //sbKML.AppendLine(@"		</ListStyle>");
+            //sbKML.AppendLine(@"		<LineStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ff00</color>");
+            //sbKML.AppendLine(@"			<width>2</width>");
+            //sbKML.AppendLine(@"		</LineStyle>");
+            //sbKML.AppendLine(@"		<PolyStyle>");
+            //sbKML.AppendLine(@"			<fill>0</fill>");
+            //sbKML.AppendLine(@"		</PolyStyle>");
+            //sbKML.AppendLine(@"	</Style>");
+            //sbKML.AppendLine(@"	<Style id=""s_ylw-pushpin_hl0"">");
+            //sbKML.AppendLine(@"		<IconStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ff00</color>");
+            //sbKML.AppendLine(@"			<scale>1.3</scale>");
+            //sbKML.AppendLine(@"			<Icon>");
+            //sbKML.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sbKML.AppendLine(@"			</Icon>");
+            //sbKML.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sbKML.AppendLine(@"		</IconStyle>");
+            //sbKML.AppendLine(@"		<LabelStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ff00</color>");
+            //sbKML.AppendLine(@"		</LabelStyle>");
+            //sbKML.AppendLine(@"		<LineStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ff00</color>");
+            //sbKML.AppendLine(@"			<width>2</width>");
+            //sbKML.AppendLine(@"		</LineStyle>");
+            //sbKML.AppendLine(@"		<PolyStyle>");
+            //sbKML.AppendLine(@"			<fill>0</fill>");
+            //sbKML.AppendLine(@"		</PolyStyle>");
+            //sbKML.AppendLine(@"	</Style>");
+            //sbKML.AppendLine(@"	<Style id=""s_ylw-pushpin"">");
+            //sbKML.AppendLine(@"		<IconStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ff00</color>");
+            //sbKML.AppendLine(@"			<scale>1.1</scale>");
+            //sbKML.AppendLine(@"			<Icon>");
+            //sbKML.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sbKML.AppendLine(@"			</Icon>");
+            //sbKML.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sbKML.AppendLine(@"		</IconStyle>");
+            //sbKML.AppendLine(@"		<LabelStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ff00</color>");
+            //sbKML.AppendLine(@"		</LabelStyle>");
+            //sbKML.AppendLine(@"		<LineStyle>");
+            //sbKML.AppendLine(@"			<color>ff00ff00</color>");
+            //sbKML.AppendLine(@"			<width>2</width>");
+            //sbKML.AppendLine(@"		</LineStyle>");
+            //sbKML.AppendLine(@"		<PolyStyle>");
+            //sbKML.AppendLine(@"			<fill>0</fill>");
+            //sbKML.AppendLine(@"		</PolyStyle>");
+            //sbKML.AppendLine(@" </Style>");
+
+            //sbSubsectorSites.AppendLine("Subsector,Site,Latitude,Longitude");
+            //sbSubsectorSiteData.AppendLine("Subsector,Site,Date of Sample,MPN,Sal,Temp");
+
+            //int countSSOK = 0;
+            //foreach (string ss in SSList.OrderBy(c => c))
+            //{
+            //    string ssShort = ss.Substring(0, ss.IndexOf(" "));
+
+            //    lblStatus.Text = ss;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    {
+            //        if (countSSOK > 1)
+            //        {
+            //            //continue;
+            //        }
+
+            //        var tvItemSS = (from t in dd.TVItems
+            //                        from c in dd.TVItemLanguages
+            //                        where t.TVItemID == c.TVItemID
+            //                        && c.TVText == ss
+            //                        && c.Language == (int)LanguageEnum.en
+            //                        select new { t, c }).FirstOrDefault();
+
+            //        if (tvItemSS == null)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find subsector " + ss);
+            //            return;
+            //        }
+
+            //        var SubsectorSiteList = (from c in dd.TVItems
+            //                                 from cl in dd.TVItemLanguages
+            //                                 from s in dd.MWQMSamples
+            //                                 where c.TVItemID == cl.TVItemID
+            //                                 && c.TVItemID == s.MWQMSiteTVItemID
+            //                                 && c.TVPath.StartsWith(tvItemSS.t.TVPath + "p")
+            //                                 && c.TVType == (int)TVTypeEnum.MWQMSite
+            //                                 && s.SampleDateTime_Local.Year > 1999
+            //                                 && s.SampleDateTime_Local.Year < 2016
+            //                                 && cl.Language == (int)LanguageEnum.en
+            //                                 select new { c, cl }).Distinct().ToList();
+
+            //        if (SubsectorSiteList.Count == 0)
+            //        {
+            //            continue;
+            //        }
+
+            //        countSSOK += 1;
+
+            //        List<MapInfoPoint> mapInfoPointSSList = (from m in dd.MapInfos
+            //                                                 from mp in dd.MapInfoPoints
+            //                                                 where m.MapInfoID == mp.MapInfoID
+            //                                                 && m.TVItemID == tvItemSS.t.TVItemID
+            //                                                 && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+            //                                                 && m.TVType == (int)TVTypeEnum.Subsector
+            //                                                 select mp).ToList();
+
+
+            //        sbKML.AppendLine(@"    <Folder>");
+            //        sbKML.AppendLine(@"    <name>" + tvItemSS.c.TVText + "</name>");
+            //        sbKML.AppendLine(@"    <open>1</open>");
+
+            //        sbKML.AppendLine(@"    <Placemark>");
+            //        sbKML.AppendLine(@"        <name>" + tvItemSS.c.TVText + "</name>");
+            //        sbKML.AppendLine(@"        <styleUrl>s_ylw-pushpin_hl0</styleUrl>");
+            //        sbKML.AppendLine(@"        <Point>");
+            //        sbKML.AppendLine(@"        <coordinates>" + mapInfoPointSSList[0].Lng.ToString("F5") + ", " + mapInfoPointSSList[0].Lat.ToString("F5") + ", 0 </coordinates>");
+            //        sbKML.AppendLine(@"        </Point>");
+            //        sbKML.AppendLine(@"    </Placemark>");
+
+            //        List<MapInfoPoint> mapInfoPointList = (from m in dd.MapInfos
+            //                                               from mp in dd.MapInfoPoints
+            //                                               where m.MapInfoID == mp.MapInfoID
+            //                                               && m.TVItemID == tvItemSS.t.TVItemID
+            //                                               && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Polygon
+            //                                               && m.TVType == (int)TVTypeEnum.Subsector
+            //                                               select mp).ToList();
+
+
+            //        if (mapInfoPointList.Count == 0)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find MapInfoPoint for " + ss);
+            //            continue;
+            //        }
+
+            //        sbKML.AppendLine(@"	<Placemark>");
+            //        sbKML.AppendLine(@"		<name>Polygon</name>");
+            //        sbKML.AppendLine(@"		<styleUrl>s_ylw-pushpin_hl0</styleUrl>");
+            //        sbKML.AppendLine(@"		<Polygon>");
+            //        sbKML.AppendLine(@"			<tessellate>1</tessellate>");
+            //        sbKML.AppendLine(@"			<outerBoundaryIs>");
+            //        sbKML.AppendLine(@"				<LinearRing>");
+            //        sbKML.AppendLine(@"					<coordinates>");
+            //        sbKML.AppendLine(@"						");
+            //        foreach (MapInfoPoint mapInfoPoint in mapInfoPointList)
+            //        {
+            //            sbKML.AppendLine(@"" + mapInfoPoint.Lng + "," + mapInfoPoint.Lat + ",0 ");
+            //        }
+            //        sbKML.AppendLine(@"");
+            //        sbKML.AppendLine(@"					</coordinates>");
+            //        sbKML.AppendLine(@"				</LinearRing>");
+            //        sbKML.AppendLine(@"			</outerBoundaryIs>");
+            //        sbKML.AppendLine(@"		</Polygon>");
+            //        sbKML.AppendLine(@" </Placemark>");
+
+            //        foreach (var SSData in (from c in SubsectorSiteList
+            //                                orderby c.cl.TVText
+            //                                select c).ToList())
+            //        {
+            //            lblStatus.Text = ss + " --- " + SSData.cl.TVText;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            List<MapInfoPoint> mapInfoPointSiteList = (from m in dd.MapInfos
+            //                                                       from mp in dd.MapInfoPoints
+            //                                                       where m.MapInfoID == mp.MapInfoID
+            //                                                       && m.TVItemID == SSData.c.TVItemID
+            //                                                       && m.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+            //                                                       && m.TVType == (int)TVTypeEnum.MWQMSite
+            //                                                       select mp).ToList();
+
+
+            //            if (mapInfoPointSiteList.Count == 0)
+            //            {
+            //                richTextBoxStatus.AppendText("Could not find MapInfoPoint for " + ss);
+            //                continue;
+            //            }
+
+            //            sbKML.AppendLine(@"    <Placemark>");
+            //            sbKML.AppendLine(@"        <name>" + SSData.cl.TVText + "</name>");
+            //            sbKML.AppendLine(@"        <styleUrl>sn_placemark_circle</styleUrl>");
+            //            sbKML.AppendLine(@"        <Point>");
+            //            sbKML.AppendLine(@"        <coordinates>" + mapInfoPointSiteList[0].Lng.ToString("F5") + ", " + mapInfoPointSiteList[0].Lat.ToString("F5") + ", 0 </coordinates>");
+            //            sbKML.AppendLine(@"        </Point>");
+            //            sbKML.AppendLine(@"    </Placemark>");
+
+            //            sbSubsectorSites.AppendLine(ssShort + "," + SSData.cl.TVText + "," + mapInfoPointSiteList[0].Lat.ToString("F5") + ", " + mapInfoPointSiteList[0].Lng.ToString("F5"));
+
+            //            List<MWQMSample> mwqmSampleList = (from c in dd.MWQMSamples
+            //                                               where c.MWQMSiteTVItemID == SSData.c.TVItemID
+            //                                               && c.SampleDateTime_Local.Year > 1999
+            //                                               && c.SampleDateTime_Local.Year < 2016
+            //                                               orderby c.SampleDateTime_Local
+            //                                               select c).ToList();
+
+            //            foreach (MWQMSample mwqmSample in mwqmSampleList)
+            //            {
+            //                lblStatus.Text = ss + " --- " + SSData.cl.TVText + " --- " + mwqmSample.FecCol_MPN_100ml;
+            //                lblStatus.Refresh();
+            //                Application.DoEvents();
+
+            //                sbSubsectorSiteData.AppendLine(ssShort + "," + SSData.cl.TVText + "," + mwqmSample.SampleDateTime_Local.ToString("yyyy-MM-dd HH:mm:ss") + "," + mwqmSample.FecCol_MPN_100ml + "," + mwqmSample.Salinity_PPT + "," + mwqmSample.WaterTemp_C);
+            //            }
+
+            //        }
+
+            //        sbKML.AppendLine(@"    </Folder>");
+
+            //    }
+
+            //}
+
+
+            //sbKML.AppendLine(@"</Document>");
+            //sbKML.AppendLine(@"</kml>");
+
+
+
+            //FileInfo fiSiteData = new FileInfo(@"C:\Users\leblancc\Desktop\NBData\CSSPNBMonitoringData.csv");
+            //StreamWriter swSiteData = fiSiteData.CreateText();
+            //swSiteData.Write(sbSubsectorSiteData.ToString());
+            //swSiteData.Close();
+
+            //FileInfo fiKML = new FileInfo(@"C:\Users\leblancc\Desktop\NBData\CSSPNBMonitoringSites.kml");
+            //StreamWriter swKML = fiKML.CreateText();
+            //swKML.Write(sbKML.ToString());
+            //swKML.Close();
+
+            //FileInfo fiSite = new FileInfo(@"C:\Users\leblancc\Desktop\NBData\CSSPNBMonitoringSites.csv");
+            //StreamWriter swSite = fiSite.CreateText();
+            //swSite.Write(sbSubsectorSites.ToString());
+            //swSite.Close();
+
+            //lblStatus.Text = "done ...";
+        }
+
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
