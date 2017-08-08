@@ -9186,6 +9186,91 @@ namespace ImportByFunction
             //lblStatus.Text = "done ...";
         }
 
+        private void button31_Click(object sender, EventArgs e)
+        {
+            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //{
+            //    TVItem tvItemGaspe = (from c in db.TVItems
+            //                     where c.TVItemID == 48790 // Gaspé
+            //                     select c).FirstOrDefault();
+
+            //    if (tvItemGaspe != null)
+            //    {
+            //        List<TVItem> tvItemScenarioList = (from c in db.TVItems
+            //                                           where c.TVPath.StartsWith(tvItemGaspe.TVPath + "p")
+            //                                           && c.TVType == (int)TVTypeEnum.MikeScenario
+            //                                           select c).ToList();
+
+            //        foreach (TVItem tvitem in tvItemScenarioList)
+            //        {
+            //            List<TVFile> tvFileList = (from c in db.TVFiles
+            //                                       from t in db.TVItems
+            //                                       where c.TVFileTVItemID == t.TVItemID
+            //                                       && (c.ServerFileName.EndsWith(".m21fm")
+            //                                       || c.ServerFileName.EndsWith(".m3fm"))
+            //                                       && t.ParentID == tvitem.TVItemID
+            //                                       select c).ToList();
+
+            //            foreach (TVFile tvFile in tvFileList)
+            //            {
+            //                FileInfo fi = new FileInfo(tvFile.ServerFilePath + tvFile.ServerFileName);
+
+            //                if (fi.Exists)
+            //                {
+            //                    StreamReader sr = fi.OpenText();
+            //                    string fileText = sr.ReadToEnd();
+            //                    sr.Close();
+
+            //                    bool found = false;
+            //                    if (fileText.Contains("datum_depth = 0.6"))
+            //                    {
+            //                        richTextBoxStatus.AppendText("Has 0.6 --- " + fi.FullName + "\r\n");
+            //                        found = true;
+            //                    }
+            //                    if (fileText.Contains("datum_depth = 0.7"))
+            //                    {
+            //                        richTextBoxStatus.AppendText("Has 0.7 --- " + fi.FullName + "\r\n");
+            //                        found = true;
+            //                    }
+
+            //                    if (found)
+            //                    {
+            //                        try
+            //                        {
+            //                            File.Copy(fi.FullName, fi.FullName.Replace(".m21fm", ".m21fma").Replace(".m3fm", ".m3fma"));
+            //                        }
+            //                        catch (Exception ex)
+            //                        {
+            //                            string err = ex.Message;
+            //                        }
+
+            //                        fileText = fileText.Replace("datum_depth = 0.6", "datum_depth = 0.8");
+            //                        fileText = fileText.Replace("datum_depth = 0.7", "datum_depth = 0.8");
+
+            //                        fi = new FileInfo(tvFile.ServerFilePath + tvFile.ServerFileName);
+
+            //                        StreamWriter sw = fi.CreateText();
+            //                        sw.Write(fileText);
+            //                        sw.Close();
+
+            //                        fi = new FileInfo(tvFile.ServerFilePath + tvFile.ServerFileName.Replace(".m21fm", ".m21fma").Replace(".m3fm", ".m3fma"));
+
+            //                        try
+            //                        {
+            //                            fi.Delete();
+            //                        }
+            //                        catch (Exception ex)
+            //                        {
+            //                            string err = ex.Message;
+            //                        }
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+        }
+
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
