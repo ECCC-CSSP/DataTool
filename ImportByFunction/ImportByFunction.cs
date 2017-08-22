@@ -9271,6 +9271,74 @@ namespace ImportByFunction
             //}
         }
 
+        private void button32_Click(object sender, EventArgs e)
+        {
+            richTextBoxStatus.Text = "Subsector,Site,Date,MPN";
+            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            {
+                lblStatus.Text = "Starting";
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                var tvItemSubsectorList = (from c in db.TVItems
+                                           from cl in db.TVItemLanguages
+                                           where c.TVItemID == cl.TVItemID
+                                           && c.TVType == (int)TVTypeEnum.Subsector
+                                           && cl.Language == (int)LanguageEnum.en
+                                           where cl.TVText.StartsWith("PE-")
+                                           orderby cl.TVText
+                                           select new { c, cl }).ToList();
+
+                foreach (var tvItemSubsector in tvItemSubsectorList)
+                {
+                    lblStatus.Text = tvItemSubsector.cl.TVText;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    var tvItemMWQMSiteList = (from c in db.TVItems
+                                              from cl in db.TVItemLanguages
+                                              where c.TVItemID == cl.TVItemID
+                                              && c.ParentID == tvItemSubsector.c.TVItemID
+                                              && c.TVType == (int)TVTypeEnum.MWQMSite
+                                              && cl.Language == (int)LanguageEnum.en
+                                              orderby cl.TVText
+                                              select new { c, cl }).ToList();
+
+                    foreach (var tvItemMWQMSite in tvItemMWQMSiteList)
+                    {
+                        lblStatus.Text = tvItemSubsector.cl.TVText + " --- " + tvItemMWQMSite.cl.TVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        List<MWQMSample> mwqmSampleList = (from c in db.MWQMSamples
+                                                           where c.MWQMSiteTVItemID == tvItemMWQMSite.c.TVItemID
+                                                           && c.FecCol_MPN_100ml == 5
+                                                           && c.SampleDateTime_Local.Year > 2015
+                                                           orderby c.SampleDateTime_Local
+                                                           select c).ToList();
+
+                        foreach (MWQMSample mwqmSample in mwqmSampleList)
+                        {
+                            //mwqmSample.FecCol_MPN_100ml = 4;
+                            richTextBoxStatus.AppendText(tvItemSubsector.cl.TVText + "," + tvItemMWQMSite.cl.TVText + "," + mwqmSample.SampleDateTime_Local + "," + mwqmSample.FecCol_MPN_100ml + "\r\n");
+
+                            //try
+                            //{
+                            //    db.SaveChanges();
+                            //}
+                            //catch (Exception ex)
+                            //{
+                            //    richTextBoxStatus.AppendText("Error: " + ex.Message + "\r\n");
+                            //}
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
