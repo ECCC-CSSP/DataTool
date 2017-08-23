@@ -9339,6 +9339,84 @@ namespace ImportByFunction
 
         }
 
+        private void button33_Click(object sender, EventArgs e)
+        {
+            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            {
+                //    EmailDistributionListContactLanguageService EmailDistributionListContactLanguageService = new EmailDistributionListContactLanguageService(LanguageEnum.en, user);
+                //    List<EmailDistributionListContact> edlList = (from c in db.EmailDistributionListContacts
+                //                                           select c).ToList();
+
+                //    foreach (EmailDistributionListContact edl in edlList)
+                //    {
+                //        List<EmailDistributionListContactLanguage> edll = (from c in db.EmailDistributionListContactLanguages
+                //                                                    where c.EmailDistributionListContactID == edl.EmailDistributionListContactID
+                //                                                    select c).ToList();
+
+                //        EmailDistributionListContactLanguageModel edllmEN = new EmailDistributionListContactLanguageModel()
+                //        {
+                //            EmailDistributionListContactID = edl.EmailDistributionListContactID,
+                //            Language = LanguageEnum.en,
+                //            Agency = edl.Agency,
+                //            TranslationStatus = TranslationStatusEnum.Translated,
+                //        };
+                //        EmailDistributionListContactLanguageModel edllmFR = new EmailDistributionListContactLanguageModel()
+                //        {
+                //            EmailDistributionListContactID = edl.EmailDistributionListContactID,
+                //            Language = LanguageEnum.fr,
+                //            Agency = edl.Agency,
+                //            TranslationStatus = TranslationStatusEnum.NotTranslated,
+                //        };
+
+                //        if (edll.Count == 0)
+                //        {
+                //            EmailDistributionListContactLanguageModel edllmENRet = EmailDistributionListContactLanguageService.PostAddEmailDistributionListContactLanguageDB(edllmEN);
+                //            if (!string.IsNullOrWhiteSpace(edllmENRet.Error))
+                //            {
+                //                int selifj = 34;
+                //            }
+
+                //            EmailDistributionListContactLanguageModel edllmFRRet = EmailDistributionListContactLanguageService.PostAddEmailDistributionListContactLanguageDB(edllmFR);
+                //            if (!string.IsNullOrWhiteSpace(edllmFRRet.Error))
+                //            {
+                //                int selifj = 34;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            EmailDistributionListContactLanguageModel edllmENRet = EmailDistributionListContactLanguageService.PostUpdateEmailDistributionListContactLanguageDB(edllmEN);
+                //            if (!string.IsNullOrWhiteSpace(edllmENRet.Error))
+                //            {
+                //                int selifj = 34;
+                //            }
+
+                //            EmailDistributionListContactLanguageModel edllmFRRet = EmailDistributionListContactLanguageService.PostUpdateEmailDistributionListContactLanguageDB(edllmFR);
+                //            if (!string.IsNullOrWhiteSpace(edllmFRRet.Error))
+                //            {
+                //                int selifj = 34;
+                //            }
+                //        }
+                //    }
+
+                var aaa = (from c in db.EmailDistributionLists
+                           select c.RegionName).Distinct().ToList();
+
+                foreach (string s in aaa)
+                {
+                    richTextBoxStatus.AppendText(s + "\r\n");
+                }
+
+                var bbb = (from c in db.EmailDistributionListContacts
+                           select c.Agency).Distinct().ToList();
+
+                foreach (string s in bbb)
+                {
+                    richTextBoxStatus.AppendText(s + "\r\n");
+                }
+
+            }
+        }
+
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
