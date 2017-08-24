@@ -9398,22 +9398,48 @@ namespace ImportByFunction
                 //        }
                 //    }
 
-                var aaa = (from c in db.EmailDistributionLists
-                           select c.RegionName).Distinct().ToList();
+                //var aaa = (from c in db.EmailDistributionLists
+                //           select c.RegionName).Distinct().ToList();
 
-                foreach (string s in aaa)
+                //foreach (string s in aaa)
+                //{
+                //    richTextBoxStatus.AppendText(s + "\r\n");
+                //}
+
+                //var bbb = (from c in db.EmailDistributionListContacts
+                //           select c.Agency).Distinct().ToList();
+
+                //foreach (string s in bbb)
+                //{
+                //    richTextBoxStatus.AppendText(s + "\r\n");
+                //}
+
+            }
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            {
+                List<ClimateSite> climateSiteList = (from c in db.ClimateSites
+                                                     where c.DailyEndDate_Local != null
+                                                     && c.DailyEndDate_Local.Value.Year > 2016
+                                                     select c).ToList();
+
+                foreach (ClimateSite climateSite in climateSiteList)
                 {
-                    richTextBoxStatus.AppendText(s + "\r\n");
+                    climateSite.DailyEndDate_Local = climateSite.DailyEndDate_Local.Value.AddYears(5);
                 }
 
-                var bbb = (from c in db.EmailDistributionListContacts
-                           select c.Agency).Distinct().ToList();
-
-                foreach (string s in bbb)
+                try
                 {
-                    richTextBoxStatus.AppendText(s + "\r\n");
+                    db.SaveChanges();
                 }
-
+                catch (Exception ex)
+                {
+                    int selfj = 34;
+                    throw;
+                }
             }
         }
 

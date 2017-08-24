@@ -249,6 +249,7 @@
             this.button31 = new System.Windows.Forms.Button();
             this.button32 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -2292,6 +2293,16 @@
             this.button33.UseVisualStyleBackColor = true;
             this.button33.Click += new System.EventHandler(this.button33_Click);
             // 
+            // button34
+            // 
+            this.button34.Location = new System.Drawing.Point(861, 546);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(59, 25);
+            this.button34.TabIndex = 204;
+            this.button34.Text = "button34";
+            this.button34.UseVisualStyleBackColor = true;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2299,6 +2310,7 @@
             this.ClientSize = new System.Drawing.Size(1162, 766);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.button26);
+            this.Controls.Add(this.button34);
             this.Controls.Add(this.button33);
             this.Controls.Add(this.button32);
             this.Controls.Add(this.button31);
@@ -2749,6 +2761,7 @@
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button32;
         private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button button34;
     }
 }
 
