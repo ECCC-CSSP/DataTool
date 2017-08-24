@@ -9273,7 +9273,7 @@ namespace ImportByFunction
 
         private void button32_Click(object sender, EventArgs e)
         {
-            richTextBoxStatus.Text = "Subsector,Site,Date,MPN";
+            richTextBoxStatus.Text = "Subsector,Site,Run Date,MPN,Type,Last Modified Date\r\n";
             using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
             {
                 lblStatus.Text = "Starting";
@@ -9285,7 +9285,7 @@ namespace ImportByFunction
                                            where c.TVItemID == cl.TVItemID
                                            && c.TVType == (int)TVTypeEnum.Subsector
                                            && cl.Language == (int)LanguageEnum.en
-                                           where cl.TVText.StartsWith("PE-")
+                                           where cl.TVText.StartsWith("NB-")
                                            orderby cl.TVText
                                            select new { c, cl }).ToList();
 
@@ -9310,26 +9310,19 @@ namespace ImportByFunction
                         lblStatus.Refresh();
                         Application.DoEvents();
 
+                        DateTime StartDate = new DateTime(2017, 4, 1);
+                        DateTime EndDate = new DateTime(2017, 9, 1);
                         List<MWQMSample> mwqmSampleList = (from c in db.MWQMSamples
                                                            where c.MWQMSiteTVItemID == tvItemMWQMSite.c.TVItemID
-                                                           && c.FecCol_MPN_100ml == 5
-                                                           && c.SampleDateTime_Local.Year > 2015
+                                                           && (c.LastUpdateDate_UTC > StartDate
+                                                           && c.LastUpdateDate_UTC < EndDate)
+                                                           && c.SampleDateTime_Local.Year < 2015
                                                            orderby c.SampleDateTime_Local
                                                            select c).ToList();
 
                         foreach (MWQMSample mwqmSample in mwqmSampleList)
                         {
-                            //mwqmSample.FecCol_MPN_100ml = 4;
-                            richTextBoxStatus.AppendText(tvItemSubsector.cl.TVText + "," + tvItemMWQMSite.cl.TVText + "," + mwqmSample.SampleDateTime_Local + "," + mwqmSample.FecCol_MPN_100ml + "\r\n");
-
-                            //try
-                            //{
-                            //    db.SaveChanges();
-                            //}
-                            //catch (Exception ex)
-                            //{
-                            //    richTextBoxStatus.AppendText("Error: " + ex.Message + "\r\n");
-                            //}
+                            richTextBoxStatus.AppendText(tvItemSubsector.cl.TVText.Replace(",", "_") + "," + tvItemMWQMSite.cl.TVText.Replace(",", "_") + "," + mwqmSample.SampleDateTime_Local + "," + mwqmSample.FecCol_MPN_100ml + "," + mwqmSample.SampleTypesText.Replace(",", "   ") + "," + mwqmSample.LastUpdateDate_UTC + "\r\n");
                         }
 
                     }
@@ -9343,6 +9336,7 @@ namespace ImportByFunction
         {
             using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
             {
+                     
                 //    EmailDistributionListContactLanguageService EmailDistributionListContactLanguageService = new EmailDistributionListContactLanguageService(LanguageEnum.en, user);
                 //    List<EmailDistributionListContact> edlList = (from c in db.EmailDistributionListContacts
                 //                                           select c).ToList();
