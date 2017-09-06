@@ -250,6 +250,7 @@
             this.button32 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
+            this.butImportJoeAppIssuesAndImages = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -2303,11 +2304,22 @@
             this.button34.UseVisualStyleBackColor = true;
             this.button34.Click += new System.EventHandler(this.button34_Click);
             // 
+            // butImportJoeAppIssuesAndImages
+            // 
+            this.butImportJoeAppIssuesAndImages.Location = new System.Drawing.Point(12, 544);
+            this.butImportJoeAppIssuesAndImages.Name = "butImportJoeAppIssuesAndImages";
+            this.butImportJoeAppIssuesAndImages.Size = new System.Drawing.Size(242, 25);
+            this.butImportJoeAppIssuesAndImages.TabIndex = 204;
+            this.butImportJoeAppIssuesAndImages.Text = "Import Joe app issues and images";
+            this.butImportJoeAppIssuesAndImages.UseVisualStyleBackColor = true;
+            this.butImportJoeAppIssuesAndImages.Click += new System.EventHandler(this.butImportJoeAppIssuesAndImages_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.butImportJoeAppIssuesAndImages);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.button26);
             this.Controls.Add(this.button34);
@@ -2762,6 +2774,7 @@
         private System.Windows.Forms.Button button32;
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.Button butImportJoeAppIssuesAndImages;
     }
 }
 
