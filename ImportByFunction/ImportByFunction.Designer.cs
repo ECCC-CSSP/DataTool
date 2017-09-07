@@ -251,6 +251,7 @@
             this.button33 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.butImportJoeAppIssuesAndImages = new System.Windows.Forms.Button();
+            this.butImportingPatriceMWQMImage = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -2314,11 +2315,22 @@
             this.butImportJoeAppIssuesAndImages.UseVisualStyleBackColor = true;
             this.butImportJoeAppIssuesAndImages.Click += new System.EventHandler(this.butImportJoeAppIssuesAndImages_Click);
             // 
+            // butImportingPatriceMWQMImage
+            // 
+            this.butImportingPatriceMWQMImage.Location = new System.Drawing.Point(709, 72);
+            this.butImportingPatriceMWQMImage.Name = "butImportingPatriceMWQMImage";
+            this.butImportingPatriceMWQMImage.Size = new System.Drawing.Size(242, 25);
+            this.butImportingPatriceMWQMImage.TabIndex = 204;
+            this.butImportingPatriceMWQMImage.Text = "Importing Patrice Image for each MWQM Site";
+            this.butImportingPatriceMWQMImage.UseVisualStyleBackColor = true;
+            this.butImportingPatriceMWQMImage.Click += new System.EventHandler(this.butImportingPatriceMWQMImage_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.butImportingPatriceMWQMImage);
             this.Controls.Add(this.butImportJoeAppIssuesAndImages);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.button26);
@@ -2775,6 +2787,7 @@
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button butImportJoeAppIssuesAndImages;
+        private System.Windows.Forms.Button butImportingPatriceMWQMImage;
     }
 }
 
