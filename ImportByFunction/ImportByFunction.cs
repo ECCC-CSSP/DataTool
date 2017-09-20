@@ -9510,804 +9510,804 @@ namespace ImportByFunction
         }
         private void butImportJoeAppIssuesAndImages_Click(object sender, EventArgs e)
         {
-            DirectoryInfo directoryInfoOfImages = new DirectoryInfo(@"\\Atlantic.int.ec.gc.ca\shares\Branches\EPB\ShellFish\Sanitary\Campobello letete may 9\");
-            List<DataIn> DataInList = new List<DataIn>();
-            List<DataOutSite> DataOutSiteList = new List<DataOutSite>();
-            List<DataOutObservation> DataOutObservationList = new List<DataOutObservation>();
-            List<DataOutObservationIssue> DataOutObservationIssueList = new List<DataOutObservationIssue>();
-
-            string FileNameXlsx = @"C:\Users\leblancc\Desktop\CSSP Sanitary Campobello MASTER Site Observations.xlsx";
-
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileNameXlsx + ";Extended Properties=Excel 12.0";
-
-            OleDbConnection conn = new OleDbConnection(connectionString);
-
-            conn.Open();
-
-            OleDbDataReader reader;
-
-            // --------------------------------------------------------------------------
-            // reading Data In sheet
-            // --------------------------------------------------------------------------
-            OleDbCommand comm = new OleDbCommand("Select * from [Data In$];");
-
-            comm.Connection = conn;
-            reader = comm.ExecuteReader();
-
-            int CountRead = 0;
-            while (reader.Read())
-            {
-                CountRead += 1;
-                if (CountRead < 0)
-                    continue;
-
-                Application.DoEvents();
-
-                string NewName = "";
-                string Province = "";
-                string Subsector = "";
-                string PictureView = "";
-                string Comments = "";
-                string FileName = "";
-                double Lat = 0.0D;
-                double Lng = 0.0D;
-                DateTime ObservationDate = new DateTime(1900, 1, 1);
-                string SpreadSheetSiteID = "";
-                string CSSPWebToolsSiteID = "";
-
-                // NewName
-                if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
-                {
-                    NewName = "";
-                }
-                else
-                {
-                    NewName = reader.GetValue(0).ToString().Trim();
-                }
-
-                // Province
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
-                {
-                    Province = "";
-                }
-                else
-                {
-                    Province = reader.GetValue(1).ToString().Trim();
-                }
-
-                // Subsector
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
-                {
-                    Subsector = "";
-                }
-                else
-                {
-                    Subsector = reader.GetValue(2).ToString().Trim();
-                }
-
-                // PictureView
-                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
-                {
-                    PictureView = "";
-                }
-                else
-                {
-                    PictureView = reader.GetValue(3).ToString().Trim();
-                }
-
-                // Comments
-                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
-                {
-                    Comments = "";
-                }
-                else
-                {
-                    Comments = reader.GetValue(4).ToString().Trim();
-                }
-
-                // FileName
-                if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
-                {
-                    FileName = "";
-                }
-                else
-                {
-                    FileName = reader.GetValue(5).ToString().Trim();
-                }
-
-                // Lat
-                if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
-                {
-                    Lat = 0.0D;
-                }
-                else
-                {
-                    Lat = double.Parse(reader.GetValue(6).ToString().Trim());
-                }
-
-                // Lng
-                if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
-                {
-                    Lng = 0.0D;
-                }
-                else
-                {
-                    Lng = double.Parse(reader.GetValue(7).ToString().Trim());
-                }
-
-                // ObservationDate
-                if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
-                {
-                    ObservationDate = new DateTime(1900, 1, 1);
-                }
-                else
-                {
-                    ObservationDate = DateTime.Parse(reader.GetValue(8).ToString().Trim());
-                }
-
-                // SpreadSheetSiteID
-                if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
-                {
-                    SpreadSheetSiteID = "";
-                }
-                else
-                {
-                    SpreadSheetSiteID = reader.GetValue(11).ToString().Trim();
-                }
-
-                if (CountRead == 1)
-                {
-                    richTextBoxStatus.AppendText(directoryInfoOfImages + "\r\n");
-                }
-
-                richTextBoxStatus.AppendText(CountRead + "\t");
-                richTextBoxStatus.AppendText(NewName + "\t");
-                richTextBoxStatus.AppendText(Province + "\t");
-                richTextBoxStatus.AppendText(Subsector + "\t");
-                richTextBoxStatus.AppendText(PictureView + "\t");
-                richTextBoxStatus.AppendText(Comments + "\t");
-                richTextBoxStatus.AppendText(FileName + "\t");
-                richTextBoxStatus.AppendText(Lat.ToString() + "\t");
-                richTextBoxStatus.AppendText(Lng.ToString() + "\t");
-                richTextBoxStatus.AppendText(ObservationDate + "\t");
-                richTextBoxStatus.AppendText(SpreadSheetSiteID + "\r\n");
-
-                DataIn dataIn = new DataIn();
-                dataIn.NewName = NewName;
-                dataIn.Province = Province;
-                dataIn.Subsector = Subsector;
-                dataIn.PictureView = PictureView;
-                dataIn.Comments = Comments;
-                dataIn.FileName = FileName;
-                dataIn.Lat = Lat;
-                dataIn.Lng = Lng;
-                dataIn.ObservationDate = ObservationDate;
-                dataIn.SpreadSheetSiteID = SpreadSheetSiteID;
-                dataIn.CSSPWebToolsSiteID = "";
-
-                DataInList.Add(dataIn);
-            }
-
-            // --------------------------------------------------------------------------
-            // reading Data Out Sites sheet
-            // --------------------------------------------------------------------------
-            comm = new OleDbCommand("Select * from [Data Out Sites$];");
-
-            comm.Connection = conn;
-            reader = comm.ExecuteReader();
-
-            CountRead = 0;
-            while (reader.Read())
-            {
-                CountRead += 1;
-                if (CountRead < 0)
-                    continue;
-
-                Application.DoEvents();
-
-                string SpreadSheetSiteID = "";
-                string Province = "";
-                string Subsector = "";
-                string PictureView = "";
-                double Lat = 0.0D;
-                double Lng = 0.0D;
-                string Projection = "";
-                string Zone = "";
-                string CivicNbr = "";
-                string SiteComments = "";
-
-                // NewName
-                if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
-                {
-                    SpreadSheetSiteID = "";
-                }
-                else
-                {
-                    SpreadSheetSiteID = reader.GetValue(0).ToString().Trim();
-                }
-
-                // Province
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
-                {
-                    Province = "";
-                }
-                else
-                {
-                    Province = reader.GetValue(1).ToString().Trim();
-                }
-
-                // Subsector
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
-                {
-                    Subsector = "";
-                }
-                else
-                {
-                    Subsector = reader.GetValue(2).ToString().Trim();
-                }
-
-                // Lat
-                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
-                {
-                    Lat = 0.0D;
-                }
-                else
-                {
-                    Lat = double.Parse(reader.GetValue(3).ToString().Trim());
-                }
-
-                // Lng
-                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
-                {
-                    Lng = 0.0D;
-                }
-                else
-                {
-                    Lng = double.Parse(reader.GetValue(4).ToString().Trim());
-                }
-
-                // Projection
-                if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
-                {
-                    Projection = "";
-                }
-                else
-                {
-                    Projection = reader.GetValue(5).ToString().Trim();
-                }
-
-                // Zone
-                if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
-                {
-                    Zone = "";
-                }
-                else
-                {
-                    Zone = reader.GetValue(6).ToString().Trim();
-                }
-
-                // CivicNbr
-                if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
-                {
-                    CivicNbr = "";
-                }
-                else
-                {
-                    CivicNbr = reader.GetValue(7).ToString().Trim();
-                }
-
-                // SiteComments
-                if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
-                {
-                    SiteComments = "";
-                }
-                else
-                {
-                    SiteComments = reader.GetValue(8).ToString().Trim();
-                }
-
-                richTextBoxStatus.AppendText(CountRead + "\t");
-                richTextBoxStatus.AppendText(SpreadSheetSiteID + "\t");
-                richTextBoxStatus.AppendText(Province + "\t");
-                richTextBoxStatus.AppendText(Subsector + "\t");
-                richTextBoxStatus.AppendText(Lat.ToString() + "\t");
-                richTextBoxStatus.AppendText(Lng.ToString() + "\t");
-                richTextBoxStatus.AppendText(Projection + "\t");
-                richTextBoxStatus.AppendText(Zone + "\t");
-                richTextBoxStatus.AppendText(CivicNbr + "\t");
-                richTextBoxStatus.AppendText(SiteComments + "\r\n");
-
-                DataOutSite dataOutSite = new DataOutSite();
-                dataOutSite.SpreadSheetSiteID = SpreadSheetSiteID;
-                dataOutSite.CSSPWebToolsSiteID = "";
-                dataOutSite.Province = Province;
-                dataOutSite.Subsector = Subsector;
-                dataOutSite.Lat = Lat;
-                dataOutSite.Lng = Lng;
-                dataOutSite.Projection = Projection;
-                dataOutSite.Zone = Zone;
-                dataOutSite.CivicNbr = CivicNbr;
-                dataOutSite.SiteComments = SiteComments;
-
-                DataOutSiteList.Add(dataOutSite);
-            }
-
-            // --------------------------------------------------------------------------
-            // reading Data Out Observations sheet
-            // --------------------------------------------------------------------------
-            comm = new OleDbCommand("Select * from [Data Out Observations$];");
-
-            comm.Connection = conn;
-            reader = comm.ExecuteReader();
-
-            CountRead = 0;
-            while (reader.Read())
-            {
-                CountRead += 1;
-                if (CountRead < 0)
-                    continue;
-
-                Application.DoEvents();
-
-                string SpreadSheetSiteID = "";
-                string ObservationID = "";
-                DateTime ObservationDate = new DateTime(1900, 1, 1);
-
-                // SpreadSheetSiteID
-                if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
-                {
-                    SpreadSheetSiteID = "";
-                }
-                else
-                {
-                    SpreadSheetSiteID = reader.GetValue(0).ToString().Trim();
-                }
-
-                // ObservationID
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
-                {
-                    ObservationID = "";
-                }
-                else
-                {
-                    ObservationID = reader.GetValue(1).ToString().Trim();
-                }
-
-                // ObservationDate
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
-                {
-                    ObservationDate = new DateTime(1900, 1, 1);
-                }
-                else
-                {
-                    ObservationDate = DateTime.Parse(reader.GetValue(2).ToString().Trim());
-                }
-
-                richTextBoxStatus.AppendText(CountRead + "\t");
-                richTextBoxStatus.AppendText(SpreadSheetSiteID + "\t");
-                richTextBoxStatus.AppendText(ObservationID + "\t");
-                richTextBoxStatus.AppendText(ObservationDate + "\r\n");
-
-                DataOutObservation dataOutObservation = new DataOutObservation();
-                dataOutObservation.SpreadSheetSiteID = SpreadSheetSiteID;
-                dataOutObservation.CSSPWebToolsSiteID = "";
-                dataOutObservation.SpreadSheetObservationID = ObservationID;
-                dataOutObservation.CSSPWebToolsObservationID = "";
-                dataOutObservation.ObservationDate = ObservationDate;
-
-                DataOutObservationList.Add(dataOutObservation);
-            }
-
-            // --------------------------------------------------------------------------
-            // reading Data Out Observation Issues sheet
-            // --------------------------------------------------------------------------
-            comm = new OleDbCommand("Select * from [Data Out Observation Issues$];");
-
-            comm.Connection = conn;
-            reader = comm.ExecuteReader();
-
-            CountRead = 0;
-            while (reader.Read())
-            {
-                CountRead += 1;
-                if (CountRead < 0)
-                    continue;
-
-                Application.DoEvents();
-
-                string SpreadSheetSiteID = "";
-                string ObservationID = "";
-                string IssueID = "";
-                string ObservationInfo = "";
-                string ObservationInfoText = "";
-
-                // SpreadSheetSiteID
-                if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
-                {
-                    SpreadSheetSiteID = "";
-                }
-                else
-                {
-                    SpreadSheetSiteID = reader.GetValue(0).ToString().Trim();
-                }
-
-                // ObservationID
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
-                {
-                    ObservationID = "";
-                }
-                else
-                {
-                    ObservationID = reader.GetValue(1).ToString().Trim();
-                }
-
-                // IssueID
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
-                {
-                    IssueID = "";
-                }
-                else
-                {
-                    IssueID = reader.GetValue(2).ToString().Trim();
-                }
-
-                // ObservationInfo
-                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
-                {
-                    ObservationInfo = "";
-                }
-                else
-                {
-                    ObservationInfo = reader.GetValue(3).ToString().Trim();
-                }
-
-                // ObservationInfoText
-                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
-                {
-                    ObservationInfoText = "";
-                }
-                else
-                {
-                    ObservationInfoText = reader.GetValue(4).ToString().Trim();
-                }
-
-                richTextBoxStatus.AppendText(CountRead + "\t");
-                richTextBoxStatus.AppendText(SpreadSheetSiteID + "\t");
-                richTextBoxStatus.AppendText(ObservationID + "\t");
-                richTextBoxStatus.AppendText(IssueID + "\t");
-                richTextBoxStatus.AppendText(ObservationInfo + "\t");
-                richTextBoxStatus.AppendText(ObservationInfoText + "\r\n");
-
-                DataOutObservationIssue dataOutObservationIssue = new DataOutObservationIssue();
-                dataOutObservationIssue.SpreadSheetSiteID = SpreadSheetSiteID;
-                dataOutObservationIssue.CSSPWebToolsSiteID = "";
-                dataOutObservationIssue.SpreadSheetObservationID = ObservationID;
-                dataOutObservationIssue.CSSPWebToolsObservationID = "";
-                dataOutObservationIssue.IssueID = IssueID;
-                dataOutObservationIssue.ObservationInfo = ObservationInfo;
-                dataOutObservationIssue.ObservationInfoText = ObservationInfoText;
-
-                DataOutObservationIssueList.Add(dataOutObservationIssue);
-            }
-
-            int JoePomeroyTVItemID = 165698;
-
-            List<int> SpreadSheetSiteIDAlreadyUsed = new List<int>();
-
-            foreach (DataOutSite dataOutSite in DataOutSiteList)
-            {
-                if (SpreadSheetSiteIDAlreadyUsed.Contains(int.Parse(dataOutSite.SpreadSheetSiteID)))
-                {
-                    continue;
-                }
-
-                SpreadSheetSiteIDAlreadyUsed.Add(int.Parse(dataOutSite.SpreadSheetSiteID));
-
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
-                {
-                    TVItem tvItemSubsector = (from c in db.TVItems
-                                              from cl in db.TVItemLanguages
-                                              where c.TVItemID == cl.TVItemID
-                                              && cl.Language == (int)LanguageEnum.en
-                                              && cl.TVText.StartsWith(dataOutSite.Subsector)
-                                              && c.TVType == (int)TVTypeEnum.Subsector
-                                              select c).FirstOrDefault();
-
-                    if (tvItemSubsector.TVItemID != 720) // 720 Subsector  NB-18-010-001 (Campobello Island)
-                    {
-                        richTextBoxStatus.AppendText("could not find TVItemSubsector with 720\r\n");
-                        return;
-                    }
-
-                    int site = 0;
-                    if (!int.TryParse(dataOutSite.SpreadSheetSiteID, out site))
-                    {
-                        richTextBoxStatus.AppendText("Could not parse dataOutSite.SpreadSheetSiteID\r\n");
-                        return;
-                    }
-
-                    PolSourceSite polSourceSiteLastNumber = (from p in db.PolSourceSites
-                                                             from t in db.TVItems
-                                                             where p.PolSourceSiteTVItemID == t.TVItemID
-                                                             && t.TVType == (int)TVTypeEnum.PolSourceSite
-                                                             && t.ParentID == tvItemSubsector.TVItemID
-                                                             orderby p.Site descending
-                                                             select p).FirstOrDefault();
-
-                    if (polSourceSiteLastNumber == null)
-                    {
-                        richTextBoxStatus.AppendText("Could not find a pollution source site for subsector [" + dataOutSite.Subsector + "]\r\n");
-                        return;
-                    }
-
-                    dataOutSite.CSSPWebToolsSiteID = (polSourceSiteLastNumber.Site + 1).ToString();
-
-
-                    // ----------------------------------------------------------------------------------------------
-                    // Adding TVItem
-                    // ----------------------------------------------------------------------------------------------
-                    user = new GenericPrincipal(new GenericIdentity("Joe.Pomeroy@canada.ca", "Forms"), null);
-
-                    if (user == null)
-                    {
-                        richTextBoxStatus.AppendText("Could not loggin as Joe Pomeroy\r\n");
-                        return;
-                    }
-
-                    string TVText = "000000".Substring(0, 6 - dataOutSite.CSSPWebToolsSiteID.ToString().Length) + dataOutSite.CSSPWebToolsSiteID.ToString();
-
-                    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-
-                    TVItemModel tvItemModelPolSourceSite = tvItemService.PostAddChildTVItemDB(tvItemSubsector.TVItemID, TVText, TVTypeEnum.PolSourceSite);
-                    if (!string.IsNullOrWhiteSpace(tvItemModelPolSourceSite.Error))
-                    {
-                        richTextBoxStatus.AppendText(tvItemModelPolSourceSite.Error + "\r\n");
-                        return;
-                    }
-
-                    // ----------------------------------------------------------------------------------------------
-                    // Adding MapInfo
-                    // ----------------------------------------------------------------------------------------------
-
-                    List<Coord> coordList = new List<Coord>()
-                    {
-                        new Coord() { Lat = (float)dataOutSite.Lat, Lng = (float)dataOutSite.Lng, Ordinal = 0 }
-                    };
-
-                    MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
-                    MapInfoModel mapInfoModelRet = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.PolSourceSite, tvItemModelPolSourceSite.TVItemID);
-                    if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
-                    {
-                        richTextBoxStatus.AppendText(mapInfoModelRet.Error + "\r\n");
-                        return;
-                    }
-
-                    // ----------------------------------------------------------------------------------------------
-                    // Adding Pol Source Site
-                    // ----------------------------------------------------------------------------------------------
-
-                    PolSourceSiteService polSourceSiteService = new PolSourceSiteService(LanguageEnum.en, user);
-
-                    PolSourceSiteModel polSourceSiteModel = new PolSourceSiteModel();
-                    polSourceSiteModel.PolSourceSiteTVItemID = tvItemModelPolSourceSite.TVItemID;
-                    polSourceSiteModel.Site = int.Parse(dataOutSite.CSSPWebToolsSiteID);
-                    polSourceSiteModel.PolSourceSiteTVText = TVText;
-
-                    PolSourceSiteModel polSourceSiteModelRet = polSourceSiteService.PostAddPolSourceSiteDB(polSourceSiteModel);
-                    if (!string.IsNullOrWhiteSpace(polSourceSiteModelRet.Error))
-                    {
-                        richTextBoxStatus.AppendText(polSourceSiteModelRet.Error + "\r\n");
-                        return;
-                    }
-
-                    // ----------------------------------------------------------------------------------------------
-                    // Adding Pol Source observation
-                    // ----------------------------------------------------------------------------------------------
-
-                    DataOutObservation dataOutObservation = DataOutObservationList.Where(c => c.SpreadSheetSiteID == dataOutSite.SpreadSheetSiteID).FirstOrDefault();
-
-                    PolSourceObservationService polSourceObservationService = new PolSourceObservationService(LanguageEnum.en, user);
-
-                    PolSourceObservationModel polSourceObservationModel = new PolSourceObservationModel();
-                    polSourceObservationModel.PolSourceSiteID = polSourceSiteModelRet.PolSourceSiteID;
-                    polSourceObservationModel.ObservationDate_Local = dataOutObservation.ObservationDate;
-                    polSourceObservationModel.ContactTVItemID = JoePomeroyTVItemID;
-                    polSourceObservationModel.Observation_ToBeDeleted = " ";
-
-                    PolSourceObservationModel polSourceObservationModelRet = polSourceObservationService.PostAddPolSourceObservationDB(polSourceObservationModel);
-                    if (!string.IsNullOrWhiteSpace(polSourceObservationModelRet.Error))
-                    {
-                        richTextBoxStatus.AppendText(polSourceObservationModelRet.Error + "\r\n");
-                        return;
-                    }
-
-                    // ----------------------------------------------------------------------------------------------
-                    // Adding Pol Source observation issue
-                    // ----------------------------------------------------------------------------------------------
-
-                    List<DataOutObservationIssue> dataOutObservationIssueList = DataOutObservationIssueList.Where(c => c.SpreadSheetSiteID == dataOutSite.SpreadSheetSiteID).ToList();
-
-                    int Ordinal = 0;
-                    foreach (DataOutObservationIssue dataOutObservationIssue in dataOutObservationIssueList)
-                    {
-                        PolSourceObservationIssueService polSourceObservationIssueService = new PolSourceObservationIssueService(LanguageEnum.en, user);
-
-                        PolSourceObservationIssueModel polSourceObservationIssueModel = new PolSourceObservationIssueModel();
-                        polSourceObservationIssueModel.PolSourceObservationID = polSourceObservationModelRet.PolSourceObservationID;
-                        polSourceObservationIssueModel.ObservationInfo = dataOutObservationIssue.ObservationInfo;
-                        polSourceObservationIssueModel.Ordinal = Ordinal;
-                        List<string> PolSourceObsInfoTextList = dataOutObservationIssue.ObservationInfo.Split(",".ToArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
-                        polSourceObservationIssueModel.PolSourceObsInfoList = new List<PolSourceObsInfoEnum>();
-
-                        foreach (string s in PolSourceObsInfoTextList)
-                        {
-                            int PolSourceObsInfoInt = int.Parse(s);
-                            polSourceObservationIssueModel.PolSourceObsInfoList.Add((PolSourceObsInfoEnum)PolSourceObsInfoInt);
-                        }
-
-                        PolSourceObservationIssueModel polSourceObservationIssueModelRet = polSourceObservationIssueService.PostAddPolSourceObservationIssueDB(polSourceObservationIssueModel);
-                        if (!string.IsNullOrWhiteSpace(polSourceObservationIssueModelRet.Error))
-                        {
-                            richTextBoxStatus.AppendText(polSourceObservationIssueModelRet.Error + "\r\n");
-                            return;
-                        }
-
-                        if (Ordinal == 0)
-                        {
-                            foreach (LanguageEnum lang in new List<LanguageEnum>() { LanguageEnum.en, LanguageEnum.fr })
-                            {
-                                Thread.CurrentThread.CurrentCulture = new CultureInfo(lang + "-CA");
-                                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang + "-CA");
-
-                                string TVTextPS = "";
-                                int CountTVTextElement = 0;
-                                foreach (PolSourceObsInfoEnum polSourceObsInfo in polSourceObservationIssueModel.PolSourceObsInfoList)
-                                {
-                                    if (int.Parse(((int)polSourceObsInfo).ToString().Substring(0, 3)) > 104 && CountTVTextElement < 4)
-                                    {
-                                        CountTVTextElement += 1;
-                                        TVTextPS = TVTextPS + _BaseEnumService.GetEnumText_PolSourceObsInfoTextEnum(polSourceObsInfo);
-                                    }
-                                }
-
-                                TVTextPS = TVTextPS + " - " + "000000".Substring(0, "000000".Length - polSourceSiteModel.Site.ToString().Length) + polSourceSiteModel.Site.ToString();
-
-                                TVItemLanguageModel tvItemLanguageModel = new TVItemLanguageModel();
-                                tvItemLanguageModel.Language = lang;
-                                tvItemLanguageModel.TVText = TVTextPS;
-                                tvItemLanguageModel.TVItemID = polSourceSiteModel.PolSourceSiteTVItemID;
-
-                                TVItemLanguageModel tvItemLanguageModelRet = tvItemService._TVItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModel);
-                                if (!string.IsNullOrWhiteSpace(tvItemLanguageModelRet.Error))
-                                {
-                                    richTextBoxStatus.AppendText(tvItemLanguageModelRet.Error + "\r\n");
-                                    return;
-                                }
-
-                                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-CA");
-                                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-CA");
-                            }
-                        }
-
-                        Ordinal += 1;
-                    }
-
-                    // ----------------------------------------------------------------------------------------------
-                    // Adding Files for Pol Source Site
-                    // ----------------------------------------------------------------------------------------------
-                    List<DataIn> dataInList = DataInList.Where(c => c.SpreadSheetSiteID == dataOutSite.SpreadSheetSiteID).ToList();
-
-                    foreach (DataIn dataIn in dataInList)
-                    {
-                        if (!dataIn.FileName.EndsWith(".JPG"))
-                        {
-                            richTextBoxStatus.AppendText("File name does not end with .JPG \r\n");
-                            return;
-                        }
-
-                        FileInfo fi = new FileInfo(@"\\Atlantic.int.ec.gc.ca\shares\Branches\EPB\ShellFish\Sanitary\Campobello letete may 9\" + dataIn.FileName);
-
-                        if (!fi.Exists)
-                        {
-                            richTextBoxStatus.AppendText("Could not find file [" + fi.FullName + "\r\n");
-                            return;
-                        }
-
-                        string TVTextFile = dataIn.NewName;
-                        TVItemModel tvItemModelFile = tvItemService.PostAddChildTVItemDB(polSourceSiteModelRet.PolSourceSiteTVItemID, TVTextFile, TVTypeEnum.File);
-                        if (!string.IsNullOrWhiteSpace(tvItemModelFile.Error))
-                        {
-                            richTextBoxStatus.AppendText(tvItemModelFile.Error + "\r\n");
-                            return;
-                        }
-
-                        TVFileService tvFileService = new TVFileService(LanguageEnum.en, user);
-
-                        TVFileModel tvFileModel = new TVFileModel();
-                        tvFileModel.TVFileTVItemID = tvItemModelFile.TVItemID;
-                        tvFileModel.TemplateTVType = TVTypeEnum.Error;
-                        tvFileModel.Language = LanguageEnum.en;
-                        tvFileModel.FilePurpose = FilePurposeEnum.Picture;
-                        tvFileModel.FileType = FileTypeEnum.JPEG;
-                        tvFileModel.FileSize_kb = (int)(fi.Length / 1024);
-                        tvFileModel.FileInfo = "Picture of the pollution source site";
-                        tvFileModel.FileCreatedDate_UTC = fi.CreationTimeUtc;
-                        tvFileModel.FromWater = (dataIn.PictureView == "From Land" ? false : true);
-                        tvFileModel.ServerFilePath = @"E:\inetpub\wwwroot\csspwebtools\App_Data\" + polSourceSiteModelRet.PolSourceSiteTVItemID.ToString() + @"\";
-                        tvFileModel.ServerFileName = dataIn.NewName.Trim() + ".jpg";
-                        tvFileModel.FileDescription = dataIn.NewName;
-
-                        TVFileModel tvFileModelRet = tvFileService.PostAddTVFileDB(tvFileModel);
-                        if (!string.IsNullOrWhiteSpace(tvFileModelRet.Error))
-                        {
-                            richTextBoxStatus.AppendText(tvFileModelRet.Error + "\r\n");
-                            return;
-                        }
-
-                        string NewFullFileName = tvFileModelRet.ServerFilePath + tvFileModelRet.ServerFileName;
-
-                        DirectoryInfo di = new DirectoryInfo(tvFileModelRet.ServerFilePath);
-
-                        if (!di.Exists)
-                        {
-                            try
-                            {
-                                di.Create();
-                            }
-                            catch (Exception ex)
-                            {
-                                richTextBoxStatus.AppendText(ex.Message + "\r\n");
-                                return;
-                            }
-                        }
-
-                        try
-                        {
-                            File.Copy(fi.FullName, NewFullFileName);
-                        }
-                        catch (Exception ex)
-                        {
-                            richTextBoxStatus.AppendText(ex.Message + "\r\n");
-                            return;
-                        }
-                    }
-
-                    // ----------------------------------------------------------------------------------------------
-                    // Adding Address for Pol Source Site
-                    // ----------------------------------------------------------------------------------------------
-
-                    // not possible at this point -- not enough information
-
-                }
-            }
-
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-
-            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Open(FileNameXlsx, ReadOnly: false, Editable: true);
-            Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.Worksheets.Item[2] as Microsoft.Office.Interop.Excel.Worksheet;
-            if (worksheet == null)
-                return;
-
-            for (int row = 2; row < 10000; row++)
-            {
-                double? Site = worksheet.Cells[row, 1].Value;
-                if (Site == null)
-                {
-                    break;
-                }
-
-                DataOutSite dataOutSite = DataOutSiteList.Where(c => c.SpreadSheetSiteID == Site.ToString()).FirstOrDefault();
-
-                Microsoft.Office.Interop.Excel.Range range1 = worksheet.Rows.Cells[row, 10];
-
-                range1.Value = "" + dataOutSite.CSSPWebToolsSiteID;
-                range1.Select();
-                worksheet.Hyperlinks.Add(range1, @"http://wmon01dtchlebl2/csspwebtools/en-CA/#!View/a|||" + dataOutSite.CSSPWebToolsSiteID + @"|||30010000002000000000000000000000");
-            }
-
-            workbook.SaveAs(FileNameXlsx.Replace(".xlsx", " And Link.xlsx"));
-            workbook.Close();
-            excel.Quit();
+            //DirectoryInfo directoryInfoOfImages = new DirectoryInfo(@"\\Atlantic.int.ec.gc.ca\shares\Branches\EPB\ShellFish\Sanitary\Campobello letete may 9\");
+            //List<DataIn> DataInList = new List<DataIn>();
+            //List<DataOutSite> DataOutSiteList = new List<DataOutSite>();
+            //List<DataOutObservation> DataOutObservationList = new List<DataOutObservation>();
+            //List<DataOutObservationIssue> DataOutObservationIssueList = new List<DataOutObservationIssue>();
+
+            //string FileNameXlsx = @"C:\Users\leblancc\Desktop\CSSP Sanitary Campobello MASTER Site Observations.xlsx";
+
+            //string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileNameXlsx + ";Extended Properties=Excel 12.0";
+
+            //OleDbConnection conn = new OleDbConnection(connectionString);
+
+            //conn.Open();
+
+            //OleDbDataReader reader;
+
+            //// --------------------------------------------------------------------------
+            //// reading Data In sheet
+            //// --------------------------------------------------------------------------
+            //OleDbCommand comm = new OleDbCommand("Select * from [Data In$];");
+
+            //comm.Connection = conn;
+            //reader = comm.ExecuteReader();
+
+            //int CountRead = 0;
+            //while (reader.Read())
+            //{
+            //    CountRead += 1;
+            //    if (CountRead < 0)
+            //        continue;
+
+            //    Application.DoEvents();
+
+            //    string NewName = "";
+            //    string Province = "";
+            //    string Subsector = "";
+            //    string PictureView = "";
+            //    string Comments = "";
+            //    string FileName = "";
+            //    double Lat = 0.0D;
+            //    double Lng = 0.0D;
+            //    DateTime ObservationDate = new DateTime(1900, 1, 1);
+            //    string SpreadSheetSiteID = "";
+            //    string CSSPWebToolsSiteID = "";
+
+            //    // NewName
+            //    if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+            //    {
+            //        NewName = "";
+            //    }
+            //    else
+            //    {
+            //        NewName = reader.GetValue(0).ToString().Trim();
+            //    }
+
+            //    // Province
+            //    if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+            //    {
+            //        Province = "";
+            //    }
+            //    else
+            //    {
+            //        Province = reader.GetValue(1).ToString().Trim();
+            //    }
+
+            //    // Subsector
+            //    if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+            //    {
+            //        Subsector = "";
+            //    }
+            //    else
+            //    {
+            //        Subsector = reader.GetValue(2).ToString().Trim();
+            //    }
+
+            //    // PictureView
+            //    if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+            //    {
+            //        PictureView = "";
+            //    }
+            //    else
+            //    {
+            //        PictureView = reader.GetValue(3).ToString().Trim();
+            //    }
+
+            //    // Comments
+            //    if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+            //    {
+            //        Comments = "";
+            //    }
+            //    else
+            //    {
+            //        Comments = reader.GetValue(4).ToString().Trim();
+            //    }
+
+            //    // FileName
+            //    if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
+            //    {
+            //        FileName = "";
+            //    }
+            //    else
+            //    {
+            //        FileName = reader.GetValue(5).ToString().Trim();
+            //    }
+
+            //    // Lat
+            //    if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
+            //    {
+            //        Lat = 0.0D;
+            //    }
+            //    else
+            //    {
+            //        Lat = double.Parse(reader.GetValue(6).ToString().Trim());
+            //    }
+
+            //    // Lng
+            //    if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
+            //    {
+            //        Lng = 0.0D;
+            //    }
+            //    else
+            //    {
+            //        Lng = double.Parse(reader.GetValue(7).ToString().Trim());
+            //    }
+
+            //    // ObservationDate
+            //    if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
+            //    {
+            //        ObservationDate = new DateTime(1900, 1, 1);
+            //    }
+            //    else
+            //    {
+            //        ObservationDate = DateTime.Parse(reader.GetValue(8).ToString().Trim());
+            //    }
+
+            //    // SpreadSheetSiteID
+            //    if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
+            //    {
+            //        SpreadSheetSiteID = "";
+            //    }
+            //    else
+            //    {
+            //        SpreadSheetSiteID = reader.GetValue(11).ToString().Trim();
+            //    }
+
+            //    if (CountRead == 1)
+            //    {
+            //        richTextBoxStatus.AppendText(directoryInfoOfImages + "\r\n");
+            //    }
+
+            //    richTextBoxStatus.AppendText(CountRead + "\t");
+            //    richTextBoxStatus.AppendText(NewName + "\t");
+            //    richTextBoxStatus.AppendText(Province + "\t");
+            //    richTextBoxStatus.AppendText(Subsector + "\t");
+            //    richTextBoxStatus.AppendText(PictureView + "\t");
+            //    richTextBoxStatus.AppendText(Comments + "\t");
+            //    richTextBoxStatus.AppendText(FileName + "\t");
+            //    richTextBoxStatus.AppendText(Lat.ToString() + "\t");
+            //    richTextBoxStatus.AppendText(Lng.ToString() + "\t");
+            //    richTextBoxStatus.AppendText(ObservationDate + "\t");
+            //    richTextBoxStatus.AppendText(SpreadSheetSiteID + "\r\n");
+
+            //    DataIn dataIn = new DataIn();
+            //    dataIn.NewName = NewName;
+            //    dataIn.Province = Province;
+            //    dataIn.Subsector = Subsector;
+            //    dataIn.PictureView = PictureView;
+            //    dataIn.Comments = Comments;
+            //    dataIn.FileName = FileName;
+            //    dataIn.Lat = Lat;
+            //    dataIn.Lng = Lng;
+            //    dataIn.ObservationDate = ObservationDate;
+            //    dataIn.SpreadSheetSiteID = SpreadSheetSiteID;
+            //    dataIn.CSSPWebToolsSiteID = "";
+
+            //    DataInList.Add(dataIn);
+            //}
+
+            //// --------------------------------------------------------------------------
+            //// reading Data Out Sites sheet
+            //// --------------------------------------------------------------------------
+            //comm = new OleDbCommand("Select * from [Data Out Sites$];");
+
+            //comm.Connection = conn;
+            //reader = comm.ExecuteReader();
+
+            //CountRead = 0;
+            //while (reader.Read())
+            //{
+            //    CountRead += 1;
+            //    if (CountRead < 0)
+            //        continue;
+
+            //    Application.DoEvents();
+
+            //    string SpreadSheetSiteID = "";
+            //    string Province = "";
+            //    string Subsector = "";
+            //    string PictureView = "";
+            //    double Lat = 0.0D;
+            //    double Lng = 0.0D;
+            //    string Projection = "";
+            //    string Zone = "";
+            //    string CivicNbr = "";
+            //    string SiteComments = "";
+
+            //    // NewName
+            //    if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+            //    {
+            //        SpreadSheetSiteID = "";
+            //    }
+            //    else
+            //    {
+            //        SpreadSheetSiteID = reader.GetValue(0).ToString().Trim();
+            //    }
+
+            //    // Province
+            //    if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+            //    {
+            //        Province = "";
+            //    }
+            //    else
+            //    {
+            //        Province = reader.GetValue(1).ToString().Trim();
+            //    }
+
+            //    // Subsector
+            //    if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+            //    {
+            //        Subsector = "";
+            //    }
+            //    else
+            //    {
+            //        Subsector = reader.GetValue(2).ToString().Trim();
+            //    }
+
+            //    // Lat
+            //    if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+            //    {
+            //        Lat = 0.0D;
+            //    }
+            //    else
+            //    {
+            //        Lat = double.Parse(reader.GetValue(3).ToString().Trim());
+            //    }
+
+            //    // Lng
+            //    if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+            //    {
+            //        Lng = 0.0D;
+            //    }
+            //    else
+            //    {
+            //        Lng = double.Parse(reader.GetValue(4).ToString().Trim());
+            //    }
+
+            //    // Projection
+            //    if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
+            //    {
+            //        Projection = "";
+            //    }
+            //    else
+            //    {
+            //        Projection = reader.GetValue(5).ToString().Trim();
+            //    }
+
+            //    // Zone
+            //    if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
+            //    {
+            //        Zone = "";
+            //    }
+            //    else
+            //    {
+            //        Zone = reader.GetValue(6).ToString().Trim();
+            //    }
+
+            //    // CivicNbr
+            //    if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
+            //    {
+            //        CivicNbr = "";
+            //    }
+            //    else
+            //    {
+            //        CivicNbr = reader.GetValue(7).ToString().Trim();
+            //    }
+
+            //    // SiteComments
+            //    if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
+            //    {
+            //        SiteComments = "";
+            //    }
+            //    else
+            //    {
+            //        SiteComments = reader.GetValue(8).ToString().Trim();
+            //    }
+
+            //    richTextBoxStatus.AppendText(CountRead + "\t");
+            //    richTextBoxStatus.AppendText(SpreadSheetSiteID + "\t");
+            //    richTextBoxStatus.AppendText(Province + "\t");
+            //    richTextBoxStatus.AppendText(Subsector + "\t");
+            //    richTextBoxStatus.AppendText(Lat.ToString() + "\t");
+            //    richTextBoxStatus.AppendText(Lng.ToString() + "\t");
+            //    richTextBoxStatus.AppendText(Projection + "\t");
+            //    richTextBoxStatus.AppendText(Zone + "\t");
+            //    richTextBoxStatus.AppendText(CivicNbr + "\t");
+            //    richTextBoxStatus.AppendText(SiteComments + "\r\n");
+
+            //    DataOutSite dataOutSite = new DataOutSite();
+            //    dataOutSite.SpreadSheetSiteID = SpreadSheetSiteID;
+            //    dataOutSite.CSSPWebToolsSiteID = "";
+            //    dataOutSite.Province = Province;
+            //    dataOutSite.Subsector = Subsector;
+            //    dataOutSite.Lat = Lat;
+            //    dataOutSite.Lng = Lng;
+            //    dataOutSite.Projection = Projection;
+            //    dataOutSite.Zone = Zone;
+            //    dataOutSite.CivicNbr = CivicNbr;
+            //    dataOutSite.SiteComments = SiteComments;
+
+            //    DataOutSiteList.Add(dataOutSite);
+            //}
+
+            //// --------------------------------------------------------------------------
+            //// reading Data Out Observations sheet
+            //// --------------------------------------------------------------------------
+            //comm = new OleDbCommand("Select * from [Data Out Observations$];");
+
+            //comm.Connection = conn;
+            //reader = comm.ExecuteReader();
+
+            //CountRead = 0;
+            //while (reader.Read())
+            //{
+            //    CountRead += 1;
+            //    if (CountRead < 0)
+            //        continue;
+
+            //    Application.DoEvents();
+
+            //    string SpreadSheetSiteID = "";
+            //    string ObservationID = "";
+            //    DateTime ObservationDate = new DateTime(1900, 1, 1);
+
+            //    // SpreadSheetSiteID
+            //    if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+            //    {
+            //        SpreadSheetSiteID = "";
+            //    }
+            //    else
+            //    {
+            //        SpreadSheetSiteID = reader.GetValue(0).ToString().Trim();
+            //    }
+
+            //    // ObservationID
+            //    if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+            //    {
+            //        ObservationID = "";
+            //    }
+            //    else
+            //    {
+            //        ObservationID = reader.GetValue(1).ToString().Trim();
+            //    }
+
+            //    // ObservationDate
+            //    if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+            //    {
+            //        ObservationDate = new DateTime(1900, 1, 1);
+            //    }
+            //    else
+            //    {
+            //        ObservationDate = DateTime.Parse(reader.GetValue(2).ToString().Trim());
+            //    }
+
+            //    richTextBoxStatus.AppendText(CountRead + "\t");
+            //    richTextBoxStatus.AppendText(SpreadSheetSiteID + "\t");
+            //    richTextBoxStatus.AppendText(ObservationID + "\t");
+            //    richTextBoxStatus.AppendText(ObservationDate + "\r\n");
+
+            //    DataOutObservation dataOutObservation = new DataOutObservation();
+            //    dataOutObservation.SpreadSheetSiteID = SpreadSheetSiteID;
+            //    dataOutObservation.CSSPWebToolsSiteID = "";
+            //    dataOutObservation.SpreadSheetObservationID = ObservationID;
+            //    dataOutObservation.CSSPWebToolsObservationID = "";
+            //    dataOutObservation.ObservationDate = ObservationDate;
+
+            //    DataOutObservationList.Add(dataOutObservation);
+            //}
+
+            //// --------------------------------------------------------------------------
+            //// reading Data Out Observation Issues sheet
+            //// --------------------------------------------------------------------------
+            //comm = new OleDbCommand("Select * from [Data Out Observation Issues$];");
+
+            //comm.Connection = conn;
+            //reader = comm.ExecuteReader();
+
+            //CountRead = 0;
+            //while (reader.Read())
+            //{
+            //    CountRead += 1;
+            //    if (CountRead < 0)
+            //        continue;
+
+            //    Application.DoEvents();
+
+            //    string SpreadSheetSiteID = "";
+            //    string ObservationID = "";
+            //    string IssueID = "";
+            //    string ObservationInfo = "";
+            //    string ObservationInfoText = "";
+
+            //    // SpreadSheetSiteID
+            //    if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+            //    {
+            //        SpreadSheetSiteID = "";
+            //    }
+            //    else
+            //    {
+            //        SpreadSheetSiteID = reader.GetValue(0).ToString().Trim();
+            //    }
+
+            //    // ObservationID
+            //    if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+            //    {
+            //        ObservationID = "";
+            //    }
+            //    else
+            //    {
+            //        ObservationID = reader.GetValue(1).ToString().Trim();
+            //    }
+
+            //    // IssueID
+            //    if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+            //    {
+            //        IssueID = "";
+            //    }
+            //    else
+            //    {
+            //        IssueID = reader.GetValue(2).ToString().Trim();
+            //    }
+
+            //    // ObservationInfo
+            //    if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+            //    {
+            //        ObservationInfo = "";
+            //    }
+            //    else
+            //    {
+            //        ObservationInfo = reader.GetValue(3).ToString().Trim();
+            //    }
+
+            //    // ObservationInfoText
+            //    if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+            //    {
+            //        ObservationInfoText = "";
+            //    }
+            //    else
+            //    {
+            //        ObservationInfoText = reader.GetValue(4).ToString().Trim();
+            //    }
+
+            //    richTextBoxStatus.AppendText(CountRead + "\t");
+            //    richTextBoxStatus.AppendText(SpreadSheetSiteID + "\t");
+            //    richTextBoxStatus.AppendText(ObservationID + "\t");
+            //    richTextBoxStatus.AppendText(IssueID + "\t");
+            //    richTextBoxStatus.AppendText(ObservationInfo + "\t");
+            //    richTextBoxStatus.AppendText(ObservationInfoText + "\r\n");
+
+            //    DataOutObservationIssue dataOutObservationIssue = new DataOutObservationIssue();
+            //    dataOutObservationIssue.SpreadSheetSiteID = SpreadSheetSiteID;
+            //    dataOutObservationIssue.CSSPWebToolsSiteID = "";
+            //    dataOutObservationIssue.SpreadSheetObservationID = ObservationID;
+            //    dataOutObservationIssue.CSSPWebToolsObservationID = "";
+            //    dataOutObservationIssue.IssueID = IssueID;
+            //    dataOutObservationIssue.ObservationInfo = ObservationInfo;
+            //    dataOutObservationIssue.ObservationInfoText = ObservationInfoText;
+
+            //    DataOutObservationIssueList.Add(dataOutObservationIssue);
+            //}
+
+            //int JoePomeroyTVItemID = 165698;
+
+            //List<int> SpreadSheetSiteIDAlreadyUsed = new List<int>();
+
+            //foreach (DataOutSite dataOutSite in DataOutSiteList)
+            //{
+            //    if (SpreadSheetSiteIDAlreadyUsed.Contains(int.Parse(dataOutSite.SpreadSheetSiteID)))
+            //    {
+            //        continue;
+            //    }
+
+            //    SpreadSheetSiteIDAlreadyUsed.Add(int.Parse(dataOutSite.SpreadSheetSiteID));
+
+            //    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //    {
+            //        TVItem tvItemSubsector = (from c in db.TVItems
+            //                                  from cl in db.TVItemLanguages
+            //                                  where c.TVItemID == cl.TVItemID
+            //                                  && cl.Language == (int)LanguageEnum.en
+            //                                  && cl.TVText.StartsWith(dataOutSite.Subsector)
+            //                                  && c.TVType == (int)TVTypeEnum.Subsector
+            //                                  select c).FirstOrDefault();
+
+            //        if (tvItemSubsector.TVItemID != 720) // 720 Subsector  NB-18-010-001 (Campobello Island)
+            //        {
+            //            richTextBoxStatus.AppendText("could not find TVItemSubsector with 720\r\n");
+            //            return;
+            //        }
+
+            //        int site = 0;
+            //        if (!int.TryParse(dataOutSite.SpreadSheetSiteID, out site))
+            //        {
+            //            richTextBoxStatus.AppendText("Could not parse dataOutSite.SpreadSheetSiteID\r\n");
+            //            return;
+            //        }
+
+            //        PolSourceSite polSourceSiteLastNumber = (from p in db.PolSourceSites
+            //                                                 from t in db.TVItems
+            //                                                 where p.PolSourceSiteTVItemID == t.TVItemID
+            //                                                 && t.TVType == (int)TVTypeEnum.PolSourceSite
+            //                                                 && t.ParentID == tvItemSubsector.TVItemID
+            //                                                 orderby p.Site descending
+            //                                                 select p).FirstOrDefault();
+
+            //        if (polSourceSiteLastNumber == null)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find a pollution source site for subsector [" + dataOutSite.Subsector + "]\r\n");
+            //            return;
+            //        }
+
+            //        dataOutSite.CSSPWebToolsSiteID = (polSourceSiteLastNumber.Site + 1).ToString();
+
+
+            //        // ----------------------------------------------------------------------------------------------
+            //        // Adding TVItem
+            //        // ----------------------------------------------------------------------------------------------
+            //        user = new GenericPrincipal(new GenericIdentity("Joe.Pomeroy@canada.ca", "Forms"), null);
+
+            //        if (user == null)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not loggin as Joe Pomeroy\r\n");
+            //            return;
+            //        }
+
+            //        string TVText = "000000".Substring(0, 6 - dataOutSite.CSSPWebToolsSiteID.ToString().Length) + dataOutSite.CSSPWebToolsSiteID.ToString();
+
+            //        TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            //        TVItemModel tvItemModelPolSourceSite = tvItemService.PostAddChildTVItemDB(tvItemSubsector.TVItemID, TVText, TVTypeEnum.PolSourceSite);
+            //        if (!string.IsNullOrWhiteSpace(tvItemModelPolSourceSite.Error))
+            //        {
+            //            richTextBoxStatus.AppendText(tvItemModelPolSourceSite.Error + "\r\n");
+            //            return;
+            //        }
+
+            //        // ----------------------------------------------------------------------------------------------
+            //        // Adding MapInfo
+            //        // ----------------------------------------------------------------------------------------------
+
+            //        List<Coord> coordList = new List<Coord>()
+            //        {
+            //            new Coord() { Lat = (float)dataOutSite.Lat, Lng = (float)dataOutSite.Lng, Ordinal = 0 }
+            //        };
+
+            //        MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            //        MapInfoModel mapInfoModelRet = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.PolSourceSite, tvItemModelPolSourceSite.TVItemID);
+            //        if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
+            //        {
+            //            richTextBoxStatus.AppendText(mapInfoModelRet.Error + "\r\n");
+            //            return;
+            //        }
+
+            //        // ----------------------------------------------------------------------------------------------
+            //        // Adding Pol Source Site
+            //        // ----------------------------------------------------------------------------------------------
+
+            //        PolSourceSiteService polSourceSiteService = new PolSourceSiteService(LanguageEnum.en, user);
+
+            //        PolSourceSiteModel polSourceSiteModel = new PolSourceSiteModel();
+            //        polSourceSiteModel.PolSourceSiteTVItemID = tvItemModelPolSourceSite.TVItemID;
+            //        polSourceSiteModel.Site = int.Parse(dataOutSite.CSSPWebToolsSiteID);
+            //        polSourceSiteModel.PolSourceSiteTVText = TVText;
+
+            //        PolSourceSiteModel polSourceSiteModelRet = polSourceSiteService.PostAddPolSourceSiteDB(polSourceSiteModel);
+            //        if (!string.IsNullOrWhiteSpace(polSourceSiteModelRet.Error))
+            //        {
+            //            richTextBoxStatus.AppendText(polSourceSiteModelRet.Error + "\r\n");
+            //            return;
+            //        }
+
+            //        // ----------------------------------------------------------------------------------------------
+            //        // Adding Pol Source observation
+            //        // ----------------------------------------------------------------------------------------------
+
+            //        DataOutObservation dataOutObservation = DataOutObservationList.Where(c => c.SpreadSheetSiteID == dataOutSite.SpreadSheetSiteID).FirstOrDefault();
+
+            //        PolSourceObservationService polSourceObservationService = new PolSourceObservationService(LanguageEnum.en, user);
+
+            //        PolSourceObservationModel polSourceObservationModel = new PolSourceObservationModel();
+            //        polSourceObservationModel.PolSourceSiteID = polSourceSiteModelRet.PolSourceSiteID;
+            //        polSourceObservationModel.ObservationDate_Local = dataOutObservation.ObservationDate;
+            //        polSourceObservationModel.ContactTVItemID = JoePomeroyTVItemID;
+            //        polSourceObservationModel.Observation_ToBeDeleted = " ";
+
+            //        PolSourceObservationModel polSourceObservationModelRet = polSourceObservationService.PostAddPolSourceObservationDB(polSourceObservationModel);
+            //        if (!string.IsNullOrWhiteSpace(polSourceObservationModelRet.Error))
+            //        {
+            //            richTextBoxStatus.AppendText(polSourceObservationModelRet.Error + "\r\n");
+            //            return;
+            //        }
+
+            //        // ----------------------------------------------------------------------------------------------
+            //        // Adding Pol Source observation issue
+            //        // ----------------------------------------------------------------------------------------------
+
+            //        List<DataOutObservationIssue> dataOutObservationIssueList = DataOutObservationIssueList.Where(c => c.SpreadSheetSiteID == dataOutSite.SpreadSheetSiteID).ToList();
+
+            //        int Ordinal = 0;
+            //        foreach (DataOutObservationIssue dataOutObservationIssue in dataOutObservationIssueList)
+            //        {
+            //            PolSourceObservationIssueService polSourceObservationIssueService = new PolSourceObservationIssueService(LanguageEnum.en, user);
+
+            //            PolSourceObservationIssueModel polSourceObservationIssueModel = new PolSourceObservationIssueModel();
+            //            polSourceObservationIssueModel.PolSourceObservationID = polSourceObservationModelRet.PolSourceObservationID;
+            //            polSourceObservationIssueModel.ObservationInfo = dataOutObservationIssue.ObservationInfo;
+            //            polSourceObservationIssueModel.Ordinal = Ordinal;
+            //            List<string> PolSourceObsInfoTextList = dataOutObservationIssue.ObservationInfo.Split(",".ToArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+            //            polSourceObservationIssueModel.PolSourceObsInfoList = new List<PolSourceObsInfoEnum>();
+
+            //            foreach (string s in PolSourceObsInfoTextList)
+            //            {
+            //                int PolSourceObsInfoInt = int.Parse(s);
+            //                polSourceObservationIssueModel.PolSourceObsInfoList.Add((PolSourceObsInfoEnum)PolSourceObsInfoInt);
+            //            }
+
+            //            PolSourceObservationIssueModel polSourceObservationIssueModelRet = polSourceObservationIssueService.PostAddPolSourceObservationIssueDB(polSourceObservationIssueModel);
+            //            if (!string.IsNullOrWhiteSpace(polSourceObservationIssueModelRet.Error))
+            //            {
+            //                richTextBoxStatus.AppendText(polSourceObservationIssueModelRet.Error + "\r\n");
+            //                return;
+            //            }
+
+            //            if (Ordinal == 0)
+            //            {
+            //                foreach (LanguageEnum lang in new List<LanguageEnum>() { LanguageEnum.en, LanguageEnum.fr })
+            //                {
+            //                    Thread.CurrentThread.CurrentCulture = new CultureInfo(lang + "-CA");
+            //                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang + "-CA");
+
+            //                    string TVTextPS = "";
+            //                    int CountTVTextElement = 0;
+            //                    foreach (PolSourceObsInfoEnum polSourceObsInfo in polSourceObservationIssueModel.PolSourceObsInfoList)
+            //                    {
+            //                        if (int.Parse(((int)polSourceObsInfo).ToString().Substring(0, 3)) > 104 && CountTVTextElement < 4)
+            //                        {
+            //                            CountTVTextElement += 1;
+            //                            TVTextPS = TVTextPS + _BaseEnumService.GetEnumText_PolSourceObsInfoTextEnum(polSourceObsInfo);
+            //                        }
+            //                    }
+
+            //                    TVTextPS = TVTextPS + " - " + "000000".Substring(0, "000000".Length - polSourceSiteModel.Site.ToString().Length) + polSourceSiteModel.Site.ToString();
+
+            //                    TVItemLanguageModel tvItemLanguageModel = new TVItemLanguageModel();
+            //                    tvItemLanguageModel.Language = lang;
+            //                    tvItemLanguageModel.TVText = TVTextPS;
+            //                    tvItemLanguageModel.TVItemID = polSourceSiteModel.PolSourceSiteTVItemID;
+
+            //                    TVItemLanguageModel tvItemLanguageModelRet = tvItemService._TVItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModel);
+            //                    if (!string.IsNullOrWhiteSpace(tvItemLanguageModelRet.Error))
+            //                    {
+            //                        richTextBoxStatus.AppendText(tvItemLanguageModelRet.Error + "\r\n");
+            //                        return;
+            //                    }
+
+            //                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-CA");
+            //                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-CA");
+            //                }
+            //            }
+
+            //            Ordinal += 1;
+            //        }
+
+            //        // ----------------------------------------------------------------------------------------------
+            //        // Adding Files for Pol Source Site
+            //        // ----------------------------------------------------------------------------------------------
+            //        List<DataIn> dataInList = DataInList.Where(c => c.SpreadSheetSiteID == dataOutSite.SpreadSheetSiteID).ToList();
+
+            //        foreach (DataIn dataIn in dataInList)
+            //        {
+            //            if (!dataIn.FileName.EndsWith(".JPG"))
+            //            {
+            //                richTextBoxStatus.AppendText("File name does not end with .JPG \r\n");
+            //                return;
+            //            }
+
+            //            FileInfo fi = new FileInfo(@"\\Atlantic.int.ec.gc.ca\shares\Branches\EPB\ShellFish\Sanitary\Campobello letete may 9\" + dataIn.FileName);
+
+            //            if (!fi.Exists)
+            //            {
+            //                richTextBoxStatus.AppendText("Could not find file [" + fi.FullName + "\r\n");
+            //                return;
+            //            }
+
+            //            string TVTextFile = dataIn.NewName;
+            //            TVItemModel tvItemModelFile = tvItemService.PostAddChildTVItemDB(polSourceSiteModelRet.PolSourceSiteTVItemID, TVTextFile, TVTypeEnum.File);
+            //            if (!string.IsNullOrWhiteSpace(tvItemModelFile.Error))
+            //            {
+            //                richTextBoxStatus.AppendText(tvItemModelFile.Error + "\r\n");
+            //                return;
+            //            }
+
+            //            TVFileService tvFileService = new TVFileService(LanguageEnum.en, user);
+
+            //            TVFileModel tvFileModel = new TVFileModel();
+            //            tvFileModel.TVFileTVItemID = tvItemModelFile.TVItemID;
+            //            tvFileModel.TemplateTVType = TVTypeEnum.Error;
+            //            tvFileModel.Language = LanguageEnum.en;
+            //            tvFileModel.FilePurpose = FilePurposeEnum.Picture;
+            //            tvFileModel.FileType = FileTypeEnum.JPEG;
+            //            tvFileModel.FileSize_kb = (int)(fi.Length / 1024);
+            //            tvFileModel.FileInfo = "Picture of the pollution source site";
+            //            tvFileModel.FileCreatedDate_UTC = fi.CreationTimeUtc;
+            //            tvFileModel.FromWater = (dataIn.PictureView == "From Land" ? false : true);
+            //            tvFileModel.ServerFilePath = @"E:\inetpub\wwwroot\csspwebtools\App_Data\" + polSourceSiteModelRet.PolSourceSiteTVItemID.ToString() + @"\";
+            //            tvFileModel.ServerFileName = dataIn.NewName.Trim() + ".jpg";
+            //            tvFileModel.FileDescription = dataIn.NewName;
+
+            //            TVFileModel tvFileModelRet = tvFileService.PostAddTVFileDB(tvFileModel);
+            //            if (!string.IsNullOrWhiteSpace(tvFileModelRet.Error))
+            //            {
+            //                richTextBoxStatus.AppendText(tvFileModelRet.Error + "\r\n");
+            //                return;
+            //            }
+
+            //            string NewFullFileName = tvFileModelRet.ServerFilePath + tvFileModelRet.ServerFileName;
+
+            //            DirectoryInfo di = new DirectoryInfo(tvFileModelRet.ServerFilePath);
+
+            //            if (!di.Exists)
+            //            {
+            //                try
+            //                {
+            //                    di.Create();
+            //                }
+            //                catch (Exception ex)
+            //                {
+            //                    richTextBoxStatus.AppendText(ex.Message + "\r\n");
+            //                    return;
+            //                }
+            //            }
+
+            //            try
+            //            {
+            //                File.Copy(fi.FullName, NewFullFileName);
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                richTextBoxStatus.AppendText(ex.Message + "\r\n");
+            //                return;
+            //            }
+            //        }
+
+            //        // ----------------------------------------------------------------------------------------------
+            //        // Adding Address for Pol Source Site
+            //        // ----------------------------------------------------------------------------------------------
+
+            //        // not possible at this point -- not enough information
+
+            //    }
+            //}
+
+            //Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+
+            //Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Open(FileNameXlsx, ReadOnly: false, Editable: true);
+            //Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.Worksheets.Item[2] as Microsoft.Office.Interop.Excel.Worksheet;
+            //if (worksheet == null)
+            //    return;
+
+            //for (int row = 2; row < 10000; row++)
+            //{
+            //    double? Site = worksheet.Cells[row, 1].Value;
+            //    if (Site == null)
+            //    {
+            //        break;
+            //    }
+
+            //    DataOutSite dataOutSite = DataOutSiteList.Where(c => c.SpreadSheetSiteID == Site.ToString()).FirstOrDefault();
+
+            //    Microsoft.Office.Interop.Excel.Range range1 = worksheet.Rows.Cells[row, 10];
+
+            //    range1.Value = "" + dataOutSite.CSSPWebToolsSiteID;
+            //    range1.Select();
+            //    worksheet.Hyperlinks.Add(range1, @"http://wmon01dtchlebl2/csspwebtools/en-CA/#!View/a|||" + dataOutSite.CSSPWebToolsSiteID + @"|||30010000002000000000000000000000");
+            //}
+
+            //workbook.SaveAs(FileNameXlsx.Replace(".xlsx", " And Link.xlsx"));
+            //workbook.Close();
+            //excel.Quit();
 
             //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
             //{
@@ -10457,124 +10457,261 @@ namespace ImportByFunction
             lblStatus.Text = "Done...";
         }
 
+        public class SS
+        {
+            public SS()
+            {
+                SSSiteList = new List<SSS>();
+            }
+            public string Name { get; set; }
+            public List<SSS> SSSiteList { get; set; }
+        }
+        public class SSS
+        {
+            public SSS()
+            {
+
+            }
+
+            public FileInfo FileInfoSite { get; set; }
+            public string SiteName { get; set; }
+        }
         private void butImportingPatriceMWQMImage_Click(object sender, EventArgs e)
         {
-            // ----------------------------------------------------------------------------------------------
-            // Reading Files
-            // ----------------------------------------------------------------------------------------------
+            //// ----------------------------------------------------------------------------------------------
+            //// Reading Files
+            //// ----------------------------------------------------------------------------------------------
 
-            DirectoryInfo di = new DirectoryInfo(@"\\Atlantic.int.ec.gc.ca\shares\Branches\EPB\ShellFish\Staff Folders\Patrice Godin\Photos\Classification Site Pictures\");
+            //DirectoryInfo di = new DirectoryInfo(@"\\Atlantic.int.ec.gc.ca\shares\Branches\EPB\ShellFish\Staff Folders\Patrice Godin\Photos\Classification Site Pictures\");
+            ////DirectoryInfo di = new DirectoryInfo(@"E:\Classification Site Pictures\");
 
-            if (!di.Exists)
-            {
-                richTextBoxStatus.AppendText("Could not find directory [" + di.FullName + "\r\n");
-                return;
-            }
+            //if (!di.Exists)
+            //{
+            //    richTextBoxStatus.AppendText("Could not find directory [" + di.FullName + "\r\n");
+            //    return;
+            //}
 
-            List<string> DirNameList = new List<string>() { "NB9-19", "NB121-352", "NB411-533", "NB621-753" };
+            //List<string> DirNameList = new List<string>() { "NB9-19", "NB121-352", "NB411-533", "NB621-753" };
 
-            foreach (string dirName in DirNameList)
-            {
-                DirectoryInfo diFile = new DirectoryInfo(di.FullName + @"\" + dirName + @"\");
+            //List<SS> SSList = new List<SS>();
+            //foreach (string dirName in DirNameList)
+            //{
+            //    DirectoryInfo diFile = new DirectoryInfo(di.FullName + @"\" + dirName + @"\");
 
-                lblStatus.Text = diFile.FullName;
-                lblStatus.Refresh();
-                Application.DoEvents();
+            //    lblStatus.Text = diFile.FullName;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
 
-                if (!diFile.Exists)
-                {
-                    richTextBoxStatus.AppendText("Could not find directory [" + diFile.FullName + "\r\n");
-                    return;
-                }
+            //    if (!diFile.Exists)
+            //    {
+            //        richTextBoxStatus.AppendText("Could not find directory [" + diFile.FullName + "\r\n");
+            //        return;
+            //    }
 
-                List<DirectoryInfo> DirInfoList = diFile.GetDirectories().ToList();
+            //    List<DirectoryInfo> DirInfoList = diFile.GetDirectories().ToList();
 
-                foreach (DirectoryInfo diDir in DirInfoList)
-                {
-                    foreach (FileInfo fi in diDir.GetFiles().Where(c => c.Name.ToLower().EndsWith(".jpg")).ToList())
-                    {
-                        lblStatus.Text = fi.FullName;
-                        lblStatus.Refresh();
-                        Application.DoEvents();
+            //    foreach (DirectoryInfo diDir in DirInfoList)
+            //    {
+            //        foreach (FileInfo fi in diDir.GetFiles().Where(c => c.Name.ToLower().EndsWith(".jpg")).ToList())
+            //        {
+            //            lblStatus.Text = fi.FullName;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
 
-                        richTextBoxStatus.AppendText(fi.FullName + "\r\n");
+            //            //richTextBoxStatus.AppendText(fi.FullName + "\r\n");
 
-                        if (fi.Name.Substring(0, 2) == "NB")
-                        {
-                            // string Subsector
-                            //string TVTextFile = fi.NewName;
-                            //TVItemModel tvItemModelFile = tvItemService.PostAddChildTVItemDB(polSourceSiteModelRet.PolSourceSiteTVItemID, TVTextFile, TVTypeEnum.File);
-                            //if (!string.IsNullOrWhiteSpace(tvItemModelFile.Error))
-                            //{
-                            //    richTextBoxStatus.AppendText(tvItemModelFile.Error + "\r\n");
-                            //    return;
-                            //}
+            //            if (fi.Name.Substring(0, 2) == "NB")
+            //            {
 
-                            //TVFileService tvFileService = new TVFileService(LanguageEnum.en, user);
+            //                string Subsector = "";
+            //                string TVTextFile = fi.Name;
 
-                            //TVFileModel tvFileModel = new TVFileModel();
-                            //tvFileModel.TVFileTVItemID = tvItemModelFile.TVItemID;
-                            //tvFileModel.TemplateTVType = TVTypeEnum.Error;
-                            //tvFileModel.Language = LanguageEnum.en;
-                            //tvFileModel.FilePurpose = FilePurposeEnum.Picture;
-                            //tvFileModel.FileType = FileTypeEnum.JPEG;
-                            //tvFileModel.FileSize_kb = (int)(fi.Length / 1024);
-                            //tvFileModel.FileInfo = "Picture of the pollution source site";
-                            //tvFileModel.FileCreatedDate_UTC = fi.CreationTimeUtc;
-                            //tvFileModel.FromWater = (dataIn.PictureView == "From Land" ? false : true);
-                            //tvFileModel.ServerFilePath = @"E:\inetpub\wwwroot\csspwebtools\App_Data\" + polSourceSiteModelRet.PolSourceSiteTVItemID.ToString() + @"\";
-                            //tvFileModel.ServerFileName = dataIn.NewName.Trim() + ".jpg";
-                            //tvFileModel.FileDescription = dataIn.NewName;
+            //                Subsector = TVTextFile.Substring(0, TVTextFile.IndexOf(" "));
 
-                            //TVFileModel tvFileModelRet = tvFileService.PostAddTVFileDB(tvFileModel);
-                            //if (!string.IsNullOrWhiteSpace(tvFileModelRet.Error))
-                            //{
-                            //    richTextBoxStatus.AppendText(tvFileModelRet.Error + "\r\n");
-                            //    return;
-                            //}
+            //                if (Subsector.Length != 12)
+            //                {
+            //                    if (!(Subsector.Substring(2, 1) == "-" && Subsector.Length == 13))
+            //                    {
+            //                        richTextBoxStatus.AppendText("Subsector does not have 12 characters [" + fi.FullName + "\r\n");
+            //                    }
+            //                }
 
-                            //string NewFullFileName = tvFileModelRet.ServerFilePath + tvFileModelRet.ServerFileName;
+            //                if (Subsector.Substring(2, 1) != "-")
+            //                {
+            //                    Subsector = Subsector.Substring(0, 2) + "-" + Subsector.Substring(2);
+            //                }
 
-                            //DirectoryInfo di = new DirectoryInfo(tvFileModelRet.ServerFilePath);
+            //                //richTextBoxStatus.AppendText(Subsector + "\r\n");
 
-                            //if (!di.Exists)
-                            //{
-                            //    try
-                            //    {
-                            //        di.Create();
-                            //    }
-                            //    catch (Exception ex)
-                            //    {
-                            //        richTextBoxStatus.AppendText(ex.Message + "\r\n");
-                            //        return;
-                            //    }
-                            //}
+            //                SS ssFound = SSList.Where(c => c.Name == Subsector).FirstOrDefault();
+            //                if (ssFound == null)
+            //                {
+            //                    SSList.Add(new SS() { Name = Subsector });
+            //                }
+            //                ssFound = SSList.Where(c => c.Name == Subsector).FirstOrDefault();
+            //                if (ssFound == null)
+            //                {
+            //                    richTextBoxStatus.AppendText("Could not Subsector [" + Subsector + "] just added to the list 'SSList'\r\n");
+            //                }
+            //                string SSSite = "";
 
-                            //try
-                            //{
-                            //    File.Copy(fi.FullName, NewFullFileName);
-                            //}
-                            //catch (Exception ex)
-                            //{
-                            //    richTextBoxStatus.AppendText(ex.Message + "\r\n");
-                            //    return;
+            //                if (!fi.Name.ToLower().EndsWith(".jpg"))
+            //                {
+            //                    richTextBoxStatus.AppendText("File [" + fi.FullName + "] does not end with .JPG\r\n");
+            //                }
 
-                            //}
+            //                SSSite = fi.Name.ToLower().Replace(".jpg", "");
+            //                SSSite = SSSite.Substring(SSSite.LastIndexOf(" ") + 1).Trim();
 
-                        }
-                        else
-                        {
-                            richTextBoxStatus.AppendText("Image file name does not start with NB [" + fi.FullName + "\r\n");
-                            return;
-                        }
+            //                SSSite = "0000".Substring(SSSite.Length) + SSSite;
+
+            //                if (SSSite.Length > 4)
+            //                {
+            //                    int sleifj = 34;
+            //                }
+
+            //                SSS ssSite = ssFound.SSSiteList.Where(c => c.SiteName == SSSite).FirstOrDefault();
+            //                if (ssSite == null)
+            //                {
+            //                    ssFound.SSSiteList.Add(new SSS() { FileInfoSite = fi, SiteName = SSSite });
+            //                }
+            //            }
+            //            else
+            //            {
+            //                richTextBoxStatus.AppendText("Image file name does not start with NB [" + fi.FullName + "\r\n");
+            //                return;
+            //            }
 
 
-                    }
-                }
+            //        }
+            //    }
 
-            }
+            //}
 
-            lblStatus.Text = "Done...";
+            //user = new GenericPrincipal(new GenericIdentity("Patrice.Godin@canada.ca", "Forms"), null);
+
+            //if (user == null)
+            //{
+            //    richTextBoxStatus.AppendText("Could not create user\r\n");
+            //}
+
+            //foreach (SS ss in SSList)
+            //{
+            //    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //    {
+            //        TVItem tvItemSS = (from c in db.TVItems
+            //                           from cl in db.TVItemLanguages
+            //                           where c.TVItemID == cl.TVItemID
+            //                           && cl.Language == (int)LanguageEnum.en
+            //                           && c.TVType == (int)TVTypeEnum.Subsector
+            //                           && cl.TVText.StartsWith(ss.Name + " ")
+            //                           select c).FirstOrDefault();
+
+            //        if (tvItemSS == null)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find Subsector [" + ss.Name + "] in the DB\r\n");
+            //        }
+
+            //        foreach (SSS site in ss.SSSiteList)
+            //        {
+            //            TVItem tvItemSite = (from c in db.TVItems
+            //                                 from cl in db.TVItemLanguages
+            //                                 where c.TVItemID == cl.TVItemID
+            //                                 && cl.Language == (int)LanguageEnum.en
+            //                                 && c.TVType == (int)TVTypeEnum.MWQMSite
+            //                                 && cl.TVText == site.SiteName
+            //                                 && c.ParentID == tvItemSS.TVItemID
+            //                                 select c).FirstOrDefault();
+
+            //            if (tvItemSite == null)
+            //            {
+            //                richTextBoxStatus.AppendText("Could not find Site [" + site + "] for Subsector [" + ss.Name + "] in the DB\r\n");
+            //            }
+
+            //            lblStatus.Text = ss.Name + " -- " + site.SiteName;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            FileInfo fi = new FileInfo(site.FileInfoSite.FullName);
+            //            if (!fi.Exists)
+            //            {
+            //                richTextBoxStatus.AppendText("Could not find file [" + fi.FullName + "]\r\n");
+            //            }
+
+
+            //            string TVText = ss.Name + " MWQM Site " + site.SiteName.ToUpper() + " for monitoring";
+
+            //            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            //            //TVItemModel tvItemModelFile = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemSite.TVItemID, TVText, TVTypeEnum.File);
+            //            //if (!string.IsNullOrWhiteSpace(tvItemModelFile.Error))
+            //            //{
+            //            //    tvItemModelFile = tvItemService.PostAddChildTVItemDB(tvItemSite.TVItemID, TVText, TVTypeEnum.File);
+            //            //    if (!string.IsNullOrWhiteSpace(tvItemModelFile.Error))
+            //            //    {
+            //            //        richTextBoxStatus.AppendText(tvItemModelFile.Error + "\r\n");
+            //            //    }
+            //            //}
+
+            //            //TVFileService tvFileService = new TVFileService(LanguageEnum.en, user);
+
+            //            //TVFileModel tvFileModel = new TVFileModel();
+            //            //tvFileModel.TVFileTVItemID = tvItemModelFile.TVItemID;
+            //            //tvFileModel.TemplateTVType = TVTypeEnum.Error;
+            //            //tvFileModel.Language = LanguageEnum.en;
+            //            //tvFileModel.FilePurpose = FilePurposeEnum.Picture;
+            //            //tvFileModel.FileType = FileTypeEnum.JPEG;
+            //            //tvFileModel.FileSize_kb = (int)(fi.Length / 1024);
+            //            //tvFileModel.FileInfo = "On water picture of the monitoring site [" + site.SiteName.ToUpper() + "]";
+            //            //tvFileModel.FileCreatedDate_UTC = fi.CreationTimeUtc;
+            //            //tvFileModel.FromWater = true;
+            //            //tvFileModel.ServerFilePath = @"E:\inetpub\wwwroot\csspwebtools\App_Data\" + tvItemSite.TVItemID.ToString() + @"\";
+            //            //tvFileModel.ServerFileName = TVText + ".jpg";
+            //            //tvFileModel.FileDescription = "On water picture of the monitoring site [" + site.SiteName.ToUpper() + "]";
+
+            //            //TVFileModel tvFileModelRet = tvFileService.PostAddTVFileDB(tvFileModel);
+            //            //if (!string.IsNullOrWhiteSpace(tvFileModelRet.Error))
+            //            //{
+            //            //    richTextBoxStatus.AppendText(tvFileModelRet.Error + "\r\n");
+            //            //    return;
+            //            //}
+
+            //            //string NewFullFileName = tvFileModelRet.ServerFilePath + tvFileModelRet.ServerFileName;
+
+            //            //DirectoryInfo di2 = new DirectoryInfo(tvFileModelRet.ServerFilePath);
+
+            //            //if (!di2.Exists)
+            //            //{
+            //            //    try
+            //            //    {
+            //            //        di2.Create();
+            //            //    }
+            //            //    catch (Exception ex)
+            //            //    {
+            //            //        richTextBoxStatus.AppendText(ex.Message + "\r\n");
+            //            //        return;
+            //            //    }
+            //            //}
+
+            //            //try
+            //            //{
+            //            //    File.Copy(fi.FullName, NewFullFileName);
+            //            //}
+            //            //catch (Exception ex)
+            //            //{
+            //            //    richTextBoxStatus.AppendText(ex.Message + "\r\n");
+            //            //    return;
+
+            //            //}
+
+            //            richTextBoxStatus.AppendText(ss.Name + "\t" + site.SiteName + "\r\n");
+
+            //        }
+            //        //richTextBoxStatus.AppendText(ss.Name + "\t" + string.Join(",", ss.SSSiteList) + "\r\n");
+
+            //    }
+            //}
+            //lblStatus.Text = "Done...";
         }
 
         //private void button18_Click(object sender, EventArgs e)
