@@ -10716,149 +10716,149 @@ namespace ImportByFunction
 
         private void button35_Click(object sender, EventArgs e)
         {
+            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //{
+            //    List<MWQMRun> mwqmRunList = (from c in db.MWQMRuns
+            //                       where c.DateTime_Local.Year == 2017
+            //                       && (c.Tide_Start == null
+            //                       || c.Tide_End == null)
+            //                       && c.RunSampleType == (int)SampleTypeEnum.Routine
+            //                       select c).ToList();
 
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
-            {
-                List<MWQMRun> mwqmRunList = (from c in db.MWQMRuns
-                                   where c.DateTime_Local.Year == 2017
-                                   && (c.Tide_Start == null
-                                   || c.Tide_End == null)
-                                   select c).ToList();
+            //    foreach (MWQMRun mwqmRun in mwqmRunList)
+            //    {
+            //        richTextBoxStatus.AppendText(mwqmRun.MWQMRunTVItemID + "\r" + mwqmRun.MWQMRunID + "\t" + mwqmRun.DateTime_Local + "\t" + mwqmRun.Tide_Start.ToString() + "\t" + mwqmRun.Tide_End.ToString() + "\r\n");
+                
+            //        LabSheet labSheet = (from c in db.LabSheets
+            //                             where c.SubsectorTVItemID == mwqmRun.SubsectorTVItemID
+            //                             && c.MWQMRunTVItemID == mwqmRun.MWQMRunTVItemID
+            //                             select c).FirstOrDefault();
 
-                foreach (MWQMRun mwqmRun in mwqmRunList)
-                {
-                    richTextBoxStatus.AppendText(mwqmRun.MWQMRunID + "\t" + mwqmRun.DateTime_Local + "\t" + mwqmRun.Tide_Start.ToString() + "\t" + mwqmRun.Tide_End.ToString() + "\r\n");
+            //        if (labSheet != null)
+            //        {
+            //            LabSheetDetail labSheetDetail = (from c in db.LabSheetDetails
+            //                                             where c.LabSheetID == labSheet.LabSheetID
+            //                                             select c).FirstOrDefault();
 
-                    LabSheet labSheet = (from c in db.LabSheets
-                                         where c.SubsectorTVItemID == mwqmRun.SubsectorTVItemID
-                                         && c.MWQMRunTVItemID == mwqmRun.MWQMRunTVItemID
-                                         select c).FirstOrDefault();
+            //            if (labSheetDetail != null)
+            //            {
+            //                string TideText = labSheetDetail.Tides.Trim();
+            //                string StartTideText = TideText.Substring(0, 2);
+            //                string EndTideText = TideText.Substring(TideText.Length - 2);
+            //                switch (StartTideText)
+            //                {
+            //                    case "LF":
+            //                        {
+            //                            mwqmRun.Tide_Start = (int)TideTextEnum.LowTideFalling;
+            //                        }
+            //                        break;
+            //                    case "LR":
+            //                        {
+            //                            mwqmRun.Tide_Start = (int)TideTextEnum.LowTideRising;
+            //                        }
+            //                        break;
+            //                    case "LT":
+            //                        {
+            //                            mwqmRun.Tide_Start = (int)TideTextEnum.LowTide;
+            //                        }
+            //                        break;
+            //                    case "MF":
+            //                        {
+            //                            mwqmRun.Tide_Start = (int)TideTextEnum.MidTideFalling;
+            //                        }
+            //                        break;
+            //                    case "MR":
+            //                        {
+            //                            mwqmRun.Tide_Start = (int)TideTextEnum.MidTideRising;
+            //                        }
+            //                        break;
+            //                    case "MT":
+            //                        {
+            //                            mwqmRun.Tide_Start = (int)TideTextEnum.MidTide;
+            //                        }
+            //                        break;
+            //                    case "HF":
+            //                        {
+            //                            mwqmRun.Tide_Start = (int)TideTextEnum.HighTideFalling;
+            //                        }
+            //                        break;
+            //                    case "HR":
+            //                        {
+            //                            mwqmRun.Tide_Start = (int)TideTextEnum.HighTideRising;
+            //                        }
+            //                        break;
+            //                    case "HT":
+            //                        {
+            //                            mwqmRun.Tide_Start = (int)TideTextEnum.HighTide;
+            //                        }
+            //                        break;
+            //                    default:
+            //                        break;
+            //                }
+            //                switch (EndTideText)
+            //                {
+            //                    case "LF":
+            //                        {
+            //                            mwqmRun.Tide_End = (int)TideTextEnum.LowTideFalling;
+            //                        }
+            //                        break;
+            //                    case "LR":
+            //                        {
+            //                            mwqmRun.Tide_End = (int)TideTextEnum.LowTideRising;
+            //                        }
+            //                        break;
+            //                    case "LT":
+            //                        {
+            //                            mwqmRun.Tide_End = (int)TideTextEnum.LowTide;
+            //                        }
+            //                        break;
+            //                    case "MF":
+            //                        {
+            //                            mwqmRun.Tide_End = (int)TideTextEnum.MidTideFalling;
+            //                        }
+            //                        break;
+            //                    case "MR":
+            //                        {
+            //                            mwqmRun.Tide_End = (int)TideTextEnum.MidTideRising;
+            //                        }
+            //                        break;
+            //                    case "MT":
+            //                        {
+            //                            mwqmRun.Tide_End = (int)TideTextEnum.MidTide;
+            //                        }
+            //                        break;
+            //                    case "HF":
+            //                        {
+            //                            mwqmRun.Tide_End = (int)TideTextEnum.HighTideFalling;
+            //                        }
+            //                        break;
+            //                    case "HR":
+            //                        {
+            //                            mwqmRun.Tide_End = (int)TideTextEnum.HighTideRising;
+            //                        }
+            //                        break;
+            //                    case "HT":
+            //                        {
+            //                            mwqmRun.Tide_End = (int)TideTextEnum.HighTide;
+            //                        }
+            //                        break;
+            //                    default:
+            //                        break;
+            //                }
 
-                    if (labSheet != null)
-                    {
-                        LabSheetDetail labSheetDetail = (from c in db.LabSheetDetails
-                                                         where c.LabSheetID == labSheet.LabSheetID
-                                                         select c).FirstOrDefault();
+            //                try
+            //                {
+            //                    db.SaveChanges();
+            //                }
+            //                catch (Exception ex)
+            //                {
+            //                    string err = ex.Message;
+            //                }
 
-                        if (labSheetDetail != null)
-                        {
-                            string TideText = labSheetDetail.Tides.Trim();
-                            string StartTideText = TideText.Substring(0, 2);
-                            string EndTideText = TideText.Substring(TideText.Length - 2);
-                            switch (StartTideText)
-                            {
-                                case "LF":
-                                    {
-                                        mwqmRun.Tide_Start = (int)TideTextEnum.LowTideFalling;
-                                    }
-                                    break;
-                                case "LR":
-                                    {
-                                        mwqmRun.Tide_Start = (int)TideTextEnum.LowTideRising;
-                                    }
-                                    break;
-                                case "LT":
-                                    {
-                                        mwqmRun.Tide_Start = (int)TideTextEnum.LowTide;
-                                    }
-                                    break;
-                                case "MF":
-                                    {
-                                        mwqmRun.Tide_Start = (int)TideTextEnum.MidTideFalling;
-                                    }
-                                    break;
-                                case "MR":
-                                    {
-                                        mwqmRun.Tide_Start = (int)TideTextEnum.MidTideRising;
-                                    }
-                                    break;
-                                case "MT":
-                                    {
-                                        mwqmRun.Tide_Start = (int)TideTextEnum.MidTide;
-                                    }
-                                    break;
-                                case "HF":
-                                    {
-                                        mwqmRun.Tide_Start = (int)TideTextEnum.HighTideFalling;
-                                    }
-                                    break;
-                                case "HR":
-                                    {
-                                        mwqmRun.Tide_Start = (int)TideTextEnum.HighTideRising;
-                                    }
-                                    break;
-                                case "HT":
-                                    {
-                                        mwqmRun.Tide_Start = (int)TideTextEnum.HighTide;
-                                    }
-                                    break;
-                                default:
-                                    break;
-                            }
-                            switch (EndTideText)
-                            {
-                                case "LF":
-                                    {
-                                        mwqmRun.Tide_End = (int)TideTextEnum.LowTideFalling;
-                                    }
-                                    break;
-                                case "LR":
-                                    {
-                                        mwqmRun.Tide_End = (int)TideTextEnum.LowTideRising;
-                                    }
-                                    break;
-                                case "LT":
-                                    {
-                                        mwqmRun.Tide_End = (int)TideTextEnum.LowTide;
-                                    }
-                                    break;
-                                case "MF":
-                                    {
-                                        mwqmRun.Tide_End = (int)TideTextEnum.MidTideFalling;
-                                    }
-                                    break;
-                                case "MR":
-                                    {
-                                        mwqmRun.Tide_End = (int)TideTextEnum.MidTideRising;
-                                    }
-                                    break;
-                                case "MT":
-                                    {
-                                        mwqmRun.Tide_End = (int)TideTextEnum.MidTide;
-                                    }
-                                    break;
-                                case "HF":
-                                    {
-                                        mwqmRun.Tide_End = (int)TideTextEnum.HighTideFalling;
-                                    }
-                                    break;
-                                case "HR":
-                                    {
-                                        mwqmRun.Tide_End = (int)TideTextEnum.HighTideRising;
-                                    }
-                                    break;
-                                case "HT":
-                                    {
-                                        mwqmRun.Tide_End = (int)TideTextEnum.HighTide;
-                                    }
-                                    break;
-                                default:
-                                    break;
-                            }
-
-                            try
-                            {
-                                db.SaveChanges();
-                            }
-                            catch (Exception ex)
-                            {
-                                string err = ex.Message;
-                            }
-
-                        }
-                    }
-                }
-            }
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         //private void button18_Click(object sender, EventArgs e)
