@@ -10728,7 +10728,7 @@ namespace ImportByFunction
             //    foreach (MWQMRun mwqmRun in mwqmRunList)
             //    {
             //        richTextBoxStatus.AppendText(mwqmRun.MWQMRunTVItemID + "\r" + mwqmRun.MWQMRunID + "\t" + mwqmRun.DateTime_Local + "\t" + mwqmRun.Tide_Start.ToString() + "\t" + mwqmRun.Tide_End.ToString() + "\r\n");
-                
+
             //        LabSheet labSheet = (from c in db.LabSheets
             //                             where c.SubsectorTVItemID == mwqmRun.SubsectorTVItemID
             //                             && c.MWQMRunTVItemID == mwqmRun.MWQMRunTVItemID
