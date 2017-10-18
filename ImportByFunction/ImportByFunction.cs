@@ -10716,6 +10716,241 @@ namespace ImportByFunction
 
         private void button35_Click(object sender, EventArgs e)
         {
+
+            // ------------------------------------------------------------------------------------------
+            // Finding 2 samples under the same run with same type
+            // ------------------------------------------------------------------------------------------
+
+
+            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //{
+            //    MWQMSample mwqmSampleOld = new MWQMSample();
+
+            //    var ssList = (from c in db.TVItems
+            //                  from cl in db.TVItemLanguages
+            //                  where c.TVItemID == cl.TVItemID
+            //                  && cl.Language == (int)LanguageEnum.en
+            //                  && c.TVType == (int)TVTypeEnum.Subsector
+            //                  && cl.TVText.StartsWith("PE-")
+            //                  select new { c, cl }).ToList();
+
+            //    foreach (var ss in ssList)
+            //    {
+            //        lblStatus.Text = ss.cl.TVText;
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
+
+            //        var runList = (from c in db.MWQMRuns
+            //                       from t in db.TVItemLanguages
+            //                       where c.MWQMRunTVItemID == t.TVItemID
+            //                       && c.SubsectorTVItemID == ss.c.TVItemID
+            //                       select new { c, t }).ToList();
+
+            //        foreach (var run in runList)
+            //        {
+            //            mwqmSampleOld = new MWQMSample();
+
+            //            lblStatus.Text = ss.cl.TVText + "\t" + run.c.DateTime_Local;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            List<MWQMSample> sampleList = (from c in db.MWQMSamples
+            //                                           where c.MWQMRunTVItemID == run.c.MWQMRunTVItemID
+            //                                           orderby c.MWQMSiteTVItemID, c.FecCol_MPN_100ml
+            //                                           select c).ToList();
+
+            //            foreach(MWQMSample mwqmSample in sampleList)
+            //            {
+            //                if (mwqmSampleOld.MWQMSampleID != 0)
+            //                {
+            //                    if (mwqmSampleOld.MWQMSiteTVItemID == mwqmSample.MWQMSiteTVItemID 
+            //                        && mwqmSampleOld.FecCol_MPN_100ml == mwqmSample.FecCol_MPN_100ml
+            //                        && mwqmSampleOld.SampleTypesText == mwqmSample.SampleTypesText)
+            //                    {
+            //                        var siteTVText = (from c in db.MWQMSites
+            //                                          from t in db.TVItemLanguages
+            //                                          where c.MWQMSiteTVItemID == t.TVItemID
+            //                                          && c.MWQMSiteTVItemID == mwqmSample.MWQMSiteTVItemID
+            //                                          select t.TVText).FirstOrDefault();
+
+            //                        richTextBoxStatus.AppendText(ss.cl.TVText + "\t" + run.c.DateTime_Local + "\t" + run.t.TVText + "\t" + siteTVText + "\r\n");
+            //                    }
+            //                }
+
+            //                mwqmSampleOld = mwqmSample;
+            //            }
+
+            //            //TVItemLanguage tvItemLanguageEN = (from c in db.TVItemLanguages
+            //            //                                   where c.TVItemID == run.c.MWQMRunTVItemID
+            //            //                                   && c.Language == (int)LanguageEnum.en
+            //            //                                   select c).FirstOrDefault();
+
+            //            //BaseEnumService baseEnumServiceEN = new BaseEnumService(LanguageEnum.en);
+            //            //string TVTextEN = run.c.DateTime_Local.ToString("yyyy MM dd"); // + " (" + baseEnumServiceEN.GetEnumText_SampleTypeEnum((SampleTypeEnum?)run.c.RunSampleType) + ")";
+
+            //            //tvItemLanguageEN.TVText = TVTextEN;
+
+            //            //TVItemLanguage tvItemLanguageFR = (from c in db.TVItemLanguages
+            //            //                                   where c.TVItemID == run.c.MWQMRunTVItemID
+            //            //                                   && c.Language == (int)LanguageEnum.fr
+            //            //                                   select c).FirstOrDefault();
+
+            //            //BaseEnumService baseEnumServiceFR = new BaseEnumService(LanguageEnum.fr);
+            //            //string TVTextFR = run.c.DateTime_Local.ToString("yyyy MM dd"); // + " (" + baseEnumServiceFR.GetEnumText_SampleTypeEnum((SampleTypeEnum?)run.c.RunSampleType) + ")";
+
+            //            //try
+            //            //{
+            //            //    db.SaveChanges();
+            //            //}
+            //            //catch (Exception ex)
+            //            //{
+            //            //    int sleifj = 34;
+            //            //}
+            //        }
+
+            //    }
+            //}
+
+            // ------------------------------------------------------------------------------------------
+            // Finding 2 samples under the same run with same type
+            // ------------------------------------------------------------------------------------------
+
+
+
+            // ------------------------------------------------------------------------------------------
+            // finding All Runs identified as Routine but TVText is not just Date
+            // ------------------------------------------------------------------------------------------
+
+            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //{
+            //    var ssList = (from c in db.TVItems
+            //                  from cl in db.TVItemLanguages
+            //                  where c.TVItemID == cl.TVItemID
+            //                  && cl.Language == (int)LanguageEnum.en
+            //                  && c.TVType == (int)TVTypeEnum.Subsector
+            //                  //&& cl.TVText.StartsWith("NL-")
+            //                  select new { c, cl }).ToList();
+
+            //    foreach (var ss in ssList)
+            //    {
+            //        lblStatus.Text = ss.cl.TVText;
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
+
+            //        var runList = (from c in db.MWQMRuns
+            //                       from t in db.TVItemLanguages
+            //                       let containRoutine = (from s in db.MWQMSamples
+            //                                             where c.MWQMRunTVItemID == s.MWQMRunTVItemID
+            //                                             && s.SampleTypesText.Contains("109,")
+            //                                             select s).Any()
+            //                       where c.MWQMRunTVItemID == t.TVItemID
+            //                       && t.Language == (int)LanguageEnum.en
+            //                       && c.SubsectorTVItemID == ss.c.TVItemID
+            //                       && t.TVText.Contains("(")
+            //                       && containRoutine
+            //                       select new { c, t }).ToList();
+
+            //        foreach (var run in runList)
+            //        {
+            //            lblStatus.Text = ss.cl.TVText + "\t" + run.c.DateTime_Local;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            richTextBoxStatus.AppendText(ss.cl.TVText + "\t" + run.c.DateTime_Local + "\t" + run.t.TVText + "\r\n");
+
+            //            //TVItemLanguage tvItemLanguageEN = (from c in db.TVItemLanguages
+            //            //                                   where c.TVItemID == run.c.MWQMRunTVItemID
+            //            //                                   && c.Language == (int)LanguageEnum.en
+            //            //                                   select c).FirstOrDefault();
+
+            //            //BaseEnumService baseEnumServiceEN = new BaseEnumService(LanguageEnum.en);
+            //            //string TVTextEN = run.c.DateTime_Local.ToString("yyyy MM dd"); // + " (" + baseEnumServiceEN.GetEnumText_SampleTypeEnum((SampleTypeEnum?)run.c.RunSampleType) + ")";
+
+            //            //tvItemLanguageEN.TVText = TVTextEN;
+
+            //            //TVItemLanguage tvItemLanguageFR = (from c in db.TVItemLanguages
+            //            //                                   where c.TVItemID == run.c.MWQMRunTVItemID
+            //            //                                   && c.Language == (int)LanguageEnum.fr
+            //            //                                   select c).FirstOrDefault();
+
+            //            //BaseEnumService baseEnumServiceFR = new BaseEnumService(LanguageEnum.fr);
+            //            //string TVTextFR = run.c.DateTime_Local.ToString("yyyy MM dd"); // + " (" + baseEnumServiceFR.GetEnumText_SampleTypeEnum((SampleTypeEnum?)run.c.RunSampleType) + ")";
+
+            //            //try
+            //            //{
+            //            //    db.SaveChanges();
+            //            //}
+            //            //catch (Exception ex)
+            //            //{
+            //            //    int sleifj = 34;
+            //            //}
+            //        }
+
+            //    }
+            //}
+            // ------------------------------------------------------------------------------------------
+            // Endfinding All Runs identified as Routine but TVText is not just Date
+            // ------------------------------------------------------------------------------------------
+
+            // -----------------------------------------------------------------------------------------
+            // Filling TVText with appropriate info when run in not routine
+            // -----------------------------------------------------------------------------------------
+
+            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //{
+            //    List<MWQMRun> mwqmRunList = (from c in db.MWQMRuns
+            //                                 where c.RunSampleType != (int)SampleTypeEnum.Routine
+            //                                 select c).ToList();
+
+            //    int count = 0;
+            //    int TotalCount = mwqmRunList.Count;
+
+            //    foreach (MWQMRun mwqmRun in mwqmRunList)
+            //    {
+            //        count += 1;
+            //        lblStatus.Text = mwqmRun.SubsectorTVItemID + " --- " + mwqmRun.DateTime_Local + " --- " + count.ToString() + "/" + TotalCount.ToString();
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
+
+            //        if (mwqmRun.RunSampleType != (int)SampleTypeEnum.Routine)
+            //        {
+            //            TVItemLanguage tvItemLanguageEN = (from c in db.TVItemLanguages
+            //                                               where c.TVItemID == mwqmRun.MWQMRunTVItemID
+            //                                               && c.Language == (int)LanguageEnum.en
+            //                                               select c).FirstOrDefault();
+
+            //            BaseEnumService baseEnumServiceEN = new BaseEnumService(LanguageEnum.en);
+            //            string TVTextEN = mwqmRun.DateTime_Local.ToString("yyyy MM dd") + " (" + baseEnumServiceEN.GetEnumText_SampleTypeEnum((SampleTypeEnum?)mwqmRun.RunSampleType) + ")";
+
+            //            tvItemLanguageEN.TVText = TVTextEN;
+
+            //            TVItemLanguage tvItemLanguageFR = (from c in db.TVItemLanguages
+            //                                               where c.TVItemID == mwqmRun.MWQMRunTVItemID
+            //                                               && c.Language == (int)LanguageEnum.fr
+            //                                               select c).FirstOrDefault();
+
+            //            BaseEnumService baseEnumServiceFR = new BaseEnumService(LanguageEnum.fr);
+            //            string TVTextFR = mwqmRun.DateTime_Local.ToString("yyyy MM dd") + " (" + baseEnumServiceFR.GetEnumText_SampleTypeEnum((SampleTypeEnum?)mwqmRun.RunSampleType) + ")";
+
+            //            tvItemLanguageFR.TVText = TVTextFR;
+            //        }
+            //    }
+
+            //    try
+            //    {
+            //        db.SaveChanges();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        int sleifj = 34;
+            //    }
+            //}
+
+            // -----------------------------------------------------------------------------------------
+            // End of Filling TVText with appropriate info when run in not routine
+            // -----------------------------------------------------------------------------------------
+
+
             //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
             //{
             //    List<MWQMRun> mwqmRunList = (from c in db.MWQMRuns
