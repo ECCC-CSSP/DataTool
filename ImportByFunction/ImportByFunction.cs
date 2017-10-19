@@ -10731,7 +10731,7 @@ namespace ImportByFunction
             //                  where c.TVItemID == cl.TVItemID
             //                  && cl.Language == (int)LanguageEnum.en
             //                  && c.TVType == (int)TVTypeEnum.Subsector
-            //                  && cl.TVText.StartsWith("PE-")
+            //                  && cl.TVText.StartsWith("NB-")
             //                  select new { c, cl }).ToList();
 
             //    foreach (var ss in ssList)
@@ -10759,11 +10759,11 @@ namespace ImportByFunction
             //                                           orderby c.MWQMSiteTVItemID, c.FecCol_MPN_100ml
             //                                           select c).ToList();
 
-            //            foreach(MWQMSample mwqmSample in sampleList)
+            //            foreach (MWQMSample mwqmSample in sampleList)
             //            {
             //                if (mwqmSampleOld.MWQMSampleID != 0)
             //                {
-            //                    if (mwqmSampleOld.MWQMSiteTVItemID == mwqmSample.MWQMSiteTVItemID 
+            //                    if (mwqmSampleOld.MWQMSiteTVItemID == mwqmSample.MWQMSiteTVItemID
             //                        && mwqmSampleOld.FecCol_MPN_100ml == mwqmSample.FecCol_MPN_100ml
             //                        && mwqmSampleOld.SampleTypesText == mwqmSample.SampleTypesText)
             //                    {
