@@ -2092,7 +2092,7 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(59, 25);
             this.button15.TabIndex = 204;
-            this.button15.Text = "button15";
+            this.button15.Text = "Climate1";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
@@ -2102,7 +2102,7 @@
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(59, 25);
             this.button16.TabIndex = 204;
-            this.button16.Text = "button16";
+            this.button16.Text = "Climate2";
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
@@ -2112,7 +2112,7 @@
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(59, 25);
             this.button17.TabIndex = 204;
-            this.button17.Text = "button17";
+            this.button17.Text = "climate3";
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 

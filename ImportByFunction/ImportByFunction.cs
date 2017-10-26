@@ -7190,8 +7190,8 @@ namespace ImportByFunction
         private void button15_Click(object sender, EventArgs e)
         {
             bool Start = false;
-            int SubsectorID = 785;
-            int CurrentYear = 2015;
+            int SubsectorID = 1078;
+            int CurrentYear =  2009;
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -7254,8 +7254,8 @@ namespace ImportByFunction
         private void button16_Click(object sender, EventArgs e)
         {
             bool Start = false;
-            int SubsectorID = 660;
-            int CurrentYear = 1988;
+            int SubsectorID = 871;
+            int CurrentYear = 1990;
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -7266,7 +7266,7 @@ namespace ImportByFunction
                 return;
             }
 
-            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith("NB-")).OrderBy(c => c.TVText).ToList();
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith("NL-")).OrderBy(c => c.TVText).ToList();
             if (tvItemModelSubsectorList.Count == 0)
             {
                 return;
@@ -7315,13 +7315,13 @@ namespace ImportByFunction
                 return;
             }
 
-            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith("NB-")).OrderBy(c => c.TVText).ToList();
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith("NL-")).OrderBy(c => c.TVText).ToList();
             if (tvItemModelSubsectorList.Count == 0)
             {
                 return;
             }
 
-            foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
+            foreach (TVItemModel tvItemModel in tvItemModelSubsectorList) //.Where(c => c.TVText.StartsWith("NB-06-020-002")))
             {
                 List<MWQMRunModel> mwqmRunModelList = mwqmRunService.GetMWQMRunModelListWithSubsectorTVItemIDDB(tvItemModel.TVItemID);
 
@@ -7383,6 +7383,9 @@ namespace ImportByFunction
                     }
                 }
             }
+
+            lblStatus.Text = "done...";
+
         }
 
         private void button18_Click(object sender, EventArgs e)
