@@ -7189,9 +7189,7 @@ namespace ImportByFunction
 
         private void button15_Click(object sender, EventArgs e)
         {
-            bool Start = false;
-            int SubsectorID = 1078;
-            int CurrentYear =  2009;
+            string StartTextSubsector = "NL-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -7202,19 +7200,41 @@ namespace ImportByFunction
                 return;
             }
 
-            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith("NL-")).OrderBy(c => c.TVText).ToList();
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith(StartTextSubsector)).OrderBy(c => c.TVText).ToList();
             if (tvItemModelSubsectorList.Count == 0)
             {
                 return;
             }
 
-
             foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
             {
+                lblStatus.Text = tvItemModel.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                // get subsector with missing precipitation data in Run
+
+                List<MWQMRun> mwqmRunList = new List<MWQMRun>();
+                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                {
+                    mwqmRunList = (from c in db.MWQMRuns
+                                   where c.SubsectorTVItemID == tvItemModel.TVItemID
+                                   && (c.RainDay0_mm == null
+                                   || c.RainDay1_mm == null
+                                   || c.RainDay2_mm == null
+                                   || c.RainDay3_mm == null
+                                   || c.RainDay4_mm == null
+                                   || c.RainDay5_mm == null
+                                   || c.RainDay6_mm == null
+                                   || c.RainDay7_mm == null
+                                   || c.RainDay8_mm == null
+                                   || c.RainDay9_mm == null
+                                   || c.RainDay10_mm == null)
+                                   select c).ToList();
+                }
 
                 // get all years with data
-                List<int> YearWithData = mwqmSubsectorService.GetMWQMSubsectorRunsYears(tvItemModel.TVItemID);
-
+                List<int> YearWithData = mwqmRunList.Select(c => c.DateTime_Local.Year).Distinct().ToList();
 
                 foreach (int year in YearWithData)
                 {
@@ -7222,29 +7242,21 @@ namespace ImportByFunction
                     lblStatus.Refresh();
                     Application.DoEvents();
 
-                    if (SubsectorID == tvItemModel.TVItemID && CurrentYear == year)
+                    AppTaskModel appTaskModel = mwqmSubsectorService.ClimateSiteGetDataForRunsOfYearDB(tvItemModel.TVItemID, year);
+                    if (!string.IsNullOrWhiteSpace(appTaskModel.Error))
                     {
-                        Start = true;
+                        return;
                     }
 
-                    if (Start)
+                    int AppTaskID = appTaskModel.AppTaskID;
+                    bool Working = true;
+                    while (Working)
                     {
-                        AppTaskModel appTaskModel = mwqmSubsectorService.ClimateSiteGetDataForRunsOfYearDB(tvItemModel.TVItemID, year);
-                        if (!string.IsNullOrWhiteSpace(appTaskModel.Error))
+                        Thread.Sleep(500);
+                        AppTask appTaskExist = appTaskService.GetAppTaskWithAppTaskIDDB(appTaskModel.AppTaskID);
+                        if (appTaskExist == null)
                         {
-                            return;
-                        }
-
-                        int AppTaskID = appTaskModel.AppTaskID;
-                        bool Working = true;
-                        while (Working)
-                        {
-                            Thread.Sleep(500);
-                            AppTask appTaskExist = appTaskService.GetAppTaskWithAppTaskIDDB(appTaskModel.AppTaskID);
-                            if (appTaskExist == null)
-                            {
-                                Working = false;
-                            }
+                            Working = false;
                         }
                     }
                 }
@@ -7253,9 +7265,7 @@ namespace ImportByFunction
 
         private void button16_Click(object sender, EventArgs e)
         {
-            bool Start = false;
-            int SubsectorID = 871;
-            int CurrentYear = 1990;
+            string StartTextSubsector = "NL-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -7266,7 +7276,7 @@ namespace ImportByFunction
                 return;
             }
 
-            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith("NL-")).OrderBy(c => c.TVText).ToList();
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith(StartTextSubsector)).OrderBy(c => c.TVText).ToList();
             if (tvItemModelSubsectorList.Count == 0)
             {
                 return;
@@ -7275,10 +7285,27 @@ namespace ImportByFunction
 
             foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
             {
+                List<MWQMRun> mwqmRunList = new List<MWQMRun>();
+                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                {
+                    mwqmRunList = (from c in db.MWQMRuns
+                                   where c.SubsectorTVItemID == tvItemModel.TVItemID
+                                   && (c.RainDay0_mm == null
+                                   || c.RainDay1_mm == null
+                                   || c.RainDay2_mm == null
+                                   || c.RainDay3_mm == null
+                                   || c.RainDay4_mm == null
+                                   || c.RainDay5_mm == null
+                                   || c.RainDay6_mm == null
+                                   || c.RainDay7_mm == null
+                                   || c.RainDay8_mm == null
+                                   || c.RainDay9_mm == null
+                                   || c.RainDay10_mm == null)
+                                   select c).ToList();
+                }
 
                 // get all years with data
-                List<int> YearWithData = mwqmSubsectorService.GetMWQMSubsectorRunsYears(tvItemModel.TVItemID);
-
+                List<int> YearWithData = mwqmRunList.Select(c => c.DateTime_Local.Year).Distinct().ToList();
 
                 foreach (int year in YearWithData)
                 {
@@ -7286,18 +7313,10 @@ namespace ImportByFunction
                     lblStatus.Refresh();
                     Application.DoEvents();
 
-                    if (SubsectorID == tvItemModel.TVItemID && CurrentYear == year)
+                    MWQMSubsectorModel mwqmSubsectorModel = mwqmSubsectorService.ClimateSiteSetDataToUseByAverageOrPriorityDB(tvItemModel.TVItemID, year, "Priority");
+                    if (!string.IsNullOrWhiteSpace(mwqmSubsectorModel.Error))
                     {
-                        Start = true;
-                    }
-
-                    if (Start)
-                    {
-                        MWQMSubsectorModel mwqmSubsectorModel = mwqmSubsectorService.ClimateSiteSetDataToUseByAverageOrPriorityDB(tvItemModel.TVItemID, year, "Priority");
-                        if (!string.IsNullOrWhiteSpace(mwqmSubsectorModel.Error))
-                        {
-                            //return;
-                        }
+                        //return;
                     }
                 }
             }
@@ -7305,6 +7324,7 @@ namespace ImportByFunction
 
         private void button17_Click(object sender, EventArgs e)
         {
+            string StartTextSubsector = "NL-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -7315,7 +7335,7 @@ namespace ImportByFunction
                 return;
             }
 
-            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith("NL-")).OrderBy(c => c.TVText).ToList();
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector).Where(c => c.TVText.StartsWith(StartTextSubsector)).OrderBy(c => c.TVText).ToList();
             if (tvItemModelSubsectorList.Count == 0)
             {
                 return;
