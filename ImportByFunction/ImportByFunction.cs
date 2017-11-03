@@ -7187,7 +7187,7 @@ namespace ImportByFunction
             richTextBoxStatus.Text = sb.ToString();
         }
 
-        private void button15_Click(object sender, EventArgs e)
+        private void button15_Click(object sender, EventArgs e) // button climate1
         {
             string StartTextSubsector = "NL-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -7263,7 +7263,7 @@ namespace ImportByFunction
             }
         }
 
-        private void button16_Click(object sender, EventArgs e)
+        private void button16_Click(object sender, EventArgs e) // button climate2
         {
             string StartTextSubsector = "NL-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -7322,7 +7322,7 @@ namespace ImportByFunction
             }
         }
 
-        private void button17_Click(object sender, EventArgs e)
+        private void button17_Click(object sender, EventArgs e) // button climate3
         {
             string StartTextSubsector = "NL-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
