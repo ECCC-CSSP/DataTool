@@ -464,13 +464,33 @@ namespace ImportByFunction
                         mwqmRunModelNew.EndDateTime_Local = mwqmRunModelNew.StartDateTime_Local;
                     }
 
-                    mwqmRunModelNew.RunSampleType = SampleTypeEnum.Routine;
 
                     MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
                     UseOfSiteService useOfSiteService = new UseOfSiteService(LanguageEnum.en, user);
                     TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
-                    mwqmRunModelNew.RunNumber = 1;
+                    if (ar.RUN_NUMBER == null)
+                    {
+                        mwqmRunModelNew.RunNumber = 1;
+                        mwqmRunModelNew.RunSampleType = SampleTypeEnum.Routine;
+                    }
+                    else
+                    {
+                        int rn = (int)ar.RUN_NUMBER;
+                        mwqmRunModelNew.RunNumber = rn;
+                        if (rn == 1)
+                        {
+                            mwqmRunModelNew.RunSampleType = SampleTypeEnum.Routine;
+                        }
+                        else if (rn == 2)
+                        {
+                            mwqmRunModelNew.RunSampleType = SampleTypeEnum.RainCMPRoutine;
+                        }
+                        else
+                        {
+                            mwqmRunModelNew.RunSampleType = SampleTypeEnum.Study;
+                        }
+                    }
                     MWQMRunModel mwqmRunModelExist = mwqmRunService.GetMWQMRunModelExistDB(mwqmRunModelNew);
                     if (!string.IsNullOrWhiteSpace(mwqmRunModelExist.Error))
                     {
@@ -512,6 +532,9 @@ namespace ImportByFunction
                     }
                     else
                     {
+                        mwqmRunModelExist.RunNumber = mwqmRunModelNew.RunNumber;
+                        mwqmRunModelExist.RunSampleType = mwqmRunModelNew.RunSampleType;
+
                         mwqmRunModelExist.Tide_Start = mwqmRunModelNew.Tide_Start;
                         mwqmRunModelExist.Tide_End = mwqmRunModelNew.Tide_End;
 

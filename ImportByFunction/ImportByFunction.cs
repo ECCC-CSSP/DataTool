@@ -4185,34 +4185,72 @@ namespace ImportByFunction
 
         private void RecalculateTVItemStat_Click(object sender, EventArgs e)
         {
+            TVItemStatService tvItemStatService = new TVItemStatService(LanguageEnum.en, user);
 
             List<TVItem> tvItemList = new List<TVItem>() { new TVItem() };
             int take = 100;
             int CurrentTVItemID = int.Parse(textBoxRecalculateTVItemStatStart.Text);
             while (tvItemList.Count > 0)
             {
-                TVItemStatService tvItemStatService = new TVItemStatService(LanguageEnum.en, user);
 
                 tvItemList = (from c in tvItemStatService.db.TVItems
                               where c.TVItemID > CurrentTVItemID
                               orderby c.TVItemID
                               select c).Take(take).ToList();
 
-                foreach (TVItem tvItem in tvItemList)
+                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
                 {
-                    lblStatus.Text = tvItem.TVItemID.ToString();
-                    lblStatus.Refresh();
-                    Application.DoEvents();
-
-                    string retStr = tvItemStatService.SetTVItemStatForTVItemID(tvItem.TVItemID);
-                    if (!string.IsNullOrWhiteSpace(retStr))
+                    foreach (TVItem tvItem in tvItemList)
                     {
-                        richTextBoxStatus.AppendText("Error: [" + retStr + "]\r\n");
-                        return;
+                        lblStatus.Text = tvItem.TVItemID.ToString();
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        List<TVTypeEnum> SubTVTypeList = tvItemStatService.GetSubTVTypeForTVItemStat((TVTypeEnum)tvItem.TVType);
+
+                        foreach (TVTypeEnum tvType in SubTVTypeList)
+                        {
+
+                            List<TVItemStat> tvItemStatList = (from c in dd.TVItemStats
+                                                               where c.TVItemID == tvItem.TVItemID
+                                                               select c).ToList();
+
+                            int ChildCount = tvItemStatService.GetChildCount2(tvItem, tvType);
+
+                            TVItemStat TVItemStatExist = tvItemStatList.Where(c => c.TVItemID == tvItem.TVItemID && c.TVType == (int)tvType).FirstOrDefault();
+
+                            if (TVItemStatExist == null)
+                            {
+                                TVItemStat tvItemStat = new TVItemStat()
+                                {
+                                    TVItemID = tvItem.TVItemID,
+                                    TVType = (int)tvType,
+                                    ChildCount = ChildCount,
+                                };
+
+                                dd.TVItemStats.Add(tvItemStat);
+                            }
+                            else
+                            {
+                                if (TVItemStatExist.ChildCount != ChildCount)
+                                {
+                                    TVItemStatExist.ChildCount = ChildCount;
+                                }
+                            }
+                        }
+
+                        CurrentTVItemID = tvItem.TVItemID;
+                        textBoxRecalculateTVItemStatStart.Text = CurrentTVItemID.ToString();
                     }
 
-                    CurrentTVItemID = tvItem.TVItemID;
-                    textBoxRecalculateTVItemStatStart.Text = CurrentTVItemID.ToString();
+                    try
+                    {
+                        dd.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        int aaa = 234;
+                    }
                 }
             }
         }
@@ -4928,7 +4966,236 @@ namespace ImportByFunction
 
         private void button6_Click(object sender, EventArgs e)
         {
-            //string FileName = @"C:\CSSP Latest Code old\DataTool\ImportByFunction\Data_inputs\NS Active and Inactive MWQMSite Final.xlsx";
+
+            //richTextBoxStatus.AppendText("Subsector\tRunTVText\tRunTVItemID\tRunType\tRunNumber\r\n");
+            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //{
+            //    TVItem tvItemPE = (from t in dd.TVItems
+            //                       from tl in dd.TVItemLanguages
+            //                       where t.TVItemID == tl.TVItemID
+            //                       && tl.Language == (int)LanguageEnum.en
+            //                       && tl.TVText == "Prince Edward Island"
+            //                       && t.TVType == (int)TVTypeEnum.Province
+            //                       select t).FirstOrDefault();
+
+            //    if (tvItemPE != null)
+            //    {
+            //        var tvItemSSList = (from t in dd.TVItems
+            //                            from tl in dd.TVItemLanguages
+            //                            where t.TVItemID == tl.TVItemID
+            //                            && t.TVPath.StartsWith(tvItemPE.TVPath)
+            //                            && tl.Language == (int)LanguageEnum.en
+            //                            && t.TVType == (int)TVTypeEnum.Subsector
+            //                            orderby tl.TVText
+            //                            select new { t, tl }).ToList();
+
+            //        foreach (var tvItem in tvItemSSList)
+            //        {
+            //            lblStatus.Text = tvItem.tl.TVText;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            var mwqmRunList = (from t in dd.TVItems
+            //                               from tl in dd.TVItemLanguages
+            //                               from c in dd.MWQMRuns
+            //                               where t.TVItemID == tl.TVItemID
+            //                               && t.TVItemID == c.MWQMRunTVItemID
+            //                               && t.ParentID == tvItem.t.TVItemID
+            //                               && t.TVType == (int)TVTypeEnum.MWQMRun
+            //                               && tl.Language == (int)LanguageEnum.en
+            //                               select new { c, t, tl }).ToList();
+
+            //            foreach (var mwqmRun in mwqmRunList)
+            //            {
+            //                foreach (LanguageEnum language in new List<LanguageEnum>() { LanguageEnum.en, LanguageEnum.fr })
+            //                {
+            //                    using (CSSPWebToolsDBEntities ddd = new CSSPWebToolsDBEntities())
+            //                    {
+            //                        TVItemLanguage tvItemLanguage = (from c in ddd.TVItemLanguages
+            //                                                         where c.TVItemID == mwqmRun.c.MWQMRunTVItemID
+            //                                                         && c.Language == (int)language
+            //                                                         select c).FirstOrDefault();
+
+            //                        if (tvItemLanguage != null)
+            //                        {
+            //                            BaseEnumService baseEnumService = new BaseEnumService(language);
+
+            //                            string TVText = mwqmRun.c.DateTime_Local.ToString("yyyy MM dd");
+            //                            if (mwqmRun.c.RunNumber > 1)
+            //                            {
+            //                                TVText = TVText + " (" + mwqmRun.c.RunNumber.ToString() + ")";
+            //                            }
+            //                            TVText = TVText + (mwqmRun.c.RunSampleType != (int)SampleTypeEnum.Routine ? " (" + baseEnumService.GetEnumText_SampleTypeEnum((SampleTypeEnum)mwqmRun.c.RunSampleType) + ")" : "");
+
+            //                            if (tvItemLanguage.TVText != TVText)
+            //                            {
+            //                                tvItemLanguage.TVText = TVText;
+
+            //                                try
+            //                                {
+            //                                    ddd.SaveChanges();
+            //                                }
+            //                                catch (Exception)
+            //                                {
+            //                                    int sliejfilsjf = 34;
+            //                                }
+            //                            }
+            //                        }
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            //richTextBoxStatus.AppendText("Subsector\tRunTVText\tRunTVItemID\tRunType\tRunNumber\r\n");
+            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //{
+            //    TVItem tvItemPE = (from t in dd.TVItems
+            //                       from tl in dd.TVItemLanguages
+            //                       where t.TVItemID == tl.TVItemID
+            //                       && tl.Language == (int)LanguageEnum.en
+            //                       && tl.TVText == "Prince Edward Island"
+            //                       && t.TVType == (int)TVTypeEnum.Province
+            //                       select t).FirstOrDefault();
+
+            //    if (tvItemPE != null)
+            //    {
+            //        var tvItemSSList = (from t in dd.TVItems
+            //                            from tl in dd.TVItemLanguages
+            //                            where t.TVItemID == tl.TVItemID
+            //                            && t.TVPath.StartsWith(tvItemPE.TVPath)
+            //                            && tl.Language == (int)LanguageEnum.en
+            //                            && t.TVType == (int)TVTypeEnum.Subsector
+            //                            orderby tl.TVText
+            //                            select new { t, tl }).ToList();
+
+            //        foreach (var tvItem in tvItemSSList)
+            //        {
+            //            lblStatus.Text = tvItem.tl.TVText;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            List<ASGADRun> asgadRunList = new List<ASGADRun>();
+            //            using (TempDataToolDBEntities dt = new TempDataToolDBEntities())
+            //            {
+            //                string Area = tvItem.tl.TVText.Substring(3, 2);
+            //                string Sector = tvItem.tl.TVText.Substring(6, 3);
+            //                string Subsector = tvItem.tl.TVText.Substring(10, 3);
+            //                asgadRunList = (from c in dt.ASGADRuns
+            //                                where c.PROV == "PE"
+            //                                && c.AREA == Area
+            //                                && c.SECTOR == Sector
+            //                                && c.SUBSECTOR == Subsector
+            //                                select c).ToList();
+            //            }
+
+            //            var mwqmRunList = (from t in dd.TVItems
+            //                               from tl in dd.TVItemLanguages
+            //                               from c in dd.MWQMRuns
+            //                               where t.TVItemID == tl.TVItemID
+            //                               && t.TVItemID == c.MWQMRunTVItemID
+            //                               && t.ParentID == tvItem.t.TVItemID
+            //                               && t.TVType == (int)TVTypeEnum.MWQMRun
+            //                               && tl.Language == (int)LanguageEnum.en
+            //                               select new { c, t, tl }).ToList();
+
+            //            if (asgadRunList.Count != mwqmRunList.Count)
+            //            {
+            //                int sleifsleifj = 34;
+            //            }
+
+            //            using (CSSPWebToolsDBEntities ddd = new CSSPWebToolsDBEntities())
+            //            {
+            //                foreach (var mwqmRun in mwqmRunList)
+            //                {
+            //                    ASGADRun asgadRunExist = (from c in asgadRunList
+            //                                              where c.SAMP_DATE.Value.Year == mwqmRun.c.DateTime_Local.Year
+            //                                              && c.SAMP_DATE.Value.Month == mwqmRun.c.DateTime_Local.Month
+            //                                              && c.SAMP_DATE.Value.Day == mwqmRun.c.DateTime_Local.Day
+            //                                              && c.RUN_NUMBER == mwqmRun.c.RunNumber
+            //                                              select c).FirstOrDefault();
+            //                    if (asgadRunExist == null)
+            //                    {
+            //                        richTextBoxStatus.AppendText(tvItem.tl.TVText + "\t" + mwqmRun.tl.TVText + "\t" + mwqmRun.t.TVItemID + "\t" + mwqmRun.c.RunSampleType + "\t" + mwqmRun.c.RunNumber + "\r\n");
+
+            //                        MWQMRun mwqmRunToDelete = (from c in ddd.MWQMRuns
+            //                                                   where c.MWQMRunID == mwqmRun.c.MWQMRunID
+            //                                                   select c).FirstOrDefault();
+
+            //                        if (mwqmRunToDelete != null)
+            //                        {
+            //                            ddd.MWQMRuns.Remove(mwqmRunToDelete);
+            //                        }
+            //                    }
+            //                }
+
+            //                try
+            //                {
+            //                    ddd.SaveChanges();
+            //                }
+            //                catch (Exception ex)
+            //                {
+            //                    int sleifj = 34;
+            //                }
+
+            //            }
+            //        }
+            //    }
+            //}
+            //richTextBoxStatus.AppendText("Subsector\tID\tMWQMRun\r\n");
+            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //{
+            //    TVItem tvItemPE = (from t in dd.TVItems
+            //                       from tl in dd.TVItemLanguages
+            //                       where t.TVItemID == tl.TVItemID
+            //                       && tl.Language == (int)LanguageEnum.en
+            //                       && tl.TVText == "Prince Edward Island"
+            //                       && t.TVType == (int)TVTypeEnum.Province
+            //                       select t).FirstOrDefault();
+
+            //    if (tvItemPE != null)
+            //    {
+            //        var tvItemSSList = (from t in dd.TVItems
+            //                            from tl in dd.TVItemLanguages
+            //                            where t.TVItemID == tl.TVItemID
+            //                            && t.TVPath.StartsWith(tvItemPE.TVPath)
+            //                            && tl.Language == (int)LanguageEnum.en
+            //                            && t.TVType == (int)TVTypeEnum.Subsector
+            //                            orderby tl.TVText
+            //                            select new { t, tl }).ToList();
+
+            //        foreach (var tvItem in tvItemSSList)
+            //        {
+            //            lblStatus.Text = tvItem.tl.TVText;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            var mwqmRunList = (from t in dd.TVItems
+            //                               from tl in dd.TVItemLanguages
+            //                               from c in dd.MWQMRuns
+            //                               where t.TVItemID == tl.TVItemID
+            //                               && t.TVItemID == c.MWQMRunTVItemID
+            //                               && t.ParentID == tvItem.t.TVItemID
+            //                               && t.TVType == (int)TVTypeEnum.MWQMRun
+            //                               && tl.Language == (int)LanguageEnum.en
+            //                               //&& t.IsActive == true
+            //                               && c.DateTime_Local.Year > 2016
+            //                               select new { c, t, tl }).ToList();
+
+            //            foreach (var mwqmRun in mwqmRunList)
+            //            {
+
+            //                //if (mwqmSite != null && mwqmSite.c.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.Error)
+            //                //{
+            //                    richTextBoxStatus.AppendText(tvItem.tl.TVText + "\t" + mwqmRun.t.TVItemID + "\t" + mwqmRun.tl.TVText + "\r\n");
+            //                //}
+            //            }
+            //        }
+            //    }
+            //}
+
+            //string FileName = @"C:\CSSP Latest Code old\DataTool\ImportByFunction\Data_inputs\PEI Active and Inactive MWQMSite Final.xlsx";
 
             //string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties=Excel 12.0";
 
@@ -5035,56 +5302,56 @@ namespace ImportByFunction
 
             //}
 
-            richTextBoxStatus.AppendText("Subsector\tID\tMWQMSite\tIsAcive\r\n");
+            //richTextBoxStatus.AppendText("Subsector\tID\tMWQMSite\tIsAcive\r\n");
 
-            using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
-            {
-                TVItem tvItemNS = (from t in dd.TVItems
-                                   from tl in dd.TVItemLanguages
-                                   where t.TVItemID == tl.TVItemID
-                                   && tl.Language == (int)LanguageEnum.en
-                                   && tl.TVText == "Prince Edward Island"
-                                   && t.TVType == (int)TVTypeEnum.Province
-                                   select t).FirstOrDefault();
+            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //{
+            //    TVItem tvItemNS = (from t in dd.TVItems
+            //                       from tl in dd.TVItemLanguages
+            //                       where t.TVItemID == tl.TVItemID
+            //                       && tl.Language == (int)LanguageEnum.en
+            //                       && tl.TVText == "Prince Edward Island"
+            //                       && t.TVType == (int)TVTypeEnum.Province
+            //                       select t).FirstOrDefault();
 
-                if (tvItemNS != null)
-                {
-                    var tvItemSSList = (from t in dd.TVItems
-                                        from tl in dd.TVItemLanguages
-                                        where t.TVItemID == tl.TVItemID
-                                        && t.TVPath.StartsWith(tvItemNS.TVPath)
-                                        && tl.Language == (int)LanguageEnum.en
-                                        && t.TVType == (int)TVTypeEnum.Subsector
-                                        orderby tl.TVText
-                                        select new { t, tl }).ToList();
+            //    if (tvItemNS != null)
+            //    {
+            //        var tvItemSSList = (from t in dd.TVItems
+            //                            from tl in dd.TVItemLanguages
+            //                            where t.TVItemID == tl.TVItemID
+            //                            && t.TVPath.StartsWith(tvItemNS.TVPath)
+            //                            && tl.Language == (int)LanguageEnum.en
+            //                            && t.TVType == (int)TVTypeEnum.Subsector
+            //                            orderby tl.TVText
+            //                            select new { t, tl }).ToList();
 
-                    foreach (var tvItem in tvItemSSList)
-                    {
-                        lblStatus.Text = tvItem.tl.TVText;
-                        lblStatus.Refresh();
-                        Application.DoEvents();
+            //        foreach (var tvItem in tvItemSSList)
+            //        {
+            //            lblStatus.Text = tvItem.tl.TVText;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
 
-                        var mwqmSiteList = (from t in dd.TVItems
-                                            from tl in dd.TVItemLanguages
-                                            from c in dd.MWQMSites
-                                            where t.TVItemID == tl.TVItemID
-                                            && t.TVItemID == c.MWQMSiteTVItemID
-                                            && t.ParentID == tvItem.t.TVItemID
-                                            && t.TVType == (int)TVTypeEnum.MWQMSite
-                                            && tl.Language == (int)LanguageEnum.en
-                                            && t.IsActive == true
-                                            select new { c, t, tl }).ToList();
+            //            var mwqmSiteList = (from t in dd.TVItems
+            //                                from tl in dd.TVItemLanguages
+            //                                from c in dd.MWQMSites
+            //                                where t.TVItemID == tl.TVItemID
+            //                                && t.TVItemID == c.MWQMSiteTVItemID
+            //                                && t.ParentID == tvItem.t.TVItemID
+            //                                && t.TVType == (int)TVTypeEnum.MWQMSite
+            //                                && tl.Language == (int)LanguageEnum.en
+            //                                && t.IsActive == true
+            //                                select new { c, t, tl }).ToList();
 
-                        foreach (var mwqmSite in mwqmSiteList)
-                        {
-                            if (mwqmSite != null && mwqmSite.c.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.Error)
-                            {
-                                richTextBoxStatus.AppendText(tvItem.tl.TVText + "\t" + mwqmSite.t.TVItemID + "\t" + mwqmSite.tl.TVText + "\t" + (mwqmSite.t.IsActive ? "1" : "") + "\r\n");
-                            }
-                        }
-                    }
-                }
-            }
+            //            foreach (var mwqmSite in mwqmSiteList)
+            //            {
+            //                if (mwqmSite != null && mwqmSite.c.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.Error)
+            //                {
+            //                    richTextBoxStatus.AppendText(tvItem.tl.TVText + "\t" + mwqmSite.t.TVItemID + "\t" + mwqmSite.tl.TVText + "\t" + (mwqmSite.t.IsActive ? "1" : "") + "\r\n");
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
 
             //int a = 1;
             //if (a == 1)

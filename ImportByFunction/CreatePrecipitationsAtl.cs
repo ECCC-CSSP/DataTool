@@ -141,9 +141,15 @@ namespace ImportByFunction
                 ClimateDataValueService climateDataValueService = new ClimateDataValueService(LanguageEnum.en, user);
 
                 ClimateDataValueModel climateDataValueModel = climateDataValueService.GetClimateDataValueModelExitDB(climateDataValueModelNew);
-                if (string.IsNullOrWhiteSpace(climateDataValueModel.Error))
+                if (!string.IsNullOrWhiteSpace(climateDataValueModel.Error))
                 {
                     ClimateDataValueModel climateDataValueModelRet = climateDataValueService.PostAddClimateDataValueDB(climateDataValueModelNew);
+                    if (!CheckModelOK<ClimateDataValueModel>(climateDataValueModelRet)) return false;
+                }
+                else
+                {
+                    climateDataValueModel.RainfallEntered_mm = climateDataValueModelNew.RainfallEntered_mm;
+                    ClimateDataValueModel climateDataValueModelRet = climateDataValueService.PostUpdateClimateDataValueDB(climateDataValueModel);
                     if (!CheckModelOK<ClimateDataValueModel>(climateDataValueModelRet)) return false;
                 }
 

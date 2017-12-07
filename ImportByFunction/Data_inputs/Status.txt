@@ -40,13 +40,13 @@ textBoxQCCreateStationsQC,4111
 textBoxNBCreateSamplesAtl,94476
 textBoxNLCreateSamplesAtl,45787
 textBoxNSCreateSamplesAtl,149041
-textBoxPECreateSamplesAtl,100627
+textBoxPECreateSamplesAtl,104396
 textBoxBCCreateSamplesBC,159
 textBoxQCCreateSamplesQC,3047
 textBoxNBCreateRunsAtl,6489
 textBoxNLCreateRunsAtl,3472
 textBoxNSCreateRunsAtl,11182
-textBoxPECreateRunsAtl,8446
+textBoxPECreateRunsAtl,8730
 textBoxBCCreateRunsBC,159
 textBoxQCCreateRunsQC,314
 textBoxNBDonCreateSanitaryAtl,3304

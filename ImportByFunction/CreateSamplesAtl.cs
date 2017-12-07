@@ -91,52 +91,27 @@ namespace ImportByFunction
                     MWQMSiteDict.Add(kvp.Key + tvItemModel.TVText, tvItemModel.TVItemID);
                 }
 
-                // filling the MWQMRun global variable for future use
-                List<TVItemModel> tvItemModelMWQMRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(kvp.Value, TVTypeEnum.MWQMRun);
-
-                foreach (TVItemModel tvItemModel in tvItemModelMWQMRunList)
+                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
                 {
-                    //try
-                    //{
-                    //    int ExistingTVItemID = MWQMRunDict[kvp.Key + tvItemModel.TVText];
-                    //    if (ExistingTVItemID > 0)
-                    //    {
-                    //        List<MWQMSampleModel> mwqmSampleModelList2 = mwqmSampleService.GetMWQMSampleModelListWithMWQMRunTVItemIDDB(tvItemModel.TVItemID);
-                    //        if (mwqmSampleModelList2.Count == 0)
-                    //        {
-                    //            MWQMRunModel mwqmRunModel = mwqmRunService.PostDeleteMWQMRunTVItemIDDB(tvItemModel.TVItemID);
-                    //            if (!string.IsNullOrWhiteSpace(mwqmRunModel.Error))
-                    //            {
-                    //                // could be non existant
-                    //            }
-                    //            TVItemModel tvItemModelRet = tvItemService.PostDeleteTVItemWithTVItemIDDB(tvItemModel.TVItemID);
-                    //            if (!string.IsNullOrWhiteSpace(tvItemModelRet.Error))
-                    //            {
-                    //                // could be non existant
-                    //            }
-                    //        }
+                    var mwqmRunTVItemList = (from c in dd.MWQMRuns
+                                             from t in dd.TVItems
+                                             from tl in dd.TVItemLanguages
+                                             where c.MWQMRunTVItemID == t.TVItemID
+                                             && t.TVItemID == tl.TVItemID
+                                             && t.ParentID == kvp.Value
+                                             && tl.Language == (int)LanguageEnum.en
+                                             select new { c, t, tl }).ToList();
 
-                    //        mwqmSampleModelList2 = mwqmSampleService.GetMWQMSampleModelListWithMWQMRunTVItemIDDB(ExistingTVItemID);
-                    //        if (mwqmSampleModelList2.Count == 0)
-                    //        {
-                    //            MWQMRunModel mwqmRunModel = mwqmRunService.PostDeleteMWQMRunTVItemIDDB(ExistingTVItemID);
-                    //            if (!string.IsNullOrWhiteSpace(mwqmRunModel.Error))
-                    //            {
-                    //                // could be non existant
-                    //            }
-                    //            TVItemModel tvItemModelRet = tvItemService.PostDeleteTVItemWithTVItemIDDB(ExistingTVItemID);
-                    //            if (!string.IsNullOrWhiteSpace(tvItemModelRet.Error))
-                    //            {
-                    //                // could be non existant
-                    //            }
-                    //        }
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    //  good it does not exist then add it
-                    MWQMRunDict.Add(kvp.Key + tvItemModel.TVText, tvItemModel.TVItemID);
-                    //}
+                    foreach (var mwqmRunTVItem in mwqmRunTVItemList)
+                    {
+                        int Year = mwqmRunTVItem.c.DateTime_Local.Year;
+                        int Month = mwqmRunTVItem.c.DateTime_Local.Month;
+                        int Day = mwqmRunTVItem.c.DateTime_Local.Day;
+
+                        string DateText = Year + " " + (Month > 9 ? Month.ToString() : "0" + Month.ToString()) + " " + (Day > 9 ? Day.ToString() : "0" + Day.ToString());
+
+                        MWQMRunDict.Add(kvp.Key + DateText + "_" + mwqmRunTVItem.c.RunNumber, mwqmRunTVItem.tl.TVItemID);
+                    }
                 }
             }
 
@@ -323,7 +298,6 @@ namespace ImportByFunction
                         mwqmSampleModelNew.WaterTemp_C = 6.5f;
                     }
 
-
                     int Year = mwqmSampleModelNew.SampleDateTime_Local.Year;
                     int Month = mwqmSampleModelNew.SampleDateTime_Local.Month;
                     int Day = mwqmSampleModelNew.SampleDateTime_Local.Day;
@@ -335,13 +309,26 @@ namespace ImportByFunction
                         SubsectorTVItemID = SubsectorTVItemID,
                         DateTime_Local = new DateTime(Year, Month, Day),
                         RunSampleType = SampleTypeEnum.Routine,
-                        RunNumber = 1
+                        RunNumber = (asamp.RUN_NUMBER == null ? 1 : (int)asamp.RUN_NUMBER)
                     };
+
+                    if (mwqmRunModelToCheck.RunNumber == 1)
+                    {
+                        mwqmSampleModelNew.SampleTypesText = ((int)SampleTypeEnum.Routine).ToString() + ",";
+                    }
+                    else if (mwqmRunModelToCheck.RunNumber == 2)
+                    {
+                        mwqmSampleModelNew.SampleTypesText = ((int)SampleTypeEnum.RainCMPRoutine).ToString() + ",";
+                    }
+                    else
+                    {
+                        mwqmSampleModelNew.SampleTypesText = ((int)SampleTypeEnum.Study).ToString() + ",";
+                    }
 
                     string DateText = Year + " " + (Month > 9 ? Month.ToString() : "0" + Month.ToString()) + " " + (Day > 9 ? Day.ToString() : "0" + Day.ToString());
                     try
                     {
-                        mwqmSampleModelNew.MWQMRunTVItemID = MWQMRunDict[Locator + DateText];
+                        mwqmSampleModelNew.MWQMRunTVItemID = MWQMRunDict[Locator + DateText + "_" + (asamp.RUN_NUMBER == null || asamp.RUN_NUMBER == 0 ? 1 : (int)asamp.RUN_NUMBER)];
                     }
                     catch (Exception)
                     {
@@ -351,7 +338,7 @@ namespace ImportByFunction
 
                     MWQMSampleModel mwqmSampleModelExist = (from c in mwqmSampleModelList
                                                             where c.MWQMSiteTVItemID == mwqmSampleModelNew.MWQMSiteTVItemID
-                                                            //&& c.MWQMRunTVItemID == mwqmSampleModelNew.MWQMRunTVItemID
+                                                            && c.MWQMRunTVItemID == mwqmSampleModelNew.MWQMRunTVItemID
                                                             && c.SampleDateTime_Local == mwqmSampleModelNew.SampleDateTime_Local
                                                             select c).FirstOrDefault();
 
@@ -459,53 +446,63 @@ namespace ImportByFunction
                     MWQMSiteDict.Add(kvp.Key + tvItemModel.TVText, tvItemModel.TVItemID);
                 }
 
-                // filling the MWQMRun global variable for future use
-                List<TVItemModel> tvItemModelMWQMRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(kvp.Value, TVTypeEnum.MWQMRun);
-
-                foreach (TVItemModel tvItemModel in tvItemModelMWQMRunList)
+                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
                 {
-                    //try
-                    //{
-                    //    int ExistingTVItemID = MWQMRunDict[kvp.Key + tvItemModel.TVText];
-                    //    if (ExistingTVItemID > 0)
-                    //    {
-                    //        List<MWQMSampleModel> mwqmSampleModelList2 = mwqmSampleService.GetMWQMSampleModelListWithMWQMRunTVItemIDDB(tvItemModel.TVItemID);
-                    //        if (mwqmSampleModelList2.Count == 0)
-                    //        {
-                    //            MWQMRunModel mwqmRunModel = mwqmRunService.PostDeleteMWQMRunTVItemIDDB(tvItemModel.TVItemID);
-                    //            if (!string.IsNullOrWhiteSpace(mwqmRunModel.Error))
-                    //            {
-                    //                // could be non existant
-                    //            }
-                    //            TVItemModel tvItemModelRet = tvItemService.PostDeleteTVItemWithTVItemIDDB(tvItemModel.TVItemID);
-                    //            if (!string.IsNullOrWhiteSpace(tvItemModelRet.Error))
-                    //            {
-                    //                // could be non existant
-                    //            }
-                    //        }
+                    var mwqmRunTVItemList = (from c in dd.MWQMRuns
+                                             from t in dd.TVItems
+                                             from tl in dd.TVItemLanguages
+                                             where c.MWQMRunTVItemID == t.TVItemID
+                                             && t.TVItemID == tl.TVItemID
+                                             && t.ParentID == kvp.Value
+                                             && tl.Language == (int)LanguageEnum.en
+                                             select new { c, t, tl }).ToList();
 
-                    //        mwqmSampleModelList2 = mwqmSampleService.GetMWQMSampleModelListWithMWQMRunTVItemIDDB(ExistingTVItemID);
-                    //        if (mwqmSampleModelList2.Count == 0)
-                    //        {
-                    //            MWQMRunModel mwqmRunModel = mwqmRunService.PostDeleteMWQMRunTVItemIDDB(ExistingTVItemID);
-                    //            if (!string.IsNullOrWhiteSpace(mwqmRunModel.Error))
-                    //            {
-                    //                // could be non existant
-                    //            }
-                    //            TVItemModel tvItemModelRet = tvItemService.PostDeleteTVItemWithTVItemIDDB(ExistingTVItemID);
-                    //            if (!string.IsNullOrWhiteSpace(tvItemModelRet.Error))
-                    //            {
-                    //                // could be non existant
-                    //            }
-                    //        }
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    //  good it does not exist then add it
-                    MWQMRunDict.Add(kvp.Key + tvItemModel.TVText, tvItemModel.TVItemID);
-                    //}
+                    foreach (var mwqmRunTVItem in mwqmRunTVItemList)
+                    {
+                        //try
+                        //{
+                        //    int ExistingTVItemID = MWQMRunDict[kvp.Key + mwqmRunTVItem.tl.TVText];
+                        //    if (ExistingTVItemID > 0)
+                        //    {
+                        //        List<MWQMSampleModel> mwqmSampleModelList2 = mwqmSampleService.GetMWQMSampleModelListWithMWQMRunTVItemIDDB(mwqmRunTVItem.TVItemID);
+                        //        if (mwqmSampleModelList2.Count == 0)
+                        //        {
+                        //            MWQMRunModel mwqmRunModel = mwqmRunService.PostDeleteMWQMRunTVItemIDDB(mwqmRunTVItem.TVItemID);
+                        //            if (!string.IsNullOrWhiteSpace(mwqmRunModel.Error))
+                        //            {
+                        //                // could be non existant
+                        //            }
+                        //            TVItemModel tvItemModelRet = tvItemService.PostDeleteTVItemWithTVItemIDDB(mwqmRunTVItem.TVItemID);
+                        //            if (!string.IsNullOrWhiteSpace(tvItemModelRet.Error))
+                        //            {
+                        //                // could be non existant
+                        //            }
+                        //        }
+
+                        //        mwqmSampleModelList2 = mwqmSampleService.GetMWQMSampleModelListWithMWQMRunTVItemIDDB(ExistingTVItemID);
+                        //        if (mwqmSampleModelList2.Count == 0)
+                        //        {
+                        //            MWQMRunModel mwqmRunModel = mwqmRunService.PostDeleteMWQMRunTVItemIDDB(ExistingTVItemID);
+                        //            if (!string.IsNullOrWhiteSpace(mwqmRunModel.Error))
+                        //            {
+                        //                // could be non existant
+                        //            }
+                        //            TVItemModel tvItemModelRet = tvItemService.PostDeleteTVItemWithTVItemIDDB(ExistingTVItemID);
+                        //            if (!string.IsNullOrWhiteSpace(tvItemModelRet.Error))
+                        //            {
+                        //                // could be non existant
+                        //            }
+                        //        }
+                        //    }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                            //  good it does not exist then add it
+                            MWQMRunDict.Add(kvp.Key + mwqmRunTVItem.tl.TVText + "_" + mwqmRunTVItem.c.RunNumber, mwqmRunTVItem.tl.TVItemID);
+                        //}
+                    }
                 }
+
             }
 
             #endregion LoadVariables
@@ -703,13 +700,13 @@ namespace ImportByFunction
                         SubsectorTVItemID = SubsectorTVItemID,
                         DateTime_Local = new DateTime(Year, Month, Day),
                         RunSampleType = SampleTypeEnum.RainCMPRoutine,
-                        RunNumber = 1
+                        RunNumber = (asamp.RUN_NUMBER == null ? 1 : (int)asamp.RUN_NUMBER)
                     };
 
                     string DateText = Year + " " + (Month > 9 ? Month.ToString() : "0" + Month.ToString()) + " " + (Day > 9 ? Day.ToString() : "0" + Day.ToString());
                     try
                     {
-                        mwqmSampleModelNew.MWQMRunTVItemID = MWQMRunDict[Locator + DateText];
+                        mwqmSampleModelNew.MWQMRunTVItemID = MWQMRunDict[Locator + DateText + "_" + (asamp.RUN_NUMBER == null ? 1 : (int)asamp.RUN_NUMBER)];
                     }
                     catch (Exception)
                     {
@@ -719,7 +716,7 @@ namespace ImportByFunction
 
                     MWQMSampleModel mwqmSampleModelExist = (from c in mwqmSampleModelList
                                                             where c.MWQMSiteTVItemID == mwqmSampleModelNew.MWQMSiteTVItemID
-                                                            //&& c.MWQMRunTVItemID == mwqmSampleModelNew.MWQMRunTVItemID
+                                                            && c.MWQMRunTVItemID == mwqmSampleModelNew.MWQMRunTVItemID
                                                             && c.SampleDateTime_Local == mwqmSampleModelNew.SampleDateTime_Local
                                                             select c).FirstOrDefault();
 
