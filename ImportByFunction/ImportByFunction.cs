@@ -1071,7 +1071,7 @@ namespace ImportByFunction
                 {
                     case "HIGH":
                         {
-                            polSourceObsInfo = PolSourceObsInfoEnum.RiskHigh;
+                            polSourceObsInfo = PolSourceObsInfoEnum.RiskHighP;
                         }
                         break;
                     case "LOW":
@@ -4192,7 +4192,6 @@ namespace ImportByFunction
             int CurrentTVItemID = int.Parse(textBoxRecalculateTVItemStatStart.Text);
             while (tvItemList.Count > 0)
             {
-
                 tvItemList = (from c in tvItemStatService.db.TVItems
                               where c.TVItemID > CurrentTVItemID
                               orderby c.TVItemID
@@ -4226,6 +4225,8 @@ namespace ImportByFunction
                                     TVItemID = tvItem.TVItemID,
                                     TVType = (int)tvType,
                                     ChildCount = ChildCount,
+                                    LastUpdateDate_UTC = DateTime.Now,
+                                    LastUpdateContactTVItemID = 2
                                 };
 
                                 dd.TVItemStats.Add(tvItemStat);
@@ -4251,6 +4252,7 @@ namespace ImportByFunction
                     {
                         int aaa = 234;
                     }
+
                 }
             }
         }
