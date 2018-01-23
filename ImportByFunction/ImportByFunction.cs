@@ -1071,7 +1071,7 @@ namespace ImportByFunction
                 {
                     case "HIGH":
                         {
-                            polSourceObsInfo = PolSourceObsInfoEnum.RiskHighP;
+                            polSourceObsInfo = PolSourceObsInfoEnum.RiskHigh;
                         }
                         break;
                     case "LOW":
@@ -4277,7 +4277,7 @@ namespace ImportByFunction
         {
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
-            List<PolSourceObsInfoChild> polSourceObsInfoChildrenList = tvItemService.polSourceObsInfoChildList.Where(c => c.PolSourceObsInfo > PolSourceObsInfoEnum.Start && c.PolSourceObsInfo < (PolSourceObsInfoEnum.Start + 99)).ToList();
+            List<PolSourceObsInfoChild> polSourceObsInfoChildrenList = tvItemService.polSourceObsInfoChildList.Where(c => c.PolSourceObsInfo > PolSourceObsInfoEnum.SourceStart && c.PolSourceObsInfo < (PolSourceObsInfoEnum.SourceStart + 99)).ToList();
             foreach (PolSourceObsInfoChild polSourceObsInfoChildren in polSourceObsInfoChildrenList)
             {
                 DoChildren(tvItemService, polSourceObsInfoChildren, "");
@@ -7845,7 +7845,7 @@ namespace ImportByFunction
 
         private void button15_Click(object sender, EventArgs e) // button climate1
         {
-            string StartTextSubsector = "NL-";
+            string StartTextSubsector = "PE-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -7862,8 +7862,19 @@ namespace ImportByFunction
                 return;
             }
 
+            //bool start = false;
             foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
             {
+                //if (tvItemModel.TVText.StartsWith("PE-09-030-001"))
+                //{
+                //    start = true;
+                //}
+
+                //if (!start)
+                //{
+                //    continue;
+                //}
+
                 lblStatus.Text = tvItemModel.TVText;
                 lblStatus.Refresh();
                 Application.DoEvents();
@@ -7921,7 +7932,7 @@ namespace ImportByFunction
 
         private void button16_Click(object sender, EventArgs e) // button climate2
         {
-            string StartTextSubsector = "NL-";
+            string StartTextSubsector = "PE-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -7980,7 +7991,7 @@ namespace ImportByFunction
 
         private void button17_Click(object sender, EventArgs e) // button climate3
         {
-            string StartTextSubsector = "NL-";
+            string StartTextSubsector = "PE-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
