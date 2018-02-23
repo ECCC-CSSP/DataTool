@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class Inf_Infrastructures
     {
         public Inf_Infrastructures()
@@ -30,14 +31,18 @@ namespace PCCSM
         public Nullable<int> SE_Traitement { get; set; }
         public string EC_Categorrie_priorite { get; set; }
         public string SUR_Adresse { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
+        public Nullable<decimal> x { get; set; }
+        public Nullable<decimal> y { get; set; }
         public Nullable<bool> Status { get; set; }
         public string Description_diffusable { get; set; }
         public string Commentaires { get; set; }
         public string secteur { get; set; }
         public Nullable<decimal> pente { get; set; }
         public Nullable<int> reseau_hydro { get; set; }
+        public DbGeography geographie { get; set; }
+        public Nullable<decimal> x_deplacement { get; set; }
+        public Nullable<decimal> y_deplacement { get; set; }
+        public string Commentaires_original { get; set; }
     
         public virtual ICollection<evaluation_risque> evaluation_risque { get; set; }
         public virtual Inf_TypeEntite Inf_TypeEntite { get; set; }

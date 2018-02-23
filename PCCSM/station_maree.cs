@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class station_maree
     {
         public int Station { get; set; }
@@ -23,5 +24,6 @@ namespace PCCSM
         public Nullable<double> Longitude { get; set; }
         public Nullable<bool> Prevision { get; set; }
         public bool prediction { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

@@ -12,11 +12,9 @@ namespace PCCSM
     using System;
     using System.Collections.Generic;
     
-    public partial class romm
+    public partial class tr_histo_type_operation
     {
-        public int romm_id { get; set; }
-        public string membre { get; set; }
-        public Nullable<decimal> y { get; set; }
-        public Nullable<decimal> x { get; set; }
+        public int id { get; set; }
+        public string type_operation_fr { get; set; }
     }
 }

@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class station_hydrometrique
     {
         public station_hydrometrique()
@@ -31,6 +32,7 @@ namespace PCCSM
         public string coordonnees { get; set; }
         public Nullable<double> y { get; set; }
         public Nullable<double> x { get; set; }
+        public DbGeography geographie { get; set; }
     
         public virtual ICollection<station_hydrometrique_debit> station_hydrometrique_debit { get; set; }
         public virtual ICollection<station_hydrometrique_secteur> station_hydrometrique_secteur { get; set; }

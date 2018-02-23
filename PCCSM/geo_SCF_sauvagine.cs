@@ -11,12 +11,14 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class romm
+    using System.Data.Entity.Spatial;
+
+    public partial class geo_SCF_sauvagine
     {
-        public int romm_id { get; set; }
-        public string membre { get; set; }
-        public Nullable<decimal> y { get; set; }
-        public Nullable<decimal> x { get; set; }
+        public long SEC_ZONE { get; set; }
+        public DbGeography geographie { get; set; }
+        public Nullable<int> Zone { get; set; }
+        public Nullable<int> Section { get; set; }
+        public string Nom { get; set; }
     }
 }

@@ -12,10 +12,10 @@ namespace PCCSM
     using System;
     using System.Collections.Generic;
     
-    public partial class SCF_sauvagine_DonneesOiseau
+    public partial class SCF_sauvagine_DonneesOiseau_effacer
     {
         public int SCF_sauvagine_DonneesOiseauID { get; set; }
-        public string FRANCAIS { get; set; }
+        public string ESPECE_FR { get; set; }
         public Nullable<int> NOMBRE { get; set; }
         public Nullable<int> ANNEE { get; set; }
         public Nullable<int> MOIS { get; set; }

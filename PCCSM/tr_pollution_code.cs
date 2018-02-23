@@ -20,6 +20,7 @@ namespace PCCSM
         }
     
         public string code { get; set; }
+        public Nullable<int> code_int { get; set; }
         public string id_pollution_type { get; set; }
         public string categorie { get; set; }
         public Nullable<int> id_pollut_ty_sr { get; set; }

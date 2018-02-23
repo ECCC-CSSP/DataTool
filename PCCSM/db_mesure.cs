@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class db_mesure
     {
         public int id_db_mesure { get; set; }
@@ -29,6 +30,7 @@ namespace PCCSM
         public Nullable<double> x { get; set; }
         public Nullable<double> y { get; set; }
         public string commentaire { get; set; }
+        public DbGeography geographie { get; set; }
     
         public virtual db_tournee db_tournee { get; set; }
         public virtual geo_stations_p geo_stations_p { get; set; }

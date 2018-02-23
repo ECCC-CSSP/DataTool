@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class position_peche_espece_ziff
     {
         public int position_peche_espece_ziff_id { get; set; }
@@ -20,5 +21,6 @@ namespace PCCSM
         public Nullable<System.DateTime> date_capture { get; set; }
         public Nullable<decimal> x { get; set; }
         public Nullable<decimal> y { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

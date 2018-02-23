@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class geo_terrain_p
     {
         public geo_terrain_p()
@@ -26,10 +27,13 @@ namespace PCCSM
         public Nullable<System.DateTime> date_terrain { get; set; }
         public string auteur { get; set; }
         public string commentaire { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
+        public Nullable<decimal> x { get; set; }
+        public Nullable<decimal> y { get; set; }
         public Nullable<bool> etat_actif { get; set; }
         public string url { get; set; }
+        public DbGeography geographie { get; set; }
+        public Nullable<decimal> x_deplacement { get; set; }
+        public Nullable<decimal> y_deplacement { get; set; }
     
         public virtual ICollection<db_document> db_document { get; set; }
     }

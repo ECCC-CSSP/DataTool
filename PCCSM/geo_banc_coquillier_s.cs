@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class geo_banc_coquillier_s
     {
         public geo_banc_coquillier_s()
@@ -31,13 +32,13 @@ namespace PCCSM
         public Nullable<System.DateTime> date_mise_a_jour { get; set; }
         public Nullable<bool> etat { get; set; }
         public Nullable<bool> zone_cueillette { get; set; }
-        public byte[] geometry { get; set; }
         public Nullable<decimal> x_min { get; set; }
         public Nullable<decimal> y_min { get; set; }
         public Nullable<decimal> x_max { get; set; }
         public Nullable<decimal> y_max { get; set; }
         public Nullable<decimal> x { get; set; }
         public Nullable<decimal> y { get; set; }
+        public DbGeography geographie { get; set; }
     
         public virtual ICollection<db_banc_espece> db_banc_espece { get; set; }
         public virtual ICollection<db_banc_secteur> db_banc_secteur { get; set; }

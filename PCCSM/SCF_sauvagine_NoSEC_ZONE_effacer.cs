@@ -12,11 +12,9 @@ namespace PCCSM
     using System;
     using System.Collections.Generic;
     
-    public partial class romm
+    public partial class SCF_sauvagine_NoSEC_ZONE_effacer
     {
-        public int romm_id { get; set; }
-        public string membre { get; set; }
-        public Nullable<decimal> y { get; set; }
-        public Nullable<decimal> x { get; set; }
+        public int SEC_ZONE { get; set; }
+        public string NOM { get; set; }
     }
 }

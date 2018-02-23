@@ -12,9 +12,14 @@ namespace PCCSM
     using System;
     using System.Collections.Generic;
     
-    public partial class SCF_sauvagine_NoSEC_ZONE
+    public partial class tr_region_ordonnance_v1
     {
-        public int SEC_ZONE { get; set; }
-        public string NOM { get; set; }
+        public string region { get; set; }
+        public string region_o { get; set; }
+        public string region_a { get; set; }
+        public string texte_region { get; set; }
+        public string texte_region_a { get; set; }
+        public string Preposition { get; set; }
+        public string Preposition_en { get; set; }
     }
 }

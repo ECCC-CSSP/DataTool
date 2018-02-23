@@ -11,15 +11,12 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class tr_region
+    using System.Data.Entity.Spatial;
+
+    public partial class GEO_BANC_COQUILLIER_S_ZVALID999
     {
-        public string region { get; set; }
-        public string region_o { get; set; }
-        public string region_a { get; set; }
-        public string texte_region { get; set; }
-        public string texte_region_a { get; set; }
-        public string Preposition { get; set; }
-        public string Preposition_en { get; set; }
+        public Nullable<decimal> Id { get; set; }
+        public int MI_PRINX { get; set; }
+        public DbGeography SP_GEOMETRY { get; set; }
     }
 }

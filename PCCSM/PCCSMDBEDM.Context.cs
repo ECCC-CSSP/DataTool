@@ -30,10 +30,7 @@ namespace PCCSM
         public DbSet<C2013_TypesEntitesToponymiques> C2013_TypesEntitesToponymiques { get; set; }
         public DbSet<BV_N1H_S_old> BV_N1H_S_old { get; set; }
         public DbSet<BV_N1M_S> BV_N1M_S { get; set; }
-        public DbSet<BV_N2H_S_old> BV_N2H_S_old { get; set; }
-        public DbSet<BV_N2M_S> BV_N2M_S { get; set; }
-        public DbSet<BV_N3M_S> BV_N3M_S { get; set; }
-        public DbSet<BV_N4_S> BV_N4_S { get; set; }
+        public DbSet<BV_N1M_S_occupation_sup> BV_N1M_S_occupation_sup { get; set; }
         public DbSet<calendrier> calendriers { get; set; }
         public DbSet<calendrier_lunaire> calendrier_lunaire { get; set; }
         public DbSet<CCG_Nav_Aid> CCG_Nav_Aid { get; set; }
@@ -74,6 +71,9 @@ namespace PCCSM
         public DbSet<evaluation_risque> evaluation_risque { get; set; }
         public DbSet<EvaluationRisqueSecteur> EvaluationRisqueSecteurs { get; set; }
         public DbSet<geo_banc_coquillier_s> geo_banc_coquillier_s { get; set; }
+        public DbSet<GEO_BANC_COQUILLIER_S_ZVALID999> GEO_BANC_COQUILLIER_S_ZVALID999 { get; set; }
+        public DbSet<geo_BV_N1M_S> geo_BV_N1M_S { get; set; }
+        public DbSet<geo_BV_N2M_S> geo_BV_N2M_S { get; set; }
         public DbSet<geo_ed_quadrat_p> geo_ed_quadrat_p { get; set; }
         public DbSet<geo_feedback_ap> geo_feedback_ap { get; set; }
         public DbSet<geo_photographie_p> geo_photographie_p { get; set; }
@@ -81,12 +81,14 @@ namespace PCCSM
         public DbSet<geo_pollution_p> geo_pollution_p { get; set; }
         public DbSet<geo_pollution_p_fosse_septique_gaspe> geo_pollution_p_fosse_septique_gaspe { get; set; }
         public DbSet<geo_ressource_coquillliere_s> geo_ressource_coquillliere_s { get; set; }
+        public DbSet<geo_SCF_sauvagine> geo_SCF_sauvagine { get; set; }
         public DbSet<geo_secteur_s> geo_secteur_s { get; set; }
         public DbSet<geo_station_audit_p> geo_station_audit_p { get; set; }
         public DbSet<geo_stations_p> geo_stations_p { get; set; }
         public DbSet<geo_terrain_l_s> geo_terrain_l_s { get; set; }
         public DbSet<geo_terrain_p> geo_terrain_p { get; set; }
         public DbSet<geo_transect_l> geo_transect_l { get; set; }
+        public DbSet<geometry_columns> geometry_columns { get; set; }
         public DbSet<gps_log> gps_log { get; set; }
         public DbSet<hyperlien> hyperliens { get; set; }
         public DbSet<impact_evaluation> impact_evaluation { get; set; }
@@ -116,11 +118,14 @@ namespace PCCSM
         public DbSet<releve_sanitaire_secteur> releve_sanitaire_secteur { get; set; }
         public DbSet<romm> romms { get; set; }
         public DbSet<romm_espece_code> romm_espece_code { get; set; }
+        public DbSet<romm_observation> romm_observation { get; set; }
         public DbSet<RRN_QC_4_0_SEGMROUT> RRN_QC_4_0_SEGMROUT { get; set; }
         public DbSet<SCF_Colonies> SCF_Colonies { get; set; }
         public DbSet<SCF_Especes> SCF_Especes { get; set; }
-        public DbSet<SCF_sauvagine_DonneesOiseau> SCF_sauvagine_DonneesOiseau { get; set; }
-        public DbSet<SCF_sauvagine_NoSEC_ZONE> SCF_sauvagine_NoSEC_ZONE { get; set; }
+        public DbSet<SCF_sauvagine_donnees_oiseaux> SCF_sauvagine_donnees_oiseaux { get; set; }
+        public DbSet<SCF_sauvagine_DonneesOiseau_effacer> SCF_sauvagine_DonneesOiseau_effacer { get; set; }
+        public DbSet<SCF_sauvagine_NoSEC_ZONE_effacer> SCF_sauvagine_NoSEC_ZONE_effacer { get; set; }
+        public DbSet<spatial_ref_sys> spatial_ref_sys { get; set; }
         public DbSet<statcan_recensement_2011_lot> statcan_recensement_2011_lot { get; set; }
         public DbSet<statcan_recensement_2016_lot> statcan_recensement_2016_lot { get; set; }
         public DbSet<statcan_recensement_ilot> statcan_recensement_ilot { get; set; }
@@ -147,24 +152,32 @@ namespace PCCSM
         public DbSet<tr_espece> tr_espece { get; set; }
         public DbSet<tr_geo_pollution_baie_gaspe> tr_geo_pollution_baie_gaspe { get; set; }
         public DbSet<tr_geo_terrain> tr_geo_terrain { get; set; }
+        public DbSet<tr_histo_type_operation> tr_histo_type_operation { get; set; }
         public DbSet<tr_llc_typecouv> tr_llc_typecouv { get; set; }
+        public DbSet<tr_mer_etat> tr_mer_etat { get; set; }
         public DbSet<tr_ordonnance_type> tr_ordonnance_type { get; set; }
         public DbSet<tr_pollution_code> tr_pollution_code { get; set; }
         public DbSet<tr_recommandation> tr_recommandation { get; set; }
         public DbSet<tr_recommandation_mpo> tr_recommandation_mpo { get; set; }
         public DbSet<tr_reference> tr_reference { get; set; }
-        public DbSet<tr_region> tr_region { get; set; }
+        public DbSet<tr_region_ordonnance_v1> tr_region_ordonnance_v1 { get; set; }
         public DbSet<tr_tr_code_type_entite_matrice> tr_tr_code_type_entite_matrice { get; set; }
         public DbSet<tributaire_par_secteur_par_annee> tributaire_par_secteur_par_annee { get; set; }
         public DbSet<waypoint> waypoints { get; set; }
         public DbSet<box_model_dilution_s> box_model_dilution_s { get; set; }
-        public DbSet<BV_N1M_S_occupation_sup> BV_N1M_S_occupation_sup { get; set; }
+        public DbSet<db_ec_recommandation_local> db_ec_recommandation_local { get; set; }
+        public DbSet<db_tournee_20171212> db_tournee_20171212 { get; set; }
+        public DbSet<db_tournee_20180123> db_tournee_20180123 { get; set; }
+        public DbSet<db_tournee_20180208_valeur_precipitation_3_jrs_ant_originale> db_tournee_20180208_valeur_precipitation_3_jrs_ant_originale { get; set; }
         public DbSet<dec> decs { get; set; }
+        public DbSet<ec_Facility> ec_Facility { get; set; }
+        public DbSet<geo_pollution_p_20180119> geo_pollution_p_20180119 { get; set; }
         public DbSet<MarineChartIndex> MarineChartIndexes { get; set; }
-        public DbSet<romm_observation> romm_observation { get; set; }
         public DbSet<SCF_BIOMQ> SCF_BIOMQ { get; set; }
         public DbSet<SCF_RivesPoints2> SCF_RivesPoints2 { get; set; }
         public DbSet<station_dans_buffer> station_dans_buffer { get; set; }
+        public DbSet<station_meteo_precipitation_journaliere_20171212> station_meteo_precipitation_journaliere_20171212 { get; set; }
+        public DbSet<temp_geo_stations_p> temp_geo_stations_p { get; set; }
         public DbSet<treaser> treasers { get; set; }
     }
 }

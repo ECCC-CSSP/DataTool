@@ -12,13 +12,8 @@ namespace PCCSM
     using System;
     using System.Collections.Generic;
     
-    public partial class db_tournee
+    public partial class db_tournee_20180208_valeur_precipitation_3_jrs_ant_originale
     {
-        public db_tournee()
-        {
-            this.db_mesure = new HashSet<db_mesure>();
-        }
-    
         public int ID_Tournee { get; set; }
         public Nullable<short> tournee { get; set; }
         public int annee { get; set; }
@@ -68,8 +63,5 @@ namespace PCCSM
         public Nullable<System.DateTime> validation_datetime { get; set; }
         public Nullable<int> approbation { get; set; }
         public Nullable<System.DateTime> approbation_date { get; set; }
-    
-        public virtual ICollection<db_mesure> db_mesure { get; set; }
-        public virtual laboratoire_operateur laboratoire_operateur { get; set; }
     }
 }

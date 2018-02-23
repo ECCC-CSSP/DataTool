@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class No_Civ_region_ll83mdb
     {
         public int MAPINFO_ID { get; set; }
@@ -48,5 +49,6 @@ namespace PCCSM
         public Nullable<double> Shape_area { get; set; }
         public Nullable<double> y { get; set; }
         public Nullable<double> x { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

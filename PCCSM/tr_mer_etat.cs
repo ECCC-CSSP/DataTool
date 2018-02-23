@@ -12,11 +12,9 @@ namespace PCCSM
     using System;
     using System.Collections.Generic;
     
-    public partial class romm
+    public partial class tr_mer_etat
     {
-        public int romm_id { get; set; }
-        public string membre { get; set; }
-        public Nullable<decimal> y { get; set; }
-        public Nullable<decimal> x { get; set; }
+        public int mer_etat_id { get; set; }
+        public string valeur { get; set; }
     }
 }

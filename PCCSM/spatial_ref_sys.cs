@@ -12,11 +12,12 @@ namespace PCCSM
     using System;
     using System.Collections.Generic;
     
-    public partial class romm
+    public partial class spatial_ref_sys
     {
-        public int romm_id { get; set; }
-        public string membre { get; set; }
-        public Nullable<decimal> y { get; set; }
-        public Nullable<decimal> x { get; set; }
+        public int srid { get; set; }
+        public string auth_name { get; set; }
+        public Nullable<int> auth_srid { get; set; }
+        public string srtext { get; set; }
+        public string proj4text { get; set; }
     }
 }

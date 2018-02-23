@@ -13,14 +13,8 @@ namespace PCCSM
     using System.Collections.Generic;
     using System.Data.Entity.Spatial;
 
-    public partial class geo_stations_p
+    public partial class temp_geo_stations_p
     {
-        public geo_stations_p()
-        {
-            this.db_echantillonnage_planification = new HashSet<db_echantillonnage_planification>();
-            this.db_mesure = new HashSet<db_mesure>();
-        }
-    
         public int id_geo_station_p { get; set; }
         public Nullable<int> station { get; set; }
         public string zone_e { get; set; }
@@ -45,11 +39,5 @@ namespace PCCSM
         public Nullable<decimal> mediane_5_tourrnee { get; set; }
         public Nullable<decimal> pourcentage_43_15_tournee { get; set; }
         public Nullable<decimal> pourcentage_43_5_tournee { get; set; }
-        public Nullable<decimal> pourcentage_260_15_tournee { get; set; }
-        public Nullable<decimal> pourcentage_260_5_tournee { get; set; }
-        public Nullable<int> dernier_cf { get; set; }
-    
-        public virtual ICollection<db_echantillonnage_planification> db_echantillonnage_planification { get; set; }
-        public virtual ICollection<db_mesure> db_mesure { get; set; }
     }
 }

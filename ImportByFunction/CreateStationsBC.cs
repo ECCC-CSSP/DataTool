@@ -108,8 +108,8 @@ namespace ImportByFunction
                         {
                             new Coord()
                             {
-                                Lat = (float)(bcmss.LAT == null ? 48 : bcmss.LAT),
-                                Lng = (float)(bcmss.LON == null ? -125 : bcmss.LON),
+                                Lat = (float)(bcmss.LAT == null ? 50.0f : bcmss.LAT),
+                                Lng = (float)(bcmss.LON == null ? -132.0f : bcmss.LON),
                             }
                         };
 
@@ -127,6 +127,7 @@ namespace ImportByFunction
                             MWQMSiteTVItemID = tvItemModelMWQMSite.TVItemID,
                             MWQMSiteNumber = bcmss.OID.ToString(),
                             MWQMSiteTVText = TVText,
+                            MWQMSiteDescription = "empty",
                         };
 
                         MWQMSiteModel mwqmSiteModelRet = mwqmSiteService.PostAddMWQMSiteDB(mwqmSiteModelNew);
@@ -176,9 +177,9 @@ namespace ImportByFunction
                         {
                             new Coord()
                             {
-                                Lat = (float)bcmss.LAT,
-                                Lng = (float)bcmss.LON,
-                            }
+                                 Lat = (float)(bcmss.LAT == null ? 50.0f : bcmss.LAT),
+                                Lng = (float)(bcmss.LON == null ? -132.0f : bcmss.LON),
+                             }
                         };
 
                         MapInfoModel mapInfoModelRet = mapInfoService.CreateMapInfoObjectDB(coordList2, MapInfoDrawTypeEnum.Point, TVTypeEnum.MWQMSite, tvItemModelMWQMSite.TVItemID);
@@ -189,6 +190,7 @@ namespace ImportByFunction
                             MWQMSiteTVItemID = tvItemModelMWQMSite.TVItemID,
                             MWQMSiteNumber = bcmss.OID.ToString(),
                             MWQMSiteTVText = TVText,
+                            MWQMSiteDescription = "empty",
                         };
 
                         MWQMSiteModel mwqmSiteModelRet = mwqmSiteService.PostAddMWQMSiteDB(mwqmSiteModelNew);

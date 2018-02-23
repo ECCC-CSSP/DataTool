@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class SCF_Colonies
     {
         public SCF_Colonies()
@@ -28,6 +29,7 @@ namespace PCCSM
         public Nullable<double> CentroideY { get; set; }
         public string CartesTopographiques { get; set; }
         public int MAPINFO_ID { get; set; }
+        public DbGeography geographie { get; set; }
     
         public virtual ICollection<SCF_BIOMQ> SCF_BIOMQ { get; set; }
     }

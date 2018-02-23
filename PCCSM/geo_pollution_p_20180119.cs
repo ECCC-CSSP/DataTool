@@ -13,13 +13,8 @@ namespace PCCSM
     using System.Collections.Generic;
     using System.Data.Entity.Spatial;
 
-    public partial class geo_pollution_p
+    public partial class geo_pollution_p_20180119
     {
-        public geo_pollution_p()
-        {
-            this.evaluation_risque = new HashSet<evaluation_risque>();
-        }
-    
         public int id_geo_pollution_p { get; set; }
         public Nullable<int> groupe_id { get; set; }
         public string code { get; set; }
@@ -42,8 +37,5 @@ namespace PCCSM
         public DbGeography geographie { get; set; }
         public Nullable<decimal> x_deplacement { get; set; }
         public Nullable<decimal> y_deplacement { get; set; }
-    
-        public virtual ICollection<evaluation_risque> evaluation_risque { get; set; }
-        public virtual tr_pollution_code tr_pollution_code { get; set; }
     }
 }

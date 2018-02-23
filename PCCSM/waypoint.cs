@@ -11,17 +11,20 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class waypoint
     {
         public int waypoint_ID { get; set; }
         public string name { get; set; }
         public Nullable<int> id_geo_station_p { get; set; }
-        public Nullable<decimal> distance_mapinfo { get; set; }
+        public Nullable<decimal> distance_m { get; set; }
         public Nullable<decimal> latitude { get; set; }
         public Nullable<decimal> longitude { get; set; }
         public Nullable<System.DateTime> localDatetime { get; set; }
         public string usager { get; set; }
         public string description { get; set; }
+        public DbGeography geographie { get; set; }
+        public Nullable<double> distance_fct { get; set; }
     }
 }

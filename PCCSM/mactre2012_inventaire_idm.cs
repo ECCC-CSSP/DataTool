@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class mactre2012_inventaire_idm
     {
         public int id { get; set; }
@@ -20,9 +21,10 @@ namespace PCCSM
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<double> latitude { get; set; }
         public Nullable<double> longitude { get; set; }
-        public string utilisation_d_un_quadrat { get; set; }
+        public string utilisation_dun_quadrat { get; set; }
         public string mactre { get; set; }
         public string couteau { get; set; }
         public string mye { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

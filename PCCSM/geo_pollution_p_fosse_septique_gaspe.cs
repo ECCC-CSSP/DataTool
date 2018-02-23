@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class geo_pollution_p_fosse_septique_gaspe
     {
         public int geo_pollution_p_fosse_septique_gaspe_id { get; set; }
@@ -28,5 +29,6 @@ namespace PCCSM
         public string Nom_permis { get; set; }
         public Nullable<double> x { get; set; }
         public Nullable<double> y { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

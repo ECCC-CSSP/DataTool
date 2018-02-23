@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class geo_photographie_p
     {
         public int id_geo_photographie_p { get; set; }
@@ -19,9 +20,11 @@ namespace PCCSM
         public string region { get; set; }
         public string etat { get; set; }
         public string commentaire { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
-        public Nullable<int> ig_geo_pgs_p { get; set; }
+        public Nullable<decimal> x { get; set; }
+        public Nullable<decimal> y { get; set; }
         public Nullable<int> waypoint { get; set; }
+        public DbGeography geographie { get; set; }
+        public Nullable<decimal> x_deplacement { get; set; }
+        public Nullable<decimal> y_deplacement { get; set; }
     }
 }

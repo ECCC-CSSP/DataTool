@@ -61,18 +61,6 @@
     <Compile Include="BV_N1M_S_occupation_sup.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="BV_N2H_S_old.cs">
-      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BV_N2M_S.cs">
-      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BV_N3M_S.cs">
-      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BV_N4_S.cs">
-      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="C2013_Municipalité.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
@@ -145,6 +133,9 @@
     <Compile Include="db_ec_recommandation.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="db_ec_recommandation_local.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="db_ec_recommandation_note.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
@@ -181,6 +172,15 @@
     <Compile Include="db_tournee.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="db_tournee_20171212.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_tournee_20180123.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_tournee_20180208_valeur_precipitation_3_jrs_ant_originale.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="db_tournee_maree_temporaire.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
@@ -196,13 +196,28 @@
     <Compile Include="dec.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="ec_Facility.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="EvaluationRisqueSecteur.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="evaluation_risque.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="geometry_columns.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="geo_banc_coquillier_s.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEO_BANC_COQUILLIER_S_ZVALID999.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_BV_N1M_S.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_BV_N2M_S.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="geo_ed_quadrat_p.cs">
@@ -220,10 +235,16 @@
     <Compile Include="geo_pollution_p.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="geo_pollution_p_20180119.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="geo_pollution_p_fosse_septique_gaspe.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="geo_ressource_coquillliere_s.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_SCF_sauvagine.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="geo_secteur_s.cs">
@@ -368,10 +389,16 @@
     <Compile Include="SCF_RivesPoints2.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="SCF_sauvagine_DonneesOiseau.cs">
+    <Compile Include="SCF_sauvagine_DonneesOiseau_effacer.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="SCF_sauvagine_NoSEC_ZONE.cs">
+    <Compile Include="SCF_sauvagine_donnees_oiseaux.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCF_sauvagine_NoSEC_ZONE_effacer.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spatial_ref_sys.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="statcan_recensement_2011_lot.cs">
@@ -419,10 +446,16 @@
     <Compile Include="station_meteo_precipitation_journaliere.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="station_meteo_precipitation_journaliere_20171212.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRapportTournee.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_geo_stations_p.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="temp_precipitation_journaliere.cs">
@@ -461,7 +494,13 @@
     <Compile Include="tr_geo_terrain.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="tr_histo_type_operation.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="tr_llc_typecouv.cs">
+      <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tr_mer_etat.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="tr_ordonnance_type.cs">
@@ -479,7 +518,7 @@
     <Compile Include="tr_reference.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="tr_region.cs">
+    <Compile Include="tr_region_ordonnance_v1.cs">
       <DependentUpon>PCCSMDBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="tr_tr_code_type_entite_matrice.cs">

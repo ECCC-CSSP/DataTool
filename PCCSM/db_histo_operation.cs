@@ -11,18 +11,18 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class db_histo_operation
     {
         public int id_db_histo_operation { get; set; }
         public Nullable<System.DateTime> date_operation { get; set; }
         public string auteur { get; set; }
-        public string type_operation_o { get; set; }
         public Nullable<int> type_operation { get; set; }
         public Nullable<int> contact_principal { get; set; }
         public Nullable<int> contact_secondaire { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
+        public Nullable<decimal> x { get; set; }
+        public Nullable<decimal> y { get; set; }
         public string description { get; set; }
         public Nullable<int> ordonnanceID { get; set; }
         public Nullable<int> id_geo_pollution_p { get; set; }
@@ -33,5 +33,6 @@ namespace PCCSM
         public Nullable<int> id_geo_secteur_s { get; set; }
         public Nullable<int> ID_Tournee { get; set; }
         public Nullable<int> id_db_mesure { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

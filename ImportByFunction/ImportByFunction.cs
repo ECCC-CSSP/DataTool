@@ -1,27 +1,24 @@
-﻿using System;
+﻿using CSSPEnumsDLL.Enums;
+using CSSPEnumsDLL.Services;
+using CSSPModelsDLL.Models;
+using CSSPWebToolsDBDLL;
+using CSSPWebToolsDBDLL.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Spatial;
+using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CSSPModelsDLL.Models;
-using CSSPWebToolsDBDLL.Services;
-using System.Security.Principal;
-using CSSPWebToolsDBDLL;
-using System.Xml;
-using System.Data.OleDb;
-using System.Transactions;
 using System.Net;
-using CSSPEnumsDLL.Enums;
-using CSSPEnumsDLL.Services;
+using System.Security.Principal;
+using System.Text;
 using System.Threading;
+using System.Windows.Forms;
+using System.Xml;
 using TempData;
-using System.Data.Entity.Spatial;
-using System.Globalization;
 
 namespace ImportByFunction
 {
@@ -1071,7 +1068,7 @@ namespace ImportByFunction
                 {
                     case "HIGH":
                         {
-                            polSourceObsInfo = PolSourceObsInfoEnum.RiskHigh;
+                            polSourceObsInfo = PolSourceObsInfoEnum.RiskHighNotConfirmed;
                         }
                         break;
                     case "LOW":
@@ -1096,7 +1093,7 @@ namespace ImportByFunction
         {
             PolSourceObsInfoEnum polSourceObsInfo = new PolSourceObsInfoEnum();
 
-            polSourceObsInfo = PolSourceObsInfoEnum.StatusPotential;
+            polSourceObsInfo = PolSourceObsInfoEnum.StatusPotentialMed;
 
             if (Prov == "AT")
             {
@@ -1104,7 +1101,7 @@ namespace ImportByFunction
                 {
                     case "D":
                         {
-                            polSourceObsInfo = PolSourceObsInfoEnum.StatusDefinite;
+                            polSourceObsInfo = PolSourceObsInfoEnum.StatusDefiniteMed;
                         }
                         break;
                     case "N":
@@ -4968,6 +4965,115 @@ namespace ImportByFunction
 
         private void button6_Click(object sender, EventArgs e)
         {
+            List<int> mwqmRunToDeleteList = new List<int>();
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            richTextBoxStatus.AppendText("Subsector\tRunTVText\tMWQMSite\tTime1\tTime2\tFC1\tFC2\r\n");
+
+            using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            {
+                TVItem tvItemBC = (from t in dd.TVItems
+                                   from tl in dd.TVItemLanguages
+                                   where t.TVItemID == tl.TVItemID
+                                   && tl.Language == (int)LanguageEnum.en
+                                   && tl.TVText == "Québec"
+                                   && t.TVType == (int)TVTypeEnum.Province
+                                   select t).FirstOrDefault();
+
+                if (tvItemBC != null)
+                {
+                    List<MWQMRun> tvItemRunList = (from t in dd.TVItems
+                                                   from r in dd.MWQMRuns
+                                                   where t.TVItemID == r.MWQMRunTVItemID
+                                                   && t.TVPath.StartsWith(tvItemBC.TVPath)
+                                                   && t.TVType == (int)TVTypeEnum.MWQMRun
+                                                   orderby r.MWQMRunTVItemID
+                                                   select r).ToList();
+
+                    int oldMWQMRunTVItemID = 0;
+                    foreach (MWQMRun mwqmRun in tvItemRunList)
+                    {
+                        lblStatus.Text = mwqmRun.MWQMRunTVItemID.ToString();
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        if (oldMWQMRunTVItemID == mwqmRun.MWQMRunTVItemID)
+                        {
+                            richTextBoxStatus.AppendText(mwqmRun.MWQMRunTVItemID.ToString() + "\r\n");
+                            mwqmRunToDeleteList.Add(mwqmRun.MWQMRunTVItemID);
+                        }
+                        oldMWQMRunTVItemID = mwqmRun.MWQMRunTVItemID;
+                    }
+                }
+            }
+
+            int count = 0;
+            int totalCount = mwqmRunToDeleteList.Count();
+            foreach (int id in mwqmRunToDeleteList)
+            {
+                count += 1;
+                lblStatus.Text = count.ToString() + " of " + totalCount.ToString();
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+
+                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+                {
+                    List<MWQMSample> mwqmSampleList = (from c in dd.MWQMSamples
+                                                       from r in dd.MWQMRuns
+                                                       where c.MWQMRunTVItemID == r.MWQMRunTVItemID
+                                                       && c.MWQMRunTVItemID == id
+                                                       select c).ToList();
+
+                    foreach (MWQMSample mwqmSample in mwqmSampleList)
+                    {
+                        dd.MWQMSamples.Remove(mwqmSample);
+                    }
+
+                    try
+                    {
+                        dd.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        int sleifj = 34;
+                    }
+                }
+            }
+            using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            {
+
+                count = 0;
+                totalCount = mwqmRunToDeleteList.Count();
+                foreach (int id in mwqmRunToDeleteList)
+                {
+                    count += 1;
+                    lblStatus.Text = count.ToString() + " of " + totalCount.ToString();
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    MWQMRun mwqmRun = (from r in dd.MWQMRuns
+                                       where r.MWQMRunTVItemID == id
+                                       select r).FirstOrDefault();
+
+                    dd.MWQMRuns.Remove(mwqmRun);
+
+                }
+
+                try
+                {
+                    dd.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    int sleifj = 34;
+                }
+
+            }
+
+
+
             //richTextBoxStatus.AppendText("Subsector\tRunTVText\tMWQMSite\tTime1\tTime2\tFC1\tFC2\r\n");
 
             //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
@@ -5017,9 +5123,9 @@ namespace ImportByFunction
             //            {
             //                if (OldSite == mwqm.tsl.TVText && OldDate == mwqm.c.DateTime_Local)
             //                {
-            //                    richTextBoxStatus.AppendText(tvItem.tl.TVText.Substring(0, tvItem.tl.TVText.IndexOf(" ")) + 
-            //                        "\t" + mwqm.c.DateTime_Local.ToString("yyyy MM dd") + 
-            //                        "\t" + mwqm.tsl.TVText + 
+            //                    richTextBoxStatus.AppendText(tvItem.tl.TVText.Substring(0, tvItem.tl.TVText.IndexOf(" ")) +
+            //                        "\t" + mwqm.c.DateTime_Local.ToString("yyyy MM dd") +
+            //                        "\t" + mwqm.tsl.TVText +
             //                        "\t" + mwqm.s.SampleDateTime_Local.ToString("hh:mm") +
             //                        "\t" + SDate.ToString("hh:mm") +
             //                        "\t" + mwqm.s.FecCol_MPN_100ml +
@@ -5543,448 +5649,447 @@ namespace ImportByFunction
             //if (a == 1)
             //    return;
 
-            string FileName = @"C:\CSSP Latest Code old\DataTool\ImportByFunction\Data_inputs\PE_MWQM_Sites_Classification_Final.xlsx";
+            //string FileName = @"C:\CSSP Latest Code old\DataTool\ImportByFunction\Data_inputs\PE_MWQM_Sites_Classification_Final.xlsx";
 
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties=Excel 12.0";
+            //string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties=Excel 12.0";
 
-            OleDbConnection conn = new OleDbConnection(connectionString);
+            //OleDbConnection conn = new OleDbConnection(connectionString);
 
-            conn.Open();
-            OleDbDataReader reader;
-            OleDbCommand comm = new OleDbCommand("Select * from [Sheet1$];");
+            //conn.Open();
+            //OleDbDataReader reader;
+            //OleDbCommand comm = new OleDbCommand("Select * from [Sheet1$];");
 
-            comm.Connection = conn;
-            reader = comm.ExecuteReader();
+            //comm.Connection = conn;
+            //reader = comm.ExecuteReader();
 
-            int CountRead = 0;
-            while (reader.Read())
-            {
-                CountRead += 1;
-                if (CountRead < 0)
-                    continue;
+            //int CountRead = 0;
+            //while (reader.Read())
+            //{
+            //    CountRead += 1;
+            //    if (CountRead < 0)
+            //        continue;
 
-                Application.DoEvents();
+            //    Application.DoEvents();
+            //    string Subsector = "";
+            //    string ID = "";
+            //    string MWQMSiteName = "";
+            //    string Approved = "";
+            //    string ConditionallyApproved = "";
+            //    string Restricted = "";
+            //    string ConditionallyRestricted = "";
+            //    string Prohibited = "";
+            //    string Unclassified = "";
+            //    string Comment = "";
+            //    string Lat = "";
+            //    string Lng = "";
 
-                string Subsector = "";
-                string ID = "";
-                string MWQMSiteName = "";
-                string Approved = "";
-                string ConditionallyApproved = "";
-                string Restricted = "";
-                string ConditionallyRestricted = "";
-                string Prohibited = "";
-                string Unclassified = "";
-                string Comment = "";
-                string Lat = "";
-                string Lng = "";
+            //    // Subsector
+            //    if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+            //    {
+            //        Subsector = "";
+            //    }
+            //    else
+            //    {
+            //        Subsector = reader.GetValue(0).ToString().Trim();
+            //    }
 
-                // Subsector
-                if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
-                {
-                    Subsector = "";
-                }
-                else
-                {
-                    Subsector = reader.GetValue(0).ToString().Trim();
-                }
+            //    // ID
+            //    if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+            //    {
+            //        ID = "";
+            //    }
+            //    else
+            //    {
+            //        ID = reader.GetValue(1).ToString().Trim();
+            //    }
 
-                // ID
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
-                {
-                    ID = "";
-                }
-                else
-                {
-                    ID = reader.GetValue(1).ToString().Trim();
-                }
+            //    // MWQMSiteName
+            //    if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+            //    {
+            //        MWQMSiteName = "";
+            //    }
+            //    else
+            //    {
+            //        MWQMSiteName = reader.GetValue(2).ToString().Trim();
+            //    }
 
-                // MWQMSiteName
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
-                {
-                    MWQMSiteName = "";
-                }
-                else
-                {
-                    MWQMSiteName = reader.GetValue(2).ToString().Trim();
-                }
+            //    // Approved
+            //    if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+            //    {
+            //        Approved = "";
+            //    }
+            //    else
+            //    {
+            //        Approved = reader.GetValue(3).ToString().Trim();
+            //    }
 
-                // Approved
-                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
-                {
-                    Approved = "";
-                }
-                else
-                {
-                    Approved = reader.GetValue(3).ToString().Trim();
-                }
+            //    // ConditionallyApproved
+            //    if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+            //    {
+            //        ConditionallyApproved = "";
+            //    }
+            //    else
+            //    {
+            //        ConditionallyApproved = reader.GetValue(4).ToString().Trim();
+            //    }
 
-                // ConditionallyApproved
-                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
-                {
-                    ConditionallyApproved = "";
-                }
-                else
-                {
-                    ConditionallyApproved = reader.GetValue(4).ToString().Trim();
-                }
+            //    // Restricted
+            //    if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
+            //    {
+            //        Restricted = "";
+            //    }
+            //    else
+            //    {
+            //        Restricted = reader.GetValue(5).ToString().Trim();
+            //    }
 
-                // Restricted
-                if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
-                {
-                    Restricted = "";
-                }
-                else
-                {
-                    Restricted = reader.GetValue(5).ToString().Trim();
-                }
+            //    // ConditionalyRestricted
+            //    if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
+            //    {
+            //        ConditionallyRestricted = "";
+            //    }
+            //    else
+            //    {
+            //        ConditionallyRestricted = reader.GetValue(6).ToString().Trim();
+            //    }
 
-                // ConditionalyRestricted
-                if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
-                {
-                    ConditionallyRestricted = "";
-                }
-                else
-                {
-                    ConditionallyRestricted = reader.GetValue(6).ToString().Trim();
-                }
+            //    // Prohibited
+            //    if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
+            //    {
+            //        Prohibited = "";
+            //    }
+            //    else
+            //    {
+            //        Prohibited = reader.GetValue(7).ToString().Trim();
+            //    }
 
-                // Prohibited
-                if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
-                {
-                    Prohibited = "";
-                }
-                else
-                {
-                    Prohibited = reader.GetValue(7).ToString().Trim();
-                }
+            //    // Unclassified
+            //    if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
+            //    {
+            //        Unclassified = "";
+            //    }
+            //    else
+            //    {
+            //        Unclassified = reader.GetValue(8).ToString().Trim();
+            //    }
 
-                // Unclassified
-                if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
-                {
-                    Unclassified = "";
-                }
-                else
-                {
-                    Unclassified = reader.GetValue(8).ToString().Trim();
-                }
+            //    // Comment
+            //    if (reader.GetValue(9).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(9).ToString()))
+            //    {
+            //        Comment = "";
+            //    }
+            //    else
+            //    {
+            //        Comment = reader.GetValue(9).ToString().Trim();
+            //    }
 
-                // Comment
-                if (reader.GetValue(9).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(9).ToString()))
-                {
-                    Comment = "";
-                }
-                else
-                {
-                    Comment = reader.GetValue(9).ToString().Trim();
-                }
+            //    // Lat
+            //    if (reader.GetValue(10).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(10).ToString()))
+            //    {
+            //        Lat = "";
+            //    }
+            //    else
+            //    {
+            //        Lat = reader.GetValue(10).ToString().Trim();
+            //    }
 
-                // Lat
-                if (reader.GetValue(10).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(10).ToString()))
-                {
-                    Lat = "";
-                }
-                else
-                {
-                    Lat = reader.GetValue(10).ToString().Trim();
-                }
+            //    // Lng
+            //    if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
+            //    {
+            //        Lng = "";
+            //    }
+            //    else
+            //    {
+            //        Lng = reader.GetValue(11).ToString().Trim();
+            //    }
 
-                // Lng
-                if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
-                {
-                    Lng = "";
-                }
-                else
-                {
-                    Lng = reader.GetValue(11).ToString().Trim();
-                }
+            //    lblStatus.Text = Subsector + " --- " + MWQMSiteName;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
 
-                lblStatus.Text = Subsector + " --- " + MWQMSiteName;
-                lblStatus.Refresh();
-                Application.DoEvents();
+            //    richTextBoxStatus.AppendText(CountRead + "\t");
+            //    richTextBoxStatus.AppendText(Subsector + "\t");
+            //    richTextBoxStatus.AppendText(ID + "\t");
+            //    richTextBoxStatus.AppendText(MWQMSiteName + "\t");
+            //    richTextBoxStatus.AppendText(Approved + "\t");
+            //    richTextBoxStatus.AppendText(ConditionallyApproved + "\t");
+            //    richTextBoxStatus.AppendText(Restricted + "\t");
+            //    richTextBoxStatus.AppendText(ConditionallyRestricted + "\t");
+            //    richTextBoxStatus.AppendText(Prohibited + "\t");
+            //    richTextBoxStatus.AppendText(Unclassified + "\t");
+            //    richTextBoxStatus.AppendText(Comment + "\t");
+            //    richTextBoxStatus.AppendText(Lat + "\t");
+            //    richTextBoxStatus.AppendText(Lng + "\r\n");
 
-                richTextBoxStatus.AppendText(CountRead + "\t");
-                richTextBoxStatus.AppendText(Subsector + "\t");
-                richTextBoxStatus.AppendText(ID + "\t");
-                richTextBoxStatus.AppendText(MWQMSiteName + "\t");
-                richTextBoxStatus.AppendText(Approved + "\t");
-                richTextBoxStatus.AppendText(ConditionallyApproved + "\t");
-                richTextBoxStatus.AppendText(Restricted + "\t");
-                richTextBoxStatus.AppendText(ConditionallyRestricted + "\t");
-                richTextBoxStatus.AppendText(Prohibited + "\t");
-                richTextBoxStatus.AppendText(Unclassified + "\t");
-                richTextBoxStatus.AppendText(Comment + "\t");
-                richTextBoxStatus.AppendText(Lat + "\t");
-                richTextBoxStatus.AppendText(Lng + "\r\n");
+            //    if (string.IsNullOrWhiteSpace(Subsector))
+            //    {
+            //        richTextBoxStatus.AppendText("Subsector is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
 
-                if (string.IsNullOrWhiteSpace(Subsector))
-                {
-                    richTextBoxStatus.AppendText("Subsector is empty at line " + CountRead.ToString());
-                    break;
-                }
+            //    if (string.IsNullOrWhiteSpace(MWQMSiteName))
+            //    {
+            //        richTextBoxStatus.AppendText("MWQMSiteName is empty at line " + CountRead.ToString());
+            //        break;
+            //    }
 
-                if (string.IsNullOrWhiteSpace(MWQMSiteName))
-                {
-                    richTextBoxStatus.AppendText("MWQMSiteName is empty at line " + CountRead.ToString());
-                    break;
-                }
+            //    if (MWQMSiteName.Length < 4)
+            //    {
+            //        MWQMSiteName = "0000".Substring(0, 4 - MWQMSiteName.Length) + MWQMSiteName;
+            //    }
 
-                if (MWQMSiteName.Length < 4)
-                {
-                    MWQMSiteName = "0000".Substring(0, 4 - MWQMSiteName.Length) + MWQMSiteName;
-                }
+            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    {
+            //        TVItem tvItemSS = (from t in dd.TVItems
+            //                           from c in dd.TVItemLanguages
+            //                           where t.TVItemID == c.TVItemID
+            //                           && c.TVText.StartsWith(Subsector)
+            //                           && c.Language == (int)LanguageEnum.en
+            //                           select t).FirstOrDefault();
 
-                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
-                {
-                    TVItem tvItemSS = (from t in dd.TVItems
-                                       from c in dd.TVItemLanguages
-                                       where t.TVItemID == c.TVItemID
-                                       && c.TVText.StartsWith(Subsector)
-                                       && c.Language == (int)LanguageEnum.en
-                                       select t).FirstOrDefault();
+            //        if (tvItemSS == null)
+            //        {
+            //            richTextBoxStatus.AppendText("Could not find subsector " + Subsector + " at line " + CountRead.ToString());
+            //            break;
+            //        }
 
-                    if (tvItemSS == null)
-                    {
-                        richTextBoxStatus.AppendText("Could not find subsector " + Subsector + " at line " + CountRead.ToString());
-                        break;
-                    }
+            //        if (!string.IsNullOrWhiteSpace(MWQMSiteName))
+            //        {
+            //            //int TVItemID = 0;
+            //            //int.TryParse(ID, out TVItemID);
+            //            if (MWQMSiteName != null && !string.IsNullOrWhiteSpace(MWQMSiteName))
+            //            {
+            //                string mwqmSiteName = "0000".Substring(0, 4 - MWQMSiteName.Length) + MWQMSiteName;
+            //                var tvItemSite = (from t in dd.TVItems
+            //                                  from tl in dd.TVItemLanguages
+            //                                  where t.TVItemID == tl.TVItemID
+            //                                  && t.TVType == (int)TVTypeEnum.MWQMSite
+            //                                  && t.ParentID == tvItemSS.TVItemID
+            //                                  && tl.Language == (int)LanguageEnum.en
+            //                                  && tl.TVText == mwqmSiteName
+            //                                  select new { t, tl }).FirstOrDefault();
 
-                    if (!string.IsNullOrWhiteSpace(MWQMSiteName))
-                    {
-                        //int TVItemID = 0;
-                        //int.TryParse(ID, out TVItemID);
-                        if (MWQMSiteName != null && !string.IsNullOrWhiteSpace(MWQMSiteName))
-                        {
-                            string mwqmSiteName = "0000".Substring(0, 4 - MWQMSiteName.Length) + MWQMSiteName;
-                            var tvItemSite = (from t in dd.TVItems
-                                              from tl in dd.TVItemLanguages
-                                              where t.TVItemID == tl.TVItemID
-                                              && t.TVType == (int)TVTypeEnum.MWQMSite
-                                              && t.ParentID == tvItemSS.TVItemID
-                                              && tl.Language == (int)LanguageEnum.en
-                                              && tl.TVText == mwqmSiteName
-                                              select new { t, tl }).FirstOrDefault();
+            //                if (tvItemSite == null)
+            //                {
+            //                    richTextBoxStatus.AppendText("Could not find MWQMSite " + tvItemSite.tl.TVText + " under subsector " + Subsector);
+            //                    break;
+            //                }
 
-                            if (tvItemSite == null)
-                            {
-                                richTextBoxStatus.AppendText("Could not find MWQMSite " + tvItemSite.tl.TVText + " under subsector " + Subsector);
-                                break;
-                            }
+            //                MWQMSite mwqmSite = (from c in dd.MWQMSites
+            //                                     where c.MWQMSiteTVItemID == tvItemSite.t.TVItemID
+            //                                     select c).FirstOrDefault();
 
-                            MWQMSite mwqmSite = (from c in dd.MWQMSites
-                                                 where c.MWQMSiteTVItemID == tvItemSite.t.TVItemID
-                                                 select c).FirstOrDefault();
+            //                if (mwqmSite == null)
+            //                {
+            //                    richTextBoxStatus.AppendText("Could not find MWQMSite in DB with TVItemID " + ID + " at line " + CountRead.ToString());
+            //                    break;
+            //                }
 
-                            if (mwqmSite == null)
-                            {
-                                richTextBoxStatus.AppendText("Could not find MWQMSite in DB with TVItemID " + ID + " at line " + CountRead.ToString());
-                                break;
-                            }
+            //                bool HasClass = false;
+            //                if (Approved == "1")
+            //                {
+            //                    mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.Approved;
+            //                    HasClass = true;
+            //                }
+            //                if (ConditionallyApproved == "1")
+            //                {
+            //                    mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.ConditionallyApproved;
+            //                    HasClass = true;
+            //                }
+            //                if (Restricted == "1")
+            //                {
+            //                    mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.Restricted;
+            //                    HasClass = true;
+            //                }
+            //                if (ConditionallyRestricted == "1")
+            //                {
+            //                    mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.ConditionallyRestricted;
+            //                    HasClass = true;
+            //                }
+            //                if (Prohibited == "1")
+            //                {
+            //                    mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.Prohibited;
+            //                    HasClass = true;
+            //                }
+            //                if (Unclassified == "1")
+            //                {
+            //                    mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.Unclassified;
+            //                    HasClass = true;
+            //                }
 
-                            bool HasClass = false;
-                            if (Approved == "1")
-                            {
-                                mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.Approved;
-                                HasClass = true;
-                            }
-                            if (ConditionallyApproved == "1")
-                            {
-                                mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.ConditionallyApproved;
-                                HasClass = true;
-                            }
-                            if (Restricted == "1")
-                            {
-                                mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.Restricted;
-                                HasClass = true;
-                            }
-                            if (ConditionallyRestricted == "1")
-                            {
-                                mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.ConditionallyRestricted;
-                                HasClass = true;
-                            }
-                            if (Prohibited == "1")
-                            {
-                                mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.Prohibited;
-                                HasClass = true;
-                            }
-                            if (Unclassified == "1")
-                            {
-                                mwqmSite.MWQMSiteLatestClassification = (int)MWQMSiteLatestClassificationEnum.Unclassified;
-                                HasClass = true;
-                            }
+            //                if (!HasClass)
+            //                {
+            //                    richTextBoxStatus.AppendText("Subsector [" + Subsector + "] Site name " + MWQMSiteName + " has no class identified at line " + CountRead.ToString());
+            //                    break;
+            //                }
 
-                            if (!HasClass)
-                            {
-                                richTextBoxStatus.AppendText("Subsector [" + Subsector + "] Site name " + MWQMSiteName + " has no class identified at line " + CountRead.ToString());
-                                break;
-                            }
+            //                try
+            //                {
+            //                    dd.SaveChanges();
+            //                }
+            //                catch (Exception ex)
+            //                {
+            //                    richTextBoxStatus.AppendText("Error while saving MWQMSite " + ex.Message + (ex.InnerException == null ? "" : " Inner: " + ex.InnerException.Message) + " at line " + CountRead.ToString());
+            //                    break;
+            //                }
 
-                            try
-                            {
-                                dd.SaveChanges();
-                            }
-                            catch (Exception ex)
-                            {
-                                richTextBoxStatus.AppendText("Error while saving MWQMSite " + ex.Message + (ex.InnerException == null ? "" : " Inner: " + ex.InnerException.Message) + " at line " + CountRead.ToString());
-                                break;
-                            }
+            //                if (string.IsNullOrWhiteSpace(Lat))
+            //                {
+            //                    richTextBoxStatus.AppendText("Lat is empty for subsector " + Subsector + " and MWQMSite " + tvItemSite.tl.TVText);
+            //                    break;
+            //                }
 
-                            if (string.IsNullOrWhiteSpace(Lat))
-                            {
-                                richTextBoxStatus.AppendText("Lat is empty for subsector " + Subsector + " and MWQMSite " + tvItemSite.tl.TVText);
-                                break;
-                            }
+            //                MapInfoPoint mapInfoPoint = (from mi in dd.MapInfos
+            //                                             from mip in dd.MapInfoPoints
+            //                                             where mi.MapInfoID == mip.MapInfoID
+            //                                             && mi.TVItemID == mwqmSite.MWQMSiteTVItemID
+            //                                             && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+            //                                             && mi.TVType == (int)TVTypeEnum.MWQMSite
+            //                                             select mip).FirstOrDefault();
 
-                            MapInfoPoint mapInfoPoint = (from mi in dd.MapInfos
-                                                         from mip in dd.MapInfoPoints
-                                                         where mi.MapInfoID == mip.MapInfoID
-                                                         && mi.TVItemID == mwqmSite.MWQMSiteTVItemID
-                                                         && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
-                                                         && mi.TVType == (int)TVTypeEnum.MWQMSite
-                                                         select mip).FirstOrDefault();
+            //                if (mapInfoPoint == null)
+            //                {
+            //                    richTextBoxStatus.AppendText("Could not find mapInfoPoint in DB with TVItemID " + tvItemSite.t.TVItemID);
+            //                    break;
+            //                }
 
-                            if (mapInfoPoint == null)
-                            {
-                                richTextBoxStatus.AppendText("Could not find mapInfoPoint in DB with TVItemID " + tvItemSite.t.TVItemID);
-                                break;
-                            }
+            //                try
+            //                {
+            //                    float lat = 0.0f;
+            //                    if (!float.TryParse(Lat, out lat))
+            //                    {
+            //                        richTextBoxStatus.AppendText("Could read Lat as float for subsector " + Subsector + " and MWQMSite " + tvItemSite.tl.TVText);
+            //                        break;
+            //                    }
+            //                    float lng = 0.0f;
+            //                    if (!float.TryParse(Lng, out lng))
+            //                    {
+            //                        richTextBoxStatus.AppendText("Could read Lng as float for subsector " + Subsector + " and MWQMSite " + tvItemSite.tl.TVText);
+            //                        break;
+            //                    }
+            //                    mapInfoPoint.Lat = lat;
+            //                    mapInfoPoint.Lng = lng;
 
-                            try
-                            {
-                                float lat = 0.0f;
-                                if (!float.TryParse(Lat, out lat))
-                                {
-                                    richTextBoxStatus.AppendText("Could read Lat as float for subsector " + Subsector + " and MWQMSite " + tvItemSite.tl.TVText);
-                                    break;
-                                }
-                                float lng = 0.0f;
-                                if (!float.TryParse(Lng, out lng))
-                                {
-                                    richTextBoxStatus.AppendText("Could read Lng as float for subsector " + Subsector + " and MWQMSite " + tvItemSite.tl.TVText);
-                                    break;
-                                }
-                                mapInfoPoint.Lat = lat;
-                                mapInfoPoint.Lng = lng;
+            //                    dd.SaveChanges();
+            //                }
+            //                catch (Exception ex)
+            //                {
+            //                    richTextBoxStatus.AppendText("Error while saving MWQMSite " + ex.Message + (ex.InnerException == null ? "" : " Inner: " + ex.InnerException.Message) + " at line " + CountRead.ToString());
+            //                    break;
+            //                }
 
-                                dd.SaveChanges();
-                            }
-                            catch (Exception ex)
-                            {
-                                richTextBoxStatus.AppendText("Error while saving MWQMSite " + ex.Message + (ex.InnerException == null ? "" : " Inner: " + ex.InnerException.Message) + " at line " + CountRead.ToString());
-                                break;
-                            }
-
-                        }
-                    }
-                    else
-                    {
-                        //if (!string.IsNullOrWhiteSpace(Lat) && !string.IsNullOrWhiteSpace(Lng) && !string.IsNullOrWhiteSpace(MWQMSiteName))
-                        //{
-                        //    if (tvItemSS.TVItemID > 0)
-                        //    {
-                        //        using (TransactionScope ts = new TransactionScope())
-                        //        {
-                        //            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-                        //            TVItemModel tvItemModelSite = tvItemService.PostAddChildTVItemDB(tvItemSS.TVItemID, MWQMSiteName, TVTypeEnum.MWQMSite);
-                        //            if (!string.IsNullOrWhiteSpace(tvItemModelSite.Error))
-                        //            {
-                        //                richTextBoxStatus.AppendText("Error while creating MWQMSite " + MWQMSiteName + " under subsector " + Subsector + " " + tvItemModelSite.Error + " at line " + CountRead.ToString());
-                        //                break;
-                        //            }
+            //            }
+            //        }
+            //        else
+            //        {
+            //            //if (!string.IsNullOrWhiteSpace(Lat) && !string.IsNullOrWhiteSpace(Lng) && !string.IsNullOrWhiteSpace(MWQMSiteName))
+            //            //{
+            //            //    if (tvItemSS.TVItemID > 0)
+            //            //    {
+            //            //        using (TransactionScope ts = new TransactionScope())
+            //            //        {
+            //            //            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //            //            TVItemModel tvItemModelSite = tvItemService.PostAddChildTVItemDB(tvItemSS.TVItemID, MWQMSiteName, TVTypeEnum.MWQMSite);
+            //            //            if (!string.IsNullOrWhiteSpace(tvItemModelSite.Error))
+            //            //            {
+            //            //                richTextBoxStatus.AppendText("Error while creating MWQMSite " + MWQMSiteName + " under subsector " + Subsector + " " + tvItemModelSite.Error + " at line " + CountRead.ToString());
+            //            //                break;
+            //            //            }
 
 
-                        //            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
+            //            //            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
 
-                        //            MWQMSite mwqmSiteLastOrdinal = (from t in dd.TVItems
-                        //                                            from c in dd.MWQMSites
-                        //                                            where t.TVItemID == c.MWQMSiteTVItemID
-                        //                                            && t.ParentID == tvItemSS.TVItemID
-                        //                                            orderby c.Ordinal descending
-                        //                                            select c).FirstOrDefault();
+            //            //            MWQMSite mwqmSiteLastOrdinal = (from t in dd.TVItems
+            //            //                                            from c in dd.MWQMSites
+            //            //                                            where t.TVItemID == c.MWQMSiteTVItemID
+            //            //                                            && t.ParentID == tvItemSS.TVItemID
+            //            //                                            orderby c.Ordinal descending
+            //            //                                            select c).FirstOrDefault();
 
-                        //            MWQMSiteModel mwqmSiteModel = new MWQMSiteModel()
-                        //            {
-                        //                MWQMSiteDescription = "Todo",
-                        //                MWQMSiteNumber = MWQMSiteName,
-                        //                MWQMSiteTVItemID = tvItemModelSite.TVItemID,
-                        //                Ordinal = mwqmSiteLastOrdinal.Ordinal + 1,
-                        //                MWQMSiteTVText = MWQMSiteName
-                        //            };
+            //            //            MWQMSiteModel mwqmSiteModel = new MWQMSiteModel()
+            //            //            {
+            //            //                MWQMSiteDescription = "Todo",
+            //            //                MWQMSiteNumber = MWQMSiteName,
+            //            //                MWQMSiteTVItemID = tvItemModelSite.TVItemID,
+            //            //                Ordinal = mwqmSiteLastOrdinal.Ordinal + 1,
+            //            //                MWQMSiteTVText = MWQMSiteName
+            //            //            };
 
-                        //            bool HasClass = false;
-                        //            if (!string.IsNullOrWhiteSpace(Approved))
-                        //            {
-                        //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.Approved;
-                        //                HasClass = true;
-                        //            }
-                        //            if (!string.IsNullOrWhiteSpace(ConditionallyApproved))
-                        //            {
-                        //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.ConditionallyApproved;
-                        //                HasClass = true;
-                        //            }
-                        //            if (!string.IsNullOrWhiteSpace(Restricted))
-                        //            {
-                        //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.Restricted;
-                        //                HasClass = true;
-                        //            }
-                        //            if (!string.IsNullOrWhiteSpace(ConditionallyRestricted))
-                        //            {
-                        //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.ConditionallyRestricted;
-                        //                HasClass = true;
-                        //            }
-                        //            if (!string.IsNullOrWhiteSpace(Prohibited))
-                        //            {
-                        //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.Prohibited;
-                        //                HasClass = true;
-                        //            }
-                        //            if (!string.IsNullOrWhiteSpace(Unclassified))
-                        //            {
-                        //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.Unclassified;
-                        //                HasClass = true;
-                        //            }
+            //            //            bool HasClass = false;
+            //            //            if (!string.IsNullOrWhiteSpace(Approved))
+            //            //            {
+            //            //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.Approved;
+            //            //                HasClass = true;
+            //            //            }
+            //            //            if (!string.IsNullOrWhiteSpace(ConditionallyApproved))
+            //            //            {
+            //            //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.ConditionallyApproved;
+            //            //                HasClass = true;
+            //            //            }
+            //            //            if (!string.IsNullOrWhiteSpace(Restricted))
+            //            //            {
+            //            //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.Restricted;
+            //            //                HasClass = true;
+            //            //            }
+            //            //            if (!string.IsNullOrWhiteSpace(ConditionallyRestricted))
+            //            //            {
+            //            //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.ConditionallyRestricted;
+            //            //                HasClass = true;
+            //            //            }
+            //            //            if (!string.IsNullOrWhiteSpace(Prohibited))
+            //            //            {
+            //            //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.Prohibited;
+            //            //                HasClass = true;
+            //            //            }
+            //            //            if (!string.IsNullOrWhiteSpace(Unclassified))
+            //            //            {
+            //            //                mwqmSiteModel.MWQMSiteLatestClassification = MWQMSiteLatestClassificationEnum.Unclassified;
+            //            //                HasClass = true;
+            //            //            }
 
-                        //            if (!HasClass)
-                        //            {
-                        //                richTextBoxStatus.AppendText("Subsector [" + Subsector + "] Site name " + MWQMSiteName + " has no class identified at line " + CountRead.ToString());
-                        //                break;
-                        //            }
+            //            //            if (!HasClass)
+            //            //            {
+            //            //                richTextBoxStatus.AppendText("Subsector [" + Subsector + "] Site name " + MWQMSiteName + " has no class identified at line " + CountRead.ToString());
+            //            //                break;
+            //            //            }
 
-                        //            MWQMSiteModel mwqmSiteModelRet = mwqmSiteService.PostAddMWQMSiteDB(mwqmSiteModel);
-                        //            if (!string.IsNullOrWhiteSpace(mwqmSiteModelRet.Error))
-                        //            {
-                        //                richTextBoxStatus.AppendText(mwqmSiteModelRet.Error + " at line " + CountRead.ToString());
-                        //                break;
-                        //            }
+            //            //            MWQMSiteModel mwqmSiteModelRet = mwqmSiteService.PostAddMWQMSiteDB(mwqmSiteModel);
+            //            //            if (!string.IsNullOrWhiteSpace(mwqmSiteModelRet.Error))
+            //            //            {
+            //            //                richTextBoxStatus.AppendText(mwqmSiteModelRet.Error + " at line " + CountRead.ToString());
+            //            //                break;
+            //            //            }
 
-                        //            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
-                        //            float LatFloat = 0.0f;
-                        //            if (!float.TryParse(Lat, out LatFloat))
-                        //            {
-                        //                richTextBoxStatus.AppendText("Could not parse Lat at line " + CountRead.ToString());
-                        //                break;
-                        //            }
-                        //            float LngFloat = 0.0f;
-                        //            if (!float.TryParse(Lng, out LngFloat))
-                        //            {
-                        //                richTextBoxStatus.AppendText("Could not parse Lng at line " + CountRead.ToString());
-                        //                break;
-                        //            }
-                        //            List<Coord> coordList = new List<Coord>()
-                        //        {
-                        //            new Coord() { Lat = LatFloat, Lng = LngFloat, Ordinal = 0 }
-                        //        };
+            //            //            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            //            //            float LatFloat = 0.0f;
+            //            //            if (!float.TryParse(Lat, out LatFloat))
+            //            //            {
+            //            //                richTextBoxStatus.AppendText("Could not parse Lat at line " + CountRead.ToString());
+            //            //                break;
+            //            //            }
+            //            //            float LngFloat = 0.0f;
+            //            //            if (!float.TryParse(Lng, out LngFloat))
+            //            //            {
+            //            //                richTextBoxStatus.AppendText("Could not parse Lng at line " + CountRead.ToString());
+            //            //                break;
+            //            //            }
+            //            //            List<Coord> coordList = new List<Coord>()
+            //            //        {
+            //            //            new Coord() { Lat = LatFloat, Lng = LngFloat, Ordinal = 0 }
+            //            //        };
 
-                        //            MapInfoModel mapInfoModelRet = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.MWQMSite, tvItemModelSite.TVItemID);
-                        //            if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
-                        //            {
-                        //                richTextBoxStatus.AppendText(mapInfoModelRet.Error + " at line " + CountRead.ToString());
-                        //                break;
-                        //            }
-                        //        }
-                        //    }
-                        //}
-                    }
-                }
-            }
+            //            //            MapInfoModel mapInfoModelRet = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.MWQMSite, tvItemModelSite.TVItemID);
+            //            //            if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
+            //            //            {
+            //            //                richTextBoxStatus.AppendText(mapInfoModelRet.Error + " at line " + CountRead.ToString());
+            //            //                break;
+            //            //            }
+            //            //        }
+            //            //    }
+            //            //}
+            //        }
+            //    }
+            //}
 
             lblStatus.Text = "done...";
         }
@@ -8549,8 +8654,8 @@ namespace ImportByFunction
 
                 Application.DoEvents();
                 List<MapInfo> mapInfoList = (from c in db.MapInfos
-                                             where c.TVItemID == tvItemModelSite.TVItemID
-                                             select c).ToList();
+                                         where c.TVItemID == tvItemModelSite.TVItemID
+                                         select c).ToList();
 
                 if (mapInfoList.Count > 0)
                 {
@@ -11805,6 +11910,308 @@ namespace ImportByFunction
             //        }
             //    }
             //}
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //{
+            //    List<MWQMRun> mwqmRunToDeleteList = new List<MWQMRun>();
+            //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //    MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+
+            //    TVItemModel tvItemModelBC = tvItemService.GetTVItemModelWithTVItemIDDB(11); // BC
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelBC.Error))
+            //    {
+            //        int seljif = 34;
+            //    }
+
+            //    List<MWQMRun> mwqmRunList = (from c in db.TVItems
+            //                                 from r in db.MWQMRuns
+            //                                 let exist = (from b in db.MWQMSamples
+            //                                              where b.MWQMRunTVItemID == c.TVItemID
+            //                                              select b).Any()
+            //                                 where c.TVItemID == r.MWQMRunTVItemID
+            //                                 && c.TVPath.StartsWith(tvItemModelBC.TVPath + "p")
+            //                                 && c.TVType == (int)TVTypeEnum.MWQMRun
+            //                                 && !exist
+            //                                 select r).ToList();
+
+            //    foreach (MWQMRun mwqmRun in mwqmRunList)
+            //    {
+            //        mwqmRunToDeleteList.Add(mwqmRun);
+            //    }
+
+            //    int count = 0;
+            //    foreach (MWQMRun mwqmRunToDelete in mwqmRunToDeleteList)
+            //    {
+            //        count += 1;
+            //        lblStatus.Text = count.ToString() + " ----- " + mwqmRunToDelete.SubsectorTVItemID + " --- " + mwqmRunToDelete.MWQMRunTVItemID;
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
+
+            //        MWQMRunModel mwqmRunModel = mwqmRunService.PostDeleteMWQMRunTVItemIDDB(mwqmRunToDelete.MWQMRunTVItemID);
+            //        if (!string.IsNullOrWhiteSpace(mwqmRunModel.Error))
+            //        {
+            //            int selifj = 234;
+            //        }
+
+            //    }
+            //}
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            //MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            //string FileName = @"C:\CSSP Latest Code old\DataTool\ImportByFunction\Data_inputs\Copy of PEI two runs on same day-Routine vs CMP-Lauren.xlsx";
+
+            //string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties=Excel 12.0";
+
+            //OleDbConnection conn = new OleDbConnection(connectionString);
+
+            //conn.Open();
+            //OleDbDataReader reader;
+            //OleDbCommand comm = new OleDbCommand("Select * from [Sheet1$];");
+
+            //comm.Connection = conn;
+            //reader = comm.ExecuteReader();
+
+            //int CountRead = 0;
+            //while (reader.Read())
+            //{
+            //    CountRead += 1;
+            //    if (CountRead < 0)
+            //        continue;
+
+            //    string Subsector = "";
+            //    string RunTVText = "";
+            //    string MWQMSite = "";
+            //    DateTime Time = new DateTime();
+            //    string Run2 = "";
+
+            //    // Subsector
+            //    if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+            //    {
+            //        Subsector = "";
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        Subsector = reader.GetValue(0).ToString().Trim();
+            //    }
+
+            //    // ID
+            //    if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+            //    {
+            //        RunTVText = "";
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        RunTVText = reader.GetValue(1).ToString().Trim();
+            //    }
+
+            //    // MWQMSiteName
+            //    if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+            //    {
+            //        MWQMSite = "";
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        MWQMSite = reader.GetValue(2).ToString().Trim();
+            //    }
+
+            //    MWQMSite = "0000".Substring(MWQMSite.Length) + MWQMSite;
+
+            //    // Approved
+            //    if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+            //    {
+            //        Time = new DateTime();
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        Time = (DateTime)reader.GetValue(3);
+            //    }
+
+            //    // Run2
+            //    if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
+            //    {
+            //        Run2 = "";
+            //    }
+            //    else
+            //    {
+            //        Run2 = reader.GetValue(7).ToString().Trim();
+            //    }
+            //    lblStatus.Text = Subsector + "\t" + RunTVText + "\t" + MWQMSite + "\t" + Time + "\t" + Run2;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    richTextBoxStatus.AppendText(lblStatus.Text + "\r\n");
+
+            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    {
+            //        if (Run2 == "1")
+            //        {
+            //            TVItem tvItemSS = (from c in dd.TVItems
+            //                               from cl in dd.TVItemLanguages
+            //                               where c.TVItemID == cl.TVItemID
+            //                               && cl.Language == (int)LanguageEnum.en
+            //                               && cl.TVText.StartsWith(Subsector)
+            //                               && c.TVType == (int)TVTypeEnum.Subsector
+            //                               select c).FirstOrDefault();
+
+            //            if (tvItemSS == null)
+            //            {
+            //                int silfjef = 342;
+            //                return;
+            //            }
+
+            //            TVItem tvItemRun = (from c in dd.TVItems
+            //                                from cl in dd.TVItemLanguages
+            //                                where c.TVItemID == cl.TVItemID
+            //                                && cl.Language == (int)LanguageEnum.en
+            //                                && cl.TVText == RunTVText
+            //                                && c.TVType == (int)TVTypeEnum.MWQMRun
+            //                                && c.TVPath.StartsWith(tvItemSS.TVPath + "p")
+            //                                select c).FirstOrDefault();
+
+
+            //            if (tvItemRun == null)
+            //            {
+            //                int silfjef = 342;
+            //                return;
+            //            }
+
+            //            TVItem tvItemSite = (from c in dd.TVItems
+            //                                 from cl in dd.TVItemLanguages
+            //                                 where c.TVItemID == cl.TVItemID
+            //                                 && cl.Language == (int)LanguageEnum.en
+            //                                 && c.TVPath.StartsWith(tvItemSS.TVPath + "p")
+            //                                 && c.TVType == (int)TVTypeEnum.MWQMSite
+            //                                 && cl.TVText == MWQMSite
+            //                                 select c).FirstOrDefault();
+
+            //            if (tvItemSite == null)
+            //            {
+            //                int silfjef = 342;
+            //                return;
+            //            }
+
+            //            //int hour = int.Parse(Time.Substring(0, Time.IndexOf(":")));
+            //            //int minute = int.Parse(Time.Substring(Time.IndexOf(":") + 1));
+
+            //            MWQMSample mwqmSample = (from c in dd.MWQMSamples
+            //                                     where c.MWQMSiteTVItemID == tvItemSite.TVItemID
+            //                                     && c.MWQMRunTVItemID == tvItemRun.TVItemID
+            //                                     && c.SampleDateTime_Local.Hour == Time.Hour
+            //                                     && c.SampleDateTime_Local.Minute == Time.Minute
+            //                                     select c).FirstOrDefault();
+
+            //            if (mwqmSample == null)
+            //            {
+            //                if (Time.Hour == 4 || Time.Hour == 12)
+            //                {
+            //                    Time = Time.AddHours(12);
+            //                    mwqmSample = (from c in dd.MWQMSamples
+            //                                  where c.MWQMSiteTVItemID == tvItemSite.TVItemID
+            //                                  && c.MWQMRunTVItemID == tvItemRun.TVItemID
+            //                                  && c.SampleDateTime_Local.Hour == Time.Hour
+            //                                  && c.SampleDateTime_Local.Minute == Time.Minute
+            //                                  select c).FirstOrDefault();
+
+            //                    if (mwqmSample == null)
+            //                    {
+            //                        int silfjef = 342;
+            //                        return;
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    int silfjef = 342;
+            //                    return;
+            //                }
+            //            }
+
+            //            TVItemModel tvItemModel = tvItemService.GetTVItemModelWithTVItemIDDB(tvItemRun.TVItemID);
+            //            if (!string.IsNullOrWhiteSpace(tvItemModel.Error))
+            //            {
+            //                int sleifj = 34;
+            //                return;
+            //            }
+
+            //            TVItemModel tvItemModelExist = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemSS.TVItemID, tvItemModel.TVText + " (2)", TVTypeEnum.MWQMRun);
+            //            if (!string.IsNullOrWhiteSpace(tvItemModelExist.Error))
+            //            {
+            //                tvItemModelExist = tvItemService.PostAddChildTVItemDB(tvItemSS.TVItemID, tvItemModel.TVText + " (2)", TVTypeEnum.MWQMRun);
+            //                if (!string.IsNullOrWhiteSpace(tvItemModelExist.Error))
+            //                {
+            //                    int sleifj = 34;
+            //                    return;
+            //                }
+            //            }
+
+            //            MWQMRunModel mwqmRunModelNew = mwqmRunService.GetMWQMRunModelWithMWQMRunTVItemIDDB(tvItemRun.TVItemID);
+            //            if (!string.IsNullOrWhiteSpace(mwqmRunModelNew.Error))
+            //            {
+            //                int sleifj = 34;
+            //                return;
+            //            }
+
+            //            mwqmRunModelNew.MWQMRunID = 0;
+            //            mwqmRunModelNew.MWQMRunTVItemID = tvItemModelExist.TVItemID;
+            //            mwqmRunModelNew.RunNumber = 2;
+
+            //            MWQMRunModel mwqmRunModelExist = mwqmRunService.GetMWQMRunModelExistDB(mwqmRunModelNew);
+            //            if (!string.IsNullOrWhiteSpace(mwqmRunModelExist.Error))
+            //            {
+            //                mwqmRunModelExist = mwqmRunService.PostAddMWQMRunDB(mwqmRunModelNew);
+            //                if (!string.IsNullOrWhiteSpace(mwqmRunModelNew.Error))
+            //                {
+            //                    int sleifj = 34;
+            //                    return;
+            //                }
+            //            }
+
+            //            MWQMSampleModel mwqmSampleModelNew = mwqmSampleService.GetMWQMSampleModelWithMWQMSampleIDDB(mwqmSample.MWQMSampleID);
+            //            if (!string.IsNullOrWhiteSpace(mwqmSampleModelNew.Error))
+            //            {
+            //                int sleifj = 34;
+            //                return;
+            //            }
+
+            //            int mwqmSampleIDToDelete = mwqmSampleModelNew.MWQMSampleID;
+
+            //            mwqmSampleModelNew.MWQMSampleID = 0;
+            //            mwqmSampleModelNew.MWQMRunTVItemID = mwqmRunModelExist.MWQMRunTVItemID;
+
+            //            MWQMSampleModel mwqmSampleModelExist = mwqmSampleService.GetMWQMSampleModelExistDB(mwqmSampleModelNew);
+            //            if (!string.IsNullOrWhiteSpace(mwqmSampleModelExist.Error))
+            //            {
+            //                mwqmSampleModelExist = mwqmSampleService.PostAddMWQMSampleDB(mwqmSampleModelNew);
+            //                if (!string.IsNullOrWhiteSpace(mwqmSampleModelExist.Error))
+            //                {
+            //                    int sleifj = 34;
+            //                    return;
+            //                }
+            //            }
+
+            //            MWQMSampleModel mwqmSampleModelToDelete = mwqmSampleService.PostDeleteMWQMSampleDB(mwqmSampleIDToDelete);
+            //            if (!string.IsNullOrWhiteSpace(mwqmSampleModelToDelete.Error))
+            //            {
+            //                int sleifj = 34;
+            //                return;
+            //            }
+
+            //        }
+            //    }
+
+            //}
+
         }
 
 

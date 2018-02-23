@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class C2013_Toponymes_officiels
     {
         public int Id { get; set; }
@@ -25,5 +26,6 @@ namespace PCCSM
         public Nullable<double> x { get; set; }
         public string FeuilletCartographique { get; set; }
         public Nullable<bool> Cartographier { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

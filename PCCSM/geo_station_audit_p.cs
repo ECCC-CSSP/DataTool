@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class geo_station_audit_p
     {
         public int id_geo_station_audit_p { get; set; }
@@ -20,13 +21,14 @@ namespace PCCSM
         public Nullable<decimal> distance_PRISM { get; set; }
         public Nullable<decimal> distance_GPS_EC { get; set; }
         public Nullable<decimal> distance_GPS_Consultant { get; set; }
-        public Nullable<decimal> distance_mapinfo { get; set; }
+        public Nullable<decimal> distance_calculee { get; set; }
         public Nullable<System.DateTime> date_audit { get; set; }
         public string observateur { get; set; }
         public string GPS_Audit { get; set; }
         public string GPS_Consultant { get; set; }
         public string commentaire { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
+        public Nullable<decimal> x { get; set; }
+        public Nullable<decimal> y { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

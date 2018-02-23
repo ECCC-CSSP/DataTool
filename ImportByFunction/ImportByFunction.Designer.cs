@@ -253,6 +253,8 @@
             this.butImportJoeAppIssuesAndImages = new System.Windows.Forms.Button();
             this.butImportingPatriceMWQMImage = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -2336,6 +2338,26 @@
             this.button35.UseVisualStyleBackColor = true;
             this.button35.Click += new System.EventHandler(this.button35_Click);
             // 
+            // button36
+            // 
+            this.button36.Location = new System.Drawing.Point(1011, 542);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(59, 25);
+            this.button36.TabIndex = 204;
+            this.button36.Text = "button36";
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
+            // 
+            // button37
+            // 
+            this.button37.Location = new System.Drawing.Point(1076, 542);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(59, 25);
+            this.button37.TabIndex = 204;
+            this.button37.Text = "button37";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2345,6 +2367,8 @@
             this.Controls.Add(this.butImportJoeAppIssuesAndImages);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.button26);
+            this.Controls.Add(this.button37);
+            this.Controls.Add(this.button36);
             this.Controls.Add(this.button35);
             this.Controls.Add(this.button34);
             this.Controls.Add(this.button33);
@@ -2801,6 +2825,8 @@
         private System.Windows.Forms.Button butImportJoeAppIssuesAndImages;
         private System.Windows.Forms.Button butImportingPatriceMWQMImage;
         private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button37;
     }
 }
 

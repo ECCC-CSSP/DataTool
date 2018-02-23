@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class gps_log
     {
         public long id_gps_log { get; set; }
@@ -26,5 +27,6 @@ namespace PCCSM
         public Nullable<int> altitude { get; set; }
         public string usager { get; set; }
         public string commentaire { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

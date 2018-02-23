@@ -40,8 +40,8 @@ namespace ImportByFunction
 
             lblStatus.Text = "Starting ... CreateRunsBC";
             Application.DoEvents();
-          
-            int StartBCCreateRunsBC = int.Parse(textBoxBCCreateRunsBC.Text);          
+
+            int StartBCCreateRunsBC = int.Parse(textBoxBCCreateRunsBC.Text);
 
             List<BCStation> BCWQMSiteList = new List<BCStation>();
             List<AM> analyseMethodInDBList = new List<AM>();
@@ -64,7 +64,7 @@ namespace ImportByFunction
                 if (StartBCCreateRunsBC > Count)
                 {
                     continue;
-                }         
+                }
 
                 // doing land runs
 
@@ -119,9 +119,14 @@ namespace ImportByFunction
                         //MWQMSampleModel mwqmSampleModel = new MWQMSampleModel();
 
                         DateTime DayOfSample = (DateTime)(bcms.SR_READING_DATE);
-                        string SampleTime = bcms.SR_READING_TIME;
+                        //string SampleTime = bcms.SR_READING_TIME;
 
-                        DateTime SampleDate = new DateTime(DayOfSample.Year, DayOfSample.Month, DayOfSample.Day, (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(0, 1))) : (int.Parse(SampleTime.Substring(0, 1))))), (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(1, 2))) : (SampleTime.Substring(2, 2) == "60" ? 59 : (int.Parse(SampleTime.Substring(2, 2)))))), 0);
+                        //if (string.IsNullOrWhiteSpace(SampleTime))
+                        //{
+                        //    SampleTime = "0000";
+                        //}
+
+                        //DateTime SampleDate = new DateTime(DayOfSample.Year, DayOfSample.Month, DayOfSample.Day, (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(0, 1))) : (int.Parse(SampleTime.Substring(0, 1))))), (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(1, 2))) : (SampleTime.Substring(2, 2) == "60" ? 59 : (int.Parse(SampleTime.Substring(2, 2)))))), 0);
 
                         MWQMRunModel mwqmRunModelNew = new MWQMRunModel()
                         {
@@ -129,6 +134,8 @@ namespace ImportByFunction
                             DateTime_Local = DayOfSample,
                             StartDateTime_Local = DayOfSample,
                             EndDateTime_Local = DayOfSample,
+                            RunSampleType = SampleTypeEnum.Routine,
+                            RunNumber = 1,
                         };
 
                         MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
@@ -139,10 +146,29 @@ namespace ImportByFunction
                         MWQMRunModel mwqmRunModelExist = mwqmRunService.GetMWQMRunModelExistDB(mwqmRunModelNew);
                         if (mwqmRunModelExist == null)
                         {
+                            string TVTextRun = DayOfSample.Year.ToString() + " " + 
+                                (DayOfSample.Month < 10 ? "0" : "") + DayOfSample.Month.ToString() + " " + 
+                                (DayOfSample.Day < 10 ? "0" : "") + DayOfSample.Day.ToString();
+
+                            TVItemModel tvItemModel = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelSubsector.TVItemID, TVTextRun, TVTypeEnum.MWQMRun);
+                            if (!string.IsNullOrWhiteSpace(tvItemModel.Error))
+                            {
+                                tvItemModel = tvItemService.PostAddChildTVItemDB(tvItemModelSubsector.TVItemID, TVTextRun, TVTypeEnum.MWQMRun);
+                                if (!string.IsNullOrWhiteSpace(tvItemModel.Error))
+                                {
+                                    richTextBoxStatus.AppendText(tvItemModel.Error + "\r\n");
+                                    return false;
+                                }
+                            }
+
                             mwqmRunModelNew.SubsectorTVItemID = tvItemModelSubsector.TVItemID;
+                            mwqmRunModelNew.MWQMRunTVItemID = tvItemModel.TVItemID;
                             mwqmRunModelNew.DateTime_Local = DayOfSample;
                             mwqmRunModelNew.StartDateTime_Local = null;
                             mwqmRunModelNew.EndDateTime_Local = null;
+                            mwqmRunModelNew.RunSampleType = SampleTypeEnum.Routine;
+                            mwqmRunModelNew.RunNumber = 1;
+
                             string Comments = null;
 
                             TempData.BCSurvey bcSurvey = new TempData.BCSurvey();
@@ -158,6 +184,10 @@ namespace ImportByFunction
                             {
                                 mwqmRunModelNew.StartDateTime_Local = bcSurvey.S_START_DATE;
                                 mwqmRunModelNew.EndDateTime_Local = bcSurvey.S_END_DATE;
+                                if (mwqmRunModelNew.StartDateTime_Local > mwqmRunModelNew.EndDateTime_Local)
+                                {
+                                    mwqmRunModelNew.EndDateTime_Local = mwqmRunModelNew.StartDateTime_Local;
+                                }
                                 Comments = bcSurvey.S_DESCRIPTION + "\r\n" + bcSurvey.S_COMMENT;
                             }
 
@@ -262,56 +292,56 @@ namespace ImportByFunction
                         // doing tide
 
 
-                        List<UseOfSiteModel> useOfSiteModelList = useOfSiteService.GetUseOfSiteModelListWithSiteTypeAndSubsectorTVItemIDDB(SiteTypeEnum.Tide, tvItemModelSubsector.TVItemID);
-                        if (useOfSiteModelList.Count == 0)
-                        {
-                            richTextBoxStatus.AppendText("Could not find UseOfTideSite for subsector " + tvItemModelSubsector.TVText + "\r\n");
-                            return false;
-                        }
+                        //List<UseOfSiteModel> useOfSiteModelList = useOfSiteService.GetUseOfSiteModelListWithSiteTypeAndSubsectorTVItemIDDB(SiteTypeEnum.Tide, tvItemModelSubsector.TVItemID);
+                        //if (useOfSiteModelList.Count == 0)
+                        //{
+                        //    richTextBoxStatus.AppendText("Could not find UseOfTideSite for subsector " + tvItemModelSubsector.TVText + "\r\n");
+                        //    return false;
+                        //}
 
-                        TideDataValueModel tideDataValueModelNew = new TideDataValueModel()
-                        {
-                            TideSiteTVItemID = useOfSiteModelList[0].SiteTVItemID,
-                            DateTime_Local = new DateTime(SampleDate.Year, SampleDate.Month, SampleDate.Day),
-                            Keep = true,
-                            TideDataType = TideDataTypeEnum.Min60,
-                            StorageDataType = StorageDataTypeEnum.Archived,
-                            TideStart = null,
-                            TideEnd = null,
-                        };
+                        //TideDataValueModel tideDataValueModelNew = new TideDataValueModel()
+                        //{
+                        //    TideSiteTVItemID = useOfSiteModelList[0].SiteTVItemID,
+                        //    DateTime_Local = new DateTime(SampleDate.Year, SampleDate.Month, SampleDate.Day),
+                        //    Keep = true,
+                        //    TideDataType = TideDataTypeEnum.Min60,
+                        //    StorageDataType = StorageDataTypeEnum.Archived,
+                        //    TideStart = null,
+                        //    TideEnd = null,
+                        //};
 
-                        if (string.IsNullOrEmpty(bcms.SR_TIDE_CODE))
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.MidTide;
-                        }
-                        else if (bcms.SR_TIDE_CODE == "L")
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.LowTide;
-                        }
-                        else if (bcms.SR_TIDE_CODE == "H")
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.HighTide;
-                        }
-                        else if (bcms.SR_TIDE_CODE == "F")
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.MidTideRising;
-                        }
-                        else if (bcms.SR_TIDE_CODE == "E")
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.MidTideFalling;
-                        }
-                        else
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.MidTide;
-                        }
+                        //if (string.IsNullOrEmpty(bcms.SR_TIDE_CODE))
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.MidTide;
+                        //}
+                        //else if (bcms.SR_TIDE_CODE == "L")
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.LowTide;
+                        //}
+                        //else if (bcms.SR_TIDE_CODE == "H")
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.HighTide;
+                        //}
+                        //else if (bcms.SR_TIDE_CODE == "F")
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.MidTideRising;
+                        //}
+                        //else if (bcms.SR_TIDE_CODE == "E")
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.MidTideFalling;
+                        //}
+                        //else
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.MidTide;
+                        //}
 
-                        TideDataValueModel tideDataValueModelRet = tideDataValueService.GetTideDataValueModelExistDB(tideDataValueModelNew);
-                        if (!string.IsNullOrWhiteSpace(tideDataValueModelRet.Error))
-                        {
-                            tideDataValueModelRet = tideDataValueService.PostAddTideDataValueDB(tideDataValueModelNew);
-                            if (!CheckModelOK<TideDataValueModel>(tideDataValueModelRet)) return false;
+                        //TideDataValueModel tideDataValueModelRet = tideDataValueService.GetTideDataValueModelExistDB(tideDataValueModelNew);
+                        //if (!string.IsNullOrWhiteSpace(tideDataValueModelRet.Error))
+                        //{
+                        //    tideDataValueModelRet = tideDataValueService.PostAddTideDataValueDB(tideDataValueModelNew);
+                        //    if (!CheckModelOK<TideDataValueModel>(tideDataValueModelRet)) return false;
 
-                        }
+                        //}
                     }
                 }
 
@@ -347,18 +377,18 @@ namespace ImportByFunction
                     TVItemModel tvItemModelMWQMSite = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelSubsector.TVItemID, TVText, TVTypeEnum.MWQMSite);
                     if (!CheckModelOK<TVItemModel>(tvItemModelMWQMSite)) return false;
 
-                    List<TempData.BCLandSample> bcLandSampleList = new List<TempData.BCLandSample>();
+                    List<TempData.BCMarineSample> bcMarineSampleList = new List<TempData.BCMarineSample>();
 
                     using (TempData.TempDataToolDBEntities dbDT = new TempData.TempDataToolDBEntities())
                     {
 
-                        bcLandSampleList = (from c in dbDT.BCLandSamples
+                        bcMarineSampleList = (from c in dbDT.BCMarineSamples
                                             where c.SR_STATION_CODE == bcmss.SS_STATION_CODE
                                             orderby c.SR_READING_DATE
-                                            select c).ToList<TempData.BCLandSample>();
+                                            select c).ToList<TempData.BCMarineSample>();
                     }
 
-                    foreach (TempData.BCLandSample bcms in bcLandSampleList)
+                    foreach (TempData.BCMarineSample bcms in bcMarineSampleList)
                     {
                         if (Cancel) return false;
 
@@ -369,9 +399,9 @@ namespace ImportByFunction
                         //MWQMSampleModel mwqmSampleModel = new MWQMSampleModel();
 
                         DateTime DayOfSample = (DateTime)(bcms.SR_READING_DATE);
-                        string SampleTime = bcms.SR_READING_TIME;
+                        //string SampleTime = bcms.SR_READING_TIME;
 
-                        DateTime SampleDate = new DateTime(DayOfSample.Year, DayOfSample.Month, DayOfSample.Day, (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(0, 1))) : (int.Parse(SampleTime.Substring(0, 1))))), (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(1, 2))) : (SampleTime.Substring(2, 2) == "60" ? 59 : (int.Parse(SampleTime.Substring(2, 2)))))), 0);
+                        //DateTime SampleDate = new DateTime(DayOfSample.Year, DayOfSample.Month, DayOfSample.Day, (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(0, 1))) : (int.Parse(SampleTime.Substring(0, 1))))), (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(1, 2))) : (SampleTime.Substring(2, 2) == "60" ? 59 : (int.Parse(SampleTime.Substring(2, 2)))))), 0);
 
                         MWQMRunModel mwqmRunModelNew = new MWQMRunModel();
 
@@ -386,15 +416,36 @@ namespace ImportByFunction
                             DateTime_Local = DayOfSample,
                             StartDateTime_Local = DayOfSample,
                             EndDateTime_Local = DayOfSample,
+                            RunSampleType = SampleTypeEnum.Routine,
+                            RunNumber = 1,
                         };
 
                         MWQMRunModel mwqmRunModelExist = mwqmRunService.GetMWQMRunModelExistDB(mwqmRunModelNew2);
                         if (!string.IsNullOrWhiteSpace(mwqmRunModelExist.Error))
                         {
+                            string TVTextRun = DayOfSample.Year.ToString() + " " +
+                               (DayOfSample.Month < 10 ? "0" : "") + DayOfSample.Month.ToString() + " " +
+                               (DayOfSample.Day < 10 ? "0" : "") + DayOfSample.Day.ToString();
+
+                            TVItemModel tvItemModel = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelSubsector.TVItemID, TVTextRun, TVTypeEnum.MWQMRun);
+                            if (!string.IsNullOrWhiteSpace(tvItemModel.Error))
+                            {
+                                tvItemModel = tvItemService.PostAddChildTVItemDB(tvItemModelSubsector.TVItemID, TVTextRun, TVTypeEnum.MWQMRun);
+                                if (!string.IsNullOrWhiteSpace(tvItemModel.Error))
+                                {
+                                    richTextBoxStatus.AppendText(tvItemModel.Error + "\r\n");
+                                    return false;
+                                }
+                            }
+
                             mwqmRunModelNew.SubsectorTVItemID = tvItemModelSubsector.TVItemID;
+                            mwqmRunModelNew.MWQMRunTVItemID = tvItemModel.TVItemID;
                             mwqmRunModelNew.DateTime_Local = DayOfSample;
                             mwqmRunModelNew.StartDateTime_Local = null;
                             mwqmRunModelNew.EndDateTime_Local = null;
+                            mwqmRunModelNew.RunSampleType = SampleTypeEnum.Routine;
+                            mwqmRunModelNew.RunNumber = 1;
+
                             string Comments = null;
 
                             TempData.BCSurvey bcSurvey = new TempData.BCSurvey();
@@ -410,6 +461,10 @@ namespace ImportByFunction
                             {
                                 mwqmRunModelNew.StartDateTime_Local = bcSurvey.S_START_DATE;
                                 mwqmRunModelNew.EndDateTime_Local = bcSurvey.S_END_DATE;
+                                if (mwqmRunModelNew.StartDateTime_Local > mwqmRunModelNew.EndDateTime_Local)
+                                {
+                                    mwqmRunModelNew.EndDateTime_Local = mwqmRunModelNew.StartDateTime_Local;
+                                }
                                 Comments = bcSurvey.S_DESCRIPTION + "\r\n" + bcSurvey.S_COMMENT;
                             }
 
@@ -513,56 +568,56 @@ namespace ImportByFunction
 
                         // doing tide
 
-                        List<UseOfSiteModel> useOfSiteModelList = useOfSiteService.GetUseOfSiteModelListWithSiteTypeAndSubsectorTVItemIDDB(SiteTypeEnum.Tide, tvItemModelSubsector.TVItemID);
-                        if (useOfSiteModelList.Count == 0)
-                        {
-                            richTextBoxStatus.AppendText("Could not find UseOfTideSite for subsector " + tvItemModelSubsector.TVText + "\r\n");
-                            return false;
-                        }
+                        //List<UseOfSiteModel> useOfSiteModelList = useOfSiteService.GetUseOfSiteModelListWithSiteTypeAndSubsectorTVItemIDDB(SiteTypeEnum.Tide, tvItemModelSubsector.TVItemID);
+                        //if (useOfSiteModelList.Count == 0)
+                        //{
+                        //    richTextBoxStatus.AppendText("Could not find UseOfTideSite for subsector " + tvItemModelSubsector.TVText + "\r\n");
+                        //    return false;
+                        //}
 
-                        TideDataValueModel tideDataValueModelNew = new TideDataValueModel()
-                        {
-                            TideSiteTVItemID = useOfSiteModelList[0].SiteTVItemID,
-                            DateTime_Local = new DateTime(SampleDate.Year, SampleDate.Month, SampleDate.Day),
-                            Keep = true,
-                            TideDataType = TideDataTypeEnum.Min60,
-                            StorageDataType = StorageDataTypeEnum.Archived,
-                            TideStart = null,
-                            TideEnd = null,
-                        };
+                        //TideDataValueModel tideDataValueModelNew = new TideDataValueModel()
+                        //{
+                        //    TideSiteTVItemID = useOfSiteModelList[0].SiteTVItemID,
+                        //    DateTime_Local = new DateTime(SampleDate.Year, SampleDate.Month, SampleDate.Day),
+                        //    Keep = true,
+                        //    TideDataType = TideDataTypeEnum.Min60,
+                        //    StorageDataType = StorageDataTypeEnum.Archived,
+                        //    TideStart = null,
+                        //    TideEnd = null,
+                        //};
 
 
-                        if (string.IsNullOrEmpty(bcms.SR_TIDE_CODE))
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.MidTide;
-                        }
-                        else if (bcms.SR_TIDE_CODE == "L")
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.LowTide;
-                        }
-                        else if (bcms.SR_TIDE_CODE == "H")
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.HighTide;
-                        }
-                        else if (bcms.SR_TIDE_CODE == "F")
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.MidTideRising;
-                        }
-                        else if (bcms.SR_TIDE_CODE == "E")
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.MidTideFalling;
-                        }
-                        else
-                        {
-                            tideDataValueModelNew.TideStart = TideTextEnum.MidTide;
-                        }
-                        TideDataValueModel tideDataValueModelRet = tideDataValueService.GetTideDataValueModelExistDB(tideDataValueModelNew);
-                        if (!string.IsNullOrWhiteSpace(tideDataValueModelRet.Error))
-                        {
-                            tideDataValueModelRet = tideDataValueService.PostAddTideDataValueDB(tideDataValueModelNew);
-                            if (!CheckModelOK<TideDataValueModel>(tideDataValueModelRet)) return false;
+                        //if (string.IsNullOrEmpty(bcms.SR_TIDE_CODE))
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.MidTide;
+                        //}
+                        //else if (bcms.SR_TIDE_CODE == "L")
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.LowTide;
+                        //}
+                        //else if (bcms.SR_TIDE_CODE == "H")
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.HighTide;
+                        //}
+                        //else if (bcms.SR_TIDE_CODE == "F")
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.MidTideRising;
+                        //}
+                        //else if (bcms.SR_TIDE_CODE == "E")
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.MidTideFalling;
+                        //}
+                        //else
+                        //{
+                        //    tideDataValueModelNew.TideStart = TideTextEnum.MidTide;
+                        //}
+                        //TideDataValueModel tideDataValueModelRet = tideDataValueService.GetTideDataValueModelExistDB(tideDataValueModelNew);
+                        //if (!string.IsNullOrWhiteSpace(tideDataValueModelRet.Error))
+                        //{
+                        //    tideDataValueModelRet = tideDataValueService.PostAddTideDataValueDB(tideDataValueModelNew);
+                        //    if (!CheckModelOK<TideDataValueModel>(tideDataValueModelRet)) return false;
 
-                        }
+                        //}
                     }
                 }
             }

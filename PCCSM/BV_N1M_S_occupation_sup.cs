@@ -16,6 +16,7 @@ namespace PCCSM
     {
         public int id { get; set; }
         public Nullable<decimal> OBJECTID_1 { get; set; }
+        public Nullable<int> OBJECTID { get; set; }
         public Nullable<decimal> NO_SEQ_COU { get; set; }
         public string NO_COURS_D { get; set; }
         public string NOM_COURS_ { get; set; }

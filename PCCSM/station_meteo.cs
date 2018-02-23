@@ -11,7 +11,8 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class station_meteo
     {
         public int ID { get; set; }
@@ -31,5 +32,6 @@ namespace PCCSM
         public string exclure { get; set; }
         public Nullable<double> x { get; set; }
         public Nullable<double> y { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

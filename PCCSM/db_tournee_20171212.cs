@@ -12,13 +12,8 @@ namespace PCCSM
     using System;
     using System.Collections.Generic;
     
-    public partial class db_tournee
+    public partial class db_tournee_20171212
     {
-        public db_tournee()
-        {
-            this.db_mesure = new HashSet<db_mesure>();
-        }
-    
         public int ID_Tournee { get; set; }
         public Nullable<short> tournee { get; set; }
         public int annee { get; set; }
@@ -40,8 +35,6 @@ namespace PCCSM
         public Nullable<double> precipit { get; set; }
         public Nullable<double> precipit_2jant { get; set; }
         public Nullable<double> precipit_3jant { get; set; }
-        public Nullable<double> precipit_oct { get; set; }
-        public Nullable<double> precipit_3jant_oct { get; set; }
         public Nullable<double> t_air_deb { get; set; }
         public Nullable<double> t_air_fin { get; set; }
         public Nullable<double> v_vent_deb { get; set; }
@@ -68,8 +61,5 @@ namespace PCCSM
         public Nullable<System.DateTime> validation_datetime { get; set; }
         public Nullable<int> approbation { get; set; }
         public Nullable<System.DateTime> approbation_date { get; set; }
-    
-        public virtual ICollection<db_mesure> db_mesure { get; set; }
-        public virtual laboratoire_operateur laboratoire_operateur { get; set; }
     }
 }

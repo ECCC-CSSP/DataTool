@@ -12,11 +12,14 @@ namespace PCCSM
     using System;
     using System.Collections.Generic;
     
-    public partial class romm
+    public partial class geometry_columns
     {
-        public int romm_id { get; set; }
-        public string membre { get; set; }
-        public Nullable<decimal> y { get; set; }
-        public Nullable<decimal> x { get; set; }
+        public string f_table_catalog { get; set; }
+        public string f_table_schema { get; set; }
+        public string f_table_name { get; set; }
+        public string f_geometry_column { get; set; }
+        public int coord_dimension { get; set; }
+        public int srid { get; set; }
+        public string geometry_type { get; set; }
     }
 }

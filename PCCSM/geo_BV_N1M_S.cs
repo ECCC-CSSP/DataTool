@@ -11,21 +11,23 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class BV_N3M_S
+    using System.Data.Entity.Spatial;
+
+    public partial class geo_BV_N1M_S
     {
-        public Nullable<decimal> geodb_oid { get; set; }
-        public decimal OBJECTID_1 { get; set; }
-        public Nullable<decimal> NO_SEQ_COU { get; set; }
+        public long OBJECTID { get; set; }
+        public Nullable<double> NO_SEQ_COU { get; set; }
+        public Nullable<decimal> NO_SEQ_COU_num { get; set; }
         public string NO_COURS_D { get; set; }
         public string NOM_COURS_ { get; set; }
-        public Nullable<int> NIVEAU_BAS { get; set; }
+        public Nullable<long> NIVEAU_BAS { get; set; }
         public string NO_REG_HYD { get; set; }
         public string ECHELLE { get; set; }
         public string DAT_MAJ { get; set; }
         public string ENTITE { get; set; }
-        public Nullable<decimal> SUP_KM2 { get; set; }
-        public Nullable<decimal> Shape_Leng { get; set; }
-        public Nullable<decimal> Shape_Area { get; set; }
+        public Nullable<double> SUP_KM2 { get; set; }
+        public Nullable<double> SHAPE_Leng { get; set; }
+        public Nullable<double> SHAPE_Area { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }

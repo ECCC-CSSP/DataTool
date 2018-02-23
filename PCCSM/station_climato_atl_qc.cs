@@ -11,12 +11,14 @@ namespace PCCSM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity.Spatial;
+
     public partial class station_climato_atl_qc
     {
         public string ID { get; set; }
         public string Station { get; set; }
         public Nullable<float> y { get; set; }
         public Nullable<float> x { get; set; }
+        public DbGeography geographie { get; set; }
     }
 }
