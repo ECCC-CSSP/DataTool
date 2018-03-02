@@ -41,7 +41,7 @@ textBoxNBCreateSamplesAtl,94476
 textBoxNLCreateSamplesAtl,45787
 textBoxNSCreateSamplesAtl,149041
 textBoxPECreateSamplesAtl,104396
-textBoxBCCreateSamplesBC,58
+textBoxBCCreateSamplesBC,159
 textBoxQCCreateSamplesQC,4179
 textBoxNBCreateRunsAtl,6489
 textBoxNLCreateRunsAtl,3472

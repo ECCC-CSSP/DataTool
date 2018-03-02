@@ -4965,15 +4965,16 @@ namespace ImportByFunction
 
         private void button6_Click(object sender, EventArgs e)
         {
-            List<int> mwqmRunToDeleteList = new List<int>();
+            List<int> mwqmSampleToDeleteList = new List<int>();
             MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
             MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
 
-            richTextBoxStatus.AppendText("Subsector\tRunTVText\tMWQMSite\tTime1\tTime2\tFC1\tFC2\r\n");
+            //richTextBoxStatus.AppendText("Subsector\tRunTVText\tMWQMSite\tTime1\tTime2\tFC1\tFC2\r\n");
 
+            List<MWQMRun> tvItemRunList = new List<MWQMRun>();
             using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
             {
-                TVItem tvItemBC = (from t in dd.TVItems
+                TVItem tvItemQC = (from t in dd.TVItems
                                    from tl in dd.TVItemLanguages
                                    where t.TVItemID == tl.TVItemID
                                    && tl.Language == (int)LanguageEnum.en
@@ -4981,95 +4982,56 @@ namespace ImportByFunction
                                    && t.TVType == (int)TVTypeEnum.Province
                                    select t).FirstOrDefault();
 
-                if (tvItemBC != null)
+                if (tvItemQC != null)
                 {
-                    List<MWQMRun> tvItemRunList = (from t in dd.TVItems
-                                                   from r in dd.MWQMRuns
-                                                   where t.TVItemID == r.MWQMRunTVItemID
-                                                   && t.TVPath.StartsWith(tvItemBC.TVPath)
-                                                   && t.TVType == (int)TVTypeEnum.MWQMRun
-                                                   orderby r.MWQMRunTVItemID
-                                                   select r).ToList();
-
-                    int oldMWQMRunTVItemID = 0;
-                    foreach (MWQMRun mwqmRun in tvItemRunList)
-                    {
-                        lblStatus.Text = mwqmRun.MWQMRunTVItemID.ToString();
-                        lblStatus.Refresh();
-                        Application.DoEvents();
-
-                        if (oldMWQMRunTVItemID == mwqmRun.MWQMRunTVItemID)
-                        {
-                            richTextBoxStatus.AppendText(mwqmRun.MWQMRunTVItemID.ToString() + "\r\n");
-                            mwqmRunToDeleteList.Add(mwqmRun.MWQMRunTVItemID);
-                        }
-                        oldMWQMRunTVItemID = mwqmRun.MWQMRunTVItemID;
-                    }
+                    tvItemRunList = (from t in dd.TVItems
+                                     from r in dd.MWQMRuns
+                                     where t.TVItemID == r.MWQMRunTVItemID
+                                     && t.TVPath.StartsWith(tvItemQC.TVPath)
+                                     && t.TVType == (int)TVTypeEnum.MWQMRun
+                                     orderby r.MWQMRunTVItemID
+                                     select r).ToList();
                 }
             }
 
             int count = 0;
-            int totalCount = mwqmRunToDeleteList.Count();
-            foreach (int id in mwqmRunToDeleteList)
+            int countTotal = tvItemRunList.Count;
+
+            foreach (MWQMRun mwqmRun in tvItemRunList)
             {
                 count += 1;
-                lblStatus.Text = count.ToString() + " of " + totalCount.ToString();
+                lblStatus.Text = count.ToString() + " of " + countTotal.ToString();
                 lblStatus.Refresh();
                 Application.DoEvents();
 
-
-                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
                 {
-                    List<MWQMSample> mwqmSampleList = (from c in dd.MWQMSamples
-                                                       from r in dd.MWQMRuns
-                                                       where c.MWQMRunTVItemID == r.MWQMRunTVItemID
-                                                       && c.MWQMRunTVItemID == id
-                                                       select c).ToList();
+                    List<MWQMSample> mwqmSampleList = (from s in db.MWQMSamples
+                                                       where s.MWQMRunTVItemID == mwqmRun.MWQMRunTVItemID
+                                                       orderby s.MWQMSiteTVItemID, s.SampleDateTime_Local, s.FecCol_MPN_100ml
+                                                       select s).ToList();
 
+                    MWQMSample mwqmSampleOld = new MWQMSample();
                     foreach (MWQMSample mwqmSample in mwqmSampleList)
                     {
-                        dd.MWQMSamples.Remove(mwqmSample);
+                        if (mwqmSampleOld.MWQMSiteTVItemID == mwqmSample.MWQMSiteTVItemID
+                            && mwqmSampleOld.SampleDateTime_Local == mwqmSample.SampleDateTime_Local
+                            && mwqmSampleOld.FecCol_MPN_100ml == mwqmSample.FecCol_MPN_100ml)
+                        {
+                            db.MWQMSamples.Remove(mwqmSample);
+                        }
+                        mwqmSampleOld = mwqmSample;
                     }
 
                     try
                     {
-                        dd.SaveChanges();
+                        db.SaveChanges();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         int sleifj = 34;
                     }
                 }
-            }
-            using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
-            {
-
-                count = 0;
-                totalCount = mwqmRunToDeleteList.Count();
-                foreach (int id in mwqmRunToDeleteList)
-                {
-                    count += 1;
-                    lblStatus.Text = count.ToString() + " of " + totalCount.ToString();
-                    lblStatus.Refresh();
-                    Application.DoEvents();
-
-                    MWQMRun mwqmRun = (from r in dd.MWQMRuns
-                                       where r.MWQMRunTVItemID == id
-                                       select r).FirstOrDefault();
-
-                    dd.MWQMRuns.Remove(mwqmRun);
-
-                }
-
-                try
-                {
-                    dd.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    int sleifj = 34;
-                }
-
             }
 
 
@@ -8654,8 +8616,8 @@ namespace ImportByFunction
 
                 Application.DoEvents();
                 List<MapInfo> mapInfoList = (from c in db.MapInfos
-                                         where c.TVItemID == tvItemModelSite.TVItemID
-                                         select c).ToList();
+                                             where c.TVItemID == tvItemModelSite.TVItemID
+                                             select c).ToList();
 
                 if (mapInfoList.Count > 0)
                 {

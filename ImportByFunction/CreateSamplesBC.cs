@@ -65,7 +65,8 @@ namespace ImportByFunction
                 }
 
                 List<MWQMRunModel> BCRunModelList = mwqmRunService.GetMWQMRunModelListWithSubsectorTVItemIDDB(tvItemModelSubsector.TVItemID);
-                if (BCRunModelList.Count == 0) return false;
+                if (BCRunModelList.Count == 0)
+                    continue;
 
                 List<TVItemModel> tvItemModelList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSubsector.TVItemID, TVTypeEnum.MWQMSite);
                 if (tvItemModelList.Count == 0) return false;
@@ -113,7 +114,8 @@ namespace ImportByFunction
                     string TVText = bcmss.SS_STATION_CODE;
 
                     BCSubSector = (from c in BCSubSectorLangList where c.TVText.StartsWith(bcmss.SS_SHELLFISH_SECTOR) select c).FirstOrDefault();
-                    if (!CheckModelOK<TVItemModel>(BCSubSector)) return false;
+                    if (!CheckModelOK<TVItemModel>(BCSubSector))
+                        continue;
 
                     TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
@@ -144,76 +146,84 @@ namespace ImportByFunction
                         lblStatus2.Text = "Doing Marine Station " + bcms.SR_STATION_CODE + " --- " + countSta + " of " + totalSta + " Sample " + countSample + " of " + TotalSample;
                         Application.DoEvents();
 
-                        DateTime DayOfSample = (DateTime)(bcms.SR_READING_DATE);
-                        string SampleTime = bcms.SR_READING_TIME;
-
-                        if (SampleTime == null)
+                        try
                         {
-                            SampleTime = "0000";
-                        }
+                            DateTime DayOfSample = (DateTime)(bcms.SR_READING_DATE);
+                            string SampleTime = bcms.SR_READING_TIME;
 
-                        DateTime SampleDate = new DateTime(DayOfSample.Year, DayOfSample.Month, DayOfSample.Day, (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(0, 1))) : (int.Parse(SampleTime.Substring(0, 1))))), (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(1, 2))) : (SampleTime.Substring(2, 2) == "60" ? 59 : (int.Parse(SampleTime.Substring(2, 2)))))), 0);
-
-                        int FecCol = 0;
-                        if (bcms.SR_FECAL_COLIFORM_IND == "<" && bcms.SR_FECAL_COLIFORM == 2)
-                        {
-                            FecCol = 1;
-                        }
-                        else
-                        {
-                            if (bcms.SR_FECAL_COLIFORM == null)
+                            if (SampleTime == null)
                             {
+                                SampleTime = "0000";
+                            }
+
+                            DateTime SampleDate = new DateTime(DayOfSample.Year, DayOfSample.Month, DayOfSample.Day, (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(0, 1))) : (int.Parse(SampleTime.Substring(0, 1))))), (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(1, 2))) : (SampleTime.Substring(2, 2) == "60" ? 59 : (int.Parse(SampleTime.Substring(2, 2)))))), 0);
+
+                            int FecCol = 0;
+                            if (bcms.SR_FECAL_COLIFORM_IND == "<" && bcms.SR_FECAL_COLIFORM == 2)
+                            {
+                                FecCol = 1;
+                            }
+                            else
+                            {
+                                if (bcms.SR_FECAL_COLIFORM == null)
+                                {
+                                    continue;
+                                }
+
+                                FecCol = (int)bcms.SR_FECAL_COLIFORM;
+                            }
+
+                            MWQMRunModel mwqmRunModel = (from c in BCRunModelList
+                                                         where c.SubsectorTVItemID == BCSubSector.TVItemID
+                                                         && c.DateTime_Local.Year == SampleDate.Year
+                                                         && c.DateTime_Local.Month == SampleDate.Month
+                                                         && c.DateTime_Local.Day == SampleDate.Day
+                                                         select c).FirstOrDefault();
+
+                            if (mwqmRunModel == null)
+                            {
+                                richTextBoxStatus.AppendText("Could not find run for date [" + SampleDate.ToString("yyyy MMM dd") + "] for subsector [" + BCSubSector.TVText + "]\r\n");
                                 continue;
+                                //return false;
                             }
 
-                            FecCol = (int)bcms.SR_FECAL_COLIFORM;
-                        }
+                            bool SampleExist = (from c in mwqmSampleList
+                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                && c.MWQMRunTVItemID == mwqmRunModel.MWQMRunTVItemID
+                                                && c.SampleDateTime_Local == SampleDate
+                                                && c.FecCol_MPN_100ml == FecCol
+                                                && c.Salinity_PPT == null
+                                                && c.WaterTemp_C == null
+                                                && c.SampleTypesText.Contains(((int)SampleTypeEnum.Routine).ToString())
+                                                select c).Any();
 
-                        MWQMRunModel mwqmRunModel = (from c in BCRunModelList
-                                                     where c.SubsectorTVItemID == BCSubSector.TVItemID
-                                                     && c.DateTime_Local.Year == SampleDate.Year
-                                                     && c.DateTime_Local.Month == SampleDate.Month
-                                                     && c.DateTime_Local.Day == SampleDate.Day
-                                                     select c).FirstOrDefault();
-
-                        if (mwqmRunModel == null)
-                        {
-                            richTextBoxStatus.AppendText("Could not find run for date [" + SampleDate.ToString("yyyy MMM dd") + "] for subsector [" + BCSubSector.TVText + "]\r\n");
-                            return false;
-                        }
-
-                        bool SampleExist = (from c in mwqmSampleList
-                                            where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                            && c.MWQMRunTVItemID == mwqmRunModel.MWQMRunTVItemID
-                                            && c.SampleDateTime_Local == SampleDate
-                                            && c.FecCol_MPN_100ml == FecCol
-                                            && c.Salinity_PPT == null
-                                            && c.WaterTemp_C == null
-                                            && c.SampleTypesText.Contains(((int)SampleTypeEnum.Routine).ToString())
-                                            select c).Any();
-
-                        if (!SampleExist)
-                        {
-                            MWQMSampleModel mwqmSampleModelNew = new MWQMSampleModel()
+                            if (!SampleExist)
                             {
-                                MWQMSiteTVItemID = tvItemModelMWQMSite.TVItemID,
-                                MWQMRunTVItemID = mwqmRunModel.MWQMRunTVItemID,
-                                SampleDateTime_Local = SampleDate,
-                                Depth_m = null,
-                                FecCol_MPN_100ml = FecCol,
-                                Salinity_PPT = null,
-                                MWQMSampleNote = (string.IsNullOrWhiteSpace(bcms.SR_OBS) == true ? "--" : bcms.SR_OBS.Trim()),
-                                WaterTemp_C = null,
-                                SampleTypesText = ((int)SampleTypeEnum.Routine).ToString() + ",",
-                                SampleTypeList = new List<SampleTypeEnum>() { SampleTypeEnum.Routine },
-                            };
+                                MWQMSampleModel mwqmSampleModelNew = new MWQMSampleModel()
+                                {
+                                    MWQMSiteTVItemID = tvItemModelMWQMSite.TVItemID,
+                                    MWQMRunTVItemID = mwqmRunModel.MWQMRunTVItemID,
+                                    SampleDateTime_Local = SampleDate,
+                                    Depth_m = null,
+                                    FecCol_MPN_100ml = FecCol,
+                                    Salinity_PPT = null,
+                                    MWQMSampleNote = (string.IsNullOrWhiteSpace(bcms.SR_OBS) == true ? "--" : bcms.SR_OBS.Trim()),
+                                    WaterTemp_C = null,
+                                    SampleTypesText = ((int)SampleTypeEnum.Routine).ToString() + ",",
+                                    SampleTypeList = new List<SampleTypeEnum>() { SampleTypeEnum.Routine },
+                                };
 
-                            MWQMSampleModel mwqmSampleModelRet = mwqmSampleService.GetMWQMSampleModelExistDB(mwqmSampleModelNew);
-                            if (!string.IsNullOrWhiteSpace(mwqmSampleModelRet.Error))
-                            {
-                                mwqmSampleModelRet = mwqmSampleService.PostAddMWQMSampleDB(mwqmSampleModelNew);
-                                if (!CheckModelOK<MWQMSampleModel>(mwqmSampleModelRet)) return false;
+                                MWQMSampleModel mwqmSampleModelRet = mwqmSampleService.GetMWQMSampleModelExistDB(mwqmSampleModelNew);
+                                if (!string.IsNullOrWhiteSpace(mwqmSampleModelRet.Error))
+                                {
+                                    mwqmSampleModelRet = mwqmSampleService.PostAddMWQMSampleDB(mwqmSampleModelNew);
+                                    if (!CheckModelOK<MWQMSampleModel>(mwqmSampleModelRet)) return false;
+                                }
                             }
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
                         }
                     }
                 }
@@ -275,81 +285,97 @@ namespace ImportByFunction
                         lblStatus2.Text = "Doing Marine station " + bcms.SR_STATION_CODE + " ----" + countSta + " of " + totalSta + " Sample " + countSample + " of " + TotalSample;
                         Application.DoEvents();
 
-                        DateTime DayOfSample = (DateTime)(bcms.SR_READING_DATE);
-                        string SampleTime = bcms.SR_READING_TIME;
-
-                        if (SampleTime == null)
+                        try
                         {
-                            SampleTime = "0000";
-                        }
+                            DateTime DayOfSample = (DateTime)(bcms.SR_READING_DATE);
+                            string SampleTime = bcms.SR_READING_TIME;
 
-                        if (SampleTime == "093")
-                        {
-                            SampleTime = "0930";
-                        }
-                        if (SampleTime == "080")
-                        {
-                            SampleTime = "0800";
-                        }
-
-                        DateTime SampleDate = new DateTime(DayOfSample.Year, DayOfSample.Month, DayOfSample.Day, (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(0, 1))) : (int.Parse(SampleTime.Substring(0, 1))))), (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(1, 2))) : (SampleTime.Substring(2, 2) == "60" ? 59 : (int.Parse(SampleTime.Substring(2, 2)))))), 0);
-
-                        int FecCol = 0;
-                        if (bcms.SR_FECAL_COLIFORM_IND == "<" && bcms.SR_FECAL_COLIFORM == 2)
-                        {
-                            FecCol = 1;
-                        }
-                        else
-                        {
-                            FecCol = (int)bcms.SR_FECAL_COLIFORM;
-                        }
-
-                        MWQMRunModel mwqmRunModel = (from c in BCRunModelList
-                                                     where c.SubsectorTVItemID == BCSubSector.TVItemID
-                                                     && c.DateTime_Local.Year == SampleDate.Year
-                                                     && c.DateTime_Local.Month == SampleDate.Month
-                                                     && c.DateTime_Local.Day == SampleDate.Day
-                                                     select c).FirstOrDefault();
-
-                        if (mwqmRunModel == null)
-                        {
-                            richTextBoxStatus.AppendText("Could not find run for date [" + SampleDate.ToString("yyyy MMM dd") + "] for subsector [" + BCSubSector.TVText + "]\r\n");
-                            return false;
-                        }
-
-                        bool SampleExist = (from c in mwqmSampleList
-                                            where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                            && c.MWQMRunTVItemID == mwqmRunModel.MWQMRunTVItemID
-                                            && c.SampleDateTime_Local == SampleDate
-                                            && c.FecCol_MPN_100ml == FecCol
-                                            && c.Salinity_PPT == bcms.SR_SALINITY
-                                            && c.WaterTemp_C == bcms.SR_TEMPERATURE
-                                            && c.SampleTypesText.Contains(((int)SampleTypeEnum.Routine).ToString())
-                                            select c).Any();
-
-                        if (!SampleExist)
-                        {
-
-                            MWQMSampleModel mwqmSampleModelNew = new MWQMSampleModel()
+                            if (SampleTime == null)
                             {
-                                MWQMSiteTVItemID = tvItemModelMWQMSite.TVItemID,
-                                MWQMRunTVItemID = mwqmRunModel.MWQMRunTVItemID,
-                                SampleDateTime_Local = SampleDate,
-                                Depth_m = bcms.SR_SAMPLE_DEPTH,
-                                FecCol_MPN_100ml = FecCol,
-                                Salinity_PPT = bcms.SR_SALINITY,
-                                MWQMSampleNote = (string.IsNullOrWhiteSpace(bcms.SR_OBS) == true ? "--" : bcms.SR_OBS.Trim()),
-                                WaterTemp_C = bcms.SR_TEMPERATURE,
-                                SampleTypesText = ((int)SampleTypeEnum.Routine).ToString() + ",",
-                                SampleTypeList = new List<SampleTypeEnum>() { SampleTypeEnum.Routine },
-                            };
-
-                            MWQMSampleModel mwqmSampleModelRet = mwqmSampleService.GetMWQMSampleModelExistDB(mwqmSampleModelNew);
-                            if (!string.IsNullOrWhiteSpace(mwqmSampleModelRet.Error))
-                            {
-                                mwqmSampleModelRet = mwqmSampleService.PostAddMWQMSampleDB(mwqmSampleModelNew);
-                                if (!CheckModelOK<MWQMSampleModel>(mwqmSampleModelRet)) return false;
+                                SampleTime = "0000";
                             }
+
+                            if (SampleTime == "093")
+                            {
+                                SampleTime = "0930";
+                            }
+                            if (SampleTime == "080")
+                            {
+                                SampleTime = "0800";
+                            }
+                            if (SampleTime == "073")
+                            {
+                                SampleTime = "0730";
+                            }
+                            if (SampleTime == "060")
+                            {
+                                SampleTime = "0600";
+                            }
+
+                            DateTime SampleDate = new DateTime(DayOfSample.Year, DayOfSample.Month, DayOfSample.Day, (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(0, 1))) : (int.Parse(SampleTime.Substring(0, 1))))), (SampleTime.Length == 1 ? 0 : (SampleTime.Length == 3 ? (int.Parse(SampleTime.Substring(1, 2))) : (SampleTime.Substring(2, 2) == "60" ? 59 : (int.Parse(SampleTime.Substring(2, 2)))))), 0);
+
+                            int FecCol = 0;
+                            if (bcms.SR_FECAL_COLIFORM_IND == "<" && bcms.SR_FECAL_COLIFORM == 2)
+                            {
+                                FecCol = 1;
+                            }
+                            else
+                            {
+                                FecCol = (int)bcms.SR_FECAL_COLIFORM;
+                            }
+
+                            MWQMRunModel mwqmRunModel = (from c in BCRunModelList
+                                                         where c.SubsectorTVItemID == BCSubSector.TVItemID
+                                                         && c.DateTime_Local.Year == SampleDate.Year
+                                                         && c.DateTime_Local.Month == SampleDate.Month
+                                                         && c.DateTime_Local.Day == SampleDate.Day
+                                                         select c).FirstOrDefault();
+
+                            if (mwqmRunModel == null)
+                            {
+                                richTextBoxStatus.AppendText("Could not find run for date [" + SampleDate.ToString("yyyy MMM dd") + "] for subsector [" + BCSubSector.TVText + "]\r\n");
+                                continue;
+                                //return false;
+                            }
+
+                            bool SampleExist = (from c in mwqmSampleList
+                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                && c.MWQMRunTVItemID == mwqmRunModel.MWQMRunTVItemID
+                                                && c.SampleDateTime_Local == SampleDate
+                                                && c.FecCol_MPN_100ml == FecCol
+                                                && c.Salinity_PPT == bcms.SR_SALINITY
+                                                && c.WaterTemp_C == bcms.SR_TEMPERATURE
+                                                && c.SampleTypesText.Contains(((int)SampleTypeEnum.Routine).ToString())
+                                                select c).Any();
+
+                            if (!SampleExist)
+                            {
+
+                                MWQMSampleModel mwqmSampleModelNew = new MWQMSampleModel()
+                                {
+                                    MWQMSiteTVItemID = tvItemModelMWQMSite.TVItemID,
+                                    MWQMRunTVItemID = mwqmRunModel.MWQMRunTVItemID,
+                                    SampleDateTime_Local = SampleDate,
+                                    Depth_m = bcms.SR_SAMPLE_DEPTH,
+                                    FecCol_MPN_100ml = FecCol,
+                                    Salinity_PPT = bcms.SR_SALINITY,
+                                    MWQMSampleNote = (string.IsNullOrWhiteSpace(bcms.SR_OBS) == true ? "--" : bcms.SR_OBS.Trim()),
+                                    WaterTemp_C = bcms.SR_TEMPERATURE,
+                                    SampleTypesText = ((int)SampleTypeEnum.Routine).ToString() + ",",
+                                    SampleTypeList = new List<SampleTypeEnum>() { SampleTypeEnum.Routine },
+                                };
+
+                                MWQMSampleModel mwqmSampleModelRet = mwqmSampleService.GetMWQMSampleModelExistDB(mwqmSampleModelNew);
+                                if (!string.IsNullOrWhiteSpace(mwqmSampleModelRet.Error))
+                                {
+                                    mwqmSampleModelRet = mwqmSampleService.PostAddMWQMSampleDB(mwqmSampleModelNew);
+                                    if (!CheckModelOK<MWQMSampleModel>(mwqmSampleModelRet)) return false;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
                         }
                     }
                 }
