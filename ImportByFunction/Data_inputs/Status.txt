@@ -39,13 +39,13 @@ textBoxBCCreateStationsBC,159
 textBoxQCCreateStationsQC,4112
 textBoxNBCreateSamplesAtl,94476
 textBoxNLCreateSamplesAtl,45787
-textBoxNSCreateSamplesAtl,149041
+textBoxNSCreateSamplesAtl,153584
 textBoxPECreateSamplesAtl,104396
 textBoxBCCreateSamplesBC,159
 textBoxQCCreateSamplesQC,4179
 textBoxNBCreateRunsAtl,6489
 textBoxNLCreateRunsAtl,3472
-textBoxNSCreateRunsAtl,11182
+textBoxNSCreateRunsAtl,11564
 textBoxPECreateRunsAtl,8730
 textBoxBCCreateRunsBC,159
 textBoxQCCreateRunsQC,314

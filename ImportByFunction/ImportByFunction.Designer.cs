@@ -255,6 +255,7 @@
             this.button35 = new System.Windows.Forms.Button();
             this.button36 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -2358,11 +2359,22 @@
             this.button37.UseVisualStyleBackColor = true;
             this.button37.Click += new System.EventHandler(this.button37_Click);
             // 
+            // button38
+            // 
+            this.button38.Location = new System.Drawing.Point(777, 631);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(75, 23);
+            this.button38.TabIndex = 205;
+            this.button38.Text = "button38";
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.button38);
             this.Controls.Add(this.butImportingPatriceMWQMImage);
             this.Controls.Add(this.butImportJoeAppIssuesAndImages);
             this.Controls.Add(this.button27);
@@ -2827,6 +2839,7 @@
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.Button button36;
         private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.Button button38;
     }
 }
 

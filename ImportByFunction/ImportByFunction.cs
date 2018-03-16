@@ -7912,7 +7912,7 @@ namespace ImportByFunction
 
         private void button15_Click(object sender, EventArgs e) // button climate1
         {
-            string StartTextSubsector = "PE-";
+            string StartTextSubsector = "NS-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -7929,18 +7929,18 @@ namespace ImportByFunction
                 return;
             }
 
-            //bool start = false;
+            bool start = false;
             foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
             {
-                //if (tvItemModel.TVText.StartsWith("PE-09-030-001"))
-                //{
-                //    start = true;
-                //}
+                if (tvItemModel.TVText.StartsWith("NS-01-010-004"))
+                {
+                    start = true;
+                }
 
-                //if (!start)
-                //{
-                //    continue;
-                //}
+                if (!start)
+                {
+                    continue;
+                }
 
                 lblStatus.Text = tvItemModel.TVText;
                 lblStatus.Refresh();
@@ -7968,7 +7968,7 @@ namespace ImportByFunction
                 }
 
                 // get all years with data
-                List<int> YearWithData = mwqmRunList.Select(c => c.DateTime_Local.Year).Distinct().ToList();
+                List<int> YearWithData = mwqmRunList.Select(c => c.DateTime_Local.Year).Distinct().OrderBy(c => c).ToList();
 
                 foreach (int year in YearWithData)
                 {
@@ -7999,7 +7999,7 @@ namespace ImportByFunction
 
         private void button16_Click(object sender, EventArgs e) // button climate2
         {
-            string StartTextSubsector = "PE-";
+            string StartTextSubsector = "NS-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -8058,7 +8058,7 @@ namespace ImportByFunction
 
         private void button17_Click(object sender, EventArgs e) // button climate3
         {
-            string StartTextSubsector = "PE-";
+            string StartTextSubsector = "NS-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -12176,6 +12176,103 @@ namespace ImportByFunction
 
         }
 
+        private void button38_Click(object sender, EventArgs e)
+        {
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            //{
+            //    int slefij = 34;
+            //}
+
+            //TVItemModel tvItemModelNS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Nova Scotia", TVTypeEnum.Province);
+            //if (!string.IsNullOrWhiteSpace(tvItemModelNS.Error))
+            //{
+            //    int slefij = 34;
+            //}
+
+            //List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNS.TVItemID, TVTypeEnum.Subsector);
+
+            //foreach (TVItemModel tvItemModelSS in tvitemModelSSList)
+            //{
+            //    lblStatus.Text = tvItemModelSS.TVText;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    List<int> MWQMRunIDListToDelete = new List<int>();
+
+            //    List<MWQMRunModel> mwqmRunModelList = mwqmRunService.GetMWQMRunModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID).OrderBy(c => c.DateTime_Local).ThenBy(c => c.MWQMRunID).ToList();
+
+            //    string oldDT = "";
+            //    for (int i = 0, count = mwqmRunModelList.Count(); i < count; i++)
+            //    {
+            //        string DT = mwqmRunModelList[i].DateTime_Local.ToString("yyyy-MMMM-dd");
+            //        if (oldDT == DT)
+            //        {
+            //            MWQMRunIDListToDelete.Add(mwqmRunModelList[i].MWQMRunID);
+            //        }
+            //        oldDT = mwqmRunModelList[i].DateTime_Local.ToString("yyyy-MMMM-dd");
+            //    }
+
+            //    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //    {
+            //        //List<MWQMSample> mwqmSampleList = (from c in db.MWQMSamples
+            //        //                                   where c.MWQMRunTVItemID == TVItemID
+            //        //                                   select c).ToList();
+
+            //        //foreach (MWQMSample mwqmSample in mwqmSampleList)
+            //        //{
+            //        //    db.MWQMSamples.Remove(mwqmSample);
+            //        //}
+
+            //        //try
+            //        //{
+            //        //    db.SaveChanges();
+            //        //}
+            //        //catch (Exception ex)
+            //        //{
+            //        //    int sleifj = 34;
+            //        //}
+
+            //        List<MWQMRun> mwqmRunList = (from c in db.MWQMRuns
+            //                                     from a in MWQMRunIDListToDelete
+            //                                     where c.MWQMRunID == a
+            //                                     select c).ToList();
+
+            //        foreach (MWQMRun mwqmRun in mwqmRunList)
+            //        {
+            //            db.MWQMRuns.Remove(mwqmRun);
+            //        }
+
+            //        try
+            //        {
+            //            db.SaveChanges();
+            //        }
+            //        catch (Exception)
+            //        {
+            //            int sleifj = 34;
+            //        }
+
+            //        //TVItem tvItem = (from c in db.TVItems
+            //        //                   where c.TVItemID == TVItemID
+            //        //                   select c).FirstOrDefault();
+
+            //        //try
+            //        //{
+            //        //    db.TVItems.Remove(tvItem);
+            //        //    db.SaveChanges();
+            //        //}
+            //        //catch (Exception)
+            //        //{
+
+            //        //    throw;
+            //        //}
+            //    }
+
+            //}
+        }
 
         //private void button18_Click(object sender, EventArgs e)
         //{

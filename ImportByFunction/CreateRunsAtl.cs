@@ -526,6 +526,7 @@ namespace ImportByFunction
                         {
                             mwqmRunModelNew.RainDay3_mm = 999;
                         }
+
                         MWQMRunModel mwqmRunModelRet = mwqmRunService.PostAddMWQMRunDB(mwqmRunModelNew);
                         if (!CheckModelOK<MWQMRunModel>(mwqmRunModelRet)) return false;
 

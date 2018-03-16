@@ -110,7 +110,15 @@ namespace ImportByFunction
 
                         string DateText = Year + " " + (Month > 9 ? Month.ToString() : "0" + Month.ToString()) + " " + (Day > 9 ? Day.ToString() : "0" + Day.ToString());
 
-                        MWQMRunDict.Add(kvp.Key + DateText + "_" + mwqmRunTVItem.c.RunNumber, mwqmRunTVItem.tl.TVItemID);
+                        try
+                        {
+                            MWQMRunDict.Add(kvp.Key + DateText + "_" + mwqmRunTVItem.c.RunNumber, mwqmRunTVItem.tl.TVItemID);
+
+                        }
+                        catch (Exception)
+                        {
+                            int sef = 34;
+                        }
                     }
                 }
             }
@@ -243,7 +251,7 @@ namespace ImportByFunction
                         SampleDateTime_Local = SampDate,
                         FecCol_MPN_100ml = (asamp.FEC_COL == 1.9 ? (int)1 : (int)asamp.FEC_COL),
                         Salinity_PPT = asamp.SALINITY,
-                        WaterTemp_C = (asamp.WATERTEMP < 0 ? 0 : asamp.WATERTEMP),
+                        WaterTemp_C = asamp.WATERTEMP,
                         SampleTypesText = ((int)SampleTypeEnum.Routine).ToString() + ",",
                         SampleTypeList = new List<SampleTypeEnum>() { SampleTypeEnum.Routine },
                     };
@@ -497,8 +505,8 @@ namespace ImportByFunction
                         //}
                         //catch (Exception ex)
                         //{
-                            //  good it does not exist then add it
-                            MWQMRunDict.Add(kvp.Key + mwqmRunTVItem.tl.TVText + "_" + mwqmRunTVItem.c.RunNumber, mwqmRunTVItem.tl.TVItemID);
+                        //  good it does not exist then add it
+                        MWQMRunDict.Add(kvp.Key + mwqmRunTVItem.tl.TVText + "_" + mwqmRunTVItem.c.RunNumber, mwqmRunTVItem.tl.TVItemID);
                         //}
                     }
                 }
