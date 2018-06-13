@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="60c1b5418ea84087996c6e46c1cc267f" Name="Diagram1">
+        <EntityTypeShape EntityType="pccsmModel.C2013_Municipalité" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.C2013_Toponymes_officiels" Width="1.5" PointX="14.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.C2013_TypesEntitesToponymiques" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.bv_idm_final5_20mars" Width="1.5" PointX="16.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.BV_N1M_S" Width="1.5" PointX="17.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.BV_N1M_S_caracterisation_milieu" Width="1.5" PointX="18.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.BV_N1M_S_occupation_sup" Width="1.5" PointX="18.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.calendrier" Width="1.5" PointX="19.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.calendrier_lunaire" Width="1.5" PointX="17.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.caracterisation_milieu" Width="1.5" PointX="19.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.CCG_Nav_Aid" Width="1.5" PointX="20.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.CHS_sounding" Width="1.5" PointX="20.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.codification" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.codification_description" Width="1.5" PointX="6" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.contact" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.contact_groupe" Width="1.5" PointX="6" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.cour_flotteur_p" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.cour_trajectoire_l" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.cour_zone_etude" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_banc_espece" Width="1.5" PointX="3" PointY="57.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_banc_espece_exploitation" Width="1.5" PointX="5.25" PointY="57.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_banc_secteur" Width="1.5" PointX="3" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_banc_source_info" Width="1.5" PointX="6" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_depuration" Width="1.5" PointX="21.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_document" Width="1.5" PointX="12" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_ec_recommandation" Width="1.5" PointX="15.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_ec_recommandation_note" Width="1.5" PointX="18" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_echantillonnage_planification" Width="1.5" PointX="10.5" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_echantillonnage_planification_mensuelle" Width="1.5" PointX="21.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_ed_donnees_gisement" Width="1.5" PointX="5.25" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_ed_echantillonnage" Width="1.5" PointX="3" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_ed_granulometrie" Width="1.5" PointX="7.5" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_ed_taille" Width="1.5" PointX="7.5" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_feedback" Width="1.5" PointX="14.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_histo_operation" Width="1.5" PointX="16.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_log_terrain" Width="1.5" PointX="22.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_mesure" Width="1.5" PointX="10.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_rapport" Width="1.5" PointX="22.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_station_no_georef" Width="1.5" PointX="22.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_tournee" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_tournee_maree_temporaire" Width="1.5" PointX="22.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_tournee_maree_temporaire_validation" Width="1.5" PointX="9.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_zone" Width="1.5" PointX="23.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_zone_secteur_station_meteo" Width="1.5" PointX="11.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.evaluation_risque" Width="1.5" PointX="5.25" PointY="40.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.EvaluationRisqueSecteur" Width="1.5" PointX="24.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_banc_coquillier_s" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.GEO_BANC_COQUILLIER_S_ZVALID999" Width="1.5" PointX="24.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_BV_N1M_S" Width="1.5" PointX="24.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_BV_N2M_S" Width="1.5" PointX="13.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_chs_pipesol" Width="1.5" PointX="24.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_ed_quadrat_p" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_feedback_ap" Width="1.5" PointX="18.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_photographie_p" Width="1.5" PointX="25.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_pollution_baie_gaspe_p" Width="1.5" PointX="20.75" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_pollution_p" Width="1.5" PointX="3" PointY="50.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_pollution_p_fosse_septique_gaspe" Width="1.5" PointX="26.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_ressource_coquillliere_s" Width="1.5" PointX="26.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_SCF_sauvagine" Width="1.5" PointX="26.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_secteur_s" Width="1.5" PointX="26.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_station_audit_p" Width="1.5" PointX="15.75" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_stations_p" Width="1.5" PointX="8.25" PointY="36.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_terrain_l_s" Width="1.5" PointX="17.75" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_terrain_p" Width="1.5" PointX="9.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geo_transect_l" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.geometry_columns" Width="1.5" PointX="27.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.gps_log" Width="1.5" PointX="22.75" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.hyperlien" Width="1.5" PointX="6" PointY="46" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.impact_evaluation" Width="1.5" PointX="28.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.Inf_Infrastructures" Width="1.5" PointX="3" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.Inf_Municipalite" Width="1.5" PointX="28.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.Inf_Reseau" Width="1.5" PointX="3" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.Inf_Traitement" Width="1.5" PointX="28.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.Inf_TypeEntite" Width="1.5" PointX="0.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.laboratoire_operateur" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.mactre2012_inventaire_idm" Width="1.5" PointX="28.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.mammifere_marin_select" Width="1.5" PointX="28.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.maree" Width="1.5" PointX="28.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.Menu" Width="1.5" PointX="24.75" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.methode_description" Width="1.5" PointX="26.75" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.mod_contamination_s" Width="1.5" PointX="7.5" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.modele" Width="1.5" PointX="5.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.modele_dilution" Width="1.5" PointX="7.5" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.municipalite" Width="1.5" PointX="28.75" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.NetworkID" Width="1.5" PointX="29.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.No_Civ_region_ll83mdb" Width="1.5" PointX="19.75" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.occ_idm_pour_tableau_v2" Width="1.5" PointX="30.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.organisation" Width="1.5" PointX="30.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.PCCSM_CSSP_Tools_ID" Width="1.5" PointX="30.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.position_peche_espece_ziff" Width="1.5" PointX="11.75" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.QC_MRNF_SIEF_PEEFO" Width="1.5" PointX="30.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.QC_MRNF_SIEF_PEEFO_CDR_CO" Width="1.5" PointX="30.75" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.QC_MRNF_SIEF_PEEFO_CLP_CO" Width="1.5" PointX="31.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.releve_sanitaire" Width="1.5" PointX="12.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.releve_sanitaire_secteur" Width="1.5" PointX="15" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.romm" Width="1.5" PointX="24.75" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.romm_espece_code" Width="1.5" PointX="30.75" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.romm_observation" Width="1.5" PointX="32.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.RRN_QC_4_0_SEGMROUT" Width="1.5" PointX="32.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.SCF_Colonies" Width="1.5" PointX="10.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.SCF_Especes" Width="1.5" PointX="10.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.SCF_sauvagine_donnees_oiseaux" Width="1.5" PointX="13.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.SCF_sauvagine_DonneesOiseau_effacer" Width="1.5" PointX="15.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.SCF_sauvagine_NoSEC_ZONE_effacer" Width="1.5" PointX="32.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.secteur" Width="1.5" PointX="21.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.secteur_bassin_versant" Width="1.5" PointX="32.75" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.spatial_ref_sys" Width="1.5" PointX="32.75" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.statcan_recensement_2011_lot" Width="1.5" PointX="32.75" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.statcan_recensement_2016_lot" Width="1.5" PointX="32.75" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.statcan_recensement_ilot" Width="1.5" PointX="34.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_climato_atl_qc" Width="1.5" PointX="34.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_hydrometrique" Width="1.5" PointX="12.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_hydrometrique_debit" Width="1.5" PointX="15" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_hydrometrique_secteur" Width="1.5" PointX="15" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_maree" Width="1.5" PointX="34.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_maree_moyenne_marnage" Width="1.5" PointX="34.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_maree_port_secondaire_diff" Width="1.5" PointX="34.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_maree_secteur" Width="1.5" PointX="34.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_meteo" Width="1.5" PointX="23.75" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_meteo_mddep" Width="1.5" PointX="34.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_meteo_precipitation_journaliere" Width="1.5" PointX="25.75" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.sysdiagram" Width="1.5" PointX="27.75" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tata_region" Width="1.5" PointX="34.75" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tblRapportTournee" Width="1.5" PointX="29.75" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.temp_precipitation_journaliere" Width="1.5" PointX="34.75" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.toponyme" Width="1.5" PointX="36.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tournee_planification" Width="1.5" PointX="8.25" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_agent_technique" Width="1.5" PointX="36.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_bearing" Width="1.5" PointX="36.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_code" Width="1.5" PointX="36.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_cueilleur" Width="1.5" PointX="36.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_espece" Width="1.5" PointX="3" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_geo_pollution_baie_gaspe" Width="1.5" PointX="12.75" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_geo_terrain" Width="1.5" PointX="14.75" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_histo_type_operation" Width="1.5" PointX="16.75" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_llc_typecouv" Width="1.5" PointX="36.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_mer_etat" Width="1.5" PointX="36.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_ordonnance_type" Width="1.5" PointX="36.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_pollution_code" Width="1.5" PointX="0.75" PointY="51.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_recommandation" Width="1.5" PointX="36.75" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_recommandation_mpo" Width="1.5" PointX="36.75" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_reference" Width="1.5" PointX="0.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_region_ordonnance_v1" Width="1.5" PointX="31.75" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_tr_code_type_entite_matrice" Width="1.5" PointX="36.75" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tributaire_par_secteur_par_annee" Width="1.5" PointX="36.75" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.waypoint" Width="1.5" PointX="38.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.box_model_dilution_s" Width="1.5" PointX="38.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_banc_espece_20180504" Width="1.5" PointX="38.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_banc_espece_exploitation_20180506" Width="1.5" PointX="38.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_ec_recommandation_local" Width="1.5" PointX="38.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.db_tournee_20180208_valeur_precipitation_3_jrs_ant_originale" Width="1.5" PointX="18.75" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.dec" Width="1.5" PointX="38.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.ec_Facility" Width="1.5" PointX="25.75" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.mammifere_marin_a_effacer" Width="1.5" PointX="38.75" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.MarineChartIndex" Width="1.5" PointX="38.75" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.SCF_BIOMQ" Width="1.5" PointX="13" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.SCF_RivesPoints2" Width="1.5" PointX="33.75" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.station_dans_buffer" Width="1.5" PointX="38.75" PointY="38" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.temp_geo_stations_p" Width="1.5" PointX="38.75" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.temp_mactre_station_max_annee" Width="1.5" PointX="10.75" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.tr_espece_codification" Width="1.5" PointX="20.75" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="pccsmModel.treaser" Width="1.5" PointX="27.75" PointY="42" IsExpanded="true" />
+        <AssociationConnector Association="pccsmModel.FK_codification_description_codification" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_hyperlien_codification" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_laboratoire_operateur_codification" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_contact_groupe_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_banc_source_info_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_laboratoire_operateur_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_cour_flotteur_p_cour_trajectoire_l1" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_cour_trajectoire_l_cour_zone_etude" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_cour_zone_etude_Inf_TypeEntite" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_cour_zone_etude_Inf_TypeEntite1" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_cour_zone_etude_tr_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_modele_cour_zone_etude" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_banc_espece_exploitation_db_banc_espece" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_banc_espece_geo_banc_coquillier_s" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_banc_secteur_geo_banc_coquillier_s" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_banc_source_info_geo_banc_coquillier_s" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_banc_source_info_tr_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_document_geo_terrain_p" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_ec_recommandation_note_db_ec_recommandation" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_echantillonnage_planification_geo_stations_p" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_echantillonnage_planification_tournee_planification" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_ed_donnees_gisement_db_ed_echantillonnage" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_ed_donnees_gisement_geo_ed_quadrat_p" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_ed_donnees_gisement_geo_transect_l" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_ed_donnees_gisement_tr_espece" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_ed_granulometrie_db_ed_donnees_gisement" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_ed_taille_db_ed_donnees_gisement" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_ed_echantillonnage_tr_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_mesure_db_tournee" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_mesure_geo_stations_p" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_db_tournee_laboratoire_operateur" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_evaluation_risque_geo_pollution_p" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_evaluation_risque_Inf_Infrastructures" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_geo_ed_quadrat_p_geo_banc_coquillier_s" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_geo_transect_l_geo_banc_coquillier_s" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_geo_ed_quadrat_p_tr_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_geo_pollution_p_tr_pollution_code" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_geo_transect_l_tr_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_Inf_Infrastructures_Inf_TypeEntite" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_Inf_Reseau_Inf_TypeEntite" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_mod_contamination_s_Inf_TypeEntite" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_mod_contamination_s_modele" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_modele_dilution_modele" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_releve_sanitaire_secteur_releve_sanitaire" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_SCF_BIOMQ_SCF_Colonies" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_SCF_BIOMQ_SCF_Especes" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_station_hydrometrique_debit_station_hydrometrique" ManuallyRouted="false" />
+        <AssociationConnector Association="pccsmModel.FK_station_hydrometrique_secteur_station_hydrometrique" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
