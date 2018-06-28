@@ -257,6 +257,9 @@
             this.button37 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
+            this.button41 = new System.Windows.Forms.Button();
+            this.button42 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -2362,7 +2365,7 @@
             // 
             // button38
             // 
-            this.button38.Location = new System.Drawing.Point(671, 631);
+            this.button38.Location = new System.Drawing.Point(509, 631);
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(75, 23);
             this.button38.TabIndex = 205;
@@ -2372,7 +2375,7 @@
             // 
             // button39
             // 
-            this.button39.Location = new System.Drawing.Point(767, 631);
+            this.button39.Location = new System.Drawing.Point(591, 631);
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(75, 23);
             this.button39.TabIndex = 206;
@@ -2380,11 +2383,44 @@
             this.button39.UseVisualStyleBackColor = true;
             this.button39.Click += new System.EventHandler(this.button39_Click);
             // 
+            // button40
+            // 
+            this.button40.Location = new System.Drawing.Point(672, 631);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(75, 23);
+            this.button40.TabIndex = 207;
+            this.button40.Text = "button40";
+            this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
+            // button41
+            // 
+            this.button41.Location = new System.Drawing.Point(752, 631);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(100, 23);
+            this.button41.TabIndex = 207;
+            this.button41.Text = "Classification";
+            this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
+            // 
+            // button42
+            // 
+            this.button42.Location = new System.Drawing.Point(16, 625);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(138, 23);
+            this.button42.TabIndex = 207;
+            this.button42.Text = "Site and PolSource Link";
+            this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.button42);
+            this.Controls.Add(this.button41);
+            this.Controls.Add(this.button40);
             this.Controls.Add(this.button39);
             this.Controls.Add(this.button38);
             this.Controls.Add(this.butImportingPatriceMWQMImage);
@@ -2853,6 +2889,9 @@
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.Button button40;
+        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.Button button42;
     }
 }
 

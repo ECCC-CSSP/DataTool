@@ -12190,15 +12190,15 @@ namespace ImportByFunction
                 int slefij = 34;
             }
 
-            TVItemModel tvItemModelNS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Nova Scotia", TVTypeEnum.Province);
-            if (!string.IsNullOrWhiteSpace(tvItemModelNS.Error))
+            TVItemModel tvItemModelBC = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "British Columbia", TVTypeEnum.Province);
+            if (!string.IsNullOrWhiteSpace(tvItemModelBC.Error))
             {
                 int slefij = 34;
             }
 
-            List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNS.TVItemID, TVTypeEnum.Subsector);
+            List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelBC.TVItemID, TVTypeEnum.Subsector);
 
-            sb.AppendLine("Subsector\tSite\tDate");
+            sb.AppendLine("Subsector\tCount Samples");
             foreach (TVItemModel tvItemModelSS in tvitemModelSSList)
             {
                 lblStatus.Text = tvItemModelSS.TVText;
@@ -12206,23 +12206,23 @@ namespace ImportByFunction
                 Application.DoEvents();
 
                 string TVText = tvItemModelSS.TVText.Substring(0, tvItemModelSS.TVText.IndexOf(" "));
-                string Prov = TVText.Substring(0, 2);
-                string Area = TVText.Substring(3, 2);
-                string Sector = TVText.Substring(6, 3);
-                string Subsector = TVText.Substring(10, 3);
+                //string Prov = TVText.Substring(0, 2);
+                //string Area = TVText.Substring(3, 2);
+                //string Sector = TVText.Substring(6, 3);
+                //string Subsector = TVText.Substring(10, 3);
 
-                List<TempData.ASGADSample> ASGADSammpleList = new List<ASGADSample>();
+                //List<TempData.ASGADSample> ASGADSammpleList = new List<ASGADSample>();
 
-                using (TempDataToolDBEntities td = new TempDataToolDBEntities())
-                {
-                    ASGADSammpleList = (from c in td.ASGADSamples
-                                        where c.PROV == Prov
-                                        && c.AREA == Area
-                                        && c.SECTOR == Sector
-                                        && c.SUBSECTOR == Subsector
-                                        orderby c.STAT_NBR, c.SAMP_DATE
-                                        select c).ToList();
-                }
+                //using (TempDataToolDBEntities td = new TempDataToolDBEntities())
+                //{
+                //    ASGADSammpleList = (from c in td.ASGADSamples
+                //                        where c.PROV == Prov
+                //                        && c.AREA == Area
+                //                        && c.SECTOR == Sector
+                //                        && c.SUBSECTOR == Subsector
+                //                        orderby c.STAT_NBR, c.SAMP_DATE
+                //                        select c).ToList();
+                //}
 
                 using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
                 {
@@ -12234,36 +12234,61 @@ namespace ImportByFunction
                                                    && t.TVType == (int)TVTypeEnum.MWQMSite
                                                    && t.TVPath.StartsWith(tvItemModelSS.TVPath + "p")
                                                    && tl.Language == (int)LanguageEnum.en
+                                                   && tl.TVText.EndsWith("F")
                                                    orderby tl.TVText, c.SampleDateTime_Local
                                                    select new { c, tl }).ToList();
 
-                    //foreach (var mwqmSampleAndTVItem in MWQMSampleAndTVItemList)
-                    //{
-                    //    TempData.ASGADSample asgadSample = (from c in ASGADSammpleList
-                    //                                        where c.STAT_NBR == mwqmSampleAndTVItem.tl.TVText
-                    //                                        && c.SAMP_DATE.Value.Year == mwqmSampleAndTVItem.c.SampleDateTime_Local.Year
-                    //                                        && c.SAMP_DATE.Value.Month == mwqmSampleAndTVItem.c.SampleDateTime_Local.Month
-                    //                                        && c.SAMP_DATE.Value.Day == mwqmSampleAndTVItem.c.SampleDateTime_Local.Day
-                    //                                        select c).FirstOrDefault();
-                    //    if (asgadSample == null)
-                    //    {
-                    //        sb.AppendLine(TVText + "\t" + mwqmSampleAndTVItem.tl.TVText + "\t" + mwqmSampleAndTVItem.c.SampleDateTime_Local);
-                    //    }
-                    //}
 
-                    foreach (TempData.ASGADSample asgadSample in ASGADSammpleList)
+                    if (MWQMSampleAndTVItemList.Count > 0)
                     {
-                        var MWQMSample = (from t in MWQMSampleAndTVItemList
-                                          where asgadSample.STAT_NBR == t.tl.TVText
-                                          && asgadSample.SAMP_DATE.Value.Year == t.c.SampleDateTime_Local.Year
-                                          && asgadSample.SAMP_DATE.Value.Month == t.c.SampleDateTime_Local.Month
-                                          && asgadSample.SAMP_DATE.Value.Day == t.c.SampleDateTime_Local.Day
-                                          select t).FirstOrDefault();
-                        if (MWQMSample == null)
+                        foreach (var aaa in MWQMSampleAndTVItemList.Take(4))
                         {
-                            sb.AppendLine(TVText + "\t" + asgadSample.STAT_NBR + "\t" + asgadSample.SAMP_DATE);
+                            if (aaa.tl.TVText.EndsWith("F"))
+                            {
+                                aaa.c.UseForOpenData = false;
+                            }
+                        }
+
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (Exception)
+                        {
+                            int silfej = 34;
                         }
                     }
+
+                    sb.AppendLine(TVText + "\t" + MWQMSampleAndTVItemList.Count);
+
+
+                    //MWQMSample mwqmSampleOld = new MWQMSample();
+                    //foreach (var mwqmSampleAndTVItem in MWQMSampleAndTVItemList)
+                    //{
+                    //    if (mwqmSampleOld.SampleDateTime_Local.Year == mwqmSampleAndTVItem.c.SampleDateTime_Local.Year
+                    //        && mwqmSampleOld.SampleDateTime_Local.Month == mwqmSampleAndTVItem.c.SampleDateTime_Local.Month
+                    //        && mwqmSampleOld.SampleDateTime_Local.Day == mwqmSampleAndTVItem.c.SampleDateTime_Local.Day
+                    //        && mwqmSampleOld.MWQMSiteTVItemID == mwqmSampleAndTVItem.c.MWQMSiteTVItemID)
+                    //    {
+                    //        sb.AppendLine(TVText + "\t" + mwqmSampleAndTVItem.tl.TVText + "\t" + mwqmSampleOld.SampleDateTime_Local + "\t" + mwqmSampleAndTVItem.c.SampleDateTime_Local);
+                    //    }
+                    //    mwqmSampleOld = mwqmSampleAndTVItem.c;
+
+                    //}
+
+                    //foreach (TempData.ASGADSample asgadSample in ASGADSammpleList)
+                    //{
+                    //    var MWQMSample = (from t in MWQMSampleAndTVItemList
+                    //                      where asgadSample.STAT_NBR == t.tl.TVText
+                    //                      && asgadSample.SAMP_DATE.Value.Year == t.c.SampleDateTime_Local.Year
+                    //                      && asgadSample.SAMP_DATE.Value.Month == t.c.SampleDateTime_Local.Month
+                    //                      && asgadSample.SAMP_DATE.Value.Day == t.c.SampleDateTime_Local.Day
+                    //                      select t).FirstOrDefault();
+                    //    if (MWQMSample == null)
+                    //    {
+                    //        sb.AppendLine(TVText + "\t" + asgadSample.STAT_NBR + "\t" + asgadSample.SAMP_DATE);
+                    //    }
+                    //}
 
                 }
 
@@ -12413,6 +12438,1260 @@ namespace ImportByFunction
             richTextBoxStatus.Text = sb.ToString();
         }
 
+        private void button40_Click(object sender, EventArgs e)
+        {
+            FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\BC_Use_For_Open_Data_Draft_2018.csv");
+            StreamReader sr = fi.OpenText();
+
+            List<SiteLatLngUse> siteLatLngUseList = new List<SiteLatLngUse>();
+            int count = 0;
+            while (!sr.EndOfStream)
+            {
+                string lineText = sr.ReadLine();
+
+                if (count > 0)
+                {
+                    List<string> VarList = lineText.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
+
+                    if (VarList.Count != 7)
+                    {
+                        int sleifj = 23;
+                    }
+                    string MWQMSiteName = VarList[1];
+                    double Lat = double.Parse(VarList[4]);
+                    double Lng = double.Parse(VarList[5]);
+                    int temp = int.Parse(VarList[6]);
+                    bool UseForOpenData = temp == 1 ? true : false;
+
+                    siteLatLngUseList.Add(new SiteLatLngUse() { Site = MWQMSiteName, Lat = Lat, Lng = Lng, UseForOpenData = UseForOpenData });
+                }
+                count += 1;
+            }
+
+            sr.Close();
+
+
+            //StringBuilder sb = new StringBuilder();
+            //sb.AppendLine("Subsector\tSite\t");
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                int slefij = 34;
+            }
+
+            TVItemModel tvItemModelBC = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "British Columbia", TVTypeEnum.Province);
+            if (!string.IsNullOrWhiteSpace(tvItemModelBC.Error))
+            {
+                int slefij = 34;
+            }
+
+            List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelBC.TVItemID, TVTypeEnum.Subsector);
+
+
+            foreach (TVItemModel tvItemModelSS in tvitemModelSSList.OrderBy(c => c.TVText))
+            {
+                lblStatus.Text = tvItemModelSS.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                {
+                    var mwqmSampleList = (from t in db.TVItems
+                                          from tl in db.TVItemLanguages
+                                          from s in db.MWQMSamples
+                                          where t.TVItemID == tl.TVItemID
+                                          && s.MWQMSiteTVItemID == t.TVItemID
+                                          && tl.Language == (int)LanguageEnum.en
+                                          && t.TVType == (int)TVTypeEnum.MWQMSite
+                                          && t.TVPath.StartsWith(tvItemModelSS.TVPath + "p")
+                                          select new { s, tl }).ToList();
+
+                    foreach (var mwqmSample in mwqmSampleList)
+                    {
+
+                        SiteLatLngUse siteLatLngUse = (from c in siteLatLngUseList
+                                                       where c.Site == mwqmSample.tl.TVText
+                                                       select c).FirstOrDefault();
+
+                        if (siteLatLngUse != null)
+                        {
+                            if (siteLatLngUse.Site == "BK157")
+                            {
+                                int sleifj = 3478;
+                            }
+                            //if (siteLatLngUse.UseForOpenData)
+                            //{
+                            //    mwqmSample.s.UseForOpenData = true;
+                            //}
+                            //else
+                            //{
+                            //    mwqmSample.s.UseForOpenData = false;
+                            //}
+
+                            MapInfoPoint mapInfoPoint = (from mi in db.MapInfos
+                                                         from mip in db.MapInfoPoints
+                                                         where mi.MapInfoID == mip.MapInfoID
+                                                         && mi.TVType == (int)TVTypeEnum.MWQMSite
+                                                         && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                                         && mi.TVItemID == mwqmSample.tl.TVItemID
+                                                         select mip).FirstOrDefault();
+
+                            if (mapInfoPoint != null)
+                            {
+                                //mapInfoPoint.Lat = siteLatLngUse.Lat;
+                                //mapInfoPoint.Lng = siteLatLngUse.Lng;
+                            }
+                            else
+                            {
+
+                                List<Coord> coordList = new List<Coord>()
+                                {
+                                    new Coord() { Lat = (float)siteLatLngUse.Lat, Lng = (float)siteLatLngUse.Lng, Ordinal = 0 },
+                                };
+
+                                MapInfoModel mapInfoModelRet = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.MWQMSite, mwqmSample.s.MWQMSiteTVItemID);
+                                if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
+                                {
+                                    int selfij = 34;
+                                }
+                            }
+                        }
+                    }
+
+                    //try
+                    //{
+                    //    db.SaveChanges();
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    int selifj = 34;
+                    //}
+                }
+            }
+
+            //richTextBoxStatus.Text = sb.ToString();
+
+        }
+
+        public class PolyObj
+        {
+            public string Classification { get; set; } = "";
+            public float MinLat { get; set; } = 0.0F;
+            public float MaxLat { get; set; } = 0.0F;
+            public float MinLng { get; set; } = 0.0F;
+            public float MaxLng { get; set; } = 0.0F;
+            public List<Coord> coordList { get; set; } = new List<Coord>();
+            public string Subsector { get; set; } = "";
+        }
+
+        private void GetCoordinates(List<PolyObj> polyObsList, XmlNode node)
+        {
+            if (node.Name == "coordinates")
+            {
+                PolyObj polyObj = new PolyObj();
+
+                List<string> pointListText = node.InnerText.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                int ordinal = 0;
+                foreach (string pointText in pointListText)
+                {
+                    string pointTxt = pointText.Replace("\r\n", "");
+
+                    if (!string.IsNullOrWhiteSpace(pointTxt))
+                    {
+                        List<string> valListText = pointTxt.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                        if (valListText.Count != 3)
+                        {
+                            richTextBoxStatus.Text = "pointText.Count != 3";
+                            return;
+                        }
+
+                        float Lng = float.Parse(valListText[0]);
+                        float Lat = float.Parse(valListText[1]);
+
+                        Coord coord = new Coord() { Lat = Lat, Lng = Lng, Ordinal = ordinal };
+
+                        polyObj.coordList.Add(coord);
+
+                        ordinal += 1;
+                    }
+                }
+
+                polyObj.MinLat = polyObj.coordList.Min(c => c.Lat) - 0.0001f;
+                polyObj.MinLng = polyObj.coordList.Min(c => c.Lng) - 0.0001f;
+                polyObj.MaxLat = polyObj.coordList.Max(c => c.Lat) + 0.0001f;
+                polyObj.MaxLng = polyObj.coordList.Max(c => c.Lng) + 0.0001f;
+
+
+                polyObsList.Add(polyObj);
+            }
+
+
+
+            foreach (XmlNode n in node.ChildNodes)
+            {
+                GetCoordinates(polyObsList, n);
+            }
+
+        }
+        private void button41_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            ClassificationService classificationService = new ClassificationService(LanguageEnum.en, user);
+
+            #region Reading the NB_Class_2012-06.KML
+            List<PolyObj> polyObjList = new List<PolyObj>();
+
+            FileInfo fi = new FileInfo(@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Data_inputs\Classification_Polygons.KML");
+
+            if (!fi.Exists)
+            {
+                richTextBoxStatus.AppendText("File not found [" + fi.FullName + "]\r\n");
+                return;
+            }
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(fi.FullName);
+
+            foreach (XmlNode xmlNode in doc.ChildNodes)
+            {
+                GetCoordinates(polyObjList, xmlNode);
+            }
+
+            #endregion Reading the NB_Class_2012-06.KML
+
+            #region Class_Subsector_Input.kml
+            List<PolyObj> polyObjList2 = new List<PolyObj>();
+
+            FileInfo fi2 = new FileInfo(@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Data_inputs\Classification_Input.kml");
+
+            if (!fi2.Exists)
+            {
+                richTextBoxStatus.AppendText("File not found [" + fi2.FullName + "]\r\n");
+                return;
+            }
+
+            XmlDocument doc2 = new XmlDocument();
+            doc2.Load(fi2.FullName);
+
+            string CurrentSubsector = "";
+            string CurrentClassification = "";
+
+            XmlNode StartNode2 = doc2.ChildNodes[1].ChildNodes[0];
+            foreach (XmlNode n in StartNode2.ChildNodes)
+            {
+                if (Cancel) return;
+
+                if (n.Name == "Folder")
+                {
+                    foreach (XmlNode n1 in n.ChildNodes)
+                    {
+                        if (n1.Name == "Folder")
+                        {
+                            CurrentSubsector = "";
+
+                            foreach (XmlNode n22 in n1)
+                            {
+                                if (n22.Name == "name")
+                                {
+                                    CurrentSubsector = n22.InnerText;
+                                }
+
+                                if (n22.Name == "Placemark")
+                                {
+                                    CurrentClassification = "";
+
+                                    foreach (XmlNode n2 in n22)
+                                    {
+
+                                        if (n2.Name == "name")
+                                        {
+                                            CurrentClassification = n2.InnerText;
+                                        }
+
+                                        if (n2.Name == "LineString")
+                                        {
+                                            PolyObj polyObj = new PolyObj();
+
+                                            polyObj.Subsector = CurrentSubsector;
+                                            polyObj.Classification = CurrentClassification.ToUpper();
+
+                                            foreach (XmlNode n3 in n2.ChildNodes)
+                                            {
+                                                if (n3.Name == "coordinates")
+                                                {
+                                                    string coordText = n3.InnerText.Trim();
+
+                                                    List<string> pointListText = coordText.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                                                    int ordinal = 0;
+                                                    foreach (string pointText in pointListText)
+                                                    {
+                                                        string pointTxt = pointText.Trim();
+
+                                                        if (!string.IsNullOrWhiteSpace(pointTxt))
+                                                        {
+                                                            List<string> valListText = pointTxt.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                                                            if (valListText.Count != 3)
+                                                            {
+                                                                richTextBoxStatus.Text = "pointText.Count != 3";
+                                                                return;
+                                                            }
+
+                                                            float Lng = float.Parse(valListText[0]);
+                                                            float Lat = float.Parse(valListText[1]);
+
+                                                            List<PolyObj> polyObjCloseList = (from c in polyObjList
+                                                                                              where c.MinLat <= Lat
+                                                                                              && c.MaxLat >= Lat
+                                                                                              && c.MinLng <= Lng
+                                                                                              && c.MaxLng >= Lng
+                                                                                              select c).ToList();
+
+                                                            double distMin = 10000000D;
+                                                            foreach (PolyObj polyObjClose in polyObjCloseList)
+                                                            {
+                                                                foreach (Coord coordClose in polyObjClose.coordList)
+                                                                {
+                                                                    double dist = mapInfoService.CalculateDistance(Lat * mapInfoService.d2r, Lng * mapInfoService.d2r, coordClose.Lat * mapInfoService.d2r, coordClose.Lng * mapInfoService.d2r, mapInfoService.R);
+
+                                                                    if (dist < 20)
+                                                                    {
+                                                                        if (distMin > dist)
+                                                                        {
+                                                                            Lat = coordClose.Lat;
+                                                                            Lng = coordClose.Lng;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            Coord coord = new Coord() { Lat = Lat, Lng = Lng, Ordinal = ordinal };
+
+                                                            polyObj.coordList.Add(coord);
+
+                                                            ordinal += 1;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            polyObjList2.Add(polyObj);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion Reading the NB_Class_2012-06.KML
+
+            #region Uploading MapInfo to CSSPWebTools
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                int slefij = 34;
+            }
+
+            TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "New Brunswick", TVTypeEnum.Province);
+            if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            {
+                int slefij = 34;
+            }
+
+            List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNB.TVItemID, TVTypeEnum.Subsector);
+
+            foreach (TVItemModel tvItemModelSS in tvitemModelSSList)
+            {
+                lblStatus.Text = tvItemModelSS.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                string TVTextSS = tvItemModelSS.TVText.Substring(0, tvItemModelSS.TVText.IndexOf(" "));
+
+                List<TVItemModel> tvItemModelClassificationList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Classification);
+                List<int> TVItemIDClassificationList = new List<int>();
+
+                int Ordinal = 0;
+                foreach (PolyObj polyObj in polyObjList2.Where(c => c.Subsector == TVTextSS).OrderBy(c => c.Classification))
+                {
+                    Ordinal += 1;
+                    richTextBoxStatus.AppendText($"{TVTextSS}\t{polyObj.Classification}\r\n");
+
+                    string TVTextClass = "";
+                    TVTypeEnum tvType = TVTypeEnum.Error;
+                    ClassificationTypeEnum classificationType = ClassificationTypeEnum.Error;
+
+                    switch (polyObj.Classification)
+                    {
+                        case "R":
+                            {
+                                TVTextClass = "R " + Ordinal;
+                                tvType = TVTypeEnum.Restricted;
+                                classificationType = ClassificationTypeEnum.Restricted;
+                            }
+                            break;
+                        case "P":
+                            {
+                                TVTextClass = "P " + Ordinal;
+                                tvType = TVTypeEnum.Prohibited;
+                                classificationType = ClassificationTypeEnum.Prohibited;
+                            }
+                            break;
+                        case "A":
+                            {
+                                TVTextClass = "A " + Ordinal;
+                                tvType = TVTypeEnum.Approved;
+                                classificationType = ClassificationTypeEnum.Approved;
+                            }
+                            break;
+                        case "CA":
+                            {
+                                TVTextClass = "CA " + Ordinal;
+                                tvType = TVTypeEnum.ConditionallyApproved;
+                                classificationType = ClassificationTypeEnum.ConditionallyApproved;
+                            }
+                            break;
+                        case "CR":
+                            {
+                                TVTextClass = "CR " + Ordinal;
+                                tvType = TVTypeEnum.ConditionallyRestricted;
+                                classificationType = ClassificationTypeEnum.ConditionallyRestricted;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+                    TVItemModel tvItemModelClass = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelSS.TVItemID, TVTextClass, TVTypeEnum.Classification);
+                    if (!string.IsNullOrWhiteSpace(tvItemModelClass.Error))
+                    {
+                        tvItemModelClass = tvItemService.PostAddChildTVItemDB(tvItemModelSS.TVItemID, TVTextClass, TVTypeEnum.Classification);
+                        if (!string.IsNullOrWhiteSpace(tvItemModelClass.Error))
+                        {
+                            richTextBoxStatus.AppendText($"{tvItemModelClass.Error}\r\n");
+                            return;
+                        }
+                    }
+
+                    TVItemIDClassificationList.Add(tvItemModelClass.TVItemID);
+
+                    List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelClass.TVItemID);
+                    foreach (MapInfoModel mapInfoModel in mapInfoModelList)
+                    {
+                        if (mapInfoModel.TVType == tvType)
+                        {
+                            MapInfoModel mapInfoModelDeletRet = mapInfoService.PostDeleteMapInfoDB(mapInfoModel.MapInfoID);
+                            if (!string.IsNullOrWhiteSpace(mapInfoModelDeletRet.Error))
+                            {
+                                richTextBoxStatus.AppendText($"{mapInfoModelDeletRet.Error}\r\n");
+                                return;
+                            }
+                        }
+                    }
+
+                    MapInfoModel mapInfoModelRet = tvItemService.CreateMapInfoObjectDB(polyObj.coordList, MapInfoDrawTypeEnum.Polyline, tvType, tvItemModelClass.TVItemID);
+                    if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
+                    {
+                        richTextBoxStatus.AppendText($"{mapInfoModelRet.Error}\r\n");
+                        return;
+                    }
+
+                    ClassificationModel classificationModel = classificationService.GetClassificationModelWithClassificationTVItemIDDB(tvItemModelClass.TVItemID);
+                    if (!string.IsNullOrWhiteSpace(classificationModel.Error))
+                    {
+                        ClassificationModel classificationModelNew = new ClassificationModel();
+                        classificationModelNew.ClassificationTVItemID = tvItemModelClass.TVItemID;
+                        classificationModelNew.ClassificationType = classificationType;
+                        classificationModelNew.ClassificationTVText = TVTextClass;
+                        classificationModelNew.Ordinal = Ordinal;
+
+                        ClassificationModel classificationModelRet = classificationService.PostAddClassificationDB(classificationModelNew);
+                        if (!string.IsNullOrWhiteSpace(classificationModelRet.Error))
+                        {
+                            richTextBoxStatus.AppendText($"{classificationModelRet.Error}\r\n");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        classificationModel.ClassificationType = classificationType;
+                        classificationModel.Ordinal = Ordinal;
+
+                        ClassificationModel classificationModelRet = classificationService.PostUpdateClassificationDB(classificationModel);
+                        if (!string.IsNullOrWhiteSpace(classificationModelRet.Error))
+                        {
+                            richTextBoxStatus.AppendText($"{classificationModelRet.Error}\r\n");
+                            return;
+                        }
+                    }
+
+                    foreach (Coord coord in polyObj.coordList)
+                    {
+                        richTextBoxStatus.AppendText($"\t{coord.Lat}\t{coord.Lng}\t{coord.Ordinal}\r\n");
+                    }
+
+                }
+
+                foreach (TVItemModel tvItemModel in tvItemModelClassificationList)
+                {
+                    if (!TVItemIDClassificationList.Where(c => c == tvItemModel.TVItemID).Any())
+                    {
+                        ClassificationModel classificationModelToDelete = classificationService.GetClassificationModelWithClassificationTVItemIDDB(tvItemModel.TVItemID);
+                        if (!string.IsNullOrWhiteSpace(classificationModelToDelete.Error))
+                        {
+                            richTextBoxStatus.AppendText($"{classificationModelToDelete.Error}\r\n");
+                            return;
+                        }
+
+                        ClassificationModel classificationModelToDeleteRet = classificationService.PostDeleteClassificationDB(classificationModelToDelete.ClassificationID);
+                        if (!string.IsNullOrWhiteSpace(classificationModelToDeleteRet.Error))
+                        {
+                            richTextBoxStatus.AppendText($"{classificationModelToDeleteRet.Error}\r\n");
+                            return;
+                        }
+
+                        MapInfoModel mapInfoModelToDelete = mapInfoService.PostDeleteMapInfoWithTVItemIDDB(tvItemModel.TVItemID);
+                        if (!string.IsNullOrWhiteSpace(mapInfoModelToDelete.Error))
+                        {
+                            richTextBoxStatus.AppendText($"{mapInfoModelToDelete.Error}\r\n");
+                            return;
+                        }
+
+                        TVItemModel tvItemModelToDelete = tvItemService.PostDeleteTVItemWithTVItemIDDB(tvItemModel.TVItemID);
+                        if (!string.IsNullOrWhiteSpace(tvItemModelToDelete.Error))
+                        {
+                            richTextBoxStatus.AppendText($"{tvItemModelToDelete.Error}\r\n");
+                            return;
+                        }
+
+                    }
+                }
+
+
+            }
+            #endregion Uploading MapInfo to CSSPWebTools
+
+            return;
+
+            //StringBuilder sb = new StringBuilder();
+
+            //sb.AppendLine($@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+            //sb.AppendLine($@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+            //sb.AppendLine($@"<Document>");
+            //sb.AppendLine($@"	<name>KmlFile</name>");
+            //sb.AppendLine($@"	<StyleMap id=""msn_ylw-pushpin"">");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>normal</key>");
+            //sb.AppendLine($@"			<styleUrl>#sn_ylw-pushpin</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>highlight</key>");
+            //sb.AppendLine($@"			<styleUrl>#sh_ylw-pushpin</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"	</StyleMap>");
+            //sb.AppendLine($@"	<Style id=""sn_ylw-pushpin"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<scale>1.1</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<LineStyle>");
+            //sb.AppendLine($@"			<color>ffff00ff</color>");
+            //sb.AppendLine($@"			<width>2</width>");
+            //sb.AppendLine($@"		</LineStyle>");
+            //sb.AppendLine($@"		<PolyStyle>");
+            //sb.AppendLine($@"			<color>00ffffff</color>");
+            //sb.AppendLine($@"		</PolyStyle>");
+            //sb.AppendLine($@"	</Style>");
+            //sb.AppendLine($@"	<Style id=""sh_ylw-pushpin"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<scale>1.3</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<LineStyle>");
+            //sb.AppendLine($@"			<color>ff00ff00</color>");
+            //sb.AppendLine($@"			<width>2</width>");
+            //sb.AppendLine($@"		</LineStyle>");
+            //sb.AppendLine($@"		<PolyStyle>");
+            //sb.AppendLine($@"			<color>00ffffff</color>");
+            //sb.AppendLine($@"		</PolyStyle>");
+            //sb.AppendLine($@"	</Style>");
+            //sb.AppendLine($@"	<Folder>");
+            //sb.AppendLine($@"		<name>NB Subsectors</name>");
+            //sb.AppendLine($@"		<open>1</open>");
+
+
+
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            //{
+            //    int slefij = 34;
+            //}
+
+            //TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "New Brunswick", TVTypeEnum.Province);
+            //if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            //{
+            //    int slefij = 34;
+            //}
+
+            //List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNB.TVItemID, TVTypeEnum.Subsector);
+
+            //foreach (TVItemModel tvItemModelSS in tvitemModelSSList)
+            //{
+            //    lblStatus.Text = tvItemModelSS.TVText;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    string TVText = tvItemModelSS.TVText.Substring(0, tvItemModelSS.TVText.IndexOf(" "));
+
+            //    sb.AppendLine($@"		<Folder>");
+            //    sb.AppendLine($@"			<name>{TVText}</name> ");
+            //    sb.AppendLine($@"			<open>1</open>");
+            //    sb.AppendLine($@"			<Placemark>");
+            //    sb.AppendLine($@"				<name>Subsector Polygon</name>");
+            //    sb.AppendLine($@"				<styleUrl>#msn_ylw-pushpin</styleUrl>");
+            //    sb.AppendLine($@"				<Polygon>");
+            //    sb.AppendLine($@"					<tessellate>1</tessellate>");
+            //    sb.AppendLine($@"					<outerBoundaryIs>");
+            //    sb.AppendLine($@"						<LinearRing>");
+            //    sb.AppendLine($@"							<coordinates>");
+            //    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //    {
+            //        List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Polygon);
+
+            //        foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
+            //        {
+            //            sb.AppendLine($@"{mapInfoPointModel.Lng.ToString("F6")},{mapInfoPointModel.Lat.ToString("F6")},0 ");
+            //        }
+            //    }
+
+            //    sb.AppendLine($@"							</coordinates>");
+            //    sb.AppendLine($@"						</LinearRing>");
+            //    sb.AppendLine($@"					</outerBoundaryIs>");
+            //    sb.AppendLine($@"				</Polygon>");
+            //    sb.AppendLine($@"			</Placemark>");
+
+
+
+            //    sb.AppendLine($@"		</Folder>");
+            //}
+
+            //sb.AppendLine($@"	</Folder>");
+            //sb.AppendLine($@"</Document>");
+            //sb.AppendLine($@"</kml>");
+
+            //FileInfo fi2 = new FileInfo(@"C:\Users\leblancc\Desktop\Class_Subsector.kml");
+
+            //StreamWriter sw = fi2.CreateText();
+            //sw.Write(sb.ToString());
+            //sw.Close();
+
+            //lblStatus.Text = "Done....";
+        }
+
+        private void button42_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            //sb.AppendLine($@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+            //sb.AppendLine($@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+            //sb.AppendLine($@"<Document>");
+            //sb.AppendLine($@"	<name>Subsector_PolSourceSites_MWQMSites.kml</name>");
+            //sb.AppendLine($@"	<open>0</open>");
+
+            //// Style for Subsector
+            //sb.AppendLine($@"	<StyleMap id=""msn_ylw-pushpin"">");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>normal</key>");
+            //sb.AppendLine($@"			<styleUrl>#sn_ylw-pushpin</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>highlight</key>");
+            //sb.AppendLine($@"			<styleUrl>#sh_ylw-pushpin</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"	</StyleMap>");
+            //sb.AppendLine($@"	<Style id=""sn_ylw-pushpin"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<scale>1.1</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<LineStyle>");
+            //sb.AppendLine($@"			<color>ffff00ff</color>");
+            //sb.AppendLine($@"			<width>2</width>");
+            //sb.AppendLine($@"		</LineStyle>");
+            //sb.AppendLine($@"		<PolyStyle>");
+            //sb.AppendLine($@"			<color>00ffffff</color>");
+            //sb.AppendLine($@"		</PolyStyle>");
+            //sb.AppendLine($@"	</Style>");
+            //sb.AppendLine($@"	<Style id=""sh_ylw-pushpin"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<scale>1.3</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<LineStyle>");
+            //sb.AppendLine($@"			<color>ff00ff00</color>");
+            //sb.AppendLine($@"			<width>2</width>");
+            //sb.AppendLine($@"		</LineStyle>");
+            //sb.AppendLine($@"		<PolyStyle>");
+            //sb.AppendLine($@"			<color>00ffffff</color>");
+            //sb.AppendLine($@"		</PolyStyle>");
+            //sb.AppendLine($@"	</Style>");
+
+            //// Style for Pollution Source Sites
+            //sb.AppendLine($@"	<Style id=""s_ylw-pushpin"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<color>ffff0000</color>");
+            //sb.AppendLine($@"			<scale>1.2</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<ListStyle>");
+            //sb.AppendLine($@"		</ListStyle>");
+            //sb.AppendLine($@"	</Style>");
+            //sb.AppendLine($@"	<StyleMap id=""m_ylw-pushpin"">");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>normal</key>");
+            //sb.AppendLine($@"			<styleUrl>#s_ylw-pushpin</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>highlight</key>");
+            //sb.AppendLine($@"			<styleUrl>#s_ylw-pushpin_hl</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"	</StyleMap>");
+            //sb.AppendLine($@"	<Style id=""s_ylw-pushpin_hl"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<color>ffff0000</color>");
+            //sb.AppendLine($@"			<scale>1.2</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<ListStyle>");
+            //sb.AppendLine($@"		</ListStyle>");
+            //sb.AppendLine($@" </Style>");
+
+            //// Style for MWQM Sites
+            //sb.AppendLine($@"	<StyleMap id=""msn_placemark_square"">");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>normal</key>");
+            //sb.AppendLine($@"			<styleUrl>#sn_placemark_square</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>highlight</key>");
+            //sb.AppendLine($@"			<styleUrl>#sh_placemark_square_highlight</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"	</StyleMap>");
+            //sb.AppendLine($@"	<Style id=""sh_placemark_square_highlight"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<color>ff00ff00</color>");
+            //sb.AppendLine($@"			<scale>1.2</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_square_highlight.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<ListStyle>");
+            //sb.AppendLine($@"		</ListStyle>");
+            //sb.AppendLine($@"	</Style>");
+            //sb.AppendLine($@"	<Style id=""sn_placemark_square"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<color>ff00ff00</color>");
+            //sb.AppendLine($@"			<scale>1.2</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_square.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<ListStyle>");
+            //sb.AppendLine($@"		</ListStyle>");
+            //sb.AppendLine($@" </Style>");
+
+            //// Style for Infrastructures
+            //sb.AppendLine($@"	<Style id=""sn_shaded_dot"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<color>ff0000ff</color>");
+            //sb.AppendLine($@"			<scale>1.2</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<ListStyle>");
+            //sb.AppendLine($@"		</ListStyle>");
+            //sb.AppendLine($@"	</Style>");
+            //sb.AppendLine($@"	<Style id=""sh_shaded_dot"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<color>ff0000ff</color>");
+            //sb.AppendLine($@"			<scale>1.2</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"		<ListStyle>");
+            //sb.AppendLine($@"		</ListStyle>");
+            //sb.AppendLine($@"	</Style>");
+            //sb.AppendLine($@"	<StyleMap id=""msn_shaded_dot"">");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>normal</key>");
+            //sb.AppendLine($@"			<styleUrl>#sn_shaded_dot</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>highlight</key>");
+            //sb.AppendLine($@"			<styleUrl>#sh_shaded_dot</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@" </StyleMap>");
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            PolSourceSiteService polSourceSiteService = new PolSourceSiteService(LanguageEnum.en, user);
+            PolSourceObservationService polSourceObservationService = new PolSourceObservationService(LanguageEnum.en, user);
+            PolSourceObservationIssueService polSourceObservationIssueService = new PolSourceObservationIssueService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                int slefij = 34;
+            }
+
+            TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "New Brunswick", TVTypeEnum.Province);
+            if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            {
+                int slefij = 34;
+            }
+
+            List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNB.TVItemID, TVTypeEnum.Subsector);
+
+            //foreach (TVItemModel tvItemModelSS in tvitemModelSSList)
+            //{
+            //    lblStatus.Text = tvItemModelSS.TVText;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    string TVText = tvItemModelSS.TVText.Substring(0, tvItemModelSS.TVText.IndexOf(" "));
+
+            //    // ---------------------------------------------------------------
+            //    // doing Subsector
+            //    // ---------------------------------------------------------------
+            //    sb.AppendLine($@"		<Folder>");
+            //    sb.AppendLine($@"			<name>{TVText}</name> ");
+            //    sb.AppendLine($@"			<Placemark>");
+            //    sb.AppendLine($@"				<name>Subsector Polygon</name>");
+            //    sb.AppendLine($@"				<styleUrl>#msn_ylw-pushpin</styleUrl>");
+            //    sb.AppendLine($@"				<Polygon>");
+            //    sb.AppendLine($@"					<outerBoundaryIs>");
+            //    sb.AppendLine($@"						<LinearRing>");
+            //    sb.AppendLine($@"							<coordinates>");
+            //    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //    {
+            //        List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Polygon);
+
+            //        foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
+            //        {
+            //            sb.AppendLine($@"{mapInfoPointModel.Lng.ToString("F6")},{mapInfoPointModel.Lat.ToString("F6")},0 ");
+            //        }
+            //    }
+
+            //    sb.AppendLine($@"							</coordinates>");
+            //    sb.AppendLine($@"						</LinearRing>");
+            //    sb.AppendLine($@"					</outerBoundaryIs>");
+            //    sb.AppendLine($@"				</Polygon>");
+            //    sb.AppendLine($@"			</Placemark>");
+
+            //    // ---------------------------------------------------------------
+            //    // doing Pollution Source Sites
+            //    // ---------------------------------------------------------------
+            //    sb.AppendLine($@"		    <Folder>");
+            //    sb.AppendLine($@"			    <name>Pollution Source Sites</name> ");
+
+            //    List<TVItemModel> tvitemModelPSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.PolSourceSite).Where(c => c.IsActive == true).ToList();
+            //    List<PolSourceSiteModel> polSourceSiteModelList = polSourceSiteService.GetPolSourceSiteModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
+            //    List<PolSourceObservationModel> polSourceObservationModelList = polSourceObservationService.GetPolSourceObservationModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
+            //    List<PolSourceObservationIssueModel> polSourceObservationIssueModelList = polSourceObservationIssueService.GetPolSourceObservationIssueModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
+
+            //    foreach (TVItemModel tvItemModel in tvitemModelPSSList)
+            //    {
+            //        sb.AppendLine($@"			    <Placemark>");
+            //        if (tvItemModel.TVText.Contains(" "))
+            //        {
+            //            sb.AppendLine($@"			    	<name>P_{tvItemModel.TVText.Substring(tvItemModel.TVText.LastIndexOf(" "))}</name>");
+            //        }
+            //        else
+            //        {
+            //            sb.AppendLine($@"			    	<name>P_{tvItemModel.TVText}</name>");
+            //        }
+            //        sb.AppendLine($@"               <description><![CDATA[");
+
+            //        if (polSourceObservationModelList.Count > 0)
+            //        {
+            //            PolSourceObservationModel polSourceObservationModel = polSourceObservationModelList.OrderByDescending(c => c.ObservationDate_Local).FirstOrDefault();
+
+            //            if (polSourceObservationModel != null)
+            //            {
+            //                sb.AppendLine($@"                <h3>Last Observation</h3>");
+            //                sb.AppendLine($@"                <blockquote>");
+            //                sb.AppendLine($@"                <p><b>Date:</b> {((DateTime)polSourceObservationModel.ObservationDate_Local).ToString("yyyy MMMM dd")}</p>");
+            //                sb.AppendLine($@"                <p><b>Observation Last Update (UTC):</b> {((DateTime)polSourceObservationModel.LastUpdateDate_UTC).ToString("yyyy MMMM dd HH:mm:ss")}</p>");
+            //                sb.AppendLine($@"                <p><b>Old Written Description:</b> {polSourceObservationModel.Observation_ToBeDeleted}</p>");
+
+            //                List<PolSourceObservationIssueModel> polSourceObsIssueModelList = polSourceObservationIssueModelList.Where(c => c.PolSourceObservationID == polSourceObservationModel.PolSourceObservationID).OrderBy(c => c.Ordinal).ToList();
+            //                if (polSourceObsIssueModelList.Count > 0)
+            //                {
+            //                    sb.AppendLine($@"                <blockquote>");
+            //                    sb.AppendLine($@"                <ol>");
+            //                    foreach (PolSourceObservationIssueModel polSourceObservationIssueModel in polSourceObsIssueModelList)
+            //                    {
+            //                        sb.AppendLine($@"                <li>");
+            //                        sb.AppendLine($@"                <p><b>Issue Last Update (UTC):</b> {((DateTime)polSourceObservationIssueModel.LastUpdateDate_UTC).ToString("yyyy MMMM dd HH:mm:ss")}</p>");
+
+            //                        string TVTextIssue = "";
+
+            //                        if (!string.IsNullOrWhiteSpace(polSourceObservationIssueModel.ObservationInfo.Trim()))
+            //                        {
+            //                            polSourceObservationIssueModel.ObservationInfo = polSourceObservationIssueModel.ObservationInfo.Trim();
+            //                            List<int> PolSourceObsInfoIntList = polSourceObservationIssueModel.ObservationInfo.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Select(c => int.Parse(c)).ToList();
+
+            //                            for (int i = 0, count = PolSourceObsInfoIntList.Count; i < count; i++)
+            //                            {
+            //                                string Temp = _BaseEnumService.GetEnumText_PolSourceObsInfoReportEnum((PolSourceObsInfoEnum)PolSourceObsInfoIntList[i]);
+            //                                switch ((PolSourceObsInfoIntList[i].ToString()).Substring(0, 3))
+            //                                {
+            //                                    case "101":
+            //                                        {
+            //                                            Temp = Temp.Replace("Source", "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Source</strong>");
+            //                                        }
+            //                                        break;
+            //                                    //case "153":
+            //                                    //    {
+            //                                    //        Temp = Temp.Replace("Dilution Analyses", "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Dilution Analyses</strong>");
+            //                                    //    }
+            //                                    //    break;
+            //                                    case "250":
+            //                                        {
+            //                                            Temp = Temp.Replace("Pathway", "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Pathway</strong>");
+            //                                        }
+            //                                        break;
+            //                                    case "900":
+            //                                        {
+            //                                            Temp = Temp.Replace("Status", "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Status</strong>");
+            //                                        }
+            //                                        break;
+            //                                    case "910":
+            //                                        {
+            //                                            Temp = Temp.Replace("Risk", "<strong>Risk</strong>");
+            //                                        }
+            //                                        break;
+            //                                    case "110":
+            //                                    case "120":
+            //                                    case "122":
+            //                                    case "151":
+            //                                    case "152":
+            //                                    case "153":
+            //                                    case "155":
+            //                                    case "156":
+            //                                    case "157":
+            //                                    case "163":
+            //                                    case "166":
+            //                                    case "167":
+            //                                    case "170":
+            //                                    case "171":
+            //                                    case "172":
+            //                                    case "173":
+            //                                    case "176":
+            //                                    case "178":
+            //                                    case "181":
+            //                                    case "182":
+            //                                    case "183":
+            //                                    case "185":
+            //                                    case "186":
+            //                                    case "187":
+            //                                    case "190":
+            //                                    case "191":
+            //                                    case "192":
+            //                                    case "193":
+            //                                    case "194":
+            //                                    case "196":
+            //                                    case "198":
+            //                                    case "199":
+            //                                    case "220":
+            //                                    case "930":
+            //                                        {
+            //                                            Temp = @"<span>" + Temp + "</span>";
+            //                                        }
+            //                                        break;
+            //                                    default:
+            //                                        break;
+            //                                }
+            //                                TVTextIssue = TVTextIssue + Temp;
+            //                            }
+            //                            sb.AppendLine($@"                <p><b>Selected:</b> {TVTextIssue}</p>");
+            //                        }
+            //                        sb.AppendLine($@"                </li>");
+            //                    }
+            //                    sb.AppendLine($@"                </ol>");
+            //                    sb.AppendLine($@"                </blockquote>");
+            //                }
+            //                sb.AppendLine($@"                </blockquote>");
+            //            }
+            //        }
+            //        sb.AppendLine($@"                   ]]></description>");
+            //        sb.AppendLine($@"			    	<styleUrl>#s_ylw-pushpin</styleUrl>");
+            //        sb.AppendLine($@"			    	<Point>");
+            //        sb.AppendLine($@"		    			<coordinates>");
+            //        using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //        {
+            //            List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModel.TVItemID, TVTypeEnum.PolSourceSite, MapInfoDrawTypeEnum.Point);
+
+            //            foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
+            //            {
+            //                sb.AppendLine($@"{mapInfoPointModel.Lng.ToString("F6")},{mapInfoPointModel.Lat.ToString("F6")},0 ");
+            //            }
+            //        }
+
+            //        sb.AppendLine($@"						</coordinates>");
+            //        sb.AppendLine($@"		    		</Point>");
+            //        sb.AppendLine($@"		    	</Placemark>");
+            //    }
+            //    sb.AppendLine($@"		    </Folder>");
+
+            //    // ---------------------------------------------------------------
+            //    // doing MWQM Sites
+            //    // ---------------------------------------------------------------
+            //    sb.AppendLine($@"		    <Folder>");
+            //    sb.AppendLine($@"			    <name>MWQM Sites</name> ");
+
+            //    List<TVItemModel> tvitemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMSite).Where(c => c.IsActive == true).ToList();
+            //    foreach (TVItemModel tvItemModel in tvitemModelMWQMSiteList)
+            //    {
+            //        sb.AppendLine($@"			    <Placemark>");
+            //        if (tvItemModel.TVText.Contains(" "))
+            //        {
+            //            sb.AppendLine($@"			    	<name>S_{tvItemModel.TVText.Substring(0, tvItemModel.TVText.IndexOf(" "))}</name>");
+            //        }
+            //        else
+            //        {
+            //            sb.AppendLine($@"			    	<name>S_{tvItemModel.TVText}</name>");
+            //        }
+            //        sb.AppendLine($@"			    	<styleUrl>#msn_placemark_square</styleUrl>");
+            //        sb.AppendLine($@"			    	<Point>");
+            //        sb.AppendLine($@"		    			<coordinates>");
+            //        using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //        {
+            //            List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModel.TVItemID, TVTypeEnum.MWQMSite, MapInfoDrawTypeEnum.Point);
+
+            //            foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
+            //            {
+            //                sb.AppendLine($@"{mapInfoPointModel.Lng.ToString("F6")},{mapInfoPointModel.Lat.ToString("F6")},0 ");
+            //            }
+            //        }
+
+            //        sb.AppendLine($@"						</coordinates>");
+            //        sb.AppendLine($@"		    		</Point>");
+            //        sb.AppendLine($@"		    	</Placemark>");
+            //    }
+            //    sb.AppendLine($@"		    </Folder>");
+
+            //    // ---------------------------------------------------------------
+            //    // doing Municipality
+            //    // ---------------------------------------------------------------
+            //    sb.AppendLine($@"		    <Folder>");
+            //    sb.AppendLine($@"			    <name>Municipalities</name> ");
+
+            //    List<TVItemModel> tvItemModelMuniList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Municipality).Where(c => c.IsActive == true).ToList();
+            //    foreach (TVItemModel tvItemModelMuni in tvItemModelMuniList)
+            //    {
+            //        sb.AppendLine($@"		        <Folder>");
+            //        sb.AppendLine($@"			        <name>{tvItemModelMuni.TVText}</name> ");
+            //        List<TVItemModel> tvItemModelInfraList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelMuni.TVItemID, TVTypeEnum.Infrastructure).Where(c => c.IsActive == true).ToList();
+            //        foreach (TVItemModel tvItemModel in tvItemModelInfraList)
+            //        {
+            //            List<TVTypeEnum> tvTypeInfList = new List<TVTypeEnum>() { TVTypeEnum.WasteWaterTreatmentPlant, TVTypeEnum.LiftStation, TVTypeEnum.LineOverflow };
+            //            foreach (TVTypeEnum tvTypeInf in tvTypeInfList)
+            //            {
+            //                List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModel.TVItemID, tvTypeInf, MapInfoDrawTypeEnum.Point);
+
+            //                if (mapInfoPointModelList.Count > 0)
+            //                {
+            //                    sb.AppendLine($@"			        <Placemark>");
+            //                    sb.AppendLine($@"			        	<name>I_{tvItemModel.TVText}</name>");
+            //                    sb.AppendLine($@"			        	<styleUrl>#sn_shaded_dot</styleUrl>");
+            //                    sb.AppendLine($@"			        	<Point>");
+            //                    sb.AppendLine($@"		        			<coordinates>");
+            //                    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //                    {
+            //                        foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
+            //                        {
+            //                            sb.AppendLine($@"{mapInfoPointModel.Lng.ToString("F6")},{mapInfoPointModel.Lat.ToString("F6")},0 ");
+            //                        }
+            //                    }
+
+            //                    sb.AppendLine($@"				    		</coordinates>");
+            //                    sb.AppendLine($@"		    	    	</Point>");
+            //                    sb.AppendLine($@"		    	    </Placemark>");
+            //                }
+            //            }
+
+            //        }
+            //        sb.AppendLine($@"		      </Folder>");
+            //    }
+            //    sb.AppendLine($@"		    </Folder>");
+
+            //    sb.AppendLine($@"		</Folder>");
+            //}
+
+            //sb.AppendLine($@"</Document>");
+            //sb.AppendLine($@"</kml>");
+
+            //FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\Subsector_PolSourceSites_MWQMSites.kml");
+
+            //StreamWriter sw = fi.CreateText();
+            //sw.Write(sb.ToString());
+            //sw.Close();
+
+            // create the document for input
+            sb = new StringBuilder();
+
+            sb.AppendLine($@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+            sb.AppendLine($@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+            sb.AppendLine($@"<Document>");
+            sb.AppendLine($@"	<name>Links_Between_PolSourceSites_MWQMSites_Input.kml</name>");
+            sb.AppendLine($@"	<open>0</open>");
+
+            // Style for Polygon
+            sb.AppendLine($@"	<StyleMap id=""msn_ylw-pushpin"">");
+            sb.AppendLine($@"		<Pair>");
+            sb.AppendLine($@"			<key>normal</key>");
+            sb.AppendLine($@"			<styleUrl>#sn_ylw-pushpin</styleUrl>");
+            sb.AppendLine($@"		</Pair>");
+            sb.AppendLine($@"		<Pair>");
+            sb.AppendLine($@"			<key>highlight</key>");
+            sb.AppendLine($@"			<styleUrl>#sh_ylw-pushpin</styleUrl>");
+            sb.AppendLine($@"		</Pair>");
+            sb.AppendLine($@"	</StyleMap>");
+            sb.AppendLine($@"	<Style id=""sn_ylw-pushpin"">");
+            sb.AppendLine($@"		<IconStyle>");
+            sb.AppendLine($@"			<scale>1.1</scale>");
+            sb.AppendLine($@"			<Icon>");
+            sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine($@"			</Icon>");
+            sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine($@"		</IconStyle>");
+            sb.AppendLine($@"		<LineStyle>");
+            sb.AppendLine($@"			<color>ffffffff</color>");
+            sb.AppendLine($@"			<width>2</width>");
+            sb.AppendLine($@"		</LineStyle>");
+            sb.AppendLine($@"		<PolyStyle>");
+            sb.AppendLine($@"			<color>00ffffff</color>");
+            sb.AppendLine($@"		</PolyStyle>");
+            sb.AppendLine($@"	</Style>");
+            sb.AppendLine($@"	<Style id=""sh_ylw-pushpin"">");
+            sb.AppendLine($@"		<IconStyle>");
+            sb.AppendLine($@"			<scale>1.3</scale>");
+            sb.AppendLine($@"			<Icon>");
+            sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine($@"			</Icon>");
+            sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine($@"		</IconStyle>");
+            sb.AppendLine($@"		<LineStyle>");
+            sb.AppendLine($@"			<color>ffffffff</color>");
+            sb.AppendLine($@"			<width>2</width>");
+            sb.AppendLine($@"		</LineStyle>");
+            sb.AppendLine($@"		<PolyStyle>");
+            sb.AppendLine($@"			<color>00ffffff</color>");
+            sb.AppendLine($@"		</PolyStyle>");
+            sb.AppendLine($@"	</Style>");
+
+            sb.AppendLine($@"	<Style id=""s_ylw-pushpin"">");
+            sb.AppendLine($@"		<IconStyle>");
+            sb.AppendLine($@"			<scale>1.1</scale>");
+            sb.AppendLine($@"			<Icon>");
+            sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine($@"			</Icon>");
+            sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine($@"		</IconStyle>");
+            sb.AppendLine($@"		<LineStyle>");
+            sb.AppendLine($@"			<color>ffff00ff</color>");
+            sb.AppendLine($@"			<width>2</width>");
+            sb.AppendLine($@"		</LineStyle>");
+            sb.AppendLine($@"		<PolyStyle>");
+            sb.AppendLine($@"			<color>00ffffff</color>");
+            sb.AppendLine($@"		</PolyStyle>");
+            sb.AppendLine($@"	</Style>");
+            sb.AppendLine($@"	<Style id=""s_ylw-pushpin_hl"">");
+            sb.AppendLine($@"		<IconStyle>");
+            sb.AppendLine($@"			<scale>1.3</scale>");
+            sb.AppendLine($@"			<Icon>");
+            sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine($@"			</Icon>");
+            sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine($@"		</IconStyle>");
+            sb.AppendLine($@"		<LineStyle>");
+            sb.AppendLine($@"			<color>ffff00ff</color>");
+            sb.AppendLine($@"			<width>2</width>");
+            sb.AppendLine($@"		</LineStyle>");
+            sb.AppendLine($@"		<PolyStyle>");
+            sb.AppendLine($@"			<color>00ffffff</color>");
+            sb.AppendLine($@"		</PolyStyle>");
+            sb.AppendLine($@"	</Style>");
+            sb.AppendLine($@"	<StyleMap id=""m_ylw-pushpin"">");
+            sb.AppendLine($@"		<Pair>");
+            sb.AppendLine($@"			<key>normal</key>");
+            sb.AppendLine($@"			<styleUrl>#s_ylw-pushpin</styleUrl>");
+            sb.AppendLine($@"		</Pair>");
+            sb.AppendLine($@"		<Pair>");
+            sb.AppendLine($@"			<key>highlight</key>");
+            sb.AppendLine($@"			<styleUrl>#s_ylw-pushpin_hl</styleUrl>");
+            sb.AppendLine($@"		</Pair>");
+            sb.AppendLine($@" </StyleMap>");
+
+
+            foreach (TVItemModel tvItemModelSS in tvitemModelSSList)
+            {
+                lblStatus.Text = tvItemModelSS.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                string TVText = tvItemModelSS.TVText.Substring(0, tvItemModelSS.TVText.IndexOf(" "));
+
+                // ---------------------------------------------------------------
+                // doing Subsector
+                // ---------------------------------------------------------------
+                sb.AppendLine($@"		<Folder>");
+                sb.AppendLine($@"			<name>{TVText}</name> ");
+                sb.AppendLine($@"		</Folder>");
+            }
+
+            sb.AppendLine($@"</Document>");
+            sb.AppendLine($@"</kml>");
+
+            FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\Links_Between_PolSourceSites_MWQMSites_Input.kml");
+
+            StreamWriter sw = fi.CreateText();
+            sw.Write(sb.ToString());
+            sw.Close();
+
+            lblStatus.Text = "Done....";
+        }
+
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -12527,5 +13806,13 @@ namespace ImportByFunction
         public int Year { get; set; }
         public DateTime MinDateTime { get; set; }
         public DateTime MaxDateTime { get; set; }
+    }
+
+    public class SiteLatLngUse
+    {
+        public string Site { get; set; }
+        public double Lat { get; set; }
+        public double Lng { get; set; }
+        public bool UseForOpenData { get; set; }
     }
 }

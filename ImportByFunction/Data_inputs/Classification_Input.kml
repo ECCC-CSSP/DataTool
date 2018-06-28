@@ -1,0 +1,4180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Class_Subsector_Input</name>
+	<open>1</open>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin_hl1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ff00</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ffffff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ffffff</color>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl00</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ffffff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin_hl00">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ff00</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ffffff</color>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin1">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin2">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Folder>
+		<name>NB Subsectors</name>
+		<open>1</open>
+		<Folder>
+			<name>NB-01-010-001</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.683311,48.01575100000001,0 -66.683311,48.02802999999999,0 -66.947006,48.028481,0 -66.946579,47.97366,0 -66.942207,47.965092,0 -66.941406,47.96373,0 -66.787987,47.96123100000001,0 -66.71410400000001,47.98521,0 -66.70639799999999,47.999538,0 -66.677727,48.00621,0 -66.67807000000001,48.008411,0 -66.682266,48.014259,0 -66.683311,48.01575100000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>p</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin0</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.7486365589472,47.98429814061043,0 -66.74867822980372,47.99650838602012,0 -66.73701826735497,48.00040660090657,0 -66.6936055719333,48.00680747938453,0 -66.68056932346143,48.01090749688186,0 -66.67860254971244,48.00846673495686,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin0</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.75833484977051,48.00972185696311,0 -66.74851012942708,48.00293811100541,0 -66.74341670782847,48.00340416518408,0 -66.731329227391,48.00796227341487,0 -66.72676086987288,48.0093751623677,0 -66.69388388695572,48.00677079909809,0 -66.73696067510367,48.00040300078177,0 -66.74867966277307,47.99652105092289,0 -66.74866723454989,47.98433507829925,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-01-010-002</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.683311,48.01575100000001,0 -66.682266,48.014259,0 -66.67807000000001,48.008411,0 -66.677727,48.00621,0 -66.70639799999999,47.999538,0 -66.71410400000001,47.98521,0 -66.787987,47.96123100000001,0 -66.700996,47.95420100000001,0 -66.627937,47.973751,0 -66.54892700000001,48.01115,0 -66.4842,48.04134000000001,0 -66.370789,48.047058,0 -66.367912,48.047642,0 -66.295158,48.06435000000001,0 -66.28935199999999,48.07543200000001,0 -66.329582,48.114552,0 -66.504227,48.17445,0 -66.727333,48.062599,0 -66.683311,48.02802999999999,0 -66.683311,48.01575100000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin1</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.68039957449921,48.01093661569541,0 -66.66161872526502,48.01556389069165,0 -66.65207280409865,48.00819082153416,0 -66.63394740833248,48.00728429674017,0 -66.62051457303073,48.01059084116025,0 -66.61878315887678,48.00761451064744,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin1</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.66154756935414,48.01555694986608,0 -66.52962477945138,48.04778688406789,0 -66.50512031012806,48.07514637053286,0 -66.50247762423793,48.07700051541357,0 -66.49297932256845,48.08057921637011,0 -66.48259741972024,48.08339519474395,0 -66.47039542072183,48.08556875360884,0 -66.43500533114127,48.08770329478464,0 -66.43036208070674,48.08855704160583,0 -66.38603423092491,48.08880486404757,0 -66.36406039354075,48.08328121936766,0 -66.34880795984054,48.07674356402742,0 -66.32262852073666,48.05824266362362,0 -66.36276328232749,48.04863621214864,0 -66.36161149479689,48.05023153350456,0 -66.34700355939624,48.05546445532998,0 -66.34666017950468,48.06314993558646,0 -66.35888717660258,48.07527574403045,0 -66.3818815702373,48.07504578565886,0 -66.38705657900502,48.07059951723434,0 -66.40837340909744,48.0704469389847,0 -66.40884822540372,48.06759148277386,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin1</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.40861412485884,48.06779033361956,0 -66.40777962942705,48.07029208361234,0 -66.38696305190501,48.07076696542441,0 -66.38207057289345,48.07506870019186,0 -66.3590098198502,48.075326700393,0 -66.34742192150691,48.06291629817516,0 -66.34715103845383,48.05537661484311,0 -66.36245449276652,48.0495330313774,0 -66.36345653709448,48.04849279711415,0 -66.36884030494664,48.04726893872551,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-01-020-001</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.478561,47.939999,0 -66.35820800000001,47.96028100000001,0 -66.33281700000001,47.987549,0 -66.377281,48.005501,0 -66.362129,48.015911,0 -66.29364,48.024658,0 -66.295158,48.06435000000001,0 -66.367912,48.047642,0 -66.370789,48.047058,0 -66.4842,48.04134000000001,0 -66.54892700000001,48.01115,0 -66.478561,47.939999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.37369478880802,48.03132598612854,0 -66.37154073867205,48.03126534830797,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.36330172669328,48.04842529316128,0 -66.36724054878432,48.04214161481105,0 -66.36713399265101,48.03416697916663,0 -66.36691818896838,48.03244980042759,0 -66.36269406459394,48.02225563980964,0 -66.35436603546923,48.01642056769731,0 -66.3615427765108,48.01542609017066,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.35426238912415,48.01640560377268,0 -66.36257717307588,48.02226320315247,0 -66.36681781791114,48.03252059933313,0 -66.36717212917499,48.04212495241817,0 -66.3631971563578,48.04840797413791,0 -66.32239751148879,48.05822332186389,0 -66.29392302929037,48.02484893825646,0 -66.35411498672937,48.01650983199217,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-01-020-002</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.362129,48.015911,0 -66.377281,48.005501,0 -66.33281700000001,47.987549,0 -66.35820800000001,47.96028100000001,0 -66.478561,47.939999,0 -66.32399,47.92764999999999,0 -66.314987,47.94754,0 -66.278137,47.962631,0 -66.262703,47.99155,0 -66.258827,47.993752,0 -66.238586,48.004841,0 -66.29364,48.024658,0 -66.362129,48.015911,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.36156373168848,48.01536467720401,0 -66.35439169093232,48.01639693199997,0 -66.34647299120829,48.0120866977739,0 -66.3413403840961,48.00916300019097,0 -66.33437400906625,48.00664525540544,0 -66.29521317099086,47.99889771393234,0 -66.28274511603564,47.99991690611526,0 -66.28261569841335,47.99700284880354,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.28254346091643,47.99703399583618,0 -66.2826998254555,47.99990287996579,0 -66.29513562417232,47.9988926058434,0 -66.33429849015002,48.00664584976317,0 -66.34130509070349,48.00912470485942,0 -66.35431957860881,48.01638795394181,0 -66.29389844268559,48.02469088026907,0 -66.26291281769817,47.99168610474129,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-01-020-003</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.179283,47.87125,0 -66.109673,47.955818,0 -66.109016,47.95655799999999,0 -66.10430100000001,47.96162,0 -66.146057,47.974941,0 -66.152046,47.976841,0 -66.238586,48.004841,0 -66.258827,47.993752,0 -66.262703,47.99155,0 -66.278137,47.962631,0 -66.314987,47.94754,0 -66.32399,47.92764999999999,0 -66.179283,47.87125,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.26277480563377,47.9916595469361,0 -66.25898565313966,47.99376422065244,0 -66.25162439669832,47.98950655671814,0 -66.24882782693926,47.9870360728296,0 -66.2471089193857,47.9841883579632,0 -66.24633063159331,47.98381651115092,0 -66.24451160603424,47.98380169064801,0 -66.23666253330696,47.98576723538066,0 -66.23219231799905,47.98607704503986,0 -66.22857151587162,47.98540845629844,0 -66.22487254348253,47.98280237138486,0 -66.22416646900723,47.98146557201202,0 -66.2209072803962,47.9795188598756,0 -66.21281246352241,47.97724882390811,0 -66.20923697887062,47.97650159994454,0 -66.20712752583195,47.976308702818,0 -66.20432102248847,47.97633333493692,0 -66.2042926726548,47.97411906080903,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.21636590134294,47.97360308935307,0 -66.21571813205574,47.97436564140958,0 -66.21439050059229,47.97502288762874,0 -66.21266351490085,47.97530547330651,0 -66.21097913933755,47.97504535186697,0 -66.20958471800289,47.97434683935816,0 -66.20891214244087,47.97362781527301,0 -66.20863581123633,47.97299713439257,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.20427837070591,47.97405735286366,0 -66.20427105422358,47.97632533886601,0 -66.18356401774399,47.97624656359472,0 -66.18359763618355,47.97592304730343,0 -66.18244939738331,47.97011249796324,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.18730758062692,47.97326955383123,0 -66.19046847231165,47.97334323806334,0 -66.19036656988595,47.97552606246619,0 -66.18672611907805,47.97543939390933,0 -66.1867235102133,47.9752118264975,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.16745938878782,47.96911010176973,0 -66.16317705219188,47.9705927551453,0 -66.15829047975268,47.9680400022614,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.18243693993873,47.97010430642876,0 -66.18358135738353,47.97592786476309,0 -66.18305570860809,47.97577489399605,0 -66.18245496323632,47.97582176162367,0 -66.18170774618788,47.97598009741738,0 -66.18166084638006,47.97652126704579,0 -66.1632031835739,47.97059350587509,0 -66.16747706418616,47.96912389154365,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.16312824030912,47.97058155988878,0 -66.10924199736655,47.95666093956432,0 -66.10989202920752,47.95593906400332,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-01-020-004</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.152046,47.976841,0 -66.146057,47.974941,0 -66.10430100000001,47.96162,0 -66.07560700000001,47.997429,0 -66.202431,48.04085900000001,0 -66.238586,48.004841,0 -66.152046,47.976841,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.14933053015717,47.98930179893993,0 -66.15259008046704,47.97730006705334,0 -66.21837753466959,47.99845212529812,0 -66.20450130447361,48.01507403960125,0 -66.20222248952251,48.01629095441958,0 -66.20030360544781,48.016465359639,0 -66.19781999601479,48.0162703167641,0 -66.18446112874149,48.00848799085736,0 -66.17588798647395,48.00791908508864,0 -66.16106427045689,48.00507944410241,0 -66.15665314884144,48.00570783374772,0 -66.14321075238037,48.00258414342065,0 -66.14539318076692,48.00030354344598,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.1455812129463,48.00008120034383,0 -66.14315622998866,48.00256829375379,0 -66.11267151411062,47.98963842608275,0 -66.10962780602631,47.97862627913427,0 -66.13636284254778,47.97751500771085,0 -66.14619665535093,47.97528674604241,0 -66.15244432927514,47.97727010357393,0 -66.14929003020149,47.98928041681698,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-01-030-001</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.278091,47.73003000000001,0 -66.105598,47.748112,0 -66.01705200000001,47.801369,0 -66.014687,47.927849,0 -66.01178,47.93195,0 -65.978111,47.97927099999999,0 -66.07560700000001,47.997429,0 -66.10430100000001,47.96162,0 -66.109016,47.95655799999999,0 -66.109673,47.955818,0 -66.179283,47.87125,0 -66.278091,47.73003000000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.10985720865327,47.95593040655639,0 -66.10922961499239,47.95665069216856,0 -66.1061720625883,47.95460056202043,0 -66.10524073420223,47.95324849611119,0 -66.10450034048198,47.9518562313102,0 -66.09952314541771,47.94435453239294,0 -66.09383385075458,47.9379064467859,0 -66.08889237022831,47.933882832736,0 -66.09068193604982,47.92939878138655,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.09062292584689,47.92936354878824,0 -66.08884176730804,47.93384786763186,0 -66.06765441057206,47.92714185306652,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.07299527410868,47.92888721651552,0 -66.06612929502349,47.93247174776455,0 -66.06152121353325,47.93319083025106,0 -66.05893800907974,47.93345064490305,0 -66.05430900505209,47.93352954105198,0 -66.05229290026205,47.93327577871119,0 -66.04976981697749,47.93286368192805,0 -66.04256273755111,47.93144201869703,0 -66.04517391228687,47.92719820761946,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.0450947104015,47.9271945946619,0 -66.04066145821317,47.93438235814622,0 -66.02523120278408,47.9343836632693,0 -66.01078301328441,47.92846843605067,0 -66.01145584746844,47.92698035319786,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.03019902016835,47.92313284267917,0 -66.0299898198283,47.92343230793776,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.02617612518206,47.92271087081797,0 -66.02708503857599,47.92198279251051,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.02706633808255,47.92197764736406,0 -66.02617013341775,47.92269518979404,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.03000987865934,47.92343839487342,0 -66.03022402065686,47.92313750279681,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.06754446929192,47.92715757586947,0 -66.07295097808348,47.92887636151551,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-01-030-002</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.899193,47.921131,0 -65.893761,47.92390799999999,0 -65.826736,47.95529200000001,0 -65.978111,47.97927099999999,0 -66.01178,47.93195,0 -66.014687,47.927849,0 -66.01705200000001,47.801369,0 -65.899193,47.921131,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-66.01140136649046,47.92696147720524,0 -66.0093176754874,47.93133320938841,0 -65.99623539971073,47.92697316161259,0 -65.99887490165732,47.92228876951924,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.99875628116139,47.92228694663393,0 -65.99621003009628,47.92691083816322,0 -65.89398107255794,47.9240188262433,0 -65.89938704283269,47.92127388751776,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-010-001</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.95871699999999,47.815079,0 -65.87550400000001,47.834469,0 -65.89144899999999,47.837479,0 -65.89394400000001,47.85252,0 -65.799294,47.883121,0 -65.736923,47.917751,0 -65.826736,47.95529200000001,0 -65.893761,47.92390799999999,0 -65.899193,47.921131,0 -66.01705200000001,47.801369,0 -65.95871699999999,47.815079,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.89932385063264,47.92122801459733,0 -65.89394163635329,47.92398584074034,0 -65.8882264780834,47.92055573398601,0 -65.8792090190185,47.91596600072768,0 -65.87358942519319,47.91466982272301,0 -65.86642342980878,47.9146313984021,0 -65.86630180548701,47.91048741447525,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.8662505844746,47.91050410857317,0 -65.8663520618951,47.91651693176051,0 -65.83706890664045,47.91725220000713,0 -65.79030899884468,47.88844591594854,0 -65.79981025184029,47.88326076681848,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-010-002</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.783051,47.829159,0 -65.734482,47.81489899999999,0 -65.723862,47.814072,0 -65.620552,47.815269,0 -65.736923,47.917751,0 -65.799294,47.883121,0 -65.89394400000001,47.85252,0 -65.89144899999999,47.837479,0 -65.87550400000001,47.834469,0 -65.783051,47.829159,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.79930938915244,47.88323742526453,0 -65.79020428707464,47.88840118279038,0 -65.7536791014771,47.86530025725801,0 -65.72547815796884,47.83659486942347,0 -65.72411414342393,47.81427041739481,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-010-003</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.95584100000001,47.76818800000001,0 -65.953239,47.75159800000001,0 -65.923073,47.764191,0 -65.857803,47.764702,0 -65.84262800000001,47.75551999999999,0 -65.76217699999999,47.75807199999999,0 -65.708107,47.747959,0 -65.70092800000001,47.75005,0 -65.62117000000001,47.77341800000001,0 -65.620552,47.815269,0 -65.723862,47.814072,0 -65.734482,47.81489899999999,0 -65.783051,47.829159,0 -65.87550400000001,47.834469,0 -65.95871699999999,47.815079,0 -65.95584100000001,47.76818800000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.72404885812094,47.81413712548682,0 -65.70506882117422,47.7826576376336,0 -65.70533257029064,47.78097350198016,0 -65.70113499547327,47.7500885262339,0 -65.70829751654958,47.74813419150235,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-010-004</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.92482,47.64481,0 -65.84172100000001,47.61974,0 -65.75031300000001,47.64825100000001,0 -65.681183,47.66223900000001,0 -65.667892,47.654381,0 -65.647491,47.671921,0 -65.659599,47.67989,0 -65.655762,47.683708,0 -65.596313,47.739571,0 -65.62117000000001,47.77341800000001,0 -65.70092800000001,47.75005,0 -65.708107,47.747959,0 -65.76217699999999,47.75807199999999,0 -65.84262800000001,47.75551999999999,0 -65.857803,47.764702,0 -65.923073,47.764191,0 -65.953239,47.75159800000001,0 -65.92482,47.64481,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.70818808603758,47.74809222367681,0 -65.70116313110221,47.75002241183938,0 -65.69952343274835,47.73487101567986,0 -65.68834062936882,47.71333700140164,0 -65.69649505759355,47.70923282704109,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.6964291033275,47.70912693212464,0 -65.69207156839893,47.71136908466629,0 -65.66415933759924,47.68895961636224,0 -65.65608379555846,47.68383295171098,0 -65.65980213545493,47.68008302216054,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.67828051132466,47.69349459822631,0 -65.67606423180632,47.69451157963414,0 -65.67392247904134,47.69509933899734,0 -65.66877747542281,47.69129683731099,0 -65.67218136849586,47.68845772059493,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-020-001</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.07019,47.628811,0 -66.067497,47.43755,0 -65.49276,47.431,0 -65.48442799999999,47.51216900000001,0 -65.56559799999999,47.668911,0 -65.56643699999999,47.683071,0 -65.55285600000001,47.72205000000001,0 -65.596313,47.739571,0 -65.655762,47.683708,0 -65.659599,47.67989,0 -65.647491,47.671921,0 -65.667892,47.654381,0 -65.681183,47.66223900000001,0 -65.75031300000001,47.64825100000001,0 -65.84172100000001,47.61974,0 -65.92482,47.64481,0 -66.07019,47.628811,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.65969897970567,47.68001137246891,0 -65.6559290378396,47.68379481259051,0 -65.61635870052835,47.67553376040955,0 -65.64450444644453,47.67130906360278,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.64438185014461,47.67120566739836,0 -65.56990866380694,47.6825103835255,0 -65.5670490910919,47.66920478710843,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-030-001</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.40418200000001,47.618561,0 -65.34015700000001,47.686031,0 -65.311897,47.695541,0 -65.339073,47.721149,0 -65.36949199999999,47.69480900000001,0 -65.423439,47.710098,0 -65.465149,47.74419,0 -65.55285600000001,47.72205000000001,0 -65.56643699999999,47.683071,0 -65.56559799999999,47.668911,0 -65.48442799999999,47.51216900000001,0 -65.40418200000001,47.618561,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-030-002</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.28800200000001,47.700661,0 -65.358772,47.75576000000001,0 -65.387047,47.780762,0 -65.465149,47.74419,0 -65.423439,47.710098,0 -65.36949199999999,47.69480900000001,0 -65.339073,47.721149,0 -65.311897,47.695541,0 -65.28800200000001,47.700661,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.38200698886628,47.74971107017107,0 -65.39431884349824,47.75834696231429,0 -65.38357490333853,47.76472213361475,0 -65.37258808322832,47.75706109186586,0 -65.3819480140629,47.74989392532348,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.36224024392544,47.75296895347314,0 -65.36495036637555,47.75555682016027,0 -65.36080006473853,47.7574431899722,0 -65.35899019368894,47.75587464382996,0 -65.359119521035,47.75579456752664,0 -65.35904053753919,47.75558913422443,0 -65.35903850145016,47.75544177963673,0 -65.35913722352399,47.7553218345394,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-030-003</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.253227,47.748211,0 -65.228241,47.79211,0 -65.221779,47.807419,0 -65.231247,47.859341,0 -65.387047,47.780762,0 -65.358772,47.75576000000001,0 -65.28800200000001,47.700661,0 -65.253227,47.748211,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-040-001</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.169563,47.79357899999999,0 -65.11694300000001,47.80570999999999,0 -65.12706799999999,47.826488,0 -65.109802,47.868191,0 -65.231247,47.859341,0 -65.221779,47.807419,0 -65.228241,47.79211,0 -65.169563,47.79357899999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-02-040-002</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.987923,47.83035999999999,0 -64.98696099999999,47.834381,0 -64.97830999999999,47.867111,0 -65.109802,47.868191,0 -65.12706799999999,47.826488,0 -65.11694300000001,47.80570999999999,0 -64.987923,47.83035999999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.09766228116564,47.83628938406029,0 -65.09763027675103,47.84509102397048,0 -65.08458093459659,47.84507856798256,0 -65.08456869567655,47.83633310036856,0 -65.09746240979624,47.83626052347608,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.08200792647592,47.82952072540793,0 -65.08170710093359,47.83339466619494,0 -65.07743062866872,47.83324081010327,0 -65.07767743949277,47.82944911900247,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-010-001</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.169563,47.79357899999999,0 -65.228241,47.79211,0 -65.253227,47.748211,0 -65.28800200000001,47.700661,0 -65.311897,47.695541,0 -65.34015700000001,47.686031,0 -65.40418200000001,47.618561,0 -65.20760300000001,47.600441,0 -65.102203,47.6992,0 -65.01093299999999,47.747478,0 -64.875191,47.776569,0 -64.90155,47.79945000000001,0 -64.91310900000001,47.82225,0 -64.925972,47.84740100000001,0 -64.97830999999999,47.867111,0 -64.98696099999999,47.834381,0 -64.987923,47.83035999999999,0 -65.11694300000001,47.80570999999999,0 -65.169563,47.79357899999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.98422253610478,47.82253793751549,0 -64.97857087391938,47.82467403018325,0 -64.98017179465528,47.82635683710178,0 -64.98059977217739,47.82711721007233,0 -64.98024283107712,47.82964321417182,0 -64.97855415539725,47.83015419942451,0 -64.97813028167504,47.83181001908866,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.98025975563228,47.82957802441936,0 -64.98074346424974,47.8269964926991,0 -64.97875954668928,47.82464722714071,0 -64.98423297858007,47.82264564551123,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.96342929654962,47.81836038309826,0 -64.96167179739514,47.81775639510392,0 -64.96087962023363,47.81717100221422,0 -64.96092046592266,47.81607184574307,0 -64.95685850801658,47.81291981846046,0 -64.95610512492334,47.8115952917196,0 -64.95660410913402,47.80937357550201,0 -64.95787244964932,47.80822048456791,0 -64.96009132923459,47.80787053664614,0 -64.96224481313024,47.80902002874285,0 -64.96316835460362,47.81087245277529,0 -64.96436344796182,47.81147021814496,0 -64.96989169654283,47.81604352831531,0 -64.97017721117624,47.81687282640191,0 -64.97119174746744,47.81748469969277,0 -64.97255360854102,47.81879445429189,0 -64.97213455121377,47.82042621682425,0 -64.96978684547308,47.82146587106914,0 -64.96635358567656,47.82050024860617,0 -64.96366319078506,47.81851859256148,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.92206574978135,47.79541546803727,0 -64.92220445243318,47.79813507422917,0 -64.91989114557575,47.79825563347264,0 -64.91930736872889,47.79843653195508,0 -64.91917951743484,47.79843521440145,0 -64.91604712246127,47.79888723964795,0 -64.91318317138475,47.79898561059488,0 -64.91059697266265,47.80048010301616,0 -64.90366391851167,47.80197891238078,0 -64.90241155598127,47.79928032414175,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.93702734013323,47.7963991577328,0 -64.93719310518016,47.80209096785021,0 -64.92246630355716,47.80237196292015,0 -64.92223938533368,47.79542114319008,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.96680827903035,47.79189897736168,0 -64.96870132248513,47.79497899456413,0 -64.96646148839426,47.7951480100956,0 -64.96359540206565,47.79541628132097,0 -64.96185192582466,47.79495711753909,0 -64.95868160629748,47.79536879687904,0 -64.95679571502566,47.79593881000951,0 -64.95189811118378,47.79614200640742,0 -64.94686594952619,47.79629601868734,0 -64.94333325443952,47.79772483564637,0 -64.9404016524619,47.79800096176728,0 -64.93851011532917,47.79893631922072,0 -64.93726372518853,47.79896558013576,0 -64.93709884278545,47.79634946991049,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.97450485749204,47.79014216210964,0 -64.97604522937543,47.79274010433176,0 -64.96888119880369,47.79501276068439,0 -64.96696636540015,47.79191720147732,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.99883985893005,47.77579434676211,0 -65.00246923056351,47.77704532777205,0 -64.99720163660793,47.7814113142493,0 -64.99554451400947,47.78202680079016,0 -64.99446028505744,47.78249007677081,0 -64.99194479937469,47.78463807855903,0 -64.99151278615194,47.78553420126818,0 -64.98977093380499,47.78675829094657,0 -64.98715900272302,47.78735244265074,0 -64.98490382184239,47.78813145709568,0 -64.9840822254161,47.78810086270747,0 -64.98212252599274,47.78943877192327,0 -64.98085138200756,47.7906883576005,0 -64.977173075651,47.79251128347404,0 -64.97605018050459,47.79270773911848,0 -64.97460853538364,47.79018340506639,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.00536638104913,47.77261309429393,0 -65.00247386913345,47.77702692500385,0 -64.99886190280473,47.77575121409534,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.02198851743231,47.77829698905549,0 -65.01591837380917,47.77829131096146,0 -65.00361283357829,47.77548325621966,0 -65.00538232718037,47.77265023993327,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.01817164313725,47.77643961729937,0 -65.01987928752213,47.77785791906825,0 -65.02203362595739,47.77826092938936,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.02610309051484,47.77605224573696,0 -65.02511968730565,47.77779728933766,0 -65.02215666249261,47.77829022269035,0 -65.0198927105984,47.77784707849116,0 -65.01818910922118,47.7764143503256,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.0348568246101,47.77827790613513,0 -65.03069216883611,47.7796671089495,0 -65.0251505330517,47.77778091542656,0 -65.02613806225094,47.77605507771806,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.07009460547666,47.79024561589903,0 -65.06721174991628,47.78866326197316,0 -65.06259560177124,47.78979735132383,0 -65.03075254791345,47.77965739870442,0 -65.03491012834898,47.7783165389318,0 -65.0360319229456,47.77792273086687,0 -65.03790304329587,47.77788801564397,0 -65.03828552580727,47.77764041101656,0 -65.03887909673843,47.77635839679787,0 -65.04376867435214,47.77478461544534,0 -65.04452901502131,47.77471984316476,0 -65.04557285271994,47.77451061120448,0 -65.045906505419,47.77404095447693,0 -65.04644596396307,47.77384878107977,0 -65.05772980839805,47.78110492922701,0 -65.05738786180405,47.78156231976341,0 -65.05765429058535,47.7820042501339,0 -65.05772364295859,47.78282537220454,0 -65.05949820934802,47.7836929969932,0 -65.06072937886792,47.7838525248525,0 -65.06392873154618,47.78313799804975,0 -65.06618544523795,47.78241486871665,0 -65.06927911433814,47.78281313595673,0 -65.07019646512151,47.78385226778635,0 -65.07062064424908,47.78399702116812,0 -65.07009283713327,47.79008992256568,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.05777244604197,47.78103977672217,0 -65.04658767499151,47.77387668822829,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.0702244418366,47.79019564789682,0 -65.07069501320898,47.78398353975458,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.97803642795132,47.83180555362974,0 -64.91904181209986,47.83292184959925,0 -64.91444379794486,47.82400794625395,0 -64.93868324933051,47.82379552987836,0 -64.93701256455616,47.8021562440159,0 -65.04135587411008,47.7830680336203,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.95717001741888,47.81321410922303,0 -64.96082953890772,47.81603867912067,0 -64.96084583838365,47.81733416333297,0 -64.96165493290911,47.8178290432382,0 -64.96342897688632,47.81831853251824,0 -64.96630883345097,47.82057337344428,0 -64.96968371400966,47.82144735930503,0 -64.97219316919011,47.82047947085244,0 -64.97261859284114,47.81881139827445,0 -64.97132938633904,47.8175008053044,0 -64.97010278274223,47.81684759565826,0 -64.96990603570795,47.81600976166161,0 -64.96445192495325,47.81155864388671,0 -64.96313047281596,47.81092983996574,0 -64.96220664433538,47.80896951721743,0 -64.96003170453933,47.80783565736378,0 -64.95785835396706,47.80822258643782,0 -64.95650583370198,47.80939389043405,0 -64.95599397348093,47.81160700337867,0 -64.95677351160497,47.81288165036106,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.04080681720474,47.7830816974417,0 -64.9373068802052,47.80194203407612,0 -64.93727285972371,47.79918494272954,0 -64.93831753381902,47.79885366560254,0 -64.94027948456343,47.79798793898569,0 -64.94340660176356,47.79770692311955,0 -64.94694620834024,47.79632464653525,0 -64.95672927952086,47.79603725297874,0 -64.95867003032751,47.79540673191156,0 -64.96174200016095,47.79490152636066,0 -64.96351152245035,47.79544902643701,0 -64.96878400778105,47.79504992055649,0 -64.9759866943046,47.79269765523345,0 -64.97696447753866,47.79258916985487,0 -64.98076123478063,47.79070538408935,0 -64.98381601777103,47.78822322512445,0 -64.98504113086862,47.78823816834333,0 -64.98976477958736,47.78684787453463,0 -64.99136178603624,47.78552591843633,0 -64.99181601306634,47.78458769768315,0 -64.99435476955898,47.78242409308928,0 -64.9971968678781,47.78142560761552,0 -65.00232514207458,47.77713240026073,0 -65.00350033801908,47.77543892196183,0 -65.01577490311671,47.77831406890793,0 -65.02196675171327,47.77826674509119,0 -65.02500303792756,47.77774261588677,0 -65.04040652208487,47.78282577350283,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.93686788796006,47.80234440472258,0 -64.93835468556441,47.82383703014462,0 -64.91450635795526,47.82399520251698,0 -64.90337991729714,47.80228389177577,0 -64.91052255449654,47.80043474135842,0 -64.91306130180912,47.79897794107149,0 -64.91702794973617,47.79876082438926,0 -64.92209199360657,47.79814829202488,0 -64.92251287904108,47.80228706344479,0 -64.93636530997382,47.80235027958854,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-010-002</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.8518641369275,47.8084588554013,0 -64.85446910702395,47.81263121140228,0 -64.86069994657935,47.81111982661086,0 -64.8725518087506,47.80875164651022,0 -64.894772814498,47.81228172212127,0 -64.90176737574755,47.82072459188066,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.80067400881453,47.80357109677381,0 -64.80186555210102,47.80357234692901,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.90460056225935,47.82413442862427,0 -64.91431051425927,47.82391194512887,0 -64.91879717234438,47.83286273719512,0 -64.7982295962224,47.83485414939995,0 -64.79823320570938,47.82221926560802,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.90185606868481,47.8206081695371,0 -64.89479194319951,47.81225679787467,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.91419004104583,47.82390628972911,0 -64.90458651627412,47.82413462551251,0 -64.90486447880718,47.82363301950574,0 -64.90493699193787,47.82294859467231,0 -64.90485766138441,47.8224603862264,0 -64.905471901382,47.82110464369522,0 -64.90521732489972,47.8203028977011,0 -64.90242014959007,47.81859456257292,0 -64.9013075172788,47.81709392218847,0 -64.89923257053232,47.81593386453467,0 -64.8994217007244,47.81299312577536,0 -64.87257222484791,47.80872664422304,0 -64.86074630686012,47.81104521901543,0 -64.85998411303314,47.80988672696452,0 -64.88590455053887,47.80388142742766,0 -64.8866552432596,47.80414364790006,0 -64.88758527403491,47.80418821050823,0 -64.88857029052765,47.80383567923524,0 -64.88951129570636,47.80373395784329,0 -64.89020639686595,47.80328886612831,0 -64.89297344192663,47.80258609560183,0 -64.8933642354064,47.80229518275907,0 -64.89403868819478,47.80208708071757,0 -64.89485285988121,47.80165509123428,0 -64.89617837467647,47.80390387708994,0 -64.90335663118086,47.80212834125802,0 -64.91419004104583,47.82390628972911,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.85796255040326,47.80668023143578,0 -64.86066246971282,47.81108074947896,0 -64.85448467899589,47.81256747939927,0 -64.85195655680943,47.80844060144967,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.8692852047225,47.80347945768967,0 -64.87175341665909,47.80707422022955,0 -64.85997118601506,47.80983509490554,0 -64.85810539132207,47.80670986412688,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.88574888955405,47.8038233175554,0 -64.87186330453409,47.80706692455318,0 -64.8694311504272,47.8035051571681,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.90238747896822,47.79928551711137,0 -64.9036401683998,47.80202322904025,0 -64.89619442549619,47.80387636795113,0 -64.89489203902765,47.80163515775071,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.849777,47.789459,0 -64.80165100000001,47.803459,0 -64.800461,47.803539,0 -64.792023,47.804539,0 -64.782303,47.82201,0 -64.788139,47.8255,0 -64.797493,47.82321199999999,0 -64.797836,47.846779,0 -64.925972,47.84740100000001,0 -64.91310900000001,47.82225,0 -64.90155,47.79945000000001,0 -64.875191,47.776569,0 -64.849777,47.789459,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-020-001</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.814774,47.765549,0 -64.782494,47.766258,0 -64.765823,47.766861,0 -64.752487,47.774502,0 -64.72634100000001,47.789661,0 -64.72633399999999,47.810959,0 -64.728706,47.815041,0 -64.733513,47.82289899999999,0 -64.747147,47.846779,0 -64.797836,47.846779,0 -64.797493,47.82321199999999,0 -64.788139,47.8255,0 -64.782303,47.82201,0 -64.792023,47.804539,0 -64.800461,47.803539,0 -64.80165100000001,47.803459,0 -64.849777,47.789459,0 -64.875191,47.776569,0 -64.814774,47.765549,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.79812728296487,47.8225797012016,0 -64.79802380492556,47.83483461283559,0 -64.74094474605903,47.8356200144578,0 -64.72673375902348,47.81102695133158,0 -64.72661586944133,47.78981932114375,0 -64.7660936366847,47.76703612918509,0 -64.7826444316668,47.76644055072281,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.79487415727708,47.7949000459668,0 -64.79371718977724,47.79515025066174,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.7989249054183,47.79769052289973,0 -64.79504455459987,47.79811471906115,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.79369856476266,47.79516821426435,0 -64.79488571788995,47.794906799533,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.80186822191766,47.80356278172266,0 -64.80066174559475,47.80355542800729,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.79498734636576,47.79808612536507,0 -64.79893147884424,47.79769932495911,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-020-002</name>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.782494,47.766258,0 -64.814774,47.765549,0 -64.875191,47.776569,0 -65.01093299999999,47.747478,0 -64.829536,47.71273,0 -64.80748,47.742039,0 -64.765823,47.766861,0 -64.782494,47.766258,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.85806385945607,47.74914788451549,0 -64.85687016399139,47.74944473149544,0 -64.85532915477302,47.74750242652863,0 -64.85674828519694,47.74721426732947,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.85675536212015,47.74720919137425,0 -64.85532831129486,47.74750807457928,0 -64.85686036538624,47.74944004285576,0 -64.85805780946505,47.74913950478472,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.8464012620603,47.74921656801163,0 -64.84565785081675,47.74716604945281,0 -64.81511588796408,47.74293294330497,0 -64.81362036284145,47.73994916575416,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.7826202129488,47.76638205010099,0 -64.76607933262403,47.7669727401227,0 -64.80767648008427,47.74216426259694,0 -64.80782274780545,47.74215437002074,0 -64.80823913452429,47.74184105945265,0 -64.80927939472238,47.74165509206977,0 -64.81086348166981,47.74147816172449,0 -64.81226736678971,47.74068043435284,0 -64.81317582547085,47.74030814996394,0 -64.81363172193123,47.73996375884963,0 -64.81514913993333,47.74294703554804,0 -64.84565540227419,47.74716571872062,0 -64.84639701675465,47.74922356124083,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-020-003</name>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.765823,47.766861,0 -64.80748,47.742039,0 -64.829536,47.71273,0 -64.784058,47.685822,0 -64.737427,47.70275100000001,0 -64.737297,47.76578900000001,0 -64.744591,47.768291,0 -64.752487,47.774502,0 -64.765823,47.766861,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.80764334490998,47.74217373155348,0 -64.75272392660523,47.77465795254975,0 -64.74471660518265,47.76832137829896,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.74351923387502,47.75370139709472,0 -64.74492640870867,47.75388186677803,0 -64.74565146527489,47.75168158489855,0 -64.74436192696464,47.75139542073536,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.74435828493743,47.75139633691031,0 -64.74564848883286,47.75168172544299,0 -64.74491886858571,47.75388402415906,0 -64.74352249411022,47.75370450222019,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-020-004</name>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.752487,47.774502,0 -64.744591,47.768291,0 -64.737297,47.76578900000001,0 -64.737427,47.70275100000001,0 -64.70816000000001,47.71808999999999,0 -64.67693300000001,47.71307,0 -64.669533,47.718712,0 -64.665993,47.71756,0 -64.6632,47.718689,0 -64.658096,47.72192,0 -64.650177,47.725922,0 -64.634987,47.737671,0 -64.655113,47.759499,0 -64.692932,47.76355,0 -64.72634100000001,47.789661,0 -64.752487,47.774502,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.74474630302684,47.76842044805362,0 -64.75251348017218,47.77464604845757,0 -64.72636258977255,47.78967888612227,0 -64.71273636629246,47.77879885715811,0 -64.74474630302684,47.76842044805362,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.74465962117017,47.76843019253332,0 -64.71257734671264,47.77885216006988,0 -64.69309098585771,47.76366232375604,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.72910617150657,47.7461206596096,0 -64.73045428327804,47.74731370482534,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.71735030677506,47.74573794071908,0 -64.71787139827043,47.7497756636164,0 -64.71015670738247,47.7502827840275,0 -64.70085744670257,47.74880658723728,0 -64.68643615235388,47.7382692430287,0 -64.68845720206818,47.73298785954443,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.66610131064523,47.71788572245199,0 -64.66875674609338,47.7231386335331,0 -64.67570318902318,47.7203163144954,0 -64.67024004354045,47.71889163968116,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.66370787103074,47.718804317999,0 -64.6660780853385,47.71787157543545,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-030-001</name>
+			<Placemark>
+				<name>A</name>
+				<open>1</open>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.68177585565594,47.78590407219917,0 -64.66294463290593,47.77374368451152,0 -64.6622472283596,47.77378072920658,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.628502,47.83503,0 -64.697067,47.78934900000001,0 -64.72634100000001,47.789661,0 -64.692932,47.76355,0 -64.655113,47.759499,0 -64.58891300000001,47.815819,0 -64.628502,47.83503,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.66216482692632,47.77378668088055,0 -64.66294319087335,47.77374783881282,0 -64.68177659046141,47.78591757246824,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.66200199024861,47.80084086215241,0 -64.66097023574956,47.78658748829734,0 -64.63781865409082,47.7868749909173,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.63777842121033,47.78891771797198,0 -64.63832612165794,47.79521963418138,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.63781699914637,47.78687085596488,0 -64.66096272591081,47.78658673446244,0 -64.66199411372631,47.80083940323333,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-030-002</name>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.648422,47.84202999999999,0 -64.70620700000001,47.81012,0 -64.72633399999999,47.810959,0 -64.72634100000001,47.789661,0 -64.697067,47.78934900000001,0 -64.628502,47.83503,0 -64.648422,47.84202999999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.69720747322162,47.78953914341469,0 -64.726489539833,47.78979709353114,0 -64.72650904339653,47.81107509985948,0 -64.70639681383759,47.81022332995498,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.67288413634574,47.812454491385,0 -64.67554068386725,47.81687087568573,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.69302576970637,47.76370404730153,0 -64.72642289847987,47.78970727185063,0 -64.69726412269016,47.78950325841997,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-030-003</name>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.70620700000001,47.81012,0 -64.648422,47.84202999999999,0 -64.582657,47.88213,0 -64.577499,47.889099,0 -64.601646,47.89505,0 -64.64711800000001,47.90619999999999,0 -64.747147,47.846779,0 -64.733513,47.82289899999999,0 -64.728706,47.815041,0 -64.72633399999999,47.810959,0 -64.70620700000001,47.81012,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.70651533840859,47.81022443554141,0 -64.72640401395259,47.81108101807617,0 -64.74092311003811,47.83563071473418,0 -64.72303156418427,47.83602065289882,0 -64.70065375482434,47.86291306633363,0 -64.65627611753858,47.88875952446806,0 -64.63302197651801,47.89509611020893,0 -64.60181229525358,47.89511539726398,0 -64.57777255190722,47.88921233342924,0 -64.58287249614276,47.88226699209093,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.70642373899594,47.81036419576856,0 -64.7072730083778,47.82602142304475,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.65250944964306,47.87126313179029,0 -64.65219613424226,47.87601463526828,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.65297433014879,47.87123026041643,0 -64.65255472181958,47.87585243304469,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-030-004</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.53568300000001,47.85545000000001,0 -64.515991,47.856819,0 -64.50213599999999,47.878941,0 -64.501389,47.882889,0 -64.50118999999999,47.88631099999999,0 -64.497711,47.905022,0 -64.496307,47.90883999999999,0 -64.49276,47.91429900000001,0 -64.492859,47.915451,0 -64.48864,47.925011,0 -64.488586,47.944618,0 -64.526268,47.956409,0 -64.591568,47.898579,0 -64.588982,47.896919,0 -64.58326700000001,47.89534,0 -64.582283,47.894379,0 -64.580276,47.89232999999999,0 -64.577499,47.889099,0 -64.582657,47.88213,0 -64.648422,47.84202999999999,0 -64.628502,47.83503,0 -64.58891300000001,47.815819,0 -64.53568300000001,47.85545000000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.50813566546447,47.87728743460503,0 -64.50796835931941,47.87889441046294,0 -64.50509221931827,47.87878743127753,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.57620468938795,47.89815906218967,0 -64.57331347898398,47.89467692543837,0 -64.57600408068576,47.89369668093379,0 -64.5779829632217,47.8961198189558,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.57661089732198,47.88375742484136,0 -64.57664180382024,47.88464441355968,0 -64.57327343272036,47.8847005270046,0 -64.57316322579175,47.88196168978826,0 -64.5750692474504,47.88194541921776,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.4930744574107,47.91554225155385,0 -64.49296327914163,47.91444693300617,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.58287268870421,47.88227306503821,0 -64.57773382302662,47.88917960339133,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-030-005</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.580276,47.89232999999999,0 -64.582283,47.894379,0 -64.58326700000001,47.89534,0 -64.588982,47.896919,0 -64.591568,47.898579,0 -64.526268,47.956409,0 -64.488586,47.944618,0 -64.48864,47.925011,0 -64.492859,47.915451,0 -64.48782300000001,47.91246,0 -64.424149,47.874989,0 -64.405327,47.99861899999999,0 -64.54302199999999,48.04525,0 -64.64711800000001,47.90619999999999,0 -64.601646,47.89505,0 -64.577499,47.889099,0 -64.580276,47.89232999999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-030-006</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.49276,47.91429900000001,0 -64.496307,47.90883999999999,0 -64.497711,47.905022,0 -64.50118999999999,47.88631099999999,0 -64.501389,47.882889,0 -64.50213599999999,47.878941,0 -64.515991,47.856819,0 -64.53568300000001,47.85545000000001,0 -64.58891300000001,47.815819,0 -64.655113,47.759499,0 -64.634987,47.737671,0 -64.650177,47.725922,0 -64.658096,47.72192,0 -64.6632,47.718689,0 -64.60236399999999,47.69076199999999,0 -64.424149,47.874989,0 -64.48782300000001,47.91246,0 -64.492859,47.915451,0 -64.49276,47.91429900000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-040-001</name>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.70816000000001,47.71808999999999,0 -64.737427,47.70275100000001,0 -64.784058,47.685822,0 -64.768677,47.680401,0 -64.760887,47.67429,0 -64.763092,47.668941,0 -64.77179700000001,47.661652,0 -64.776962,47.660061,0 -64.706253,47.621891,0 -64.60236399999999,47.69076199999999,0 -64.6632,47.718689,0 -64.665993,47.71756,0 -64.669533,47.718712,0 -64.67693300000001,47.71307,0 -64.70816000000001,47.71808999999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.73831586428639,47.68545783008618,0 -64.73919640054241,47.68494710980927,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-040-002</name>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.77179700000001,47.661652,0 -64.763092,47.668941,0 -64.760887,47.67429,0 -64.768677,47.680401,0 -64.784058,47.685822,0 -64.829536,47.71273,0 -65.01093299999999,47.747478,0 -65.102203,47.6992,0 -65.20760300000001,47.600441,0 -65.40418200000001,47.618561,0 -65.48442799999999,47.51216900000001,0 -65.155777,47.49667000000001,0 -65.07009100000001,47.570061,0 -65.006264,47.61306,0 -64.924767,47.586529,0 -64.81780999999999,47.605068,0 -64.764954,47.57869,0 -64.706253,47.621891,0 -64.776962,47.660061,0 -64.77179700000001,47.661652,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.7810795738426,47.65489006219649,0 -64.78108424181919,47.65462454281875,0 -64.7821179458014,47.65406151340187,0 -64.78228694462608,47.65386569202263,0 -64.78232463602822,47.65349083408199,0 -64.78269397454166,47.65311188356108,0 -64.78340028771559,47.65280861937535,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.80984589281479,47.63726438135598,0 -64.80389864625771,47.65193308133966,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.80391745750522,47.6519330789811,0 -64.80987224130033,47.63727394945028,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.85164944528351,47.68853748348885,0 -64.85707814834468,47.6851649564186,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-050-001</name>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.924767,47.586529,0 -65.006264,47.61306,0 -65.07009100000001,47.570061,0 -65.155777,47.49667000000001,0 -65.10846700000001,47.462669,0 -64.94280999999999,47.49589200000001,0 -64.89420300000001,47.496552,0 -64.882294,47.503551,0 -64.87404600000001,47.503479,0 -64.871681,47.503429,0 -64.797279,47.50081999999999,0 -64.764954,47.57869,0 -64.81780999999999,47.605068,0 -64.924767,47.586529,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.86732402926803,47.53728416801768,0 -64.89552854693754,47.53721938024972,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.88971862229093,47.56901835870568,0 -64.88892415615696,47.57011688722089,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.91705052921338,47.5334300774602,0 -64.91925980989366,47.53009058499866,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.91925692073875,47.53014483728806,0 -64.91702775171355,47.53341400755542,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.9007079534513,47.51672721354399,0 -64.90414067403961,47.51204401458173,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.90413430832017,47.51206573044262,0 -64.90072011623981,47.51670577894555,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.90400999359167,47.50839787523834,0 -64.9041207785148,47.51078064779762,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.90412755215823,47.51078057413427,0 -64.90400297591513,47.50839013215148,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.88791962397752,47.50600363476225,0 -64.89714732743896,47.50729802254571,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.89712945980384,47.50727899762114,0 -64.88795499975964,47.50599473443005,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CR</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.87189175540856,47.50358555471187,0 -64.87426699682951,47.50362086050493,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.88893288370535,47.57011300635687,0 -64.88971969302823,47.56902502180713,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-03-050-002</name>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.48442799999999,47.51216900000001,0 -65.49276,47.431,0 -65.386093,47.474941,0 -65.316513,47.432529,0 -64.99929,47.38414,0 -64.884857,47.43399,0 -64.8172,47.418041,0 -64.797279,47.50081999999999,0 -64.871681,47.503429,0 -64.87404600000001,47.503479,0 -64.882294,47.503551,0 -64.89420300000001,47.496552,0 -64.94280999999999,47.49589200000001,0 -65.10846700000001,47.462669,0 -65.155777,47.49667000000001,0 -65.48442799999999,47.51216900000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.87425613296398,47.50361572940504,0 -64.87188018749791,47.50357098182204,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.88019445850574,47.47819389798728,0 -64.88127672053844,47.47817936161458,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.87175373877963,47.48039124223828,0 -64.87173802780413,47.47961978208897,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.88127166123934,47.47817768343379,0 -64.88018877503397,47.47819298576361,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.87175025767958,47.48037546464651,0 -64.87173759513055,47.47962924331976,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.91566860055247,47.48433202046519,0 -64.9156437122969,47.48385471710065,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.91564211250555,47.4838598659351,0 -64.91566837444168,47.4843253186464,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.90353982735275,47.47092154499515,0 -64.90354567147915,47.46989395999017,0 -64.91128932011202,47.46974858149447,0 -64.91209442659391,47.47335298000871,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.91209328681148,47.47334290011261,0 -64.911272012521,47.46975537998796,0 -64.90354305102524,47.4699008752471,0 -64.90353982735275,47.47092154499515,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.8859722708839,47.46431926803177,0 -64.88668988934248,47.46579181776504,0 -64.8813795173718,47.46699064693195,0 -64.88078874333083,47.46577847135016,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.88076063745589,47.46577847214356,0 -64.88137975404574,47.46698488837077,0 -64.88668988934248,47.46579181776504,0 -64.88597064850205,47.46431028296047,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.92410094564039,47.4524111179257,0 -64.9267644061531,47.44899402311957,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.92675727309128,47.44901946784569,0 -64.92410862056387,47.45241111559398,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.91911026675935,47.44640131731556,0 -64.91969464710637,47.446809861711,0 -64.91990699032922,47.44733031384386,0 -64.91969674258506,47.4478834013337,0 -64.91910102000369,47.44827365194204,0 -64.91830634819368,47.44842841837482,0 -64.91751108300221,47.44827801059888,0 -64.91716000031869,47.44806017347696,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.91715834429473,47.44806004527858,0 -64.91750972548347,47.44827103794396,0 -64.9183043827165,47.44841969310472,0 -64.91908209375426,47.44826984580121,0 -64.91970094015476,47.44787671560162,0 -64.91990932262551,47.44732971173038,0 -64.91968943183267,47.44681012442864,0 -64.91911327756102,47.44639938679377,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-04-010-001</name>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.316513,47.432529,0 -65.386093,47.474941,0 -65.49276,47.431,0 -65.470573,47.33997,0 -65.389122,47.2267,0 -65.321037,47.283909,0 -65.249939,47.26041,0 -65.206062,47.26755900000001,0 -65.089561,47.3074,0 -65.00636299999999,47.29821,0 -64.97206900000001,47.28076200000001,0 -64.969673,47.28014,0 -64.964882,47.28073899999999,0 -64.961128,47.28089900000001,0 -64.960876,47.278519,0 -64.86228199999999,47.28397,0 -64.8172,47.418041,0 -64.884857,47.43399,0 -64.99929,47.38414,0 -65.316513,47.432529,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.93352589807594,47.38062609828184,0 -64.93642368679613,47.37240769815398,0 -64.94183387535288,47.3721004265259,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.9418208023496,47.37212673192668,0 -64.93642671424762,47.37244775837942,0 -64.93352596146907,47.38064541343404,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.02166190262339,47.34725732124339,0 -65.01704457115464,47.34767113027531,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.02166046431438,47.3472574383169,0 -65.017025101304,47.34767508307273,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.99733894480757,47.33995690317789,0 -65.00414528748884,47.33853004776443,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.0041530932192,47.33853496401643,0 -64.9973330670411,47.3399505940802,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.99008359748824,47.33843740892488,0 -64.98284869984873,47.33619607583356,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.98285610942983,47.33620311058618,0 -64.99007129748942,47.33843741759684,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.97449386999485,47.33869513567719,0 -64.9711407768235,47.33999278463703,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.97111331679272,47.34000691454646,0 -64.97449215941926,47.33868856255266,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>P</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.96642567639746,47.3411929079605,0 -64.96513027737205,47.3390572452861,0 -64.9699649760247,47.33785630258602,0 -64.9710597740889,47.33999194901445,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.97106708904187,47.33999467033591,0 -64.96997153116023,47.33784665047153,0 -64.96512618316797,47.33904428124642,0 -64.96643135901879,47.34120044994128,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.96203123657942,47.33834114377375,0 -64.96614622886654,47.34142756790158,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.96615008362764,47.34141659726185,0 -64.96202775437487,47.33833482616002,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-65.00177226998243,47.32257904813329,0 -64.99684376195086,47.32052935961647,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>CA</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.99685138365231,47.32051983116736,0 -65.00178073609314,47.32258518999218,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>A</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.92617298420582,47.33356984505103,0 -64.93587938267011,47.33071906134886,0 -64.93434059731598,47.31313908289653,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.93433422144635,47.3131513748016,0 -64.93589121537002,47.33070393597529,0 -64.92615956045037,47.33357282836645,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>R</name>
+				<styleUrl>#m_ylw-pushpin</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.93365691672406,47.30904167930054,0 -64.93229004112575,47.30903471085965,0 -64.93244233360437,47.29881739929829,0 -64.94769290317495,47.29864172582346,0 -64.94737734317621,47.30015233508987,0 -64.94750914329678,47.30119338937028,0 -64.94806502025169,47.30170965170006,0 -64.94839624587758,47.30173048542217,0 -64.94835849963972,47.30046410313489,0 -64.94874623676844,47.29966309927463,0 -64.94878579814751,47.29839365416492,0 -64.94984967228803,47.29556209832025,0 -64.95003945818739,47.29438092327233,0 -64.95193586647125,47.29081407370158,0 -64.95342334448299,47.28913433276308,0 -64.95568415545962,47.2861699584068,0 -64.96165676607627,47.28663344937621,0 -64.96200453952373,47.28664699309702,0 -64.96202847383705,47.28612201891292,0 -64.96243952409168,47.28534656444708,0 -64.96283155434981,47.28453832153274,0 -64.96278657188093,47.28405383187572,0 -64.96334783282822,47.28344658801116,0 -64.96361488609598,47.28303842273995,0 -64.96464940779258,47.28158756607419,0 -64.96462506441516,47.28147477841625,0 -64.96507827158465,47.28087308449814,0 -64.96984212117435,47.28028758642687,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-04-020-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.960876,47.278519,0 -64.961128,47.28089900000001,0 -64.964882,47.28073899999999,0 -64.969673,47.28014,0 -64.97206900000001,47.28076200000001,0 -65.00636299999999,47.29821,0 -65.089561,47.3074,0 -65.206062,47.26755900000001,0 -65.249939,47.26041,0 -65.105293,47.23455,0 -65.10339399999999,47.233711,0 -65.099136,47.228611,0 -65.09465,47.226139,0 -65.09483299999999,47.22591,0 -65.095169,47.225971,0 -65.09509300000001,47.225739,0 -65.09382600000001,47.22526899999999,0 -65.077393,47.220558,0 -65.032303,47.20739,0 -64.97673,47.17882899999999,0 -64.86228199999999,47.28397,0 -64.960876,47.278519,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-04-020-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.077393,47.220558,0 -65.09382600000001,47.22526899999999,0 -65.09509300000001,47.225739,0 -65.095169,47.225971,0 -65.09483299999999,47.22591,0 -65.09465,47.226139,0 -65.099136,47.228611,0 -65.10339399999999,47.233711,0 -65.105293,47.23455,0 -65.249939,47.26041,0 -65.321037,47.283909,0 -65.389122,47.2267,0 -65.296967,47.178108,0 -65.235893,47.19453,0 -65.18337200000001,47.18582900000001,0 -65.163391,47.170349,0 -65.106644,47.190521,0 -65.047943,47.20821000000001,0 -65.032303,47.20739,0 -65.077393,47.220558,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-04-020-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.047943,47.20821000000001,0 -65.106644,47.190521,0 -65.053307,47.1334,0 -65.00026699999999,47.150742,0 -64.97673,47.17882899999999,0 -65.032303,47.20739,0 -65.047943,47.20821000000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-04-030-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.163391,47.170349,0 -65.18337200000001,47.18582900000001,0 -65.235893,47.19453,0 -65.296967,47.178108,0 -65.389122,47.2267,0 -65.470573,47.33997,0 -65.954964,47.246109,0 -65.995811,46.846661,0 -65.85208900000001,46.741428,0 -65.454712,46.9534,0 -65.20530700000001,47.082008,0 -65.125443,47.087971,0 -65.118973,47.09462,0 -65.11647000000001,47.095791,0 -65.093582,47.105579,0 -65.076797,47.106949,0 -65.053307,47.1334,0 -65.106644,47.190521,0 -65.163391,47.170349,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-04-040-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.20517700000001,46.92778000000001,0 -65.043907,46.906368,0 -65.101303,47.07412000000001,0 -65.12039900000001,47.076511,0 -65.125443,47.087971,0 -65.20530700000001,47.082008,0 -65.454712,46.9534,0 -65.20517700000001,46.92778000000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-04-040-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.053307,47.1334,0 -65.076797,47.106949,0 -65.093582,47.105579,0 -65.11647000000001,47.095791,0 -65.118973,47.09462,0 -65.125443,47.087971,0 -65.12039900000001,47.076511,0 -65.019447,47.101109,0 -64.97386899999999,47.063919,0 -64.950729,47.07371100000001,0 -64.952461,47.10014,0 -65.00026699999999,47.150742,0 -65.053307,47.1334,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-04-040-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.043907,46.906368,0 -64.94390900000001,46.983608,0 -64.890862,47.03749800000001,0 -64.926514,47.074989,0 -64.950729,47.07371100000001,0 -64.97386899999999,47.063919,0 -65.019447,47.101109,0 -65.12039900000001,47.076511,0 -65.101303,47.07412000000001,0 -65.043907,46.906368,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-04-040-004</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.926514,47.074989,0 -64.890862,47.03749800000001,0 -64.8172,47.07058,0 -64.796623,47.071758,0 -64.74859600000001,47.07151,0 -64.791183,47.100491,0 -64.952461,47.10014,0 -64.950729,47.07371100000001,0 -64.926514,47.074989,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-05-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.94390900000001,46.983608,0 -64.915611,46.946388,0 -64.81263,46.974751,0 -64.760193,46.963329,0 -64.74859600000001,47.07151,0 -64.796623,47.071758,0 -64.8172,47.07058,0 -64.890862,47.03749800000001,0 -64.94390900000001,46.983608,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-05-010-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.043907,46.906368,0 -64.903931,46.886059,0 -64.90213,46.883999,0 -64.83262600000001,46.86809900000001,0 -64.760193,46.963329,0 -64.81263,46.974751,0 -64.915611,46.946388,0 -64.94390900000001,46.983608,0 -65.043907,46.906368,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-05-010-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.20517700000001,46.92778000000001,0 -65.205009,46.746449,0 -65.064049,46.752838,0 -64.944481,46.81563899999999,0 -64.91059900000001,46.82730100000001,0 -64.90503699999999,46.827808,0 -64.83268700000001,46.82537799999999,0 -64.83262600000001,46.86809900000001,0 -64.90213,46.883999,0 -64.903931,46.886059,0 -65.043907,46.906368,0 -65.20517700000001,46.92778000000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-05-020-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.205009,46.66328,0 -65.03317300000001,46.686131,0 -64.912262,46.752441,0 -64.891586,46.7342,0 -64.838737,46.716049,0 -64.815231,46.72423200000001,0 -64.807564,46.72422,0 -64.80407,46.72429999999999,0 -64.792282,46.71632,0 -64.789574,46.71508,0 -64.73954000000001,46.73159,0 -64.83268700000001,46.82537799999999,0 -64.90503699999999,46.827808,0 -64.91059900000001,46.82730100000001,0 -64.944481,46.81563899999999,0 -65.064049,46.752838,0 -65.205009,46.746449,0 -65.205009,46.66328,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-05-030-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.789574,46.71508,0 -64.792282,46.71632,0 -64.80407,46.72429999999999,0 -64.807564,46.72422,0 -64.815231,46.72423200000001,0 -64.838737,46.716049,0 -64.84369700000001,46.708099,0 -64.842941,46.70128999999999,0 -64.850807,46.69421,0 -64.85330999999999,46.69775,0 -64.981201,46.652031,0 -65.16847199999999,46.696709,0 -65.192612,46.575649,0 -65.17075300000001,46.476082,0 -65.019043,46.436958,0 -64.895264,46.44364199999999,0 -64.88259100000001,46.479401,0 -64.819733,46.499649,0 -64.844673,46.60965,0 -64.832443,46.657341,0 -64.81671900000001,46.69252,0 -64.804321,46.70665,0 -64.79125999999999,46.70922099999999,0 -64.79070299999999,46.710739,0 -64.789574,46.71508,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-05-030-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.891586,46.7342,0 -64.912262,46.752441,0 -65.03317300000001,46.686131,0 -65.03183,46.63404100000001,0 -64.981201,46.652031,0 -64.85330999999999,46.69775,0 -64.850807,46.69421,0 -64.842941,46.70128999999999,0 -64.84369700000001,46.708099,0 -64.838737,46.716049,0 -64.891586,46.7342,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-05-030-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.79125999999999,46.70922099999999,0 -64.804321,46.70665,0 -64.81671900000001,46.69252,0 -64.832443,46.657341,0 -64.844673,46.60965,0 -64.75917800000001,46.6245,0 -64.724159,46.64323,0 -64.724159,46.65877900000001,0 -64.724159,46.69017,0 -64.736542,46.69635,0 -64.741203,46.69742999999999,0 -64.760452,46.706291,0 -64.772049,46.70834,0 -64.786598,46.707748,0 -64.79070299999999,46.710739,0 -64.79125999999999,46.70922099999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-05-030-004</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.789574,46.71508,0 -64.79070299999999,46.710739,0 -64.786598,46.707748,0 -64.772049,46.70834,0 -64.760452,46.706291,0 -64.741203,46.69742999999999,0 -64.736542,46.69635,0 -64.724159,46.69017,0 -64.724159,46.65877900000001,0 -64.70758100000001,46.66,0 -64.665352,46.66003,0 -64.73954000000001,46.73159,0 -64.789574,46.71508,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-06-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.819733,46.499649,0 -64.720482,46.519081,0 -64.70687100000001,46.52972,0 -64.70401800000001,46.54171000000001,0 -64.698891,46.540829,0 -64.640518,46.550819,0 -64.665352,46.66003,0 -64.70758100000001,46.66,0 -64.724159,46.65877900000001,0 -64.724159,46.64323,0 -64.75917800000001,46.6245,0 -64.844673,46.60965,0 -64.819733,46.499649,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-06-010-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.698891,46.540829,0 -64.70401800000001,46.54171000000001,0 -64.70687100000001,46.52972,0 -64.69577,46.53484,0 -64.67733800000001,46.52344899999999,0 -64.66842699999999,46.516209,0 -64.655907,46.509838,0 -64.646027,46.501709,0 -64.63593299999999,46.49213000000001,0 -64.624352,46.48546999999999,0 -64.61702,46.48024,0 -64.608498,46.461079,0 -64.56218,46.463261,0 -64.640518,46.550819,0 -64.698891,46.540829,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-06-020-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.720482,46.519081,0 -64.71869700000001,46.509789,0 -64.67244700000001,46.488361,0 -64.663528,46.469418,0 -64.60929899999999,46.444611,0 -64.565979,46.443199,0 -64.56218,46.463261,0 -64.608498,46.461079,0 -64.61702,46.48024,0 -64.624352,46.48546999999999,0 -64.63593299999999,46.49213000000001,0 -64.646027,46.501709,0 -64.655907,46.509838,0 -64.66842699999999,46.516209,0 -64.67733800000001,46.52344899999999,0 -64.69577,46.53484,0 -64.70687100000001,46.52972,0 -64.720482,46.519081,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-06-020-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<styleUrl>#msn_ylw-pushpin</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.67244700000001,46.488361,0 -64.71869700000001,46.509789,0 -64.720482,46.519081,0 -64.819733,46.499649,0 -64.88259100000001,46.479401,0 -64.895264,46.44364199999999,0 -65.019043,46.436958,0 -65.028801,46.342239,0 -64.93197600000001,46.27573,0 -64.701477,46.376911,0 -64.666847,46.466331,0 -64.663544,46.46942099999999,0 -64.67244700000001,46.488361,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>ca</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.67257888117764,46.48842234410471,0 -64.6670292324195,46.46652163678957,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>ca</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.68430517666896,46.45466472012087,0 -64.69033154528563,46.45663045933126,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>ca</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.7083878713149,46.4707949013297,0 -64.70120676783179,46.47442571170279,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>ca</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.6946640141432,46.4803972846796,0 -64.6942040030014,46.48294248805406,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>p</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.69422432728432,46.4829305338508,0 -64.69467276441777,46.48042104100448,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>p</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.70104272982307,46.48155787336368,0 -64.69817818589759,46.48390261016031,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.69817962529794,46.48389012758941,0 -64.70104277794655,46.48154759129276,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.70616811572502,46.48285277782397,0 -64.70658232904972,46.48529298242276,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>p</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.70658283303875,46.48528054992589,0 -64.70618171721725,46.48286346440379,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>p</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.71381555634433,46.48370844056918,0 -64.71148199007739,46.48569189532157,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.71146457417592,46.48570344469273,0 -64.71378682963753,46.48370653242139,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.70122921080491,46.47442659870669,0 -64.70842450269036,46.47078973853952,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.71621145971764,46.47080109853658,0 -64.71598707274715,46.47219949402725,0 -64.7117343263529,46.4748465500759,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>p</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.7117344017644,46.47486548662504,0 -64.71601309179636,46.47218978544176,0 -64.71620177219994,46.47078407915088,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>p</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.7253791955162,46.46259143586798,0 -64.72784338146123,46.46439566192922,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.72786843969327,46.46437110670531,0 -64.72540899513015,46.46257922437113,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.73124614117633,46.45865694540689,0 -64.7338920852371,46.46162954614749,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>p</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.73390066508283,46.46163696590903,0 -64.73125063447337,46.45865265491391,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>p</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.73554924313883,46.45637985551024,0 -64.7382733128308,46.4571858317596,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin00</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.73827311100997,46.45719850054382,0 -64.73553520047676,46.45637973184122,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>r</name>
+				<visibility>0</visibility>
+				<styleUrl>#m_ylw-pushpin0</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-64.69032989531368,46.45662375963375,0 -64.68430956655638,46.4546616607067,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-06-020-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.666847,46.466331,0 -64.701477,46.376911,0 -64.623199,46.42795899999999,0 -64.6101,46.42795899999999,0 -64.56173699999999,46.427441,0 -64.565979,46.443199,0 -64.60929899999999,46.444611,0 -64.66353599999999,46.46942099999999,0 -64.666847,46.466331,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-06-030-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.701477,46.376911,0 -64.701492,46.359901,0 -64.670464,46.35947,0 -64.664131,46.36906100000001,0 -64.63754299999999,46.364262,0 -64.612923,46.355679,0 -64.584396,46.368382,0 -64.574921,46.375889,0 -64.55959300000001,46.387829,0 -64.56173699999999,46.427441,0 -64.6101,46.42795899999999,0 -64.623199,46.42795899999999,0 -64.701477,46.376911,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-06-030-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.574921,46.375889,0 -64.584396,46.368382,0 -64.612923,46.355679,0 -64.63754299999999,46.364262,0 -64.664131,46.36906100000001,0 -64.670464,46.35947,0 -64.701492,46.359901,0 -64.701477,46.376911,0 -64.93197600000001,46.27573,0 -64.891617,46.25798,0 -64.85916899999999,46.23064,0 -64.69199399999999,46.27486,0 -64.549103,46.322578,0 -64.562714,46.36653100000001,0 -64.56115699999999,46.3759,0 -64.55959300000001,46.387829,0 -64.574921,46.375889,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-06-040-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.56115699999999,46.3759,0 -64.562714,46.36653100000001,0 -64.549103,46.322578,0 -64.510437,46.31380800000001,0 -64.50988,46.31348,0 -64.478027,46.321838,0 -64.55959300000001,46.387829,0 -64.56115699999999,46.3759,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.69199399999999,46.27486,0 -64.85916899999999,46.23064,0 -64.667931,46.16103,0 -64.614113,46.16887999999999,0 -64.572304,46.267342,0 -64.56591,46.269611,0 -64.56076,46.269039,0 -64.55259700000001,46.27282,0 -64.53675800000001,46.28408099999999,0 -64.52821400000001,46.285709,0 -64.519577,46.28735,0 -64.478027,46.321838,0 -64.50988,46.31348,0 -64.510437,46.31380800000001,0 -64.549103,46.322578,0 -64.69199399999999,46.27486,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-010-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.56591,46.269611,0 -64.572304,46.267342,0 -64.614113,46.16887999999999,0 -64.667931,46.16103,0 -64.61979700000001,46.11217899999999,0 -64.44049800000001,46.12001,0 -64.453262,46.195919,0 -64.512154,46.210751,0 -64.504784,46.23156,0 -64.523804,46.239021,0 -64.526421,46.239761,0 -64.52892300000001,46.24054,0 -64.529648,46.24078,0 -64.52995300000001,46.241909,0 -64.535652,46.24578100000001,0 -64.54997299999999,46.25598900000001,0 -64.55259700000001,46.27282,0 -64.56076,46.269039,0 -64.56591,46.269611,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-010-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.550072,46.256062,0 -64.54997299999999,46.25598900000001,0 -64.535652,46.24578100000001,0 -64.525192,46.250309,0 -64.51677700000001,46.264801,0 -64.52821400000001,46.285709,0 -64.53675800000001,46.28408099999999,0 -64.55259700000001,46.27282,0 -64.550072,46.256062,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-020-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.52995300000001,46.241909,0 -64.529648,46.24078,0 -64.52892300000001,46.24054,0 -64.526421,46.239761,0 -64.523804,46.239021,0 -64.504784,46.23156,0 -64.512154,46.210751,0 -64.453262,46.195919,0 -64.44049800000001,46.12001,0 -64.28119700000001,46.154652,0 -64.34903,46.225609,0 -64.34912900000001,46.22861099999999,0 -64.34916699999999,46.253361,0 -64.525192,46.250309,0 -64.535652,46.24578100000001,0 -64.52995300000001,46.241909,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-020-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.34912900000001,46.22861099999999,0 -64.34903,46.225609,0 -64.28119700000001,46.154652,0 -64.23436700000001,46.176281,0 -64.24342300000001,46.18977000000001,0 -64.23960099999999,46.21579000000001,0 -64.226738,46.22406,0 -64.221558,46.227631,0 -64.186447,46.250229,0 -64.34916699999999,46.253361,0 -64.34912900000001,46.22861099999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-030-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.221558,46.227631,0 -64.226738,46.22406,0 -64.23960099999999,46.21579000000001,0 -64.24342300000001,46.18977000000001,0 -64.23436700000001,46.176281,0 -64.183403,46.19503,0 -64.158203,46.182812,0 -64.150307,46.188332,0 -64.14949,46.19249,0 -64.148354,46.21637,0 -64.186447,46.250229,0 -64.221558,46.227631,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-030-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.14949,46.19249,0 -64.150307,46.188332,0 -64.158203,46.182812,0 -64.183403,46.19503,0 -64.23436700000001,46.176281,0 -64.207703,46.12323,0 -64.15767700000001,46.12125,0 -64.10433999999999,46.09095,0 -64.104462,46.131329,0 -64.11676,46.18004999999999,0 -64.120239,46.183739,0 -64.12000999999999,46.192471,0 -64.11979700000001,46.214642,0 -64.148354,46.21637,0 -64.14949,46.19249,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-030-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.12000999999999,46.192471,0 -64.120239,46.183739,0 -64.11676,46.18004999999999,0 -64.104462,46.131329,0 -64.10433999999999,46.09095,0 -63.9543,46.10543800000001,0 -63.984779,46.146938,0 -63.979031,46.18268999999999,0 -63.979561,46.19183,0 -63.979408,46.208019,0 -64.11979700000001,46.214642,0 -64.12000999999999,46.192471,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-040-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-63.979561,46.19183,0 -63.979031,46.18268999999999,0 -63.984779,46.146938,0 -63.9543,46.10543800000001,0 -63.916199,46.10643,0 -63.87693,46.118351,0 -63.818161,46.159988,0 -63.815029,46.16428,0 -63.80757899999999,46.17033,0 -63.78664,46.19074999999999,0 -63.979408,46.208019,0 -63.979561,46.19183,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-040-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-63.80757899999999,46.17033,0 -63.815029,46.16428,0 -63.818161,46.159988,0 -63.87693,46.118351,0 -63.805099,46.083221,0 -63.804581,46.08231000000001,0 -63.802849,46.076649,0 -63.71954000000001,46.08248900000001,0 -63.71954000000001,46.18648099999999,0 -63.78664,46.19074999999999,0 -63.80757899999999,46.17033,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-050-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-63.802849,46.076649,0 -63.804581,46.08231000000001,0 -63.805099,46.083221,0 -63.87693,46.118351,0 -63.916199,46.10643,0 -63.9543,46.10543800000001,0 -63.96526,46.089951,0 -64.000641,46.078129,0 -64.00794999999999,46.05442,0 -64.018517,46.045769,0 -64.043312,46.023849,0 -63.915562,46.023731,0 -63.71954000000001,46.08248900000001,0 -63.802849,46.076649,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-050-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.092293,46.00527999999999,0 -64.080437,46.016071,0 -64.070717,46.019119,0 -64.05645,46.02177,0 -64.043312,46.023849,0 -64.018517,46.045769,0 -64.007751,46.05442,0 -64.000641,46.078129,0 -63.96526,46.089951,0 -63.9543,46.10543800000001,0 -64.10433999999999,46.09095,0 -64.15767700000001,46.12125,0 -64.207703,46.12323,0 -64.187927,46.01464799999999,0 -64.127892,46.001171,0 -64.092293,46.00527999999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-07-050-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.05645,46.02177,0 -64.070717,46.019119,0 -64.080437,46.016071,0 -64.092293,46.00527999999999,0 -64.127892,46.001171,0 -64.081833,45.936939,0 -64.070778,45.934761,0 -64.04248800000001,45.96329900000001,0 -64.027733,45.973549,0 -64.025414,46.004951,0 -64.03511,46.015289,0 -64.043312,46.023849,0 -64.05645,46.02177,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-08-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.45678700000001,45.800011,0 -64.52522999999999,45.73242200000001,0 -64.55251300000001,45.727261,0 -64.52182000000001,45.689579,0 -64.457916,45.74681099999999,0 -64.402,45.791409,0 -64.386223,45.80246,0 -64.329109,45.84241099999999,0 -64.274422,45.837399,0 -64.20700100000001,45.92178,0 -64.31916,45.969841,0 -64.42478199999999,45.920921,0 -64.45678700000001,45.800011,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-08-020-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-64.61979700000001,46.11217899999999,0 -64.667931,46.16103,0 -65.068123,46.157261,0 -65.058258,46.01635,0 -64.704262,45.89957,0 -64.916718,45.798431,0 -64.87490099999999,45.676991,0 -64.730362,45.67564,0 -64.72779800000001,45.66964,0 -64.77932,45.607208,0 -64.779617,45.593239,0 -64.755219,45.570541,0 -64.608818,45.633999,0 -64.52182000000001,45.689579,0 -64.55251300000001,45.727261,0 -64.52522999999999,45.73242200000001,0 -64.45678700000001,45.800011,0 -64.42478199999999,45.920921,0 -64.61979700000001,46.11217899999999,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-08-030-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.05378,45.693932,0 -65.008034,45.553162,0 -65.021332,45.54137000000001,0 -65.004784,45.462021,0 -64.755219,45.570541,0 -64.779617,45.593239,0 -64.77932,45.607208,0 -64.72779800000001,45.66964,0 -64.730362,45.67564,0 -64.87490099999999,45.676991,0 -64.916718,45.798431,0 -65.05378,45.693932,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-08-030-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.59581,45.506062,0 -65.56334699999999,45.323959,0 -65.53574399999999,45.323139,0 -65.490334,45.22721900000001,0 -65.004784,45.462021,0 -65.021332,45.54137000000001,0 -65.008034,45.553162,0 -65.05378,45.693932,0 -65.59581,45.506062,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-08-040-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.90007799999999,45.366638,0 -65.91158299999999,45.193661,0 -65.877769,45.102039,0 -65.490334,45.22721900000001,0 -65.53574399999999,45.323139,0 -65.56334699999999,45.323959,0 -65.59581,45.506062,0 -65.90007799999999,45.366638,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-09-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-65.99627700000001,45.51178,0 -65.706718,45.69508,0 -65.835342,46.25449,0 -66.82798,46.02631000000001,0 -66.34227,45.540199,0 -66.386887,45.41217,0 -66.273308,45.28697999999999,0 -66.23634300000001,45.20367100000001,0 -66.166634,45.16861,0 -66.090752,45.06219899999999,0 -65.877769,45.102039,0 -65.91158299999999,45.193661,0 -65.90007799999999,45.366638,0 -65.99627700000001,45.51178,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-09-020-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.46867399999999,45.252258,0 -66.45845799999999,45.214199,0 -66.423073,45.21841,0 -66.359039,45.16960100000001,0 -66.287514,45.154671,0 -66.282059,45.134621,0 -66.228683,45.047981,0 -66.090752,45.06219899999999,0 -66.166634,45.16861,0 -66.23634300000001,45.20367100000001,0 -66.273308,45.28697999999999,0 -66.46867399999999,45.252258,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-09-020-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.42321800000001,45.116192,0 -66.45539100000001,45.11805,0 -66.451736,45.10049099999999,0 -66.466431,45.06657000000001,0 -66.47998,45.049801,0 -66.228683,45.047981,0 -66.282059,45.134621,0 -66.287514,45.154671,0 -66.359039,45.16960100000001,0 -66.42321800000001,45.116192,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-09-020-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.423073,45.21841,0 -66.45845799999999,45.214199,0 -66.44609800000001,45.167721,0 -66.472382,45.144611,0 -66.499893,45.127392,0 -66.499893,45.125759,0 -66.497337,45.06646000000001,0 -66.47998,45.049801,0 -66.466431,45.06657000000001,0 -66.451736,45.10049099999999,0 -66.45539100000001,45.11805,0 -66.42321800000001,45.116192,0 -66.359039,45.16960100000001,0 -66.423073,45.21841,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-10-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.46867399999999,45.252258,0 -66.54641700000001,45.25407,0 -66.532692,45.23991,0 -66.497299,45.163731,0 -66.522774,45.1362,0 -66.520599,45.12319899999999,0 -66.52126300000001,45.119141,0 -66.525177,45.117401,0 -66.523331,45.086651,0 -66.497337,45.06646000000001,0 -66.499893,45.125759,0 -66.499893,45.127392,0 -66.472382,45.144611,0 -66.44609800000001,45.167721,0 -66.45845799999999,45.214199,0 -66.46867399999999,45.252258,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-11-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.624077,45.25407,0 -66.624077,45.208019,0 -66.56699399999999,45.156601,0 -66.574333,45.125832,0 -66.544731,45.117161,0 -66.54489100000001,45.110989,0 -66.544884,45.088661,0 -66.523331,45.086651,0 -66.525177,45.117401,0 -66.52126300000001,45.119141,0 -66.520599,45.12319899999999,0 -66.522774,45.1362,0 -66.497299,45.163731,0 -66.532692,45.23991,0 -66.54641700000001,45.25407,0 -66.624077,45.25407,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-12-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.65261099999999,45.1908,0 -66.629707,45.160431,0 -66.60584299999999,45.129711,0 -66.600487,45.11903,0 -66.585587,45.099709,0 -66.581779,45.098789,0 -66.581886,45.088711,0 -66.544884,45.088661,0 -66.54489100000001,45.110989,0 -66.544731,45.117161,0 -66.574333,45.125832,0 -66.56699399999999,45.156601,0 -66.624077,45.208019,0 -66.65261099999999,45.1908,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-13-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.657928,45.14056,0 -66.644539,45.122231,0 -66.668488,45.097462,0 -66.66158299999999,45.08192100000001,0 -66.646553,45.077251,0 -66.634033,45.05761,0 -66.581886,45.088711,0 -66.581779,45.098789,0 -66.585587,45.099709,0 -66.600487,45.11903,0 -66.60584299999999,45.129711,0 -66.629707,45.160431,0 -66.657928,45.14056,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-13-010-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.709869,45.061459,0 -66.71790300000001,45.056599,0 -66.71880299999999,45.04174,0 -66.634033,45.05761,0 -66.646553,45.077251,0 -66.66158299999999,45.08192100000001,0 -66.668488,45.097462,0 -66.709869,45.061459,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-13-010-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.716583,45.124882,0 -66.74294999999999,45.118,0 -66.74733000000001,45.07338000000001,0 -66.74857299999999,45.05857799999999,0 -66.74909200000001,45.049252,0 -66.75103,45.03725799999999,0 -66.71880299999999,45.04174,0 -66.71790300000001,45.056599,0 -66.709869,45.061459,0 -66.668488,45.097462,0 -66.644539,45.122231,0 -66.657928,45.14056,0 -66.716583,45.124882,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-13-010-004</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.755043,45.058369,0 -66.76908899999999,45.047649,0 -66.784233,45.04052,0 -66.784927,45.031818,0 -66.75103,45.03725799999999,0 -66.74909200000001,45.049252,0 -66.74857299999999,45.05857799999999,0 -66.755043,45.058369,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-13-010-005</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.77538300000001,45.05793000000001,0 -66.806122,45.04040100000001,0 -66.80671700000001,45.04011199999999,0 -66.80832700000001,45.03858200000001,0 -66.81186700000001,45.03664000000001,0 -66.784927,45.031818,0 -66.784233,45.04052,0 -66.76908899999999,45.047649,0 -66.755043,45.05836099999999,0 -66.74857299999999,45.05857799999999,0 -66.74733000000001,45.07338000000001,0 -66.77538300000001,45.05793000000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-13-010-006</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.78569,45.061939,0 -66.791817,45.06273999999999,0 -66.818207,45.049129,0 -66.821808,45.046501,0 -66.81186700000001,45.03664000000001,0 -66.80832700000001,45.03858200000001,0 -66.80671700000001,45.04011199999999,0 -66.806122,45.04040100000001,0 -66.77538300000001,45.05793000000001,0 -66.78569,45.061939,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-14-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.74733000000001,45.07338000000001,0 -66.74294999999999,45.118,0 -66.716583,45.124882,0 -66.729073,45.162621,0 -66.77010300000001,45.154301,0 -66.774513,45.144341,0 -66.825317,45.115341,0 -66.829437,45.08792100000001,0 -66.823593,45.07793,0 -66.815887,45.07128899999999,0 -66.81894699999999,45.06163,0 -66.819656,45.060291,0 -66.819794,45.060131,0 -66.832222,45.05249,0 -66.821808,45.046501,0 -66.818207,45.049129,0 -66.791817,45.06273999999999,0 -66.78569,45.061939,0 -66.77538300000001,45.05793000000001,0 -66.74733000000001,45.07338000000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-14-010-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.88587200000001,45.092861,0 -66.879921,45.073231,0 -66.878838,45.060081,0 -66.88584899999999,45.04369,0 -66.892174,45.03810899999999,0 -66.898003,45.033031,0 -66.896843,45.01532000000001,0 -66.867554,45.01532000000001,0 -66.866837,45.023121,0 -66.86322,45.02529899999999,0 -66.862244,45.026402,0 -66.857224,45.029758,0 -66.85189800000001,45.03685,0 -66.841133,45.04670000000001,0 -66.832222,45.05249,0 -66.819794,45.060131,0 -66.819656,45.060291,0 -66.81894699999999,45.06163,0 -66.815887,45.07128899999999,0 -66.823593,45.07793,0 -66.829437,45.08792100000001,0 -66.825317,45.115341,0 -66.88587200000001,45.092861,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-14-010-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.821808,45.046501,0 -66.832222,45.05249,0 -66.841133,45.04670000000001,0 -66.85189800000001,45.03685,0 -66.857224,45.029758,0 -66.862244,45.026402,0 -66.86322,45.02529899999999,0 -66.866837,45.023121,0 -66.867554,45.01532000000001,0 -66.829872,45.015339,0 -66.81186700000001,45.03664000000001,0 -66.821808,45.046501,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-15-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.90149700000001,45.098091,0 -66.908867,45.115501,0 -66.911102,45.11628,0 -66.92559799999999,45.120541,0 -66.933037,45.06422,0 -66.90323600000001,45.038559,0 -66.898003,45.033031,0 -66.892174,45.03810899999999,0 -66.88584899999999,45.04369,0 -66.878838,45.060081,0 -66.879921,45.073231,0 -66.88587200000001,45.092861,0 -66.90149700000001,45.098091,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-16-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.89489,45.17018900000001,0 -66.91342899999999,45.16032,0 -66.92379800000001,45.138889,0 -66.92498000000001,45.13703899999999,0 -66.925163,45.133942,0 -66.92559799999999,45.120541,0 -66.911102,45.11628,0 -66.908867,45.115501,0 -66.90149700000001,45.098091,0 -66.88587200000001,45.092861,0 -66.825317,45.115341,0 -66.774513,45.144341,0 -66.77010300000001,45.154301,0 -66.729073,45.162621,0 -66.68946800000001,45.202301,0 -66.756721,45.255241,0 -66.958221,45.257832,0 -66.89489,45.17018900000001,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-16-010-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.996674,45.25832,0 -67.01889799999999,45.248852,0 -66.999107,45.229111,0 -66.974876,45.16021,0 -66.968971,45.149971,0 -66.96887200000001,45.149799,0 -66.97107699999999,45.13697100000001,0 -66.97236599999999,45.120602,0 -66.92559799999999,45.12048,0 -66.925163,45.133942,0 -66.92498000000001,45.13703899999999,0 -66.92379800000001,45.138889,0 -66.91342899999999,45.16032,0 -66.89489,45.17018900000001,0 -66.958221,45.257832,0 -66.996674,45.25832,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-16-010-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-67.073837,45.231171,0 -67.089432,45.20322,0 -67.065292,45.183319,0 -67.04209899999999,45.18551999999999,0 -67.02538300000001,45.177021,0 -67.013397,45.17411,0 -67.002533,45.14506900000001,0 -66.993263,45.132889,0 -66.984573,45.12027,0 -66.97236599999999,45.120602,0 -66.97107699999999,45.13697100000001,0 -66.96887200000001,45.149799,0 -66.968971,45.149971,0 -66.974876,45.16021,0 -66.999107,45.229111,0 -67.073837,45.231171,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-16-020-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-67.092163,45.171509,0 -67.06253100000001,45.152611,0 -67.04377,45.14151,0 -67.032257,45.125118,0 -67.011787,45.119091,0 -66.984573,45.12027,0 -66.993263,45.132889,0 -67.002533,45.14506900000001,0 -67.013397,45.17411,0 -67.02538300000001,45.177021,0 -67.04209899999999,45.18551999999999,0 -67.065292,45.183319,0 -67.089432,45.20322,0 -67.092163,45.171509,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-16-020-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-67.122597,45.168072,0 -67.122597,45.15432,0 -67.08809700000001,45.12968799999999,0 -67.075211,45.095879,0 -67.05354300000001,45.094589,0 -67.02005,45.09476100000001,0 -67.009323,45.09462,0 -67.011787,45.119091,0 -67.032257,45.125118,0 -67.04377,45.14151,0 -67.06253100000001,45.152611,0 -67.092163,45.171509,0 -67.122597,45.168072,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-16-020-003</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-67.082932,45.07645,0 -67.094292,45.074131,0 -67.076263,45.044331,0 -67.036568,45.04869099999999,0 -67.02218600000001,45.06319,0 -67.009323,45.09462,0 -67.02005,45.09476100000001,0 -67.05354300000001,45.094589,0 -67.075211,45.095879,0 -67.082932,45.07645,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-16-030-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-67.3479,45.254101,0 -67.421356,45.2509,0 -67.47206900000001,45.2509,0 -67.39698,45.141708,0 -67.33654,45.12206999999999,0 -67.292648,45.147331,0 -67.28093699999999,45.18536,0 -67.22869900000001,45.16094999999999,0 -67.223038,45.16321899999999,0 -67.217827,45.166439,0 -67.213516,45.1674,0 -67.20850400000001,45.169201,0 -67.204964,45.17126799999999,0 -67.20266,45.17121899999999,0 -67.19257399999999,45.16605,0 -67.19064299999999,45.165459,0 -67.167717,45.16452,0 -67.158661,45.16185,0 -67.144768,45.14576,0 -67.12863900000001,45.13213,0 -67.112427,45.11243799999999,0 -67.112083,45.111691,0 -67.094437,45.074371,0 -67.094292,45.074131,0 -67.082932,45.07645,0 -67.075211,45.095879,0 -67.08809700000001,45.12968799999999,0 -67.122597,45.15432,0 -67.122597,45.168072,0 -67.13980100000001,45.169479,0 -67.160248,45.171829,0 -67.204826,45.180199,0 -67.247139,45.19865,0 -67.254936,45.251808,0 -67.3479,45.254101,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-16-030-002</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-67.12344400000001,45.235981,0 -67.21138000000001,45.25502,0 -67.254936,45.251808,0 -67.247139,45.19865,0 -67.204826,45.180199,0 -67.160248,45.171829,0 -67.13980100000001,45.169479,0 -67.122597,45.168072,0 -67.092163,45.171509,0 -67.089432,45.20322,0 -67.073837,45.231171,0 -67.12344400000001,45.235981,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-17-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-67.02368199999999,44.98386,0 -67.029037,44.966099,0 -67.02229300000001,44.95491,0 -67.021767,44.95385,0 -67.019318,44.95232,0 -67.009598,44.94458,0 -67.00872,44.943661,0 -67.001572,44.934132,0 -66.999878,44.932171,0 -66.999298,44.93108,0 -66.996742,44.928108,0 -66.968643,44.90995,0 -66.928978,44.955059,0 -66.903397,44.974209,0 -66.90026899999999,44.983822,0 -66.89617200000001,45.00457000000001,0 -66.89608800000001,45.00547,0 -66.896843,45.01532000000001,0 -66.898003,45.033031,0 -66.90323600000001,45.038559,0 -66.933037,45.06422,0 -67.02368199999999,44.98386,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-18-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.968643,44.90995,0 -66.97210699999999,44.89463,0 -66.97988100000001,44.877312,0 -66.98201,44.867119,0 -66.980591,44.86034,0 -66.97994199999999,44.85931,0 -66.97466300000001,44.85083,0 -66.97474699999999,44.841461,0 -66.965187,44.82872,0 -66.932442,44.825359,0 -66.92147799999999,44.818119,0 -66.874878,44.910278,0 -66.879059,44.950859,0 -66.901169,44.967339,0 -66.928978,44.955059,0 -66.968643,44.90995,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>NB-19-010-001</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>Subsector Polygon</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<Polygon>
+					<tessellate>1</tessellate>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-66.96212800000001,44.609718,0 -66.800781,44.533279,0 -66.63464399999999,44.622459,0 -66.699181,44.80167,0 -66.780457,44.82716,0 -66.849777,44.800831,0 -66.96212800000001,44.609718,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+	</Folder>
+</Document>
+</kml>
