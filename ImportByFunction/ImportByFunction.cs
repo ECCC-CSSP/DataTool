@@ -12883,25 +12883,49 @@ namespace ImportByFunction
 
                     TVItemIDClassificationList.Add(tvItemModelClass.TVItemID);
 
+                    bool CoordListIsDifferent = false;
                     List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelClass.TVItemID);
                     foreach (MapInfoModel mapInfoModel in mapInfoModelList)
                     {
                         if (mapInfoModel.TVType == tvType)
                         {
-                            MapInfoModel mapInfoModelDeletRet = mapInfoService.PostDeleteMapInfoDB(mapInfoModel.MapInfoID);
-                            if (!string.IsNullOrWhiteSpace(mapInfoModelDeletRet.Error))
+                            List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithMapInfoIDDB(mapInfoModel.MapInfoID);
+                            if (mapInfoPointModelList.Count != polyObj.coordList.Count)
                             {
-                                richTextBoxStatus.AppendText($"{mapInfoModelDeletRet.Error}\r\n");
-                                return;
+                                CoordListIsDifferent = true;
+                            }
+                            else
+                            {
+                                for (int i = 0, count = mapInfoPointModelList.Count; i < count; i++)
+                                {
+                                    if (!(mapInfoPointModelList[i].Lat == polyObj.coordList[i].Lat && mapInfoPointModelList[i].Lng == polyObj.coordList[i].Lng))
+                                    {
+                                        CoordListIsDifferent = true;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (CoordListIsDifferent)
+                            {
+                                MapInfoModel mapInfoModelDeletRet = mapInfoService.PostDeleteMapInfoDB(mapInfoModel.MapInfoID);
+                                if (!string.IsNullOrWhiteSpace(mapInfoModelDeletRet.Error))
+                                {
+                                    richTextBoxStatus.AppendText($"{mapInfoModelDeletRet.Error}\r\n");
+                                    return;
+                                }
                             }
                         }
                     }
 
-                    MapInfoModel mapInfoModelRet = tvItemService.CreateMapInfoObjectDB(polyObj.coordList, MapInfoDrawTypeEnum.Polyline, tvType, tvItemModelClass.TVItemID);
-                    if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
+                    if (CoordListIsDifferent)
                     {
-                        richTextBoxStatus.AppendText($"{mapInfoModelRet.Error}\r\n");
-                        return;
+                        MapInfoModel mapInfoModelRet = tvItemService.CreateMapInfoObjectDB(polyObj.coordList, MapInfoDrawTypeEnum.Polyline, tvType, tvItemModelClass.TVItemID);
+                        if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
+                        {
+                            richTextBoxStatus.AppendText($"{mapInfoModelRet.Error}\r\n");
+                            return;
+                        }
                     }
 
                     ClassificationModel classificationModel = classificationService.GetClassificationModelWithClassificationTVItemIDDB(tvItemModelClass.TVItemID);
