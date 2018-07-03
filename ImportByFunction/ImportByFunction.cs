@@ -12648,13 +12648,22 @@ namespace ImportByFunction
             #region Reading the NB_Class_2012-06.KML
             List<PolyObj> polyObjList = new List<PolyObj>();
 
-            FileInfo fi = new FileInfo(@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Data_inputs\Classification_Polygons.KML");
+            FileInfo fi = new FileInfo(@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Data_inputs\ClassificationPolygons_NB.KML");
 
             if (!fi.Exists)
             {
                 richTextBoxStatus.AppendText("File not found [" + fi.FullName + "]\r\n");
                 return;
             }
+
+            StreamReader sr = fi.OpenText();
+            StringBuilder sb = new StringBuilder(sr.ReadToEnd());
+            sb.Replace("xsi:schemaLocation", "xmlns");
+            sr.Close();
+
+            StreamWriter sw = fi.CreateText();
+            sw.Write(sb.ToString());
+            sw.Close();
 
             XmlDocument doc = new XmlDocument();
             doc.Load(fi.FullName);
@@ -12669,7 +12678,7 @@ namespace ImportByFunction
             #region Class_Subsector_Input.kml
             List<PolyObj> polyObjList2 = new List<PolyObj>();
 
-            FileInfo fi2 = new FileInfo(@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Data_inputs\Classification_Input.kml");
+            FileInfo fi2 = new FileInfo(@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Data_inputs\ClassificationInputs_NB.kml");
 
             if (!fi2.Exists)
             {
