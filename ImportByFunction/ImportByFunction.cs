@@ -12190,15 +12190,15 @@ namespace ImportByFunction
                 int slefij = 34;
             }
 
-            TVItemModel tvItemModelBC = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "British Columbia", TVTypeEnum.Province);
-            if (!string.IsNullOrWhiteSpace(tvItemModelBC.Error))
+            TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "New Brunswick", TVTypeEnum.Province);
+            if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
             {
                 int slefij = 34;
             }
 
-            List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelBC.TVItemID, TVTypeEnum.Subsector);
+            List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNB.TVItemID, TVTypeEnum.Subsector);
 
-            sb.AppendLine("Subsector\tCount Samples");
+            sb.AppendLine("Subsector\tRun DateTime\tStart Time\tEnd Time\tMinutes");
             foreach (TVItemModel tvItemModelSS in tvitemModelSSList)
             {
                 lblStatus.Text = tvItemModelSS.TVText;
@@ -12206,93 +12206,35 @@ namespace ImportByFunction
                 Application.DoEvents();
 
                 string TVText = tvItemModelSS.TVText.Substring(0, tvItemModelSS.TVText.IndexOf(" "));
-                //string Prov = TVText.Substring(0, 2);
-                //string Area = TVText.Substring(3, 2);
-                //string Sector = TVText.Substring(6, 3);
-                //string Subsector = TVText.Substring(10, 3);
-
-                //List<TempData.ASGADSample> ASGADSammpleList = new List<ASGADSample>();
-
-                //using (TempDataToolDBEntities td = new TempDataToolDBEntities())
-                //{
-                //    ASGADSammpleList = (from c in td.ASGADSamples
-                //                        where c.PROV == Prov
-                //                        && c.AREA == Area
-                //                        && c.SECTOR == Sector
-                //                        && c.SUBSECTOR == Subsector
-                //                        orderby c.STAT_NBR, c.SAMP_DATE
-                //                        select c).ToList();
-                //}
 
                 using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
                 {
-                    var MWQMSampleAndTVItemList = (from c in db.MWQMSamples
-                                                   from t in db.TVItems
-                                                   from tl in db.TVItemLanguages
-                                                   where c.MWQMSiteTVItemID == t.TVItemID
-                                                   && t.TVItemID == tl.TVItemID
-                                                   && t.TVType == (int)TVTypeEnum.MWQMSite
-                                                   && t.TVPath.StartsWith(tvItemModelSS.TVPath + "p")
-                                                   && tl.Language == (int)LanguageEnum.en
-                                                   && tl.TVText.EndsWith("F")
-                                                   orderby tl.TVText, c.SampleDateTime_Local
-                                                   select new { c, tl }).ToList();
+                    var MWQMRunAndTimeList = (from c in db.MWQMRuns
+                                              where c.SubsectorTVItemID == tvItemModelSS.TVItemID
+                                              orderby c.DateTime_Local
+                                              select c).ToList();
 
 
-                    if (MWQMSampleAndTVItemList.Count > 0)
+                    foreach (var mwqmRunAndTime in MWQMRunAndTimeList)
                     {
-                        foreach (var aaa in MWQMSampleAndTVItemList.Take(4))
-                        {
-                            if (aaa.tl.TVText.EndsWith("F"))
-                            {
-                                aaa.c.UseForOpenData = false;
-                            }
-                        }
+                        var MWQMSampleStart = (from c in db.MWQMSamples
+                                               where c.MWQMRunTVItemID == mwqmRunAndTime.MWQMRunTVItemID
+                                              orderby c.SampleDateTime_Local
+                                              select c).FirstOrDefault();
+                        var MWQMSampleEnd = (from c in db.MWQMSamples
+                                             where c.MWQMRunTVItemID == mwqmRunAndTime.MWQMRunTVItemID
+                                             orderby c.SampleDateTime_Local descending
+                                             select c).FirstOrDefault();
 
-                        try
+                        if (MWQMSampleStart != null && MWQMSampleEnd != null)
                         {
-                            db.SaveChanges();
-                        }
-                        catch (Exception)
-                        {
-                            int silfej = 34;
+                            TimeSpan ts = new TimeSpan(MWQMSampleEnd.SampleDateTime_Local.Ticks - MWQMSampleStart.SampleDateTime_Local.Ticks);
+
+                            sb.AppendLine($"{TVText}\t{mwqmRunAndTime.DateTime_Local}\t{MWQMSampleStart.SampleDateTime_Local}\t{MWQMSampleEnd.SampleDateTime_Local}\t{ts.TotalMinutes}");
                         }
                     }
 
-                    sb.AppendLine(TVText + "\t" + MWQMSampleAndTVItemList.Count);
-
-
-                    //MWQMSample mwqmSampleOld = new MWQMSample();
-                    //foreach (var mwqmSampleAndTVItem in MWQMSampleAndTVItemList)
-                    //{
-                    //    if (mwqmSampleOld.SampleDateTime_Local.Year == mwqmSampleAndTVItem.c.SampleDateTime_Local.Year
-                    //        && mwqmSampleOld.SampleDateTime_Local.Month == mwqmSampleAndTVItem.c.SampleDateTime_Local.Month
-                    //        && mwqmSampleOld.SampleDateTime_Local.Day == mwqmSampleAndTVItem.c.SampleDateTime_Local.Day
-                    //        && mwqmSampleOld.MWQMSiteTVItemID == mwqmSampleAndTVItem.c.MWQMSiteTVItemID)
-                    //    {
-                    //        sb.AppendLine(TVText + "\t" + mwqmSampleAndTVItem.tl.TVText + "\t" + mwqmSampleOld.SampleDateTime_Local + "\t" + mwqmSampleAndTVItem.c.SampleDateTime_Local);
-                    //    }
-                    //    mwqmSampleOld = mwqmSampleAndTVItem.c;
-
-                    //}
-
-                    //foreach (TempData.ASGADSample asgadSample in ASGADSammpleList)
-                    //{
-                    //    var MWQMSample = (from t in MWQMSampleAndTVItemList
-                    //                      where asgadSample.STAT_NBR == t.tl.TVText
-                    //                      && asgadSample.SAMP_DATE.Value.Year == t.c.SampleDateTime_Local.Year
-                    //                      && asgadSample.SAMP_DATE.Value.Month == t.c.SampleDateTime_Local.Month
-                    //                      && asgadSample.SAMP_DATE.Value.Day == t.c.SampleDateTime_Local.Day
-                    //                      select t).FirstOrDefault();
-                    //    if (MWQMSample == null)
-                    //    {
-                    //        sb.AppendLine(TVText + "\t" + asgadSample.STAT_NBR + "\t" + asgadSample.SAMP_DATE);
-                    //    }
-                    //}
-
                 }
-
-                //break;
             }
 
             richTextBoxStatus.Text = sb.ToString();
