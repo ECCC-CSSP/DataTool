@@ -13670,6 +13670,7 @@ namespace ImportByFunction
 
         private void button43_Click(object sender, EventArgs e)
         {
+
             List<string> startWithList = new List<string>() { "101", "143", "910" };
 
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -13712,7 +13713,8 @@ namespace ImportByFunction
                         List<string> PolSourceObsInfoList = polSourceObservationIssueModel.ObservationInfo.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
 
                         // doing the other language
-                        foreach (LanguageEnum lang in new List<LanguageEnum>() { LanguageEnum.en, LanguageEnum.fr })
+                        foreach (LanguageEnum lang in new List<LanguageEnum>() { LanguageEnum.en, LanguageEnum.fr
+})
                         {
                             Thread.CurrentThread.CurrentCulture = new CultureInfo(lang + "-CA");
                             Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang + "-CA");
