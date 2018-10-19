@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSSPModelsDLL.Models;
-using CSSPWebToolsDBDLL.Services;
-using CSSPWebToolsDBDLL;
+using CSSPDBDLL.Services;
+using CSSPDBDLL;
 using CSSPEnumsDLL.Enums;
 
 namespace ImportByFunction
@@ -22,7 +22,7 @@ namespace ImportByFunction
             lblStatus.Refresh();
             Application.DoEvents();
 
-            if (!CSSPWebToolsDBisOK())
+            if (!CSSPDBisOK())
                 return false;
 
             testDBService.FillTableNameToDeleteList(AllTablesToDelete);
@@ -32,7 +32,7 @@ namespace ImportByFunction
                 return false;
             }
 
-            using (CSSPWebToolsDBEntities dbMVC = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities dbMVC = new CSSPDBEntities())
             {
                 int CurrentTVLevel = 20;
                 foreach (DBTable dbTable in AllTablesToDelete)

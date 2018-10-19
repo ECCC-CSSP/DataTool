@@ -1,8 +1,8 @@
 ﻿using CSSPEnumsDLL.Enums;
 using CSSPEnumsDLL.Services;
 using CSSPModelsDLL.Models;
-using CSSPWebToolsDBDLL;
-using CSSPWebToolsDBDLL.Services;
+using CSSPDBDLL;
+using CSSPDBDLL.Services;
 using PCCSM;
 using System;
 using System.Collections.Generic;
@@ -530,7 +530,7 @@ namespace ImportByFunction
         }
         private bool CreateRootAndUsersDBInfo()
         {
-            if (!CSSPWebToolsDBisOK()) return false;
+            if (!CSSPDBisOK()) return false;
             if (!CreateRootTVItem()) return false;
             if (!CreateFirstNewUser()) return false;
             if (!CreateNewUsers()) return false;
@@ -4196,7 +4196,7 @@ namespace ImportByFunction
                               orderby c.TVItemID
                               select c).Take(take).ToList();
 
-                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities dd = new CSSPDBEntities())
                 {
                     foreach (TVItem tvItem in tvItemList)
                     {
@@ -4974,7 +4974,7 @@ namespace ImportByFunction
             //richTextBoxStatus.AppendText("Subsector\tRunTVText\tMWQMSite\tTime1\tTime2\tFC1\tFC2\r\n");
 
             List<MWQMRun> tvItemRunList = new List<MWQMRun>();
-            using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities dd = new CSSPDBEntities())
             {
                 TVItem tvItemQC = (from t in dd.TVItems
                                    from tl in dd.TVItemLanguages
@@ -5006,7 +5006,7 @@ namespace ImportByFunction
                 lblStatus.Refresh();
                 Application.DoEvents();
 
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities db = new CSSPDBEntities())
                 {
                     List<MWQMSample> mwqmSampleList = (from s in db.MWQMSamples
                                                        where s.MWQMRunTVItemID == mwqmRun.MWQMRunTVItemID
@@ -5040,7 +5040,7 @@ namespace ImportByFunction
 
             //richTextBoxStatus.AppendText("Subsector\tRunTVText\tMWQMSite\tTime1\tTime2\tFC1\tFC2\r\n");
 
-            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
             //{
             //    TVItem tvItemPE = (from t in dd.TVItems
             //                       from tl in dd.TVItemLanguages
@@ -5105,7 +5105,7 @@ namespace ImportByFunction
             //    }
             //}
 
-            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
             //{
             //    TVItem tvItemPE = (from t in dd.TVItems
             //                       from tl in dd.TVItemLanguages
@@ -5156,7 +5156,7 @@ namespace ImportByFunction
             //                {
             //                    int selifj = 324234;
             //                }
-            //                using (CSSPWebToolsDBEntities ddd = new CSSPWebToolsDBEntities())
+            //                using (CSSPDBEntities ddd = new CSSPDBEntities())
             //                {
             //                    MWQMRun mwqmRunToChange = (from c in ddd.MWQMRuns
             //                                               where c.MWQMRunID == mwqmRun.c.MWQMRunID
@@ -5224,7 +5224,7 @@ namespace ImportByFunction
             //}
 
             //richTextBoxStatus.AppendText("Subsector\tRunTVText\tRunTVItemID\tRunType\tRunNumber\r\n");
-            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
             //{
             //    TVItem tvItemPE = (from t in dd.TVItems
             //                       from tl in dd.TVItemLanguages
@@ -5265,7 +5265,7 @@ namespace ImportByFunction
             //            {
             //                foreach (LanguageEnum language in new List<LanguageEnum>() { LanguageEnum.en, LanguageEnum.fr })
             //                {
-            //                    using (CSSPWebToolsDBEntities ddd = new CSSPWebToolsDBEntities())
+            //                    using (CSSPDBEntities ddd = new CSSPDBEntities())
             //                    {
             //                        TVItemLanguage tvItemLanguage = (from c in ddd.TVItemLanguages
             //                                                         where c.TVItemID == mwqmRun.c.MWQMRunTVItemID
@@ -5305,7 +5305,7 @@ namespace ImportByFunction
             //}
 
             //richTextBoxStatus.AppendText("Subsector\tRunTVText\tRunTVItemID\tRunType\tRunNumber\r\n");
-            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
             //{
             //    TVItem tvItemPE = (from t in dd.TVItems
             //                       from tl in dd.TVItemLanguages
@@ -5361,7 +5361,7 @@ namespace ImportByFunction
             //                int sleifsleifj = 34;
             //            }
 
-            //            using (CSSPWebToolsDBEntities ddd = new CSSPWebToolsDBEntities())
+            //            using (CSSPDBEntities ddd = new CSSPDBEntities())
             //            {
             //                foreach (var mwqmRun in mwqmRunList)
             //                {
@@ -5400,7 +5400,7 @@ namespace ImportByFunction
             //    }
             //}
             //richTextBoxStatus.AppendText("Subsector\tID\tMWQMRun\r\n");
-            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
             //{
             //    TVItem tvItemPE = (from t in dd.TVItems
             //                       from tl in dd.TVItemLanguages
@@ -5520,7 +5520,7 @@ namespace ImportByFunction
             //    lblStatus.Refresh();
             //    Application.DoEvents();
 
-            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities dd = new CSSPDBEntities())
             //    {
             //        int IDint = 0;
             //        if (!int.TryParse(ID, out IDint))
@@ -5560,7 +5560,7 @@ namespace ImportByFunction
 
             //richTextBoxStatus.AppendText("Subsector\tID\tMWQMSite\tIsAcive\r\n");
 
-            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
             //{
             //    TVItem tvItemNS = (from t in dd.TVItems
             //                       from tl in dd.TVItemLanguages
@@ -5802,7 +5802,7 @@ namespace ImportByFunction
             //        MWQMSiteName = "0000".Substring(0, 4 - MWQMSiteName.Length) + MWQMSiteName;
             //    }
 
-            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities dd = new CSSPDBEntities())
             //    {
             //        TVItem tvItemSS = (from t in dd.TVItems
             //                           from c in dd.TVItemLanguages
@@ -6314,7 +6314,7 @@ namespace ImportByFunction
             //        break;
             //    }
 
-            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities dd = new CSSPDBEntities())
             //    {
             //        int TVItemID = 0;
             //        if (!int.TryParse(ID, out TVItemID))
@@ -6356,7 +6356,7 @@ namespace ImportByFunction
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities();
+            //CSSPDBEntities db = new CSSPDBEntities();
             //TempData.TempDataToolDBEntities dbTD = new TempData.TempDataToolDBEntities();
 
             //List<TempData.ASGADStation> AsgadStationList = (from c in dbTD.ASGADStations
@@ -7602,7 +7602,7 @@ namespace ImportByFunction
             List<string> subsectorListStationASGAD = new List<string>();
             List<string> subsectorListRunASGAD = new List<string>();
             List<string> subsectorListSampleASGAD = new List<string>();
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 var subsectors = (from c in db.TVItems
                                   from cl in db.TVItemLanguages
@@ -7711,7 +7711,7 @@ namespace ImportByFunction
 
             using (TempData.TempDataToolDBEntities dbDT2 = new TempData.TempDataToolDBEntities())
             {
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities db = new CSSPDBEntities())
                 {
                     var subsectors = (from c in db.TVItems
                                       from cl in db.TVItemLanguages
@@ -7778,7 +7778,7 @@ namespace ImportByFunction
 
             using (TempData.TempDataToolDBEntities dbDT2 = new TempData.TempDataToolDBEntities())
             {
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities db = new CSSPDBEntities())
                 {
                     var subsectors = (from c in db.TVItems
                                       from cl in db.TVItemLanguages
@@ -7858,7 +7858,7 @@ namespace ImportByFunction
 
             using (TempData.TempDataToolDBEntities dbDT2 = new TempData.TempDataToolDBEntities())
             {
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities db = new CSSPDBEntities())
                 {
                     var subsectors = (from c in db.TVItems
                                       from cl in db.TVItemLanguages
@@ -7951,7 +7951,7 @@ namespace ImportByFunction
                 // get subsector with missing precipitation data in Run
 
                 List<MWQMRun> mwqmRunList = new List<MWQMRun>();
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities db = new CSSPDBEntities())
                 {
                     mwqmRunList = (from c in db.MWQMRuns
                                    where c.SubsectorTVItemID == tvItemModel.TVItemID
@@ -8022,7 +8022,7 @@ namespace ImportByFunction
             foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
             {
                 List<MWQMRun> mwqmRunList = new List<MWQMRun>();
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities db = new CSSPDBEntities())
                 {
                     mwqmRunList = (from c in db.MWQMRuns
                                    where c.SubsectorTVItemID == tvItemModel.TVItemID
@@ -8152,7 +8152,7 @@ namespace ImportByFunction
             TVItemLanguageService tvItemLanguageService = new TVItemLanguageService(language, user);
             MWQMRunService mwqmRunService = new MWQMRunService(language, user);
 
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 TVItem tvItemProv = (from c in db.TVItems
                                      from cl in db.TVItemLanguages
@@ -8264,7 +8264,7 @@ namespace ImportByFunction
             TVItemLanguageService tvItemLanguageService = new TVItemLanguageService(language, user);
             MWQMRunService mwqmRunService = new MWQMRunService(language, user);
 
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 TVItem tvItemProv = (from c in db.TVItems
                                      from cl in db.TVItemLanguages
@@ -8335,7 +8335,7 @@ namespace ImportByFunction
             MWQMSampleService sampleService = new MWQMSampleService(language, user);
             MWQMRunService mwqmRunService = new MWQMRunService(language, user);
 
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 TVItem tvItemProv = (from c in db.TVItems
                                      from cl in db.TVItemLanguages
@@ -8465,7 +8465,7 @@ namespace ImportByFunction
                                                                   orderby c.STAT_NBR, c.SAMP_DATE
                                                                   select c).ToList();
 
-                    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                    using (CSSPDBEntities db = new CSSPDBEntities())
                     {
                         TVItem tvItemProv = (from c in db.TVItems
                                              from cl in db.TVItemLanguages
@@ -8536,7 +8536,7 @@ namespace ImportByFunction
 
         private void button22_Click(object sender, EventArgs e)
         {
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 string provText = "Québec";
                 MWQMSampleService sampleService = new MWQMSampleService(LanguageEnum.en, user);
@@ -8594,7 +8594,7 @@ namespace ImportByFunction
 
         private void DeleteSite(TVItemModel tvItemModelSite)
         {
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 List<MWQMSample> mwqmSampleList = (from c in db.MWQMSamples
                                                    where c.MWQMSiteTVItemID == tvItemModelSite.TVItemID
@@ -8717,7 +8717,7 @@ namespace ImportByFunction
 
         private void button24_Click(object sender, EventArgs e)
         {
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 var SSList = (from c in db.TVItems
                               from cl in db.TVItemLanguages
@@ -8873,7 +8873,7 @@ namespace ImportByFunction
             //        break;
             //    }
 
-            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities dd = new CSSPDBEntities())
             //    {
             //        TVItem tvItemSS = (from t in dd.TVItems
             //                           from c in dd.TVItemLanguages
@@ -8941,7 +8941,7 @@ namespace ImportByFunction
         {
             //MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
             //int count = 0;
-            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
             //{
             //    var tvItemSSList = (from t in dd.TVItems
             //                        from tl in dd.TVItemLanguages
@@ -9025,7 +9025,7 @@ namespace ImportByFunction
         private void button27_Click(object sender, EventArgs e)
         {
             //List<PolSourceSite> polSourceSiteList = null;
-            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
             //{
             //    polSourceSiteList = (from c in dd.PolSourceSites
             //                         select c).ToList();
@@ -9033,7 +9033,7 @@ namespace ImportByFunction
 
             //while (true)
             //{
-            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities dd = new CSSPDBEntities())
             //    {
             //        List<PolSourceObservation> polSourceObsList = (from c in dd.PolSourceObservations
             //                                                       where c.PolSourceSiteID == null
@@ -9185,7 +9185,7 @@ namespace ImportByFunction
             //        break;
             //    }
 
-            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities dd = new CSSPDBEntities())
             //    {
             //        TVItem tvItemSS = (from t in dd.TVItems
             //                           from c in dd.TVItemLanguages
@@ -9518,7 +9518,7 @@ namespace ImportByFunction
             //    Application.DoEvents();
 
 
-            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities dd = new CSSPDBEntities())
             //    {
             //        var tvItemSS = (from t in dd.TVItems
             //                        from c in dd.TVItemLanguages
@@ -9641,7 +9641,7 @@ namespace ImportByFunction
             //}
 
             //List<string> SSList = new List<string>();
-            //using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
             //{
             //    SSList = (from c in dd.TVItems
             //              from cl in dd.TVItemLanguages
@@ -9770,7 +9770,7 @@ namespace ImportByFunction
             //    lblStatus.Refresh();
             //    Application.DoEvents();
 
-            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities dd = new CSSPDBEntities())
             //    {
             //        if (countSSOK > 1)
             //        {
@@ -9948,7 +9948,7 @@ namespace ImportByFunction
 
         private void button31_Click(object sender, EventArgs e)
         {
-            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities db = new CSSPDBEntities())
             //{
             //    TVItem tvItemGaspe = (from c in db.TVItems
             //                     where c.TVItemID == 48790 // Gaspé
@@ -10034,7 +10034,7 @@ namespace ImportByFunction
         private void button32_Click(object sender, EventArgs e)
         {
             richTextBoxStatus.Text = "Subsector,Site,Run Date,MPN,Type,Last Modified Date\r\n";
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 lblStatus.Text = "Starting";
                 lblStatus.Refresh();
@@ -10094,7 +10094,7 @@ namespace ImportByFunction
 
         private void button33_Click(object sender, EventArgs e)
         {
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
 
                 //    EmailDistributionListContactLanguageService EmailDistributionListContactLanguageService = new EmailDistributionListContactLanguageService(LanguageEnum.en, user);
@@ -10173,7 +10173,7 @@ namespace ImportByFunction
 
         private void button34_Click(object sender, EventArgs e)
         {
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 List<ClimateSite> climateSiteList = (from c in db.ClimateSites
                                                      where c.DailyEndDate_Local != null
@@ -10762,7 +10762,7 @@ namespace ImportByFunction
 
             //    SpreadSheetSiteIDAlreadyUsed.Add(int.Parse(dataOutSite.SpreadSheetSiteID));
 
-            //    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities db = new CSSPDBEntities())
             //    {
             //        TVItem tvItemSubsector = (from c in db.TVItems
             //                                  from cl in db.TVItemLanguages
@@ -11068,7 +11068,7 @@ namespace ImportByFunction
             //workbook.Close();
             //excel.Quit();
 
-            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities db = new CSSPDBEntities())
             //{
             //    return; // remove if you want this part to work.
 
@@ -11356,7 +11356,7 @@ namespace ImportByFunction
 
             //foreach (SS ss in SSList)
             //{
-            //    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities db = new CSSPDBEntities())
             //    {
             //        TVItem tvItemSS = (from c in db.TVItems
             //                           from cl in db.TVItemLanguages
@@ -11481,7 +11481,7 @@ namespace ImportByFunction
             // ------------------------------------------------------------------------------------------
 
 
-            using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            using (CSSPDBEntities db = new CSSPDBEntities())
             {
                 MWQMSample mwqmSampleOld = new MWQMSample();
 
@@ -11601,7 +11601,7 @@ namespace ImportByFunction
             // finding All Runs identified as Routine but TVText is not just Date
             // ------------------------------------------------------------------------------------------
 
-            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities db = new CSSPDBEntities())
             //{
             //    var ssList = (from c in db.TVItems
             //                  from cl in db.TVItemLanguages
@@ -11676,7 +11676,7 @@ namespace ImportByFunction
             // Filling TVText with appropriate info when run in not routine
             // -----------------------------------------------------------------------------------------
 
-            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities db = new CSSPDBEntities())
             //{
             //    List<MWQMRun> mwqmRunList = (from c in db.MWQMRuns
             //                                 where c.RunSampleType != (int)SampleTypeEnum.Routine
@@ -11731,7 +11731,7 @@ namespace ImportByFunction
             // -----------------------------------------------------------------------------------------
 
 
-            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities db = new CSSPDBEntities())
             //{
             //    List<MWQMRun> mwqmRunList = (from c in db.MWQMRuns
             //                       where c.DateTime_Local.Year == 2017
@@ -11878,7 +11878,7 @@ namespace ImportByFunction
 
         private void button36_Click(object sender, EventArgs e)
         {
-            //using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //using (CSSPDBEntities db = new CSSPDBEntities())
             //{
             //    List<MWQMRun> mwqmRunToDeleteList = new List<MWQMRun>();
             //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -12017,7 +12017,7 @@ namespace ImportByFunction
 
             //    richTextBoxStatus.AppendText(lblStatus.Text + "\r\n");
 
-            //    using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities dd = new CSSPDBEntities())
             //    {
             //        if (Run2 == "1")
             //        {
@@ -12208,7 +12208,7 @@ namespace ImportByFunction
 
                 string TVText = tvItemModelSS.TVText.Substring(0, tvItemModelSS.TVText.IndexOf(" "));
 
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities db = new CSSPDBEntities())
                 {
                     var MWQMRunAndTimeList = (from c in db.MWQMRuns
                                               where c.SubsectorTVItemID == tvItemModelSS.TVItemID
@@ -12302,7 +12302,7 @@ namespace ImportByFunction
 
                 string TVText = tvItemModelSS.TVText.Substring(0, tvItemModelSS.TVText.IndexOf(" "));
 
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities db = new CSSPDBEntities())
                 {
                     var mwqmSampleList = (from t in db.TVItems
                                           from tl in db.TVItemLanguages
@@ -12441,7 +12441,7 @@ namespace ImportByFunction
                 lblStatus.Refresh();
                 Application.DoEvents();
 
-                using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities db = new CSSPDBEntities())
                 {
                     var mwqmSampleList = (from t in db.TVItems
                                           from tl in db.TVItemLanguages
@@ -13047,7 +13047,7 @@ namespace ImportByFunction
             //    sb.AppendLine($@"					<outerBoundaryIs>");
             //    sb.AppendLine($@"						<LinearRing>");
             //    sb.AppendLine($@"							<coordinates>");
-            //    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities db = new CSSPDBEntities())
             //    {
             //        List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Polygon);
 
@@ -13277,7 +13277,7 @@ namespace ImportByFunction
             //    sb.AppendLine($@"					<outerBoundaryIs>");
             //    sb.AppendLine($@"						<LinearRing>");
             //    sb.AppendLine($@"							<coordinates>");
-            //    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //    using (CSSPDBEntities db = new CSSPDBEntities())
             //    {
             //        List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Polygon);
 
@@ -13433,7 +13433,7 @@ namespace ImportByFunction
             //        sb.AppendLine($@"			    	<styleUrl>#s_ylw-pushpin</styleUrl>");
             //        sb.AppendLine($@"			    	<Point>");
             //        sb.AppendLine($@"		    			<coordinates>");
-            //        using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //        using (CSSPDBEntities db = new CSSPDBEntities())
             //        {
             //            List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModel.TVItemID, TVTypeEnum.PolSourceSite, MapInfoDrawTypeEnum.Point);
 
@@ -13470,7 +13470,7 @@ namespace ImportByFunction
             //        sb.AppendLine($@"			    	<styleUrl>#msn_placemark_square</styleUrl>");
             //        sb.AppendLine($@"			    	<Point>");
             //        sb.AppendLine($@"		    			<coordinates>");
-            //        using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //        using (CSSPDBEntities db = new CSSPDBEntities())
             //        {
             //            List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModel.TVItemID, TVTypeEnum.MWQMSite, MapInfoDrawTypeEnum.Point);
 
@@ -13512,7 +13512,7 @@ namespace ImportByFunction
             //                    sb.AppendLine($@"			        	<styleUrl>#sn_shaded_dot</styleUrl>");
             //                    sb.AppendLine($@"			        	<Point>");
             //                    sb.AppendLine($@"		        			<coordinates>");
-            //                    using (CSSPWebToolsDBEntities db = new CSSPWebToolsDBEntities())
+            //                    using (CSSPDBEntities db = new CSSPDBEntities())
             //                    {
             //                        foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
             //                        {

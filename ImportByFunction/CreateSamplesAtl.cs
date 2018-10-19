@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using CSSPEnumsDLL.Enums;
-using CSSPWebToolsDBDLL;
+using CSSPDBDLL;
 using CSSPModelsDLL.Models;
-using CSSPWebToolsDBDLL.Services;
+using CSSPDBDLL.Services;
 
 namespace ImportByFunction
 {
@@ -91,7 +91,7 @@ namespace ImportByFunction
                     MWQMSiteDict.Add(kvp.Key + tvItemModel.TVText, tvItemModel.TVItemID);
                 }
 
-                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities dd = new CSSPDBEntities())
                 {
                     var mwqmRunTVItemList = (from c in dd.MWQMRuns
                                              from t in dd.TVItems
@@ -454,7 +454,7 @@ namespace ImportByFunction
                     MWQMSiteDict.Add(kvp.Key + tvItemModel.TVText, tvItemModel.TVItemID);
                 }
 
-                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities dd = new CSSPDBEntities())
                 {
                     var mwqmRunTVItemList = (from c in dd.MWQMRuns
                                              from t in dd.TVItems

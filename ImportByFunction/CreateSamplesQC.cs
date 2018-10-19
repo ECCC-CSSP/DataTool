@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using CSSPEnumsDLL.Enums;
-using CSSPWebToolsDBDLL;
+using CSSPDBDLL;
 using CSSPModelsDLL.Models;
-using CSSPWebToolsDBDLL.Services;
+using CSSPDBDLL.Services;
 
 namespace ImportByFunction
 {
@@ -394,7 +394,7 @@ namespace ImportByFunction
                         //    }
                         //}
                     }
-                    using (CSSPWebToolsDBEntities db2 = new CSSPWebToolsDBEntities())
+                    using (CSSPDBEntities db2 = new CSSPDBEntities())
                     {
                         try
                         {

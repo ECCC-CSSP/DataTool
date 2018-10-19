@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using CSSPEnumsDLL.Enums;
-using CSSPWebToolsDBDLL;
+using CSSPDBDLL;
 using CSSPModelsDLL.Models;
-using CSSPWebToolsDBDLL.Services;
+using CSSPDBDLL.Services;
 
 namespace ImportByFunction
 {
@@ -74,7 +74,7 @@ namespace ImportByFunction
                 MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
 
                 List<MWQMSample> mwqmSampleList = new List<MWQMSample>();
-                using (CSSPWebToolsDBEntities dd = new CSSPWebToolsDBEntities())
+                using (CSSPDBEntities dd = new CSSPDBEntities())
                 {
                     mwqmSampleList = (from c in dd.MWQMSamples
                                       from ts in dd.TVItems

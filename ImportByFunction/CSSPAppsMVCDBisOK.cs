@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CSSPWebToolsDBDLL.Services;
+using CSSPDBDLL.Services;
 using CSSPEnumsDLL.Enums;
 
 namespace ImportByFunction
 {
     public partial class ImportByFunction
     {
-        private bool CSSPWebToolsDBisOK()
+        private bool CSSPDBisOK()
         {
             if (Cancel) return false;
 
@@ -24,7 +24,7 @@ namespace ImportByFunction
             lblStatus.Refresh();
             Application.DoEvents();
 
-            string retStr = testDBService.CSSPWebToolsDBIsOK();
+            string retStr = testDBService.CSSPDBIsOK();
             if (!string.IsNullOrWhiteSpace(retStr))
             {
                 richTextBoxStatus.AppendText(retStr + "\r\n");
