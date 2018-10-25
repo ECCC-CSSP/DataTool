@@ -64,77 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateNewUsers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateFirstNewUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CleanDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateBCTVItemsFromAreasSectorsAndSubsectorFinalKML.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateClimate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateHydrometric.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateMapInfoFromLocationNameLatLongXLSAll.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateMapInfoFromLocationNameLatLongXLSJustProv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateMapInfosFromAreas_Sectors_SubsectorsKML.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateQCTVItemsFromAreasSectorsAndSubsectorFinalKML.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateCountryTVItem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CSSPAppsMVCDBisOK.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ImportByFunction.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ImportByFunction.Designer.cs">
       <DependentUpon>ImportByFunction.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateClimateSitesAll.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateHydrometricSitesAll.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateNomenclature.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreatePrecipitationsAtl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreatePrecipitationsBC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreatePrecipitationsQC.cs" />
-    <Compile Include="CreateRootTVItem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateRunsAtl.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="CreateRunsBC.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateRunsQC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateSamplesAtl.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateSamplesBC.cs">
@@ -143,43 +82,16 @@
     <Compile Include="CreateSamplesQC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateSanitaryAtl.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="CreateSanitaryBC.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateSanitaryQC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateStationsAtl.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="CreateStationsBC.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateStationsQC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateTVItemJustRootAndProvinces.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateTVItemsAll.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateUseOfClimateSitesAtl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateUseOfClimateSitesBC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateUseOfClimateSitesQC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateWQMLookupMPNs.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateWQMTVSubSectorsAll.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
