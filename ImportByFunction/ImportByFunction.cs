@@ -4665,19 +4665,20 @@ namespace ImportByFunction
         {
             int NumberOfSamples = 30;
             StringBuilder sb = new StringBuilder();
+            List<CSVValues> csvValuesList = new List<CSVValues>();
 
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
             MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
 
-            //int ProvTVItemID = 7; // NB
-            //string ProvText = "NB";
+            int ProvTVItemID = 7; // NB
+            string ProvText = "NB";
             //int ProvTVItemID = 8; // NS
             //string ProvText = "NS";
             //int ProvTVItemID = 9; // PE
             //string ProvText = "PE";
-            int ProvTVItemID = 10; // NL
-            string ProvText = "NL";
+            //int ProvTVItemID = 10; // NL
+            //string ProvText = "NL";
             //int ProvTVItemID = 11; // BC
             //string ProvText = "BC";
             //int ProvTVItemID = 12; // QC
@@ -4732,6 +4733,8 @@ namespace ImportByFunction
                 sb.AppendLine($@"		</IconStyle>");
                 sb.AppendLine($@"   </Style>");
             }
+            List<double> DryList = new List<double>() { 4, 8, 12, 16 };
+            List<double> WetList = new List<double>() { 12, 25, 37, 50 };
 
             #region Styles
             sb.AppendLine($@"	<Style id=""SS_Point"">");
@@ -4891,11 +4894,140 @@ namespace ImportByFunction
             sb.AppendLine($@"	<Folder>");
             sb.AppendLine($@"	<name>All-All-All ({ NumberOfSamples })</name>");
 
+            DoAllSubsectorStats(StatType.Run30, tvItemModelSSList, tvItemService, NumberOfSamples, DryList, WetList, csvValuesList, sb);
+
+            sb.AppendLine($@"	</Folder>");
+
+            // -------------------------------------------------------------------------------------------------------------
+            // End All-All-All 30 samples
+            // -------------------------------------------------------------------------------------------------------------
+            #endregion All-All-All 30 runs
+
+            #region Dry-All-All (4,8,12,16)mm
+            // -------------------------------------------------------------------------------------------------------------
+            // Start Dry-All-All (4,8,12,16)mm
+            // -------------------------------------------------------------------------------------------------------------
+
+            sb.AppendLine($@"	<Folder>");
+            sb.AppendLine($@"	<name>Dry-All-All (4,8,12,16)mm</name>");
+
+            DoAllSubsectorStats(StatType.Dry, tvItemModelSSList, tvItemService, NumberOfSamples, DryList, WetList, csvValuesList, sb);
+
+            sb.AppendLine($@"	</Folder>");
+
+            // -------------------------------------------------------------------------------------------------------------
+            // End Dry-All-All (4,8,12,16)mm
+            // -------------------------------------------------------------------------------------------------------------
+            #endregion Dry-All-All (4,8,12,16)mm
+
+            #region Wet-All-All (12,25,37,50)mm
+            // -------------------------------------------------------------------------------------------------------------
+            // Start Wet-All-All (12,25,37,50)mm
+            // -------------------------------------------------------------------------------------------------------------
+
+     
+            sb.AppendLine($@"	<Folder>");
+            sb.AppendLine($@"	<name>Wet-All-All (12,25,37,50)mm</name>");
+
+            DoAllSubsectorStats(StatType.Wet, tvItemModelSSList, tvItemService, NumberOfSamples, DryList, WetList, csvValuesList, sb);
+
+            sb.AppendLine($@"	</Folder>");
+
+            // -------------------------------------------------------------------------------------------------------------
+            // End Wet-All-All (12,25,37,50)mm
+            // -------------------------------------------------------------------------------------------------------------
+            #endregion Wet-All-All (12,25,37,50)mm
+
+            sb.AppendLine($@"</Document>");
+            sb.AppendLine($@"</kml>");
+
+            FileInfo fi = new FileInfo($@"C:\Users\leblancc\Desktop\StatsWithRain_{ ProvText }.kml");
+
+            StreamWriter sw = fi.CreateText();
+            sw.Write(sb.ToString());
+            sw.Close();
+
+            WriteCSVFile(ProvText, csvValuesList);
+
+            lblStatus.Text = "Done...";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+
+        }
+
+        private void WriteCSVFile(string ProvText, List<CSVValues> csvValuesList)
+        {
+            StringBuilder sbCSV = new StringBuilder();
+
+            sbCSV.AppendLine("Subsector,Site,StartYear,EndYear,StatType,Class,Letter,NumbSamples,P90,GM,Med,PercOver43,PercOver260,ValueList Dry(4_8_12_16) Wet(12_25_37_50)");
+
+            foreach (CSVValues csvValues in csvValuesList.OrderBy(c => c.Subsector).ThenBy(c => c.Site))
+            {
+                string P90Str = (csvValues.P90 < 0 ? "" : csvValues.P90.ToString().Replace(",", "."));
+                string GMStr = (csvValues.GM < 0 ? "" : csvValues.GM.ToString().Replace(",", "."));
+                string MedStr = (csvValues.Med < 0 ? "" : csvValues.Med.ToString().Replace(",", "."));
+                string PercOver43Str = (csvValues.PercOver43 < 0 ? "" : csvValues.PercOver43.ToString().Replace(",", "."));
+                string PercOver260Str = (csvValues.PercOver260 < 0 ? "" : csvValues.PercOver260.ToString().Replace(",", "."));
+
+                sbCSV.AppendLine($"{ csvValues.Subsector.Replace(",", "_") },{ csvValues.Site.Replace(",", "_") },{ csvValues.StartYear },{ csvValues.EndYear },{ csvValues.statType.ToString() },{ csvValues.ClassStr },{ csvValues.Letter },{ csvValues.NumbSamples },{ P90Str },{ GMStr },{ MedStr },{ PercOver43Str },{ PercOver260Str },{ csvValues.ValueList }");
+            }
+
+            FileInfo fi = new FileInfo($@"C:\Users\leblancc\Desktop\StatsWithRain_{ ProvText }.csv");
+
+            StreamWriter sw = fi.CreateText();
+            sw.Write(sbCSV.ToString());
+            sw.Close();
+
+        }
+
+        private enum StatType
+        {
+            Run30 = 1,
+            Dry = 2,
+            Wet = 3,
+        }
+
+        private class CSVValues
+        {
+            public string  Subsector { get; set; }
+            public string Site { get; set; }
+            public int StartYear { get; set; }
+            public int EndYear { get; set; }
+            public StatType statType { get; set; }
+            public string ClassStr { get; set; }
+            public string Letter { get; set; }
+            public int NumbSamples { get; set; }
+            public int P90 { get; set; }
+            public int GM { get; set; }
+            public int Med { get; set; }
+            public int PercOver43 { get; set; }
+            public int PercOver260 { get; set; }
+            public string ValueList { get; set; }
+        }
+
+        private class RainDays
+        {
+            public DateTime RunDate { get; set; }
+            public double R1 { get; set; }
+            public double R2 { get; set; }
+            public double R3 { get; set; }
+            public double R4 { get; set; }
+        }
+
+        private void DoAllSubsectorStats(StatType statType, List<TVItemModel> tvItemModelSSList, TVItemService tvItemService, int NumberOfSamples, List<double> DryList, List<double> WetList, List<CSVValues> csvValuesList, StringBuilder sb)
+        {
             foreach (TVItemModel tvItemModelSS in tvItemModelSSList)
             {
                 lblStatus.Text = tvItemModelSS.TVText;
                 lblStatus.Refresh();
                 Application.DoEvents();
+
+                string TVText = tvItemModelSS.TVText;
+                if (TVText.Contains(" "))
+                {
+                    TVText = TVText.Substring(0, TVText.IndexOf(" "));
+                }
 
                 //if (tvItemModelSS.TVItemID != 635)
                 //{
@@ -4908,6 +5040,7 @@ namespace ImportByFunction
                 List<MWQMSample> mwqmSampleListAll = new List<MWQMSample>();
                 List<MWQMSample> mwqmSampleListStat = new List<MWQMSample>();
                 List<TVItemModel> tvItemModelMWQMRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMRun).Where(c => c.IsActive == true).ToList();
+                List<RainDays> RainList = new List<RainDays>();
 
                 using (CSSPDBEntities db2 = new CSSPDBEntities())
                 {
@@ -4942,10 +5075,53 @@ namespace ImportByFunction
                                         where c.MapInfoID == mid
                                         select c).ToList();
 
-                    mwqmSampleListStat = (from c in mwqmSampleListAll
-                                          from r in mwqmRunList
-                                          where c.MWQMRunTVItemID == r.MWQMRunTVItemID
-                                          select c).ToList();
+                    if (statType == StatType.Run30)
+                    {
+                        mwqmSampleListStat = (from c in mwqmSampleListAll
+                                              from r in mwqmRunList
+                                              where c.MWQMRunTVItemID == r.MWQMRunTVItemID
+                                              select c).ToList();
+                    }
+                    else if (statType == StatType.Dry)
+                    {
+                        mwqmSampleListStat = (from c in mwqmSampleListAll
+                                              from r in mwqmRunList
+                                              let R1 = r.RainDay1_mm
+                                              let R2 = r.RainDay1_mm + r.RainDay2_mm
+                                              let R3 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm
+                                              let R4 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm + r.RainDay4_mm
+                                              where c.MWQMRunTVItemID == r.MWQMRunTVItemID
+                                              && (R1 <= DryList[0]
+                                              || R2 <= DryList[1]
+                                              || R3 <= DryList[2]
+                                              || R4 <= DryList[3])
+                                              select c).ToList();
+                    }
+                    else if (statType == StatType.Wet)
+                    {
+                       var  mwqmSampleListStatAndRain = (from c in mwqmSampleListAll
+                                              from r in mwqmRunList
+                                              let R1 = r.RainDay1_mm
+                                              let R2 = r.RainDay1_mm + r.RainDay2_mm
+                                              let R3 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm
+                                              let R4 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm + r.RainDay4_mm
+                                              where c.MWQMRunTVItemID == r.MWQMRunTVItemID
+                                              && (R1 >= WetList[0]
+                                              || R2 >= WetList[1]
+                                              || R3 >= WetList[2]
+                                              || R4 >= WetList[3])
+                                              select new { c, R1, R2, R3, R4 }).ToList();
+
+                        foreach (var sampleStatAndRain in mwqmSampleListStatAndRain)
+                        {
+                            mwqmSampleListStat.Add(sampleStatAndRain.c);
+                            RainList.Add(new RainDays() { RunDate = sampleStatAndRain.c.SampleDateTime_Local, R1 = (double)sampleStatAndRain.R1, R2 = (double)sampleStatAndRain.R2, R3 = (double)sampleStatAndRain.R3, R4 = (double)sampleStatAndRain.R4 });
+                        }
+                    }
+                    else
+                    {
+                        mwqmSampleListStat = new List<MWQMSample>();
+                    }
 
                 }
 
@@ -4987,9 +5163,10 @@ namespace ImportByFunction
                             int PercOver260Int = (int)Math.Round((double)PercOver260, 0);
 
                             LetterColorName letterColorName = new LetterColorName();
-
+                            string ClassStr = "";
                             if ((GeoMeanInt > 88) || (MedianInt > 88) || (P90Int > 260) || (PercOver260Int > 10))
                             {
+                                ClassStr = "NoDep";
                                 if ((GeoMeanInt > 181) || (MedianInt > 181) || (P90Int > 460) || (PercOver260Int > 18))
                                 {
                                     letterColorName = new LetterColorName() { Letter = "F", Color = "8888ff", Name = "NoDepuration" };
@@ -5017,6 +5194,7 @@ namespace ImportByFunction
                             }
                             else if ((GeoMeanInt > 14) || (MedianInt > 14) || (P90Int > 43) || (PercOver43Int > 10))
                             {
+                                ClassStr = "Fail";
                                 if ((GeoMeanInt > 76) || (MedianInt > 76) || (P90Int > 224) || (PercOver43Int > 27))
                                 {
                                     letterColorName = new LetterColorName() { Letter = "F", Color = "aa0000", Name = "Fail" };
@@ -5044,6 +5222,7 @@ namespace ImportByFunction
                             }
                             else
                             {
+                                ClassStr = "Pass";
                                 if ((GeoMeanInt > 12) || (MedianInt > 12) || (P90Int > 36) || (PercOver43Int > 8))
                                 {
                                     letterColorName = new LetterColorName() { Letter = "F", Color = "ccffcc", Name = "Pass" };
@@ -5082,482 +5261,116 @@ namespace ImportByFunction
                                 sb.AppendLine($@"	        	<name></name>");
                                 sb.AppendLine($@"	        	<styleUrl>#{ letterColorName.Name }_{ letterColorName.Letter }</styleUrl>");
                                 sb.AppendLine($@"	        	<Point>");
-                                sb.AppendLine($@"	        		<coordinates>{ mapInfoPoint.Lng },{ mapInfoPoint.Lat },0</coordinates>");
+                                if (statType == StatType.Dry)
+                                {
+                                    sb.AppendLine($@"	        		<coordinates>{ mapInfoPoint.Lng - 0.001D },{ mapInfoPoint.Lat - 0.001D },0</coordinates>");
+                                }
+                                else if (statType == StatType.Wet)
+                                {
+                                    sb.AppendLine($@"	        		<coordinates>{ mapInfoPoint.Lng + 0.001D },{ mapInfoPoint.Lat + 0.001D },0</coordinates>");
+                                }
+                                else
+                                {
+                                    sb.AppendLine($@"	        		<coordinates>{ mapInfoPoint.Lng },{ mapInfoPoint.Lat },0</coordinates>");
+                                }
                                 sb.AppendLine($@"	        	</Point>");
                                 sb.AppendLine($@"	        </Placemark>");
                             }
+
+                            StringBuilder sbValueList = new StringBuilder();
+                            foreach (MWQMSample mwqmSample in mwqmSampleList)
+                            {
+                                if (statType == StatType.Wet)
+                                {
+                                    StringBuilder sbRain = new StringBuilder();
+                                    RainDays rainDays = (from c in RainList
+                                                         where c.RunDate == mwqmSample.SampleDateTime_Local
+                                                         select c).FirstOrDefault();
+
+                                    if (rainDays != null)
+                                    {
+                                        sbRain.Append($"({ Math.Round(rainDays.R1, 0).ToString("F0") }_{ Math.Round(rainDays.R2, 0).ToString("F0") }_{ Math.Round(rainDays.R3, 0).ToString("F0") }_{ Math.Round(rainDays.R4, 0).ToString("F0") })");
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }{ sbRain.ToString() }|");
+                                    }
+                                    else
+                                    {
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }|");
+                                    }
+                                }
+                                else
+                                {
+                                    sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }|");
+                                }
+                            }
+                            CSVValues csvValues = new CSVValues()
+                            {
+                                Subsector = TVText,
+                                Site = tvItemModelMWQMSite.TVText,
+                                StartYear = mwqmSampleList[0].SampleDateTime_Local.Year,
+                                EndYear = mwqmSampleList[mwqmSampleList.Count - 1].SampleDateTime_Local.Year,
+                                statType = statType,
+                                ClassStr = ClassStr,
+                                Letter = letterColorName.Letter,
+                                NumbSamples = mwqmSampleList.Count,
+                                P90 = P90Int,
+                                GM = GeoMeanInt,
+                                Med = MedianInt,
+                                PercOver43 = PercOver43Int,
+                                PercOver260 = PercOver260Int,
+                                ValueList = sbValueList.ToString(),
+                            };
+
+                            csvValuesList.Add(csvValues);
                         }
-                    }
-                }
-
-                sb.AppendLine($@"	    </Folder>");
-            }
-
-            sb.AppendLine($@"	</Folder>");
-
-            // -------------------------------------------------------------------------------------------------------------
-            // End All-All-All 30 samples
-            // -------------------------------------------------------------------------------------------------------------
-            #endregion All-All-All 30 runs
-
-            #region Dry-All-All (4,8,12,16)mm
-            // -------------------------------------------------------------------------------------------------------------
-            // Start Dry-All-All (4,8,12,16)mm
-            // -------------------------------------------------------------------------------------------------------------
-
-            List<double> DryList = new List<double>() { 4, 8, 12, 16 };
-
-            sb.AppendLine($@"	<Folder>");
-            sb.AppendLine($@"	<name>Dry-All-All (4,8,12,16)mm</name>");
-
-            foreach (TVItemModel tvItemModelSS in tvItemModelSSList)
-            {
-                lblStatus.Text = tvItemModelSS.TVText;
-                lblStatus.Refresh();
-                Application.DoEvents();
-
-                //if (tvItemModelSS.TVItemID != 635)
-                //{
-                //    continue; // just doing Bouctouche for now
-                //}
-
-                List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMSite).Where(c => c.IsActive == true).ToList();
-                List<MapInfo> mapInfoList = new List<MapInfo>();
-                List<MapInfoPoint> mapInfoPointList = new List<MapInfoPoint>();
-                List<MWQMSample> mwqmSampleListAll = new List<MWQMSample>();
-                List<MWQMSample> mwqmSampleListStat = new List<MWQMSample>();
-                List<TVItemModel> tvItemModelMWQMRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMRun).Where(c => c.IsActive == true).ToList();
-
-                using (CSSPDBEntities db2 = new CSSPDBEntities())
-                {
-                    List<int> TVItemMWQMSiteList = tvItemModelMWQMSiteList.Select(c => c.TVItemID).Distinct().ToList();
-                    List<int> TVItemMWQMRunList = tvItemModelMWQMRunList.Select(c => c.TVItemID).Distinct().ToList();
-
-                    List<MWQMRun> mwqmRunList = (from c in db2.MWQMRuns
-                                                 from rid in TVItemMWQMRunList
-                                                 where c.MWQMRunTVItemID == rid
-                                                 && c.RunSampleType == (int)SampleTypeEnum.Routine
-                                                 select c).ToList();
-
-                    List<int> TVItemMWQMRunRoutineList = mwqmRunList.Select(c => c.MWQMRunTVItemID).Distinct().ToList();
-
-                    mwqmSampleListAll = (from c in db2.MWQMSamples
-                                         from tid in TVItemMWQMSiteList
-                                         from rid in TVItemMWQMRunRoutineList
-                                         where c.MWQMSiteTVItemID == tid
-                                         && c.MWQMRunTVItemID == rid
-                                         select c).ToList();
-
-                    mapInfoList = (from c in db2.MapInfos
-                                   from tid in TVItemMWQMSiteList
-                                   where c.TVItemID == tid
-                                   && c.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
-                                   select c).ToList();
-
-                    List<int> mapInfoIDList = mapInfoList.Select(c => c.MapInfoID).Distinct().ToList();
-
-                    mapInfoPointList = (from c in db2.MapInfoPoints
-                                        from mid in mapInfoIDList
-                                        where c.MapInfoID == mid
-                                        select c).ToList();
-
-                    mwqmSampleListStat = (from c in mwqmSampleListAll
-                                          from r in mwqmRunList
-                                          where c.MWQMRunTVItemID == r.MWQMRunTVItemID
-                                          && (r.RainDay1_mm <= DryList[0]
-                                          || (r.RainDay1_mm + r.RainDay2_mm) <= DryList[1]
-                                          || (r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm) <= DryList[2]
-                                          || (r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm + r.RainDay4_mm) <= DryList[3])
-                                          select c).ToList();
-
-                }
-
-                sb.AppendLine($@"	    <Folder>");
-                sb.AppendLine($@"	    <name>{ tvItemModelSS.TVText }</name>");
-
-                foreach (TVItemModel tvItemModelMWQMSite in tvItemModelMWQMSiteList)
-                {
-
-                    if (tvItemModelMWQMSite != null)
-                    {
-                        List<double> mwqmSampleFCList = (from c in mwqmSampleListStat
-                                                         where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                         orderby c.SampleDateTime_Local descending
-                                                         select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)
-                                                         ).ToList<double>();
-
-                        List<MWQMSample> mwqmSampleList = (from c in mwqmSampleListStat
-                                                           where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                           orderby c.SampleDateTime_Local descending
-                                                           select c).ToList<MWQMSample>();
-
-
-                        if (mwqmSampleFCList.Count >= 3)
+                        else
                         {
-                            double P90 = tvItemService.GetP90(mwqmSampleFCList);
-                            double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
-                            double Median = tvItemService.GetMedian(mwqmSampleFCList);
-                            double PercOver43 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
-                            double PercOver260 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
-                            int MinYear = mwqmSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
-                            int MaxYear = mwqmSampleList.Select(c => c.SampleDateTime_Local).Max().Year;
-
-                            int P90Int = (int)Math.Round((double)P90, 0);
-                            int GeoMeanInt = (int)Math.Round((double)GeoMean, 0);
-                            int MedianInt = (int)Math.Round((double)Median, 0);
-                            int PercOver43Int = (int)Math.Round((double)PercOver43, 0);
-                            int PercOver260Int = (int)Math.Round((double)PercOver260, 0);
-
-                            LetterColorName letterColorName = new LetterColorName();
-
-                            if ((GeoMeanInt > 88) || (MedianInt > 88) || (P90Int > 260) || (PercOver260Int > 10))
+                            StringBuilder sbValueList = new StringBuilder();
+                            foreach (MWQMSample mwqmSample in mwqmSampleList)
                             {
-                                if ((GeoMeanInt > 181) || (MedianInt > 181) || (P90Int > 460) || (PercOver260Int > 18))
+                                if (statType == StatType.Wet)
                                 {
-                                    letterColorName = new LetterColorName() { Letter = "F", Color = "8888ff", Name = "NoDepuration" };
-                                }
-                                else if ((GeoMeanInt > 163) || (MedianInt > 163) || (P90Int > 420) || (PercOver260Int > 17))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "E", Color = "9999ff", Name = "NoDepuration" };
-                                }
-                                else if ((GeoMeanInt > 144) || (MedianInt > 144) || (P90Int > 380) || (PercOver260Int > 15))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "D", Color = "aaaaff", Name = "NoDepuration" };
-                                }
-                                else if ((GeoMeanInt > 125) || (MedianInt > 125) || (P90Int > 340) || (PercOver260Int > 13))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "C", Color = "bbbbff", Name = "NoDepuration" };
-                                }
-                                else if ((GeoMeanInt > 107) || (MedianInt > 107) || (P90Int > 300) || (PercOver260Int > 12))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "B", Color = "ccccff", Name = "NoDepuration" };
+                                    StringBuilder sbRain = new StringBuilder();
+                                    RainDays rainDays = (from c in RainList
+                                                         where c.RunDate == mwqmSample.SampleDateTime_Local
+                                                         select c).FirstOrDefault();
+
+                                    if (rainDays != null)
+                                    {
+                                        sbRain.Append($"({ Math.Round(rainDays.R1, 0).ToString("F0") }_{ Math.Round(rainDays.R2, 0).ToString("F0") }_{ Math.Round(rainDays.R3, 0).ToString("F0") }_{ Math.Round(rainDays.R4, 0).ToString("F0") })");
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }{ sbRain.ToString() }|");
+                                    }
+                                    else
+                                    {
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }|");
+                                    }
                                 }
                                 else
                                 {
-                                    letterColorName = new LetterColorName() { Letter = "A", Color = "ddddff", Name = "NoDepuration" };
+                                    sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }|");
                                 }
                             }
-                            else if ((GeoMeanInt > 14) || (MedianInt > 14) || (P90Int > 43) || (PercOver43Int > 10))
+                            CSVValues csvValues = new CSVValues()
                             {
-                                if ((GeoMeanInt > 76) || (MedianInt > 76) || (P90Int > 224) || (PercOver43Int > 27))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "F", Color = "aa0000", Name = "Fail" };
-                                }
-                                else if ((GeoMeanInt > 63) || (MedianInt > 63) || (P90Int > 188) || (PercOver43Int > 23))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "E", Color = "cc0000", Name = "Fail" };
-                                }
-                                else if ((GeoMeanInt > 51) || (MedianInt > 51) || (P90Int > 152) || (PercOver43Int > 20))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "D", Color = "ff1111", Name = "Fail" };
-                                }
-                                else if ((GeoMeanInt > 39) || (MedianInt > 39) || (P90Int > 115) || (PercOver43Int > 17))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "C", Color = "ff4444", Name = "Fail" };
-                                }
-                                else if ((GeoMeanInt > 26) || (MedianInt > 26) || (P90Int > 79) || (PercOver43Int > 13))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "B", Color = "ff9999", Name = "Fail" };
-                                }
-                                else
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "A", Color = "ffcccc", Name = "Fail" };
-                                }
-                            }
-                            else
-                            {
-                                if ((GeoMeanInt > 12) || (MedianInt > 12) || (P90Int > 36) || (PercOver43Int > 8))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "F", Color = "ccffcc", Name = "Pass" };
-                                }
-                                else if ((GeoMeanInt > 9) || (MedianInt > 9) || (P90Int > 29) || (PercOver43Int > 7))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "E", Color = "99ff99", Name = "Pass" };
-                                }
-                                else if ((GeoMeanInt > 7) || (MedianInt > 7) || (P90Int > 22) || (PercOver43Int > 5))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "D", Color = "44ff44", Name = "Pass" };
-                                }
-                                else if ((GeoMeanInt > 5) || (MedianInt > 5) || (P90Int > 14) || (PercOver43Int > 3))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "C", Color = "11ff11", Name = "Pass" };
-                                }
-                                else if ((GeoMeanInt > 2) || (MedianInt > 2) || (P90Int > 7) || (PercOver43Int > 2))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "B", Color = "00bb00", Name = "Pass" };
-                                }
-                                else
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "A", Color = "009900", Name = "Pass" };
-                                }
-                            }
+                                Subsector = TVText,
+                                Site = tvItemModelMWQMSite.TVText,
+                                ClassStr = "",
+                                Letter = "",
+                                NumbSamples = mwqmSampleList.Count,
+                                P90 = -1,
+                                GM = -1,
+                                Med = -1,
+                                PercOver43 = -1,
+                                PercOver260 = -1,
+                                ValueList = sbValueList.ToString(),
+                            };
 
-                            MapInfoPoint mapInfoPoint = (from mi in mapInfoList
-                                                         from mip in mapInfoPointList
-                                                         where mi.MapInfoID == mip.MapInfoID
-                                                         && mi.TVItemID == tvItemModelMWQMSite.TVItemID
-                                                         select mip).FirstOrDefault();
-
-                            if (mapInfoPoint != null)
-                            {
-                                sb.AppendLine($@"           <Placemark>");
-                                sb.AppendLine($@"	        	<name></name>");
-                                sb.AppendLine($@"	        	<styleUrl>#{ letterColorName.Name }_{ letterColorName.Letter }</styleUrl>");
-                                sb.AppendLine($@"	        	<Point>");
-                                sb.AppendLine($@"	        		<coordinates>{ mapInfoPoint.Lng - 0.001D },{ mapInfoPoint.Lat - 0.001D },0</coordinates>");
-                                sb.AppendLine($@"	        	</Point>");
-                                sb.AppendLine($@"	        </Placemark>");
-                            }
+                            csvValuesList.Add(csvValues);
                         }
                     }
                 }
 
                 sb.AppendLine($@"	    </Folder>");
             }
-
-            sb.AppendLine($@"	</Folder>");
-
-            // -------------------------------------------------------------------------------------------------------------
-            // End Dry-All-All (4,8,12,16)mm
-            // -------------------------------------------------------------------------------------------------------------
-            #endregion Dry-All-All (4,8,12,16)mm
-
-            #region Wet-All-All (12,25,37,50)mm
-            // -------------------------------------------------------------------------------------------------------------
-            // Start Wet-All-All (12,25,37,50)mm
-            // -------------------------------------------------------------------------------------------------------------
-
-            List<double> WetList = new List<double>() { 12, 25, 37, 50 };
-
-            sb.AppendLine($@"	<Folder>");
-            sb.AppendLine($@"	<name>Wet-All-All (12,25,37,50)mm</name>");
-
-            foreach (TVItemModel tvItemModelSS in tvItemModelSSList)
-            {
-                lblStatus.Text = tvItemModelSS.TVText;
-                lblStatus.Refresh();
-                Application.DoEvents();
-
-                //if (tvItemModelSS.TVItemID != 635)
-                //{
-                //    continue; // just doing Bouctouche for now
-                //}
-
-                List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMSite).Where(c => c.IsActive == true).ToList();
-                List<MapInfo> mapInfoList = new List<MapInfo>();
-                List<MapInfoPoint> mapInfoPointList = new List<MapInfoPoint>();
-                List<MWQMSample> mwqmSampleListAll = new List<MWQMSample>();
-                List<MWQMSample> mwqmSampleListStat = new List<MWQMSample>();
-                List<TVItemModel> tvItemModelMWQMRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMRun).Where(c => c.IsActive == true).ToList();
-
-                using (CSSPDBEntities db2 = new CSSPDBEntities())
-                {
-                    List<int> TVItemMWQMSiteList = tvItemModelMWQMSiteList.Select(c => c.TVItemID).Distinct().ToList();
-                    List<int> TVItemMWQMRunList = tvItemModelMWQMRunList.Select(c => c.TVItemID).Distinct().ToList();
-
-                    List<MWQMRun> mwqmRunList = (from c in db2.MWQMRuns
-                                                 from rid in TVItemMWQMRunList
-                                                 where c.MWQMRunTVItemID == rid
-                                                 && c.RunSampleType == (int)SampleTypeEnum.Routine
-                                                 select c).ToList();
-
-                    List<int> TVItemMWQMRunRoutineList = mwqmRunList.Select(c => c.MWQMRunTVItemID).Distinct().ToList();
-
-                    mwqmSampleListAll = (from c in db2.MWQMSamples
-                                         from tid in TVItemMWQMSiteList
-                                         from rid in TVItemMWQMRunRoutineList
-                                         where c.MWQMSiteTVItemID == tid
-                                         && c.MWQMRunTVItemID == rid
-                                         select c).ToList();
-
-                    mapInfoList = (from c in db2.MapInfos
-                                   from tid in TVItemMWQMSiteList
-                                   where c.TVItemID == tid
-                                   && c.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
-                                   select c).ToList();
-
-                    List<int> mapInfoIDList = mapInfoList.Select(c => c.MapInfoID).Distinct().ToList();
-
-                    mapInfoPointList = (from c in db2.MapInfoPoints
-                                        from mid in mapInfoIDList
-                                        where c.MapInfoID == mid
-                                        select c).ToList();
-
-                    mwqmSampleListStat = (from c in mwqmSampleListAll
-                                          from r in mwqmRunList
-                                          where c.MWQMRunTVItemID == r.MWQMRunTVItemID
-                                          && (r.RainDay1_mm >= WetList[0]
-                                          || (r.RainDay1_mm + r.RainDay2_mm) >= WetList[1]
-                                          || (r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm) >= WetList[2]
-                                          || (r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm + r.RainDay4_mm) >= WetList[3])
-                                          select c).ToList();
-
-                }
-
-                sb.AppendLine($@"	    <Folder>");
-                sb.AppendLine($@"	    <name>{ tvItemModelSS.TVText }</name>");
-
-                foreach (TVItemModel tvItemModelMWQMSite in tvItemModelMWQMSiteList)
-                {
-
-                    if (tvItemModelMWQMSite != null)
-                    {
-                        List<double> mwqmSampleFCList = (from c in mwqmSampleListStat
-                                                         where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                         orderby c.SampleDateTime_Local descending
-                                                         select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)
-                                                         ).ToList<double>();
-
-                        List<MWQMSample> mwqmSampleList = (from c in mwqmSampleListStat
-                                                           where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                           orderby c.SampleDateTime_Local descending
-                                                           select c).ToList<MWQMSample>();
-
-
-                        if (mwqmSampleFCList.Count >= 3)
-                        {
-                            double P90 = tvItemService.GetP90(mwqmSampleFCList);
-                            double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
-                            double Median = tvItemService.GetMedian(mwqmSampleFCList);
-                            double PercOver43 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
-                            double PercOver260 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
-                            int MinYear = mwqmSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
-                            int MaxYear = mwqmSampleList.Select(c => c.SampleDateTime_Local).Max().Year;
-
-                            int P90Int = (int)Math.Round((double)P90, 0);
-                            int GeoMeanInt = (int)Math.Round((double)GeoMean, 0);
-                            int MedianInt = (int)Math.Round((double)Median, 0);
-                            int PercOver43Int = (int)Math.Round((double)PercOver43, 0);
-                            int PercOver260Int = (int)Math.Round((double)PercOver260, 0);
-
-                            LetterColorName letterColorName = new LetterColorName();
-
-                            if ((GeoMeanInt > 88) || (MedianInt > 88) || (P90Int > 260) || (PercOver260Int > 10))
-                            {
-                                if ((GeoMeanInt > 181) || (MedianInt > 181) || (P90Int > 460) || (PercOver260Int > 18))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "F", Color = "8888ff", Name = "NoDepuration" };
-                                }
-                                else if ((GeoMeanInt > 163) || (MedianInt > 163) || (P90Int > 420) || (PercOver260Int > 17))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "E", Color = "9999ff", Name = "NoDepuration" };
-                                }
-                                else if ((GeoMeanInt > 144) || (MedianInt > 144) || (P90Int > 380) || (PercOver260Int > 15))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "D", Color = "aaaaff", Name = "NoDepuration" };
-                                }
-                                else if ((GeoMeanInt > 125) || (MedianInt > 125) || (P90Int > 340) || (PercOver260Int > 13))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "C", Color = "bbbbff", Name = "NoDepuration" };
-                                }
-                                else if ((GeoMeanInt > 107) || (MedianInt > 107) || (P90Int > 300) || (PercOver260Int > 12))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "B", Color = "ccccff", Name = "NoDepuration" };
-                                }
-                                else
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "A", Color = "ddddff", Name = "NoDepuration" };
-                                }
-                            }
-                            else if ((GeoMeanInt > 14) || (MedianInt > 14) || (P90Int > 43) || (PercOver43Int > 10))
-                            {
-                                if ((GeoMeanInt > 76) || (MedianInt > 76) || (P90Int > 224) || (PercOver43Int > 27))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "F", Color = "aa0000", Name = "Fail" };
-                                }
-                                else if ((GeoMeanInt > 63) || (MedianInt > 63) || (P90Int > 188) || (PercOver43Int > 23))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "E", Color = "cc0000", Name = "Fail" };
-                                }
-                                else if ((GeoMeanInt > 51) || (MedianInt > 51) || (P90Int > 152) || (PercOver43Int > 20))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "D", Color = "ff1111", Name = "Fail" };
-                                }
-                                else if ((GeoMeanInt > 39) || (MedianInt > 39) || (P90Int > 115) || (PercOver43Int > 17))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "C", Color = "ff4444", Name = "Fail" };
-                                }
-                                else if ((GeoMeanInt > 26) || (MedianInt > 26) || (P90Int > 79) || (PercOver43Int > 13))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "B", Color = "ff9999", Name = "Fail" };
-                                }
-                                else
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "A", Color = "ffcccc", Name = "Fail" };
-                                }
-                            }
-                            else
-                            {
-                                if ((GeoMeanInt > 12) || (MedianInt > 12) || (P90Int > 36) || (PercOver43Int > 8))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "F", Color = "ccffcc", Name = "Pass" };
-                                }
-                                else if ((GeoMeanInt > 9) || (MedianInt > 9) || (P90Int > 29) || (PercOver43Int > 7))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "E", Color = "99ff99", Name = "Pass" };
-                                }
-                                else if ((GeoMeanInt > 7) || (MedianInt > 7) || (P90Int > 22) || (PercOver43Int > 5))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "D", Color = "44ff44", Name = "Pass" };
-                                }
-                                else if ((GeoMeanInt > 5) || (MedianInt > 5) || (P90Int > 14) || (PercOver43Int > 3))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "C", Color = "11ff11", Name = "Pass" };
-                                }
-                                else if ((GeoMeanInt > 2) || (MedianInt > 2) || (P90Int > 7) || (PercOver43Int > 2))
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "B", Color = "00bb00", Name = "Pass" };
-                                }
-                                else
-                                {
-                                    letterColorName = new LetterColorName() { Letter = "A", Color = "009900", Name = "Pass" };
-                                }
-                            }
-
-                            MapInfoPoint mapInfoPoint = (from mi in mapInfoList
-                                                         from mip in mapInfoPointList
-                                                         where mi.MapInfoID == mip.MapInfoID
-                                                         && mi.TVItemID == tvItemModelMWQMSite.TVItemID
-                                                         select mip).FirstOrDefault();
-
-                            if (mapInfoPoint != null)
-                            {
-                                sb.AppendLine($@"           <Placemark>");
-                                sb.AppendLine($@"	        	<name></name>");
-                                sb.AppendLine($@"	        	<styleUrl>#{ letterColorName.Name }_{ letterColorName.Letter }</styleUrl>");
-                                sb.AppendLine($@"	        	<Point>");
-                                sb.AppendLine($@"	        		<coordinates>{ mapInfoPoint.Lng + 0.001D },{ mapInfoPoint.Lat + 0.001D },0</coordinates>");
-                                sb.AppendLine($@"	        	</Point>");
-                                sb.AppendLine($@"	        </Placemark>");
-                            }
-                        }
-                    }
-                }
-
-                sb.AppendLine($@"	    </Folder>");
-            }
-
-            sb.AppendLine($@"	</Folder>");
-
-            // -------------------------------------------------------------------------------------------------------------
-            // End Wet-All-All (12,25,37,50)mm
-            // -------------------------------------------------------------------------------------------------------------
-            #endregion Wet-All-All (12,25,37,50)mm
-
-            sb.AppendLine($@"</Document>");
-            sb.AppendLine($@"</kml>");
-
-            FileInfo fi = new FileInfo($@"C:\Users\leblancc\Desktop\StatsWithRain_{ ProvText }.kml");
-
-            StreamWriter sw = fi.CreateText();
-            sw.Write(sb.ToString());
-            sw.Close();
-
-            lblStatus.Text = "Done...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-
-
         }
 
         //private void button18_Click(object sender, EventArgs e)
