@@ -21,6 +21,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using TempData;
+using CSSPModelsDLL.Services;
 
 namespace ImportByFunction
 {
@@ -4925,7 +4926,7 @@ namespace ImportByFunction
             // Start Wet-All-All (12,25,37,50)mm
             // -------------------------------------------------------------------------------------------------------------
 
-     
+
             sb.AppendLine($@"	<Folder>");
             sb.AppendLine($@"	<name>Wet-All-All (12,25,37,50)mm</name>");
 
@@ -4990,7 +4991,7 @@ namespace ImportByFunction
 
         private class CSVValues
         {
-            public string  Subsector { get; set; }
+            public string Subsector { get; set; }
             public string Site { get; set; }
             public int StartYear { get; set; }
             public int EndYear { get; set; }
@@ -5099,18 +5100,18 @@ namespace ImportByFunction
                     }
                     else if (statType == StatType.Wet)
                     {
-                       var  mwqmSampleListStatAndRain = (from c in mwqmSampleListAll
-                                              from r in mwqmRunList
-                                              let R1 = r.RainDay1_mm
-                                              let R2 = r.RainDay1_mm + r.RainDay2_mm
-                                              let R3 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm
-                                              let R4 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm + r.RainDay4_mm
-                                              where c.MWQMRunTVItemID == r.MWQMRunTVItemID
-                                              && (R1 >= WetList[0]
-                                              || R2 >= WetList[1]
-                                              || R3 >= WetList[2]
-                                              || R4 >= WetList[3])
-                                              select new { c, R1, R2, R3, R4 }).ToList();
+                        var mwqmSampleListStatAndRain = (from c in mwqmSampleListAll
+                                                         from r in mwqmRunList
+                                                         let R1 = r.RainDay1_mm
+                                                         let R2 = r.RainDay1_mm + r.RainDay2_mm
+                                                         let R3 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm
+                                                         let R4 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm + r.RainDay4_mm
+                                                         where c.MWQMRunTVItemID == r.MWQMRunTVItemID
+                                                         && (R1 >= WetList[0]
+                                                         || R2 >= WetList[1]
+                                                         || R3 >= WetList[2]
+                                                         || R4 >= WetList[3])
+                                                         select new { c, R1, R2, R3, R4 }).ToList();
 
                         foreach (var sampleStatAndRain in mwqmSampleListStatAndRain)
                         {
@@ -5370,6 +5371,176 @@ namespace ImportByFunction
                 }
 
                 sb.AppendLine($@"	    </Folder>");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            LanguageEnum lang = LanguageEnum.fr;
+            BaseModelService _BaseModelService = new BaseModelService(lang);
+            List<string> startWithList = new List<string>() { "101", "143", "910" };
+            List<PolSourceObsInfoChild> polSourceObsInfoChildList = new List<PolSourceObsInfoChild>();
+            TVItemService tvItemService2 = new TVItemService(lang, user);
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-CA");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-CA");
+
+            _BaseModelService.FillPolSourceObsInfoChild(polSourceObsInfoChildList);
+
+            int ProvTVItemID = 5; // NB
+
+            TVItemModel tvItemModelCountry = tvItemService2.GetTVItemModelWithTVItemIDDB(ProvTVItemID);
+            if (!string.IsNullOrWhiteSpace(tvItemModelCountry.Error))
+            {
+                return;
+            }
+
+            List<TVItemModel> tvItemModelSSList = tvItemService2.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelCountry.TVItemID, TVTypeEnum.Subsector);
+
+            foreach (TVItemModel tvItemModelSS in tvItemModelSSList) //.Where(c => c.TVText.CompareTo("NS-16-010-001") >= 0))
+            {
+                TVItemService tvItemService = new TVItemService(lang, user);
+                PolSourceSiteService polSourceSiteService = new PolSourceSiteService(lang, user);
+                PolSourceObservationService polSourceObservationService = new PolSourceObservationService(lang, user);
+                PolSourceObservationIssueService polSourceObservationIssueService = new PolSourceObservationIssueService(lang, user);
+
+                lblStatus.Text = tvItemModelSS.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                List<PolSourceSiteModel> polSourceSiteModelList = polSourceSiteService.GetPolSourceSiteModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
+
+                foreach (PolSourceSiteModel polSourceSiteModel in polSourceSiteModelList)
+                {
+                    PolSourceObservationModel polSourceObservationModel = polSourceObservationService.GetPolSourceObservationModelLatestWithPolSourceSiteIDDB(polSourceSiteModel.PolSourceSiteID);
+
+                    List<PolSourceObservationIssueModel> polSourceObservationIssueModelList = polSourceObservationIssueService.GetPolSourceObservationIssueModelListWithPolSourceObservationIDDB(polSourceObservationModel.PolSourceObservationID);
+
+                    if (polSourceObservationIssueModelList.Count > 0)
+                    {
+                        PolSourceObservationIssueModel polSourceObservationIssueModel = polSourceObservationIssueModelList.OrderBy(c => c.Ordinal).FirstOrDefault();
+
+                        if (polSourceObservationIssueModel == null)
+                        {
+                        }
+                        else
+                        {
+                            List<string> polSourceObsInfoList = polSourceObservationIssueModel.ObservationInfo.Replace(" ", "").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+                            List<int> polSourceObsInfoIntList = polSourceObsInfoList.Select(c => int.Parse(c)).ToList();
+
+                            string TVText = "";
+                            for (int i = 0, count = polSourceObsInfoList.Count; i < count; i++)
+                            {
+                                string StartTxt = polSourceObsInfoList[i].Substring(0, 3);
+
+                                if (startWithList.Where(c => c.StartsWith(StartTxt)).Any())
+                                {
+                                    TVText = TVText.Trim();
+                                    string TempText = _BaseEnumService.GetEnumText_PolSourceObsInfoEnum((PolSourceObsInfoEnum)int.Parse(polSourceObsInfoList[i]));
+                                    if (TempText.IndexOf("|") > 0)
+                                    {
+                                        TempText = TempText.Substring(0, TempText.IndexOf("|")).Trim();
+                                    }
+                                    TVText = TVText + (TVText.Length == 0 ? "" : ", ") + TempText;
+                                }
+                            }
+
+                            bool WellFormed = IssueWellFormed(polSourceObsInfoIntList, polSourceObsInfoChildList);
+                            bool Completed = IssueCompleted(polSourceObsInfoIntList, polSourceObsInfoChildList);
+
+                            string NC = (WellFormed == false || Completed == false ? " (NC) - " : "");
+                            if (lang == LanguageEnum.fr)
+                            {
+                                NC = NC.Replace("NC", "PC");
+                            }
+
+                            TVText = "P00000".Substring(0, "P00000".Length - polSourceSiteModel.Site.ToString().Length) + polSourceSiteModel.Site.ToString() + " - " + NC + TVText;
+
+                            TVItemLanguageModel tvItemLanguageModel = new TVItemLanguageModel();
+                            tvItemLanguageModel.Language = lang;
+
+                            bool Found = true;
+                            while (Found)
+                            {
+                                if (TVText.Contains("  "))
+                                {
+                                    TVText = TVText.Replace("  ", " ");
+                                }
+                                else
+                                {
+                                    Found = false;
+                                }
+                            }
+
+                            tvItemLanguageModel.TVText = TVText;
+                            tvItemLanguageModel.TVItemID = polSourceSiteModel.PolSourceSiteTVItemID;
+
+                            TVItemLanguageModel tvItemLanguageModelRet = tvItemService._TVItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModel);
+                            if (!string.IsNullOrWhiteSpace(tvItemLanguageModelRet.Error))
+                            {
+                                richTextBoxStatus.AppendText(tvItemLanguageModelRet.Error + "\r\n");
+                                return;
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+            lblStatus.Text = "done...";
+        }
+
+        public bool IssueWellFormed(List<int> polSourceObsInfoIntList, List<PolSourceObsInfoChild> polSourceObsInfoChildList)
+        {
+            int ChildStart = 0;
+            for (int i = 0, count = polSourceObsInfoIntList.Count - 2; i < count; i++)
+            {
+                if (ChildStart != 0)
+                {
+                    string obsEnum3Char = polSourceObsInfoIntList[i].ToString().Substring(0, 3);
+                    string ChildStart3Char = ChildStart.ToString().Substring(0, 3);
+                    if (obsEnum3Char != ChildStart3Char)
+                    {
+                        return false;
+                    }
+                }
+
+                PolSourceObsInfoChild polSourceObsInfoChild = polSourceObsInfoChildList.Where(c => c.PolSourceObsInfo == ((PolSourceObsInfoEnum)polSourceObsInfoIntList[i])).FirstOrDefault<PolSourceObsInfoChild>();
+                if (polSourceObsInfoChild != null)
+                {
+                    ChildStart = ((int)polSourceObsInfoChild.PolSourceObsInfoChildStart);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool IssueCompleted(List<int> polSourceObsInfoIntList, List<PolSourceObsInfoChild> polSourceObsInfoChildList)
+        {
+
+            if (polSourceObsInfoIntList.Count > 0)
+            {
+                int obsEnumIntLast = polSourceObsInfoIntList[polSourceObsInfoIntList.Count - 1];
+
+                PolSourceObsInfoChild polSourceObsInfoChild = polSourceObsInfoChildList.Where(c => c.PolSourceObsInfo == ((PolSourceObsInfoEnum)obsEnumIntLast)).FirstOrDefault<PolSourceObsInfoChild>();
+                if (polSourceObsInfoChild == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
 
