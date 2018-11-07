@@ -4793,12 +4793,108 @@ namespace ImportByFunction
             sb.AppendLine($@" </Style>");
             #endregion Styles
 
+            #region Subsectors names
+            // -------------------------------------------------------------------------------------------------------------
+            // Start Subsectors names
+            // -------------------------------------------------------------------------------------------------------------
+            sb.AppendLine($@"	<Folder>");
+            sb.AppendLine($@"	<name>Subsectors names</name>");
+            sb.AppendLine($@"	<open>0</open>");
+
+            foreach (TVItemModel tvItemModelSS in tvItemModelSSList)
+            {
+                lblStatus.Text = tvItemModelSS.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                //if (tvItemModelSS.TVItemID != 635)
+                //{
+                //    continue; // just doing Bouctouche for now
+                //}
+
+                List<MapInfo> mapInfoList = new List<MapInfo>();
+                List<MapInfoPoint> mapInfoPointList = new List<MapInfoPoint>();
+
+                using (CSSPDBEntities db2 = new CSSPDBEntities())
+                {
+                    mapInfoList = (from c in db2.MapInfos
+                                   where c.TVItemID == tvItemModelSS.TVItemID
+                                   select c).ToList();
+
+                    List<int> mapInfoIDList = mapInfoList.Select(c => c.MapInfoID).Distinct().ToList();
+
+                    mapInfoPointList = (from c in db2.MapInfoPoints
+                                        from mid in mapInfoIDList
+                                        where c.MapInfoID == mid
+                                        select c).ToList();
+                }
+
+                sb.AppendLine($@"	    <Folder>");
+                sb.AppendLine($@"	    <name>{ tvItemModelSS.TVText }</name>");
+
+                //sb.AppendLine($@"	<Placemark>");
+                //sb.AppendLine($@"		<name>{ tvItemModelSS.TVText }</name>");
+                //sb.AppendLine($@"		<styleUrl>#m_ylw-pushpin</styleUrl>");
+                //sb.AppendLine($@"		<Polygon>");
+                //sb.AppendLine($@"			<tessellate>1</tessellate>");
+                //sb.AppendLine($@"			<outerBoundaryIs>");
+                //sb.AppendLine($@"				<LinearRing>");
+                //sb.AppendLine($@"					<coordinates>");
+                //sb.Append($@"						");
+                //List<MapInfoPoint> mapInfoPointListPoly = (from mi in mapInfoList
+                //                                           from mip in mapInfoPointList
+                //                                           where mi.MapInfoID == mip.MapInfoID
+                //                                           && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Polygon
+                //                                           orderby mip.Ordinal
+                //                                           select mip).ToList();
+
+
+                //foreach (MapInfoPoint mapInfoPoint in mapInfoPointListPoly)
+                //{
+                //    sb.Append($@"{ mapInfoPoint.Lng },{ mapInfoPoint.Lat },0 ");
+                //}
+                //sb.AppendLine($@"");
+                //sb.AppendLine($@"					</coordinates>");
+                //sb.AppendLine($@"				</LinearRing>");
+                //sb.AppendLine($@"			</outerBoundaryIs>");
+                //sb.AppendLine($@"		</Polygon>");
+                //sb.AppendLine($@"   </Placemark>");
+
+
+                List<MapInfoPoint> mapInfoPointListPoint = (from mi in mapInfoList
+                                                            from mip in mapInfoPointList
+                                                            where mi.MapInfoID == mip.MapInfoID
+                                                            && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                                            orderby mip.Ordinal
+                                                            select mip).ToList();
+
+                if (mapInfoPointListPoint.Count > 0)
+                {
+                    sb.AppendLine($@"           <Placemark>");
+                    sb.AppendLine($@"	        	<name>{ tvItemModelSS.TVText }</name>");
+                    sb.AppendLine($@"	        	<styleUrl>#m_ylw-pushpin</styleUrl>");
+                    sb.AppendLine($@"	        	<Point>");
+                    sb.AppendLine($@"	        		<coordinates>{ mapInfoPointListPoint[0].Lng },{ mapInfoPointListPoint[0].Lat },0</coordinates>");
+                    sb.AppendLine($@"	        	</Point>");
+                    sb.AppendLine($@"	        </Placemark>");
+
+                }
+                sb.AppendLine($@"	    </Folder>");
+            }
+
+            sb.AppendLine($@"	</Folder>");
+            // -------------------------------------------------------------------------------------------------------------
+            // End Subsectors names
+            // -------------------------------------------------------------------------------------------------------------
+            #endregion Subsectors names
+
             #region Subsectors polygon
             // -------------------------------------------------------------------------------------------------------------
             // Start Subsectors polygon
             // -------------------------------------------------------------------------------------------------------------
             sb.AppendLine($@"	<Folder>");
             sb.AppendLine($@"	<name>Subsectors polygon</name>");
+            sb.AppendLine($@"	<open>0</open>");
 
             foreach (TVItemModel tvItemModelSS in tvItemModelSSList)
             {
@@ -4860,24 +4956,24 @@ namespace ImportByFunction
                 sb.AppendLine($@"   </Placemark>");
 
 
-                List<MapInfoPoint> mapInfoPointListPoint = (from mi in mapInfoList
-                                                            from mip in mapInfoPointList
-                                                            where mi.MapInfoID == mip.MapInfoID
-                                                            && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
-                                                            orderby mip.Ordinal
-                                                            select mip).ToList();
+                //List<MapInfoPoint> mapInfoPointListPoint = (from mi in mapInfoList
+                //                                            from mip in mapInfoPointList
+                //                                            where mi.MapInfoID == mip.MapInfoID
+                //                                            && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                //                                            orderby mip.Ordinal
+                //                                            select mip).ToList();
 
-                if (mapInfoPointListPoint.Count > 0)
-                {
-                    sb.AppendLine($@"           <Placemark>");
-                    sb.AppendLine($@"	        	<name>{ tvItemModelSS.TVText }</name>");
-                    sb.AppendLine($@"	        	<styleUrl>#m_ylw-pushpin</styleUrl>");
-                    sb.AppendLine($@"	        	<Point>");
-                    sb.AppendLine($@"	        		<coordinates>{ mapInfoPointListPoint[0].Lng },{ mapInfoPointListPoint[0].Lat },0</coordinates>");
-                    sb.AppendLine($@"	        	</Point>");
-                    sb.AppendLine($@"	        </Placemark>");
+                //if (mapInfoPointListPoint.Count > 0)
+                //{
+                //    sb.AppendLine($@"           <Placemark>");
+                //    sb.AppendLine($@"	        	<name>{ tvItemModelSS.TVText }</name>");
+                //    sb.AppendLine($@"	        	<styleUrl>#m_ylw-pushpin</styleUrl>");
+                //    sb.AppendLine($@"	        	<Point>");
+                //    sb.AppendLine($@"	        		<coordinates>{ mapInfoPointListPoint[0].Lng },{ mapInfoPointListPoint[0].Lat },0</coordinates>");
+                //    sb.AppendLine($@"	        	</Point>");
+                //    sb.AppendLine($@"	        </Placemark>");
 
-                }
+                //}
                 sb.AppendLine($@"	    </Folder>");
             }
 
@@ -4886,6 +4982,24 @@ namespace ImportByFunction
             // End Subsectors polygon
             // -------------------------------------------------------------------------------------------------------------
             #endregion Subsectors polygon
+
+            #region Sites
+            // -------------------------------------------------------------------------------------------------------------
+            // Start Sites
+            // -------------------------------------------------------------------------------------------------------------
+            NumberOfSamples = 30;
+            sb.AppendLine($@"	<Folder>");
+            sb.AppendLine($@"	<name>Sites</name>");
+            sb.AppendLine($@"	<open>0</open>");
+
+            DoAllSites(tvItemModelSSList, tvItemService, sb);
+
+            sb.AppendLine($@"	</Folder>");
+
+            // -------------------------------------------------------------------------------------------------------------
+            // End Sites
+            // -------------------------------------------------------------------------------------------------------------
+            #endregion Sites
 
             #region All-All-All 30 runs
             // -------------------------------------------------------------------------------------------------------------
@@ -5016,6 +5130,78 @@ namespace ImportByFunction
             public double R4 { get; set; }
         }
 
+        private void DoAllSites(List<TVItemModel> tvItemModelSSList, TVItemService tvItemService, StringBuilder sb)
+        {
+            foreach (TVItemModel tvItemModelSS in tvItemModelSSList)
+            {
+                lblStatus.Text = tvItemModelSS.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                string TVText = tvItemModelSS.TVText;
+                if (TVText.Contains(" "))
+                {
+                    TVText = TVText.Substring(0, TVText.IndexOf(" "));
+                }
+
+                //if (tvItemModelSS.TVItemID != 635)
+                //{
+                //    continue; // just doing Bouctouche for now
+                //}
+
+                List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMSite).Where(c => c.IsActive == true).ToList();
+                List<MapInfo> mapInfoList = new List<MapInfo>();
+                List<MapInfoPoint> mapInfoPointList = new List<MapInfoPoint>();
+
+                using (CSSPDBEntities db2 = new CSSPDBEntities())
+                {
+                    List<int> TVItemMWQMSiteList = tvItemModelMWQMSiteList.Select(c => c.TVItemID).Distinct().ToList();
+
+                    mapInfoList = (from c in db2.MapInfos
+                                   from tid in TVItemMWQMSiteList
+                                   where c.TVItemID == tid
+                                   && c.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                   select c).ToList();
+
+                    List<int> mapInfoIDList = mapInfoList.Select(c => c.MapInfoID).Distinct().ToList();
+
+                    mapInfoPointList = (from c in db2.MapInfoPoints
+                                        from mid in mapInfoIDList
+                                        where c.MapInfoID == mid
+                                        select c).ToList();
+
+
+                }
+
+                sb.AppendLine($@"	    <Folder>");
+                sb.AppendLine($@"	    <name>{ tvItemModelSS.TVText }</name>");
+
+                foreach (TVItemModel tvItemModelMWQMSite in tvItemModelMWQMSiteList)
+                {
+
+                    if (tvItemModelMWQMSite != null)
+                    {
+                        MapInfoPoint mapInfoPoint = (from mi in mapInfoList
+                                                     from mip in mapInfoPointList
+                                                     where mi.MapInfoID == mip.MapInfoID
+                                                     && mi.TVItemID == tvItemModelMWQMSite.TVItemID
+                                                     select mip).FirstOrDefault();
+
+                        if (mapInfoPoint != null)
+                        {
+                            sb.AppendLine($@"           <Placemark>");
+                            sb.AppendLine($@"	        	<name>{ tvItemModelMWQMSite.TVText }</name>");
+                            sb.AppendLine($@"	        	<Point>");
+                            sb.AppendLine($@"	        		<coordinates>{ mapInfoPoint.Lng },{ mapInfoPoint.Lat },0</coordinates>");
+                            sb.AppendLine($@"	        	</Point>");
+                            sb.AppendLine($@"	        </Placemark>");
+                        }
+                    }
+                }
+
+                sb.AppendLine($@"	    </Folder>");
+            }
+        }
         private void DoAllSubsectorStats(StatType statType, List<TVItemModel> tvItemModelSSList, TVItemService tvItemService, int NumberOfSamples, List<double> DryList, List<double> WetList, List<CSVValues> csvValuesList, StringBuilder sb)
         {
             foreach (TVItemModel tvItemModelSS in tvItemModelSSList)
@@ -5376,8 +5562,9 @@ namespace ImportByFunction
 
         private void button2_Click(object sender, EventArgs e)
         {
+            return;
 
-            LanguageEnum lang = LanguageEnum.fr;
+            LanguageEnum lang = LanguageEnum.en;
             BaseModelService _BaseModelService = new BaseModelService(lang);
             List<string> startWithList = new List<string>() { "101", "143", "910" };
             List<PolSourceObsInfoChild> polSourceObsInfoChildList = new List<PolSourceObsInfoChild>();
