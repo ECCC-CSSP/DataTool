@@ -4667,6 +4667,7 @@ namespace ImportByFunction
             int NumberOfSamples = 30;
             StringBuilder sb = new StringBuilder();
             List<CSVValues> csvValuesList = new List<CSVValues>();
+            List<CSVValues> csvValuesListFull = new List<CSVValues>();
 
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
@@ -5009,7 +5010,7 @@ namespace ImportByFunction
             sb.AppendLine($@"	<Folder>");
             sb.AppendLine($@"	<name>All-All-All ({ NumberOfSamples })</name>");
 
-            DoAllSubsectorStats(StatType.Run30, tvItemModelSSList, tvItemService, NumberOfSamples, DryList, WetList, csvValuesList, sb);
+            DoAllSubsectorStats(StatType.Run30, tvItemModelSSList, tvItemService, NumberOfSamples, DryList, WetList, csvValuesList, csvValuesListFull, sb);
 
             sb.AppendLine($@"	</Folder>");
 
@@ -5026,7 +5027,7 @@ namespace ImportByFunction
             sb.AppendLine($@"	<Folder>");
             sb.AppendLine($@"	<name>Dry-All-All (4,8,12,16)mm</name>");
 
-            DoAllSubsectorStats(StatType.Dry, tvItemModelSSList, tvItemService, NumberOfSamples, DryList, WetList, csvValuesList, sb);
+            DoAllSubsectorStats(StatType.Dry, tvItemModelSSList, tvItemService, NumberOfSamples, DryList, WetList, csvValuesList, csvValuesListFull, sb);
 
             sb.AppendLine($@"	</Folder>");
 
@@ -5044,7 +5045,7 @@ namespace ImportByFunction
             sb.AppendLine($@"	<Folder>");
             sb.AppendLine($@"	<name>Wet-All-All (12,25,37,50)mm</name>");
 
-            DoAllSubsectorStats(StatType.Wet, tvItemModelSSList, tvItemService, NumberOfSamples, DryList, WetList, csvValuesList, sb);
+            DoAllSubsectorStats(StatType.Wet, tvItemModelSSList, tvItemService, NumberOfSamples, DryList, WetList, csvValuesList, csvValuesListFull, sb);
 
             sb.AppendLine($@"	</Folder>");
 
@@ -5064,11 +5065,11 @@ namespace ImportByFunction
 
             WriteCSVFile(ProvText, csvValuesList);
 
+            WriteFullCSVFile(ProvText, csvValuesListFull);
+
             lblStatus.Text = "Done...";
             lblStatus.Refresh();
             Application.DoEvents();
-
-
         }
 
         private void WriteCSVFile(string ProvText, List<CSVValues> csvValuesList)
@@ -5089,6 +5090,31 @@ namespace ImportByFunction
             }
 
             FileInfo fi = new FileInfo($@"C:\Users\leblancc\Desktop\StatsWithRain_{ ProvText }.csv");
+
+            StreamWriter sw = fi.CreateText();
+            sw.Write(sbCSV.ToString());
+            sw.Close();
+
+        }
+
+        private void WriteFullCSVFile(string ProvText, List<CSVValues> csvValuesListFull)
+        {
+            StringBuilder sbCSV = new StringBuilder();
+
+            sbCSV.AppendLine("Subsector,Site,StartYear,EndYear,StatType,Class,Letter,NumbSamples,P90,GM,Med,PercOver43,PercOver260,ValueList Dry(4_8_12_16) Wet(12_25_37_50)");
+
+            foreach (CSVValues csvValues in csvValuesListFull.OrderBy(c => c.Subsector).ThenBy(c => c.Site))
+            {
+                string P90Str = (csvValues.P90 < 0 ? "" : csvValues.P90.ToString().Replace(",", "."));
+                string GMStr = (csvValues.GM < 0 ? "" : csvValues.GM.ToString().Replace(",", "."));
+                string MedStr = (csvValues.Med < 0 ? "" : csvValues.Med.ToString().Replace(",", "."));
+                string PercOver43Str = (csvValues.PercOver43 < 0 ? "" : csvValues.PercOver43.ToString().Replace(",", "."));
+                string PercOver260Str = (csvValues.PercOver260 < 0 ? "" : csvValues.PercOver260.ToString().Replace(",", "."));
+
+                sbCSV.AppendLine($"{ csvValues.Subsector.Replace(",", "_") },{ csvValues.Site.Replace(",", "_") },{ csvValues.StartYear },{ csvValues.EndYear },{ csvValues.statType.ToString() },{ csvValues.ClassStr },{ csvValues.Letter },{ csvValues.NumbSamples },{ P90Str },{ GMStr },{ MedStr },{ PercOver43Str },{ PercOver260Str },{ csvValues.ValueList }");
+            }
+
+            FileInfo fi = new FileInfo($@"C:\Users\leblancc\Desktop\StatsWithRain_Full_{ ProvText }.csv");
 
             StreamWriter sw = fi.CreateText();
             sw.Write(sbCSV.ToString());
@@ -5128,6 +5154,12 @@ namespace ImportByFunction
             public double R2 { get; set; }
             public double R3 { get; set; }
             public double R4 { get; set; }
+            public double R5 { get; set; }
+            public double R6 { get; set; }
+            public double R7 { get; set; }
+            public double R8 { get; set; }
+            public double R9 { get; set; }
+            public double R10 { get; set; }
         }
 
         private void DoAllSites(List<TVItemModel> tvItemModelSSList, TVItemService tvItemService, StringBuilder sb)
@@ -5202,7 +5234,7 @@ namespace ImportByFunction
                 sb.AppendLine($@"	    </Folder>");
             }
         }
-        private void DoAllSubsectorStats(StatType statType, List<TVItemModel> tvItemModelSSList, TVItemService tvItemService, int NumberOfSamples, List<double> DryList, List<double> WetList, List<CSVValues> csvValuesList, StringBuilder sb)
+        private void DoAllSubsectorStats(StatType statType, List<TVItemModel> tvItemModelSSList, TVItemService tvItemService, int NumberOfSamples, List<double> DryList, List<double> WetList, List<CSVValues> csvValuesList, List<CSVValues> csvValuesListFull, StringBuilder sb)
         {
             foreach (TVItemModel tvItemModelSS in tvItemModelSSList)
             {
@@ -5264,45 +5296,79 @@ namespace ImportByFunction
 
                     if (statType == StatType.Run30)
                     {
-                        mwqmSampleListStat = (from c in mwqmSampleListAll
-                                              from r in mwqmRunList
-                                              where c.MWQMRunTVItemID == r.MWQMRunTVItemID
-                                              select c).ToList();
+                        var mwqmSampleListStatAndRain = (from c in mwqmSampleListAll
+                                                         from r in mwqmRunList
+                                                         let R1 = r.RainDay1_mm
+                                                         let R2 = R1 + r.RainDay2_mm
+                                                         let R3 = R2 + r.RainDay3_mm
+                                                         let R4 = R3 + r.RainDay4_mm
+                                                         let R5 = R4 + r.RainDay5_mm
+                                                         let R6 = R5 + r.RainDay6_mm
+                                                         let R7 = R6 + r.RainDay7_mm
+                                                         let R8 = R7 + r.RainDay8_mm
+                                                         let R9 = R8 + r.RainDay9_mm
+                                                         let R10 = R9 + r.RainDay10_mm
+                                                         where c.MWQMRunTVItemID == r.MWQMRunTVItemID
+                                                         select new { c, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10 }).ToList();
+
+                        foreach (var sampleStatAndRain in mwqmSampleListStatAndRain)
+                        {
+                            mwqmSampleListStat.Add(sampleStatAndRain.c);
+                            RainList.Add(new RainDays() { RunDate = sampleStatAndRain.c.SampleDateTime_Local, R1 = (double)(sampleStatAndRain.R1 ?? -1), R2 = (double)(sampleStatAndRain.R2 ?? -1), R3 = (double)(sampleStatAndRain.R3 ?? -1), R4 = (double)(sampleStatAndRain.R4 ?? -1), R5 = (double)(sampleStatAndRain.R5 ?? -1), R6 = (double)(sampleStatAndRain.R6 ?? -1), R7 = (double)(sampleStatAndRain.R7 ?? -1), R8 = (double)(sampleStatAndRain.R8 ?? -1), R9 = (double)(sampleStatAndRain.R9 ?? -1), R10 = (double)(sampleStatAndRain.R10 ?? -1) });
+                        }
                     }
                     else if (statType == StatType.Dry)
                     {
-                        mwqmSampleListStat = (from c in mwqmSampleListAll
-                                              from r in mwqmRunList
-                                              let R1 = r.RainDay1_mm
-                                              let R2 = r.RainDay1_mm + r.RainDay2_mm
-                                              let R3 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm
-                                              let R4 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm + r.RainDay4_mm
-                                              where c.MWQMRunTVItemID == r.MWQMRunTVItemID
-                                              && (R1 <= DryList[0]
-                                              || R2 <= DryList[1]
-                                              || R3 <= DryList[2]
-                                              || R4 <= DryList[3])
-                                              select c).ToList();
+                        var mwqmSampleListStatAndRain = (from c in mwqmSampleListAll
+                                                         from r in mwqmRunList
+                                                         let R1 = r.RainDay1_mm
+                                                         let R2 = R1 + r.RainDay2_mm
+                                                         let R3 = R2 + r.RainDay3_mm
+                                                         let R4 = R3 + r.RainDay4_mm
+                                                         let R5 = R4 + r.RainDay5_mm
+                                                         let R6 = R5 + r.RainDay6_mm
+                                                         let R7 = R6 + r.RainDay7_mm
+                                                         let R8 = R7 + r.RainDay8_mm
+                                                         let R9 = R8 + r.RainDay9_mm
+                                                         let R10 = R9 + r.RainDay10_mm
+                                                         where c.MWQMRunTVItemID == r.MWQMRunTVItemID
+                                                         && (R1 <= WetList[0]
+                                                         || R2 <= WetList[1]
+                                                         || R3 <= WetList[2]
+                                                         || R4 <= WetList[3])
+                                                         select new { c, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10 }).ToList();
+
+                        foreach (var sampleStatAndRain in mwqmSampleListStatAndRain)
+                        {
+                            mwqmSampleListStat.Add(sampleStatAndRain.c);
+                            RainList.Add(new RainDays() { RunDate = sampleStatAndRain.c.SampleDateTime_Local, R1 = (double)(sampleStatAndRain.R1 ?? -1), R2 = (double)(sampleStatAndRain.R2 ?? -1), R3 = (double)(sampleStatAndRain.R3 ?? -1), R4 = (double)(sampleStatAndRain.R4 ?? -1), R5 = (double)(sampleStatAndRain.R5 ?? -1), R6 = (double)(sampleStatAndRain.R6 ?? -1), R7 = (double)(sampleStatAndRain.R7 ?? -1), R8 = (double)(sampleStatAndRain.R8 ?? -1), R9 = (double)(sampleStatAndRain.R9 ?? -1), R10 = (double)(sampleStatAndRain.R10 ?? -1) });
+                        }
                     }
                     else if (statType == StatType.Wet)
                     {
                         var mwqmSampleListStatAndRain = (from c in mwqmSampleListAll
                                                          from r in mwqmRunList
                                                          let R1 = r.RainDay1_mm
-                                                         let R2 = r.RainDay1_mm + r.RainDay2_mm
-                                                         let R3 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm
-                                                         let R4 = r.RainDay1_mm + r.RainDay2_mm + r.RainDay3_mm + r.RainDay4_mm
+                                                         let R2 = R1 + r.RainDay2_mm
+                                                         let R3 = R2 + r.RainDay3_mm
+                                                         let R4 = R3 + r.RainDay4_mm
+                                                         let R5 = R4 + r.RainDay5_mm
+                                                         let R6 = R5 + r.RainDay6_mm
+                                                         let R7 = R6 + r.RainDay7_mm
+                                                         let R8 = R7 + r.RainDay8_mm
+                                                         let R9 = R8 + r.RainDay9_mm
+                                                         let R10 = R9 + r.RainDay10_mm
                                                          where c.MWQMRunTVItemID == r.MWQMRunTVItemID
                                                          && (R1 >= WetList[0]
                                                          || R2 >= WetList[1]
                                                          || R3 >= WetList[2]
                                                          || R4 >= WetList[3])
-                                                         select new { c, R1, R2, R3, R4 }).ToList();
+                                                         select new { c, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10 }).ToList();
 
                         foreach (var sampleStatAndRain in mwqmSampleListStatAndRain)
                         {
                             mwqmSampleListStat.Add(sampleStatAndRain.c);
-                            RainList.Add(new RainDays() { RunDate = sampleStatAndRain.c.SampleDateTime_Local, R1 = (double)sampleStatAndRain.R1, R2 = (double)sampleStatAndRain.R2, R3 = (double)sampleStatAndRain.R3, R4 = (double)sampleStatAndRain.R4 });
+                            RainList.Add(new RainDays() { RunDate = sampleStatAndRain.c.SampleDateTime_Local, R1 = (double)(sampleStatAndRain.R1 ?? -1), R2 = (double)(sampleStatAndRain.R2 ?? -1), R3 = (double)(sampleStatAndRain.R3 ?? -1), R4 = (double)(sampleStatAndRain.R4 ?? -1), R5 = (double)(sampleStatAndRain.R5 ?? -1), R6 = (double)(sampleStatAndRain.R6 ?? -1), R7 = (double)(sampleStatAndRain.R7 ?? -1), R8 = (double)(sampleStatAndRain.R8 ?? -1), R9 = (double)(sampleStatAndRain.R9 ?? -1), R10 = (double)(sampleStatAndRain.R10 ?? -1) });
                         }
                     }
                     else
@@ -5465,28 +5531,109 @@ namespace ImportByFunction
                             }
 
                             StringBuilder sbValueList = new StringBuilder();
+                            StringBuilder sbValueListFull = new StringBuilder();
                             foreach (MWQMSample mwqmSample in mwqmSampleList)
                             {
                                 if (statType == StatType.Wet)
                                 {
                                     StringBuilder sbRain = new StringBuilder();
+                                    StringBuilder sbRainFull = new StringBuilder();
                                     RainDays rainDays = (from c in RainList
                                                          where c.RunDate == mwqmSample.SampleDateTime_Local
                                                          select c).FirstOrDefault();
 
                                     if (rainDays != null)
                                     {
-                                        sbRain.Append($"({ Math.Round(rainDays.R1, 0).ToString("F0") }_{ Math.Round(rainDays.R2, 0).ToString("F0") }_{ Math.Round(rainDays.R3, 0).ToString("F0") }_{ Math.Round(rainDays.R4, 0).ToString("F0") })");
-                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }{ sbRain.ToString() }|");
+                                        string R1Str = Math.Round(rainDays.R1, 0).ToString("F0") + "R";
+                                        string R2Str = Math.Round(rainDays.R2, 0).ToString("F0") + "R";
+                                        string R3Str = Math.Round(rainDays.R3, 0).ToString("F0") + "R";
+                                        string R4Str = Math.Round(rainDays.R4, 0).ToString("F0") + "R";
+                                        string R5Str = Math.Round(rainDays.R5, 0).ToString("F0") + "R";
+                                        string R6Str = Math.Round(rainDays.R6, 0).ToString("F0") + "R";
+                                        string R7Str = Math.Round(rainDays.R7, 0).ToString("F0") + "R";
+                                        string R8Str = Math.Round(rainDays.R8, 0).ToString("F0") + "R";
+                                        string R9Str = Math.Round(rainDays.R9, 0).ToString("F0") + "R";
+                                        string R10Str = Math.Round(rainDays.R10, 0).ToString("F0") + "R";
+
+                                        sbRain.Append($"{ R1Str },{ R2Str },{ R3Str },{ R4Str },");
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },{ sbRain.ToString() },");
+
+
+                                        sbRainFull.Append($"{ R1Str },{ R2Str },{ R3Str },{ R4Str },{ R5Str },{ R6Str },{ R7Str },{ R8Str },{ R9Str },{ R10Str },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },{ sbRainFull.ToString() },");
                                     }
                                     else
                                     {
-                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }|");
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                    }
+                                }
+                                else if (statType == StatType.Dry)
+                                {
+                                    StringBuilder sbRainFull = new StringBuilder();
+                                    RainDays rainDays = (from c in RainList
+                                                         where c.RunDate == mwqmSample.SampleDateTime_Local
+                                                         select c).FirstOrDefault();
+
+                                    if (rainDays != null)
+                                    {
+                                        string R1Str = Math.Round(rainDays.R1, 0).ToString("F0") + "R";
+                                        string R2Str = Math.Round(rainDays.R2, 0).ToString("F0") + "R";
+                                        string R3Str = Math.Round(rainDays.R3, 0).ToString("F0") + "R";
+                                        string R4Str = Math.Round(rainDays.R4, 0).ToString("F0") + "R";
+                                        string R5Str = Math.Round(rainDays.R5, 0).ToString("F0") + "R";
+                                        string R6Str = Math.Round(rainDays.R6, 0).ToString("F0") + "R";
+                                        string R7Str = Math.Round(rainDays.R7, 0).ToString("F0") + "R";
+                                        string R8Str = Math.Round(rainDays.R8, 0).ToString("F0") + "R";
+                                        string R9Str = Math.Round(rainDays.R9, 0).ToString("F0") + "R";
+                                        string R10Str = Math.Round(rainDays.R10, 0).ToString("F0") + "R";
+
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+
+                                        sbRainFull.Append($"{ R1Str },{ R2Str },{ R3Str },{ R4Str },{ R5Str },{ R6Str },{ R7Str },{ R8Str },{ R9Str },{ R10Str },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },{ sbRainFull.ToString() },");
+                                    }
+                                    else
+                                    {
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                    }
+                                }
+                                else if (statType == StatType.Run30)
+                                {
+                                    StringBuilder sbRainFull = new StringBuilder();
+                                    RainDays rainDays = (from c in RainList
+                                                         where c.RunDate == mwqmSample.SampleDateTime_Local
+                                                         select c).FirstOrDefault();
+
+                                    if (rainDays != null)
+                                    {
+                                        string R1Str = Math.Round(rainDays.R1, 0).ToString("F0") + "R";
+                                        string R2Str = Math.Round(rainDays.R2, 0).ToString("F0") + "R";
+                                        string R3Str = Math.Round(rainDays.R3, 0).ToString("F0") + "R";
+                                        string R4Str = Math.Round(rainDays.R4, 0).ToString("F0") + "R";
+                                        string R5Str = Math.Round(rainDays.R5, 0).ToString("F0") + "R";
+                                        string R6Str = Math.Round(rainDays.R6, 0).ToString("F0") + "R";
+                                        string R7Str = Math.Round(rainDays.R7, 0).ToString("F0") + "R";
+                                        string R8Str = Math.Round(rainDays.R8, 0).ToString("F0") + "R";
+                                        string R9Str = Math.Round(rainDays.R9, 0).ToString("F0") + "R";
+                                        string R10Str = Math.Round(rainDays.R10, 0).ToString("F0") + "R";
+
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+
+                                        sbRainFull.Append($"{ R1Str },{ R2Str },{ R3Str },{ R4Str },{ R5Str },{ R6Str },{ R7Str },{ R8Str },{ R9Str },{ R10Str },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },{ sbRainFull.ToString() },");
+                                    }
+                                    else
+                                    {
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },");
                                     }
                                 }
                                 else
                                 {
-                                    sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }|");
+
+                                    sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                    sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },");
                                 }
                             }
                             CSVValues csvValues = new CSVValues()
@@ -5508,38 +5655,142 @@ namespace ImportByFunction
                             };
 
                             csvValuesList.Add(csvValues);
+
+                            CSVValues csvValuesFull = new CSVValues()
+                            {
+                                Subsector = TVText,
+                                Site = tvItemModelMWQMSite.TVText,
+                                StartYear = mwqmSampleList[0].SampleDateTime_Local.Year,
+                                EndYear = mwqmSampleList[mwqmSampleList.Count - 1].SampleDateTime_Local.Year,
+                                statType = statType,
+                                ClassStr = ClassStr,
+                                Letter = letterColorName.Letter,
+                                NumbSamples = mwqmSampleList.Count,
+                                P90 = P90Int,
+                                GM = GeoMeanInt,
+                                Med = MedianInt,
+                                PercOver43 = PercOver43Int,
+                                PercOver260 = PercOver260Int,
+                                ValueList = sbValueListFull.ToString(),
+                            };
+
+                            csvValuesListFull.Add(csvValuesFull);
                         }
                         else
                         {
                             StringBuilder sbValueList = new StringBuilder();
+                            StringBuilder sbValueListFull = new StringBuilder();
                             foreach (MWQMSample mwqmSample in mwqmSampleList)
                             {
                                 if (statType == StatType.Wet)
                                 {
                                     StringBuilder sbRain = new StringBuilder();
+                                    StringBuilder sbRainFull = new StringBuilder();
                                     RainDays rainDays = (from c in RainList
                                                          where c.RunDate == mwqmSample.SampleDateTime_Local
                                                          select c).FirstOrDefault();
 
                                     if (rainDays != null)
                                     {
-                                        sbRain.Append($"({ Math.Round(rainDays.R1, 0).ToString("F0") }_{ Math.Round(rainDays.R2, 0).ToString("F0") }_{ Math.Round(rainDays.R3, 0).ToString("F0") }_{ Math.Round(rainDays.R4, 0).ToString("F0") })");
-                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }{ sbRain.ToString() }|");
+                                        string R1Str = Math.Round(rainDays.R1, 0).ToString("F0") + "R";
+                                        string R2Str = Math.Round(rainDays.R2, 0).ToString("F0") + "R";
+                                        string R3Str = Math.Round(rainDays.R3, 0).ToString("F0") + "R";
+                                        string R4Str = Math.Round(rainDays.R4, 0).ToString("F0") + "R";
+                                        string R5Str = Math.Round(rainDays.R5, 0).ToString("F0") + "R";
+                                        string R6Str = Math.Round(rainDays.R6, 0).ToString("F0") + "R";
+                                        string R7Str = Math.Round(rainDays.R7, 0).ToString("F0") + "R";
+                                        string R8Str = Math.Round(rainDays.R8, 0).ToString("F0") + "R";
+                                        string R9Str = Math.Round(rainDays.R9, 0).ToString("F0") + "R";
+                                        string R10Str = Math.Round(rainDays.R10, 0).ToString("F0") + "R";
+
+                                        sbRain.Append($"{ R1Str },{ R2Str },{ R3Str },{ R4Str },");
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },{ sbRain.ToString() },");
+
+
+                                        sbRainFull.Append($"{ R1Str },{ R2Str },{ R3Str },{ R4Str },{ R5Str },{ R6Str },{ R7Str },{ R8Str },{ R9Str },{ R10Str },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },{ sbRainFull.ToString() },");
                                     }
                                     else
                                     {
-                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }|");
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                    }
+                                }
+                                else if (statType == StatType.Dry)
+                                {
+                                    StringBuilder sbRainFull = new StringBuilder();
+                                    RainDays rainDays = (from c in RainList
+                                                         where c.RunDate == mwqmSample.SampleDateTime_Local
+                                                         select c).FirstOrDefault();
+
+                                    if (rainDays != null)
+                                    {
+                                        string R1Str = Math.Round(rainDays.R1, 0).ToString("F0") + "R";
+                                        string R2Str = Math.Round(rainDays.R2, 0).ToString("F0") + "R";
+                                        string R3Str = Math.Round(rainDays.R3, 0).ToString("F0") + "R";
+                                        string R4Str = Math.Round(rainDays.R4, 0).ToString("F0") + "R";
+                                        string R5Str = Math.Round(rainDays.R5, 0).ToString("F0") + "R";
+                                        string R6Str = Math.Round(rainDays.R6, 0).ToString("F0") + "R";
+                                        string R7Str = Math.Round(rainDays.R7, 0).ToString("F0") + "R";
+                                        string R8Str = Math.Round(rainDays.R8, 0).ToString("F0") + "R";
+                                        string R9Str = Math.Round(rainDays.R9, 0).ToString("F0") + "R";
+                                        string R10Str = Math.Round(rainDays.R10, 0).ToString("F0") + "R";
+
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+
+                                        sbRainFull.Append($"{ R1Str },{ R2Str },{ R3Str },{ R4Str },{ R5Str },{ R6Str },{ R7Str },{ R8Str },{ R9Str },{ R10Str },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },{ sbRainFull.ToString() },");
+                                    }
+                                    else
+                                    {
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                    }
+                                }
+                                else if (statType == StatType.Run30)
+                                {
+                                    StringBuilder sbRainFull = new StringBuilder();
+                                    RainDays rainDays = (from c in RainList
+                                                         where c.RunDate == mwqmSample.SampleDateTime_Local
+                                                         select c).FirstOrDefault();
+
+                                    if (rainDays != null)
+                                    {
+                                        string R1Str = Math.Round(rainDays.R1, 0).ToString("F0") + "R";
+                                        string R2Str = Math.Round(rainDays.R2, 0).ToString("F0") + "R";
+                                        string R3Str = Math.Round(rainDays.R3, 0).ToString("F0") + "R";
+                                        string R4Str = Math.Round(rainDays.R4, 0).ToString("F0") + "R";
+                                        string R5Str = Math.Round(rainDays.R5, 0).ToString("F0") + "R";
+                                        string R6Str = Math.Round(rainDays.R6, 0).ToString("F0") + "R";
+                                        string R7Str = Math.Round(rainDays.R7, 0).ToString("F0") + "R";
+                                        string R8Str = Math.Round(rainDays.R8, 0).ToString("F0") + "R";
+                                        string R9Str = Math.Round(rainDays.R9, 0).ToString("F0") + "R";
+                                        string R10Str = Math.Round(rainDays.R10, 0).ToString("F0") + "R";
+
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+
+                                        sbRainFull.Append($"{ R1Str },{ R2Str },{ R3Str },{ R4Str },{ R5Str },{ R6Str },{ R7Str },{ R8Str },{ R9Str },{ R10Str },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },{ sbRainFull.ToString() },");
+                                    }
+                                    else
+                                    {
+                                        sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                        sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },");
                                     }
                                 }
                                 else
                                 {
-                                    sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml }|");
+
+                                    sbValueList.Append($"{ mwqmSample.FecCol_MPN_100ml },");
+                                    sbValueListFull.Append($"{ mwqmSample.FecCol_MPN_100ml },");
                                 }
                             }
                             CSVValues csvValues = new CSVValues()
                             {
                                 Subsector = TVText,
                                 Site = tvItemModelMWQMSite.TVText,
+                                StartYear = -1,
+                                EndYear = -1,
+                                statType = statType,
                                 ClassStr = "",
                                 Letter = "",
                                 NumbSamples = mwqmSampleList.Count,
@@ -5552,6 +5803,26 @@ namespace ImportByFunction
                             };
 
                             csvValuesList.Add(csvValues);
+
+                            CSVValues csvValuesFull = new CSVValues()
+                            {
+                                Subsector = TVText,
+                                Site = tvItemModelMWQMSite.TVText,
+                                StartYear = -1,
+                                EndYear = -1,
+                                statType = statType,
+                                ClassStr = "",
+                                Letter = "",
+                                NumbSamples = mwqmSampleList.Count,
+                                P90 = -1,
+                                GM = -1,
+                                Med = -1,
+                                PercOver43 = -1,
+                                PercOver260 = -1,
+                                ValueList = sbValueListFull.ToString(),
+                            };
+
+                            csvValuesListFull.Add(csvValuesFull);
                         }
                     }
                 }
