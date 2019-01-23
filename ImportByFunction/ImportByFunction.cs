@@ -6002,6 +6002,260 @@ namespace ImportByFunction
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ////StringBuilder sb = new StringBuilder();
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //TVItemLinkService tvItemLinkService = new TVItemLinkService(LanguageEnum.en, user);
+
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            //{
+            //    return;
+            //}
+
+            //string ProvinceName = "Québec";
+            //List<TVItemModel> tvItemModelProvinceList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Province);
+            //if (tvItemModelProvinceList.Count == 0)
+            //{
+            //    return;
+            //}
+
+            //TVItemModel tvItemModelProvince = new TVItemModel();
+
+            //foreach (TVItemModel tvItemModel in tvItemModelProvinceList)
+            //{
+            //    if (tvItemModel.TVText == ProvinceName)
+            //    {
+            //        tvItemModelProvince = tvItemModel;
+            //        break;
+            //    }
+            //}
+
+            //List<TVItemModel> tvItemModelMunicipalitiesList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProvince.TVItemID, TVTypeEnum.Municipality);
+
+            //foreach (TVItemModel tvItemModelMuni in tvItemModelMunicipalitiesList)
+            //{
+            //    //if (tvItemModelMuni.TVText == "Bouctouche")
+            //    //{
+            //        lblStatus.Text = $"Doing - { tvItemModelMuni.TVText }";
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
+
+            //        string OldPath = tvItemModelMuni.TVPath;
+            //        string NewPath = OldPath.Replace(OldPath, tvItemModelProvince.TVPath + "p" + tvItemModelMuni.TVItemID);
+            //        if (OldPath == NewPath)
+            //        {
+            //            continue;
+            //        }
+            //        int OldLevel = tvItemModelMuni.TVLevel;
+            //        int NewLevel = tvItemModelProvince.TVLevel + 1;
+            //        int DeltaLevel = OldLevel - NewLevel;
+
+            //        List<TVItemModel> tvItemModelParents = tvItemService.GetParentsTVItemModelList(tvItemModelMuni.TVPath);
+
+            //        TVItemModel tvItemModelSubsector = new TVItemModel();
+
+            //        foreach (TVItemModel tvItemModelss in tvItemModelParents)
+            //        {
+            //            if (tvItemModelss.TVType == TVTypeEnum.Subsector)
+            //            {
+            //                tvItemModelSubsector = tvItemModelss;
+            //                break;
+            //            }
+            //        }
+
+            //        TVItemLinkModel tvItemLinkModelMuniSS = tvItemLinkService.GetTVItemLinkModelWithFromTVItemIDAndToTVItemIDDB(tvItemModelSubsector.TVItemID, tvItemModelMuni.TVItemID);
+            //        if (!string.IsNullOrWhiteSpace(tvItemLinkModelMuniSS.Error))
+            //        {
+            //            TVItemLinkModel tvItemLinkModelNew = new TVItemLinkModel()
+            //            {
+            //                FromTVItemID = tvItemModelSubsector.TVItemID,
+            //                ToTVItemID = tvItemModelMuni.TVItemID,
+            //                FromTVType = tvItemModelSubsector.TVType,
+            //                ToTVType = tvItemModelMuni.TVType,
+            //                FromTVText = tvItemModelSubsector.TVText,
+            //                ToTVText = tvItemModelMuni.TVText,
+            //                Ordinal = 0,
+            //                ParentTVItemLinkID = null,
+            //                StartDateTime_Local = DateTime.Now,
+            //                EndDateTime_Local = DateTime.Now.AddDays(1),
+            //                TVLevel = tvItemModelProvince.TVLevel + 1,
+            //                TVPath = NewPath
+            //            };
+
+            //            TVItemLinkModel tvItemLinkModelRet = tvItemLinkService.PostAddTVItemLinkDB(tvItemLinkModelNew);
+            //            if (!string.IsNullOrWhiteSpace(tvItemLinkModelRet.Error))
+            //            {
+            //                richTextBoxStatus.AppendText(tvItemLinkModelRet.Error + "\r\n");
+            //                //return;
+            //            }
+
+            //            //sb.AppendLine($"New Link \t{ tvItemLinkModelNew.FromTVItemID }\t{ tvItemLinkModelNew.ToTVItemID }\t{ tvItemLinkModelNew.FromTVType }\t{ tvItemLinkModelNew.ToTVType }\t{ tvItemLinkModelNew.FromTVText }\t{ tvItemLinkModelNew.ToTVText }\t");
+            //        }
+
+
+            //        //sb.AppendLine($"{ OldPath }\t{ NewPath }\t{ OldLevel }\t{ NewLevel }");
+
+            //        using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //        {
+            //            List<TVItem> tvItemList = (from c in db2.TVItems
+            //                                       where c.TVPath.StartsWith(OldPath)
+            //                                       orderby c.TVLevel
+            //                                       select c).ToList();
+
+            //            foreach (TVItem tvItem in tvItemList)
+            //            {
+            //                lblStatus.Text = $"Doing - { tvItemModelMuni.TVText } ---- { tvItem.TVItemID } --- { tvItem.TVType }";
+            //                lblStatus.Refresh();
+            //                Application.DoEvents();
+
+            //                string NewPath2 = "";
+            //                if (tvItem.TVItemID == tvItemModelMuni.TVItemID)
+            //                {
+            //                    NewPath2 = NewPath;
+            //                }
+            //                else
+            //                {
+            //                    NewPath2 = tvItem.TVPath.Replace(OldPath, NewPath);
+            //                }
+
+            //                int NewLevel2 = tvItem.TVLevel - DeltaLevel;
+            //                //sb.AppendLine($"{ tvItem.TVPath }\t{ NewPath2 }\t{ tvItem.TVLevel }\t{ NewLevel2 }");
+            //                tvItem.TVPath = NewPath2;
+            //                tvItem.TVLevel = NewLevel2;
+
+            //                if (tvItemModelMuni.TVItemID == tvItem.TVItemID)
+            //                {
+            //                    //sb.AppendLine($"{ tvItem.ParentID }\t{ tvItemModelProvince.TVItemID }");
+            //                    tvItem.ParentID = tvItemModelProvince.TVItemID;
+            //                }
+            //            }
+            //            //sb.AppendLine();
+            //            //sb.AppendLine();
+
+            //            try
+            //            {
+            //                lblStatus.Text = $"Doing - { tvItemModelMuni.TVText } ---- Saving all changes";
+            //                lblStatus.Refresh();
+            //                Application.DoEvents();
+            //                db2.SaveChanges();
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                string Inner = ex.InnerException != null ? ex.InnerException.Message : "";
+            //                //sb.AppendLine($"ERROR: { ex.Message } --- InnerException: { Inner }");
+            //                richTextBoxStatus.AppendText($"ERROR: { ex.Message } --- InnerException: { Inner }" + "\r\n");
+            //                return;
+            //            }
+            //        }
+            //    //}
+            //}
+
+            //lblStatus.Text = $"Done...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+
+            ////richTextBoxStatus.AppendText(sb.ToString());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            //MapInfoPointService mapInfoPointService = new MapInfoPointService(LanguageEnum.en, user);
+            //TideSiteService tideSiteService = new TideSiteService(LanguageEnum.en, user);
+
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            //{
+            //    return;
+            //}
+
+            //string ProvinceName = "British Columbia";
+            //string ProvinceInit = "BC";
+            //List<TVItemModel> tvItemModelProvinceList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Province);
+            //if (tvItemModelProvinceList.Count == 0)
+            //{
+            //    return;
+            //}
+
+            //TVItemModel tvItemModelProvince = new TVItemModel();
+
+            //foreach (TVItemModel tvItemModel in tvItemModelProvinceList)
+            //{
+            //    if (tvItemModel.TVText == ProvinceName)
+            //    {
+            //        tvItemModelProvince = tvItemModel;
+            //        break;
+            //    }
+            //}
+
+            //List<TideLocation> TideLocationList = new List<TideLocation>();
+            //using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //{
+
+            //    TideLocationList = (from c in db2.TideLocations
+            //                        where c.Prov == ProvinceInit
+            //                        select c).ToList();
+            //}
+
+            //foreach (TideLocation tideLocation in TideLocationList)
+            //{
+            //    lblStatus.Text = tideLocation.Name;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+             
+            //    TVItemModel tvItemModelExist = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProvince.TVItemID, tideLocation.Name, TVTypeEnum.TideSite);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelExist.Error))
+            //    {
+            //        tvItemModelExist = tvItemService.PostAddChildTVItemDB(tvItemModelProvince.TVItemID, tideLocation.Name, TVTypeEnum.TideSite);
+            //        if (!string.IsNullOrWhiteSpace(tvItemModelExist.Error))
+            //        {
+            //            richTextBoxStatus.AppendText($"Could not create of get the TVItem with TVText = { tideLocation.Name }");
+            //            return;
+            //        }
+            //    }
+
+            //    List<MapInfoPointModel> mapInfoPointModelList = mapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelExist.TVItemID, TVTypeEnum.TideSite, MapInfoDrawTypeEnum.Point);
+            //    if (mapInfoPointModelList.Count == 0)
+            //    {
+            //        List<Coord> coordList = new List<Coord>()
+            //                    {
+            //                        new Coord() { Lat = (float)tideLocation.Lat, Lng = (float)tideLocation.Lng, Ordinal = 0 }
+            //                    };
+            //        MapInfoModel mapInfoModelRet = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.TideSite, tvItemModelExist.TVItemID);
+            //        if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
+            //        {
+            //            richTextBoxStatus.AppendText($"Could not create MapInfo TVItem with TVText = { tideLocation.Name }");
+            //            return;
+            //        }
+            //    }
+
+            //    TideSiteModel tideSiteModel = new TideSiteModel()
+            //    {
+            //        Province = tideLocation.Prov,
+            //        sid = tideLocation.sid,
+            //        Zone = tideLocation.Zone,
+            //        TideSiteTVItemID = tvItemModelExist.TVItemID,
+            //        TideSiteName = tideLocation.Name,
+            //    };
+
+            //    TideSiteModel tideSiteModelExist = tideSiteService.GetTideSiteModelExistDB(tideSiteModel);
+            //    if (!string.IsNullOrWhiteSpace(tideSiteModelExist.Error))
+            //    {
+            //        TideSiteModel tideSiteModelRet = tideSiteService.PostAddTideSiteDB(tideSiteModel);
+            //        if (!string.IsNullOrWhiteSpace(tideSiteModelRet.Error))
+            //        {
+            //            richTextBoxStatus.AppendText($"Could not create TideSite TVItem with TVText = { tideLocation.Name }");
+            //            return;
+            //        }
+            //    }
+            //}
+
+            //lblStatus.Text = "Done...";
+        }
+
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
