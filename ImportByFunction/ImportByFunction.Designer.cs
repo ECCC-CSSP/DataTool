@@ -70,6 +70,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBoxFromTVItemID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxToTVItemID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -467,12 +472,59 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(54, 217);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(335, 23);
+            this.button5.TabIndex = 209;
+            this.button5.Text = "Correct Duplicate Municipalities";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBoxFromTVItemID
+            // 
+            this.textBoxFromTVItemID.Location = new System.Drawing.Point(136, 246);
+            this.textBoxFromTVItemID.Name = "textBoxFromTVItemID";
+            this.textBoxFromTVItemID.Size = new System.Drawing.Size(67, 20);
+            this.textBoxFromTVItemID.TabIndex = 135;
+            this.textBoxFromTVItemID.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(36, 249);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "From TVItemID";
+            // 
+            // textBoxToTVItemID
+            // 
+            this.textBoxToTVItemID.Location = new System.Drawing.Point(321, 246);
+            this.textBoxToTVItemID.Name = "textBoxToTVItemID";
+            this.textBoxToTVItemID.Size = new System.Drawing.Size(67, 20);
+            this.textBoxToTVItemID.TabIndex = 212;
+            this.textBoxToTVItemID.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(221, 249);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 211;
+            this.label2.Text = "To TVItemID";
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.textBoxToTVItemID);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
@@ -490,6 +542,7 @@
             this.Controls.Add(this.textBoxQCCreateSamplesQC);
             this.Controls.Add(this.textBoxQCCreateRunsQC);
             this.Controls.Add(this.textBoxQCCreateSanitaryQC);
+            this.Controls.Add(this.textBoxFromTVItemID);
             this.Controls.Add(this.textBoxBCCreateStationsBC);
             this.Controls.Add(this.textBoxQCCreateStationsQC);
             this.Controls.Add(this.butSaveStatus);
@@ -505,6 +558,7 @@
             this.Controls.Add(this.panelStatus2);
             this.Controls.Add(this.butCancel);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -565,6 +619,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBoxFromTVItemID;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxToTVItemID;
+        private System.Windows.Forms.Label label2;
     }
 }
 

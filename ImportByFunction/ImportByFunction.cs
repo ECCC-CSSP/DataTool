@@ -6205,7 +6205,7 @@ namespace ImportByFunction
             //    lblStatus.Text = tideLocation.Name;
             //    lblStatus.Refresh();
             //    Application.DoEvents();
-             
+
             //    TVItemModel tvItemModelExist = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProvince.TVItemID, tideLocation.Name, TVTypeEnum.TideSite);
             //    if (!string.IsNullOrWhiteSpace(tvItemModelExist.Error))
             //    {
@@ -6254,6 +6254,64 @@ namespace ImportByFunction
             //}
 
             //lblStatus.Text = "Done...";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                return;
+            }
+
+            string ProvinceName = "New Brunswick";
+            List<TVItemModel> tvItemModelProvinceList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Province);
+            if (tvItemModelProvinceList.Count == 0)
+            {
+                return;
+            }
+
+            TVItemModel tvItemModelProvince = new TVItemModel();
+
+            foreach (TVItemModel tvItemModel in tvItemModelProvinceList)
+            {
+                if (tvItemModel.TVText == ProvinceName)
+                {
+                    tvItemModelProvince = tvItemModel;
+                    break;
+                }
+            }
+
+            List<TVItemModel> tvItemModelMunicipalityList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProvince.TVItemID, TVTypeEnum.Municipality);
+            List<TVItemModel> tvItemModelInfrastructureList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProvince.TVItemID, TVTypeEnum.Infrastructure);
+
+            foreach (TVItemModel tvItemModelMuni in tvItemModelMunicipalityList)
+            {
+                lblStatus.Text = $"{ tvItemModelMuni.TVText }";
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                if (!tvItemModelInfrastructureList.Where(c => c.TVPath.StartsWith(tvItemModelMuni.TVPath + "p")).Any())
+                {
+                    // municipality does not have infrastructure so make it inactive
+                    tvItemModelMuni.IsActive = false;
+
+                    TVItemModel tvItemModelRet = tvItemService.PostUpdateTVItemDB(tvItemModelMuni);
+                    if (!string.IsNullOrWhiteSpace(tvItemModelRet.Error))
+                    {
+
+
+                        richTextBoxStatus.AppendText($"Could not change { tvItemModelMuni.TVText }\r\n");
+                        return;
+                    }
+
+                }
+            }
+
+            lblStatus.Text = "Done...";
+
         }
 
         //private void button18_Click(object sender, EventArgs e)
