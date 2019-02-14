@@ -6314,6 +6314,106 @@ namespace ImportByFunction
 
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            richTextBoxStatus.AppendText(Math.Atan2(1, 1.1) * 180 / Math.PI + "\r\n");
+            richTextBoxStatus.AppendText(Math.Atan2(-1, 1.1) * 180 / Math.PI + "\r\n");
+            richTextBoxStatus.AppendText(Math.Atan2(-1, -1.1) * 180 / Math.PI + "\r\n");
+            richTextBoxStatus.AppendText(Math.Atan2(1, -1.1) * 180 / Math.PI + "\r\n");
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            for (int year = 2007; year < 2019; year++)
+            {
+                for (int month = 1; month < 13; month++)
+                {
+                    string url = "http://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID=43383&Year=YYYYY&Month=MMMMM&timeframe=1&submit=Download+Data";
+
+                    url = url.Replace("YYYYY", year.ToString()).Replace("MMMMM", month.ToString());
+
+                    using (WebClient webClient = new WebClient())
+                    {
+                        lblStatus.Text = "Year " + year + " Month + " + month;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        WebProxy webProxy = new WebProxy();
+                        webClient.Proxy = webProxy;
+                        string ret = webClient.DownloadString(new Uri(url));
+                        if (ret.Length > 0)
+                        {
+                            FileInfo fi = new FileInfo(@"C:\___Sam\StStephen_" + year + "_" + (month < 10 ? ("0" + month.ToString()) : month.ToString()) + ".csv");
+                            StreamWriter sw = fi.CreateText();
+                            sw.Write(ret);
+                            sw.Close();
+                        }
+                        else
+                        {
+                            richTextBoxStatus.AppendText("Error: could not load [" + url + "]\r\n");
+                        }
+                    }
+
+                }
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            DirectoryInfo di = new DirectoryInfo(@"C:\___Sam");
+
+            if (di.Exists)
+            {
+                List<FileInfo> fiList = di.GetFiles().ToList();
+
+                //int count = 0;
+                foreach (FileInfo fi in fiList)
+                {
+                    lblStatus.Text = fi.FullName;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+
+                    StreamReader sr = fi.OpenText();
+                    //if (count == 0)
+                    //{
+                    //    string ret = sr.ReadToEnd();
+                    //    sb.AppendLine(ret);
+                    //    count += 1;
+                    //}
+                    //else
+                    //{
+                        bool skip = true;
+                        while (!sr.EndOfStream)
+                        {
+                            string line = sr.ReadLine();
+                            if (!skip)
+                            {
+                                if (string.IsNullOrWhiteSpace(line.Trim()))
+                                {
+                                    break;
+                                }
+                                sb.AppendLine(line);
+                            }
+
+                            if (line.StartsWith(@"""Date/Time") && skip == true)
+                            {
+                                skip = false;
+                            }
+
+                        }
+                    //}
+                    sr.Close();
+                }
+            }
+
+            StreamWriter sw = new StreamWriter(@"C:\___Sam\_StStephenAll.csv");
+            sw.Write(sb.ToString());
+            sw.Close();
+        }
+
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
