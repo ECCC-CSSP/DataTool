@@ -6385,25 +6385,25 @@ namespace ImportByFunction
                     //}
                     //else
                     //{
-                        bool skip = true;
-                        while (!sr.EndOfStream)
+                    bool skip = true;
+                    while (!sr.EndOfStream)
+                    {
+                        string line = sr.ReadLine();
+                        if (!skip)
                         {
-                            string line = sr.ReadLine();
-                            if (!skip)
+                            if (string.IsNullOrWhiteSpace(line.Trim()))
                             {
-                                if (string.IsNullOrWhiteSpace(line.Trim()))
-                                {
-                                    break;
-                                }
-                                sb.AppendLine(line);
+                                break;
                             }
-
-                            if (line.StartsWith(@"""Date/Time") && skip == true)
-                            {
-                                skip = false;
-                            }
-
+                            sb.AppendLine(line);
                         }
+
+                        if (line.StartsWith(@"""Date/Time") && skip == true)
+                        {
+                            skip = false;
+                        }
+
+                    }
                     //}
                     sr.Close();
                 }
@@ -6412,6 +6412,558 @@ namespace ImportByFunction
             StreamWriter sw = new StreamWriter(@"C:\___Sam\_StStephenAll.csv");
             sw.Write(sb.ToString());
             sw.Close();
+        }
+
+        private void butCalculateMWQMSiteVariability_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("\t\tEvery Year\t\t\t\t\t\t\t\t\t\tEvery 2 Year Starting in 2018\t\t\t\t\t\t\t\t\t\tEvery 2 Year Starting in 2017\t\t\t\t\t\t\t\t\t\tEvery 2 Sample Starting with First\t\t\t\t\t\t\t\t\t\tEvery 2 Sample Starting with Second\t\t\t\t\t\t\t\t\t");
+            sb.AppendLine("Subsector\tSite\t#Samples\tEnd Year\tGMean\tMed\tP90\t%>43\tLetter\tColor\tDataText\t\t#Samples\tEnd Year\tGMean\tMed\tP90\t%>43\tLetter\tColor\tDataText\t\t#Samples\tEnd Year\tGMean\tMed\tP90\t%>43\tLetter\tColor\tDataText\t\t#Samples\tEnd Year\tGMean\tMed\tP90\t%>43\tLetter\tColor\tDataText\t\t#Samples\tEnd Year\tGMean\tMed\tP90\t%>43\tLetter\tColor\tDataText\t");
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                lblStatus.Text = "Could not find Root";
+                return;
+            }
+
+            TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, textBoxProvinceName.Text, TVTypeEnum.Province);
+            if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            {
+                lblStatus.Text = $"Could not find Province {textBoxProvinceName.Text}";
+                return;
+            }
+
+            List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNB.TVItemID, TVTypeEnum.Subsector);
+
+            foreach (TVItemModel tvItemModelSS in tvitemModelSSList)
+            {
+                lblStatus.Text = tvItemModelSS.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                if (!tvItemModelSS.TVText.StartsWith("NB-06-020-002"))
+                {
+                    //continue;
+                }
+
+                List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMSite).Where(c => c.IsActive == true).ToList();
+                List<MWQMSample> mwqmSampleListAll = new List<MWQMSample>();
+                List<MWQMSample> mwqmSampleListStatEveryYear = new List<MWQMSample>();
+                List<MWQMSample> mwqmSampleListStatEvery2Year = new List<MWQMSample>();
+                List<MWQMSample> mwqmSampleListStatEvery3Year = new List<MWQMSample>();
+                List<MWQMSample> mwqmSampleListStatEvery2Samples = new List<MWQMSample>();
+                List<MWQMSample> mwqmSampleListStatEvery3Samples = new List<MWQMSample>();
+
+
+                using (CSSPDBEntities db2 = new CSSPDBEntities())
+                {
+                    List<int> TVItemMWQMSiteList = tvItemModelMWQMSiteList.Select(c => c.TVItemID).Distinct().ToList();
+
+                    mwqmSampleListAll = (from c in db2.MWQMSamples
+                                         from tid in TVItemMWQMSiteList
+                                         orderby c.SampleDateTime_Local descending
+                                         where c.MWQMSiteTVItemID == tid
+                                         && c.SampleTypesText.Contains("109,")
+                                         select c).ToList();
+
+
+                    mwqmSampleListStatEveryYear = (from c in mwqmSampleListAll
+                                                   select c).ToList();
+
+                    if (mwqmSampleListAll.Count == 0)
+                    {
+                        continue;
+                    }
+
+                    foreach (TVItemModel tvItemModelMWQMSite in tvItemModelMWQMSiteList)
+                    {
+                        string EveryYear = "";
+                        string Every2YearStartingIn2018 = "";
+                        string Every2YearStartingIn2017 = "";
+                        string Every2SampleStartingWithFirst = "";
+                        string Every2SampleStartingWithSecond = "";
+
+                        if (tvItemModelMWQMSite != null)
+                        {
+                            #region EveryYear
+                            // ---------------------------------------------------------------------------------------
+                            // -------------------------------------  every year -------------------------------------
+                            // ---------------------------------------------------------------------------------------
+                            List<double> mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
+                                                             where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                             orderby c.SampleDateTime_Local descending
+                                                             select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
+
+                            List<MWQMSample> mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
+                                                                   where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                                   orderby c.SampleDateTime_Local descending
+                                                                   select c).ToList<MWQMSample>();
+
+                            List<MWQMSample> mwqmSampleList = new List<MWQMSample>();
+
+                            if (mwqmSampleListFull.Count == 0)
+                            {
+                                continue;
+                            }
+                            List<int> YearWithData = mwqmSampleListFull.Select(c => c.SampleDateTime_Local.Year).Distinct().OrderByDescending(c => c).ToList();
+
+                            int StartYear = YearWithData[0];
+                            int ToYear = 0;
+                            int oldYear = YearWithData[0];
+                            foreach (int year in YearWithData)
+                            {
+                                if (year < oldYear)
+                                {
+                                    if (year != (oldYear - 1))
+                                    {
+                                        ToYear = oldYear;
+                                    }
+                                    else
+                                    {
+                                        oldYear = year;
+                                    }
+                                }
+                            }
+
+                            int CurrentYear = StartYear;
+                            for (int i = 0, count = mwqmSampleListFull.Count(); i < count; i++)
+                            {
+                                if (mwqmSampleListFull[i].SampleDateTime_Local.Year < ToYear)
+                                {
+                                    break;
+                                }
+                                mwqmSampleList.Add(mwqmSampleListFull[i]);
+                            }
+
+                            bool DoSite = mwqmSampleList.Count >= 10 ? true : false;
+
+                            if (mwqmSampleList.Count >= 10)
+                            {
+
+                                double P90 = tvItemService.GetP90(mwqmSampleFCList);
+                                double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
+                                double Median = tvItemService.GetMedian(mwqmSampleFCList);
+                                double PercOver43 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                double PercOver260 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                int MinYear = mwqmSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
+
+                                int P90Int = (int)Math.Round((double)P90, 0);
+                                int GeoMeanInt = (int)Math.Round((double)GeoMean, 0);
+                                int MedianInt = (int)Math.Round((double)Median, 0);
+                                int PercOver43Int = (int)Math.Round((double)PercOver43, 0);
+                                int PercOver260Int = (int)Math.Round((double)PercOver260, 0);
+
+                                LetterColorName letterColorName = GetLetterColorName(P90Int, GeoMeanInt, MedianInt, PercOver43Int, PercOver260Int);
+
+                                string Subsector = tvItemModelSS.TVText.Substring(0, tvItemModelSS.TVText.IndexOf(" "));
+                                string Site = tvItemModelMWQMSite.TVText;
+                                string SamplesCount = mwqmSampleList.Count.ToString();
+                                string EndYear = MinYear.ToString();
+                                string GMeanText = GeoMean.ToString("F1");
+                                string MedText = Median.ToString("F1");
+                                string P90Text = P90.ToString("F1");
+                                string PerOver43Text = PercOver43.ToString("F1");
+                                string DataText = String.Join("|", mwqmSampleList.Select(c => c.FecCol_MPN_100ml));
+                                EveryYear = $"{ Subsector }\t{Site}\t{SamplesCount}\t{EndYear}\t{GMeanText}\t{MedText}\t{P90Text}\t{PerOver43Text}\t{letterColorName.Letter}\t{letterColorName.Name}\t{DataText}\t";
+                            }
+                            #endregion EveryYear
+
+                            #region Every2YearStartingIn2018
+                            // ---------------------------------------------------------------------------------------
+                            // ------------------------------------ every 2 years Starting in 2018 -------------------
+                            // ---------------------------------------------------------------------------------------
+                            mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
+                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                orderby c.SampleDateTime_Local descending
+                                                select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
+
+                            mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
+                                                  where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                  orderby c.SampleDateTime_Local descending
+                                                  select c).ToList<MWQMSample>();
+
+                            mwqmSampleList = new List<MWQMSample>();
+
+                            if (mwqmSampleListFull.Count >= 10 && DoSite && mwqmSampleListFull.Count > 0)
+                            {
+                                YearWithData = mwqmSampleListFull.Select(c => c.SampleDateTime_Local.Year).Distinct().OrderByDescending(c => c).ToList();
+
+                                StartYear = YearWithData[0]; // StartYear == 2018 because data is [2018, 2017...]
+                                CurrentYear = StartYear;
+                                for (int i = 0, count = mwqmSampleListFull.Count(); i < count; i++)
+                                {
+                                    if (mwqmSampleListFull[i].SampleDateTime_Local.Year == CurrentYear)
+                                    {
+                                        mwqmSampleList.Add(mwqmSampleListFull[i]);
+                                    }
+                                    else
+                                    {
+                                        if (mwqmSampleListFull[i].SampleDateTime_Local.Year == CurrentYear - 1)
+                                        {
+                                            if (CurrentYear <= ToYear)
+                                            {
+                                                break;
+                                            }
+                                            CurrentYear = CurrentYear - 2;
+                                        }
+                                    }
+                                }
+
+                                if (mwqmSampleList.Count >= 10 && DoSite)
+                                {
+
+                                    double P90 = tvItemService.GetP90(mwqmSampleFCList);
+                                    double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
+                                    double Median = tvItemService.GetMedian(mwqmSampleFCList);
+                                    double PercOver43 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                    double PercOver260 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                    int MinYear = mwqmSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
+
+                                    int P90Int = (int)Math.Round((double)P90, 0);
+                                    int GeoMeanInt = (int)Math.Round((double)GeoMean, 0);
+                                    int MedianInt = (int)Math.Round((double)Median, 0);
+                                    int PercOver43Int = (int)Math.Round((double)PercOver43, 0);
+                                    int PercOver260Int = (int)Math.Round((double)PercOver260, 0);
+
+                                    LetterColorName letterColorName = GetLetterColorName(P90Int, GeoMeanInt, MedianInt, PercOver43Int, PercOver260Int);
+
+                                    string SamplesCount = mwqmSampleList.Count.ToString();
+                                    string EndYear = MinYear.ToString();
+                                    string GMeanText = GeoMean.ToString("F1");
+                                    string MedText = Median.ToString("F1");
+                                    string P90Text = P90.ToString("F1");
+                                    string PerOver43Text = PercOver43.ToString("F1");
+                                    string DataText = String.Join("|", mwqmSampleList.Select(c => c.FecCol_MPN_100ml));
+                                    Every2YearStartingIn2018 = $"\t{SamplesCount}\t{EndYear}\t{GMeanText}\t{MedText}\t{P90Text}\t{PerOver43Text}\t{letterColorName.Letter}\t{letterColorName.Name}\t{DataText}\t";
+                                }
+                                else
+                                {
+                                    string SamplesCount = mwqmSampleList.Count.ToString();
+                                    Every2YearStartingIn2018 = $"\t{SamplesCount}\t\t\t\t\t\t\t\t\t";
+                                }
+                            }
+                            else
+                            {
+                                string SamplesCount = mwqmSampleList.Count.ToString();
+                                Every2YearStartingIn2018 = $"\t{SamplesCount}\t\t\t\t\t\t\t\t\t";
+                            }
+                            #endregion Every2YearStartingIn2018
+
+                            #region Every2YearStartingIn2017
+                            // ---------------------------------------------------------------------------------------
+                            // ------------------------------------ every 2 years Starting in 2017 -------------------
+                            // ---------------------------------------------------------------------------------------
+                            mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
+                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                orderby c.SampleDateTime_Local descending
+                                                select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
+
+                            mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
+                                                  where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                  orderby c.SampleDateTime_Local descending
+                                                  select c).ToList<MWQMSample>();
+
+                            mwqmSampleList = new List<MWQMSample>();
+
+                            if (mwqmSampleListFull.Count >= 10 && DoSite)
+                            {
+                                YearWithData = mwqmSampleListFull.Select(c => c.SampleDateTime_Local.Year).Distinct().OrderByDescending(c => c).ToList();
+
+                                StartYear = YearWithData[1]; // StartYear == 2017 because data is [2018, 2017...]
+                                CurrentYear = StartYear;
+                                for (int i = 0, count = mwqmSampleListFull.Count(); i < count; i++)
+                                {
+                                    if (mwqmSampleListFull[i].SampleDateTime_Local.Year == CurrentYear)
+                                    {
+                                        mwqmSampleList.Add(mwqmSampleListFull[i]);
+                                    }
+                                    else
+                                    {
+                                        if (mwqmSampleListFull[i].SampleDateTime_Local.Year == CurrentYear - 1)
+                                        {
+                                            if (CurrentYear <= ToYear)
+                                            {
+                                                break;
+                                            }
+                                            CurrentYear = CurrentYear - 2;
+                                        }
+                                    }
+                                }
+
+                                if (mwqmSampleList.Count >= 10 && DoSite)
+                                {
+
+                                    double P90 = tvItemService.GetP90(mwqmSampleFCList);
+                                    double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
+                                    double Median = tvItemService.GetMedian(mwqmSampleFCList);
+                                    double PercOver43 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                    double PercOver260 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                    int MinYear = mwqmSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
+
+                                    int P90Int = (int)Math.Round((double)P90, 0);
+                                    int GeoMeanInt = (int)Math.Round((double)GeoMean, 0);
+                                    int MedianInt = (int)Math.Round((double)Median, 0);
+                                    int PercOver43Int = (int)Math.Round((double)PercOver43, 0);
+                                    int PercOver260Int = (int)Math.Round((double)PercOver260, 0);
+
+                                    LetterColorName letterColorName = GetLetterColorName(P90Int, GeoMeanInt, MedianInt, PercOver43Int, PercOver260Int);
+
+                                    string SamplesCount = mwqmSampleList.Count.ToString();
+                                    string EndYear = MinYear.ToString();
+                                    string GMeanText = GeoMean.ToString("F1");
+                                    string MedText = Median.ToString("F1");
+                                    string P90Text = P90.ToString("F1");
+                                    string PerOver43Text = PercOver43.ToString("F1");
+                                    string DataText = String.Join("|", mwqmSampleList.Select(c => c.FecCol_MPN_100ml));
+                                    Every2YearStartingIn2017 = $"\t{SamplesCount}\t{EndYear}\t{GMeanText}\t{MedText}\t{P90Text}\t{PerOver43Text}\t{letterColorName.Letter}\t{letterColorName.Name}\t{DataText}\t";
+                                }
+                                else
+                                {
+                                    string SamplesCount = mwqmSampleList.Count.ToString();
+                                    Every2YearStartingIn2018 = $"\t{SamplesCount}\t\t\t\t\t\t\t\t\t";
+                                }
+                            }
+                            else
+                            {
+                                string SamplesCount = mwqmSampleList.Count.ToString();
+                                Every2YearStartingIn2018 = $"\t{SamplesCount}\t\t\t\t\t\t\t\t\t";
+                            }
+
+                            #endregion Every2YearStartingIn2017
+
+                            #region Every2SampleStartingWithFirst
+                            // ---------------------------------------------------------------------------------------
+                            // ------------------------------------ every 2 years Starting in 2017 -------------------
+                            // ---------------------------------------------------------------------------------------
+                            mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
+                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                orderby c.SampleDateTime_Local descending
+                                                select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
+
+                            mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
+                                                  where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                  orderby c.SampleDateTime_Local descending
+                                                  select c).ToList<MWQMSample>();
+
+                            mwqmSampleList = new List<MWQMSample>();
+
+                            if (mwqmSampleListFull.Count >= 10 && DoSite)
+                            {
+                                for (int i = 0, count = mwqmSampleListFull.Count(); i < count; i++)
+                                {
+                                    if (mwqmSampleListFull[i].SampleDateTime_Local.Year >= ToYear)
+                                    {
+                                        mwqmSampleList.Add(mwqmSampleListFull[i]);
+                                        i += 1;
+                                    }
+                                }
+
+                                if (mwqmSampleList.Count >= 10 && DoSite)
+                                {
+
+                                    double P90 = tvItemService.GetP90(mwqmSampleFCList);
+                                    double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
+                                    double Median = tvItemService.GetMedian(mwqmSampleFCList);
+                                    double PercOver43 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                    double PercOver260 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                    int MinYear = mwqmSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
+
+                                    int P90Int = (int)Math.Round((double)P90, 0);
+                                    int GeoMeanInt = (int)Math.Round((double)GeoMean, 0);
+                                    int MedianInt = (int)Math.Round((double)Median, 0);
+                                    int PercOver43Int = (int)Math.Round((double)PercOver43, 0);
+                                    int PercOver260Int = (int)Math.Round((double)PercOver260, 0);
+
+                                    LetterColorName letterColorName = GetLetterColorName(P90Int, GeoMeanInt, MedianInt, PercOver43Int, PercOver260Int);
+
+                                    string SamplesCount = mwqmSampleList.Count.ToString();
+                                    string EndYear = MinYear.ToString();
+                                    string GMeanText = GeoMean.ToString("F1");
+                                    string MedText = Median.ToString("F1");
+                                    string P90Text = P90.ToString("F1");
+                                    string PerOver43Text = PercOver43.ToString("F1");
+                                    string DataText = String.Join("|", mwqmSampleList.Select(c => c.FecCol_MPN_100ml));
+                                    Every2SampleStartingWithFirst = $"\t{SamplesCount}\t{EndYear}\t{GMeanText}\t{MedText}\t{P90Text}\t{PerOver43Text}\t{letterColorName.Letter}\t{letterColorName.Name}\t{DataText}\t";
+                                }
+                                else
+                                {
+                                    string SamplesCount = mwqmSampleList.Count.ToString();
+                                    Every2SampleStartingWithFirst = $"\t{SamplesCount}\t\t\t\t\t\t\t\t\t";
+                                }
+                            }
+                            else
+                            {
+                                string SamplesCount = mwqmSampleList.Count.ToString();
+                                Every2SampleStartingWithFirst = $"\t{SamplesCount}\t\t\t\t\t\t\t\t\t";
+                            }
+
+                            #endregion Every2SampleStartingWithFirst
+
+                            #region Every2SampleStartingWithSecond
+                            // ---------------------------------------------------------------------------------------
+                            // ------------------------------------ every 2 years Starting in 2017 -------------------
+                            // ---------------------------------------------------------------------------------------
+                            mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
+                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                orderby c.SampleDateTime_Local descending
+                                                select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
+
+                            mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
+                                                  where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                  orderby c.SampleDateTime_Local descending
+                                                  select c).ToList<MWQMSample>();
+
+                            mwqmSampleList = new List<MWQMSample>();
+
+                            if (mwqmSampleListFull.Count >= 10 && DoSite)
+                            {
+                                for (int i = 1, count = mwqmSampleListFull.Count(); i < count; i++)
+                                {
+                                    if (mwqmSampleListFull[i].SampleDateTime_Local.Year >= ToYear)
+                                    {
+                                        mwqmSampleList.Add(mwqmSampleListFull[i]);
+                                        i += 1;
+                                    }
+                                }
+
+                                if (mwqmSampleList.Count >= 10 && DoSite)
+                                {
+
+                                    double P90 = tvItemService.GetP90(mwqmSampleFCList);
+                                    double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
+                                    double Median = tvItemService.GetMedian(mwqmSampleFCList);
+                                    double PercOver43 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                    double PercOver260 = ((((double)mwqmSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleList.Count()) * 100.0D);
+                                    int MinYear = mwqmSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
+
+                                    int P90Int = (int)Math.Round((double)P90, 0);
+                                    int GeoMeanInt = (int)Math.Round((double)GeoMean, 0);
+                                    int MedianInt = (int)Math.Round((double)Median, 0);
+                                    int PercOver43Int = (int)Math.Round((double)PercOver43, 0);
+                                    int PercOver260Int = (int)Math.Round((double)PercOver260, 0);
+
+                                    LetterColorName letterColorName = GetLetterColorName(P90Int, GeoMeanInt, MedianInt, PercOver43Int, PercOver260Int);
+
+                                    string SamplesCount = mwqmSampleList.Count.ToString();
+                                    string EndYear = MinYear.ToString();
+                                    string GMeanText = GeoMean.ToString("F1");
+                                    string MedText = Median.ToString("F1");
+                                    string P90Text = P90.ToString("F1");
+                                    string PerOver43Text = PercOver43.ToString("F1");
+                                    string DataText = String.Join("|", mwqmSampleList.Select(c => c.FecCol_MPN_100ml));
+                                    Every2SampleStartingWithSecond = $"\t{SamplesCount}\t{EndYear}\t{GMeanText}\t{MedText}\t{P90Text}\t{PerOver43Text}\t{letterColorName.Letter}\t{letterColorName.Name}\t{DataText}\t";
+                                }
+                                else
+                                {
+                                    string SamplesCount = mwqmSampleList.Count.ToString();
+                                    Every2SampleStartingWithSecond = $"\t{SamplesCount}\t\t\t\t\t\t\t\t\t";
+                                }
+                            }
+                            else
+                            {
+                                string SamplesCount = mwqmSampleList.Count.ToString();
+                                Every2SampleStartingWithSecond = $"\t{SamplesCount}\t\t\t\t\t\t\t\t\t";
+                            }
+
+                            #endregion Every2SampleStartingWithSecond
+                        }
+
+                        sb.AppendLine($"{EveryYear}{Every2YearStartingIn2018}{Every2YearStartingIn2017}{Every2SampleStartingWithFirst}{Every2SampleStartingWithSecond}");
+                    }
+                }
+            }
+
+            richTextBoxStatus.Text = sb.ToString();
+        }
+        private LetterColorName GetLetterColorName(int P90Int, int GeoMeanInt, int MedianInt, int PercOver43Int, int PercOver260Int)
+        {
+            LetterColorName letterColorName = new LetterColorName();
+            if ((GeoMeanInt > 88) || (MedianInt > 88) || (P90Int > 260) || (PercOver260Int > 10))
+            {
+                if ((GeoMeanInt > 181) || (MedianInt > 181) || (P90Int > 460) || (PercOver260Int > 18))
+                {
+                    letterColorName = new LetterColorName() { Letter = "F", Color = "8888ff", Name = "NoDepuration" };
+                }
+                else if ((GeoMeanInt > 163) || (MedianInt > 163) || (P90Int > 420) || (PercOver260Int > 17))
+                {
+                    letterColorName = new LetterColorName() { Letter = "E", Color = "9999ff", Name = "NoDepuration" };
+                }
+                else if ((GeoMeanInt > 144) || (MedianInt > 144) || (P90Int > 380) || (PercOver260Int > 15))
+                {
+                    letterColorName = new LetterColorName() { Letter = "D", Color = "aaaaff", Name = "NoDepuration" };
+                }
+                else if ((GeoMeanInt > 125) || (MedianInt > 125) || (P90Int > 340) || (PercOver260Int > 13))
+                {
+                    letterColorName = new LetterColorName() { Letter = "C", Color = "bbbbff", Name = "NoDepuration" };
+                }
+                else if ((GeoMeanInt > 107) || (MedianInt > 107) || (P90Int > 300) || (PercOver260Int > 12))
+                {
+                    letterColorName = new LetterColorName() { Letter = "B", Color = "ccccff", Name = "NoDepuration" };
+                }
+                else
+                {
+                    letterColorName = new LetterColorName() { Letter = "A", Color = "ddddff", Name = "NoDepuration" };
+                }
+            }
+            else if ((GeoMeanInt > 14) || (MedianInt > 14) || (P90Int > 43) || (PercOver43Int > 10))
+            {
+                if ((GeoMeanInt > 76) || (MedianInt > 76) || (P90Int > 224) || (PercOver43Int > 27))
+                {
+                    letterColorName = new LetterColorName() { Letter = "F", Color = "aa0000", Name = "Fail" };
+                }
+                else if ((GeoMeanInt > 63) || (MedianInt > 63) || (P90Int > 188) || (PercOver43Int > 23))
+                {
+                    letterColorName = new LetterColorName() { Letter = "E", Color = "cc0000", Name = "Fail" };
+                }
+                else if ((GeoMeanInt > 51) || (MedianInt > 51) || (P90Int > 152) || (PercOver43Int > 20))
+                {
+                    letterColorName = new LetterColorName() { Letter = "D", Color = "ff1111", Name = "Fail" };
+                }
+                else if ((GeoMeanInt > 39) || (MedianInt > 39) || (P90Int > 115) || (PercOver43Int > 17))
+                {
+                    letterColorName = new LetterColorName() { Letter = "C", Color = "ff4444", Name = "Fail" };
+                }
+                else if ((GeoMeanInt > 26) || (MedianInt > 26) || (P90Int > 79) || (PercOver43Int > 13))
+                {
+                    letterColorName = new LetterColorName() { Letter = "B", Color = "ff9999", Name = "Fail" };
+                }
+                else
+                {
+                    letterColorName = new LetterColorName() { Letter = "A", Color = "ffcccc", Name = "Fail" };
+                }
+            }
+            else
+            {
+                if ((GeoMeanInt > 12) || (MedianInt > 12) || (P90Int > 36) || (PercOver43Int > 8))
+                {
+                    letterColorName = new LetterColorName() { Letter = "F", Color = "ccffcc", Name = "Pass" };
+                }
+                else if ((GeoMeanInt > 9) || (MedianInt > 9) || (P90Int > 29) || (PercOver43Int > 7))
+                {
+                    letterColorName = new LetterColorName() { Letter = "E", Color = "99ff99", Name = "Pass" };
+                }
+                else if ((GeoMeanInt > 7) || (MedianInt > 7) || (P90Int > 22) || (PercOver43Int > 5))
+                {
+                    letterColorName = new LetterColorName() { Letter = "D", Color = "44ff44", Name = "Pass" };
+                }
+                else if ((GeoMeanInt > 5) || (MedianInt > 5) || (P90Int > 14) || (PercOver43Int > 3))
+                {
+                    letterColorName = new LetterColorName() { Letter = "C", Color = "11ff11", Name = "Pass" };
+                }
+                else if ((GeoMeanInt > 2) || (MedianInt > 2) || (P90Int > 7) || (PercOver43Int > 2))
+                {
+                    letterColorName = new LetterColorName() { Letter = "B", Color = "00bb00", Name = "Pass" };
+                }
+                else
+                {
+                    letterColorName = new LetterColorName() { Letter = "A", Color = "009900", Name = "Pass" };
+                }
+            }
+
+            return letterColorName;
         }
 
         //private void button18_Click(object sender, EventArgs e)

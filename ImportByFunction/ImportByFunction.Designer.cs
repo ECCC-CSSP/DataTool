@@ -78,6 +78,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.textBoxProvinceName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.butCalculateMWQMSiteVariability = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -549,11 +552,41 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // textBoxProvinceName
+            // 
+            this.textBoxProvinceName.Location = new System.Drawing.Point(472, 407);
+            this.textBoxProvinceName.Name = "textBoxProvinceName";
+            this.textBoxProvinceName.Size = new System.Drawing.Size(162, 20);
+            this.textBoxProvinceName.TabIndex = 216;
+            this.textBoxProvinceName.Text = "New Brunswick";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(360, 410);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 13);
+            this.label7.TabIndex = 217;
+            this.label7.Text = "Province Name";
+            // 
+            // butCalculateMWQMSiteVariability
+            // 
+            this.butCalculateMWQMSiteVariability.Location = new System.Drawing.Point(363, 439);
+            this.butCalculateMWQMSiteVariability.Name = "butCalculateMWQMSiteVariability";
+            this.butCalculateMWQMSiteVariability.Size = new System.Drawing.Size(183, 23);
+            this.butCalculateMWQMSiteVariability.TabIndex = 218;
+            this.butCalculateMWQMSiteVariability.Text = "Calculate MWQM Site Variability";
+            this.butCalculateMWQMSiteVariability.UseVisualStyleBackColor = true;
+            this.butCalculateMWQMSiteVariability.Click += new System.EventHandler(this.butCalculateMWQMSiteVariability_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.butCalculateMWQMSiteVariability);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBoxProvinceName);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -663,6 +696,9 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox textBoxProvinceName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button butCalculateMWQMSiteVariability;
     }
 }
 
