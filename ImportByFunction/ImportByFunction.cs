@@ -6492,10 +6492,7 @@ namespace ImportByFunction
                             // ---------------------------------------------------------------------------------------
                             // -------------------------------------  every year -------------------------------------
                             // ---------------------------------------------------------------------------------------
-                            List<double> mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
-                                                             where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                             orderby c.SampleDateTime_Local descending
-                                                             select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
+
 
                             List<MWQMSample> mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
                                                                    where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
@@ -6542,6 +6539,10 @@ namespace ImportByFunction
 
                             if (mwqmSampleList.Count >= 10)
                             {
+                                List<double> mwqmSampleFCList = (from c in mwqmSampleList
+                                                                 where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                                 orderby c.SampleDateTime_Local descending
+                                                                 select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
 
                                 double P90 = tvItemService.GetP90(mwqmSampleFCList);
                                 double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
@@ -6575,10 +6576,6 @@ namespace ImportByFunction
                             // ---------------------------------------------------------------------------------------
                             // ------------------------------------ every 2 years Starting in 2018 -------------------
                             // ---------------------------------------------------------------------------------------
-                            mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
-                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                orderby c.SampleDateTime_Local descending
-                                                select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
 
                             mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
                                                   where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
@@ -6614,6 +6611,10 @@ namespace ImportByFunction
 
                                 if (mwqmSampleList.Count >= 10 && DoSite)
                                 {
+                                    List<double> mwqmSampleFCList = (from c in mwqmSampleList
+                                                                     where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                                     orderby c.SampleDateTime_Local descending
+                                                                     select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
 
                                     double P90 = tvItemService.GetP90(mwqmSampleFCList);
                                     double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
@@ -6656,11 +6657,7 @@ namespace ImportByFunction
                             // ---------------------------------------------------------------------------------------
                             // ------------------------------------ every 2 years Starting in 2017 -------------------
                             // ---------------------------------------------------------------------------------------
-                            mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
-                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                orderby c.SampleDateTime_Local descending
-                                                select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
-
+                
                             mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
                                                   where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
                                                   orderby c.SampleDateTime_Local descending
@@ -6695,6 +6692,10 @@ namespace ImportByFunction
 
                                 if (mwqmSampleList.Count >= 10 && DoSite)
                                 {
+                                    List<double> mwqmSampleFCList = (from c in mwqmSampleList
+                                                                     where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                                     orderby c.SampleDateTime_Local descending
+                                                                     select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
 
                                     double P90 = tvItemService.GetP90(mwqmSampleFCList);
                                     double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
@@ -6738,11 +6739,7 @@ namespace ImportByFunction
                             // ---------------------------------------------------------------------------------------
                             // ------------------------------------ every 2 years Starting in 2017 -------------------
                             // ---------------------------------------------------------------------------------------
-                            mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
-                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                orderby c.SampleDateTime_Local descending
-                                                select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
-
+                     
                             mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
                                                   where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
                                                   orderby c.SampleDateTime_Local descending
@@ -6763,6 +6760,10 @@ namespace ImportByFunction
 
                                 if (mwqmSampleList.Count >= 10 && DoSite)
                                 {
+                                    List<double> mwqmSampleFCList = (from c in mwqmSampleList
+                                                                     where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                                     orderby c.SampleDateTime_Local descending
+                                                                     select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
 
                                     double P90 = tvItemService.GetP90(mwqmSampleFCList);
                                     double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
@@ -6806,11 +6807,7 @@ namespace ImportByFunction
                             // ---------------------------------------------------------------------------------------
                             // ------------------------------------ every 2 years Starting in 2017 -------------------
                             // ---------------------------------------------------------------------------------------
-                            mwqmSampleFCList = (from c in mwqmSampleListStatEveryYear
-                                                where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                orderby c.SampleDateTime_Local descending
-                                                select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
-
+                       
                             mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
                                                   where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
                                                   orderby c.SampleDateTime_Local descending
@@ -6831,6 +6828,10 @@ namespace ImportByFunction
 
                                 if (mwqmSampleList.Count >= 10 && DoSite)
                                 {
+                                    List<double> mwqmSampleFCList = (from c in mwqmSampleList
+                                                                     where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                                     orderby c.SampleDateTime_Local descending
+                                                                     select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
 
                                     double P90 = tvItemService.GetP90(mwqmSampleFCList);
                                     double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
