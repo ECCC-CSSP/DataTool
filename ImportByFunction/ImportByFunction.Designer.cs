@@ -81,6 +81,7 @@
             this.textBoxProvinceName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.butCalculateMWQMSiteVariability = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -579,11 +580,22 @@
             this.butCalculateMWQMSiteVariability.UseVisualStyleBackColor = true;
             this.butCalculateMWQMSiteVariability.Click += new System.EventHandler(this.butCalculateMWQMSiteVariability_Click);
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(781, 204);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 219;
+            this.button10.Text = "button10";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.butCalculateMWQMSiteVariability);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxProvinceName);
@@ -699,6 +711,7 @@
         private System.Windows.Forms.TextBox textBoxProvinceName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button butCalculateMWQMSiteVariability;
+        private System.Windows.Forms.Button button10;
     }
 }
 

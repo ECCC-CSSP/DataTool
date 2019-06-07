@@ -6657,7 +6657,7 @@ namespace ImportByFunction
                             // ---------------------------------------------------------------------------------------
                             // ------------------------------------ every 2 years Starting in 2017 -------------------
                             // ---------------------------------------------------------------------------------------
-                
+
                             mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
                                                   where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
                                                   orderby c.SampleDateTime_Local descending
@@ -6739,7 +6739,7 @@ namespace ImportByFunction
                             // ---------------------------------------------------------------------------------------
                             // ------------------------------------ every 2 years Starting in 2017 -------------------
                             // ---------------------------------------------------------------------------------------
-                     
+
                             mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
                                                   where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
                                                   orderby c.SampleDateTime_Local descending
@@ -6807,7 +6807,7 @@ namespace ImportByFunction
                             // ---------------------------------------------------------------------------------------
                             // ------------------------------------ every 2 years Starting in 2017 -------------------
                             // ---------------------------------------------------------------------------------------
-                       
+
                             mwqmSampleListFull = (from c in mwqmSampleListStatEveryYear
                                                   where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
                                                   orderby c.SampleDateTime_Local descending
@@ -6965,6 +6965,129 @@ namespace ImportByFunction
             }
 
             return letterColorName;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            DateTime StartDate = new DateTime(2017, 1, 1);
+            DateTime EndDate = new DateTime(2017, 12, 31);
+            string routineText = "109,";
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("2018 Statistics");
+            sb.AppendLine("Locator\tSubsector Name\tRuns #\tStations #\tMin Date\tMax Date");
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                lblStatus.Text = "Could not find Root";
+                return;
+            }
+
+            List<string> ProvNameList = new List<string>()
+            {
+                "Nova Scotia",
+                "New Brunswick",
+                "Newfoundland and Labrador",
+                "Prince Edward Island"
+            };
+
+            foreach (string provName in ProvNameList)
+            {
+                TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, provName, TVTypeEnum.Province);
+                if (!string.IsNullOrWhiteSpace(tvItemModelProv.Error))
+                {
+                    lblStatus.Text = $"Could not find Province {textBoxProvinceName.Text}";
+                    return;
+                }
+
+                List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+
+                foreach (TVItemModel tvItemModelSS in tvitemModelSSList)
+                {
+                    lblStatus.Text = tvItemModelSS.TVText;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    string Locator = tvItemModelSS.TVText;
+                    string SubsectorName = Locator.Substring(Locator.IndexOf(" ")).Trim();
+                    Locator = Locator.Substring(0, Locator.IndexOf(" ")).Trim();
+
+                    List<MWQMRun> mwqmRunList = new List<MWQMRun>();
+                    List<MWQMSample> mwqmSampleList = new List<MWQMSample>();
+                    List<MWQMSite> mwqmSiteList = new List<MWQMSite>();
+
+                    using (CSSPDBEntities db2 = new CSSPDBEntities())
+                    {
+                        var aaa = (from c in db2.MWQMSamples
+                                   from r in db2.MWQMRuns
+                                   from t in db2.TVItems
+                                   from s in db2.MWQMSites
+                                   from t2 in db2.TVItems
+                                   where r.MWQMRunTVItemID == t.TVItemID
+                                   && s.MWQMSiteTVItemID == t2.TVItemID
+                                   && c.MWQMRunTVItemID == r.MWQMRunTVItemID
+                                   && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
+                                   && t.TVType == (int)TVTypeEnum.MWQMRun
+                                   && t.TVPath.StartsWith(tvItemModelSS.TVPath + "p")
+                                   && t2.TVType == (int)TVTypeEnum.MWQMSite
+                                   && t2.TVPath.StartsWith(tvItemModelSS.TVPath + "p")
+                                   && c.SampleTypesText.Contains(routineText)
+                                   && c.SampleDateTime_Local >= StartDate
+                                   && c.SampleDateTime_Local <= EndDate
+                                   select new { c, r, s }).ToList();
+
+                        if (aaa.Count > 0)
+                        {
+                            mwqmRunList = (from c in aaa
+                                           select c.r).Distinct().ToList();
+
+                            mwqmSiteList = (from c in aaa
+                                            select c.s).Distinct().ToList();
+
+                            mwqmSampleList = (from c in aaa
+                                              select c.c).Distinct().ToList();
+
+
+                            MWQMRun mwqmRunMinDate = (from c in mwqmRunList
+                                                      orderby c.DateTime_Local
+                                                      select c).FirstOrDefault();
+
+                            string mwqmRunMinDateText = "";
+
+                            if (mwqmRunMinDate != null)
+                            {
+                                mwqmRunMinDateText = ((MWQMRun)mwqmRunMinDate).DateTime_Local.ToString("yyyy-MM-dd");
+                            }
+
+                            MWQMRun mwqmRunMaxDate = (from c in mwqmRunList
+                                                      orderby c.DateTime_Local descending
+                                                      select c).FirstOrDefault();
+
+                            string mwqmRunMaxDateText = "";
+
+                            if (mwqmRunMaxDate != null)
+                            {
+                                mwqmRunMaxDateText = ((MWQMRun)mwqmRunMaxDate).DateTime_Local.ToString("yyyy-MM-dd");
+                            }
+
+                            int RunNumb = mwqmRunList.Count();
+                            int SiteNumb = mwqmSiteList.Count();
+
+                            sb.AppendLine($"{Locator}\t{SubsectorName}\t{RunNumb.ToString()}\t{SiteNumb.ToString()}\t{mwqmRunMinDateText}\t{mwqmRunMaxDateText}");
+                        }
+                        else
+                        {
+                            sb.AppendLine($"{Locator}\t{SubsectorName}");
+                        }
+
+                    }
+                }
+            }
+
+            richTextBoxStatus.Text = sb.ToString();
         }
 
         //private void button18_Click(object sender, EventArgs e)
