@@ -6975,7 +6975,7 @@ namespace ImportByFunction
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("2018 Statistics");
-            sb.AppendLine("Locator\tSubsector Name\tRuns #\tStations #\tMin Date\tMax Date");
+            sb.AppendLine("Locator\tSubsector Name\tRuns #\tStations #\tMin Date\tMax Date\tLat\tLong");
 
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
@@ -7018,6 +7018,8 @@ namespace ImportByFunction
                     List<MWQMRun> mwqmRunList = new List<MWQMRun>();
                     List<MWQMSample> mwqmSampleList = new List<MWQMSample>();
                     List<MWQMSite> mwqmSiteList = new List<MWQMSite>();
+                    List<MapInfo> mapInfoList = new List<MapInfo>();
+                    List<MapInfoPoint> mapInfoPointList = new List<MapInfoPoint>();
 
                     using (CSSPDBEntities db2 = new CSSPDBEntities())
                     {
@@ -7026,10 +7028,15 @@ namespace ImportByFunction
                                    from t in db2.TVItems
                                    from s in db2.MWQMSites
                                    from t2 in db2.TVItems
+                                   from mi in db2.MapInfos
+                                   from mip in db2.MapInfoPoints
                                    where r.MWQMRunTVItemID == t.TVItemID
                                    && s.MWQMSiteTVItemID == t2.TVItemID
                                    && c.MWQMRunTVItemID == r.MWQMRunTVItemID
                                    && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
+                                   && mi.TVItemID == t2.TVItemID
+                                   && mi.MapInfoID == mip.MapInfoID
+                                   && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
                                    && t.TVType == (int)TVTypeEnum.MWQMRun
                                    && t.TVPath.StartsWith(tvItemModelSS.TVPath + "p")
                                    && t2.TVType == (int)TVTypeEnum.MWQMSite
@@ -7037,7 +7044,7 @@ namespace ImportByFunction
                                    && c.SampleTypesText.Contains(routineText)
                                    && c.SampleDateTime_Local >= StartDate
                                    && c.SampleDateTime_Local <= EndDate
-                                   select new { c, r, s }).ToList();
+                                   select new { c, r, s, mi, mip }).ToList();
 
                         if (aaa.Count > 0)
                         {
@@ -7049,6 +7056,12 @@ namespace ImportByFunction
 
                             mwqmSampleList = (from c in aaa
                                               select c.c).Distinct().ToList();
+
+                            mapInfoList = (from c in aaa
+                                           select c.mi).Distinct().ToList();
+
+                            mapInfoPointList = (from c in aaa
+                                                select c.mip).Distinct().ToList();
 
 
                             MWQMRun mwqmRunMinDate = (from c in mwqmRunList
@@ -7076,7 +7089,20 @@ namespace ImportByFunction
                             int RunNumb = mwqmRunList.Count();
                             int SiteNumb = mwqmSiteList.Count();
 
-                            sb.AppendLine($"{Locator}\t{SubsectorName}\t{RunNumb.ToString()}\t{SiteNumb.ToString()}\t{mwqmRunMinDateText}\t{mwqmRunMaxDateText}");
+                            var LatLongList = (from s in mwqmSiteList
+                                           from mi in mapInfoList
+                                           from mip in mapInfoPointList
+                                           where s.MWQMSiteTVItemID == mi.TVItemID
+                                           && mi.MapInfoID == mip.MapInfoID
+                                           select new { mip.Lat, mip.Lng }).ToList();
+
+                            double Lat = (from c in LatLongList
+                                          select c.Lat).Average();
+
+                            double Lng = (from c in LatLongList
+                                          select c.Lng).Average();
+
+                            sb.AppendLine($"{Locator}\t{SubsectorName}\t{RunNumb.ToString()}\t{SiteNumb.ToString()}\t{mwqmRunMinDateText}\t{mwqmRunMaxDateText}\t{Lat}\t{Lng}");
                         }
                         else
                         {
