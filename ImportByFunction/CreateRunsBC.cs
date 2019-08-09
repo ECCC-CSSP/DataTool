@@ -75,7 +75,7 @@ namespace ImportByFunction
                     string TVText = tvItemModelSubsector.TVText.Substring(0, 4);
 
                     bcLandSampleStation = (from c in dbDT.BCLandSampleStations
-                                           where c.SS_SHELLFISH_SECTOR == TVText
+                                           where c.SS_SHELLFI == TVText
                                            orderby c.BCLandSampleStationID
                                            select c).ToList<TempData.BCLandSampleStation>();
 
@@ -93,7 +93,7 @@ namespace ImportByFunction
 
                     TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
-                    string TVText = bcmss.SS_STATION_CODE;
+                    string TVText = bcmss.SS_STATION;
                     TVItemModel tvItemModelMWQMSite = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelSubsector.TVItemID, TVText, TVTypeEnum.MWQMSite);
                     if (!CheckModelOK<TVItemModel>(tvItemModelMWQMSite)) return false;
 
@@ -103,7 +103,7 @@ namespace ImportByFunction
                     {
 
                         bcLandSampleList = (from c in dbDT.BCLandSamples
-                                            where c.SR_STATION_CODE == bcmss.SS_STATION_CODE
+                                            where c.SR_STATION_CODE == bcmss.SS_STATION
                                             orderby c.SR_READING_DATE
                                             select c).ToList<TempData.BCLandSample>();
                     }
@@ -354,7 +354,7 @@ namespace ImportByFunction
                     string TVText = tvItemModelSubsector.TVText.Substring(0, 4);
 
                     bcMarineSampleStation = (from c in dbDT.BCMarineSampleStations
-                                             where c.SS_SHELLFISH_SECTOR == TVText
+                                             where c.SS_SHELLFI == TVText
                                              orderby c.BCMarineSampleStationID
                                              select c).ToList<TempData.BCMarineSampleStation>();
 
@@ -373,7 +373,7 @@ namespace ImportByFunction
 
                     TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
-                    string TVText = bcmss.SS_STATION_CODE;
+                    string TVText = bcmss.SS_STATION;
                     TVItemModel tvItemModelMWQMSite = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelSubsector.TVItemID, TVText, TVTypeEnum.MWQMSite);
                     if (!CheckModelOK<TVItemModel>(tvItemModelMWQMSite)) return false;
 
@@ -383,7 +383,7 @@ namespace ImportByFunction
                     {
 
                         bcMarineSampleList = (from c in dbDT.BCMarineSamples
-                                            where c.SR_STATION_CODE == bcmss.SS_STATION_CODE
+                                            where c.SR_STATION_CODE == bcmss.SS_STATION
                                             orderby c.SR_READING_DATE
                                             select c).ToList<TempData.BCMarineSample>();
                     }

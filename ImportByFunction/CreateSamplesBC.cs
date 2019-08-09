@@ -95,7 +95,7 @@ namespace ImportByFunction
                 {
                     string TVText = tvItemModelSubsector.TVText.Substring(0, 4);
                     bcLandSampleStation = (from c in dbDT.BCLandSampleStations
-                                           where c.SS_SHELLFISH_SECTOR == TVText
+                                           where c.SS_STATION == TVText
                                            orderby c.BCLandSampleStationID
                                            select c).ToList<TempData.BCLandSampleStation>();
 
@@ -108,12 +108,12 @@ namespace ImportByFunction
                     if (Cancel) return false;
 
                     countSta += 1;
-                    lblStatus2.Text = "Doing Land Station " + bcmss.SS_STATION_CODE + " --- " + countSta + " of " + totalSta;
+                    lblStatus2.Text = "Doing Land Station " + bcmss.SS_STATION + " --- " + countSta + " of " + totalSta;
                     Application.DoEvents();
 
-                    string TVText = bcmss.SS_STATION_CODE;
+                    string TVText = bcmss.SS_STATION;
 
-                    BCSubSector = (from c in BCSubSectorLangList where c.TVText.StartsWith(bcmss.SS_SHELLFISH_SECTOR) select c).FirstOrDefault();
+                    BCSubSector = (from c in BCSubSectorLangList where c.TVText.StartsWith(bcmss.SS_SHELLFI) select c).FirstOrDefault();
                     if (!CheckModelOK<TVItemModel>(BCSubSector))
                         continue;
 
@@ -132,7 +132,7 @@ namespace ImportByFunction
                     {
 
                         bcLandSampleList = (from c in dbDT.BCLandSamples
-                                            where c.SR_STATION_CODE == bcmss.SS_STATION_CODE
+                                            where c.SR_STATION_CODE == bcmss.SS_STATION
                                             orderby c.SR_READING_DATE
                                             select c).ToList<TempData.BCLandSample>();
                     }
@@ -221,7 +221,7 @@ namespace ImportByFunction
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             continue;
                         }
@@ -235,7 +235,7 @@ namespace ImportByFunction
                 {
                     string TVText = tvItemModelSubsector.TVText.Substring(0, 4);
                     bcMarineSampleStation = (from c in dbDT.BCMarineSampleStations
-                                             where c.SS_SHELLFISH_SECTOR == TVText
+                                             where c.SS_SHELLFI == TVText
                                              orderby c.BCMarineSampleStationID
                                              select c).ToList<TempData.BCMarineSampleStation>();
 
@@ -251,9 +251,9 @@ namespace ImportByFunction
                     lblStatus2.Text = "Doing Marine Sample " + countSta + " of " + totalSta;
                     Application.DoEvents();
 
-                    string TVText = bcmss.SS_STATION_CODE;
+                    string TVText = bcmss.SS_STATION;
 
-                    BCSubSector = (from c in BCSubSectorLangList where c.TVText.StartsWith(bcmss.SS_SHELLFISH_SECTOR) select c).FirstOrDefault();
+                    BCSubSector = (from c in BCSubSectorLangList where c.TVText.StartsWith(bcmss.SS_SHELLFI) select c).FirstOrDefault();
                     if (!CheckModelOK<TVItemModel>(BCSubSector)) return false;
 
                     TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -271,7 +271,7 @@ namespace ImportByFunction
                     {
 
                         bcMarineSampleList = (from c in dbDT.BCMarineSamples
-                                              where c.SR_STATION_CODE == bcmss.SS_STATION_CODE
+                                              where c.SR_STATION_CODE == bcmss.SS_STATION
                                               orderby c.SR_READING_DATE
                                               select c).ToList<TempData.BCMarineSample>();
                     }
@@ -373,7 +373,7 @@ namespace ImportByFunction
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             continue;
                         }

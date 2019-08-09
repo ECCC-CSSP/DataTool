@@ -24,7 +24,5 @@ namespace TempData
         public string Status { get; set; }
         public string Risk_Assessment { get; set; }
         public string Observations { get; set; }
-    
-        public virtual SanitaryPatSite SanitaryPatSite { get; set; }
     }
 }

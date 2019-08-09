@@ -40,7 +40,7 @@ namespace ImportByFunction
             lblStatus.Text = "Starting ... LoadStationsBC";
             Application.DoEvents();
 
-            int StartBCCreateStationBC = int.Parse(textBoxBCCreateStationsBC.Text);        
+            int StartBCCreateStationBC = int.Parse(textBoxBCCreateStationsBC.Text);
 
             List<BCStation> BCWQMSiteList = new List<BCStation>();
             TVItemModel TVItemModelSubsectorBC = new TVItemModel();
@@ -76,7 +76,7 @@ namespace ImportByFunction
                     string TVText = tvItemModelSubsector.TVText.Substring(0, 4);
 
                     bcLandSampleStation = (from c in dbDT.BCLandSampleStations
-                                           where c.SS_SHELLFISH_SECTOR == TVText
+                                           where c.SS_SHELLFI == TVText
                                            orderby c.BCLandSampleStationID
                                            select c).ToList<TempData.BCLandSampleStation>();
 
@@ -92,7 +92,7 @@ namespace ImportByFunction
                     lblStatus2.Text = "Doing Land Base ... " + CountSta + " of " + TotalCountSta;
                     Application.DoEvents();
 
-                    string TVText = bcmss.SS_STATION_CODE;
+                    string TVText = bcmss.SS_STATION;
 
                     TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
                     MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
@@ -104,7 +104,7 @@ namespace ImportByFunction
                         tvItemModelMWQMSite = tvItemService.PostCreateTVItem(tvItemModelSubsector.TVItemID, TVText, TVText, TVTypeEnum.MWQMSite);
                         if (!CheckModelOK<TVItemModel>(tvItemModelMWQMSite)) return false;
 
-                        List<Coord> coordList2 = new List<Coord>() 
+                        List<Coord> coordList2 = new List<Coord>()
                         {
                             new Coord()
                             {
@@ -125,7 +125,7 @@ namespace ImportByFunction
                         MWQMSiteModel mwqmSiteModelNew = new MWQMSiteModel()
                         {
                             MWQMSiteTVItemID = tvItemModelMWQMSite.TVItemID,
-                            MWQMSiteNumber = bcmss.OID.ToString(),
+                            MWQMSiteNumber = bcmss.SS_STATION.ToString(),
                             MWQMSiteTVText = TVText,
                             MWQMSiteDescription = "empty",
                         };
@@ -145,7 +145,7 @@ namespace ImportByFunction
                     string TVText = tvItemModelSubsector.TVText.Substring(0, 4);
 
                     bcMarineSampleStation = (from c in dbDT.BCMarineSampleStations
-                                             where c.SS_SHELLFISH_SECTOR == TVText
+                                             where c.SS_SHELLFI == TVText
                                              orderby c.BCMarineSampleStationID
                                              select c).ToList<TempData.BCMarineSampleStation>();
 
@@ -161,7 +161,7 @@ namespace ImportByFunction
                     lblStatus2.Text = "Doing Marine Base ... " + CountSta + " of " + TotalCountSta;
                     Application.DoEvents();
 
-                    string TVText = bcmss.SS_STATION_CODE;
+                    string TVText = bcmss.SS_STATION;
 
                     TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
                     MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
@@ -173,7 +173,7 @@ namespace ImportByFunction
                         tvItemModelMWQMSite = tvItemService.PostCreateTVItem(tvItemModelSubsector.TVItemID, TVText, TVText, TVTypeEnum.MWQMSite);
                         if (!CheckModelOK<TVItemModel>(tvItemModelMWQMSite)) return false;
 
-                        List<Coord> coordList2 = new List<Coord>() 
+                        List<Coord> coordList2 = new List<Coord>()
                         {
                             new Coord()
                             {
@@ -188,7 +188,7 @@ namespace ImportByFunction
                         MWQMSiteModel mwqmSiteModelNew = new MWQMSiteModel()
                         {
                             MWQMSiteTVItemID = tvItemModelMWQMSite.TVItemID,
-                            MWQMSiteNumber = bcmss.OID.ToString(),
+                            MWQMSiteNumber = bcmss.SS_STATION.ToString(),
                             MWQMSiteTVText = TVText,
                             MWQMSiteDescription = "empty",
                         };

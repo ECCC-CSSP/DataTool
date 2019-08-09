@@ -112,7 +112,7 @@ namespace ImportByFunction
                 if (qcSubsectAss == null)
                 {
                     // should make sure the secteur is within the TempData.QCSubsectorAssociation
-                    int sleifj = 34;
+                    // int sleifj = 34;
                     continue;
                 }
 

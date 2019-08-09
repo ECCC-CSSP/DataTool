@@ -59,6 +59,5 @@ namespace TempData
         public DbSet<SanitaryJoeOb> SanitaryJoeObs { get; set; }
         public DbSet<SanitaryJoeSite> SanitaryJoeSites { get; set; }
         public DbSet<SanitaryPatOb> SanitaryPatObs { get; set; }
-        public DbSet<SanitaryPatSite> SanitaryPatSites { get; set; }
     }
 }

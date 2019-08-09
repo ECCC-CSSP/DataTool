@@ -15,27 +15,12 @@ namespace TempData
     public partial class BCLandSampleStation
     {
         public int BCLandSampleStationID { get; set; }
-        public Nullable<int> OID { get; set; }
-        public string SS_STATION_CODE { get; set; }
-        public string SS_DESCRIPTION { get; set; }
-        public Nullable<double> SS_LATITUDE_DEGREES { get; set; }
-        public Nullable<double> SS_LATITUDE_MINUTES { get; set; }
-        public Nullable<double> SS_LONGITUDE_DEGREES { get; set; }
-        public Nullable<double> SS_LONGITUDE_MINUTES { get; set; }
-        public string SS_SHELLFISH_SECTOR { get; set; }
-        public string SS_DFO_SUBAREA { get; set; }
-        public string SS_HARVEST_TYPE { get; set; }
+        public string SS_STATION { get; set; }
+        public string SS_DESCRIP { get; set; }
+        public string SS_SHELLFI { get; set; }
         public string SS_STATUS { get; set; }
-        public string SS_REMOTE_STATUS { get; set; }
-        public Nullable<System.DateTime> SS_LASTUPDATE { get; set; }
-        public string SS_ENTEREDBY { get; set; }
         public Nullable<double> LAT { get; set; }
         public Nullable<double> LON { get; set; }
-        public string METADATA { get; set; }
-        public string DATALINK { get; set; }
-        public string SS_STATION_TYPE { get; set; }
-        public string OLD_KEY { get; set; }
-        public string OLD_KEY2 { get; set; }
-        public string QA { get; set; }
+        public string Pub { get; set; }
     }
 }

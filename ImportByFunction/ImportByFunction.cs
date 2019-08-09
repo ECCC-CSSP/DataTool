@@ -2752,9 +2752,9 @@ namespace ImportByFunction
                     {
                         dd.SaveChanges();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        int aaa = 234;
+                        // int aaa = 234;
                     }
 
                 }
@@ -3623,13 +3623,13 @@ namespace ImportByFunction
             TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
             if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
             {
-                int slefij = 34;
+                // int slefij = 34;
             }
 
             TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "New Brunswick", TVTypeEnum.Province);
             if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
             {
-                int slefij = 34;
+                // int slefij = 34;
             }
 
             List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNB.TVItemID, TVTypeEnum.Subsector);
@@ -4120,13 +4120,13 @@ namespace ImportByFunction
             TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
             if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
             {
-                int slefij = 34;
+                // int slefij = 34;
             }
 
             TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "New Brunswick", TVTypeEnum.Province);
             if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
             {
-                int slefij = 34;
+                // int slefij = 34;
             }
 
             List<TVItemModel> tvitemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNB.TVItemID, TVTypeEnum.Subsector);
@@ -4554,7 +4554,7 @@ namespace ImportByFunction
             TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
             if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
             {
-                int sliefj = 34;
+                // int sliefj = 34;
             }
 
             //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Nova Scotia", TVTypeEnum.Province);
@@ -4650,7 +4650,7 @@ namespace ImportByFunction
                                 TVItemLanguageModel tvItemLanguageModelRet = tvItemService._TVItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModel);
                                 if (!string.IsNullOrWhiteSpace(tvItemLanguageModelRet.Error))
                                 {
-                                    int slefji = 34;
+                                    // int slefji = 34;
                                 }
                             }
 
@@ -5835,119 +5835,119 @@ namespace ImportByFunction
         {
             return;
 
-            LanguageEnum lang = LanguageEnum.en;
-            BaseModelService _BaseModelService = new BaseModelService(lang);
-            List<string> startWithList = new List<string>() { "101", "143", "910" };
-            List<PolSourceObsInfoChild> polSourceObsInfoChildList = new List<PolSourceObsInfoChild>();
-            TVItemService tvItemService2 = new TVItemService(lang, user);
+            //LanguageEnum lang = LanguageEnum.en;
+            //BaseModelService _BaseModelService = new BaseModelService(lang);
+            //List<string> startWithList = new List<string>() { "101", "143", "910" };
+            //List<PolSourceObsInfoChild> polSourceObsInfoChildList = new List<PolSourceObsInfoChild>();
+            //TVItemService tvItemService2 = new TVItemService(lang, user);
 
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-CA");
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-CA");
+            //Thread.CurrentThread.CurrentCulture = new CultureInfo("en-CA");
+            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-CA");
 
-            _BaseModelService.FillPolSourceObsInfoChild(polSourceObsInfoChildList);
+            //_BaseModelService.FillPolSourceObsInfoChild(polSourceObsInfoChildList);
 
-            int ProvTVItemID = 5; // NB
+            //int ProvTVItemID = 5; // NB
 
-            TVItemModel tvItemModelCountry = tvItemService2.GetTVItemModelWithTVItemIDDB(ProvTVItemID);
-            if (!string.IsNullOrWhiteSpace(tvItemModelCountry.Error))
-            {
-                return;
-            }
+            //TVItemModel tvItemModelCountry = tvItemService2.GetTVItemModelWithTVItemIDDB(ProvTVItemID);
+            //if (!string.IsNullOrWhiteSpace(tvItemModelCountry.Error))
+            //{
+            //    return;
+            //}
 
-            List<TVItemModel> tvItemModelSSList = tvItemService2.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelCountry.TVItemID, TVTypeEnum.Subsector);
+            //List<TVItemModel> tvItemModelSSList = tvItemService2.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelCountry.TVItemID, TVTypeEnum.Subsector);
 
-            foreach (TVItemModel tvItemModelSS in tvItemModelSSList) //.Where(c => c.TVText.CompareTo("NS-16-010-001") >= 0))
-            {
-                TVItemService tvItemService = new TVItemService(lang, user);
-                PolSourceSiteService polSourceSiteService = new PolSourceSiteService(lang, user);
-                PolSourceObservationService polSourceObservationService = new PolSourceObservationService(lang, user);
-                PolSourceObservationIssueService polSourceObservationIssueService = new PolSourceObservationIssueService(lang, user);
+            //foreach (TVItemModel tvItemModelSS in tvItemModelSSList) //.Where(c => c.TVText.CompareTo("NS-16-010-001") >= 0))
+            //{
+            //    TVItemService tvItemService = new TVItemService(lang, user);
+            //    PolSourceSiteService polSourceSiteService = new PolSourceSiteService(lang, user);
+            //    PolSourceObservationService polSourceObservationService = new PolSourceObservationService(lang, user);
+            //    PolSourceObservationIssueService polSourceObservationIssueService = new PolSourceObservationIssueService(lang, user);
 
-                lblStatus.Text = tvItemModelSS.TVText;
-                lblStatus.Refresh();
-                Application.DoEvents();
+            //    lblStatus.Text = tvItemModelSS.TVText;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
 
-                List<PolSourceSiteModel> polSourceSiteModelList = polSourceSiteService.GetPolSourceSiteModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
+            //    List<PolSourceSiteModel> polSourceSiteModelList = polSourceSiteService.GetPolSourceSiteModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
 
-                foreach (PolSourceSiteModel polSourceSiteModel in polSourceSiteModelList)
-                {
-                    PolSourceObservationModel polSourceObservationModel = polSourceObservationService.GetPolSourceObservationModelLatestWithPolSourceSiteIDDB(polSourceSiteModel.PolSourceSiteID);
+            //    foreach (PolSourceSiteModel polSourceSiteModel in polSourceSiteModelList)
+            //    {
+            //        PolSourceObservationModel polSourceObservationModel = polSourceObservationService.GetPolSourceObservationModelLatestWithPolSourceSiteIDDB(polSourceSiteModel.PolSourceSiteID);
 
-                    List<PolSourceObservationIssueModel> polSourceObservationIssueModelList = polSourceObservationIssueService.GetPolSourceObservationIssueModelListWithPolSourceObservationIDDB(polSourceObservationModel.PolSourceObservationID);
+            //        List<PolSourceObservationIssueModel> polSourceObservationIssueModelList = polSourceObservationIssueService.GetPolSourceObservationIssueModelListWithPolSourceObservationIDDB(polSourceObservationModel.PolSourceObservationID);
 
-                    if (polSourceObservationIssueModelList.Count > 0)
-                    {
-                        PolSourceObservationIssueModel polSourceObservationIssueModel = polSourceObservationIssueModelList.OrderBy(c => c.Ordinal).FirstOrDefault();
+            //        if (polSourceObservationIssueModelList.Count > 0)
+            //        {
+            //            PolSourceObservationIssueModel polSourceObservationIssueModel = polSourceObservationIssueModelList.OrderBy(c => c.Ordinal).FirstOrDefault();
 
-                        if (polSourceObservationIssueModel == null)
-                        {
-                        }
-                        else
-                        {
-                            List<string> polSourceObsInfoList = polSourceObservationIssueModel.ObservationInfo.Replace(" ", "").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
-                            List<int> polSourceObsInfoIntList = polSourceObsInfoList.Select(c => int.Parse(c)).ToList();
+            //            if (polSourceObservationIssueModel == null)
+            //            {
+            //            }
+            //            else
+            //            {
+            //                List<string> polSourceObsInfoList = polSourceObservationIssueModel.ObservationInfo.Replace(" ", "").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+            //                List<int> polSourceObsInfoIntList = polSourceObsInfoList.Select(c => int.Parse(c)).ToList();
 
-                            string TVText = "";
-                            for (int i = 0, count = polSourceObsInfoList.Count; i < count; i++)
-                            {
-                                string StartTxt = polSourceObsInfoList[i].Substring(0, 3);
+            //                string TVText = "";
+            //                for (int i = 0, count = polSourceObsInfoList.Count; i < count; i++)
+            //                {
+            //                    string StartTxt = polSourceObsInfoList[i].Substring(0, 3);
 
-                                if (startWithList.Where(c => c.StartsWith(StartTxt)).Any())
-                                {
-                                    TVText = TVText.Trim();
-                                    string TempText = _BaseEnumService.GetEnumText_PolSourceObsInfoEnum((PolSourceObsInfoEnum)int.Parse(polSourceObsInfoList[i]));
-                                    if (TempText.IndexOf("|") > 0)
-                                    {
-                                        TempText = TempText.Substring(0, TempText.IndexOf("|")).Trim();
-                                    }
-                                    TVText = TVText + (TVText.Length == 0 ? "" : ", ") + TempText;
-                                }
-                            }
+            //                    if (startWithList.Where(c => c.StartsWith(StartTxt)).Any())
+            //                    {
+            //                        TVText = TVText.Trim();
+            //                        string TempText = _BaseEnumService.GetEnumText_PolSourceObsInfoEnum((PolSourceObsInfoEnum)int.Parse(polSourceObsInfoList[i]));
+            //                        if (TempText.IndexOf("|") > 0)
+            //                        {
+            //                            TempText = TempText.Substring(0, TempText.IndexOf("|")).Trim();
+            //                        }
+            //                        TVText = TVText + (TVText.Length == 0 ? "" : ", ") + TempText;
+            //                    }
+            //                }
 
-                            bool WellFormed = IssueWellFormed(polSourceObsInfoIntList, polSourceObsInfoChildList);
-                            bool Completed = IssueCompleted(polSourceObsInfoIntList, polSourceObsInfoChildList);
+            //                bool WellFormed = IssueWellFormed(polSourceObsInfoIntList, polSourceObsInfoChildList);
+            //                bool Completed = IssueCompleted(polSourceObsInfoIntList, polSourceObsInfoChildList);
 
-                            string NC = (WellFormed == false || Completed == false ? " (NC) - " : "");
-                            if (lang == LanguageEnum.fr)
-                            {
-                                NC = NC.Replace("NC", "PC");
-                            }
+            //                string NC = (WellFormed == false || Completed == false ? " (NC) - " : "");
+            //                if (lang == LanguageEnum.fr)
+            //                {
+            //                    NC = NC.Replace("NC", "PC");
+            //                }
 
-                            TVText = "P00000".Substring(0, "P00000".Length - polSourceSiteModel.Site.ToString().Length) + polSourceSiteModel.Site.ToString() + " - " + NC + TVText;
+            //                TVText = "P00000".Substring(0, "P00000".Length - polSourceSiteModel.Site.ToString().Length) + polSourceSiteModel.Site.ToString() + " - " + NC + TVText;
 
-                            TVItemLanguageModel tvItemLanguageModel = new TVItemLanguageModel();
-                            tvItemLanguageModel.Language = lang;
+            //                TVItemLanguageModel tvItemLanguageModel = new TVItemLanguageModel();
+            //                tvItemLanguageModel.Language = lang;
 
-                            bool Found = true;
-                            while (Found)
-                            {
-                                if (TVText.Contains("  "))
-                                {
-                                    TVText = TVText.Replace("  ", " ");
-                                }
-                                else
-                                {
-                                    Found = false;
-                                }
-                            }
+            //                bool Found = true;
+            //                while (Found)
+            //                {
+            //                    if (TVText.Contains("  "))
+            //                    {
+            //                        TVText = TVText.Replace("  ", " ");
+            //                    }
+            //                    else
+            //                    {
+            //                        Found = false;
+            //                    }
+            //                }
 
-                            tvItemLanguageModel.TVText = TVText;
-                            tvItemLanguageModel.TVItemID = polSourceSiteModel.PolSourceSiteTVItemID;
+            //                tvItemLanguageModel.TVText = TVText;
+            //                tvItemLanguageModel.TVItemID = polSourceSiteModel.PolSourceSiteTVItemID;
 
-                            TVItemLanguageModel tvItemLanguageModelRet = tvItemService._TVItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModel);
-                            if (!string.IsNullOrWhiteSpace(tvItemLanguageModelRet.Error))
-                            {
-                                richTextBoxStatus.AppendText(tvItemLanguageModelRet.Error + "\r\n");
-                                return;
-                            }
-                        }
-                    }
+            //                TVItemLanguageModel tvItemLanguageModelRet = tvItemService._TVItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModel);
+            //                if (!string.IsNullOrWhiteSpace(tvItemLanguageModelRet.Error))
+            //                {
+            //                    richTextBoxStatus.AppendText(tvItemLanguageModelRet.Error + "\r\n");
+            //                    return;
+            //                }
+            //            }
+            //        }
 
-                }
+            //    }
 
-            }
+            //}
 
-            lblStatus.Text = "done...";
+            //lblStatus.Text = "done...";
         }
 
         public bool IssueWellFormed(List<int> polSourceObsInfoIntList, List<PolSourceObsInfoChild> polSourceObsInfoChildList)

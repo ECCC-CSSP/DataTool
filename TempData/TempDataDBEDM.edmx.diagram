@@ -5,46 +5,44 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ba9489b8661041d986d01728a45a4c95" Name="Diagram1">
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADMPNTable" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADPrecData" Width="1.5" PointX="2.75" PointY="10.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADPrecStn" Width="1.5" PointX="4.75" PointY="10.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADRunMOU" Width="1.5" PointX="10.75" PointY="5.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADRun" Width="1.5" PointX="6.75" PointY="10.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADSampCode" Width="1.5" PointX="8.75" PointY="11.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADSampleMOU" Width="1.5" PointX="10.75" PointY="11.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADSample" Width="1.5" PointX="12.75" PointY="5.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADStation" Width="1.5" PointX="12.75" PointY="10.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADSubsect" Width="1.5" PointX="0.75" PointY="13.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADTide" Width="1.5" PointX="2.75" PointY="14.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCLandSample" Width="1.5" PointX="14.75" PointY="5.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCLandSampleStation" Width="1.5" PointX="14.75" PointY="11.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCMarineSample" Width="1.5" PointX="16.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCMarineSampleStation" Width="1.5" PointX="4.75" PointY="16.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCName" Width="1.5" PointX="16.75" PointY="6.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCPolSource" Width="1.5" PointX="6.75" PointY="16.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCPrecipitation" Width="1.5" PointX="8.75" PointY="16.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCSurvey" Width="1.5" PointX="16.75" PointY="9.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.LocationNameLatLng" Width="1.5" PointX="10.75" PointY="16.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.Nomenclature" Width="1.5" PointX="16.75" PointY="13.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.QCClimateSite" Width="1.5" PointX="16.75" PointY="17.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.QCSecteurMPol" Width="1.5" PointX="18.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.QCSubsectorAssociation" Width="1.5" PointX="0.75" PointY="18.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.QCSubSector" Width="1.5" PointX="18.75" PointY="3.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavCOb" Width="1.5" PointX="13" PointY="1" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavCSite" Width="1.5" PointX="10.75" PointY="1" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavOb" Width="1.5" PointX="8" PointY="6" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavSite" Width="1.5" PointX="5.75" PointY="6" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDonOb" Width="1.5" PointX="3" PointY="6" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDonSite" Width="1.5" PointX="0.75" PointY="6" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryJoeOb" Width="1.5" PointX="8" PointY="1" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryJoeSite" Width="1.5" PointX="5.75" PointY="1" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryPatOb" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryPatSite" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADMPNTable" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADPrecData" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADPrecStn" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADRunMOU" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADRun" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADSampCode" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADSampleMOU" Width="1.5" PointX="8.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADSample" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADStation" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADSubsect" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.ASGADTide" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCLandSample" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCLandSampleStation" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCMarineSample" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCMarineSampleStation" Width="1.5" PointX="10.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCName" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCPolSource" Width="1.5" PointX="6.75" PointY="15.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCPrecipitation" Width="1.5" PointX="12.75" PointY="15.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCSurvey" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.LocationNameLatLng" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.Nomenclature" Width="1.5" PointX="2.75" PointY="16.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.QCClimateSite" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.QCSecteurMPol" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.QCSubsectorAssociation" Width="1.5" PointX="16.75" PointY="9.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.QCSubSector" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavCOb" Width="1.5" PointX="8" PointY="6" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavCSite" Width="1.5" PointX="5.75" PointY="6" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavOb" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavSite" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDonOb" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDonSite" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryJoeOb" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryJoeSite" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryPatOb" Width="1.5" PointX="16.75" PointY="15.75" />
         <AssociationConnector Association="TempDataToolDBModel.FK_SanitaryDavCObs_SanitaryDavCSites" />
         <AssociationConnector Association="TempDataToolDBModel.FK_SanitaryDavObs_SanitaryDavSites" />
         <AssociationConnector Association="TempDataToolDBModel.FK_SanitaryDonObs_SanitaryDonSites" />
         <AssociationConnector Association="TempDataToolDBModel.FK_SanitaryJoeObs_SanitaryJoeSites" />
-        <AssociationConnector Association="TempDataToolDBModel.FK_SanitaryPatObs_SanitaryPatSites" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
