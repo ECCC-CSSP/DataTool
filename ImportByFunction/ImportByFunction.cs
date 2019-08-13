@@ -7090,11 +7090,11 @@ namespace ImportByFunction
                             int SiteNumb = mwqmSiteList.Count();
 
                             var LatLongList = (from s in mwqmSiteList
-                                           from mi in mapInfoList
-                                           from mip in mapInfoPointList
-                                           where s.MWQMSiteTVItemID == mi.TVItemID
-                                           && mi.MapInfoID == mip.MapInfoID
-                                           select new { mip.Lat, mip.Lng }).ToList();
+                                               from mi in mapInfoList
+                                               from mip in mapInfoPointList
+                                               where s.MWQMSiteTVItemID == mi.TVItemID
+                                               && mi.MapInfoID == mip.MapInfoID
+                                               select new { mip.Lat, mip.Lng }).ToList();
 
                             double Lat = (from c in LatLongList
                                           select c.Lat).Average();
@@ -7115,6 +7115,153 @@ namespace ImportByFunction
 
             richTextBoxStatus.Text = sb.ToString();
         }
+
+        private void Button11_Click(object sender, EventArgs e)
+        {
+            //MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //ClimateSiteService climateSiteService = new ClimateSiteService(LanguageEnum.en, user);
+
+            //FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\cocorahs.json");
+            //StreamReader sr = fi.OpenText();
+            //string ret = sr.ReadToEnd();
+            //sr.Close();
+
+            //List<CoCoRaHSSite> CoCoRaHSSiteList = new List<CoCoRaHSSite>();
+            //try
+            //{
+            //    var CoCoRaHSSiteValue = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, CoCoRaHSSite[]>>(ret);
+
+            //    CoCoRaHSSiteList = CoCoRaHSSiteValue.First().Value.ToList();
+            //}
+            //catch (Exception ex)
+            //{
+            //    int slejf = 34;
+            //}
+
+            //string Prov = "";
+
+            //TVItemModel tvItemModelNB = tvItemService.GetTVItemModelWithTVItemIDDB(7); // New Brunswick
+            //if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            //{
+            //    richTextBoxStatus.Text = "Error could not find TVItemID = 7";
+            //    return;
+            //}
+            //TVItemModel tvItemModelNS = tvItemService.GetTVItemModelWithTVItemIDDB(8); // Nova Scotia
+            //if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            //{
+            //    richTextBoxStatus.Text = "Error could not find TVItemID = 8";
+            //    return;
+            //}
+            //TVItemModel tvItemModelNL = tvItemService.GetTVItemModelWithTVItemIDDB(10); // Newfoundland and Labrador
+            //if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            //{
+            //    richTextBoxStatus.Text = "Error could not find TVItemID = 10";
+            //    return;
+            //}
+            //TVItemModel tvItemModelPE = tvItemService.GetTVItemModelWithTVItemIDDB(9); // Prince Edward Island
+            //if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            //{
+            //    richTextBoxStatus.Text = "Error could not find TVItemID = 9";
+            //    return;
+            //}
+            //TVItemModel tvItemModelToUse = new TVItemModel();
+
+            //foreach (CoCoRaHSSite site in CoCoRaHSSiteList)
+            //{
+            //    lblStatus.Text = site.st_num;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    if (site.st_num.StartsWith("CAN-NB"))
+            //    {
+            //        tvItemModelToUse = tvItemModelNB;
+            //        Prov = "NB";
+            //    }
+            //    else if (site.st_num.StartsWith("CAN-NS"))
+            //    {
+            //        tvItemModelToUse = tvItemModelNS;
+            //        Prov = "NS";
+            //    }
+            //    else if (site.st_num.StartsWith("CAN-NL"))
+            //    {
+            //        tvItemModelToUse = tvItemModelNL;
+            //        Prov = "NL";
+            //    }
+            //    else if (site.st_num.StartsWith("CAN-PE"))
+            //    {
+            //        tvItemModelToUse = tvItemModelPE;
+            //        Prov = "PE";
+            //    }
+            //    else
+            //    {
+            //        continue;
+            //    }
+
+            //    TVItemModel tvItemModelSite = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelToUse.TVItemID, "CoCoRaHS " + site.st_name, TVTypeEnum.ClimateSite);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelSite.Error))
+            //    {
+            //        tvItemModelSite = tvItemService.PostAddChildTVItemDB(tvItemModelToUse.TVItemID, "CoCoRaHS " + site.st_name, TVTypeEnum.ClimateSite);
+            //        if (!string.IsNullOrWhiteSpace(tvItemModelSite.Error))
+            //        {
+            //            richTextBoxStatus.Text = "Error could create TVItem = " + "CoCoRaHS " + site.st_name;
+            //            return;
+            //        }
+            //    }
+
+            //    List<Coord> coordList = new List<Coord>()
+            //    {
+            //        new Coord() { Lat = site.lat, Lng = site.lng, Ordinal = 0 }
+            //    };
+
+            //    List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelSite.TVItemID);
+
+            //    bool MapInfoExist = false;
+            //    if (mapInfoModelList.Count > 0)
+            //    {
+            //        foreach (MapInfoModel mapInfoModel in mapInfoModelList)
+            //        {
+            //            if (mapInfoModel.MapInfoDrawType == MapInfoDrawTypeEnum.Point && mapInfoModel.TVType == TVTypeEnum.ClimateSite)
+            //            {
+            //                MapInfoExist = true;
+            //            }
+            //        }
+            //    }
+
+            //    if (!MapInfoExist)
+            //    {
+            //        MapInfoModel mapInfoModel = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.ClimateSite, tvItemModelSite.TVItemID);
+            //        if (!string.IsNullOrWhiteSpace(mapInfoModel.Error))
+            //        {
+            //            richTextBoxStatus.Text = "Error could create MapInfo = " + "CoCoRaHS " + site.st_name;
+            //            return;
+            //        }
+            //    }
+
+            //    ClimateSiteModel climateSiteModelNew = new ClimateSiteModel()
+            //    {
+            //        ClimateSiteTVItemID = tvItemModelSite.TVItemID,
+            //        ClimateID = site.st_num,
+            //        ClimateSiteName = site.st_name,
+            //        IsCoCoRaHS = true,
+            //        Province = Prov,
+            //    };
+
+            //    ClimateSiteModel climateSiteModel = climateSiteService.GetClimateSiteModelExistDB(climateSiteModelNew);
+            //    if (!string.IsNullOrWhiteSpace(climateSiteModel.Error))
+            //    {
+            //        climateSiteModel = climateSiteService.PostAddClimateSiteDB(climateSiteModelNew);
+            //        if (!string.IsNullOrWhiteSpace(climateSiteModel.Error))
+            //        {
+            //            richTextBoxStatus.Text = "Error could create ClimateSite = " + "CoCoRaHS " + site.st_name;
+            //            return;
+            //        }
+            //    }
+
+            //}
+
+        }
+
 
         //private void button18_Click(object sender, EventArgs e)
         //{
@@ -7245,5 +7392,21 @@ namespace ImportByFunction
         public string Letter { get; set; }
         public string Color { get; set; }
         public string Name { get; set; }
+    }
+
+    public class CoCoRaHSSite
+    {
+        public string id { get; set; }
+        public string st_num { get; set; }
+        public string st_name { get; set; }
+        public DateTime obs_date { get; set; }
+        public string obs_time { get; set; }
+        public float lat { get; set; }
+        public float lng { get; set; }
+        public float prcp { get; set; }
+        public string snowfall { get; set; }
+        public string snowfallswe { get; set; }
+        public string snowdepth { get; set; }
+        public string snowdepthswe { get; set; }
     }
 }
