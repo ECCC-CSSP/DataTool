@@ -50,14 +50,5 @@ namespace TempData
         public DbSet<QCSecteurMPol> QCSecteurMPols { get; set; }
         public DbSet<QCSubsectorAssociation> QCSubsectorAssociations { get; set; }
         public DbSet<QCSubSector> QCSubSectors { get; set; }
-        public DbSet<SanitaryDavCOb> SanitaryDavCObs { get; set; }
-        public DbSet<SanitaryDavCSite> SanitaryDavCSites { get; set; }
-        public DbSet<SanitaryDavOb> SanitaryDavObs { get; set; }
-        public DbSet<SanitaryDavSite> SanitaryDavSites { get; set; }
-        public DbSet<SanitaryDonOb> SanitaryDonObs { get; set; }
-        public DbSet<SanitaryDonSite> SanitaryDonSites { get; set; }
-        public DbSet<SanitaryJoeOb> SanitaryJoeObs { get; set; }
-        public DbSet<SanitaryJoeSite> SanitaryJoeSites { get; set; }
-        public DbSet<SanitaryPatOb> SanitaryPatObs { get; set; }
     }
 }

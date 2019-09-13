@@ -125,33 +125,6 @@
     <Compile Include="QCSubsectorAssociation.cs">
       <DependentUpon>TempDataDBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="SanitaryDavCOb.cs">
-      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SanitaryDavCSite.cs">
-      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SanitaryDavOb.cs">
-      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SanitaryDavSite.cs">
-      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SanitaryDonOb.cs">
-      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SanitaryDonSite.cs">
-      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SanitaryJoeOb.cs">
-      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SanitaryJoeSite.cs">
-      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SanitaryPatOb.cs">
-      <DependentUpon>TempDataDBEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="TempDataDBEDM.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
