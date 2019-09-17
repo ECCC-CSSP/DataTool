@@ -83,6 +83,11 @@
             this.butCalculateMWQMSiteVariability = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+            this.butCheckBCSubsectors = new System.Windows.Forms.Button();
+            this.butCheckBCSamples = new System.Windows.Forms.Button();
+            this.textBoxStartSubsectorName = new System.Windows.Forms.TextBox();
+            this.labelStartSubsectorName = new System.Windows.Forms.Label();
+            this.butViewSubsectorNames = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -165,6 +170,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Enabled = false;
             this.label3.Location = new System.Drawing.Point(763, 343);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 13);
@@ -174,6 +180,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Enabled = false;
             this.label4.Location = new System.Drawing.Point(778, 381);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
@@ -183,6 +190,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Enabled = false;
             this.label5.Location = new System.Drawing.Point(793, 415);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
@@ -192,6 +200,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Enabled = false;
             this.label6.Location = new System.Drawing.Point(778, 450);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 13);
@@ -200,6 +209,7 @@
             // 
             // butLoadSanitationBC
             // 
+            this.butLoadSanitationBC.Enabled = false;
             this.butLoadSanitationBC.Location = new System.Drawing.Point(873, 450);
             this.butLoadSanitationBC.Name = "butLoadSanitationBC";
             this.butLoadSanitationBC.Size = new System.Drawing.Size(46, 23);
@@ -210,6 +220,7 @@
             // 
             // butLoadRunsBC
             // 
+            this.butLoadRunsBC.Enabled = false;
             this.butLoadRunsBC.Location = new System.Drawing.Point(873, 409);
             this.butLoadRunsBC.Name = "butLoadRunsBC";
             this.butLoadRunsBC.Size = new System.Drawing.Size(46, 23);
@@ -220,6 +231,7 @@
             // 
             // butLoadSamplesBC
             // 
+            this.butLoadSamplesBC.Enabled = false;
             this.butLoadSamplesBC.Location = new System.Drawing.Point(873, 371);
             this.butLoadSamplesBC.Name = "butLoadSamplesBC";
             this.butLoadSamplesBC.Size = new System.Drawing.Size(46, 23);
@@ -230,6 +242,7 @@
             // 
             // butLoadStationBC
             // 
+            this.butLoadStationBC.Enabled = false;
             this.butLoadStationBC.Location = new System.Drawing.Point(874, 333);
             this.butLoadStationBC.Name = "butLoadStationBC";
             this.butLoadStationBC.Size = new System.Drawing.Size(46, 23);
@@ -308,6 +321,7 @@
             // 
             // textBoxBCCreateStationsBC
             // 
+            this.textBoxBCCreateStationsBC.Enabled = false;
             this.textBoxBCCreateStationsBC.Location = new System.Drawing.Point(926, 335);
             this.textBoxBCCreateStationsBC.Name = "textBoxBCCreateStationsBC";
             this.textBoxBCCreateStationsBC.Size = new System.Drawing.Size(67, 20);
@@ -340,6 +354,7 @@
             // 
             // textBoxBCCreateSanitaryBC
             // 
+            this.textBoxBCCreateSanitaryBC.Enabled = false;
             this.textBoxBCCreateSanitaryBC.Location = new System.Drawing.Point(925, 450);
             this.textBoxBCCreateSanitaryBC.Name = "textBoxBCCreateSanitaryBC";
             this.textBoxBCCreateSanitaryBC.Size = new System.Drawing.Size(67, 20);
@@ -348,6 +363,7 @@
             // 
             // textBoxBCCreateRunsBC
             // 
+            this.textBoxBCCreateRunsBC.Enabled = false;
             this.textBoxBCCreateRunsBC.Location = new System.Drawing.Point(925, 412);
             this.textBoxBCCreateRunsBC.Name = "textBoxBCCreateRunsBC";
             this.textBoxBCCreateRunsBC.Size = new System.Drawing.Size(67, 20);
@@ -356,6 +372,7 @@
             // 
             // textBoxBCCreateSamplesBC
             // 
+            this.textBoxBCCreateSamplesBC.Enabled = false;
             this.textBoxBCCreateSamplesBC.Location = new System.Drawing.Point(925, 374);
             this.textBoxBCCreateSamplesBC.Name = "textBoxBCCreateSamplesBC";
             this.textBoxBCCreateSamplesBC.Size = new System.Drawing.Size(67, 20);
@@ -601,6 +618,53 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.Button11_Click);
             // 
+            // butCheckBCSubsectors
+            // 
+            this.butCheckBCSubsectors.Location = new System.Drawing.Point(947, 217);
+            this.butCheckBCSubsectors.Name = "butCheckBCSubsectors";
+            this.butCheckBCSubsectors.Size = new System.Drawing.Size(121, 23);
+            this.butCheckBCSubsectors.TabIndex = 81;
+            this.butCheckBCSubsectors.Text = "CheckBCSubsectors";
+            this.butCheckBCSubsectors.UseVisualStyleBackColor = true;
+            this.butCheckBCSubsectors.Click += new System.EventHandler(this.ButCheckBCSubsectors_Click);
+            // 
+            // butCheckBCSamples
+            // 
+            this.butCheckBCSamples.Location = new System.Drawing.Point(898, 267);
+            this.butCheckBCSamples.Name = "butCheckBCSamples";
+            this.butCheckBCSamples.Size = new System.Drawing.Size(121, 23);
+            this.butCheckBCSamples.TabIndex = 81;
+            this.butCheckBCSamples.Text = "CheckBCSamples";
+            this.butCheckBCSamples.UseVisualStyleBackColor = true;
+            this.butCheckBCSamples.Click += new System.EventHandler(this.ButCheckBCSamples_Click);
+            // 
+            // textBoxStartSubsectorName
+            // 
+            this.textBoxStartSubsectorName.Location = new System.Drawing.Point(1001, 296);
+            this.textBoxStartSubsectorName.Name = "textBoxStartSubsectorName";
+            this.textBoxStartSubsectorName.Size = new System.Drawing.Size(67, 20);
+            this.textBoxStartSubsectorName.TabIndex = 212;
+            this.textBoxStartSubsectorName.Text = "BK01";
+            // 
+            // labelStartSubsectorName
+            // 
+            this.labelStartSubsectorName.AutoSize = true;
+            this.labelStartSubsectorName.Location = new System.Drawing.Point(884, 303);
+            this.labelStartSubsectorName.Name = "labelStartSubsectorName";
+            this.labelStartSubsectorName.Size = new System.Drawing.Size(111, 13);
+            this.labelStartSubsectorName.TabIndex = 18;
+            this.labelStartSubsectorName.Text = "Start Subsector Name";
+            // 
+            // butViewSubsectorNames
+            // 
+            this.butViewSubsectorNames.Location = new System.Drawing.Point(739, 267);
+            this.butViewSubsectorNames.Name = "butViewSubsectorNames";
+            this.butViewSubsectorNames.Size = new System.Drawing.Size(121, 23);
+            this.butViewSubsectorNames.TabIndex = 81;
+            this.butViewSubsectorNames.Text = "ViewSubsectorNames";
+            this.butViewSubsectorNames.UseVisualStyleBackColor = true;
+            this.butViewSubsectorNames.Click += new System.EventHandler(this.ButViewSubsectorNames_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -614,6 +678,7 @@
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
+            this.Controls.Add(this.textBoxStartSubsectorName);
             this.Controls.Add(this.textBoxToTVItemID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
@@ -645,6 +710,9 @@
             this.Controls.Add(this.butLoadSamplesQC);
             this.Controls.Add(this.butLoadStationQC);
             this.Controls.Add(this.butLoadSanitationBC);
+            this.Controls.Add(this.butViewSubsectorNames);
+            this.Controls.Add(this.butCheckBCSamples);
+            this.Controls.Add(this.butCheckBCSubsectors);
             this.Controls.Add(this.butLoadRunsBC);
             this.Controls.Add(this.butLoadSamplesBC);
             this.Controls.Add(this.butLoadStationBC);
@@ -654,6 +722,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelStartSubsectorName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panelStatus);
             this.Controls.Add(this.richTextBoxStatus);
@@ -725,6 +794,11 @@
         private System.Windows.Forms.Button butCalculateMWQMSiteVariability;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button butCheckBCSubsectors;
+        private System.Windows.Forms.Button butCheckBCSamples;
+        private System.Windows.Forms.TextBox textBoxStartSubsectorName;
+        private System.Windows.Forms.Label labelStartSubsectorName;
+        private System.Windows.Forms.Button butViewSubsectorNames;
     }
 }
 
