@@ -14,6 +14,15 @@ namespace PCCSM
     
     public partial class secteur
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public secteur()
+        {
+            this.groupe_secteur = new HashSet<groupe_secteur>();
+            this.groupe_secteur1 = new HashSet<groupe_secteur>();
+            this.secteur_description = new HashSet<secteur_description>();
+            this.secteur_point_legal = new HashSet<secteur_point_legal>();
+        }
+    
         public int secteur_id { get; set; }
         public System.Guid globalID { get; set; }
         public Nullable<int> secteur_id_parent { get; set; }
@@ -37,5 +46,14 @@ namespace PCCSM
         public string description { get; set; }
         public Nullable<decimal> area { get; set; }
         public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<groupe_secteur> groupe_secteur { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<groupe_secteur> groupe_secteur1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<secteur_description> secteur_description { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<secteur_point_legal> secteur_point_legal { get; set; }
     }
 }

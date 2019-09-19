@@ -20,12 +20,11 @@ namespace PCCSM_DFO
         }
     
         public int point_legal_id { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
+        public Nullable<decimal> x { get; set; }
+        public Nullable<decimal> y { get; set; }
         public Nullable<int> etat { get; set; }
         public string commentaire { get; set; }
     
-        public virtual codification codification { get; set; }
         public virtual ICollection<secteur_point_legal> secteur_point_legal { get; set; }
     }
 }

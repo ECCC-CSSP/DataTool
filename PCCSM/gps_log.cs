@@ -19,10 +19,6 @@ namespace PCCSM
         public Nullable<double> y { get; set; }
         public Nullable<System.DateTime> gps_time { get; set; }
         public Nullable<System.DateTime> local_time { get; set; }
-        public Nullable<double> speed { get; set; }
-        public string bearing { get; set; }
-        public string horzpdop { get; set; }
-        public string vertpdop { get; set; }
         public Nullable<int> altitude { get; set; }
         public string usager { get; set; }
         public string commentaire { get; set; }

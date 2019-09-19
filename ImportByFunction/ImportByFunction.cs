@@ -7772,6 +7772,8 @@ namespace ImportByFunction
 
                         foreach (var BCSubsector in BCSubsectorList)
                         {
+                            if (Cancel) return;
+
                             lblStatus.Text = "Doing " + tvItemModelSubsector.TVText + " --- " + BCSubsector.SR_STATION_CODE + " --- " + BCSubsector.SR_READING_DATE;
                             lblStatus.Refresh();
                             Application.DoEvents();
@@ -7819,6 +7821,10 @@ namespace ImportByFunction
 
                                 FecCol = (int)BCSubsector.SR_FECAL_COLIFORM;
                             }
+                            if (FecCol == 0)
+                            {
+                                FecCol = 1;
+                            }
 
                             double? Depth = BCSubsector.SR_SAMPLE_DEPTH;
                             double? Salinity = BCSubsector.SR_SALINITY;
@@ -7857,8 +7863,10 @@ namespace ImportByFunction
                                                       && c.SampleDateTime_Local.Month == SampleDate.Month
                                                       && c.SampleDateTime_Local.Day == SampleDate.Day
                                                       && c.FecCol_MPN_100ml == FecCol
-                                                      //&& c.Salinity_PPT == null
-                                                      //&& c.WaterTemp_C == null
+                                                      && c.Depth_m == Depth
+                                                      && c.Salinity_PPT == Salinity
+                                                      && c.WaterTemp_C == Temperature
+                                                      && c.TimeText == SampleTime
                                                       && c.SampleTypesText.Contains(SampleTypeText)
                                                       select c).FirstOrDefault();
 
@@ -7991,103 +7999,106 @@ namespace ImportByFunction
                                     }
                                 }
 
-                                MWQMSampleLanguage mwqmSampleLanguageEN = (from c in dd.MWQMSampleLanguages
-                                                                           where c.Language == (int)LanguageEnum.en
-                                                                           && c.MWQMSampleID == SampleExist.MWQMSampleID
-                                                                           select c).FirstOrDefault();
-
-                                if (mwqmSampleLanguageEN != null)
+                                if (ShouldUpdate)
                                 {
-                                    string MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim());
-                                    if (mwqmSampleLanguageEN.MWQMSampleNote != MWQMSampleNote)
+                                    MWQMSampleLanguage mwqmSampleLanguageEN = (from c in dd.MWQMSampleLanguages
+                                                                               where c.Language == (int)LanguageEnum.en
+                                                                               && c.MWQMSampleID == SampleExist.MWQMSampleID
+                                                                               select c).FirstOrDefault();
+
+                                    if (mwqmSampleLanguageEN != null)
                                     {
-                                        mwqmSampleLanguageEN.MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim());
+                                        string MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim());
+                                        if (mwqmSampleLanguageEN.MWQMSampleNote != MWQMSampleNote)
+                                        {
+                                            mwqmSampleLanguageEN.MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim());
+
+                                            try
+                                            {
+                                                dd.SaveChanges();
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                richTextBoxStatus.AppendText("Could not update mwqmSampleLanguageEN\r\n");
+                                                return;
+
+                                            }
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        MWQMSampleLanguage mwqmSampleLanguageNewEN = new MWQMSampleLanguage()
+                                        {
+                                            MWQMSampleID = SampleExist.MWQMSampleID,
+                                            Language = (int)LanguageEnum.en,
+                                            MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim()),
+                                            TranslationStatus = (int)TranslationStatusEnum.Translated,
+                                            LastUpdateDate_UTC = DateTime.UtcNow,
+                                            LastUpdateContactTVItemID = 2,
+                                        };
 
                                         try
                                         {
+                                            dd.MWQMSampleLanguages.Add(mwqmSampleLanguageNewEN);
                                             dd.SaveChanges();
                                         }
                                         catch (Exception ex)
                                         {
-                                            richTextBoxStatus.AppendText("Could not update mwqmSampleLanguageEN\r\n");
+                                            richTextBoxStatus.AppendText("Could not Add mwqmSampleLanguageNewEN and FR\r\n");
                                             return;
 
                                         }
                                     }
 
-                                }
-                                else
-                                {
-                                    MWQMSampleLanguage mwqmSampleLanguageNewEN = new MWQMSampleLanguage()
-                                    {
-                                        MWQMSampleID = SampleExist.MWQMSampleID,
-                                        Language = (int)LanguageEnum.en,
-                                        MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim()),
-                                        TranslationStatus = (int)TranslationStatusEnum.Translated,
-                                        LastUpdateDate_UTC = DateTime.UtcNow,
-                                        LastUpdateContactTVItemID = 2,
-                                    };
+                                    MWQMSampleLanguage mwqmSampleLanguageFR = (from c in dd.MWQMSampleLanguages
+                                                                               where c.Language == (int)LanguageEnum.fr
+                                                                               && c.MWQMSampleID == SampleExist.MWQMSampleID
+                                                                               select c).FirstOrDefault();
 
-                                    try
+                                    if (mwqmSampleLanguageFR != null)
                                     {
-                                        dd.MWQMSampleLanguages.Add(mwqmSampleLanguageNewEN);
-                                        dd.SaveChanges();
+                                        string MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim());
+                                        if (mwqmSampleLanguageFR.MWQMSampleNote != MWQMSampleNote)
+                                        {
+                                            mwqmSampleLanguageFR.MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim());
+
+                                            try
+                                            {
+                                                dd.SaveChanges();
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                richTextBoxStatus.AppendText("Could not update mwqmSampleLanguageFR\r\n");
+                                                return;
+
+                                            }
+                                        }
+
                                     }
-                                    catch (Exception ex)
+                                    else
                                     {
-                                        richTextBoxStatus.AppendText("Could not Add mwqmSampleLanguageNewEN and FR\r\n");
-                                        return;
-
-                                    }
-                                }
-
-                                MWQMSampleLanguage mwqmSampleLanguageFR = (from c in dd.MWQMSampleLanguages
-                                                                           where c.Language == (int)LanguageEnum.fr
-                                                                           && c.MWQMSampleID == SampleExist.MWQMSampleID
-                                                                           select c).FirstOrDefault();
-
-                                if (mwqmSampleLanguageFR != null)
-                                {
-                                    string MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim());
-                                    if (mwqmSampleLanguageFR.MWQMSampleNote != MWQMSampleNote)
-                                    {
-                                        mwqmSampleLanguageFR.MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim());
+                                        MWQMSampleLanguage mwqmSampleLanguageNewFR = new MWQMSampleLanguage()
+                                        {
+                                            MWQMSampleID = SampleExist.MWQMSampleID,
+                                            Language = (int)LanguageEnum.fr,
+                                            MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim()),
+                                            TranslationStatus = (int)TranslationStatusEnum.NotTranslated,
+                                            LastUpdateDate_UTC = DateTime.UtcNow,
+                                            LastUpdateContactTVItemID = 2,
+                                        };
 
                                         try
                                         {
+                                            dd.MWQMSampleLanguages.Add(mwqmSampleLanguageNewFR);
                                             dd.SaveChanges();
                                         }
                                         catch (Exception ex)
                                         {
-                                            richTextBoxStatus.AppendText("Could not update mwqmSampleLanguageFR\r\n");
+                                            richTextBoxStatus.AppendText("Could not Add mwqmSampleLanguageNewEN and FR\r\n");
                                             return;
 
                                         }
-                                    }
-
-                                }
-                                else
-                                {
-                                    MWQMSampleLanguage mwqmSampleLanguageNewFR = new MWQMSampleLanguage()
-                                    {
-                                        MWQMSampleID = SampleExist.MWQMSampleID,
-                                        Language = (int)LanguageEnum.fr,
-                                        MWQMSampleNote = (string.IsNullOrWhiteSpace(BCSubsector.SR_OBS) == true ? "--" : BCSubsector.SR_OBS.Trim()),
-                                        TranslationStatus = (int)TranslationStatusEnum.NotTranslated,
-                                        LastUpdateDate_UTC = DateTime.UtcNow,
-                                        LastUpdateContactTVItemID = 2,
-                                    };
-
-                                    try
-                                    {
-                                        dd.MWQMSampleLanguages.Add(mwqmSampleLanguageNewFR);
-                                        dd.SaveChanges();
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        richTextBoxStatus.AppendText("Could not Add mwqmSampleLanguageNewEN and FR\r\n");
-                                        return;
-
                                     }
                                 }
                             }
@@ -8126,6 +8137,364 @@ namespace ImportByFunction
             {
                 richTextBoxStatus.AppendText(tvItemModel.TVText + "\r\n");
             }
+        }
+
+        private void Button12_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemServiceR = new TVItemService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemServiceR.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "British Columbia", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelSubsectorList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+
+            List<TVItemModel> tvItemModelMWQMSiteList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMSite);
+            if (tvItemModelMWQMSiteList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem MWQMSite for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            using (TempData.TempDataToolDBEntities dbDT = new TempData.TempDataToolDBEntities())
+            {
+
+                List<BCMarineSample> BCSampleListAll = (from c in dbDT.BCMarineSamples
+                                                        select c).ToList();
+
+                foreach (TVItemModel tvItemModelSubsector in tvItemModelSubsectorList)
+                {
+                    using (CSSPDBEntities db2 = new CSSPDBEntities())
+                    {
+                        lblStatus.Text = "Doing " + tvItemModelSubsector.TVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        string subsector = tvItemModelSubsector.TVText;
+                        if (tvItemModelSubsector.TVText.Contains(" "))
+                        {
+                            subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
+                        }
+
+                        if (subsector.EndsWith("F"))
+                        {
+                            continue;
+                        }
+
+                        List<TVItemModel> tvItemModelSiteList = (from c in tvItemModelMWQMSiteList
+                                                                 where c.ParentID == tvItemModelSubsector.TVItemID
+                                                                 && c.TVText.EndsWith("F") == false
+                                                                 select c).ToList();
+
+                        foreach (TVItemModel tvItemModelSite in tvItemModelSiteList)
+                        {
+                            if (Cancel) return;
+
+                            List<BCMarineSample> BCSampleList = (from c in BCSampleListAll
+                                                                 where c.SR_STATION_CODE == tvItemModelSite.TVText
+                                                                 orderby c.SR_READING_DATE, c.SR_READING_TIME, c.SR_FECAL_COLIFORM,
+                                                                 c.SR_FECAL_COLIFORM_IND, c.SR_SAMPLE_DEPTH, c.SR_SALINITY, c.SR_TEMPERATURE, c.SR_SAMPLE_TYPE
+                                                                 select c).ToList();
+
+                            foreach (BCMarineSample bcMarineSample in BCSampleList)
+                            {
+                                if (bcMarineSample.SR_FECAL_COLIFORM == 0)
+                                {
+                                    bcMarineSample.SR_FECAL_COLIFORM = 1;
+                                }
+                                if (bcMarineSample.SR_FECAL_COLIFORM == 2 && bcMarineSample.SR_FECAL_COLIFORM_IND == "<")
+                                {
+                                    bcMarineSample.SR_FECAL_COLIFORM = 1;
+                                }
+                            }
+
+                            lblStatus.Text = $"Doing { tvItemModelSubsector.TVText } --- { tvItemModelSite.TVText }";
+                            lblStatus.Refresh();
+                            Application.DoEvents();
+
+
+                            List<MWQMSample> mwqmSiteMWQMSampleList = (from c in db2.MWQMSamples
+                                                                       where c.MWQMSiteTVItemID == tvItemModelSite.TVItemID
+                                                                       orderby c.SampleDateTime_Local, c.FecCol_MPN_100ml, c.SampleTypesText, c.Depth_m, c.TimeText
+                                                                       select c).ToList();
+
+                            List<MWQMSample> mwqmSampleToDeleteList = new List<MWQMSample>();
+
+
+                            int Count = BCSampleList.Count - 1;
+                            if (BCSampleList.Count > 1)
+                            {
+                                for (int i = 0; i < Count; i++)
+                                {
+                                    if (BCSampleList[i].SR_READING_DATE == BCSampleList[i + 1].SR_READING_DATE
+                                        && BCSampleList[i].SR_READING_TIME == BCSampleList[i + 1].SR_READING_TIME
+                                        && BCSampleList[i].SR_FECAL_COLIFORM == BCSampleList[i + 1].SR_FECAL_COLIFORM
+                                        && BCSampleList[i].SR_FECAL_COLIFORM_IND == BCSampleList[i + 1].SR_FECAL_COLIFORM_IND
+                                        && BCSampleList[i].SR_SAMPLE_DEPTH == BCSampleList[i + 1].SR_SAMPLE_DEPTH
+                                        && BCSampleList[i].SR_SALINITY == BCSampleList[i + 1].SR_SALINITY
+                                        && BCSampleList[i].SR_TEMPERATURE == BCSampleList[i + 1].SR_TEMPERATURE
+                                        && BCSampleList[i].SR_SAMPLE_TYPE == BCSampleList[i + 1].SR_SAMPLE_TYPE
+                                        )
+                                    {
+                                        richTextBoxStatus.AppendText($"{ subsector }\t{BCSampleList[i].SR_STATION_CODE}\t{((DateTime)BCSampleList[i].SR_READING_DATE).ToString("yyyy-MMMM-dd")}\t{BCSampleList[i].SR_READING_TIME}\t{BCSampleList[i].SR_FECAL_COLIFORM}\t{BCSampleList[i].SR_SAMPLE_TYPE}\t{BCSampleList[i].SR_SAMPLE_DEPTH}\r\n");
+                                    }
+                                }
+                            }
+
+
+
+                            //int Count = mwqmSiteMWQMSampleList.Count - 1;
+                            //if (mwqmSiteMWQMSampleList.Count > 1)
+                            //{
+                            //    for (int i = 0; i < Count; i++)
+                            //    {
+                            //        if (string.IsNullOrWhiteSpace(mwqmSiteMWQMSampleList[i].TimeText))
+                            //        {
+                            //            mwqmSampleToDeleteList.Add(mwqmSiteMWQMSampleList[i]);
+                            //            richTextBoxStatus.AppendText($"{ subsector } --- {tvItemModelSite.TVText} --- {mwqmSiteMWQMSampleList[i].SampleDateTime_Local} --- {mwqmSiteMWQMSampleList[i].FecCol_MPN_100ml}\r\n");
+                            //        }
+                            //    }
+                            //}
+
+
+
+
+                            //int Count = mwqmSiteMWQMSampleList.Count;
+                            //for (int i = 0; i < Count; i++)
+                            //{
+                            //    List<BCMarineSample> BCSubsectorList = (from c in BCSampleList
+                            //                                            where c.SR_READING_DATE.Value.Year == mwqmSiteMWQMSampleList[i].SampleDateTime_Local.Year
+                            //                                            && c.SR_READING_DATE.Value.Month == mwqmSiteMWQMSampleList[i].SampleDateTime_Local.Month
+                            //                                            && c.SR_READING_DATE.Value.Day == mwqmSiteMWQMSampleList[i].SampleDateTime_Local.Day
+                            //                                            && c.SR_FECAL_COLIFORM == mwqmSiteMWQMSampleList[i].FecCol_MPN_100ml
+                            //                                            select c).ToList();
+
+                            //    bool exist = false;
+
+                            //    foreach (BCMarineSample bcMarineSample in BCSubsectorList)
+                            //    {
+                            //        bool Exact = true;
+
+                            //        SampleTypeEnum sampleType = SampleTypeEnum.Routine;
+
+                            //        if (bcMarineSample.SR_SAMPLE_TYPE == "S")
+                            //        {
+                            //            sampleType = SampleTypeEnum.Sediment;
+                            //        }
+
+                            //        if (bcMarineSample.SR_SAMPLE_TYPE == "B")
+                            //        {
+                            //            sampleType = SampleTypeEnum.Bivalve;
+                            //        }
+
+                            //        string SampleTypeText = ((int)sampleType).ToString() + ",";
+
+                            //        if (mwqmSiteMWQMSampleList[i].SampleTypesText != SampleTypeText)
+                            //        {
+                            //            Exact = false;
+                            //        }
+
+                            //        DateTime DayOfSample = (DateTime)(bcMarineSample.SR_READING_DATE);
+
+                            //        string SampleTime = bcMarineSample.SR_READING_TIME;
+
+                            //        if (SampleTime == null || SampleTime == "0")
+                            //        {
+                            //            SampleTime = "0000";
+                            //        }
+
+                            //        string hourText = SampleTime.Substring(0, 2);
+                            //        string minText = SampleTime.Substring(2, 2);
+
+                            //        int hour = int.Parse(hourText);
+                            //        int min = int.Parse(minText);
+
+                            //        DateTime SampleDate = new DateTime(DayOfSample.Year, DayOfSample.Month, DayOfSample.Day, hour, min, 0);
+
+                            //        if (mwqmSiteMWQMSampleList[i].SampleDateTime_Local != SampleDate)
+                            //        {
+                            //            Exact = false;
+                            //        }
+
+                            //        int FecCol = 0;
+                            //        if (bcMarineSample.SR_FECAL_COLIFORM_IND == "<" && bcMarineSample.SR_FECAL_COLIFORM == 2)
+                            //        {
+                            //            FecCol = 1;
+                            //        }
+                            //        else
+                            //        {
+                            //            if (bcMarineSample.SR_FECAL_COLIFORM == null)
+                            //            {
+                            //                continue;
+                            //            }
+
+                            //            FecCol = (int)bcMarineSample.SR_FECAL_COLIFORM;
+                            //        }
+                            //        if (FecCol == 0)
+                            //        {
+                            //            FecCol = 1;
+                            //        }
+
+                            //        if (mwqmSiteMWQMSampleList[i].FecCol_MPN_100ml != FecCol)
+                            //        {
+                            //            Exact = false;
+                            //        }
+
+                            //        if (mwqmSiteMWQMSampleList[i].Depth_m != bcMarineSample.SR_SAMPLE_DEPTH)
+                            //        {
+                            //            Exact = false;
+                            //        }
+
+                            //        if (mwqmSiteMWQMSampleList[i].Salinity_PPT != bcMarineSample.SR_SALINITY)
+                            //        {
+                            //            Exact = false;
+                            //        }
+
+                            //        if (mwqmSiteMWQMSampleList[i].WaterTemp_C != bcMarineSample.SR_TEMPERATURE)
+                            //        {
+                            //            Exact = false;
+                            //        }
+
+                            //        if (Exact)
+                            //        {
+                            //            exist = true;
+                            //            break;
+                            //        }
+                            //    }
+
+                            //    if (!exist)
+                            //    {
+                            //        mwqmSampleToDeleteList.Add(mwqmSiteMWQMSampleList[i]);
+                            //        richTextBoxStatus.AppendText($"{ subsector } --- {tvItemModelSite.TVText} --- {mwqmSiteMWQMSampleList[i].SampleDateTime_Local} --- {mwqmSiteMWQMSampleList[i].FecCol_MPN_100ml}\r\n");
+                            //    }
+
+                            //}
+
+
+
+
+
+                            //int Count = mwqmSiteMWQMSampleList.Count - 1;
+                            //if (mwqmSiteMWQMSampleList.Count > 1)
+                            //{
+                            //    for (int i = 0; i < Count; i++)
+                            //    {
+                            //        if (mwqmSiteMWQMSampleList[i].SampleDateTime_Local.Year == mwqmSiteMWQMSampleList[i + 1].SampleDateTime_Local.Year
+                            //            && mwqmSiteMWQMSampleList[i].SampleDateTime_Local.Month == mwqmSiteMWQMSampleList[i + 1].SampleDateTime_Local.Month
+                            //            && mwqmSiteMWQMSampleList[i].SampleDateTime_Local.Day == mwqmSiteMWQMSampleList[i + 1].SampleDateTime_Local.Day
+                            //            && mwqmSiteMWQMSampleList[i].FecCol_MPN_100ml == mwqmSiteMWQMSampleList[i + 1].FecCol_MPN_100ml
+                            //            && mwqmSiteMWQMSampleList[i].Depth_m == mwqmSiteMWQMSampleList[i + 1].Depth_m
+                            //            && mwqmSiteMWQMSampleList[i].TimeText == mwqmSiteMWQMSampleList[i + 1].TimeText
+                            //            && mwqmSiteMWQMSampleList[i].SampleTypesText == mwqmSiteMWQMSampleList[i + 1].SampleTypesText
+                            //            )
+                            //        {
+                            //            mwqmSampleToDeleteList.Add(mwqmSiteMWQMSampleList[i + 1]);
+                            //            richTextBoxStatus.AppendText($"{ subsector } --- {tvItemModelSite.TVText} --- {mwqmSiteMWQMSampleList[i + 1].SampleDateTime_Local} --- {mwqmSiteMWQMSampleList[i + 1].FecCol_MPN_100ml}\r\n");
+                            //        }
+                            //    }
+                            //}
+
+
+
+
+                            //try
+                            //{
+                            //    foreach (MWQMSample mwqmSample in mwqmSampleToDeleteList)
+                            //    {
+                            //        db2.MWQMSamples.Remove(mwqmSample);
+                            //    }
+
+                            //    db2.SaveChanges();
+                            //}
+                            //catch (Exception)
+                            //{
+                            //    int sleifj = 34;
+                            //}
+
+
+                            //lblStatus.Text = $"Doing { tvItemModelSubsector.TVText } [{BCSampleList.Count}] --- { tvItemModelSite.TVText } [{mwqmSiteMWQMSampleList.Count}]";
+                            //lblStatus.Refresh();
+                            //Application.DoEvents();
+
+                            //if (BCSampleList.Count != mwqmSiteMWQMSampleList.Count)
+                            //{
+                            //    richTextBoxStatus.AppendText($"{ subsector } --- {tvItemModelSite.TVText} --- BC [{BCSampleList.Count}] CSSP [{mwqmSiteMWQMSampleList.Count}]\r\n");
+                            //}
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Button13_Click(object sender, EventArgs e)
+        {
+            DateTime date_local = DateTime.Now;
+
+            List<string> zoneTextList = new List<string>()
+            {
+                "Newfoundland Standard Time",
+                "Atlantic Standard Time",
+                "Eastern Standard Time",
+                "Pacific Standard Time"
+            };
+
+            List<DateTime> dateTimeList = new List<DateTime>()
+            {
+                DateTime.Now,
+                DateTime.Now.AddMonths(1).AddHours(8),
+                DateTime.Now.AddMonths(2).AddHours(8),
+                DateTime.Now.AddMonths(3).AddHours(8),
+                DateTime.Now.AddMonths(4).AddHours(8),
+                DateTime.Now.AddMonths(5).AddHours(8),
+                DateTime.Now.AddMonths(6).AddHours(8),
+                DateTime.Now.AddMonths(7).AddHours(8),
+                DateTime.Now.AddMonths(8).AddHours(8),
+                DateTime.Now.AddMonths(9).AddHours(8),
+                DateTime.Now.AddMonths(10).AddHours(8),
+                DateTime.Now.AddMonths(11).AddHours(8),
+                DateTime.Now.AddMonths(12).AddHours(8),
+            };
+
+
+            foreach (string zoneText in zoneTextList)
+            {
+                TimeZoneInfo tst = TimeZoneInfo.FindSystemTimeZoneById(zoneText);
+
+                foreach (DateTime dt in dateTimeList)
+                {
+                    bool IDST = tst.IsDaylightSavingTime(dt);
+                    DateTime dateUTC = dt.ToUniversalTime();
+                    TimeSpan ts = tst.GetUtcOffset(dt);
+                    richTextBoxStatus.AppendText($"{zoneText} --- {dt.ToString("yyyy-MMMM-ddThh:mm:ss")} -- IsDaylightSavingTime [{IDST}] --- UTC [{dateUTC.ToString("O")}] --- offset [{ts.Hours}.{ts.Minutes}] \r\n");
+                }
+            }
+        }
+
+        private void Button14_Click(object sender, EventArgs e)
+        {
+            DateTime dateTime = DateTime.Parse(textBox1.Text);
+
+            richTextBoxStatus.Text = "";
+            richTextBoxStatus.AppendText($"Date read [{dateTime}]\r\n");
+
+            richTextBoxStatus.AppendText($"UTC date [{dateTime.ToUniversalTime()}]");
+
+            richTextBoxStatus.AppendText($"output format [{dateTime.ToString(textBox2.Text)}]");
         }
 
 

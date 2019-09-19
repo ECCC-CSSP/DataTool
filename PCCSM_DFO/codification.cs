@@ -24,7 +24,6 @@ namespace PCCSM_DFO
             this.codification1 = new HashSet<codification>();
             this.codification_description = new HashSet<codification_description>();
             this.codification_description1 = new HashSet<codification_description>();
-            this.codification_description2 = new HashSet<codification_description>();
             this.contacts = new HashSet<contact>();
             this.contacts1 = new HashSet<contact>();
             this.contacts2 = new HashSet<contact>();
@@ -34,9 +33,6 @@ namespace PCCSM_DFO
             this.ordonnances = new HashSet<ordonnance>();
             this.ordonnances1 = new HashSet<ordonnance>();
             this.ordonnances2 = new HashSet<ordonnance>();
-            this.point_legal = new HashSet<point_legal>();
-            this.secteurs = new HashSet<secteur>();
-            this.secteurs1 = new HashSet<secteur>();
         }
     
         public int codification_id { get; set; }
@@ -55,7 +51,6 @@ namespace PCCSM_DFO
         public virtual codification codification2 { get; set; }
         public virtual ICollection<codification_description> codification_description { get; set; }
         public virtual ICollection<codification_description> codification_description1 { get; set; }
-        public virtual ICollection<codification_description> codification_description2 { get; set; }
         public virtual ICollection<contact> contacts { get; set; }
         public virtual ICollection<contact> contacts1 { get; set; }
         public virtual ICollection<contact> contacts2 { get; set; }
@@ -65,8 +60,5 @@ namespace PCCSM_DFO
         public virtual ICollection<ordonnance> ordonnances { get; set; }
         public virtual ICollection<ordonnance> ordonnances1 { get; set; }
         public virtual ICollection<ordonnance> ordonnances2 { get; set; }
-        public virtual ICollection<point_legal> point_legal { get; set; }
-        public virtual ICollection<secteur> secteurs { get; set; }
-        public virtual ICollection<secteur> secteurs1 { get; set; }
     }
 }

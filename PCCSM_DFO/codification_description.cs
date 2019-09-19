@@ -22,6 +22,5 @@ namespace PCCSM_DFO
     
         public virtual codification codification { get; set; }
         public virtual codification codification1 { get; set; }
-        public virtual codification codification2 { get; set; }
     }
 }

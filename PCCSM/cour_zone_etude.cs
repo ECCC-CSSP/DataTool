@@ -17,7 +17,7 @@ namespace PCCSM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public cour_zone_etude()
         {
-            this.cour_trajectoire_l = new HashSet<cour_trajectoire_l>();
+            this.geo_etude_courantometrie_trajectoire_l = new HashSet<geo_etude_courantometrie_trajectoire_l>();
             this.modeles = new HashSet<modele>();
         }
     
@@ -30,7 +30,7 @@ namespace PCCSM
         public string commentaire { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cour_trajectoire_l> cour_trajectoire_l { get; set; }
+        public virtual ICollection<geo_etude_courantometrie_trajectoire_l> geo_etude_courantometrie_trajectoire_l { get; set; }
         public virtual Inf_TypeEntite Inf_TypeEntite { get; set; }
         public virtual Inf_TypeEntite Inf_TypeEntite1 { get; set; }
         public virtual tr_reference tr_reference { get; set; }

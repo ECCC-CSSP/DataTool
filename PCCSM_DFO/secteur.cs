@@ -24,6 +24,7 @@ namespace PCCSM_DFO
         }
     
         public int secteur_id { get; set; }
+        public System.Guid globalID { get; set; }
         public Nullable<int> secteur_id_parent { get; set; }
         public string secteur1 { get; set; }
         public string secteur_ltr { get; set; }
@@ -31,22 +32,21 @@ namespace PCCSM_DFO
         public Nullable<int> secteur_no2 { get; set; }
         public Nullable<int> secteur_no3 { get; set; }
         public Nullable<int> secteur_no4 { get; set; }
-        public Nullable<double> longueur_rive { get; set; }
-        public Nullable<double> superficie { get; set; }
-        public byte[] geometry { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
-        public Nullable<double> x_min { get; set; }
-        public Nullable<double> y_min { get; set; }
-        public Nullable<double> x_max { get; set; }
-        public Nullable<double> y_max { get; set; }
+        public Nullable<decimal> longueur_rive { get; set; }
+        public Nullable<decimal> superficie { get; set; }
+        public Nullable<decimal> x { get; set; }
+        public Nullable<decimal> y { get; set; }
+        public Nullable<decimal> x_min { get; set; }
+        public Nullable<decimal> y_min { get; set; }
+        public Nullable<decimal> x_max { get; set; }
+        public Nullable<decimal> y_max { get; set; }
         public Nullable<int> secteur_type { get; set; }
         public Nullable<int> etat { get; set; }
+        public Nullable<bool> assujetti_pccsm { get; set; }
         public string description { get; set; }
+        public Nullable<decimal> area { get; set; }
     
         public virtual ICollection<clause_secteur> clause_secteur { get; set; }
-        public virtual codification codification { get; set; }
-        public virtual codification codification1 { get; set; }
         public virtual ICollection<groupe_secteur> groupe_secteur { get; set; }
         public virtual ICollection<groupe_secteur> groupe_secteur1 { get; set; }
         public virtual ICollection<secteur_description> secteur_description { get; set; }

@@ -52,9 +52,6 @@
     <Compile Include="box_model_dilution_s.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="bv_idm_final5_20mars.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="BV_N1M_S.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
@@ -76,16 +73,7 @@
     <Compile Include="calendrier.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="calendrier_lunaire.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="caracterisation_milieu.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CCG_Nav_Aid.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CHS_sounding.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="codification.cs">
@@ -100,34 +88,19 @@
     <Compile Include="contact_groupe.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="cour_flotteur_p.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cour_trajectoire_l.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="cour_zone_etude.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="db_banc_espece.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="db_banc_espece_20180504.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="db_banc_espece_exploitation.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="db_banc_espece_exploitation_20180506.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="db_banc_secteur.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="db_banc_source_info.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="db_depuration.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="db_document.cs">
@@ -142,12 +115,6 @@
     <Compile Include="db_ec_recommandation.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="db_ec_recommandation_local.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="db_ec_recommandation_note.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="db_ed_donnees_gisement.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
@@ -160,9 +127,6 @@
     <Compile Include="db_ed_taille.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="db_feedback.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="db_histo_operation.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
@@ -172,16 +136,7 @@
     <Compile Include="db_mesure.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="db_rapport.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="db_station_no_georef.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="db_tournee.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="db_tournee_20180208_valeur_precipitation_3_jrs_ant_originale.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="db_tournee_maree_temporaire.cs">
@@ -196,12 +151,6 @@
     <Compile Include="db_zone_secteur_station_meteo.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="dec.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ec_Facility.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="EvaluationRisqueSecteur.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
@@ -212,9 +161,6 @@
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="geo_banc_coquillier_s.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GEO_BANC_COQUILLIER_S_ZVALID999.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="geo_BV_N1M_S.cs">
@@ -229,7 +175,13 @@
     <Compile Include="geo_ed_quadrat_p.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="geo_feedback_ap.cs">
+    <Compile Include="geo_etude_courantometrie_flotteur_p.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_etude_courantometrie_trajectoire_l.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_idm_habitation_inventaire_p.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="geo_photographie_p.cs">
@@ -256,10 +208,13 @@
     <Compile Include="geo_stations_p.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="geo_stations_p_resultat_tableau_2.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="geo_station_audit_p.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="geo_terrain_l_s.cs">
+    <Compile Include="geo_terrain_l.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="geo_terrain_p.cs">
@@ -271,10 +226,10 @@
     <Compile Include="gps_log.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="hyperlien.cs">
+    <Compile Include="groupe_secteur.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="impact_evaluation.cs">
+    <Compile Include="hyperlien.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Inf_Infrastructures.cs">
@@ -284,6 +239,9 @@
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Inf_Reseau.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inf_Reseau_l.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Inf_Traitement.cs">
@@ -298,9 +256,6 @@
     <Compile Include="mactre2012_inventaire_idm.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="mammifere_marin_a_effacer.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="mammifere_marin_select.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
@@ -310,31 +265,28 @@
     <Compile Include="MarineChartIndex.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="methode_description.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="modele.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="modele_contamination_s.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="modele_dilution.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="mod_contamination_s.cs">
+    <Compile Include="modele_region.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="municipalite.cs">
+    <Compile Include="mod_contamination_s.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="NetworkID.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="No_Civ_region_ll83mdb.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="occ_idm_pour_tableau_v2.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="organisation.cs">
@@ -358,7 +310,19 @@
     <Compile Include="PCCSM_CSSP_Tools_ID.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="point_legal.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="position_peche_espece_ziff.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="position_peche_espece_ziff_l.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="position_peche_prevue_mactre.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="position_peche_prevue_mactre_l.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -377,7 +341,7 @@
     <Compile Include="releve_sanitaire_secteur.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="romm.cs">
+    <Compile Include="reseau_isle_verte__polyline.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="romm_espece_code.cs">
@@ -386,7 +350,7 @@
     <Compile Include="romm_observation.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="RRN_QC_4_0_SEGMROUT.cs">
+    <Compile Include="romm_site_observation_p.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SCF_BIOMQ.cs">
@@ -401,19 +365,25 @@
     <Compile Include="SCF_RivesPoints2.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="SCF_sauvagine_DonneesOiseau_effacer.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="SCF_sauvagine_donnees_oiseaux.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SCF_sauvagine_NoSEC_ZONE_effacer.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="secteur.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="secteur_bassin_versant.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_coordonnees_epsg_3857.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_description.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_epsg3857.cs">
+      <DependentUpon>PCCSMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secteur_point_legal.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="spatial_ref_sys.cs">
@@ -467,9 +437,6 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="tata_region.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblRapportTournee.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
@@ -482,19 +449,13 @@
     <Compile Include="temp_precipitation_journaliere.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="toponyme.cs">
+    <Compile Include="test_date_format.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="tournee_planification.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="treaser.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="tributaire_par_secteur_par_annee.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tr_agent_technique.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="tr_bearing.cs">
@@ -527,22 +488,13 @@
     <Compile Include="tr_mer_etat.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="tr_ordonnance_type.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="tr_pollution_code.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="tr_recommandation.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="tr_recommandation_mpo.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="tr_reference.cs">
-      <DependentUpon>PCCSMEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tr_region_ordonnance_v1.cs">
       <DependentUpon>PCCSMEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="tr_tr_code_type_entite_matrice.cs">

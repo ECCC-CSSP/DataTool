@@ -27,5 +27,6 @@ namespace PCCSM
         public Nullable<int> CoordinateSystemsID { get; set; }
         public string UnitMeasure { get; set; }
         public string AvailableChart { get; set; }
+        public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
     }
 }

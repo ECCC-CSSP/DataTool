@@ -28,42 +28,31 @@ namespace PCCSM
         public virtual DbSet<C2013_Municipalité> C2013_Municipalité { get; set; }
         public virtual DbSet<C2013_Toponymes_officiels> C2013_Toponymes_officiels { get; set; }
         public virtual DbSet<C2013_TypesEntitesToponymiques> C2013_TypesEntitesToponymiques { get; set; }
-        public virtual DbSet<bv_idm_final5_20mars> bv_idm_final5_20mars { get; set; }
         public virtual DbSet<BV_N1M_S> BV_N1M_S { get; set; }
         public virtual DbSet<BV_N1M_S_caracterisation_milieu> BV_N1M_S_caracterisation_milieu { get; set; }
         public virtual DbSet<BV_N1M_S_occupation_sup> BV_N1M_S_occupation_sup { get; set; }
         public virtual DbSet<calendrier> calendriers { get; set; }
-        public virtual DbSet<calendrier_lunaire> calendrier_lunaire { get; set; }
         public virtual DbSet<caracterisation_milieu> caracterisation_milieu { get; set; }
-        public virtual DbSet<CCG_Nav_Aid> CCG_Nav_Aid { get; set; }
-        public virtual DbSet<CHS_sounding> CHS_sounding { get; set; }
         public virtual DbSet<codification> codifications { get; set; }
         public virtual DbSet<codification_description> codification_description { get; set; }
         public virtual DbSet<contact> contacts { get; set; }
         public virtual DbSet<contact_groupe> contact_groupe { get; set; }
-        public virtual DbSet<cour_flotteur_p> cour_flotteur_p { get; set; }
-        public virtual DbSet<cour_trajectoire_l> cour_trajectoire_l { get; set; }
         public virtual DbSet<cour_zone_etude> cour_zone_etude { get; set; }
         public virtual DbSet<db_banc_espece> db_banc_espece { get; set; }
         public virtual DbSet<db_banc_espece_exploitation> db_banc_espece_exploitation { get; set; }
         public virtual DbSet<db_banc_secteur> db_banc_secteur { get; set; }
         public virtual DbSet<db_banc_source_info> db_banc_source_info { get; set; }
-        public virtual DbSet<db_depuration> db_depuration { get; set; }
         public virtual DbSet<db_document> db_document { get; set; }
         public virtual DbSet<db_ec_recommandation> db_ec_recommandation { get; set; }
-        public virtual DbSet<db_ec_recommandation_note> db_ec_recommandation_note { get; set; }
         public virtual DbSet<db_echantillonnage_planification> db_echantillonnage_planification { get; set; }
         public virtual DbSet<db_echantillonnage_planification_mensuelle> db_echantillonnage_planification_mensuelle { get; set; }
         public virtual DbSet<db_ed_donnees_gisement> db_ed_donnees_gisement { get; set; }
         public virtual DbSet<db_ed_echantillonnage> db_ed_echantillonnage { get; set; }
         public virtual DbSet<db_ed_granulometrie> db_ed_granulometrie { get; set; }
         public virtual DbSet<db_ed_taille> db_ed_taille { get; set; }
-        public virtual DbSet<db_feedback> db_feedback { get; set; }
         public virtual DbSet<db_histo_operation> db_histo_operation { get; set; }
         public virtual DbSet<db_log_terrain> db_log_terrain { get; set; }
         public virtual DbSet<db_mesure> db_mesure { get; set; }
-        public virtual DbSet<db_rapport> db_rapport { get; set; }
-        public virtual DbSet<db_station_no_georef> db_station_no_georef { get; set; }
         public virtual DbSet<db_tournee> db_tournee { get; set; }
         public virtual DbSet<db_tournee_maree_temporaire> db_tournee_maree_temporaire { get; set; }
         public virtual DbSet<db_tournee_maree_temporaire_validation> db_tournee_maree_temporaire_validation { get; set; }
@@ -72,12 +61,13 @@ namespace PCCSM
         public virtual DbSet<evaluation_risque> evaluation_risque { get; set; }
         public virtual DbSet<EvaluationRisqueSecteur> EvaluationRisqueSecteurs { get; set; }
         public virtual DbSet<geo_banc_coquillier_s> geo_banc_coquillier_s { get; set; }
-        public virtual DbSet<GEO_BANC_COQUILLIER_S_ZVALID999> GEO_BANC_COQUILLIER_S_ZVALID999 { get; set; }
         public virtual DbSet<geo_BV_N1M_S> geo_BV_N1M_S { get; set; }
         public virtual DbSet<geo_BV_N2M_S> geo_BV_N2M_S { get; set; }
         public virtual DbSet<geo_chs_pipesol> geo_chs_pipesol { get; set; }
         public virtual DbSet<geo_ed_quadrat_p> geo_ed_quadrat_p { get; set; }
-        public virtual DbSet<geo_feedback_ap> geo_feedback_ap { get; set; }
+        public virtual DbSet<geo_etude_courantometrie_flotteur_p> geo_etude_courantometrie_flotteur_p { get; set; }
+        public virtual DbSet<geo_etude_courantometrie_trajectoire_l> geo_etude_courantometrie_trajectoire_l { get; set; }
+        public virtual DbSet<geo_idm_habitation_inventaire_p> geo_idm_habitation_inventaire_p { get; set; }
         public virtual DbSet<geo_photographie_p> geo_photographie_p { get; set; }
         public virtual DbSet<geo_pollution_baie_gaspe_p> geo_pollution_baie_gaspe_p { get; set; }
         public virtual DbSet<geo_pollution_p> geo_pollution_p { get; set; }
@@ -87,50 +77,56 @@ namespace PCCSM
         public virtual DbSet<geo_secteur_s> geo_secteur_s { get; set; }
         public virtual DbSet<geo_station_audit_p> geo_station_audit_p { get; set; }
         public virtual DbSet<geo_stations_p> geo_stations_p { get; set; }
-        public virtual DbSet<geo_terrain_l_s> geo_terrain_l_s { get; set; }
+        public virtual DbSet<geo_stations_p_resultat_tableau_2> geo_stations_p_resultat_tableau_2 { get; set; }
+        public virtual DbSet<geo_terrain_l> geo_terrain_l { get; set; }
         public virtual DbSet<geo_terrain_p> geo_terrain_p { get; set; }
         public virtual DbSet<geo_transect_l> geo_transect_l { get; set; }
         public virtual DbSet<geometry_columns> geometry_columns { get; set; }
         public virtual DbSet<gps_log> gps_log { get; set; }
+        public virtual DbSet<groupe_secteur> groupe_secteur { get; set; }
         public virtual DbSet<hyperlien> hyperliens { get; set; }
-        public virtual DbSet<impact_evaluation> impact_evaluation { get; set; }
         public virtual DbSet<Inf_Infrastructures> Inf_Infrastructures { get; set; }
         public virtual DbSet<Inf_Municipalite> Inf_Municipalite { get; set; }
         public virtual DbSet<Inf_Reseau> Inf_Reseau { get; set; }
+        public virtual DbSet<Inf_Reseau_l> Inf_Reseau_l { get; set; }
         public virtual DbSet<Inf_Traitement> Inf_Traitement { get; set; }
         public virtual DbSet<Inf_TypeEntite> Inf_TypeEntite { get; set; }
         public virtual DbSet<laboratoire_operateur> laboratoire_operateur { get; set; }
         public virtual DbSet<mactre2012_inventaire_idm> mactre2012_inventaire_idm { get; set; }
         public virtual DbSet<mammifere_marin_select> mammifere_marin_select { get; set; }
         public virtual DbSet<maree> marees { get; set; }
-        public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<methode_description> methode_description { get; set; }
         public virtual DbSet<mod_contamination_s> mod_contamination_s { get; set; }
         public virtual DbSet<modele> modeles { get; set; }
+        public virtual DbSet<modele_contamination_s> modele_contamination_s { get; set; }
         public virtual DbSet<modele_dilution> modele_dilution { get; set; }
-        public virtual DbSet<municipalite> municipalites { get; set; }
+        public virtual DbSet<modele_region> modele_region { get; set; }
         public virtual DbSet<NetworkID> NetworkIDs { get; set; }
         public virtual DbSet<No_Civ_region_ll83mdb> No_Civ_region_ll83mdb { get; set; }
-        public virtual DbSet<occ_idm_pour_tableau_v2> occ_idm_pour_tableau_v2 { get; set; }
         public virtual DbSet<organisation> organisations { get; set; }
         public virtual DbSet<PCCSM_CSSP_Tools_ID> PCCSM_CSSP_Tools_ID { get; set; }
+        public virtual DbSet<point_legal> point_legal { get; set; }
         public virtual DbSet<position_peche_espece_ziff> position_peche_espece_ziff { get; set; }
+        public virtual DbSet<position_peche_espece_ziff_l> position_peche_espece_ziff_l { get; set; }
+        public virtual DbSet<position_peche_prevue_mactre> position_peche_prevue_mactre { get; set; }
+        public virtual DbSet<position_peche_prevue_mactre_l> position_peche_prevue_mactre_l { get; set; }
         public virtual DbSet<QC_MRNF_SIEF_PEEFO> QC_MRNF_SIEF_PEEFO { get; set; }
         public virtual DbSet<QC_MRNF_SIEF_PEEFO_CDR_CO> QC_MRNF_SIEF_PEEFO_CDR_CO { get; set; }
         public virtual DbSet<QC_MRNF_SIEF_PEEFO_CLP_CO> QC_MRNF_SIEF_PEEFO_CLP_CO { get; set; }
         public virtual DbSet<releve_sanitaire> releve_sanitaire { get; set; }
         public virtual DbSet<releve_sanitaire_secteur> releve_sanitaire_secteur { get; set; }
-        public virtual DbSet<romm> romms { get; set; }
+        public virtual DbSet<reseau_isle_verte__polyline> reseau_isle_verte__polyline { get; set; }
         public virtual DbSet<romm_espece_code> romm_espece_code { get; set; }
         public virtual DbSet<romm_observation> romm_observation { get; set; }
-        public virtual DbSet<RRN_QC_4_0_SEGMROUT> RRN_QC_4_0_SEGMROUT { get; set; }
+        public virtual DbSet<romm_site_observation_p> romm_site_observation_p { get; set; }
         public virtual DbSet<SCF_Colonies> SCF_Colonies { get; set; }
         public virtual DbSet<SCF_Especes> SCF_Especes { get; set; }
         public virtual DbSet<SCF_sauvagine_donnees_oiseaux> SCF_sauvagine_donnees_oiseaux { get; set; }
-        public virtual DbSet<SCF_sauvagine_DonneesOiseau_effacer> SCF_sauvagine_DonneesOiseau_effacer { get; set; }
-        public virtual DbSet<SCF_sauvagine_NoSEC_ZONE_effacer> SCF_sauvagine_NoSEC_ZONE_effacer { get; set; }
         public virtual DbSet<secteur> secteurs { get; set; }
         public virtual DbSet<secteur_bassin_versant> secteur_bassin_versant { get; set; }
+        public virtual DbSet<secteur_coordonnees_epsg_3857> secteur_coordonnees_epsg_3857 { get; set; }
+        public virtual DbSet<secteur_description> secteur_description { get; set; }
+        public virtual DbSet<secteur_point_legal> secteur_point_legal { get; set; }
         public virtual DbSet<spatial_ref_sys> spatial_ref_sys { get; set; }
         public virtual DbSet<statcan_recensement_2011_lot> statcan_recensement_2011_lot { get; set; }
         public virtual DbSet<statcan_recensement_2016_lot> statcan_recensement_2016_lot { get; set; }
@@ -147,12 +143,10 @@ namespace PCCSM
         public virtual DbSet<station_meteo_mddep> station_meteo_mddep { get; set; }
         public virtual DbSet<station_meteo_precipitation_journaliere> station_meteo_precipitation_journaliere { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<tata_region> tata_region { get; set; }
         public virtual DbSet<tblRapportTournee> tblRapportTournees { get; set; }
         public virtual DbSet<temp_precipitation_journaliere> temp_precipitation_journaliere { get; set; }
-        public virtual DbSet<toponyme> toponymes { get; set; }
+        public virtual DbSet<test_date_format> test_date_format { get; set; }
         public virtual DbSet<tournee_planification> tournee_planification { get; set; }
-        public virtual DbSet<tr_agent_technique> tr_agent_technique { get; set; }
         public virtual DbSet<tr_bearing> tr_bearing { get; set; }
         public virtual DbSet<tr_code> tr_code { get; set; }
         public virtual DbSet<tr_cueilleur> tr_cueilleur { get; set; }
@@ -162,30 +156,20 @@ namespace PCCSM
         public virtual DbSet<tr_histo_type_operation> tr_histo_type_operation { get; set; }
         public virtual DbSet<tr_llc_typecouv> tr_llc_typecouv { get; set; }
         public virtual DbSet<tr_mer_etat> tr_mer_etat { get; set; }
-        public virtual DbSet<tr_ordonnance_type> tr_ordonnance_type { get; set; }
         public virtual DbSet<tr_pollution_code> tr_pollution_code { get; set; }
         public virtual DbSet<tr_recommandation> tr_recommandation { get; set; }
-        public virtual DbSet<tr_recommandation_mpo> tr_recommandation_mpo { get; set; }
         public virtual DbSet<tr_reference> tr_reference { get; set; }
-        public virtual DbSet<tr_region_ordonnance_v1> tr_region_ordonnance_v1 { get; set; }
         public virtual DbSet<tr_tr_code_type_entite_matrice> tr_tr_code_type_entite_matrice { get; set; }
         public virtual DbSet<tributaire_par_secteur_par_annee> tributaire_par_secteur_par_annee { get; set; }
         public virtual DbSet<waypoint> waypoints { get; set; }
         public virtual DbSet<box_model_dilution_s> box_model_dilution_s { get; set; }
-        public virtual DbSet<db_banc_espece_20180504> db_banc_espece_20180504 { get; set; }
-        public virtual DbSet<db_banc_espece_exploitation_20180506> db_banc_espece_exploitation_20180506 { get; set; }
-        public virtual DbSet<db_ec_recommandation_local> db_ec_recommandation_local { get; set; }
-        public virtual DbSet<db_tournee_20180208_valeur_precipitation_3_jrs_ant_originale> db_tournee_20180208_valeur_precipitation_3_jrs_ant_originale { get; set; }
-        public virtual DbSet<dec> decs { get; set; }
-        public virtual DbSet<ec_Facility> ec_Facility { get; set; }
-        public virtual DbSet<mammifere_marin_a_effacer> mammifere_marin_a_effacer { get; set; }
         public virtual DbSet<MarineChartIndex> MarineChartIndexes { get; set; }
         public virtual DbSet<SCF_BIOMQ> SCF_BIOMQ { get; set; }
         public virtual DbSet<SCF_RivesPoints2> SCF_RivesPoints2 { get; set; }
+        public virtual DbSet<secteur_epsg3857> secteur_epsg3857 { get; set; }
         public virtual DbSet<station_dans_buffer> station_dans_buffer { get; set; }
         public virtual DbSet<temp_geo_stations_p> temp_geo_stations_p { get; set; }
         public virtual DbSet<temp_mactre_station_max_annee> temp_mactre_station_max_annee { get; set; }
         public virtual DbSet<tr_espece_codification> tr_espece_codification { get; set; }
-        public virtual DbSet<treaser> treasers { get; set; }
     }
 }

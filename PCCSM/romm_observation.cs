@@ -14,8 +14,7 @@ namespace PCCSM
     
     public partial class romm_observation
     {
-        public int qgs_fid { get; set; }
-        public Nullable<int> romm_observation_id { get; set; }
+        public int romm_observation_id { get; set; }
         public Nullable<int> romm_id { get; set; }
         public Nullable<int> @ref { get; set; }
         public string membre { get; set; }

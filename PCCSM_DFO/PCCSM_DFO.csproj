@@ -85,10 +85,28 @@
     <Compile Include="db_histo_operation.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="db_tournee.cs">
+    <Compile Include="demande_de_site_region.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="dtproperty.cs">
+    <Compile Include="echantillonnage_microbiol.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="echantillonnage_toxicite.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geometry_columns.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_limite_5km_rive_l_3857.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_limite_5km_rive_l_4269.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_pccsm_acia_station.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="geo_segment_l.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="groupe_secteur.cs">
@@ -98,6 +116,15 @@
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="language.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ligne_5km_cote.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mrc.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="munic.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="ordonnance.cs">
@@ -124,26 +151,17 @@
     <Compile Include="point_legal.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="point_legal_20131118.cs">
-      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="secteur.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="secteur_20131118.cs">
+    <Compile Include="secteur_coordonnees_epsg_3857.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="secteur_description.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="secteur_description_20131021.cs">
-      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="secteur_description_20131118.cs">
-      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="secteur_description_20140210.cs">
+    <Compile Include="secteur_epsg3857.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="secteur_historique.cs">
@@ -155,10 +173,58 @@
     <Compile Include="secteur_point_legal.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="segment.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="segmentation_resultat.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_geo_segment.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_limite_acces.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_milieu.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_processus_dominant.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_segment_usage.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_segrivB_nad83mdb.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_substrat.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_tr_code.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_tr_interface_label_new.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_tr_source_dvd.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_type_cote.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seg_zone_cotiere.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="signalisation.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="spatial_ref_sys.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
+      <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_secteur.cs">
       <DependentUpon>PCCSM_DFODBEDM.tt</DependentUpon>
     </Compile>
   </ItemGroup>

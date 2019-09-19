@@ -14,12 +14,6 @@ namespace PCCSM
     
     public partial class db_ec_recommandation
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public db_ec_recommandation()
-        {
-            this.db_ec_recommandation_note = new HashSet<db_ec_recommandation_note>();
-        }
-    
         public int id_db_ec_recommandation { get; set; }
         public Nullable<bool> validation { get; set; }
         public Nullable<int> annee_recommandation { get; set; }
@@ -32,8 +26,6 @@ namespace PCCSM
         public Nullable<bool> jamais_evalue { get; set; }
         public Nullable<bool> nouveau_secteur { get; set; }
         public string commentaire { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<db_ec_recommandation_note> db_ec_recommandation_note { get; set; }
+        public Nullable<bool> diffusable { get; set; }
     }
 }

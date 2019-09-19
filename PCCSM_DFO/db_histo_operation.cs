@@ -15,22 +15,22 @@ namespace PCCSM_DFO
     public partial class db_histo_operation
     {
         public int id_db_histo_operation { get; set; }
-        public Nullable<int> type_operation { get; set; }
-        public string auteur { get; set; }
         public Nullable<System.DateTime> date_operation { get; set; }
-        public string description_operation { get; set; }
-        public Nullable<int> ordonnance_id { get; set; }
-        public Nullable<int> point_legal_id { get; set; }
-        public Nullable<int> secteur_id { get; set; }
+        public string auteur { get; set; }
+        public string type_operation_o { get; set; }
+        public Nullable<int> type_operation { get; set; }
+        public Nullable<int> contact_principal { get; set; }
+        public Nullable<int> contact_secondaire { get; set; }
+        public Nullable<double> x { get; set; }
+        public Nullable<double> y { get; set; }
+        public string description { get; set; }
+        public Nullable<int> ordonnanceID { get; set; }
         public Nullable<int> id_geo_pollution_p { get; set; }
         public Nullable<int> id_geo_terrain_p { get; set; }
         public Nullable<int> id_geo_banc_coquillier_s { get; set; }
         public Nullable<int> id_geo_station_p { get; set; }
         public Nullable<int> ID_infrastructures { get; set; }
         public Nullable<int> id_cour_zone_etude { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
-        public Nullable<int> contact_principal { get; set; }
-        public Nullable<int> contact_secondaire { get; set; }
+        public Nullable<int> id_geo_secteur_s { get; set; }
     }
 }

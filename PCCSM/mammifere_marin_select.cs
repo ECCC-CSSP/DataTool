@@ -14,12 +14,13 @@ namespace PCCSM
     
     public partial class mammifere_marin_select
     {
-        public Nullable<double> latitude { get; set; }
-        public Nullable<double> longitude { get; set; }
+        public int coordonnee_id { get; set; }
+        public Nullable<int> romm_id { get; set; }
+        public Nullable<decimal> latitude { get; set; }
+        public Nullable<decimal> longitude { get; set; }
         public Nullable<int> nb_observation { get; set; }
         public Nullable<int> nb_individus_total { get; set; }
         public string periode_observation { get; set; }
-        public int coordonnee_id { get; set; }
         public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
         public Nullable<int> nb_taxons { get; set; }
     }

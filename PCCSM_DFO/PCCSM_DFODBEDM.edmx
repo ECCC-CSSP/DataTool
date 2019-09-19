@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="pccsm_mpoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="pccsm_mpoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="clause">
           <Key>
             <PropertyRef Name="clause_id" />
@@ -122,99 +122,177 @@
           <Key>
             <PropertyRef Name="id_db_histo_operation" />
           </Key>
-          <Property Name="id_db_histo_operation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="type_operation" Type="int" />
-          <Property Name="auteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_db_histo_operation" Type="int" Nullable="false" />
           <Property Name="date_operation" Type="datetime" />
-          <Property Name="description_operation" Type="text" />
-          <Property Name="ordonnance_id" Type="int" />
-          <Property Name="point_legal_id" Type="int" />
-          <Property Name="secteur_id" Type="int" />
+          <Property Name="auteur" Type="nvarchar" MaxLength="250" />
+          <Property Name="type_operation_o" Type="varchar" MaxLength="50" />
+          <Property Name="type_operation" Type="int" />
+          <Property Name="contact_principal" Type="int" />
+          <Property Name="contact_secondaire" Type="int" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+          <Property Name="description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ordonnanceID" Type="int" />
           <Property Name="id_geo_pollution_p" Type="int" />
           <Property Name="id_geo_terrain_p" Type="int" />
           <Property Name="id_geo_banc_coquillier_s" Type="int" />
           <Property Name="id_geo_station_p" Type="int" />
           <Property Name="ID_infrastructures" Type="int" />
           <Property Name="id_cour_zone_etude" Type="int" />
-          <Property Name="x" Type="float" />
-          <Property Name="y" Type="float" />
-          <Property Name="contact_principal" Type="int" />
-          <Property Name="contact_secondaire" Type="int" />
+          <Property Name="id_geo_secteur_s" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'pccsm_mpo.dbo.db_tournee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="db_tournee">
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.demande_de_site_region' was excluded.-->
+        <EntityType Name="demande_de_site_region">
           <Key>
-            <PropertyRef Name="ID_Tournee" />
-            <PropertyRef Name="annee" />
-            <PropertyRef Name="mois" />
-            <PropertyRef Name="jour" />
+            <PropertyRef Name="Id2" />
           </Key>
-          <Property Name="ID_Tournee" Type="int" Nullable="false" />
-          <Property Name="tournee" Type="smallint" />
-          <Property Name="annee" Type="int" Nullable="false" />
-          <Property Name="mois" Type="int" Nullable="false" />
-          <Property Name="jour" Type="int" Nullable="false" />
-          <Property Name="hre_deb" Type="datetime" />
-          <Property Name="hre_fin" Type="datetime" />
-          <Property Name="hre_recep_lab" Type="datetime" />
-          <Property Name="temp_glace_recep" Type="decimal" Precision="18" Scale="1" />
-          <Property Name="hre_maree_h" Type="datetime" />
-          <Property Name="hre_maree_b" Type="datetime" />
-          <Property Name="maree_princ" Type="varchar" MaxLength="1" />
-          <Property Name="maree_principale" Type="int" />
-          <Property Name="pmaree_deb" Type="nvarchar" MaxLength="15" />
-          <Property Name="pmaree_fin" Type="nvarchar" MaxLength="15" />
-          <Property Name="maree_ve" Type="bit" />
-          <Property Name="maree_me" Type="bit" />
-          <Property Name="marnage" Type="float" />
-          <Property Name="precipit" Type="float" />
-          <Property Name="precipit_3jant" Type="float" />
-          <Property Name="t_air_deb" Type="float" />
-          <Property Name="t_air_fin" Type="float" />
-          <Property Name="v_vent_deb" Type="float" />
-          <Property Name="v_vent_fin" Type="float" />
-          <Property Name="vent_direction_debut" Type="int" />
-          <Property Name="vent_direction_fin" Type="int" />
-          <Property Name="couvert_nuage" Type="float" />
-          <Property Name="couvert_nuage_fin" Type="float" />
-          <Property Name="mer_etat" Type="float" />
-          <Property Name="mer_etat_fin" Type="float" />
-          <Property Name="niveau_eau" Type="float" />
-          <Property Name="vague_hauteur" Type="float" />
-          <Property Name="vague_hauteur_fin" Type="float" />
-          <Property Name="consultant" Type="nvarchar" MaxLength="50" />
-          <Property Name="commentaire" Type="nvarchar(max)" />
-          <Property Name="date_creation" Type="datetime" />
-          <Property Name="status" Type="int" />
-          <Property Name="date_echantillonnage" Type="datetime" />
-          <Property Name="notification" Type="bit" />
-          <Property Name="cf_methode_analytique" Type="int" />
-          <Property Name="laboratoire_operateur_id" Type="int" />
-          <Property Name="validation" Type="int" />
-          <Property Name="analyse_datetime" Type="datetime" />
-          <Property Name="validation_datetime" Type="datetime" />
-          <Property Name="approbation" Type="int" />
-          <Property Name="approbation_date" Type="datetime" />
+          <Property Name="Id2" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="bigint" />
         </EntityType>
-        <EntityType Name="dtproperties">
+        <EntityType Name="echantillonnage_microbiol">
           <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="property" />
+            <PropertyRef Name="id_echantillonnage_microbiol" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="objectid" Type="int" />
-          <Property Name="property" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="value" Type="varchar" MaxLength="255" />
-          <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
-          <Property Name="lvalue" Type="image" />
-          <Property Name="version" Type="int" Nullable="false" />
+          <Property Name="id_echantillonnage_microbiol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_geo_pccsm_acia_station" Type="int" />
+          <Property Name="No_LSTS" Type="int" />
+          <Property Name="nom_especes_francais" Type="nvarchar" MaxLength="25" />
+          <Property Name="Cueilleur" Type="nvarchar" MaxLength="50" />
+          <Property Name="echant_date" Type="datetime" />
+          <Property Name="heure_cueillette" Type="datetime" />
+          <Property Name="Temperature_depart" Type="nvarchar" MaxLength="7" />
+          <Property Name="Date_analyse" Type="datetime" />
+          <Property Name="Temperature_arrivee" Type="nvarchar" MaxLength="7" />
+          <Property Name="No_lab_micro" Type="real" />
+          <Property Name="resultat_col_fec" Type="nvarchar" MaxLength="50" />
+          <Property Name="Verdict_col_fec" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarque" Type="nvarchar" MaxLength="50" />
+          <Property Name="upsize_ts" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="echantillonnage_toxicite">
+          <Key>
+            <PropertyRef Name="Numero_id" />
+          </Key>
+          <Property Name="id_geo_pccsm_acia_station" Type="int" />
+          <Property Name="Numero_id" Type="int" Nullable="false" />
+          <Property Name="No_LSTS" Type="nvarchar" MaxLength="20" />
+          <Property Name="No_lab_PSP" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sous-échantillon" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nom_especes_francais" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type_exploitation" Type="nvarchar" MaxLength="20" />
+          <Property Name="Secteurs" Type="nvarchar" MaxLength="16" />
+          <Property Name="Nom_secteur_francais" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sous_secteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cueilleur" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_cueillette" Type="datetime" />
+          <Property Name="Heure_cueillette" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code_usine" Type="nvarchar" MaxLength="15" />
+          <Property Name="Température_départ" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_série" Type="datetime" />
+          <Property Name="Resultat_PSP_ug_100g" Type="nvarchar" MaxLength="8" />
+          <Property Name="Verdict_PSP" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mortalite_souris" Type="smallint" />
+          <Property Name="Temperature_arrivee" Type="nvarchar" MaxLength="50" />
+          <Property Name="Frequence_Domoique" Type="nvarchar" MaxLength="6" />
+          <Property Name="No_lab_Longueuil" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resultat_ASP" Type="nvarchar" MaxLength="8" />
+          <Property Name="Verdict_ASP" Type="nvarchar" MaxLength="20" />
+          <Property Name="Traitement_primaire" Type="nvarchar" MaxLength="50" />
+          <Property Name="Traitement_secondaire" Type="nvarchar" MaxLength="50" />
+          <Property Name="Traitement_tertiaire" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tissus" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarque" Type="nvarchar" MaxLength="50" />
+          <Property Name="Échantillon_Dartmouth" Type="bit" Nullable="false" />
+          <Property Name="Date_analyse_DSP" Type="datetime" />
+          <Property Name="Resultats_DSP" Type="nvarchar" MaxLength="50" />
+          <Property Name="Verdict_DSP" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pectenotoxin_2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pect2_secoacid" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pect2_sec_7epi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gymnodimine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dinophysis toxin 3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Yessotoxin" Type="nvarchar" MaxLength="50" />
+          <Property Name="Okadoïques totaux" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pectenotoxines totales" Type="nvarchar" MaxLength="50" />
+          <Property Name="Yessotoxines totales" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.geo_limite_5km_rive_l_3857' was excluded.-->
+        <EntityType Name="geo_limite_5km_rive_l_3857">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="feature_id" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.geo_limite_5km_rive_l_4269' was excluded.-->
+        <EntityType Name="geo_limite_5km_rive_l_4269">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="feature_id" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.geo_pccsm_acia_station' was excluded.-->
+        <EntityType Name="geo_pccsm_acia_station">
+          <Key>
+            <PropertyRef Name="id_geo_pccsm_acia_station" />
+          </Key>
+          <Property Name="id_geo_pccsm_acia_station" Type="int" Nullable="false" />
+          <Property Name="secteur" Type="nvarchar" MaxLength="15" />
+          <Property Name="nom_secteur" Type="nvarchar" MaxLength="100" />
+          <Property Name="zone_complement" Type="nvarchar" MaxLength="50" />
+          <Property Name="station" Type="int" />
+          <Property Name="type_station" Type="nvarchar" MaxLength="50" />
+          <Property Name="distance_station" Type="int" />
+          <Property Name="circonference_m" Type="float" />
+          <Property Name="date_creation" Type="datetime" />
+          <Property Name="date_maj" Type="datetime" />
+          <Property Name="auteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="auteur_maj" Type="nvarchar" MaxLength="50" />
+          <Property Name="lat27" Type="nvarchar" MaxLength="9" />
+          <Property Name="long27" Type="nvarchar" MaxLength="9" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+          <Property Name="commentaire" Type="nvarchar(max)" />
+          <Property Name="etat_actif" Type="bit" Nullable="false" />
+          <Property Name="temp" Type="int" />
+          <Property Name="isvalidgeo" Type="bit" />
+          <Property Name="derniere_annee" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.geo_segment_l' was excluded.-->
+        <EntityType Name="geo_segment_l">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_SEGMENT" Type="bigint" />
+          <Property Name="SEG_NUMERO" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="geometry_columns">
+          <Key>
+            <PropertyRef Name="f_table_catalog" />
+            <PropertyRef Name="f_table_schema" />
+            <PropertyRef Name="f_table_name" />
+            <PropertyRef Name="f_geometry_column" />
+          </Key>
+          <Property Name="f_table_catalog" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="f_table_schema" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="f_table_name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="f_geometry_column" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="coord_dimension" Type="int" Nullable="false" />
+          <Property Name="srid" Type="int" Nullable="false" />
+          <Property Name="geometry_type" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="groupe_secteur">
           <Key>
             <PropertyRef Name="groupe_secteur_id" />
           </Key>
-          <Property Name="groupe_secteur_id" Type="int" Nullable="false" />
+          <Property Name="groupe_secteur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="groupe_id" Type="int" />
           <Property Name="secteur_id" Type="int" />
           <Property Name="etat" Type="int" />
@@ -252,6 +330,72 @@ warning 6002: The table/view 'pccsm_mpo.dbo.db_tournee' does not have a primary 
           <Property Name="name" Type="varchar" MaxLength="100" />
           <Property Name="LanguageText" Type="varchar" MaxLength="500" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.ligne_5km_cote' was excluded.
+warning 6002: The table/view 'pccsm_mpo.dbo.ligne_5km_cote' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ligne_5km_cote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="feature_id" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.mrc' was excluded.-->
+        <EntityType Name="mrc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="bigint" />
+          <Property Name="AREA" Type="float" />
+          <Property Name="PERIMETER" Type="float" />
+          <Property Name="MRC_S0_" Type="bigint" />
+          <Property Name="MRC_S0_ID" Type="bigint" />
+          <Property Name="MRS_NO_IND" Type="nvarchar" MaxLength="255" />
+          <Property Name="MRS_DE_IND" Type="nvarchar" MaxLength="255" />
+          <Property Name="MRS_CO_MRC" Type="nvarchar" MaxLength="255" />
+          <Property Name="MRS_NM_MRC" Type="nvarchar" MaxLength="255" />
+          <Property Name="MRS_CO_REG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MRS_NM_REG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MRS_CO_REF" Type="nvarchar" MaxLength="255" />
+          <Property Name="MRS_CO_VER" Type="nvarchar" MaxLength="255" />
+          <Property Name="Shape_Leng" Type="float" />
+          <Property Name="Shape_Area" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.munic' was excluded.-->
+        <EntityType Name="munic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OBJECTID" Type="bigint" />
+          <Property Name="AREA" Type="float" />
+          <Property Name="PERIMETER" Type="float" />
+          <Property Name="MUNIC2013_" Type="bigint" />
+          <Property Name="MUNIC20131" Type="bigint" />
+          <Property Name="MUS_VA_SUP" Type="float" />
+          <Property Name="MUS_NO_IND" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_DE_IND" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_CO_GEO" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_CO_DES" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_NM_MUN" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_CO_MRC" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_NM_MRC" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_CO_REG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_NM_REG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_NM_AGG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_NM_COM" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_DA_CON" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_CO_MOD" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_DA_MOD" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_CO_SOU" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_CO_REF" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUS_CO_VER" Type="nvarchar" MaxLength="255" />
+          <Property Name="Shape_Leng" Type="float" />
+          <Property Name="Shape_Area" Type="float" />
+        </EntityType>
         <EntityType Name="ordonnance">
           <Key>
             <PropertyRef Name="ordonnance_id" />
@@ -278,33 +422,26 @@ warning 6002: The table/view 'pccsm_mpo.dbo.organisation' does not have a primar
           <Property Name="ID_organisation" Type="int" Nullable="false" />
           <Property Name="organisation_fr" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.point_legal' was excluded.-->
         <EntityType Name="point_legal">
           <Key>
             <PropertyRef Name="point_legal_id" />
           </Key>
-          <Property Name="point_legal_id" Type="int" Nullable="false" />
-          <Property Name="x" Type="float" />
-          <Property Name="y" Type="float" />
+          <Property Name="point_legal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="x" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="y" Type="decimal" Precision="18" Scale="6" />
           <Property Name="etat" Type="int" />
           <Property Name="commentaire" Type="ntext" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'pccsm_mpo.dbo.point_legal_20131118' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="point_legal_20131118">
-          <Key>
-            <PropertyRef Name="point_legal_id" />
-          </Key>
-          <Property Name="point_legal_id" Type="int" Nullable="false" />
-          <Property Name="x" Type="float" />
-          <Property Name="y" Type="float" />
-          <Property Name="etat" Type="int" />
-          <Property Name="commentaire" Type="ntext" />
-        </EntityType>
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.secteur' was excluded.-->
         <EntityType Name="secteur">
           <Key>
             <PropertyRef Name="secteur_id" />
           </Key>
-          <Property Name="secteur_id" Type="int" Nullable="false" />
+          <Property Name="secteur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="globalID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="secteur_id_parent" Type="int" />
           <Property Name="secteur" Type="nvarchar" MaxLength="15" />
           <Property Name="secteur_ltr" Type="nvarchar" MaxLength="1" />
@@ -312,51 +449,35 @@ warning 6002: The table/view 'pccsm_mpo.dbo.point_legal_20131118' does not have 
           <Property Name="secteur_no2" Type="int" />
           <Property Name="secteur_no3" Type="int" />
           <Property Name="secteur_no4" Type="int" />
-          <Property Name="longueur_rive" Type="float" />
-          <Property Name="superficie" Type="float" />
-          <Property Name="geometry" Type="image" />
-          <Property Name="x" Type="float" />
-          <Property Name="y" Type="float" />
-          <Property Name="x_min" Type="float" />
-          <Property Name="y_min" Type="float" />
-          <Property Name="x_max" Type="float" />
-          <Property Name="y_max" Type="float" />
+          <Property Name="longueur_rive" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="superficie" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="x" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="y" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="x_min" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="y_min" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="x_max" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="y_max" Type="decimal" Precision="18" Scale="6" />
           <Property Name="secteur_type" Type="int" />
           <Property Name="etat" Type="int" />
+          <Property Name="assujetti_pccsm" Type="bit" />
           <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="area" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'pccsm_mpo.dbo.secteur_20131118' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="secteur_20131118">
+        <EntityType Name="secteur_coordonnees_epsg_3857">
           <Key>
             <PropertyRef Name="secteur_id" />
           </Key>
           <Property Name="secteur_id" Type="int" Nullable="false" />
-          <Property Name="secteur_id_parent" Type="int" />
-          <Property Name="secteur" Type="nvarchar" MaxLength="15" />
-          <Property Name="secteur_ltr" Type="nvarchar" MaxLength="1" />
-          <Property Name="secteur_no1" Type="int" />
-          <Property Name="secteur_no2" Type="int" />
-          <Property Name="secteur_no3" Type="int" />
-          <Property Name="secteur_no4" Type="int" />
-          <Property Name="longueur_rive" Type="float" />
-          <Property Name="superficie" Type="float" />
-          <Property Name="geometry" Type="image" />
-          <Property Name="x" Type="float" />
-          <Property Name="y" Type="float" />
-          <Property Name="x_min" Type="float" />
-          <Property Name="y_min" Type="float" />
-          <Property Name="x_max" Type="float" />
-          <Property Name="y_max" Type="float" />
-          <Property Name="secteur_type" Type="int" />
-          <Property Name="etat" Type="int" />
-          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="_xmax" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="_xmin" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="_ymax" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="_ymin" Type="decimal" Precision="18" Scale="6" />
         </EntityType>
         <EntityType Name="secteur_description">
           <Key>
             <PropertyRef Name="secteur_description_id" />
           </Key>
-          <Property Name="secteur_description_id" Type="int" Nullable="false" />
+          <Property Name="secteur_description_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="secteur_id" Type="int" Nullable="false" />
           <Property Name="secteur_text" Type="text" />
           <Property Name="langue" Type="int" />
@@ -364,50 +485,15 @@ warning 6002: The table/view 'pccsm_mpo.dbo.secteur_20131118' does not have a pr
           <Property Name="etat" Type="int" />
           <Property Name="modification_date" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20131021' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="secteur_description_20131021">
+        <EntityType Name="secteur_epsg3857">
           <Key>
-            <PropertyRef Name="secteur_description_id" />
             <PropertyRef Name="secteur_id" />
           </Key>
-          <Property Name="secteur_description_id" Type="int" Nullable="false" />
           <Property Name="secteur_id" Type="int" Nullable="false" />
-          <Property Name="secteur_text" Type="text" />
-          <Property Name="langue" Type="int" />
-          <Property Name="parametre" Type="int" />
-          <Property Name="etat" Type="int" />
-          <Property Name="modification_date" Type="datetime" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20131118' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="secteur_description_20131118">
-          <Key>
-            <PropertyRef Name="secteur_description_id" />
-            <PropertyRef Name="secteur_id" />
-          </Key>
-          <Property Name="secteur_description_id" Type="int" Nullable="false" />
-          <Property Name="secteur_id" Type="int" Nullable="false" />
-          <Property Name="secteur_text" Type="text" />
-          <Property Name="langue" Type="int" />
-          <Property Name="parametre" Type="int" />
-          <Property Name="etat" Type="int" />
-          <Property Name="modification_date" Type="datetime" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20140210' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="secteur_description_20140210">
-          <Key>
-            <PropertyRef Name="secteur_description_id" />
-            <PropertyRef Name="secteur_id" />
-          </Key>
-          <Property Name="secteur_description_id" Type="int" Nullable="false" />
-          <Property Name="secteur_id" Type="int" Nullable="false" />
-          <Property Name="secteur_text" Type="text" />
-          <Property Name="langue" Type="int" />
-          <Property Name="parametre" Type="int" />
-          <Property Name="etat" Type="int" />
-          <Property Name="modification_date" Type="datetime" />
+          <Property Name="x_min" Type="float" />
+          <Property Name="x_max" Type="float" />
+          <Property Name="y_min" Type="float" />
+          <Property Name="y_max" Type="float" />
         </EntityType>
         <EntityType Name="secteur_historique">
           <Key>
@@ -437,10 +523,261 @@ warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20140210' does n
           <Key>
             <PropertyRef Name="secteur_point_legal_id" />
           </Key>
-          <Property Name="secteur_point_legal_id" Type="int" Nullable="false" />
+          <Property Name="secteur_point_legal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="secteur_id" Type="int" />
           <Property Name="point_legal_id" Type="int" />
           <Property Name="secteur_point_legal_no" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.seg_geo_segment' was excluded.-->
+        <EntityType Name="seg_geo_segment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="id_segment" Type="int" Nullable="false" />
+          <Property Name="seg_numero" Type="nvarchar" MaxLength="7" />
+          <Property Name="seg_longueur" Type="int" />
+          <Property Name="zi_largeur" Type="smallint" />
+          <Property Name="superficie" Type="float" />
+          <Property Name="seg_fetch" Type="int" />
+          <Property Name="seg_source_dvd_deb" Type="int" />
+          <Property Name="seg_index_deb" Type="int" />
+          <Property Name="seg_debut" Type="datetime" />
+          <Property Name="seg_source_dvd_fin" Type="int" />
+          <Property Name="seg_index_fin" Type="int" />
+          <Property Name="seg_fin" Type="datetime" />
+          <Property Name="seg_dvd_commentaire" Type="nvarchar(max)" />
+          <Property Name="source_old" Type="nvarchar" MaxLength="30" />
+          <Property Name="municipalite" Type="nvarchar" MaxLength="30" />
+          <Property Name="code_mun" Type="nvarchar" MaxLength="30" />
+          <Property Name="div_hydrographique" Type="int" />
+          <Property Name="toponymie_locale" Type="nvarchar" MaxLength="50" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
+          <Property Name="commentaire_en" Type="nvarchar(max)" />
+          <Property Name="auteur_segment" Type="int" />
+          <Property Name="date_creation" Type="datetime" />
+          <Property Name="date_modification" Type="datetime" />
+          <Property Name="etat" Type="int" />
+          <Property Name="validation" Type="nvarchar" MaxLength="50" />
+          <Property Name="mapinfo_id" Type="int" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="seg_limite_acces">
+          <Key>
+            <PropertyRef Name="id_limite_acces" />
+          </Key>
+          <Property Name="id_limite_acces" Type="int" Nullable="false" />
+          <Property Name="id_segment" Type="int" />
+          <Property Name="limite_acces" Type="int" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
+          <Property Name="commentaire_en" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="seg_milieu">
+          <Key>
+            <PropertyRef Name="id_milieu" />
+          </Key>
+          <Property Name="id_milieu" Type="int" Nullable="false" />
+          <Property Name="id_segment" Type="int" />
+          <Property Name="milieu" Type="int" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
+          <Property Name="commentaire_en" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="seg_processus_dominant">
+          <Key>
+            <PropertyRef Name="id_processus_dominant" />
+          </Key>
+          <Property Name="id_processus_dominant" Type="int" Nullable="false" />
+          <Property Name="id_segment" Type="int" />
+          <Property Name="processus_dominant" Type="int" />
+          <Property Name="priorite" Type="int" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
+          <Property Name="commentaire_en" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="seg_segment_usage">
+          <Key>
+            <PropertyRef Name="id_segment_usage" />
+          </Key>
+          <Property Name="id_segment_usage" Type="int" Nullable="false" />
+          <Property Name="id_segment" Type="int" />
+          <Property Name="code_segment_usage" Type="int" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
+          <Property Name="commentaire_en" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="seg_segrivB_nad83mdb">
+          <Key>
+            <PropertyRef Name="MAPINFO_ID" />
+          </Key>
+          <Property Name="MAPINFO_ID" Type="int" Nullable="false" />
+          <Property Name="Ident" Type="nvarchar" MaxLength="7" />
+          <Property Name="Municipalité" Type="nvarchar" MaxLength="30" />
+          <Property Name="code_mun" Type="nvarchar" MaxLength="30" />
+          <Property Name="Région" Type="nvarchar" MaxLength="3" />
+          <Property Name="Div_hydrographique" Type="nvarchar" MaxLength="20" />
+          <Property Name="Seg_long" Type="int" />
+          <Property Name="Usage" Type="nvarchar" MaxLength="40" />
+          <Property Name="Zi_larg" Type="smallint" />
+          <Property Name="superficie" Type="float" />
+          <Property Name="ZSU_relief_acces" Type="nvarchar" MaxLength="45" />
+          <Property Name="ZSU_pente_substrat" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZIS_pente_substrat" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZIS_pente1" Type="nvarchar" MaxLength="3" />
+          <Property Name="ZIS_substrat1" Type="nvarchar" MaxLength="25" />
+          <Property Name="ZIM_pente_substrat" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZIM_pente1" Type="nvarchar" MaxLength="3" />
+          <Property Name="ZIM_substrat1" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZII_pente_substrat" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZII_pente1" Type="nvarchar" MaxLength="3" />
+          <Property Name="ZII_substrat1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type_côte" Type="nvarchar" MaxLength="80" />
+          <Property Name="Fetch" Type="nvarchar" MaxLength="10" />
+          <Property Name="Processus_dominant" Type="nvarchar" MaxLength="80" />
+          <Property Name="persistance" Type="nvarchar" MaxLength="6" />
+          <Property Name="Limites_acces" Type="nvarchar" MaxLength="60" />
+          <Property Name="Toponymie_locale" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marée_moy" Type="float" />
+          <Property Name="Marée_gra" Type="float" />
+          <Property Name="Carte_topo" Type="nvarchar" MaxLength="15" />
+          <Property Name="Carte_mari" Type="nvarchar" MaxLength="15" />
+          <Property Name="Carte_envc" Type="nvarchar" MaxLength="15" />
+          <Property Name="Info_sources" Type="nvarchar" MaxLength="30" />
+          <Property Name="Commentaires" Type="nvarchar" MaxLength="100" />
+          <Property Name="ZIS_Sub_Class" Type="nvarchar" MaxLength="20" />
+          <Property Name="id_segment" Type="int" />
+          <Property Name="x" Type="float" />
+        </EntityType>
+        <EntityType Name="seg_substrat">
+          <Key>
+            <PropertyRef Name="id_substrat" />
+          </Key>
+          <Property Name="id_substrat" Type="int" Nullable="false" />
+          <Property Name="id_zone_cotiere" Type="int" />
+          <Property Name="substrat" Type="int" />
+          <Property Name="milieu" Type="int" />
+          <Property Name="priorite" Type="int" />
+          <Property Name="seg_pourcentage" Type="int" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
+          <Property Name="commentaire_en" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="seg_tr_code">
+          <Key>
+            <PropertyRef Name="id_code" />
+          </Key>
+          <Property Name="id_code" Type="int" Nullable="false" />
+          <Property Name="descr_fr" Type="nvarchar" MaxLength="50" />
+          <Property Name="descr_en" Type="nvarchar" MaxLength="50" />
+          <Property Name="definition_en" Type="nvarchar(max)" />
+          <Property Name="definition_fr" Type="nvarchar(max)" />
+          <Property Name="parametre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="seg_tr_interface_label_new">
+          <Key>
+            <PropertyRef Name="id_interface_label" />
+          </Key>
+          <Property Name="id_interface_label" Type="int" Nullable="false" />
+          <Property Name="table" Type="nvarchar" MaxLength="50" />
+          <Property Name="champ" Type="nvarchar" MaxLength="50" />
+          <Property Name="onglet" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupe" Type="nvarchar" MaxLength="50" />
+          <Property Name="label_fr" Type="nvarchar" MaxLength="250" />
+          <Property Name="label_en" Type="nvarchar" MaxLength="250" />
+          <Property Name="inclure_ds_form" Type="bit" Nullable="false" />
+          <Property Name="utilise_tr_code" Type="bit" Nullable="false" />
+          <Property Name="param_tr_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="utilise_tr_source_dvd" Type="bit" Nullable="false" />
+          <Property Name="description du contrôle" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="seg_tr_source_dvd">
+          <Key>
+            <PropertyRef Name="id_source_dvd" />
+          </Key>
+          <Property Name="id_source_dvd" Type="int" Nullable="false" />
+          <Property Name="id_dvd" Type="int" />
+          <Property Name="code_dvd" Type="nvarchar" MaxLength="2" />
+          <Property Name="titre" Type="nvarchar" MaxLength="250" />
+          <Property Name="auteur" Type="int" />
+          <Property Name="co_auteur" Type="nvarchar" MaxLength="20" />
+          <Property Name="date_prise" Type="datetime" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
+          <Property Name="commentaire_en" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="seg_type_cote">
+          <Key>
+            <PropertyRef Name="id_type_cote" />
+          </Key>
+          <Property Name="id_type_cote" Type="int" Nullable="false" />
+          <Property Name="id_segment" Type="int" />
+          <Property Name="type_cote" Type="int" />
+          <Property Name="forme" Type="int" />
+          <Property Name="toponyme" Type="nvarchar" MaxLength="255" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
+          <Property Name="commentaire_en" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="seg_zone_cotiere">
+          <Key>
+            <PropertyRef Name="id_zone_cotiere" />
+          </Key>
+          <Property Name="id_zone_cotiere" Type="int" Nullable="false" />
+          <Property Name="id_segment" Type="int" />
+          <Property Name="zone_cotiere" Type="int" />
+          <Property Name="pente" Type="int" />
+          <Property Name="acces" Type="nvarchar" MaxLength="100" />
+          <Property Name="limite_acces" Type="nvarchar" MaxLength="100" />
+          <Property Name="relief_forme_construction" Type="nvarchar" MaxLength="100" />
+          <Property Name="classification_substrat" Type="int" />
+          <Property Name="substrat_original" Type="nvarchar" MaxLength="50" />
+          <Property Name="vegetation" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'pccsm_mpo.dbo.segment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="segment">
+          <Key>
+            <PropertyRef Name="id_segment" />
+          </Key>
+          <Property Name="id_segment" Type="int" Nullable="false" />
+          <Property Name="seg_numero" Type="nvarchar" MaxLength="7" />
+          <Property Name="seg_longueur" Type="int" />
+          <Property Name="zi_largeur" Type="smallint" />
+          <Property Name="superficie" Type="float" />
+          <Property Name="seg_fetch" Type="int" />
+          <Property Name="seg_source_dvd_deb" Type="int" />
+          <Property Name="seg_index_deb" Type="int" />
+          <Property Name="seg_debut" Type="datetime" />
+          <Property Name="seg_source_dvd_fin" Type="int" />
+          <Property Name="seg_index_fin" Type="int" />
+          <Property Name="seg_fin" Type="datetime" />
+          <Property Name="seg_dvd_commentaire" Type="nvarchar(max)" />
+          <Property Name="source_old" Type="nvarchar" MaxLength="30" />
+          <Property Name="municipalite" Type="nvarchar" MaxLength="30" />
+          <Property Name="code_mun" Type="nvarchar" MaxLength="30" />
+          <Property Name="div_hydrographique" Type="int" />
+          <Property Name="toponymie_locale" Type="nvarchar" MaxLength="50" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
+          <Property Name="commentaire_en" Type="nvarchar(max)" />
+          <Property Name="auteur_segment" Type="int" />
+          <Property Name="date_creation" Type="datetime" />
+          <Property Name="date_modification" Type="datetime" />
+          <Property Name="etat" Type="int" />
+          <Property Name="validation" Type="int" />
+          <Property Name="x" Type="float" />
+          <Property Name="y" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'geography' is currently not supported for the target Entity Framework version; the column 'geographie' in the table 'pccsm_mpo.dbo.segmentation_resultat' was excluded.-->
+        <EntityType Name="segmentation_resultat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="id_segment" Type="int" Nullable="false" />
+          <Property Name="Numero_segment" Type="nvarchar" MaxLength="7" />
+          <Property Name="zone_cotiere" Type="int" />
+          <Property Name="Substrat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pente" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type_cote" Type="nvarchar" MaxLength="50" />
+          <Property Name="Forme" Type="nvarchar" MaxLength="50" />
+          <Property Name="commentaire_fr" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="signalisation">
           <Key>
@@ -459,6 +796,16 @@ warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20140210' does n
           <Property Name="x" Type="float" />
           <Property Name="y" Type="float" />
         </EntityType>
+        <EntityType Name="spatial_ref_sys">
+          <Key>
+            <PropertyRef Name="srid" />
+          </Key>
+          <Property Name="srid" Type="int" Nullable="false" />
+          <Property Name="auth_name" Type="varchar" MaxLength="256" />
+          <Property Name="auth_srid" Type="int" />
+          <Property Name="srtext" Type="varchar" MaxLength="2048" />
+          <Property Name="proj4text" Type="varchar" MaxLength="2048" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -469,6 +816,56 @@ warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20140210' does n
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'pccsm_mpo.dbo.temp_secteur' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="temp_secteur">
+          <Key>
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_id" Type="int" Nullable="false" />
+          <Property Name="secteur" Type="nvarchar" MaxLength="15" />
+          <Property Name="nomfr" Type="varchar(max)" />
+          <Property Name="nomen" Type="varchar(max)" />
+          <Property Name="genen" Type="varchar(max)" />
+          <Property Name="genfr" Type="varchar(max)" />
+          <Property Name="legalfr" Type="varchar(max)" />
+          <Property Name="legalen" Type="varchar(max)" />
+          <Property Name="secteur_type" Type="text" />
+          <Property Name="etat" Type="text" />
+          <Property Name="regionfr" Type="text" />
+          <Property Name="regionen" Type="text" />
+          <Property Name="Expr1" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'pccsm_mpo.dbo.tr_espece' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tr_espece">
+          <Property Name="Nom_especes_francais" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nom_especes_anglais" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'pccsm_mpo.MAPINFO.MAPINFO_MAPCATALOG' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MAPINFO_MAPCATALOG">
+          <Property Name="SPATIALTYPE" Type="float" />
+          <Property Name="TABLENAME" Type="varchar" MaxLength="32" />
+          <Property Name="OWNERNAME" Type="varchar" MaxLength="32" />
+          <Property Name="SPATIALCOLUMN" Type="varchar" MaxLength="32" />
+          <Property Name="DB_X_LL" Type="float" />
+          <Property Name="DB_Y_LL" Type="float" />
+          <Property Name="DB_X_UR" Type="float" />
+          <Property Name="DB_Y_UR" Type="float" />
+          <Property Name="VIEW_X_LL" Type="float" />
+          <Property Name="VIEW_Y_LL" Type="float" />
+          <Property Name="VIEW_X_UR" Type="float" />
+          <Property Name="VIEW_Y_UR" Type="float" />
+          <Property Name="COORDINATESYSTEM" Type="varchar" MaxLength="254" />
+          <Property Name="SYMBOL" Type="varchar" MaxLength="254" />
+          <Property Name="XCOLUMNNAME" Type="varchar" MaxLength="32" />
+          <Property Name="YCOLUMNNAME" Type="varchar" MaxLength="32" />
+          <Property Name="RENDITIONTYPE" Type="int" />
+          <Property Name="RENDITIONCOLUMN" Type="varchar" MaxLength="32" />
+          <Property Name="RENDITIONTABLE" Type="varchar" MaxLength="32" />
+          <Property Name="NUMBER_ROWS" Type="int" />
+        </EntityType>-->
         <Association Name="FK_clause_codification">
           <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
           <End Role="clause" Type="Self.clause" Multiplicity="*" />
@@ -620,18 +1017,6 @@ warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20140210' does n
             </Principal>
             <Dependent Role="codification_description">
               <PropertyRef Name="langue" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_codification_description_codification3">
-          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
-          <End Role="codification_description" Type="Self.codification_description" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="codification">
-              <PropertyRef Name="codification_id" />
-            </Principal>
-            <Dependent Role="codification_description">
-              <PropertyRef Name="etat" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -867,42 +1252,6 @@ warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20140210' does n
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_point_legal_codification">
-          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
-          <End Role="point_legal" Type="Self.point_legal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="codification">
-              <PropertyRef Name="codification_id" />
-            </Principal>
-            <Dependent Role="point_legal">
-              <PropertyRef Name="etat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_secteur_codification1">
-          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
-          <End Role="secteur" Type="Self.secteur" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="codification">
-              <PropertyRef Name="codification_id" />
-            </Principal>
-            <Dependent Role="secteur">
-              <PropertyRef Name="secteur_type" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_secteur_codification2">
-          <End Role="codification" Type="Self.codification" Multiplicity="0..1" />
-          <End Role="secteur" Type="Self.secteur" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="codification">
-              <PropertyRef Name="codification_id" />
-            </Principal>
-            <Dependent Role="secteur">
-              <PropertyRef Name="etat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_secteur_description_secteur">
           <End Role="secteur" Type="Self.secteur" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -956,68 +1305,49 @@ warning 6002: The table/view 'pccsm_mpo.dbo.secteur_description_20140210' does n
           <EntitySet Name="contact_communication" EntityType="Self.contact_communication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="contact_groupe" EntityType="Self.contact_groupe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="db_histo_operation" EntityType="Self.db_histo_operation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="demande_de_site_region" EntityType="Self.demande_de_site_region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="echantillonnage_microbiol" EntityType="Self.echantillonnage_microbiol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="echantillonnage_toxicite" EntityType="Self.echantillonnage_toxicite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_limite_5km_rive_l_3857" EntityType="Self.geo_limite_5km_rive_l_3857" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_limite_5km_rive_l_4269" EntityType="Self.geo_limite_5km_rive_l_4269" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_pccsm_acia_station" EntityType="Self.geo_pccsm_acia_station" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_segment_l" EntityType="Self.geo_segment_l" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geometry_columns" EntityType="Self.geometry_columns" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="groupe_secteur" EntityType="Self.groupe_secteur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="historique_operation" EntityType="Self.historique_operation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="language" EntityType="Self.language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mrc" EntityType="Self.mrc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="munic" EntityType="Self.munic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ordonnance" EntityType="Self.ordonnance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="point_legal" EntityType="Self.point_legal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="secteur" EntityType="Self.secteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secteur_coordonnees_epsg_3857" EntityType="Self.secteur_coordonnees_epsg_3857" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="secteur_description" EntityType="Self.secteur_description" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secteur_epsg3857" EntityType="Self.secteur_epsg3857" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="secteur_historique" EntityType="Self.secteur_historique" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="secteur_point_archive" EntityType="Self.secteur_point_archive" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="secteur_point_legal" EntityType="Self.secteur_point_legal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_geo_segment" EntityType="Self.seg_geo_segment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_limite_acces" EntityType="Self.seg_limite_acces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_milieu" EntityType="Self.seg_milieu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_processus_dominant" EntityType="Self.seg_processus_dominant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_segment_usage" EntityType="Self.seg_segment_usage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_segrivB_nad83mdb" EntityType="Self.seg_segrivB_nad83mdb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_substrat" EntityType="Self.seg_substrat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_tr_code" EntityType="Self.seg_tr_code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_tr_interface_label_new" EntityType="Self.seg_tr_interface_label_new" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_tr_source_dvd" EntityType="Self.seg_tr_source_dvd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_type_cote" EntityType="Self.seg_type_cote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_zone_cotiere" EntityType="Self.seg_zone_cotiere" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="segmentation_resultat" EntityType="Self.segmentation_resultat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="signalisation" EntityType="Self.signalisation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spatial_ref_sys" EntityType="Self.spatial_ref_sys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="db_tournee" EntityType="Self.db_tournee" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="ligne_5km_cote" EntityType="Self.ligne_5km_cote" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-[db_tournee].[ID_Tournee] AS [ID_Tournee], 
-[db_tournee].[tournee] AS [tournee], 
-[db_tournee].[annee] AS [annee], 
-[db_tournee].[mois] AS [mois], 
-[db_tournee].[jour] AS [jour], 
-[db_tournee].[hre_deb] AS [hre_deb], 
-[db_tournee].[hre_fin] AS [hre_fin], 
-[db_tournee].[hre_recep_lab] AS [hre_recep_lab], 
-[db_tournee].[temp_glace_recep] AS [temp_glace_recep], 
-[db_tournee].[hre_maree_h] AS [hre_maree_h], 
-[db_tournee].[hre_maree_b] AS [hre_maree_b], 
-[db_tournee].[maree_princ] AS [maree_princ], 
-[db_tournee].[maree_principale] AS [maree_principale], 
-[db_tournee].[pmaree_deb] AS [pmaree_deb], 
-[db_tournee].[pmaree_fin] AS [pmaree_fin], 
-[db_tournee].[maree_ve] AS [maree_ve], 
-[db_tournee].[maree_me] AS [maree_me], 
-[db_tournee].[marnage] AS [marnage], 
-[db_tournee].[precipit] AS [precipit], 
-[db_tournee].[precipit_3jant] AS [precipit_3jant], 
-[db_tournee].[t_air_deb] AS [t_air_deb], 
-[db_tournee].[t_air_fin] AS [t_air_fin], 
-[db_tournee].[v_vent_deb] AS [v_vent_deb], 
-[db_tournee].[v_vent_fin] AS [v_vent_fin], 
-[db_tournee].[vent_direction_debut] AS [vent_direction_debut], 
-[db_tournee].[vent_direction_fin] AS [vent_direction_fin], 
-[db_tournee].[couvert_nuage] AS [couvert_nuage], 
-[db_tournee].[couvert_nuage_fin] AS [couvert_nuage_fin], 
-[db_tournee].[mer_etat] AS [mer_etat], 
-[db_tournee].[mer_etat_fin] AS [mer_etat_fin], 
-[db_tournee].[niveau_eau] AS [niveau_eau], 
-[db_tournee].[vague_hauteur] AS [vague_hauteur], 
-[db_tournee].[vague_hauteur_fin] AS [vague_hauteur_fin], 
-[db_tournee].[consultant] AS [consultant], 
-[db_tournee].[commentaire] AS [commentaire], 
-[db_tournee].[date_creation] AS [date_creation], 
-[db_tournee].[status] AS [status], 
-[db_tournee].[date_echantillonnage] AS [date_echantillonnage], 
-[db_tournee].[notification] AS [notification], 
-[db_tournee].[cf_methode_analytique] AS [cf_methode_analytique], 
-[db_tournee].[laboratoire_operateur_id] AS [laboratoire_operateur_id], 
-[db_tournee].[validation] AS [validation], 
-[db_tournee].[analyse_datetime] AS [analyse_datetime], 
-[db_tournee].[validation_datetime] AS [validation_datetime], 
-[db_tournee].[approbation] AS [approbation], 
-[db_tournee].[approbation_date] AS [approbation_date]
-FROM [dbo].[db_tournee] AS [db_tournee]</DefiningQuery>
+[ligne_5km_cote].[Id] AS [Id], 
+[ligne_5km_cote].[feature_id] AS [feature_id]
+FROM [dbo].[ligne_5km_cote] AS [ligne_5km_cote]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="organisation" EntityType="Self.organisation" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1025,71 +1355,53 @@ FROM [dbo].[db_tournee] AS [db_tournee]</DefiningQuery>
 [organisation].[organisation_fr] AS [organisation_fr]
 FROM [dbo].[organisation] AS [organisation]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="point_legal_20131118" EntityType="Self.point_legal_20131118" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="segment" EntityType="Self.segment" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-[point_legal_20131118].[point_legal_id] AS [point_legal_id], 
-[point_legal_20131118].[x] AS [x], 
-[point_legal_20131118].[y] AS [y], 
-[point_legal_20131118].[etat] AS [etat], 
-[point_legal_20131118].[commentaire] AS [commentaire]
-FROM [dbo].[point_legal_20131118] AS [point_legal_20131118]</DefiningQuery>
+[segment].[id_segment] AS [id_segment], 
+[segment].[seg_numero] AS [seg_numero], 
+[segment].[seg_longueur] AS [seg_longueur], 
+[segment].[zi_largeur] AS [zi_largeur], 
+[segment].[superficie] AS [superficie], 
+[segment].[seg_fetch] AS [seg_fetch], 
+[segment].[seg_source_dvd_deb] AS [seg_source_dvd_deb], 
+[segment].[seg_index_deb] AS [seg_index_deb], 
+[segment].[seg_debut] AS [seg_debut], 
+[segment].[seg_source_dvd_fin] AS [seg_source_dvd_fin], 
+[segment].[seg_index_fin] AS [seg_index_fin], 
+[segment].[seg_fin] AS [seg_fin], 
+[segment].[seg_dvd_commentaire] AS [seg_dvd_commentaire], 
+[segment].[source_old] AS [source_old], 
+[segment].[municipalite] AS [municipalite], 
+[segment].[code_mun] AS [code_mun], 
+[segment].[div_hydrographique] AS [div_hydrographique], 
+[segment].[toponymie_locale] AS [toponymie_locale], 
+[segment].[commentaire_fr] AS [commentaire_fr], 
+[segment].[commentaire_en] AS [commentaire_en], 
+[segment].[auteur_segment] AS [auteur_segment], 
+[segment].[date_creation] AS [date_creation], 
+[segment].[date_modification] AS [date_modification], 
+[segment].[etat] AS [etat], 
+[segment].[validation] AS [validation], 
+[segment].[x] AS [x], 
+[segment].[y] AS [y]
+FROM [dbo].[segment] AS [segment]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="secteur_20131118" EntityType="Self.secteur_20131118" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="temp_secteur" EntityType="Self.temp_secteur" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-[secteur_20131118].[secteur_id] AS [secteur_id], 
-[secteur_20131118].[secteur_id_parent] AS [secteur_id_parent], 
-[secteur_20131118].[secteur] AS [secteur], 
-[secteur_20131118].[secteur_ltr] AS [secteur_ltr], 
-[secteur_20131118].[secteur_no1] AS [secteur_no1], 
-[secteur_20131118].[secteur_no2] AS [secteur_no2], 
-[secteur_20131118].[secteur_no3] AS [secteur_no3], 
-[secteur_20131118].[secteur_no4] AS [secteur_no4], 
-[secteur_20131118].[longueur_rive] AS [longueur_rive], 
-[secteur_20131118].[superficie] AS [superficie], 
-[secteur_20131118].[geometry] AS [geometry], 
-[secteur_20131118].[x] AS [x], 
-[secteur_20131118].[y] AS [y], 
-[secteur_20131118].[x_min] AS [x_min], 
-[secteur_20131118].[y_min] AS [y_min], 
-[secteur_20131118].[x_max] AS [x_max], 
-[secteur_20131118].[y_max] AS [y_max], 
-[secteur_20131118].[secteur_type] AS [secteur_type], 
-[secteur_20131118].[etat] AS [etat], 
-[secteur_20131118].[description] AS [description]
-FROM [dbo].[secteur_20131118] AS [secteur_20131118]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="secteur_description_20131021" EntityType="Self.secteur_description_20131021" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[secteur_description_20131021].[secteur_description_id] AS [secteur_description_id], 
-[secteur_description_20131021].[secteur_id] AS [secteur_id], 
-[secteur_description_20131021].[secteur_text] AS [secteur_text], 
-[secteur_description_20131021].[langue] AS [langue], 
-[secteur_description_20131021].[parametre] AS [parametre], 
-[secteur_description_20131021].[etat] AS [etat], 
-[secteur_description_20131021].[modification_date] AS [modification_date]
-FROM [dbo].[secteur_description_20131021] AS [secteur_description_20131021]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="secteur_description_20131118" EntityType="Self.secteur_description_20131118" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[secteur_description_20131118].[secteur_description_id] AS [secteur_description_id], 
-[secteur_description_20131118].[secteur_id] AS [secteur_id], 
-[secteur_description_20131118].[secteur_text] AS [secteur_text], 
-[secteur_description_20131118].[langue] AS [langue], 
-[secteur_description_20131118].[parametre] AS [parametre], 
-[secteur_description_20131118].[etat] AS [etat], 
-[secteur_description_20131118].[modification_date] AS [modification_date]
-FROM [dbo].[secteur_description_20131118] AS [secteur_description_20131118]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="secteur_description_20140210" EntityType="Self.secteur_description_20140210" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[secteur_description_20140210].[secteur_description_id] AS [secteur_description_id], 
-[secteur_description_20140210].[secteur_id] AS [secteur_id], 
-[secteur_description_20140210].[secteur_text] AS [secteur_text], 
-[secteur_description_20140210].[langue] AS [langue], 
-[secteur_description_20140210].[parametre] AS [parametre], 
-[secteur_description_20140210].[etat] AS [etat], 
-[secteur_description_20140210].[modification_date] AS [modification_date]
-FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</DefiningQuery>
+[temp_secteur].[secteur_id] AS [secteur_id], 
+[temp_secteur].[secteur] AS [secteur], 
+[temp_secteur].[nomfr] AS [nomfr], 
+[temp_secteur].[nomen] AS [nomen], 
+[temp_secteur].[genen] AS [genen], 
+[temp_secteur].[genfr] AS [genfr], 
+[temp_secteur].[legalfr] AS [legalfr], 
+[temp_secteur].[legalen] AS [legalen], 
+[temp_secteur].[secteur_type] AS [secteur_type], 
+[temp_secteur].[etat] AS [etat], 
+[temp_secteur].[regionfr] AS [regionfr], 
+[temp_secteur].[regionen] AS [regionen], 
+[temp_secteur].[Expr1] AS [Expr1]
+FROM [dbo].[temp_secteur] AS [temp_secteur]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_clause_codification" Association="Self.FK_clause_codification">
             <End Role="codification" EntitySet="codification" />
@@ -1136,10 +1448,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
             <End Role="codification_description" EntitySet="codification_description" />
           </AssociationSet>
           <AssociationSet Name="FK_codification_description_codification2" Association="Self.FK_codification_description_codification2">
-            <End Role="codification" EntitySet="codification" />
-            <End Role="codification_description" EntitySet="codification_description" />
-          </AssociationSet>
-          <AssociationSet Name="FK_codification_description_codification3" Association="Self.FK_codification_description_codification3">
             <End Role="codification" EntitySet="codification" />
             <End Role="codification_description" EntitySet="codification_description" />
           </AssociationSet>
@@ -1215,18 +1523,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
             <End Role="ordonnance" EntitySet="ordonnance" />
             <End Role="clause" EntitySet="clause" />
           </AssociationSet>
-          <AssociationSet Name="FK_point_legal_codification" Association="Self.FK_point_legal_codification">
-            <End Role="codification" EntitySet="codification" />
-            <End Role="point_legal" EntitySet="point_legal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_secteur_codification1" Association="Self.FK_secteur_codification1">
-            <End Role="codification" EntitySet="codification" />
-            <End Role="secteur" EntitySet="secteur" />
-          </AssociationSet>
-          <AssociationSet Name="FK_secteur_codification2" Association="Self.FK_secteur_codification2">
-            <End Role="codification" EntitySet="codification" />
-            <End Role="secteur" EntitySet="secteur" />
-          </AssociationSet>
           <AssociationSet Name="FK_secteur_description_secteur" Association="Self.FK_secteur_description_secteur">
             <End Role="secteur" EntitySet="secteur" />
             <End Role="secteur_description" EntitySet="secteur_description" />
@@ -1257,26 +1553,48 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <EntitySet Name="contact_communication" EntityType="pccsm_mpoModel.contact_communication" />
           <EntitySet Name="contact_groupe" EntityType="pccsm_mpoModel.contact_groupe" />
           <EntitySet Name="db_histo_operation" EntityType="pccsm_mpoModel.db_histo_operation" />
-          <EntitySet Name="dtproperties" EntityType="pccsm_mpoModel.dtproperty" />
+          <EntitySet Name="demande_de_site_region" EntityType="pccsm_mpoModel.demande_de_site_region" />
+          <EntitySet Name="echantillonnage_microbiol" EntityType="pccsm_mpoModel.echantillonnage_microbiol" />
+          <EntitySet Name="echantillonnage_toxicite" EntityType="pccsm_mpoModel.echantillonnage_toxicite" />
+          <EntitySet Name="geo_limite_5km_rive_l_3857" EntityType="pccsm_mpoModel.geo_limite_5km_rive_l_3857" />
+          <EntitySet Name="geo_limite_5km_rive_l_4269" EntityType="pccsm_mpoModel.geo_limite_5km_rive_l_4269" />
+          <EntitySet Name="geo_pccsm_acia_station" EntityType="pccsm_mpoModel.geo_pccsm_acia_station" />
+          <EntitySet Name="geo_segment_l" EntityType="pccsm_mpoModel.geo_segment_l" />
+          <EntitySet Name="geometry_columns" EntityType="pccsm_mpoModel.geometry_columns" />
           <EntitySet Name="groupe_secteur" EntityType="pccsm_mpoModel.groupe_secteur" />
           <EntitySet Name="historique_operation" EntityType="pccsm_mpoModel.historique_operation" />
           <EntitySet Name="languages" EntityType="pccsm_mpoModel.language" />
+          <EntitySet Name="mrcs" EntityType="pccsm_mpoModel.mrc" />
+          <EntitySet Name="munics" EntityType="pccsm_mpoModel.munic" />
           <EntitySet Name="ordonnances" EntityType="pccsm_mpoModel.ordonnance" />
           <EntitySet Name="point_legal" EntityType="pccsm_mpoModel.point_legal" />
           <EntitySet Name="secteurs" EntityType="pccsm_mpoModel.secteur" />
+          <EntitySet Name="secteur_coordonnees_epsg_3857" EntityType="pccsm_mpoModel.secteur_coordonnees_epsg_3857" />
           <EntitySet Name="secteur_description" EntityType="pccsm_mpoModel.secteur_description" />
+          <EntitySet Name="secteur_epsg3857" EntityType="pccsm_mpoModel.secteur_epsg3857" />
           <EntitySet Name="secteur_historique" EntityType="pccsm_mpoModel.secteur_historique" />
           <EntitySet Name="secteur_point_archive" EntityType="pccsm_mpoModel.secteur_point_archive" />
           <EntitySet Name="secteur_point_legal" EntityType="pccsm_mpoModel.secteur_point_legal" />
+          <EntitySet Name="seg_geo_segment" EntityType="pccsm_mpoModel.seg_geo_segment" />
+          <EntitySet Name="seg_limite_acces" EntityType="pccsm_mpoModel.seg_limite_acces" />
+          <EntitySet Name="seg_milieu" EntityType="pccsm_mpoModel.seg_milieu" />
+          <EntitySet Name="seg_processus_dominant" EntityType="pccsm_mpoModel.seg_processus_dominant" />
+          <EntitySet Name="seg_segment_usage" EntityType="pccsm_mpoModel.seg_segment_usage" />
+          <EntitySet Name="seg_segrivB_nad83mdb" EntityType="pccsm_mpoModel.seg_segrivB_nad83mdb" />
+          <EntitySet Name="seg_substrat" EntityType="pccsm_mpoModel.seg_substrat" />
+          <EntitySet Name="seg_tr_code" EntityType="pccsm_mpoModel.seg_tr_code" />
+          <EntitySet Name="seg_tr_interface_label_new" EntityType="pccsm_mpoModel.seg_tr_interface_label_new" />
+          <EntitySet Name="seg_tr_source_dvd" EntityType="pccsm_mpoModel.seg_tr_source_dvd" />
+          <EntitySet Name="seg_type_cote" EntityType="pccsm_mpoModel.seg_type_cote" />
+          <EntitySet Name="seg_zone_cotiere" EntityType="pccsm_mpoModel.seg_zone_cotiere" />
+          <EntitySet Name="segmentation_resultat" EntityType="pccsm_mpoModel.segmentation_resultat" />
           <EntitySet Name="signalisations" EntityType="pccsm_mpoModel.signalisation" />
+          <EntitySet Name="spatial_ref_sys" EntityType="pccsm_mpoModel.spatial_ref_sys" />
           <EntitySet Name="sysdiagrams" EntityType="pccsm_mpoModel.sysdiagram" />
-          <EntitySet Name="db_tournee" EntityType="pccsm_mpoModel.db_tournee" />
+          <EntitySet Name="ligne_5km_cote" EntityType="pccsm_mpoModel.ligne_5km_cote" />
           <EntitySet Name="organisations" EntityType="pccsm_mpoModel.organisation" />
-          <EntitySet Name="point_legal_20131118" EntityType="pccsm_mpoModel.point_legal_20131118" />
-          <EntitySet Name="secteur_20131118" EntityType="pccsm_mpoModel.secteur_20131118" />
-          <EntitySet Name="secteur_description_20131021" EntityType="pccsm_mpoModel.secteur_description_20131021" />
-          <EntitySet Name="secteur_description_20131118" EntityType="pccsm_mpoModel.secteur_description_20131118" />
-          <EntitySet Name="secteur_description_20140210" EntityType="pccsm_mpoModel.secteur_description_20140210" />
+          <EntitySet Name="segments" EntityType="pccsm_mpoModel.segment" />
+          <EntitySet Name="temp_secteur" EntityType="pccsm_mpoModel.temp_secteur" />
           <AssociationSet Name="FK_clause_codification" Association="pccsm_mpoModel.FK_clause_codification">
             <End Role="codification" EntitySet="codifications" />
             <End Role="clause" EntitySet="clauses" />
@@ -1337,10 +1655,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
             <End Role="codification" EntitySet="codifications" />
             <End Role="codification_description" EntitySet="codification_description" />
           </AssociationSet>
-          <AssociationSet Name="FK_codification_description_codification3" Association="pccsm_mpoModel.FK_codification_description_codification3">
-            <End Role="codification" EntitySet="codifications" />
-            <End Role="codification_description" EntitySet="codification_description" />
-          </AssociationSet>
           <AssociationSet Name="FK_contact_codification" Association="pccsm_mpoModel.FK_contact_codification">
             <End Role="codification" EntitySet="codifications" />
             <End Role="contact" EntitySet="contacts" />
@@ -1376,18 +1690,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <AssociationSet Name="FK_ordonnance_codification2" Association="pccsm_mpoModel.FK_ordonnance_codification2">
             <End Role="codification" EntitySet="codifications" />
             <End Role="ordonnance" EntitySet="ordonnances" />
-          </AssociationSet>
-          <AssociationSet Name="FK_point_legal_codification" Association="pccsm_mpoModel.FK_point_legal_codification">
-            <End Role="codification" EntitySet="codifications" />
-            <End Role="point_legal" EntitySet="point_legal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_secteur_codification1" Association="pccsm_mpoModel.FK_secteur_codification1">
-            <End Role="codification" EntitySet="codifications" />
-            <End Role="secteur" EntitySet="secteurs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_secteur_codification2" Association="pccsm_mpoModel.FK_secteur_codification2">
-            <End Role="codification" EntitySet="codifications" />
-            <End Role="secteur" EntitySet="secteurs" />
           </AssociationSet>
           <AssociationSet Name="FK_contact_communication_contact" Association="pccsm_mpoModel.FK_contact_communication_contact">
             <End Role="contact" EntitySet="contacts" />
@@ -1514,7 +1816,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <NavigationProperty Name="codification2" Relationship="pccsm_mpoModel.FK_codification_codification" FromRole="codification1" ToRole="codification" />
           <NavigationProperty Name="codification_description" Relationship="pccsm_mpoModel.FK_codification_description_codification" FromRole="codification" ToRole="codification_description" />
           <NavigationProperty Name="codification_description1" Relationship="pccsm_mpoModel.FK_codification_description_codification2" FromRole="codification" ToRole="codification_description" />
-          <NavigationProperty Name="codification_description2" Relationship="pccsm_mpoModel.FK_codification_description_codification3" FromRole="codification" ToRole="codification_description" />
           <NavigationProperty Name="contacts" Relationship="pccsm_mpoModel.FK_contact_codification" FromRole="codification" ToRole="contact" />
           <NavigationProperty Name="contacts1" Relationship="pccsm_mpoModel.FK_contact_codification1" FromRole="codification" ToRole="contact" />
           <NavigationProperty Name="contacts2" Relationship="pccsm_mpoModel.FK_contact_codification2" FromRole="codification" ToRole="contact" />
@@ -1524,9 +1825,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <NavigationProperty Name="ordonnances" Relationship="pccsm_mpoModel.FK_ordonnance_codification" FromRole="codification" ToRole="ordonnance" />
           <NavigationProperty Name="ordonnances1" Relationship="pccsm_mpoModel.FK_ordonnance_codification1" FromRole="codification" ToRole="ordonnance" />
           <NavigationProperty Name="ordonnances2" Relationship="pccsm_mpoModel.FK_ordonnance_codification2" FromRole="codification" ToRole="ordonnance" />
-          <NavigationProperty Name="point_legal" Relationship="pccsm_mpoModel.FK_point_legal_codification" FromRole="codification" ToRole="point_legal" />
-          <NavigationProperty Name="secteurs" Relationship="pccsm_mpoModel.FK_secteur_codification1" FromRole="codification" ToRole="secteur" />
-          <NavigationProperty Name="secteurs1" Relationship="pccsm_mpoModel.FK_secteur_codification2" FromRole="codification" ToRole="secteur" />
         </EntityType>
         <EntityType Name="codification_description">
           <Key>
@@ -1539,7 +1837,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Property Name="etat" Type="Int32" />
           <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_codification_description_codification" FromRole="codification_description" ToRole="codification" />
           <NavigationProperty Name="codification1" Relationship="pccsm_mpoModel.FK_codification_description_codification2" FromRole="codification_description" ToRole="codification" />
-          <NavigationProperty Name="codification2" Relationship="pccsm_mpoModel.FK_codification_description_codification3" FromRole="codification_description" ToRole="codification" />
         </EntityType>
         <EntityType Name="contact">
           <Key>
@@ -1596,43 +1893,167 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Key>
             <PropertyRef Name="id_db_histo_operation" />
           </Key>
-          <Property Name="id_db_histo_operation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="type_operation" Type="Int32" />
-          <Property Name="auteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_db_histo_operation" Type="Int32" Nullable="false" />
           <Property Name="date_operation" Type="DateTime" Precision="3" />
-          <Property Name="description_operation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ordonnance_id" Type="Int32" />
-          <Property Name="point_legal_id" Type="Int32" />
-          <Property Name="secteur_id" Type="Int32" />
+          <Property Name="auteur" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type_operation_o" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type_operation" Type="Int32" />
+          <Property Name="contact_principal" Type="Int32" />
+          <Property Name="contact_secondaire" Type="Int32" />
+          <Property Name="x" Type="Double" />
+          <Property Name="y" Type="Double" />
+          <Property Name="description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ordonnanceID" Type="Int32" />
           <Property Name="id_geo_pollution_p" Type="Int32" />
           <Property Name="id_geo_terrain_p" Type="Int32" />
           <Property Name="id_geo_banc_coquillier_s" Type="Int32" />
           <Property Name="id_geo_station_p" Type="Int32" />
           <Property Name="ID_infrastructures" Type="Int32" />
           <Property Name="id_cour_zone_etude" Type="Int32" />
+          <Property Name="id_geo_secteur_s" Type="Int32" />
+        </EntityType>
+        <EntityType Name="demande_de_site_region">
+          <Key>
+            <PropertyRef Name="Id2" />
+          </Key>
+          <Property Name="Id2" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="echantillonnage_microbiol">
+          <Key>
+            <PropertyRef Name="id_echantillonnage_microbiol" />
+          </Key>
+          <Property Name="id_echantillonnage_microbiol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_geo_pccsm_acia_station" Type="Int32" />
+          <Property Name="No_LSTS" Type="Int32" />
+          <Property Name="nom_especes_francais" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Cueilleur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="echant_date" Type="DateTime" Precision="3" />
+          <Property Name="heure_cueillette" Type="DateTime" Precision="3" />
+          <Property Name="Temperature_depart" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Date_analyse" Type="DateTime" Precision="3" />
+          <Property Name="Temperature_arrivee" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="No_lab_micro" Type="Single" />
+          <Property Name="resultat_col_fec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Verdict_col_fec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarque" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="upsize_ts" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="echantillonnage_toxicite">
+          <Key>
+            <PropertyRef Name="Numero_id" />
+          </Key>
+          <Property Name="id_geo_pccsm_acia_station" Type="Int32" />
+          <Property Name="Numero_id" Type="Int32" Nullable="false" />
+          <Property Name="No_LSTS" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="No_lab_PSP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sous_échantillon" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nom_especes_francais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type_exploitation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Secteurs" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Nom_secteur_francais" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sous_secteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cueilleur" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_cueillette" Type="DateTime" Precision="3" />
+          <Property Name="Heure_cueillette" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code_usine" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Température_départ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_série" Type="DateTime" Precision="3" />
+          <Property Name="Resultat_PSP_ug_100g" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Verdict_PSP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mortalite_souris" Type="Int16" />
+          <Property Name="Temperature_arrivee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Frequence_Domoique" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="No_lab_Longueuil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resultat_ASP" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Verdict_ASP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Traitement_primaire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Traitement_secondaire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Traitement_tertiaire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tissus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarque" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Échantillon_Dartmouth" Type="Boolean" Nullable="false" />
+          <Property Name="Date_analyse_DSP" Type="DateTime" Precision="3" />
+          <Property Name="Resultats_DSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Verdict_DSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pectenotoxin_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pect2_secoacid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pect2_sec_7epi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gymnodimine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dinophysis_toxin_3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Yessotoxin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Okadoïques_totaux" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pectenotoxines_totales" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Yessotoxines_totales" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="geo_limite_5km_rive_l_3857">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="feature_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="geo_limite_5km_rive_l_4269">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="feature_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="geo_pccsm_acia_station">
+          <Key>
+            <PropertyRef Name="id_geo_pccsm_acia_station" />
+          </Key>
+          <Property Name="id_geo_pccsm_acia_station" Type="Int32" Nullable="false" />
+          <Property Name="secteur" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="nom_secteur" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="zone_complement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="station" Type="Int32" />
+          <Property Name="type_station" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="distance_station" Type="Int32" />
+          <Property Name="circonference_m" Type="Double" />
+          <Property Name="date_creation" Type="DateTime" Precision="3" />
+          <Property Name="date_maj" Type="DateTime" Precision="3" />
+          <Property Name="auteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="auteur_maj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lat27" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="long27" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
           <Property Name="x" Type="Double" />
           <Property Name="y" Type="Double" />
-          <Property Name="contact_principal" Type="Int32" />
-          <Property Name="contact_secondaire" Type="Int32" />
+          <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="etat_actif" Type="Boolean" Nullable="false" />
+          <Property Name="temp" Type="Int32" />
+          <Property Name="isvalidgeo" Type="Boolean" />
+          <Property Name="derniere_annee" Type="Int32" />
         </EntityType>
-        <EntityType Name="dtproperty">
+        <EntityType Name="geo_segment_l">
           <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="property" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="objectid" Type="Int32" />
-          <Property Name="property" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="uvalue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="version" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_SEGMENT" Type="Int64" />
+          <Property Name="SEG_NUMERO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="geometry_columns">
+          <Key>
+            <PropertyRef Name="f_table_catalog" />
+            <PropertyRef Name="f_table_schema" />
+            <PropertyRef Name="f_table_name" />
+            <PropertyRef Name="f_geometry_column" />
+          </Key>
+          <Property Name="f_table_catalog" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="f_table_schema" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="f_table_name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="f_geometry_column" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="coord_dimension" Type="Int32" Nullable="false" />
+          <Property Name="srid" Type="Int32" Nullable="false" />
+          <Property Name="geometry_type" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="groupe_secteur">
           <Key>
             <PropertyRef Name="groupe_secteur_id" />
           </Key>
-          <Property Name="groupe_secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="groupe_secteur_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="groupe_id" Type="Int32" />
           <Property Name="secteur_id" Type="Int32" />
           <Property Name="etat" Type="Int32" />
@@ -1673,6 +2094,58 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="LanguageText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="mrc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="Int64" />
+          <Property Name="AREA" Type="Double" />
+          <Property Name="PERIMETER" Type="Double" />
+          <Property Name="MRC_S0_" Type="Int64" />
+          <Property Name="MRC_S0_ID" Type="Int64" />
+          <Property Name="MRS_NO_IND" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MRS_DE_IND" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MRS_CO_MRC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MRS_NM_MRC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MRS_CO_REG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MRS_NM_REG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MRS_CO_REF" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MRS_CO_VER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Shape_Leng" Type="Double" />
+          <Property Name="Shape_Area" Type="Double" />
+        </EntityType>
+        <EntityType Name="munic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OBJECTID" Type="Int64" />
+          <Property Name="AREA" Type="Double" />
+          <Property Name="PERIMETER" Type="Double" />
+          <Property Name="MUNIC2013_" Type="Int64" />
+          <Property Name="MUNIC20131" Type="Int64" />
+          <Property Name="MUS_VA_SUP" Type="Double" />
+          <Property Name="MUS_NO_IND" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_DE_IND" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_CO_GEO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_CO_DES" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_NM_MUN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_CO_MRC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_NM_MRC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_CO_REG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_NM_REG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_NM_AGG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_NM_COM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_DA_CON" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_CO_MOD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_DA_MOD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_CO_SOU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_CO_REF" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUS_CO_VER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Shape_Leng" Type="Double" />
+          <Property Name="Shape_Area" Type="Double" />
+        </EntityType>
         <EntityType Name="ordonnance">
           <Key>
             <PropertyRef Name="ordonnance_id" />
@@ -1700,19 +2173,19 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Key>
             <PropertyRef Name="point_legal_id" />
           </Key>
-          <Property Name="point_legal_id" Type="Int32" Nullable="false" />
-          <Property Name="x" Type="Double" />
-          <Property Name="y" Type="Double" />
+          <Property Name="point_legal_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="x" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="y" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="etat" Type="Int32" />
           <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_point_legal_codification" FromRole="point_legal" ToRole="codification" />
           <NavigationProperty Name="secteur_point_legal" Relationship="pccsm_mpoModel.FK_secteur_point_legal_point_legal" FromRole="point_legal" ToRole="secteur_point_legal" />
         </EntityType>
         <EntityType Name="secteur">
           <Key>
             <PropertyRef Name="secteur_id" />
           </Key>
-          <Property Name="secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="globalID" Type="Guid" Nullable="false" />
           <Property Name="secteur_id_parent" Type="Int32" />
           <Property Name="secteur1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="secteur_ltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
@@ -1720,31 +2193,40 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Property Name="secteur_no2" Type="Int32" />
           <Property Name="secteur_no3" Type="Int32" />
           <Property Name="secteur_no4" Type="Int32" />
-          <Property Name="longueur_rive" Type="Double" />
-          <Property Name="superficie" Type="Double" />
-          <Property Name="geometry" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="x" Type="Double" />
-          <Property Name="y" Type="Double" />
-          <Property Name="x_min" Type="Double" />
-          <Property Name="y_min" Type="Double" />
-          <Property Name="x_max" Type="Double" />
-          <Property Name="y_max" Type="Double" />
+          <Property Name="longueur_rive" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="superficie" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="x" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="y" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="x_min" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="y_min" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="x_max" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="y_max" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="secteur_type" Type="Int32" />
           <Property Name="etat" Type="Int32" />
+          <Property Name="assujetti_pccsm" Type="Boolean" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="area" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="clause_secteur" Relationship="pccsm_mpoModel.FK_clause_secteur_secteur" FromRole="secteur" ToRole="clause_secteur" />
-          <NavigationProperty Name="codification" Relationship="pccsm_mpoModel.FK_secteur_codification1" FromRole="secteur" ToRole="codification" />
-          <NavigationProperty Name="codification1" Relationship="pccsm_mpoModel.FK_secteur_codification2" FromRole="secteur" ToRole="codification" />
           <NavigationProperty Name="groupe_secteur" Relationship="pccsm_mpoModel.FK_groupe_secteur_secteur" FromRole="secteur" ToRole="groupe_secteur" />
           <NavigationProperty Name="groupe_secteur1" Relationship="pccsm_mpoModel.FK_groupe_secteur_secteur1" FromRole="secteur" ToRole="groupe_secteur" />
           <NavigationProperty Name="secteur_description" Relationship="pccsm_mpoModel.FK_secteur_description_secteur" FromRole="secteur" ToRole="secteur_description" />
           <NavigationProperty Name="secteur_point_legal" Relationship="pccsm_mpoModel.FK_secteur_point_legal_secteur" FromRole="secteur" ToRole="secteur_point_legal" />
         </EntityType>
+        <EntityType Name="secteur_coordonnees_epsg_3857">
+          <Key>
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="C_xmax" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="C_xmin" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="C_ymax" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="C_ymin" Type="Decimal" Precision="18" Scale="6" />
+        </EntityType>
         <EntityType Name="secteur_description">
           <Key>
             <PropertyRef Name="secteur_description_id" />
           </Key>
-          <Property Name="secteur_description_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_description_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="secteur_id" Type="Int32" Nullable="false" />
           <Property Name="secteur_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="langue" Type="Int32" />
@@ -1752,6 +2234,16 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Property Name="etat" Type="Int32" />
           <Property Name="modification_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="secteur" Relationship="pccsm_mpoModel.FK_secteur_description_secteur" FromRole="secteur_description" ToRole="secteur" />
+        </EntityType>
+        <EntityType Name="secteur_epsg3857">
+          <Key>
+            <PropertyRef Name="secteur_id" />
+          </Key>
+          <Property Name="secteur_id" Type="Int32" Nullable="false" />
+          <Property Name="x_min" Type="Double" />
+          <Property Name="x_max" Type="Double" />
+          <Property Name="y_min" Type="Double" />
+          <Property Name="y_max" Type="Double" />
         </EntityType>
         <EntityType Name="secteur_historique">
           <Key>
@@ -1781,12 +2273,225 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Key>
             <PropertyRef Name="secteur_point_legal_id" />
           </Key>
-          <Property Name="secteur_point_legal_id" Type="Int32" Nullable="false" />
+          <Property Name="secteur_point_legal_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="secteur_id" Type="Int32" />
           <Property Name="point_legal_id" Type="Int32" />
           <Property Name="secteur_point_legal_no" Type="Int32" />
           <NavigationProperty Name="point_legal" Relationship="pccsm_mpoModel.FK_secteur_point_legal_point_legal" FromRole="secteur_point_legal" ToRole="point_legal" />
           <NavigationProperty Name="secteur" Relationship="pccsm_mpoModel.FK_secteur_point_legal_secteur" FromRole="secteur_point_legal" ToRole="secteur" />
+        </EntityType>
+        <EntityType Name="seg_geo_segment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="id_segment" Type="Int32" Nullable="false" />
+          <Property Name="seg_numero" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="seg_longueur" Type="Int32" />
+          <Property Name="zi_largeur" Type="Int16" />
+          <Property Name="superficie" Type="Double" />
+          <Property Name="seg_fetch" Type="Int32" />
+          <Property Name="seg_source_dvd_deb" Type="Int32" />
+          <Property Name="seg_index_deb" Type="Int32" />
+          <Property Name="seg_debut" Type="DateTime" Precision="3" />
+          <Property Name="seg_source_dvd_fin" Type="Int32" />
+          <Property Name="seg_index_fin" Type="Int32" />
+          <Property Name="seg_fin" Type="DateTime" Precision="3" />
+          <Property Name="seg_dvd_commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="source_old" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="municipalite" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="code_mun" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="div_hydrographique" Type="Int32" />
+          <Property Name="toponymie_locale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="auteur_segment" Type="Int32" />
+          <Property Name="date_creation" Type="DateTime" Precision="3" />
+          <Property Name="date_modification" Type="DateTime" Precision="3" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="validation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mapinfo_id" Type="Int32" />
+          <Property Name="x" Type="Double" />
+          <Property Name="y" Type="Double" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="seg_limite_acces">
+          <Key>
+            <PropertyRef Name="id_limite_acces" />
+          </Key>
+          <Property Name="id_limite_acces" Type="Int32" Nullable="false" />
+          <Property Name="id_segment" Type="Int32" />
+          <Property Name="limite_acces" Type="Int32" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seg_milieu">
+          <Key>
+            <PropertyRef Name="id_milieu" />
+          </Key>
+          <Property Name="id_milieu" Type="Int32" Nullable="false" />
+          <Property Name="id_segment" Type="Int32" />
+          <Property Name="milieu" Type="Int32" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seg_processus_dominant">
+          <Key>
+            <PropertyRef Name="id_processus_dominant" />
+          </Key>
+          <Property Name="id_processus_dominant" Type="Int32" Nullable="false" />
+          <Property Name="id_segment" Type="Int32" />
+          <Property Name="processus_dominant" Type="Int32" />
+          <Property Name="priorite" Type="Int32" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seg_segment_usage">
+          <Key>
+            <PropertyRef Name="id_segment_usage" />
+          </Key>
+          <Property Name="id_segment_usage" Type="Int32" Nullable="false" />
+          <Property Name="id_segment" Type="Int32" />
+          <Property Name="code_segment_usage" Type="Int32" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seg_segrivB_nad83mdb">
+          <Key>
+            <PropertyRef Name="MAPINFO_ID" />
+          </Key>
+          <Property Name="MAPINFO_ID" Type="Int32" Nullable="false" />
+          <Property Name="Ident" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Municipalité" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="code_mun" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Région" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Div_hydrographique" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Seg_long" Type="Int32" />
+          <Property Name="Usage" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Zi_larg" Type="Int16" />
+          <Property Name="superficie" Type="Double" />
+          <Property Name="ZSU_relief_acces" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="ZSU_pente_substrat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZIS_pente_substrat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZIS_pente1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ZIS_substrat1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ZIM_pente_substrat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZIM_pente1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ZIM_substrat1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZII_pente_substrat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZII_pente1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ZII_substrat1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type_côte" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Fetch" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Processus_dominant" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="persistance" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Limites_acces" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Toponymie_locale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Marée_moy" Type="Double" />
+          <Property Name="Marée_gra" Type="Double" />
+          <Property Name="Carte_topo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Carte_mari" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Carte_envc" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Info_sources" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Commentaires" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ZIS_Sub_Class" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="id_segment" Type="Int32" />
+          <Property Name="x" Type="Double" />
+        </EntityType>
+        <EntityType Name="seg_substrat">
+          <Key>
+            <PropertyRef Name="id_substrat" />
+          </Key>
+          <Property Name="id_substrat" Type="Int32" Nullable="false" />
+          <Property Name="id_zone_cotiere" Type="Int32" />
+          <Property Name="substrat" Type="Int32" />
+          <Property Name="milieu" Type="Int32" />
+          <Property Name="priorite" Type="Int32" />
+          <Property Name="seg_pourcentage" Type="Int32" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seg_tr_code">
+          <Key>
+            <PropertyRef Name="id_code" />
+          </Key>
+          <Property Name="id_code" Type="Int32" Nullable="false" />
+          <Property Name="descr_fr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descr_en" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="definition_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="definition_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="parametre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seg_tr_interface_label_new">
+          <Key>
+            <PropertyRef Name="id_interface_label" />
+          </Key>
+          <Property Name="id_interface_label" Type="Int32" Nullable="false" />
+          <Property Name="table" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="champ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="onglet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="label_fr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="label_en" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="inclure_ds_form" Type="Boolean" Nullable="false" />
+          <Property Name="utilise_tr_code" Type="Boolean" Nullable="false" />
+          <Property Name="param_tr_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="utilise_tr_source_dvd" Type="Boolean" Nullable="false" />
+          <Property Name="description_du_contrôle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seg_tr_source_dvd">
+          <Key>
+            <PropertyRef Name="id_source_dvd" />
+          </Key>
+          <Property Name="id_source_dvd" Type="Int32" Nullable="false" />
+          <Property Name="id_dvd" Type="Int32" />
+          <Property Name="code_dvd" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="titre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="auteur" Type="Int32" />
+          <Property Name="co_auteur" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="date_prise" Type="DateTime" Precision="3" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seg_type_cote">
+          <Key>
+            <PropertyRef Name="id_type_cote" />
+          </Key>
+          <Property Name="id_type_cote" Type="Int32" Nullable="false" />
+          <Property Name="id_segment" Type="Int32" />
+          <Property Name="type_cote" Type="Int32" />
+          <Property Name="forme" Type="Int32" />
+          <Property Name="toponyme" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seg_zone_cotiere">
+          <Key>
+            <PropertyRef Name="id_zone_cotiere" />
+          </Key>
+          <Property Name="id_zone_cotiere" Type="Int32" Nullable="false" />
+          <Property Name="id_segment" Type="Int32" />
+          <Property Name="zone_cotiere" Type="Int32" />
+          <Property Name="pente" Type="Int32" />
+          <Property Name="acces" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="limite_acces" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="relief_forme_construction" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="classification_substrat" Type="Int32" />
+          <Property Name="substrat_original" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vegetation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="segmentation_resultat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="id_segment" Type="Int32" Nullable="false" />
+          <Property Name="Numero_segment" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="zone_cotiere" Type="Int32" />
+          <Property Name="Substrat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type_cote" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Forme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="signalisation">
           <Key>
@@ -1805,6 +2510,16 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Property Name="x" Type="Double" />
           <Property Name="y" Type="Double" />
         </EntityType>
+        <EntityType Name="spatial_ref_sys">
+          <Key>
+            <PropertyRef Name="srid" />
+          </Key>
+          <Property Name="srid" Type="Int32" Nullable="false" />
+          <Property Name="auth_name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="auth_srid" Type="Int32" />
+          <Property Name="srtext" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="proj4text" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -1815,59 +2530,12 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="db_tournee">
+        <EntityType Name="ligne_5km_cote">
           <Key>
-            <PropertyRef Name="ID_Tournee" />
-            <PropertyRef Name="annee" />
-            <PropertyRef Name="mois" />
-            <PropertyRef Name="jour" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID_Tournee" Type="Int32" Nullable="false" />
-          <Property Name="tournee" Type="Int16" />
-          <Property Name="annee" Type="Int32" Nullable="false" />
-          <Property Name="mois" Type="Int32" Nullable="false" />
-          <Property Name="jour" Type="Int32" Nullable="false" />
-          <Property Name="hre_deb" Type="DateTime" Precision="3" />
-          <Property Name="hre_fin" Type="DateTime" Precision="3" />
-          <Property Name="hre_recep_lab" Type="DateTime" Precision="3" />
-          <Property Name="temp_glace_recep" Type="Decimal" Precision="18" Scale="1" />
-          <Property Name="hre_maree_h" Type="DateTime" Precision="3" />
-          <Property Name="hre_maree_b" Type="DateTime" Precision="3" />
-          <Property Name="maree_princ" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="maree_principale" Type="Int32" />
-          <Property Name="pmaree_deb" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="pmaree_fin" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="maree_ve" Type="Boolean" />
-          <Property Name="maree_me" Type="Boolean" />
-          <Property Name="marnage" Type="Double" />
-          <Property Name="precipit" Type="Double" />
-          <Property Name="precipit_3jant" Type="Double" />
-          <Property Name="t_air_deb" Type="Double" />
-          <Property Name="t_air_fin" Type="Double" />
-          <Property Name="v_vent_deb" Type="Double" />
-          <Property Name="v_vent_fin" Type="Double" />
-          <Property Name="vent_direction_debut" Type="Int32" />
-          <Property Name="vent_direction_fin" Type="Int32" />
-          <Property Name="couvert_nuage" Type="Double" />
-          <Property Name="couvert_nuage_fin" Type="Double" />
-          <Property Name="mer_etat" Type="Double" />
-          <Property Name="mer_etat_fin" Type="Double" />
-          <Property Name="niveau_eau" Type="Double" />
-          <Property Name="vague_hauteur" Type="Double" />
-          <Property Name="vague_hauteur_fin" Type="Double" />
-          <Property Name="consultant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="date_creation" Type="DateTime" Precision="3" />
-          <Property Name="status" Type="Int32" />
-          <Property Name="date_echantillonnage" Type="DateTime" Precision="3" />
-          <Property Name="notification" Type="Boolean" />
-          <Property Name="cf_methode_analytique" Type="Int32" />
-          <Property Name="laboratoire_operateur_id" Type="Int32" />
-          <Property Name="validation" Type="Int32" />
-          <Property Name="analyse_datetime" Type="DateTime" Precision="3" />
-          <Property Name="validation_datetime" Type="DateTime" Precision="3" />
-          <Property Name="approbation" Type="Int32" />
-          <Property Name="approbation_date" Type="DateTime" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="feature_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="organisation">
           <Key>
@@ -1876,79 +2544,55 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <Property Name="ID_organisation" Type="Int32" Nullable="false" />
           <Property Name="organisation_fr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="point_legal_20131118">
+        <EntityType Name="segment">
           <Key>
-            <PropertyRef Name="point_legal_id" />
+            <PropertyRef Name="id_segment" />
           </Key>
-          <Property Name="point_legal_id" Type="Int32" Nullable="false" />
-          <Property Name="x" Type="Double" />
-          <Property Name="y" Type="Double" />
-          <Property Name="etat" Type="Int32" />
-          <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="secteur_20131118">
-          <Key>
-            <PropertyRef Name="secteur_id" />
-          </Key>
-          <Property Name="secteur_id" Type="Int32" Nullable="false" />
-          <Property Name="secteur_id_parent" Type="Int32" />
-          <Property Name="secteur" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="secteur_ltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="secteur_no1" Type="Int32" />
-          <Property Name="secteur_no2" Type="Int32" />
-          <Property Name="secteur_no3" Type="Int32" />
-          <Property Name="secteur_no4" Type="Int32" />
-          <Property Name="longueur_rive" Type="Double" />
+          <Property Name="id_segment" Type="Int32" Nullable="false" />
+          <Property Name="seg_numero" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="seg_longueur" Type="Int32" />
+          <Property Name="zi_largeur" Type="Int16" />
           <Property Name="superficie" Type="Double" />
-          <Property Name="geometry" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="seg_fetch" Type="Int32" />
+          <Property Name="seg_source_dvd_deb" Type="Int32" />
+          <Property Name="seg_index_deb" Type="Int32" />
+          <Property Name="seg_debut" Type="DateTime" Precision="3" />
+          <Property Name="seg_source_dvd_fin" Type="Int32" />
+          <Property Name="seg_index_fin" Type="Int32" />
+          <Property Name="seg_fin" Type="DateTime" Precision="3" />
+          <Property Name="seg_dvd_commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="source_old" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="municipalite" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="code_mun" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="div_hydrographique" Type="Int32" />
+          <Property Name="toponymie_locale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_fr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="auteur_segment" Type="Int32" />
+          <Property Name="date_creation" Type="DateTime" Precision="3" />
+          <Property Name="date_modification" Type="DateTime" Precision="3" />
+          <Property Name="etat" Type="Int32" />
+          <Property Name="validation" Type="Int32" />
           <Property Name="x" Type="Double" />
           <Property Name="y" Type="Double" />
-          <Property Name="x_min" Type="Double" />
-          <Property Name="y_min" Type="Double" />
-          <Property Name="x_max" Type="Double" />
-          <Property Name="y_max" Type="Double" />
-          <Property Name="secteur_type" Type="Int32" />
-          <Property Name="etat" Type="Int32" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="secteur_description_20131021">
+        <EntityType Name="temp_secteur">
           <Key>
-            <PropertyRef Name="secteur_description_id" />
             <PropertyRef Name="secteur_id" />
           </Key>
-          <Property Name="secteur_description_id" Type="Int32" Nullable="false" />
           <Property Name="secteur_id" Type="Int32" Nullable="false" />
-          <Property Name="secteur_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="langue" Type="Int32" />
-          <Property Name="parametre" Type="Int32" />
-          <Property Name="etat" Type="Int32" />
-          <Property Name="modification_date" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="secteur_description_20131118">
-          <Key>
-            <PropertyRef Name="secteur_description_id" />
-            <PropertyRef Name="secteur_id" />
-          </Key>
-          <Property Name="secteur_description_id" Type="Int32" Nullable="false" />
-          <Property Name="secteur_id" Type="Int32" Nullable="false" />
-          <Property Name="secteur_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="langue" Type="Int32" />
-          <Property Name="parametre" Type="Int32" />
-          <Property Name="etat" Type="Int32" />
-          <Property Name="modification_date" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="secteur_description_20140210">
-          <Key>
-            <PropertyRef Name="secteur_description_id" />
-            <PropertyRef Name="secteur_id" />
-          </Key>
-          <Property Name="secteur_description_id" Type="Int32" Nullable="false" />
-          <Property Name="secteur_id" Type="Int32" Nullable="false" />
-          <Property Name="secteur_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="langue" Type="Int32" />
-          <Property Name="parametre" Type="Int32" />
-          <Property Name="etat" Type="Int32" />
-          <Property Name="modification_date" Type="DateTime" Precision="3" />
+          <Property Name="secteur" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="nomfr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nomen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="genen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="genfr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="legalfr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="legalen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="secteur_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="etat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="regionfr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="regionen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Expr1" Type="Int32" />
         </EntityType>
         <Association Name="FK_clause_codification">
           <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
@@ -2146,18 +2790,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_codification_description_codification3">
-          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
-          <End Type="pccsm_mpoModel.codification_description" Role="codification_description" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="codification">
-              <PropertyRef Name="codification_id" />
-            </Principal>
-            <Dependent Role="codification_description">
-              <PropertyRef Name="etat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_contact_codification">
           <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
           <End Type="pccsm_mpoModel.contact" Role="contact" Multiplicity="*" />
@@ -2265,42 +2897,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
             </Principal>
             <Dependent Role="ordonnance">
               <PropertyRef Name="raison" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_point_legal_codification">
-          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
-          <End Type="pccsm_mpoModel.point_legal" Role="point_legal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="codification">
-              <PropertyRef Name="codification_id" />
-            </Principal>
-            <Dependent Role="point_legal">
-              <PropertyRef Name="etat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_secteur_codification1">
-          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
-          <End Type="pccsm_mpoModel.secteur" Role="secteur" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="codification">
-              <PropertyRef Name="codification_id" />
-            </Principal>
-            <Dependent Role="secteur">
-              <PropertyRef Name="secteur_type" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_secteur_codification2">
-          <End Type="pccsm_mpoModel.codification" Role="codification" Multiplicity="0..1" />
-          <End Type="pccsm_mpoModel.secteur" Role="secteur" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="codification">
-              <PropertyRef Name="codification_id" />
-            </Principal>
-            <Dependent Role="secteur">
-              <PropertyRef Name="etat" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2424,7 +3020,7 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -2557,37 +3153,166 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <EntitySetMapping Name="db_histo_operation">
             <EntityTypeMapping TypeName="pccsm_mpoModel.db_histo_operation">
               <MappingFragment StoreEntitySet="db_histo_operation">
-                <ScalarProperty Name="contact_secondaire" ColumnName="contact_secondaire" />
-                <ScalarProperty Name="contact_principal" ColumnName="contact_principal" />
-                <ScalarProperty Name="y" ColumnName="y" />
-                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="id_geo_secteur_s" ColumnName="id_geo_secteur_s" />
                 <ScalarProperty Name="id_cour_zone_etude" ColumnName="id_cour_zone_etude" />
                 <ScalarProperty Name="ID_infrastructures" ColumnName="ID_infrastructures" />
                 <ScalarProperty Name="id_geo_station_p" ColumnName="id_geo_station_p" />
                 <ScalarProperty Name="id_geo_banc_coquillier_s" ColumnName="id_geo_banc_coquillier_s" />
                 <ScalarProperty Name="id_geo_terrain_p" ColumnName="id_geo_terrain_p" />
                 <ScalarProperty Name="id_geo_pollution_p" ColumnName="id_geo_pollution_p" />
-                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
-                <ScalarProperty Name="point_legal_id" ColumnName="point_legal_id" />
-                <ScalarProperty Name="ordonnance_id" ColumnName="ordonnance_id" />
-                <ScalarProperty Name="description_operation" ColumnName="description_operation" />
-                <ScalarProperty Name="date_operation" ColumnName="date_operation" />
-                <ScalarProperty Name="auteur" ColumnName="auteur" />
+                <ScalarProperty Name="ordonnanceID" ColumnName="ordonnanceID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="contact_secondaire" ColumnName="contact_secondaire" />
+                <ScalarProperty Name="contact_principal" ColumnName="contact_principal" />
                 <ScalarProperty Name="type_operation" ColumnName="type_operation" />
+                <ScalarProperty Name="type_operation_o" ColumnName="type_operation_o" />
+                <ScalarProperty Name="auteur" ColumnName="auteur" />
+                <ScalarProperty Name="date_operation" ColumnName="date_operation" />
                 <ScalarProperty Name="id_db_histo_operation" ColumnName="id_db_histo_operation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="dtproperties">
-            <EntityTypeMapping TypeName="pccsm_mpoModel.dtproperty">
-              <MappingFragment StoreEntitySet="dtproperties">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="lvalue" ColumnName="lvalue" />
-                <ScalarProperty Name="uvalue" ColumnName="uvalue" />
-                <ScalarProperty Name="value" ColumnName="value" />
-                <ScalarProperty Name="property" ColumnName="property" />
-                <ScalarProperty Name="objectid" ColumnName="objectid" />
-                <ScalarProperty Name="id" ColumnName="id" />
+          <EntitySetMapping Name="demande_de_site_region">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.demande_de_site_region">
+              <MappingFragment StoreEntitySet="demande_de_site_region">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Id2" ColumnName="Id2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="echantillonnage_microbiol">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.echantillonnage_microbiol">
+              <MappingFragment StoreEntitySet="echantillonnage_microbiol">
+                <ScalarProperty Name="upsize_ts" ColumnName="upsize_ts" />
+                <ScalarProperty Name="Remarque" ColumnName="Remarque" />
+                <ScalarProperty Name="Verdict_col_fec" ColumnName="Verdict_col_fec" />
+                <ScalarProperty Name="resultat_col_fec" ColumnName="resultat_col_fec" />
+                <ScalarProperty Name="No_lab_micro" ColumnName="No_lab_micro" />
+                <ScalarProperty Name="Temperature_arrivee" ColumnName="Temperature_arrivee" />
+                <ScalarProperty Name="Date_analyse" ColumnName="Date_analyse" />
+                <ScalarProperty Name="Temperature_depart" ColumnName="Temperature_depart" />
+                <ScalarProperty Name="heure_cueillette" ColumnName="heure_cueillette" />
+                <ScalarProperty Name="echant_date" ColumnName="echant_date" />
+                <ScalarProperty Name="Cueilleur" ColumnName="Cueilleur" />
+                <ScalarProperty Name="nom_especes_francais" ColumnName="nom_especes_francais" />
+                <ScalarProperty Name="No_LSTS" ColumnName="No_LSTS" />
+                <ScalarProperty Name="id_geo_pccsm_acia_station" ColumnName="id_geo_pccsm_acia_station" />
+                <ScalarProperty Name="id_echantillonnage_microbiol" ColumnName="id_echantillonnage_microbiol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="echantillonnage_toxicite">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.echantillonnage_toxicite">
+              <MappingFragment StoreEntitySet="echantillonnage_toxicite">
+                <ScalarProperty Name="Yessotoxines_totales" ColumnName="Yessotoxines totales" />
+                <ScalarProperty Name="Pectenotoxines_totales" ColumnName="Pectenotoxines totales" />
+                <ScalarProperty Name="Okadoïques_totaux" ColumnName="Okadoïques totaux" />
+                <ScalarProperty Name="Yessotoxin" ColumnName="Yessotoxin" />
+                <ScalarProperty Name="Dinophysis_toxin_3" ColumnName="Dinophysis toxin 3" />
+                <ScalarProperty Name="Gymnodimine" ColumnName="Gymnodimine" />
+                <ScalarProperty Name="Pect2_sec_7epi" ColumnName="Pect2_sec_7epi" />
+                <ScalarProperty Name="Pect2_secoacid" ColumnName="Pect2_secoacid" />
+                <ScalarProperty Name="Pectenotoxin_2" ColumnName="Pectenotoxin_2" />
+                <ScalarProperty Name="Verdict_DSP" ColumnName="Verdict_DSP" />
+                <ScalarProperty Name="Resultats_DSP" ColumnName="Resultats_DSP" />
+                <ScalarProperty Name="Date_analyse_DSP" ColumnName="Date_analyse_DSP" />
+                <ScalarProperty Name="Échantillon_Dartmouth" ColumnName="Échantillon_Dartmouth" />
+                <ScalarProperty Name="Remarque" ColumnName="Remarque" />
+                <ScalarProperty Name="Tissus" ColumnName="Tissus" />
+                <ScalarProperty Name="Traitement_tertiaire" ColumnName="Traitement_tertiaire" />
+                <ScalarProperty Name="Traitement_secondaire" ColumnName="Traitement_secondaire" />
+                <ScalarProperty Name="Traitement_primaire" ColumnName="Traitement_primaire" />
+                <ScalarProperty Name="Verdict_ASP" ColumnName="Verdict_ASP" />
+                <ScalarProperty Name="Resultat_ASP" ColumnName="Resultat_ASP" />
+                <ScalarProperty Name="No_lab_Longueuil" ColumnName="No_lab_Longueuil" />
+                <ScalarProperty Name="Frequence_Domoique" ColumnName="Frequence_Domoique" />
+                <ScalarProperty Name="Temperature_arrivee" ColumnName="Temperature_arrivee" />
+                <ScalarProperty Name="Mortalite_souris" ColumnName="Mortalite_souris" />
+                <ScalarProperty Name="Verdict_PSP" ColumnName="Verdict_PSP" />
+                <ScalarProperty Name="Resultat_PSP_ug_100g" ColumnName="Resultat_PSP_ug_100g" />
+                <ScalarProperty Name="Date_série" ColumnName="Date_série" />
+                <ScalarProperty Name="Température_départ" ColumnName="Température_départ" />
+                <ScalarProperty Name="Code_usine" ColumnName="Code_usine" />
+                <ScalarProperty Name="Heure_cueillette" ColumnName="Heure_cueillette" />
+                <ScalarProperty Name="Date_cueillette" ColumnName="Date_cueillette" />
+                <ScalarProperty Name="Cueilleur" ColumnName="Cueilleur" />
+                <ScalarProperty Name="Sous_secteur" ColumnName="Sous_secteur" />
+                <ScalarProperty Name="Nom_secteur_francais" ColumnName="Nom_secteur_francais" />
+                <ScalarProperty Name="Secteurs" ColumnName="Secteurs" />
+                <ScalarProperty Name="Type_exploitation" ColumnName="Type_exploitation" />
+                <ScalarProperty Name="Nom_especes_francais" ColumnName="Nom_especes_francais" />
+                <ScalarProperty Name="Sous_échantillon" ColumnName="Sous-échantillon" />
+                <ScalarProperty Name="No_lab_PSP" ColumnName="No_lab_PSP" />
+                <ScalarProperty Name="No_LSTS" ColumnName="No_LSTS" />
+                <ScalarProperty Name="Numero_id" ColumnName="Numero_id" />
+                <ScalarProperty Name="id_geo_pccsm_acia_station" ColumnName="id_geo_pccsm_acia_station" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_limite_5km_rive_l_3857">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.geo_limite_5km_rive_l_3857">
+              <MappingFragment StoreEntitySet="geo_limite_5km_rive_l_3857">
+                <ScalarProperty Name="feature_id" ColumnName="feature_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_limite_5km_rive_l_4269">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.geo_limite_5km_rive_l_4269">
+              <MappingFragment StoreEntitySet="geo_limite_5km_rive_l_4269">
+                <ScalarProperty Name="feature_id" ColumnName="feature_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_pccsm_acia_station">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.geo_pccsm_acia_station">
+              <MappingFragment StoreEntitySet="geo_pccsm_acia_station">
+                <ScalarProperty Name="derniere_annee" ColumnName="derniere_annee" />
+                <ScalarProperty Name="isvalidgeo" ColumnName="isvalidgeo" />
+                <ScalarProperty Name="temp" ColumnName="temp" />
+                <ScalarProperty Name="etat_actif" ColumnName="etat_actif" />
+                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="long27" ColumnName="long27" />
+                <ScalarProperty Name="lat27" ColumnName="lat27" />
+                <ScalarProperty Name="auteur_maj" ColumnName="auteur_maj" />
+                <ScalarProperty Name="auteur" ColumnName="auteur" />
+                <ScalarProperty Name="date_maj" ColumnName="date_maj" />
+                <ScalarProperty Name="date_creation" ColumnName="date_creation" />
+                <ScalarProperty Name="circonference_m" ColumnName="circonference_m" />
+                <ScalarProperty Name="distance_station" ColumnName="distance_station" />
+                <ScalarProperty Name="type_station" ColumnName="type_station" />
+                <ScalarProperty Name="station" ColumnName="station" />
+                <ScalarProperty Name="zone_complement" ColumnName="zone_complement" />
+                <ScalarProperty Name="nom_secteur" ColumnName="nom_secteur" />
+                <ScalarProperty Name="secteur" ColumnName="secteur" />
+                <ScalarProperty Name="id_geo_pccsm_acia_station" ColumnName="id_geo_pccsm_acia_station" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_segment_l">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.geo_segment_l">
+              <MappingFragment StoreEntitySet="geo_segment_l">
+                <ScalarProperty Name="SEG_NUMERO" ColumnName="SEG_NUMERO" />
+                <ScalarProperty Name="ID_SEGMENT" ColumnName="ID_SEGMENT" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geometry_columns">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.geometry_columns">
+              <MappingFragment StoreEntitySet="geometry_columns">
+                <ScalarProperty Name="geometry_type" ColumnName="geometry_type" />
+                <ScalarProperty Name="srid" ColumnName="srid" />
+                <ScalarProperty Name="coord_dimension" ColumnName="coord_dimension" />
+                <ScalarProperty Name="f_geometry_column" ColumnName="f_geometry_column" />
+                <ScalarProperty Name="f_table_name" ColumnName="f_table_name" />
+                <ScalarProperty Name="f_table_schema" ColumnName="f_table_schema" />
+                <ScalarProperty Name="f_table_catalog" ColumnName="f_table_catalog" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2636,6 +3361,60 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="mrcs">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.mrc">
+              <MappingFragment StoreEntitySet="mrc">
+                <ScalarProperty Name="Shape_Area" ColumnName="Shape_Area" />
+                <ScalarProperty Name="Shape_Leng" ColumnName="Shape_Leng" />
+                <ScalarProperty Name="MRS_CO_VER" ColumnName="MRS_CO_VER" />
+                <ScalarProperty Name="MRS_CO_REF" ColumnName="MRS_CO_REF" />
+                <ScalarProperty Name="MRS_NM_REG" ColumnName="MRS_NM_REG" />
+                <ScalarProperty Name="MRS_CO_REG" ColumnName="MRS_CO_REG" />
+                <ScalarProperty Name="MRS_NM_MRC" ColumnName="MRS_NM_MRC" />
+                <ScalarProperty Name="MRS_CO_MRC" ColumnName="MRS_CO_MRC" />
+                <ScalarProperty Name="MRS_DE_IND" ColumnName="MRS_DE_IND" />
+                <ScalarProperty Name="MRS_NO_IND" ColumnName="MRS_NO_IND" />
+                <ScalarProperty Name="MRC_S0_ID" ColumnName="MRC_S0_ID" />
+                <ScalarProperty Name="MRC_S0_" ColumnName="MRC_S0_" />
+                <ScalarProperty Name="PERIMETER" ColumnName="PERIMETER" />
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="munics">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.munic">
+              <MappingFragment StoreEntitySet="munic">
+                <ScalarProperty Name="Shape_Area" ColumnName="Shape_Area" />
+                <ScalarProperty Name="Shape_Leng" ColumnName="Shape_Leng" />
+                <ScalarProperty Name="MUS_CO_VER" ColumnName="MUS_CO_VER" />
+                <ScalarProperty Name="MUS_CO_REF" ColumnName="MUS_CO_REF" />
+                <ScalarProperty Name="MUS_CO_SOU" ColumnName="MUS_CO_SOU" />
+                <ScalarProperty Name="MUS_DA_MOD" ColumnName="MUS_DA_MOD" />
+                <ScalarProperty Name="MUS_CO_MOD" ColumnName="MUS_CO_MOD" />
+                <ScalarProperty Name="MUS_DA_CON" ColumnName="MUS_DA_CON" />
+                <ScalarProperty Name="MUS_NM_COM" ColumnName="MUS_NM_COM" />
+                <ScalarProperty Name="MUS_NM_AGG" ColumnName="MUS_NM_AGG" />
+                <ScalarProperty Name="MUS_NM_REG" ColumnName="MUS_NM_REG" />
+                <ScalarProperty Name="MUS_CO_REG" ColumnName="MUS_CO_REG" />
+                <ScalarProperty Name="MUS_NM_MRC" ColumnName="MUS_NM_MRC" />
+                <ScalarProperty Name="MUS_CO_MRC" ColumnName="MUS_CO_MRC" />
+                <ScalarProperty Name="MUS_NM_MUN" ColumnName="MUS_NM_MUN" />
+                <ScalarProperty Name="MUS_CO_DES" ColumnName="MUS_CO_DES" />
+                <ScalarProperty Name="MUS_CO_GEO" ColumnName="MUS_CO_GEO" />
+                <ScalarProperty Name="MUS_DE_IND" ColumnName="MUS_DE_IND" />
+                <ScalarProperty Name="MUS_NO_IND" ColumnName="MUS_NO_IND" />
+                <ScalarProperty Name="MUS_VA_SUP" ColumnName="MUS_VA_SUP" />
+                <ScalarProperty Name="MUNIC20131" ColumnName="MUNIC20131" />
+                <ScalarProperty Name="MUNIC2013_" ColumnName="MUNIC2013_" />
+                <ScalarProperty Name="PERIMETER" ColumnName="PERIMETER" />
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ordonnances">
             <EntityTypeMapping TypeName="pccsm_mpoModel.ordonnance">
               <MappingFragment StoreEntitySet="ordonnance">
@@ -2668,7 +3447,9 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
           <EntitySetMapping Name="secteurs">
             <EntityTypeMapping TypeName="pccsm_mpoModel.secteur">
               <MappingFragment StoreEntitySet="secteur">
+                <ScalarProperty Name="area" ColumnName="area" />
                 <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="assujetti_pccsm" ColumnName="assujetti_pccsm" />
                 <ScalarProperty Name="etat" ColumnName="etat" />
                 <ScalarProperty Name="secteur_type" ColumnName="secteur_type" />
                 <ScalarProperty Name="y_max" ColumnName="y_max" />
@@ -2677,7 +3458,6 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
                 <ScalarProperty Name="x_min" ColumnName="x_min" />
                 <ScalarProperty Name="y" ColumnName="y" />
                 <ScalarProperty Name="x" ColumnName="x" />
-                <ScalarProperty Name="geometry" ColumnName="geometry" />
                 <ScalarProperty Name="superficie" ColumnName="superficie" />
                 <ScalarProperty Name="longueur_rive" ColumnName="longueur_rive" />
                 <ScalarProperty Name="secteur_no4" ColumnName="secteur_no4" />
@@ -2687,6 +3467,18 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
                 <ScalarProperty Name="secteur_ltr" ColumnName="secteur_ltr" />
                 <ScalarProperty Name="secteur1" ColumnName="secteur" />
                 <ScalarProperty Name="secteur_id_parent" ColumnName="secteur_id_parent" />
+                <ScalarProperty Name="globalID" ColumnName="globalID" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_coordonnees_epsg_3857">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_coordonnees_epsg_3857">
+              <MappingFragment StoreEntitySet="secteur_coordonnees_epsg_3857">
+                <ScalarProperty Name="C_ymin" ColumnName="_ymin" />
+                <ScalarProperty Name="C_ymax" ColumnName="_ymax" />
+                <ScalarProperty Name="C_xmin" ColumnName="_xmin" />
+                <ScalarProperty Name="C_xmax" ColumnName="_xmax" />
                 <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2701,6 +3493,17 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
                 <ScalarProperty Name="secteur_text" ColumnName="secteur_text" />
                 <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
                 <ScalarProperty Name="secteur_description_id" ColumnName="secteur_description_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteur_epsg3857">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_epsg3857">
+              <MappingFragment StoreEntitySet="secteur_epsg3857">
+                <ScalarProperty Name="y_max" ColumnName="y_max" />
+                <ScalarProperty Name="y_min" ColumnName="y_min" />
+                <ScalarProperty Name="x_max" ColumnName="x_max" />
+                <ScalarProperty Name="x_min" ColumnName="x_min" />
+                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2740,6 +3543,232 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="seg_geo_segment">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_geo_segment">
+              <MappingFragment StoreEntitySet="seg_geo_segment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="mapinfo_id" ColumnName="mapinfo_id" />
+                <ScalarProperty Name="validation" ColumnName="validation" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="date_modification" ColumnName="date_modification" />
+                <ScalarProperty Name="date_creation" ColumnName="date_creation" />
+                <ScalarProperty Name="auteur_segment" ColumnName="auteur_segment" />
+                <ScalarProperty Name="commentaire_en" ColumnName="commentaire_en" />
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="toponymie_locale" ColumnName="toponymie_locale" />
+                <ScalarProperty Name="div_hydrographique" ColumnName="div_hydrographique" />
+                <ScalarProperty Name="code_mun" ColumnName="code_mun" />
+                <ScalarProperty Name="municipalite" ColumnName="municipalite" />
+                <ScalarProperty Name="source_old" ColumnName="source_old" />
+                <ScalarProperty Name="seg_dvd_commentaire" ColumnName="seg_dvd_commentaire" />
+                <ScalarProperty Name="seg_fin" ColumnName="seg_fin" />
+                <ScalarProperty Name="seg_index_fin" ColumnName="seg_index_fin" />
+                <ScalarProperty Name="seg_source_dvd_fin" ColumnName="seg_source_dvd_fin" />
+                <ScalarProperty Name="seg_debut" ColumnName="seg_debut" />
+                <ScalarProperty Name="seg_index_deb" ColumnName="seg_index_deb" />
+                <ScalarProperty Name="seg_source_dvd_deb" ColumnName="seg_source_dvd_deb" />
+                <ScalarProperty Name="seg_fetch" ColumnName="seg_fetch" />
+                <ScalarProperty Name="superficie" ColumnName="superficie" />
+                <ScalarProperty Name="zi_largeur" ColumnName="zi_largeur" />
+                <ScalarProperty Name="seg_longueur" ColumnName="seg_longueur" />
+                <ScalarProperty Name="seg_numero" ColumnName="seg_numero" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_limite_acces">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_limite_acces">
+              <MappingFragment StoreEntitySet="seg_limite_acces">
+                <ScalarProperty Name="commentaire_en" ColumnName="commentaire_en" />
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="limite_acces" ColumnName="limite_acces" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
+                <ScalarProperty Name="id_limite_acces" ColumnName="id_limite_acces" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_milieu">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_milieu">
+              <MappingFragment StoreEntitySet="seg_milieu">
+                <ScalarProperty Name="commentaire_en" ColumnName="commentaire_en" />
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="milieu" ColumnName="milieu" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
+                <ScalarProperty Name="id_milieu" ColumnName="id_milieu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_processus_dominant">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_processus_dominant">
+              <MappingFragment StoreEntitySet="seg_processus_dominant">
+                <ScalarProperty Name="commentaire_en" ColumnName="commentaire_en" />
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="priorite" ColumnName="priorite" />
+                <ScalarProperty Name="processus_dominant" ColumnName="processus_dominant" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
+                <ScalarProperty Name="id_processus_dominant" ColumnName="id_processus_dominant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_segment_usage">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_segment_usage">
+              <MappingFragment StoreEntitySet="seg_segment_usage">
+                <ScalarProperty Name="commentaire_en" ColumnName="commentaire_en" />
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="code_segment_usage" ColumnName="code_segment_usage" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
+                <ScalarProperty Name="id_segment_usage" ColumnName="id_segment_usage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_segrivB_nad83mdb">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_segrivB_nad83mdb">
+              <MappingFragment StoreEntitySet="seg_segrivB_nad83mdb">
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
+                <ScalarProperty Name="ZIS_Sub_Class" ColumnName="ZIS_Sub_Class" />
+                <ScalarProperty Name="Commentaires" ColumnName="Commentaires" />
+                <ScalarProperty Name="Info_sources" ColumnName="Info_sources" />
+                <ScalarProperty Name="Carte_envc" ColumnName="Carte_envc" />
+                <ScalarProperty Name="Carte_mari" ColumnName="Carte_mari" />
+                <ScalarProperty Name="Carte_topo" ColumnName="Carte_topo" />
+                <ScalarProperty Name="Marée_gra" ColumnName="Marée_gra" />
+                <ScalarProperty Name="Marée_moy" ColumnName="Marée_moy" />
+                <ScalarProperty Name="Toponymie_locale" ColumnName="Toponymie_locale" />
+                <ScalarProperty Name="Limites_acces" ColumnName="Limites_acces" />
+                <ScalarProperty Name="persistance" ColumnName="persistance" />
+                <ScalarProperty Name="Processus_dominant" ColumnName="Processus_dominant" />
+                <ScalarProperty Name="Fetch" ColumnName="Fetch" />
+                <ScalarProperty Name="Type_côte" ColumnName="Type_côte" />
+                <ScalarProperty Name="ZII_substrat1" ColumnName="ZII_substrat1" />
+                <ScalarProperty Name="ZII_pente1" ColumnName="ZII_pente1" />
+                <ScalarProperty Name="ZII_pente_substrat" ColumnName="ZII_pente_substrat" />
+                <ScalarProperty Name="ZIM_substrat1" ColumnName="ZIM_substrat1" />
+                <ScalarProperty Name="ZIM_pente1" ColumnName="ZIM_pente1" />
+                <ScalarProperty Name="ZIM_pente_substrat" ColumnName="ZIM_pente_substrat" />
+                <ScalarProperty Name="ZIS_substrat1" ColumnName="ZIS_substrat1" />
+                <ScalarProperty Name="ZIS_pente1" ColumnName="ZIS_pente1" />
+                <ScalarProperty Name="ZIS_pente_substrat" ColumnName="ZIS_pente_substrat" />
+                <ScalarProperty Name="ZSU_pente_substrat" ColumnName="ZSU_pente_substrat" />
+                <ScalarProperty Name="ZSU_relief_acces" ColumnName="ZSU_relief_acces" />
+                <ScalarProperty Name="superficie" ColumnName="superficie" />
+                <ScalarProperty Name="Zi_larg" ColumnName="Zi_larg" />
+                <ScalarProperty Name="Usage" ColumnName="Usage" />
+                <ScalarProperty Name="Seg_long" ColumnName="Seg_long" />
+                <ScalarProperty Name="Div_hydrographique" ColumnName="Div_hydrographique" />
+                <ScalarProperty Name="Région" ColumnName="Région" />
+                <ScalarProperty Name="code_mun" ColumnName="code_mun" />
+                <ScalarProperty Name="Municipalité" ColumnName="Municipalité" />
+                <ScalarProperty Name="Ident" ColumnName="Ident" />
+                <ScalarProperty Name="MAPINFO_ID" ColumnName="MAPINFO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_substrat">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_substrat">
+              <MappingFragment StoreEntitySet="seg_substrat">
+                <ScalarProperty Name="commentaire_en" ColumnName="commentaire_en" />
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="seg_pourcentage" ColumnName="seg_pourcentage" />
+                <ScalarProperty Name="priorite" ColumnName="priorite" />
+                <ScalarProperty Name="milieu" ColumnName="milieu" />
+                <ScalarProperty Name="substrat" ColumnName="substrat" />
+                <ScalarProperty Name="id_zone_cotiere" ColumnName="id_zone_cotiere" />
+                <ScalarProperty Name="id_substrat" ColumnName="id_substrat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_tr_code">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_tr_code">
+              <MappingFragment StoreEntitySet="seg_tr_code">
+                <ScalarProperty Name="parametre" ColumnName="parametre" />
+                <ScalarProperty Name="definition_fr" ColumnName="definition_fr" />
+                <ScalarProperty Name="definition_en" ColumnName="definition_en" />
+                <ScalarProperty Name="descr_en" ColumnName="descr_en" />
+                <ScalarProperty Name="descr_fr" ColumnName="descr_fr" />
+                <ScalarProperty Name="id_code" ColumnName="id_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_tr_interface_label_new">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_tr_interface_label_new">
+              <MappingFragment StoreEntitySet="seg_tr_interface_label_new">
+                <ScalarProperty Name="description_du_contrôle" ColumnName="description du contrôle" />
+                <ScalarProperty Name="utilise_tr_source_dvd" ColumnName="utilise_tr_source_dvd" />
+                <ScalarProperty Name="param_tr_code" ColumnName="param_tr_code" />
+                <ScalarProperty Name="utilise_tr_code" ColumnName="utilise_tr_code" />
+                <ScalarProperty Name="inclure_ds_form" ColumnName="inclure_ds_form" />
+                <ScalarProperty Name="label_en" ColumnName="label_en" />
+                <ScalarProperty Name="label_fr" ColumnName="label_fr" />
+                <ScalarProperty Name="groupe" ColumnName="groupe" />
+                <ScalarProperty Name="onglet" ColumnName="onglet" />
+                <ScalarProperty Name="champ" ColumnName="champ" />
+                <ScalarProperty Name="table" ColumnName="table" />
+                <ScalarProperty Name="id_interface_label" ColumnName="id_interface_label" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_tr_source_dvd">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_tr_source_dvd">
+              <MappingFragment StoreEntitySet="seg_tr_source_dvd">
+                <ScalarProperty Name="commentaire_en" ColumnName="commentaire_en" />
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="date_prise" ColumnName="date_prise" />
+                <ScalarProperty Name="co_auteur" ColumnName="co_auteur" />
+                <ScalarProperty Name="auteur" ColumnName="auteur" />
+                <ScalarProperty Name="titre" ColumnName="titre" />
+                <ScalarProperty Name="code_dvd" ColumnName="code_dvd" />
+                <ScalarProperty Name="id_dvd" ColumnName="id_dvd" />
+                <ScalarProperty Name="id_source_dvd" ColumnName="id_source_dvd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_type_cote">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_type_cote">
+              <MappingFragment StoreEntitySet="seg_type_cote">
+                <ScalarProperty Name="commentaire_en" ColumnName="commentaire_en" />
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="toponyme" ColumnName="toponyme" />
+                <ScalarProperty Name="forme" ColumnName="forme" />
+                <ScalarProperty Name="type_cote" ColumnName="type_cote" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
+                <ScalarProperty Name="id_type_cote" ColumnName="id_type_cote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_zone_cotiere">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.seg_zone_cotiere">
+              <MappingFragment StoreEntitySet="seg_zone_cotiere">
+                <ScalarProperty Name="vegetation" ColumnName="vegetation" />
+                <ScalarProperty Name="substrat_original" ColumnName="substrat_original" />
+                <ScalarProperty Name="classification_substrat" ColumnName="classification_substrat" />
+                <ScalarProperty Name="relief_forme_construction" ColumnName="relief_forme_construction" />
+                <ScalarProperty Name="limite_acces" ColumnName="limite_acces" />
+                <ScalarProperty Name="acces" ColumnName="acces" />
+                <ScalarProperty Name="pente" ColumnName="pente" />
+                <ScalarProperty Name="zone_cotiere" ColumnName="zone_cotiere" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
+                <ScalarProperty Name="id_zone_cotiere" ColumnName="id_zone_cotiere" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="segmentation_resultat">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.segmentation_resultat">
+              <MappingFragment StoreEntitySet="segmentation_resultat">
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="Forme" ColumnName="Forme" />
+                <ScalarProperty Name="Type_cote" ColumnName="Type_cote" />
+                <ScalarProperty Name="Pente" ColumnName="Pente" />
+                <ScalarProperty Name="Substrat" ColumnName="Substrat" />
+                <ScalarProperty Name="zone_cotiere" ColumnName="zone_cotiere" />
+                <ScalarProperty Name="Numero_segment" ColumnName="Numero_segment" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="signalisations">
             <EntityTypeMapping TypeName="pccsm_mpoModel.signalisation">
               <MappingFragment StoreEntitySet="signalisation">
@@ -2758,6 +3787,17 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="spatial_ref_sys">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.spatial_ref_sys">
+              <MappingFragment StoreEntitySet="spatial_ref_sys">
+                <ScalarProperty Name="proj4text" ColumnName="proj4text" />
+                <ScalarProperty Name="srtext" ColumnName="srtext" />
+                <ScalarProperty Name="auth_srid" ColumnName="auth_srid" />
+                <ScalarProperty Name="auth_name" ColumnName="auth_name" />
+                <ScalarProperty Name="srid" ColumnName="srid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="pccsm_mpoModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -2769,55 +3809,11 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="db_tournee">
-            <EntityTypeMapping TypeName="pccsm_mpoModel.db_tournee">
-              <MappingFragment StoreEntitySet="db_tournee">
-                <ScalarProperty Name="approbation_date" ColumnName="approbation_date" />
-                <ScalarProperty Name="approbation" ColumnName="approbation" />
-                <ScalarProperty Name="validation_datetime" ColumnName="validation_datetime" />
-                <ScalarProperty Name="analyse_datetime" ColumnName="analyse_datetime" />
-                <ScalarProperty Name="validation" ColumnName="validation" />
-                <ScalarProperty Name="laboratoire_operateur_id" ColumnName="laboratoire_operateur_id" />
-                <ScalarProperty Name="cf_methode_analytique" ColumnName="cf_methode_analytique" />
-                <ScalarProperty Name="notification" ColumnName="notification" />
-                <ScalarProperty Name="date_echantillonnage" ColumnName="date_echantillonnage" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="date_creation" ColumnName="date_creation" />
-                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
-                <ScalarProperty Name="consultant" ColumnName="consultant" />
-                <ScalarProperty Name="vague_hauteur_fin" ColumnName="vague_hauteur_fin" />
-                <ScalarProperty Name="vague_hauteur" ColumnName="vague_hauteur" />
-                <ScalarProperty Name="niveau_eau" ColumnName="niveau_eau" />
-                <ScalarProperty Name="mer_etat_fin" ColumnName="mer_etat_fin" />
-                <ScalarProperty Name="mer_etat" ColumnName="mer_etat" />
-                <ScalarProperty Name="couvert_nuage_fin" ColumnName="couvert_nuage_fin" />
-                <ScalarProperty Name="couvert_nuage" ColumnName="couvert_nuage" />
-                <ScalarProperty Name="vent_direction_fin" ColumnName="vent_direction_fin" />
-                <ScalarProperty Name="vent_direction_debut" ColumnName="vent_direction_debut" />
-                <ScalarProperty Name="v_vent_fin" ColumnName="v_vent_fin" />
-                <ScalarProperty Name="v_vent_deb" ColumnName="v_vent_deb" />
-                <ScalarProperty Name="t_air_fin" ColumnName="t_air_fin" />
-                <ScalarProperty Name="t_air_deb" ColumnName="t_air_deb" />
-                <ScalarProperty Name="precipit_3jant" ColumnName="precipit_3jant" />
-                <ScalarProperty Name="precipit" ColumnName="precipit" />
-                <ScalarProperty Name="marnage" ColumnName="marnage" />
-                <ScalarProperty Name="maree_me" ColumnName="maree_me" />
-                <ScalarProperty Name="maree_ve" ColumnName="maree_ve" />
-                <ScalarProperty Name="pmaree_fin" ColumnName="pmaree_fin" />
-                <ScalarProperty Name="pmaree_deb" ColumnName="pmaree_deb" />
-                <ScalarProperty Name="maree_principale" ColumnName="maree_principale" />
-                <ScalarProperty Name="maree_princ" ColumnName="maree_princ" />
-                <ScalarProperty Name="hre_maree_b" ColumnName="hre_maree_b" />
-                <ScalarProperty Name="hre_maree_h" ColumnName="hre_maree_h" />
-                <ScalarProperty Name="temp_glace_recep" ColumnName="temp_glace_recep" />
-                <ScalarProperty Name="hre_recep_lab" ColumnName="hre_recep_lab" />
-                <ScalarProperty Name="hre_fin" ColumnName="hre_fin" />
-                <ScalarProperty Name="hre_deb" ColumnName="hre_deb" />
-                <ScalarProperty Name="jour" ColumnName="jour" />
-                <ScalarProperty Name="mois" ColumnName="mois" />
-                <ScalarProperty Name="annee" ColumnName="annee" />
-                <ScalarProperty Name="tournee" ColumnName="tournee" />
-                <ScalarProperty Name="ID_Tournee" ColumnName="ID_Tournee" />
+          <EntitySetMapping Name="ligne_5km_cote">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.ligne_5km_cote">
+              <MappingFragment StoreEntitySet="ligne_5km_cote">
+                <ScalarProperty Name="feature_id" ColumnName="feature_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2829,79 +3825,55 @@ FROM [dbo].[secteur_description_20140210] AS [secteur_description_20140210]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="point_legal_20131118">
-            <EntityTypeMapping TypeName="pccsm_mpoModel.point_legal_20131118">
-              <MappingFragment StoreEntitySet="point_legal_20131118">
-                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
-                <ScalarProperty Name="etat" ColumnName="etat" />
+          <EntitySetMapping Name="segments">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.segment">
+              <MappingFragment StoreEntitySet="segment">
                 <ScalarProperty Name="y" ColumnName="y" />
                 <ScalarProperty Name="x" ColumnName="x" />
-                <ScalarProperty Name="point_legal_id" ColumnName="point_legal_id" />
+                <ScalarProperty Name="validation" ColumnName="validation" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="date_modification" ColumnName="date_modification" />
+                <ScalarProperty Name="date_creation" ColumnName="date_creation" />
+                <ScalarProperty Name="auteur_segment" ColumnName="auteur_segment" />
+                <ScalarProperty Name="commentaire_en" ColumnName="commentaire_en" />
+                <ScalarProperty Name="commentaire_fr" ColumnName="commentaire_fr" />
+                <ScalarProperty Name="toponymie_locale" ColumnName="toponymie_locale" />
+                <ScalarProperty Name="div_hydrographique" ColumnName="div_hydrographique" />
+                <ScalarProperty Name="code_mun" ColumnName="code_mun" />
+                <ScalarProperty Name="municipalite" ColumnName="municipalite" />
+                <ScalarProperty Name="source_old" ColumnName="source_old" />
+                <ScalarProperty Name="seg_dvd_commentaire" ColumnName="seg_dvd_commentaire" />
+                <ScalarProperty Name="seg_fin" ColumnName="seg_fin" />
+                <ScalarProperty Name="seg_index_fin" ColumnName="seg_index_fin" />
+                <ScalarProperty Name="seg_source_dvd_fin" ColumnName="seg_source_dvd_fin" />
+                <ScalarProperty Name="seg_debut" ColumnName="seg_debut" />
+                <ScalarProperty Name="seg_index_deb" ColumnName="seg_index_deb" />
+                <ScalarProperty Name="seg_source_dvd_deb" ColumnName="seg_source_dvd_deb" />
+                <ScalarProperty Name="seg_fetch" ColumnName="seg_fetch" />
+                <ScalarProperty Name="superficie" ColumnName="superficie" />
+                <ScalarProperty Name="zi_largeur" ColumnName="zi_largeur" />
+                <ScalarProperty Name="seg_longueur" ColumnName="seg_longueur" />
+                <ScalarProperty Name="seg_numero" ColumnName="seg_numero" />
+                <ScalarProperty Name="id_segment" ColumnName="id_segment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="secteur_20131118">
-            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_20131118">
-              <MappingFragment StoreEntitySet="secteur_20131118">
-                <ScalarProperty Name="description" ColumnName="description" />
+          <EntitySetMapping Name="temp_secteur">
+            <EntityTypeMapping TypeName="pccsm_mpoModel.temp_secteur">
+              <MappingFragment StoreEntitySet="temp_secteur">
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="regionen" ColumnName="regionen" />
+                <ScalarProperty Name="regionfr" ColumnName="regionfr" />
                 <ScalarProperty Name="etat" ColumnName="etat" />
                 <ScalarProperty Name="secteur_type" ColumnName="secteur_type" />
-                <ScalarProperty Name="y_max" ColumnName="y_max" />
-                <ScalarProperty Name="x_max" ColumnName="x_max" />
-                <ScalarProperty Name="y_min" ColumnName="y_min" />
-                <ScalarProperty Name="x_min" ColumnName="x_min" />
-                <ScalarProperty Name="y" ColumnName="y" />
-                <ScalarProperty Name="x" ColumnName="x" />
-                <ScalarProperty Name="geometry" ColumnName="geometry" />
-                <ScalarProperty Name="superficie" ColumnName="superficie" />
-                <ScalarProperty Name="longueur_rive" ColumnName="longueur_rive" />
-                <ScalarProperty Name="secteur_no4" ColumnName="secteur_no4" />
-                <ScalarProperty Name="secteur_no3" ColumnName="secteur_no3" />
-                <ScalarProperty Name="secteur_no2" ColumnName="secteur_no2" />
-                <ScalarProperty Name="secteur_no1" ColumnName="secteur_no1" />
-                <ScalarProperty Name="secteur_ltr" ColumnName="secteur_ltr" />
+                <ScalarProperty Name="legalen" ColumnName="legalen" />
+                <ScalarProperty Name="legalfr" ColumnName="legalfr" />
+                <ScalarProperty Name="genfr" ColumnName="genfr" />
+                <ScalarProperty Name="genen" ColumnName="genen" />
+                <ScalarProperty Name="nomen" ColumnName="nomen" />
+                <ScalarProperty Name="nomfr" ColumnName="nomfr" />
                 <ScalarProperty Name="secteur" ColumnName="secteur" />
-                <ScalarProperty Name="secteur_id_parent" ColumnName="secteur_id_parent" />
                 <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="secteur_description_20131021">
-            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_description_20131021">
-              <MappingFragment StoreEntitySet="secteur_description_20131021">
-                <ScalarProperty Name="modification_date" ColumnName="modification_date" />
-                <ScalarProperty Name="etat" ColumnName="etat" />
-                <ScalarProperty Name="parametre" ColumnName="parametre" />
-                <ScalarProperty Name="langue" ColumnName="langue" />
-                <ScalarProperty Name="secteur_text" ColumnName="secteur_text" />
-                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
-                <ScalarProperty Name="secteur_description_id" ColumnName="secteur_description_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="secteur_description_20131118">
-            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_description_20131118">
-              <MappingFragment StoreEntitySet="secteur_description_20131118">
-                <ScalarProperty Name="modification_date" ColumnName="modification_date" />
-                <ScalarProperty Name="etat" ColumnName="etat" />
-                <ScalarProperty Name="parametre" ColumnName="parametre" />
-                <ScalarProperty Name="langue" ColumnName="langue" />
-                <ScalarProperty Name="secteur_text" ColumnName="secteur_text" />
-                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
-                <ScalarProperty Name="secteur_description_id" ColumnName="secteur_description_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="secteur_description_20140210">
-            <EntityTypeMapping TypeName="pccsm_mpoModel.secteur_description_20140210">
-              <MappingFragment StoreEntitySet="secteur_description_20140210">
-                <ScalarProperty Name="modification_date" ColumnName="modification_date" />
-                <ScalarProperty Name="etat" ColumnName="etat" />
-                <ScalarProperty Name="parametre" ColumnName="parametre" />
-                <ScalarProperty Name="langue" ColumnName="langue" />
-                <ScalarProperty Name="secteur_text" ColumnName="secteur_text" />
-                <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
-                <ScalarProperty Name="secteur_description_id" ColumnName="secteur_description_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

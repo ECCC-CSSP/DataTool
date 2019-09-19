@@ -88,6 +88,11 @@
             this.textBoxStartSubsectorName = new System.Windows.Forms.TextBox();
             this.labelStartSubsectorName = new System.Windows.Forms.Label();
             this.butViewSubsectorNames = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button14 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.SuspendLayout();
@@ -665,11 +670,59 @@
             this.butViewSubsectorNames.UseVisualStyleBackColor = true;
             this.butViewSubsectorNames.Click += new System.EventHandler(this.ButViewSubsectorNames_Click);
             // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(538, 320);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(121, 23);
+            this.button12.TabIndex = 81;
+            this.button12.Text = "Test BC Sample Data";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.Button12_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(29, 556);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(121, 23);
+            this.button13.TabIndex = 81;
+            this.button13.Text = "Testing Date UTC";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.Button13_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(29, 604);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(151, 20);
+            this.textBox1.TabIndex = 221;
+            this.textBox1.Text = "2019-05-07T16:34:12";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(212, 605);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(145, 20);
+            this.textBox2.TabIndex = 221;
+            this.textBox2.Text = "yyyy-MM-ddThh:mm:ss";
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(168, 556);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(121, 23);
+            this.button14.TabIndex = 81;
+            this.button14.Text = "Test Date Format";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.Button14_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.butCalculateMWQMSiteVariability);
@@ -710,6 +763,9 @@
             this.Controls.Add(this.butLoadSamplesQC);
             this.Controls.Add(this.butLoadStationQC);
             this.Controls.Add(this.butLoadSanitationBC);
+            this.Controls.Add(this.button14);
+            this.Controls.Add(this.button13);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.butViewSubsectorNames);
             this.Controls.Add(this.butCheckBCSamples);
             this.Controls.Add(this.butCheckBCSubsectors);
@@ -799,6 +855,11 @@
         private System.Windows.Forms.TextBox textBoxStartSubsectorName;
         private System.Windows.Forms.Label labelStartSubsectorName;
         private System.Windows.Forms.Button butViewSubsectorNames;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button14;
     }
 }
 

@@ -5,38 +5,60 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="66c8e9e8f1f34fe783e1b49752e0664c" Name="Diagram1">
-        <EntityTypeShape EntityType="pccsm_mpoModel.clause" Width="1.5" PointX="10.5" PointY="19" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.clause_espece" Width="1.5" PointX="12.75" PointY="23.625" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.clause_interdiction" Width="1.5" PointX="12.75" PointY="17.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.clause_methode" Width="1.5" PointX="15.75" PointY="20.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.clause_periode" Width="1.5" PointX="12.75" PointY="20.5" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.clause_secteur" Width="1.5" PointX="12.75" PointY="27.5" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.codification" Width="1.5" PointX="0.75" PointY="18.5" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.codification_description" Width="1.5" PointX="3" PointY="32.625" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.contact" Width="1.5" PointX="3" PointY="12.125" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.contact_communication" Width="1.5" PointX="5.25" PointY="17.375" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.contact_groupe" Width="1.5" PointX="5.25" PointY="14.5" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause" Width="1.5" PointX="6" PointY="14.5" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_espece" Width="1.5" PointX="11.25" PointY="18" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_interdiction" Width="1.5" PointX="8.25" PointY="21" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_methode" Width="1.5" PointX="8.25" PointY="9" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_periode" Width="1.5" PointX="13.25" PointY="11.875" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.clause_secteur" Width="1.5" PointX="13.25" PointY="15" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.codification" Width="1.5" PointX="0.75" PointY="13.25" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.codification_description" Width="1.5" PointX="3" PointY="11.625" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.contact" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.contact_communication" Width="1.5" PointX="5.25" PointY="18.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.contact_groupe" Width="1.5" PointX="8.25" PointY="17.875" />
         <EntityTypeShape EntityType="pccsm_mpoModel.db_histo_operation" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.dtproperty" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.groupe_secteur" Width="1.5" PointX="5.25" PointY="29.375" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.historique_operation" Width="1.5" PointX="10.5" PointY="13.125" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.language" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.ordonnance" Width="1.5" PointX="8.25" PointY="16.25" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.point_legal" Width="1.5" PointX="3" PointY="18.625" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.secteur" Width="1.5" PointX="3" PointY="25.625" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_description" Width="1.5" PointX="5.25" PointY="26" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_historique" Width="1.5" PointX="2.75" PointY="4.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_point_archive" Width="1.5" PointX="4.75" PointY="3.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_point_legal" Width="1.5" PointX="5.25" PointY="22.125" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.signalisation" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.sysdiagram" Width="1.5" PointX="6.75" PointY="5.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.db_tournee" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.organisation" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.point_legal_20131118" Width="1.5" PointX="2.75" PointY="8.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_20131118" Width="1.5" PointX="5.75" PointY="8.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_description_20131021" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_description_20131118" Width="1.5" PointX="10.75" PointY="4.75" />
-        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_description_20140210" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.demande_de_site_region" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.echantillonnage_microbiol" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.echantillonnage_toxicite" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.geo_limite_5km_rive_l_3857" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.geo_limite_5km_rive_l_4269" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.geo_pccsm_acia_station" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.geo_segment_l" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.geometry_columns" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.groupe_secteur" Width="1.5" PointX="13.25" PointY="5.25" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.historique_operation" Width="1.5" PointX="10.5" PointY="12.5" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.language" Width="1.5" PointX="15.75" PointY="6.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.mrc" Width="1.5" PointX="15.75" PointY="9.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.munic" Width="1.5" PointX="15.75" PointY="14.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.ordonnance" Width="1.5" PointX="8.25" PointY="12.625" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.point_legal" Width="1.5" PointX="11" PointY="2" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur" Width="1.5" PointX="11" PointY="4.875" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_coordonnees_epsg_3857" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_description" Width="1.5" PointX="13.25" PointY="21.125" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_epsg3857" Width="1.5" PointX="17.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_historique" Width="1.5" PointX="17.75" PointY="6.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_point_archive" Width="1.5" PointX="17.75" PointY="10.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.secteur_point_legal" Width="1.5" PointX="13.25" PointY="9" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_geo_segment" Width="1.5" PointX="17.75" PointY="14.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_limite_acces" Width="1.5" PointX="19.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_milieu" Width="1.5" PointX="19.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_processus_dominant" Width="1.5" PointX="19.75" PointY="6.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_segment_usage" Width="1.5" PointX="19.75" PointY="9.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_segrivB_nad83mdb" Width="1.5" PointX="19.75" PointY="12.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_substrat" Width="1.5" PointX="21.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_tr_code" Width="1.5" PointX="21.75" PointY="4.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_tr_interface_label_new" Width="1.5" PointX="21.75" PointY="7.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_tr_source_dvd" Width="1.5" PointX="21.75" PointY="12.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_type_cote" Width="1.5" PointX="21.75" PointY="16.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.seg_zone_cotiere" Width="1.5" PointX="19.75" PointY="21.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.segmentation_resultat" Width="1.5" PointX="21.75" PointY="20.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.signalisation" Width="1.5" PointX="15.75" PointY="22.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.spatial_ref_sys" Width="1.5" PointX="23.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.sysdiagram" Width="1.5" PointX="23.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.ligne_5km_cote" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.organisation" Width="1.5" PointX="23.75" PointY="6.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.segment" Width="1.5" PointX="23.75" PointY="9.75" />
+        <EntityTypeShape EntityType="pccsm_mpoModel.temp_secteur" Width="1.5" PointX="23.75" PointY="16.75" />
         <AssociationConnector Association="pccsm_mpoModel.FK_clause_codification" />
         <AssociationConnector Association="pccsm_mpoModel.FK_clause_interdiction_clause" />
         <AssociationConnector Association="pccsm_mpoModel.FK_clause_methode_clause" />
@@ -52,7 +74,6 @@
         <AssociationConnector Association="pccsm_mpoModel.FK_codification_codification" />
         <AssociationConnector Association="pccsm_mpoModel.FK_codification_description_codification" />
         <AssociationConnector Association="pccsm_mpoModel.FK_codification_description_codification2" />
-        <AssociationConnector Association="pccsm_mpoModel.FK_codification_description_codification3" />
         <AssociationConnector Association="pccsm_mpoModel.FK_contact_codification" />
         <AssociationConnector Association="pccsm_mpoModel.FK_contact_codification1" />
         <AssociationConnector Association="pccsm_mpoModel.FK_contact_codification2" />
@@ -62,9 +83,6 @@
         <AssociationConnector Association="pccsm_mpoModel.FK_ordonnance_codification" />
         <AssociationConnector Association="pccsm_mpoModel.FK_ordonnance_codification1" />
         <AssociationConnector Association="pccsm_mpoModel.FK_ordonnance_codification2" />
-        <AssociationConnector Association="pccsm_mpoModel.FK_point_legal_codification" />
-        <AssociationConnector Association="pccsm_mpoModel.FK_secteur_codification1" />
-        <AssociationConnector Association="pccsm_mpoModel.FK_secteur_codification2" />
         <AssociationConnector Association="pccsm_mpoModel.FK_contact_communication_contact" />
         <AssociationConnector Association="pccsm_mpoModel.FK_contact_groupe_contact" />
         <AssociationConnector Association="pccsm_mpoModel.FK_ordonnance_contact" />
