@@ -93,8 +93,13 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.butCompareQCAndCSSP = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBoxStatus
@@ -444,7 +449,7 @@
             // 
             // button41
             // 
-            this.button41.Location = new System.Drawing.Point(80, 338);
+            this.button41.Location = new System.Drawing.Point(15, 293);
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(100, 23);
             this.button41.TabIndex = 207;
@@ -578,16 +583,16 @@
             // 
             // textBoxProvinceName
             // 
-            this.textBoxProvinceName.Location = new System.Drawing.Point(472, 407);
+            this.textBoxProvinceName.Location = new System.Drawing.Point(110, 335);
             this.textBoxProvinceName.Name = "textBoxProvinceName";
-            this.textBoxProvinceName.Size = new System.Drawing.Size(162, 20);
+            this.textBoxProvinceName.Size = new System.Drawing.Size(100, 20);
             this.textBoxProvinceName.TabIndex = 216;
             this.textBoxProvinceName.Text = "New Brunswick";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(360, 410);
+            this.label7.Location = new System.Drawing.Point(24, 339);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 13);
             this.label7.TabIndex = 217;
@@ -595,7 +600,7 @@
             // 
             // butCalculateMWQMSiteVariability
             // 
-            this.butCalculateMWQMSiteVariability.Location = new System.Drawing.Point(363, 439);
+            this.butCalculateMWQMSiteVariability.Location = new System.Drawing.Point(27, 368);
             this.butCalculateMWQMSiteVariability.Name = "butCalculateMWQMSiteVariability";
             this.butCalculateMWQMSiteVariability.Size = new System.Drawing.Size(183, 23);
             this.butCalculateMWQMSiteVariability.TabIndex = 218;
@@ -635,17 +640,17 @@
             // 
             // butCheckBCSamples
             // 
-            this.butCheckBCSamples.Location = new System.Drawing.Point(898, 267);
+            this.butCheckBCSamples.Location = new System.Drawing.Point(23, 36);
             this.butCheckBCSamples.Name = "butCheckBCSamples";
             this.butCheckBCSamples.Size = new System.Drawing.Size(121, 23);
             this.butCheckBCSamples.TabIndex = 81;
-            this.butCheckBCSamples.Text = "CheckBCSamples";
+            this.butCheckBCSamples.Text = "Check BC Samples";
             this.butCheckBCSamples.UseVisualStyleBackColor = true;
             this.butCheckBCSamples.Click += new System.EventHandler(this.ButCheckBCSamples_Click);
             // 
             // textBoxStartSubsectorName
             // 
-            this.textBoxStartSubsectorName.Location = new System.Drawing.Point(1001, 296);
+            this.textBoxStartSubsectorName.Location = new System.Drawing.Point(126, 65);
             this.textBoxStartSubsectorName.Name = "textBoxStartSubsectorName";
             this.textBoxStartSubsectorName.Size = new System.Drawing.Size(67, 20);
             this.textBoxStartSubsectorName.TabIndex = 212;
@@ -654,7 +659,7 @@
             // labelStartSubsectorName
             // 
             this.labelStartSubsectorName.AutoSize = true;
-            this.labelStartSubsectorName.Location = new System.Drawing.Point(884, 303);
+            this.labelStartSubsectorName.Location = new System.Drawing.Point(9, 72);
             this.labelStartSubsectorName.Name = "labelStartSubsectorName";
             this.labelStartSubsectorName.Size = new System.Drawing.Size(111, 13);
             this.labelStartSubsectorName.TabIndex = 18;
@@ -662,17 +667,17 @@
             // 
             // butViewSubsectorNames
             // 
-            this.butViewSubsectorNames.Location = new System.Drawing.Point(739, 267);
+            this.butViewSubsectorNames.Location = new System.Drawing.Point(23, 100);
             this.butViewSubsectorNames.Name = "butViewSubsectorNames";
             this.butViewSubsectorNames.Size = new System.Drawing.Size(121, 23);
             this.butViewSubsectorNames.TabIndex = 81;
-            this.butViewSubsectorNames.Text = "ViewSubsectorNames";
+            this.butViewSubsectorNames.Text = "View BC Subsector Names";
             this.butViewSubsectorNames.UseVisualStyleBackColor = true;
-            this.butViewSubsectorNames.Click += new System.EventHandler(this.ButViewSubsectorNames_Click);
+            this.butViewSubsectorNames.Click += new System.EventHandler(this.ButViewBCSubsectorNames_Click);
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(538, 320);
+            this.button12.Location = new System.Drawing.Point(12, 134);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(121, 23);
             this.button12.TabIndex = 81;
@@ -716,11 +721,47 @@
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.Button14_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.butViewSubsectorNames);
+            this.groupBox1.Controls.Add(this.labelStartSubsectorName);
+            this.groupBox1.Controls.Add(this.butCheckBCSamples);
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Controls.Add(this.textBoxStartSubsectorName);
+            this.groupBox1.Location = new System.Drawing.Point(275, 314);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(205, 178);
+            this.groupBox1.TabIndex = 222;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "New BC Import and Test Tool";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.butCompareQCAndCSSP);
+            this.groupBox2.Location = new System.Drawing.Point(504, 314);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(230, 178);
+            this.groupBox2.TabIndex = 223;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "New QC Import and Test Tool";
+            // 
+            // butCompareQCAndCSSP
+            // 
+            this.butCompareQCAndCSSP.Location = new System.Drawing.Point(30, 19);
+            this.butCompareQCAndCSSP.Name = "butCompareQCAndCSSP";
+            this.butCompareQCAndCSSP.Size = new System.Drawing.Size(163, 23);
+            this.butCompareQCAndCSSP.TabIndex = 0;
+            this.butCompareQCAndCSSP.Text = "Compare QC and CSSP";
+            this.butCompareQCAndCSSP.UseVisualStyleBackColor = true;
+            this.butCompareQCAndCSSP.Click += new System.EventHandler(this.ButCompareQCAndCSSP_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button11);
@@ -731,7 +772,6 @@
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.textBoxStartSubsectorName);
             this.Controls.Add(this.textBoxToTVItemID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
@@ -765,9 +805,6 @@
             this.Controls.Add(this.butLoadSanitationBC);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.butViewSubsectorNames);
-            this.Controls.Add(this.butCheckBCSamples);
             this.Controls.Add(this.butCheckBCSubsectors);
             this.Controls.Add(this.butLoadRunsBC);
             this.Controls.Add(this.butLoadSamplesBC);
@@ -778,7 +815,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.labelStartSubsectorName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panelStatus);
             this.Controls.Add(this.richTextBoxStatus);
@@ -789,6 +825,9 @@
             this.panelStatus.PerformLayout();
             this.panelStatus2.ResumeLayout(false);
             this.panelStatus2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -860,6 +899,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button butCompareQCAndCSSP;
     }
 }
 

@@ -21,6 +21,8 @@ namespace ImportByFunction
             if (Cancel) return false;
 
             TVItemService tvItemServiceR = new TVItemService(LanguageEnum.en, user);
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
 
             TVItemModel tvItemModelRoot = tvItemServiceR.GetRootTVItemModelDB();
             if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return false;
@@ -41,7 +43,7 @@ namespace ImportByFunction
             lblStatus.Text = "Starting ... CreateRunsQC";
             Application.DoEvents();
 
-            int StartQCCreateRunsQC = int.Parse(textBoxQCCreateRunsQC.Text);          
+            int StartQCCreateRunsQC = int.Parse(textBoxQCCreateRunsQC.Text);
 
             List<Obs> obsTypeList = new List<Obs>();
             List<string> sectorList = new List<string>();
@@ -57,20 +59,40 @@ namespace ImportByFunction
                                 select c).ToList<TempData.QCSubsectorAssociation>();
             }
 
+            List<PCCSM.geo_stations_p> staQCListAll = new List<PCCSM.geo_stations_p>();
             using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
             {
+
+                staQCListAll = (from c in dbQC.geo_stations_p
+                                where (c.x != null && c.y != null)
+                                && c.secteur != null
+                                select c).ToList<PCCSM.geo_stations_p>();
+
                 sectorList = (from s in dbQC.geo_stations_p
                               where s.secteur != null
+                              orderby s.secteur
                               select s.secteur).Distinct().ToList();
             }
 
-            List<string> sectorOrderedList = (from c in sectorList
-                                              orderby c
-                                              select c).ToList();
+            List<TVItemModel> tvItemMWQMSiteAll = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMSite);
+
+            List<TVItemModel> tvItemMWQMRunAll = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMRun);
+
+            List<PCCSM.db_mesure> dbMesureListAll = new List<PCCSM.db_mesure>();
+            List<PCCSM.db_tournee> dbtAll = new List<PCCSM.db_tournee>();
+
+            using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
+            {
+                dbMesureListAll = (from m in dbQC.db_mesure
+                                   select m).ToList<PCCSM.db_mesure>();
+
+                dbtAll = (from t in dbQC.db_tournee
+                          select t).ToList();
+            }
 
             int Count = 0;
-            int TotalCount = sectorOrderedList.Count();
-            foreach (string sec in sectorOrderedList)
+            int TotalCount = sectorList.Count();
+            foreach (string sec in sectorList)
             {
                 if (Cancel) return false;
 
@@ -95,22 +117,22 @@ namespace ImportByFunction
                     continue;
                 }
 
-                TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-
                 string TVText = qcSubsectAss.SubsectorText;
-                TVItemModel tvItemModelSubsector = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProv.TVItemID, TVText, TVTypeEnum.Subsector);
-                if (!CheckModelOK<TVItemModel>(tvItemModelSubsector)) return false;
+                TVItemModel tvItemModelSubsector = (from c in tvItemModelSubsectorList
+                                                    where c.TVText.StartsWith(TVText)
+                                                    select c).FirstOrDefault();
 
-                List<PCCSM.geo_stations_p> staQCList = new List<PCCSM.geo_stations_p>();
-                using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
+                if (tvItemModelSubsector == null)
                 {
-
-                    staQCList = (from c in dbQC.geo_stations_p
-                                 where c.secteur == sec
-                                 && (c.x != null && c.y != null)
-                                 && c.secteur != null
-                                 select c).ToList<PCCSM.geo_stations_p>();
+                    richTextBoxStatus.AppendText($"could not find tvItemmodelSubsector [{TVText}]\r\n");
+                    return false;
                 }
+
+                List<MWQMRunModel> mwqmRunModelAll = mwqmRunService.GetMWQMRunModelListWithSubsectorTVItemIDDB(tvItemModelSubsector.TVItemID);
+
+                List<PCCSM.geo_stations_p> staQCList = (from c in staQCListAll
+                                                        where c.secteur == sec
+                                                        select c).ToList<PCCSM.geo_stations_p>();
 
                 int countSta = 0;
                 int totalCountsta = staQCList.Count;
@@ -133,17 +155,20 @@ namespace ImportByFunction
                         }
                         string MWQMSiteTVText = "0000".Substring(0, 4 - geoStat.station.ToString().Length) + geoStat.station.ToString();
 
-                        TVItemModel tvItemMWQMSiteExist = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelSubsector.TVItemID, MWQMSiteTVText, TVTypeEnum.MWQMSite);
-                        if (!string.IsNullOrWhiteSpace(tvItemMWQMSiteExist.Error))
+                        TVItemModel tvItemMWQMSiteExist = (from c in tvItemMWQMSiteAll
+                                                           where c.ParentID == tvItemModelSubsector.TVItemID
+                                                           && c.TVText == MWQMSiteTVText
+                                                           && c.TVType == TVTypeEnum.MWQMSite
+                                                           select c).FirstOrDefault();
+
+                        if (tvItemMWQMSiteExist == null)
                         {
                             tvItemMWQMSiteExist = tvItemService.PostAddChildTVItemDB(tvItemModelSubsector.TVItemID, MWQMSiteTVText, TVTypeEnum.MWQMSite);
                             if (!CheckModelOK<TVItemModel>(tvItemMWQMSiteExist)) return false;
                         }
 
-                        List<PCCSM.db_mesure> dbMesureList = (from s in dbQC.geo_stations_p
-                                                              from m in dbQC.db_mesure
-                                                              where s.id_geo_station_p == m.id_geo_station_p
-                                                              && s.id_geo_station_p == geoStat.id_geo_station_p
+                        List<PCCSM.db_mesure> dbMesureList = (from m in dbMesureListAll
+                                                              where m.id_geo_station_p == geoStat.id_geo_station_p
                                                               select m).ToList<PCCSM.db_mesure>();
 
 
@@ -153,7 +178,7 @@ namespace ImportByFunction
                             Application.DoEvents();
 
                             // getting Runs
-                            PCCSM.db_tournee dbt = (from t in dbQC.db_tournee
+                            PCCSM.db_tournee dbt = (from t in dbtAll
                                                     where t.ID_Tournee == dbm.id_tournee
                                                     select t).FirstOrDefault();
 
@@ -189,8 +214,6 @@ namespace ImportByFunction
 
                             DateTime DateRun = new DateTime(((DateTime)SampDateTime).Year, ((DateTime)SampDateTime).Month, ((DateTime)SampDateTime).Day);
 
-                            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
-
                             MWQMRunModel mwqmRunModelNew = new MWQMRunModel()
                             {
                                 SubsectorTVItemID = tvItemModelSubsector.TVItemID,
@@ -199,14 +222,31 @@ namespace ImportByFunction
                                 RunNumber = 1,
                             };
 
-                            MWQMRunModel wqmRunModelExist = mwqmRunService.GetMWQMRunModelExistDB(mwqmRunModelNew);
-                            if (!string.IsNullOrWhiteSpace(wqmRunModelExist.Error))
+                            MWQMRunModel wqmRunModelExist = (from c in mwqmRunModelAll
+                                                             where c.DateTime_Local == DateRun
+                                                             && c.RunSampleType == SampleTypeEnum.Routine
+                                                             && c.RunNumber == 1
+                                                             select c).FirstOrDefault();
+
+                            if (wqmRunModelExist == null)
                             {
                                 string TVTextRun = DateRun.Year.ToString()
                                     + " " + (DateRun.Month > 9 ? DateRun.Month.ToString() : "0" + DateRun.Month.ToString())
                                     + " " + (DateRun.Day > 9 ? DateRun.Day.ToString() : "0" + DateRun.Day.ToString());
-                                TVItemModel tvItemModelRunRet = tvItemService.PostAddChildTVItemDB(tvItemModelSubsector.TVItemID, TVTextRun, TVTypeEnum.MWQMRun);
-                                if (!CheckModelOK<TVItemModel>(tvItemModelRunRet)) return false;
+
+                                TVItemModel tvItemModelRunRet = (from c in tvItemMWQMRunAll
+                                                                 where c.ParentID == tvItemModelSubsector.TVItemID
+                                                                 && c.TVText == TVTextRun
+                                                                 select c).FirstOrDefault();
+
+                                if (tvItemModelRunRet == null)
+                                {
+                                    richTextBoxStatus.AppendText($"{tvItemModelSubsector.TVText} --- { TVTextRun } adding TVText\r\n");
+                                    tvItemModelRunRet = tvItemService.PostAddChildTVItemDB(tvItemModelSubsector.TVItemID, TVTextRun, TVTypeEnum.MWQMRun);
+                                    if (!CheckModelOK<TVItemModel>(tvItemModelRunRet)) return false;
+
+                                    tvItemMWQMRunAll.Add(tvItemModelRunRet);
+                                }
 
                                 // add the run in the DB
                                 mwqmRunModelNew.MWQMRunTVItemID = tvItemModelRunRet.TVItemID;
@@ -338,23 +378,6 @@ namespace ImportByFunction
                                 }
 
 
-                                //List<UseOfSiteModel> useOfSiteModelList = useOfSiteService.GetUseOfSiteModelListWithSiteTypeAndSubsectorTVItemIDDB(SiteTypeEnum.Tide, tvItemModelSubsector.TVItemID);
-                                //if (useOfSiteModelList.Count == 0)
-                                //{
-                                //    richTextBoxStatus.AppendText("Could not find UseOfTideSite for subsector " + tvItemModelSubsector.TVText + "\r\n");
-                                //    return false;
-                                //}
-
-                                //TideDataValueModel tideDataValueModelNew = new TideDataValueModel()
-                                //{
-                                //    TideSiteTVItemID = useOfSiteModelList[0].SiteTVItemID,
-                                //    DateTime_Local = new DateTime(DateRun.Year, DateRun.Month, DateRun.Day),
-                                //    Keep = true,
-                                //    TideDataType = TideDataTypeEnum.Min60,
-                                //    StorageDataType = StorageDataTypeEnum.Archived,
-                                //    TideEnd = null,
-                                //};
-
                                 mwqmRunModelNew.Tide_Start = TideTextEnum.MidTide;
 
                                 if (dbt.maree_principale != null)
@@ -374,13 +397,6 @@ namespace ImportByFunction
 
                                 mwqmRunModelNew.Tide_End = mwqmRunModelNew.Tide_Start;
 
-                                //TideDataValueModel tideDataValueModelRet = tideDataValueService.GetTideDataValueModelExistDB(tideDataValueModelNew);
-                                //if (!string.IsNullOrWhiteSpace(tideDataValueModelRet.Error))
-                                //{
-                                //    tideDataValueModelRet = tideDataValueService.PostAddTideDataValueDB(tideDataValueModelNew);
-                                //    if (!CheckModelOK<TideDataValueModel>(tideDataValueModelRet)) return false;
-
-                                //}
 
                                 mwqmRunModelNew.AnalyzeMethod = null;
                                 if (dbt.cf_methode_analytique != null)
@@ -523,7 +539,7 @@ namespace ImportByFunction
                                         mwqmRunModelNew.SampleStatus = SampleStatusEnum.Archived;
                                     }
                                     else
-                                    { 
+                                    {
 
                                     }
                                 }
@@ -531,10 +547,22 @@ namespace ImportByFunction
                                 if (mwqmRunModelNew.StartDateTime_Local > mwqmRunModelNew.EndDateTime_Local)
                                 {
                                     mwqmRunModelNew.EndDateTime_Local = mwqmRunModelNew.StartDateTime_Local;
-                                } 
-                                  
-                                MWQMRunModel mwqmRunModelRet = mwqmRunService.PostAddMWQMRunDB(mwqmRunModelNew);
-                                if (!CheckModelOK<MWQMRunModel>(mwqmRunModelRet)) return false;
+                                }
+
+                                MWQMRunModel mwqmRunModel = (from c in mwqmRunModelAll
+                                                             where c.SubsectorTVItemID == tvItemModelSubsector.TVItemID
+                                                             && c.MWQMRunTVText == TVTextRun
+                                                             && c.RunSampleType == mwqmRunModelNew.RunSampleType
+                                                             select c).FirstOrDefault();
+
+                                if (mwqmRunModel == null)
+                                {
+                                    richTextBoxStatus.AppendText($"{tvItemModelSubsector.TVText} --- { TVTextRun } adding MWQMRun\r\n");
+                                    MWQMRunModel mwqmRunModelRet = mwqmRunService.PostAddMWQMRunDB(mwqmRunModelNew);
+                                    if (!CheckModelOK<MWQMRunModel>(mwqmRunModelRet)) return false;
+
+                                    mwqmRunModelAll.Add(mwqmRunModelRet);
+                                }
                             }
                         }
                     }

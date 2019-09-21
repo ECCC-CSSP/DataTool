@@ -8110,33 +8110,9 @@ namespace ImportByFunction
 
         }
 
-        private void ButViewSubsectorNames_Click(object sender, EventArgs e)
+        private void ButViewBCSubsectorNames_Click(object sender, EventArgs e)
         {
-            TVItemService tvItemServiceR = new TVItemService(LanguageEnum.en, user);
-            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
-            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
-            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
 
-            TVItemModel tvItemModelRoot = tvItemServiceR.GetRootTVItemModelDB();
-            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
-
-            TVItemModel tvItemModelCanada = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
-            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
-
-            TVItemModel tvItemModelProv = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "British Columbia", TVTypeEnum.Province);
-            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
-
-            List<TVItemModel> tvItemModelSubsectorList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
-            if (tvItemModelSubsectorList.Count == 0)
-            {
-                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
-                return;
-            }
-
-            foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
-            {
-                richTextBoxStatus.AppendText(tvItemModel.TVText + "\r\n");
-            }
         }
 
         private void Button12_Click(object sender, EventArgs e)
@@ -8495,6 +8471,70 @@ namespace ImportByFunction
             richTextBoxStatus.AppendText($"UTC date [{dateTime.ToUniversalTime()}]");
 
             richTextBoxStatus.AppendText($"output format [{dateTime.ToString(textBox2.Text)}]");
+        }
+
+        private void ButCompareQCAndCSSP_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+
+
+
+            // calculate the total QC samples and total QC samples with UseForOpenData
+
+            int TotalCount = 0;
+            int TotalCount2 = 0;
+
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
+                {
+                    lblStatus.Text = tvItemModel.TVText;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    int count = (from s in db2.MWQMSamples
+                                 from c in db2.MWQMSites
+                                 from t in db2.TVItems
+                                 where c.MWQMSiteTVItemID == t.TVItemID
+                                 && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
+                                 && t.ParentID == tvItemModel.TVItemID
+                                 && t.TVType == (int)TVTypeEnum.MWQMSite
+                                 select s).Count();
+
+                    int count2 = (from s in db2.MWQMSamples
+                                  from c in db2.MWQMSites
+                                  from t in db2.TVItems
+                                  where c.MWQMSiteTVItemID == t.TVItemID
+                                  && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
+                                  && t.ParentID == tvItemModel.TVItemID
+                                  && t.TVType == (int)TVTypeEnum.MWQMSite
+                                  && s.UseForOpenData == true
+                                  select s).Count();
+
+                    richTextBoxStatus.AppendText($"{tvItemModel.TVText} -- [{count}] -- [{count2}]\r\n");
+                    TotalCount += count;
+                    TotalCount2 += count2;
+                }
+
+                richTextBoxStatus.AppendText($"Total Count -- [{TotalCount}] -- [{TotalCount2}]\r\n");
+            }
         }
 
 

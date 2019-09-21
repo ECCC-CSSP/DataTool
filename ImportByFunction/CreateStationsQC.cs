@@ -70,21 +70,6 @@ namespace ImportByFunction
             //List<TVItemModel> tvItemModelSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMSite);
 
             TempData.QCSubsectorAssociation qcSubsectAss = new TempData.QCSubsectorAssociation();
-            List<string> NoSectorList = new List<string>()
-                {
-                    "MS01",
-                    "MS02",
-                    "MS03",
-                    "MS04",
-                    "MS05",
-                    "MS06",
-                    "MS07",
-                    "MS08",
-                    "MS09",
-                    "MS10",
-                    "MS11",
-                    "MS12",
-                };
 
             // doing every sector with the exception of MS__
 
@@ -112,11 +97,6 @@ namespace ImportByFunction
                 textBoxQCCreateStationsQC.Text = count.ToString();
 
                 if (StartQCCreateStationQC > count)
-                {
-                    continue;
-                }
-
-                if (NoSectorList.Contains(geoStat.secteur))
                 {
                     continue;
                 }
