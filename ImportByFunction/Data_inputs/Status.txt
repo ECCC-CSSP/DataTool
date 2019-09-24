@@ -1,5 +1,5 @@
 textBoxBCCreateStationsBC,159
-textBoxQCCreateStationsQC,4128
+textBoxQCCreateStationsQC,4127
 textBoxBCCreateSamplesBC,159
 textBoxQCCreateSamplesQC,316
 textBoxBCCreateRunsBC,159

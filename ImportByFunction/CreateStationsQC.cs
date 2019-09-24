@@ -11,6 +11,7 @@ using System.Xml;
 using CSSPEnumsDLL.Enums;
 using CSSPModelsDLL.Models;
 using CSSPDBDLL.Services;
+using CSSPDBDLL;
 
 namespace ImportByFunction
 {
@@ -67,7 +68,7 @@ namespace ImportByFunction
             }
 
             List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
-            //List<TVItemModel> tvItemModelSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMSite);
+            List<TVItemModel> tvItemModelSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMSite);
 
             TempData.QCSubsectorAssociation qcSubsectAss = new TempData.QCSubsectorAssociation();
 
@@ -84,15 +85,13 @@ namespace ImportByFunction
                              select c).ToList<PCCSM.geo_stations_p>();
             }
 
+            List<TVItemLanguage> tvItemSiteLanguageList = new List<TVItemLanguage>();
+            int TVItemIDSSOld = 0;
             int count = 0;
             int total = staQCList.Count;
             foreach (PCCSM.geo_stations_p geoStat in staQCList)
             {
                 if (Cancel) return false;
-
-                count += 1;
-                lblStatus.Text = "" + count.ToString() + "/" + total.ToString();
-                Application.DoEvents();
 
                 textBoxQCCreateStationsQC.Text = count.ToString();
 
@@ -115,6 +114,22 @@ namespace ImportByFunction
                 TVItemModel tvItemModelSubsector = (from c in tvItemModelSubsectorList
                                                     where c.TVText.StartsWith(qcSubsectAss.SubsectorText)
                                                     select c).FirstOrDefault();
+
+                if (TVItemIDSSOld != tvItemModelSubsector.TVItemID)
+                {
+                    using (CSSPDBEntities db2 = new CSSPDBEntities())
+                    {
+                        tvItemSiteLanguageList = (from c in db2.TVItems
+                                                  from cl in db2.TVItemLanguages
+                                                  where c.TVItemID == cl.TVItemID
+                                                  && c.ParentID == tvItemModelSubsector.TVItemID
+                                                  && c.TVType == (int)TVTypeEnum.MWQMSite
+                                                  select cl).ToList();
+
+                    }
+
+                    TVItemIDSSOld = tvItemModelSubsector.TVItemID;
+                }
 
                 if (tvItemModelSubsector == null)
                 {
@@ -152,6 +167,17 @@ namespace ImportByFunction
 
                 string MWQMSiteTVText = PreText + "0000".Substring(0, 4 - geoStat.station.ToString().Length) + geoStat.station.ToString();
 
+                string subsector = tvItemModelSubsector.TVText;
+                if (subsector.Contains(" "))
+                {
+                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                }
+
+                count += 1;
+                lblStatus.Text = $"{subsector} --- {MWQMSiteTVText} --- { count.ToString()}/{total.ToString()}";
+                Application.DoEvents();
+
+
                 List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelWithLatAndLngInPolygonWithTVTypeDB((float)geoStat.y, (float)geoStat.x, TVTypeEnum.Subsector);
                 if (mapInfoModelList.Count == 0)
                 {
@@ -159,9 +185,12 @@ namespace ImportByFunction
                     continue;
                 }
 
-                List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSubsector.TVItemID, TVTypeEnum.MWQMSite);
+                TVItemModel tvItemModel = (from c in tvItemModelSiteList
+                                           where c.ParentID == tvItemModelSubsector.TVItemID
+                                           && c.TVText.EndsWith(MWQMSiteTVText)
+                                           select c).FirstOrDefault();
 
-                TVItemModel tvItemModel = tvItemModelMWQMSiteList.Where(c => c.TVText.EndsWith(MWQMSiteTVText)).FirstOrDefault();
+                //TVItemModel tvItemModel = tvItemModelMWQMSiteList.Where(c => c.TVText.EndsWith(MWQMSiteTVText)).FirstOrDefault();
                 if (tvItemModel == null)
                 {
                     TVItemModel tvItemModelRet = tvItemService.PostCreateTVItem(tvItemModelSubsector.TVItemID, MWQMSiteTVText, MWQMSiteTVText, TVTypeEnum.MWQMSite);
@@ -223,183 +252,44 @@ namespace ImportByFunction
                 }
                 else
                 {
-                    foreach (LanguageEnum language in new List<LanguageEnum>() { LanguageEnum.en, LanguageEnum.fr })
+                    TVItemLanguage tvItemLanguageEN = (from c in tvItemSiteLanguageList
+                                                       where c.TVItemID == tvItemModel.TVItemID
+                                                       && c.Language == (int)LanguageEnum.en
+                                                       select c).FirstOrDefault();
+
+                    TVItemLanguage tvItemLanguageFR = (from c in tvItemSiteLanguageList
+                                                       where c.TVItemID == tvItemModel.TVItemID
+                                                       && c.Language == (int)LanguageEnum.fr
+                                                       select c).FirstOrDefault();
+
+                    if (tvItemLanguageEN.TVText != MWQMSiteTVText || tvItemLanguageFR.TVText != MWQMSiteTVText)
                     {
-                        TVItemLanguageModel tvItemLanguageModel = tvItemLanguageService.GetTVItemLanguageModelWithTVItemIDAndLanguageDB(tvItemModel.TVItemID, language);
-                        if (!CheckModelOK<TVItemLanguageModel>(tvItemLanguageModel))
+                        foreach (LanguageEnum language in new List<LanguageEnum>() { LanguageEnum.en, LanguageEnum.fr })
                         {
-                            //return false;
-                            continue;
-                        }
 
-                        if (tvItemLanguageModel.TVText != MWQMSiteTVText)
-                        {
-                            tvItemLanguageModel.TVText = MWQMSiteTVText;
 
-                            TVItemLanguageModel tvItemLanguageModelRet = tvItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModel);
-                            if (!CheckModelOK<TVItemLanguageModel>(tvItemLanguageModelRet))
+                            TVItemLanguageModel tvItemLanguageModel = tvItemLanguageService.GetTVItemLanguageModelWithTVItemIDAndLanguageDB(tvItemModel.TVItemID, language);
+                            if (!CheckModelOK<TVItemLanguageModel>(tvItemLanguageModel))
                             {
                                 //return false;
                                 continue;
+                            }
+
+                            if (tvItemLanguageModel.TVText != MWQMSiteTVText)
+                            {
+                                tvItemLanguageModel.TVText = MWQMSiteTVText;
+
+                                TVItemLanguageModel tvItemLanguageModelRet = tvItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModel);
+                                if (!CheckModelOK<TVItemLanguageModel>(tvItemLanguageModelRet))
+                                {
+                                    //return false;
+                                    continue;
+                                }
                             }
                         }
                     }
                 }
             }
-
-
-            //// doing every sector starting with MS__
-
-            //foreach (string sec in sectorOrderedList.Where(c => c.StartsWith("MS")))
-            //{
-            //    Count += 1;
-            //    lblStatus.Text = (Count * 100 / TotalCount).ToString() + " ... CreateStationsQC for " + sec;
-            //    lblStatus2.Text = Count + " of " + TotalCount;
-            //    Application.DoEvents();
-
-            //    textBoxQCCreateStationsQC.Text = Count.ToString();
-
-            //    if (StartQCCreateStationQC > Count)
-            //    {
-            //        continue;
-            //    }
-
-            //    TempData.QCSubsectorAssociation qcSubsectAss = new TempData.QCSubsectorAssociation();
-
-            //    if (Cancel) return false;
-
-            //    Count += 1;
-            //    lblStatus.Text = (Count * 100 / TotalCount).ToString() + " ... CreateStationsQC for " + sec;
-            //    lblStatus2.Text = Count + " of " + TotalCount;
-            //    Application.DoEvents();
-
-            //    textBoxQCCreateStationsQC.Text = Count.ToString();
-
-            //    if (StartQCCreateStationQC > Count)
-            //    {
-            //        continue;
-            //    }
-
-            //    //qcSubsectAss = (from c in qcSubAssList
-            //    //                where c.QCSectorText == sec
-            //    //                select c).FirstOrDefault<TempData.QCSubsectorAssociation>();
-
-            //    //if (sec == "G-22.1E")
-            //    //{
-            //    //    continue;
-            //    //}
-            //    //if (sec == "S")
-            //    //{
-            //    //    continue;
-            //    //}
-            //    //TVItemModel tvItemModelSubsector = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelQC.TVItemID, sec, TVTypeEnum.Subsector);
-            //    //if (!CheckModelOK<TVItemModel>(tvItemModelSubsector)) return false;
-
-            //    List<PCCSM.geo_stations_p> staQCList = new List<PCCSM.geo_stations_p>();
-            //    using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
-            //    {
-
-            //        staQCList = (from c in dbQC.geo_stations_p
-            //                     where c.secteur == sec
-            //                     && (c.x != null && c.y != null)
-            //                     && c.secteur != null
-            //                     orderby c.station
-            //                     select c).ToList<PCCSM.geo_stations_p>();
-            //    }
-
-            //    int countSta = 0;
-            //    foreach (PCCSM.geo_stations_p geoStat in staQCList)
-            //    {
-            //        lblStatus.Text = "Doing ... CreateStationsQC for " + geoStat.secteur;
-            //        Application.DoEvents();
-
-            //        countSta += 1;
-            //        Application.DoEvents();
-
-            //        bool IsActive = true;
-            //        if (geoStat.status != null)
-            //        {
-            //            IsActive = (geoStat.status.Substring(0, 1) == "i" ? false : true);
-            //        }
-            //        string MWQMSiteTVText = "0000".Substring(0, 4 - geoStat.station.ToString().Length) + geoStat.station.ToString();
-
-            //        List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelWithLatAndLngInPolygonWithTVTypeDB((float)geoStat.y, (float)geoStat.x, TVTypeEnum.Subsector);
-            //        if (mapInfoModelList.Count == 0)
-            //        {
-            //            int selfij = 34;
-            //        }
-
-            //        //TVItemModel tvItemModelSubsector = tvItemService.GetTVItemModelWithTVItemIDDB(mapInfoModelList[0].TVItemID);
-            //        //if (!CheckModelOK<TVItemModel>(tvItemModelSubsector)) return false;
-
-            //        List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(mapInfoModelList[0].TVItemID, TVTypeEnum.MWQMSite);
-            //        if (tvItemModelMWQMSiteList.Count > 0)
-            //        {
-            //            TVItemModel tvItemModel = tvItemModelMWQMSiteList.Where(c => c.TVText.EndsWith(MWQMSiteTVText)).FirstOrDefault();
-            //            if (tvItemModel == null)
-            //            {
-            //                TVItemModel tvItemModelRet = tvItemService.PostCreateTVItem(mapInfoModelList[0].TVItemID, MWQMSiteTVText, MWQMSiteTVText, TVTypeEnum.MWQMSite);
-            //                if (!CheckModelOK<TVItemModel>(tvItemModelRet)) return false;
-
-            //                if (geoStat.status == null)
-            //                {
-            //                    tvItemModelRet.IsActive = false;
-            //                }
-            //                else
-            //                {
-            //                    tvItemModelRet.IsActive = (geoStat.status.Substring(0, 1) == "i" ? false : true);
-            //                }
-
-            //                TVItemModel tvItemModelRet2 = tvItemService.PostUpdateTVItemDB(tvItemModelRet);
-            //                if (!CheckModelOK<TVItemModel>(tvItemModelRet2)) return false;
-
-            //                List<Coord> coordList2 = new List<Coord>()
-            //                {
-            //                    new Coord()
-            //                    {
-            //                        Lat = (float)geoStat.y,
-            //                        Lng = (float)geoStat.x,
-            //                    }
-            //                };
-
-            //                MapInfoModel mapInfoModelRet = mapInfoService.CreateMapInfoObjectDB(coordList2, MapInfoDrawTypeEnum.Point, TVTypeEnum.MWQMSite, tvItemModelRet2.TVItemID);
-            //                if (!CheckModelOK<MapInfoModel>(mapInfoModelRet)) return false;
-
-            //                // should add the QC station to WQMSite
-            //                MWQMSiteModel mwqmSiteModelNew = new MWQMSiteModel()
-            //                {
-            //                    MWQMSiteTVItemID = tvItemModelRet2.TVItemID,
-            //                    MWQMSiteNumber = geoStat.station.ToString(),
-            //                    Ordinal = (int)geoStat.station,
-            //                    MWQMSiteTVText = MWQMSiteTVText,
-            //                    MWQMSiteDescription = "--"
-            //                };
-
-            //                MWQMSiteModel mwqmSiteModelRet = mwqmSiteService.PostAddMWQMSiteDB(mwqmSiteModelNew);
-            //                if (!CheckModelOK<MWQMSiteModel>(mwqmSiteModelRet)) return false;
-
-
-            //            }
-            //            else
-            //            {
-            //                foreach (LanguageEnum language in new List<LanguageEnum>() { LanguageEnum.en, LanguageEnum.fr })
-            //                {
-            //                    TVItemLanguageModel tvItemLanguageModel = tvItemLanguageService.GetTVItemLanguageModelWithTVItemIDAndLanguageDB(tvItemModel.TVItemID, language);
-            //                    if (!CheckModelOK<TVItemLanguageModel>(tvItemLanguageModel)) return false;
-
-            //                    if (tvItemLanguageModel.TVText != MWQMSiteTVText)
-            //                    {
-            //                        tvItemLanguageModel.TVText = MWQMSiteTVText;
-
-            //                        TVItemLanguageModel tvItemLanguageModelRet = tvItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModel);
-            //                        if (!CheckModelOK<TVItemLanguageModel>(tvItemLanguageModelRet)) return false;
-            //                    }
-            //                }
-            //            }
-            //        }
-
-            //    }
-            //}
 
             return true;
         }

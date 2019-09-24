@@ -8475,8 +8475,74 @@ namespace ImportByFunction
 
         private void ButCompareQCAndCSSP_Click(object sender, EventArgs e)
         {
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            //TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            //List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            //if (tvItemModelSubsectorList.Count == 0)
+            //{
+            //    richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+            //    return;
+            //}
+
+
+
+            //// calculate the total QC samples and total QC samples with UseForOpenData
+
+            //int TotalCount = 0;
+            //int TotalCount2 = 0;
+
+            //using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //{
+            //    foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
+            //    {
+            //        lblStatus.Text = tvItemModel.TVText;
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
+
+            //        int count = (from s in db2.MWQMSamples
+            //                     from c in db2.MWQMSites
+            //                     from t in db2.TVItems
+            //                     where c.MWQMSiteTVItemID == t.TVItemID
+            //                     && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
+            //                     && t.ParentID == tvItemModel.TVItemID
+            //                     && t.TVType == (int)TVTypeEnum.MWQMSite
+            //                     select s).Count();
+
+            //        int count2 = (from s in db2.MWQMSamples
+            //                      from c in db2.MWQMSites
+            //                      from t in db2.TVItems
+            //                      where c.MWQMSiteTVItemID == t.TVItemID
+            //                      && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
+            //                      && t.ParentID == tvItemModel.TVItemID
+            //                      && t.TVType == (int)TVTypeEnum.MWQMSite
+            //                      && s.UseForOpenData == true
+            //                      select s).Count();
+
+            //        richTextBoxStatus.AppendText($"{tvItemModel.TVText} -- [{count}] -- [{count2}]\r\n");
+            //        TotalCount += count;
+            //        TotalCount2 += count2;
+            //    }
+
+            //    richTextBoxStatus.AppendText($"Total Count -- [{TotalCount}] -- [{TotalCount2}]\r\n");
+            //}
+
+
+            // deleting the MWQMSite from CSSPWebTools that should not exist
+
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+            TVItemLanguageService tvItemLanguageService = new TVItemLanguageService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
 
             TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
             if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
@@ -8484,59 +8550,815 @@ namespace ImportByFunction
             TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
             if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
 
-            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
-            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+            TVItemModel tvItemModelQC = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelQC)) return;
 
-            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
-            if (tvItemModelSubsectorList.Count == 0)
+            List<TVItemModel> tvItemModelSubsectorQCList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorQCList.Count == 0)
             {
-                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                richTextBoxStatus.AppendText("Could not find TVItem Subsector under British Columbia\r\n");
                 return;
             }
 
+            //lblStatus.Text = "Starting ... CreateStationsQC";
+            //Application.DoEvents();
+
+            //int StartQCCreateStationQC = int.Parse(textBoxQCCreateStationsQC.Text);
+
+            //List<Obs> obsTypeList = new List<Obs>();
+            //List<string> sectorList = new List<string>();
+            //List<TT> tideTextInDBList = new List<TT>();
+            //List<AM> analyseMethodInDBList = new List<AM>();
+            //List<Mat> matrixInDBList = new List<Mat>();
+            //List<Lab> labInDBList = new List<Lab>();
+            //List<SampleStatus> sampleStatusInDBList = new List<SampleStatus>();
+            //List<TempData.QCSubsectorAssociation> qcSubAssList = new List<TempData.QCSubsectorAssociation>();
+
+            //using (TempData.TempDataToolDBEntities dbDT = new TempData.TempDataToolDBEntities())
+            //{
+            //    qcSubAssList = (from c in dbDT.QCSubsectorAssociations
+            //                    select c).ToList<TempData.QCSubsectorAssociation>();
+            //}
+
+            //using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
+            //{
+            //    sectorList = (from s in dbQC.geo_stations_p
+            //                  where s.secteur != null
+            //                  select s.secteur).Distinct().OrderBy(c => c).ToList();
+            //}
+
+            //List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+            //List<TVItemModel> tvItemModelSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMSite);
+
+            //TempData.QCSubsectorAssociation qcSubsectAss = new TempData.QCSubsectorAssociation();
+
+            //// doing every sector with the exception of MS__
+
+            //List<PCCSM.geo_stations_p> staQCList = new List<PCCSM.geo_stations_p>();
+            //using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
+            //{
+
+            //    staQCList = (from c in dbQC.geo_stations_p
+            //                 where (c.x != null && c.y != null)
+            //                 && c.secteur != null
+            //                 orderby c.secteur, c.station
+            //                 select c).ToList<PCCSM.geo_stations_p>();
+            //}
 
 
-            // calculate the total QC samples and total QC samples with UseForOpenData
+            //List<SubsectorAndSite> ListOfAllSubsectorMWQMSites = new List<SubsectorAndSite>();
 
-            int TotalCount = 0;
-            int TotalCount2 = 0;
+            //List<TVItemLanguage> tvItemSiteLanguageList = new List<TVItemLanguage>();
+            //int TVItemIDSSOld = 0;
+            //foreach (PCCSM.geo_stations_p geoStat in staQCList)
+            //{
+            //    if (Cancel) return;
 
-            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //    qcSubsectAss = (from c in qcSubAssList
+            //                    where c.QCSectorText == geoStat.secteur
+            //                    select c).FirstOrDefault<TempData.QCSubsectorAssociation>();
+
+            //    if (qcSubsectAss == null)
+            //    {
+            //        richTextBoxStatus.AppendText(geoStat.secteur + " does not exist\r\n");
+            //        //return false;
+            //        continue;
+            //    }
+
+            //    TVItemModel tvItemModelSubsector = (from c in tvItemModelSubsectorList
+            //                                        where c.TVText.StartsWith(qcSubsectAss.SubsectorText)
+            //                                        select c).FirstOrDefault();
+
+            //    if (TVItemIDSSOld != tvItemModelSubsector.TVItemID)
+            //    {
+            //        using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //        {
+            //            tvItemSiteLanguageList = (from c in db2.TVItems
+            //                                      from cl in db2.TVItemLanguages
+            //                                      where c.TVItemID == cl.TVItemID
+            //                                      && c.ParentID == tvItemModelSubsector.TVItemID
+            //                                      && c.TVType == (int)TVTypeEnum.MWQMSite
+            //                                      select cl).ToList();
+
+            //        }
+
+            //        TVItemIDSSOld = tvItemModelSubsector.TVItemID;
+            //    }
+
+            //    if (tvItemModelSubsector == null)
+            //    {
+            //        richTextBoxStatus.AppendText("could not find subsector" + geoStat.secteur + "\r\n");
+            //        //return false;
+            //        continue;
+            //    }
+
+            //    bool IsActive = true;
+            //    if (geoStat.status != null)
+            //    {
+            //        IsActive = (geoStat.status.Substring(0, 1) == "i" ? false : true);
+            //    }
+
+            //    string PreText = "";
+            //    if (geoStat.secteur.Length < qcSubsectAss.SubsectorText.Length)
+            //    {
+            //        PreText = "";
+            //    }
+            //    else
+            //    {
+            //        if (geoStat.secteur.StartsWith(qcSubsectAss.SubsectorText))
+            //        {
+            //            PreText = geoStat.secteur.Substring(qcSubsectAss.SubsectorText.Length) + "_";
+            //        }
+            //        else
+            //        {
+            //            PreText = geoStat.secteur + "_";
+            //        }
+            //    }
+            //    if (PreText.StartsWith(".") || PreText.StartsWith("_"))
+            //    {
+            //        PreText = PreText.Substring(1);
+            //    }
+
+            //    string MWQMSiteTVText = PreText + "0000".Substring(0, 4 - geoStat.station.ToString().Length) + geoStat.station.ToString();
+
+            //    string subsector = tvItemModelSubsector.TVText;
+            //    if (subsector.Contains(" "))
+            //    {
+            //        subsector = subsector.Substring(0, subsector.IndexOf(" "));
+            //    }
+
+            //    lblStatus.Text = $"{tvItemModelSubsector.TVText} --- {MWQMSiteTVText}";
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+
+            //    using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
+            //    {
+
+            //        int Count = (from c in dbQC.db_mesure
+            //                     where c.id_geo_station_p == geoStat.id_geo_station_p
+            //                     select c).Count();
+
+
+            //        //richTextBoxStatus.AppendText($"{subsector}|{ MWQMSiteTVText}\r\n");
+
+            //        ListOfAllSubsectorMWQMSites.Add(new SubsectorAndSite() { Subsector = subsector, MWQMSite = MWQMSiteTVText, Count = Count });
+            //    }
+            //}
+
+            //using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //{
+
+            //    foreach (TVItemModel tvItemModelss in tvItemModelSubsectorList)
+            //    {
+            //        string subsector = tvItemModelss.TVText;
+            //        if (subsector.Contains(" "))
+            //        {
+            //            subsector = subsector.Substring(0, subsector.IndexOf(" "));
+            //        }
+
+            //        richTextBoxStatus.AppendText($"{subsector}\r\n");
+            //        foreach (TVItemModel tvItemModelSite in (from c in tvItemModelSiteList
+            //                                                 where c.ParentID == tvItemModelss.TVItemID
+            //                                                 select c).ToList())
+            //        {
+
+            //            lblStatus.Text = $"{tvItemModelss.TVText} --- {tvItemModelSite.TVText}";
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            SubsectorAndSite ssAndSite = ListOfAllSubsectorMWQMSites.Where(c => c.Subsector == subsector && c.MWQMSite == tvItemModelSite.TVText).FirstOrDefault();
+
+            //            if (ssAndSite != null)
+            //            {
+            //                int count = (from c in db2.MWQMSamples
+            //                             where c.MWQMSiteTVItemID == tvItemModelSite.TVItemID
+            //                             select c).Count();
+
+
+            //                richTextBoxStatus.AppendText($"\t{tvItemModelSite.TVText} -- {count} --- {ssAndSite.Count}\r\n");
+
+            //            }
+            //        }
+            //    }
+
+            //}
+
+            /// -----------------------------------------------------------------
+            /// ------ remove all sectors and under info that are not in QC DB --
+            /// -----------------------------------------------------------------
+            //using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
+            //{
+            //    var geo_stations_pList = (from c in dbQC.geo_stations_p
+            //                              where c.secteur != null
+            //                              && c.secteur.StartsWith("M") == false
+            //                              orderby c.secteur, c.station
+            //                              select new { c.id_geo_station_p, c.station, c.secteur }).ToList();
+
+            //    List<string> AreaList = (from c in geo_stations_pList
+            //                             select c.secteur).Distinct().ToList();
+
+            //    List<string> SectorList = new List<string>();
+            //    foreach (string s in AreaList)
+            //    {
+            //        if (s.Length > 3)
+            //        {
+            //            string sector = s.Substring(0, 4);
+
+            //            if (!SectorList.Contains(sector))
+            //            {
+            //                SectorList.Add(sector);
+            //                //richTextBoxStatus.AppendText($"{sector}\r\n");
+            //            }
+            //        }
+            //    }
+
+            //    List<TVItemModel> tvItemModelSectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Sector);
+
+            //    // List<string> SectorList2 = new List<string>();
+
+            //    foreach (TVItemModel tvItemModel in tvItemModelSectorList)
+            //    {
+            //        string sector = tvItemModel.TVText;
+            //        if (sector.Contains(" "))
+            //        {
+            //            sector = sector.Substring(0, sector.IndexOf(" "));
+            //        }
+
+            //        if (!SectorList.Contains(sector))
+            //        {
+            //            int lsefjlij = 423;
+            //            if (sector != "MS")
+            //            {
+            //                richTextBoxStatus.AppendText($"{sector}\r\n");
+            //                List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModel.TVItemID, TVTypeEnum.Subsector);
+
+            //                foreach (TVItemModel tvItemModelss in tvItemModelSubsectorList)
+            //                {
+            //                    List<TVItemModel> tvItemModelSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelss.TVItemID, TVTypeEnum.MWQMSite);
+            //                    List<TVItemModel> tvItemModelRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelss.TVItemID, TVTypeEnum.MWQMRun);
+            //                    List<TVItemModel> tvItemModelPSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelss.TVItemID, TVTypeEnum.PolSourceSite);
+
+            //                    using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //                    {
+            //                        // Deleting TVItemStats of MWQMSites
+            //                        foreach (TVItemModel tvItemModelSite in tvItemModelSiteList)
+            //                        {
+            //                            List<TVItemStat> tvItemStatList = (from c in db2.TVItemStats
+            //                                                               where c.TVItemID == tvItemModelSite.TVItemID
+            //                                                               select c).ToList();
+
+            //                            if (tvItemStatList.Count > 0)
+            //                            {
+            //                                db2.TVItemStats.RemoveRange(tvItemStatList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMSites");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting TVItemStats of MWQMRuns
+            //                        foreach (TVItemModel tvItemModelRun in tvItemModelRunList)
+            //                        {
+            //                            List<TVItemStat> tvItemStatList = (from c in db2.TVItemStats
+            //                                                               where c.TVItemID == tvItemModelRun.TVItemID
+            //                                                               select c).ToList();
+
+            //                            if (tvItemStatList.Count > 0)
+            //                            {
+            //                                db2.TVItemStats.RemoveRange(tvItemStatList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMRuns");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting TVItemStats of PSS
+            //                        foreach (TVItemModel tvItemModelPSS in tvItemModelPSSList)
+            //                        {
+            //                            List<TVItemStat> tvItemStatList = (from c in db2.TVItemStats
+            //                                                               where c.TVItemID == tvItemModelPSS.TVItemID
+            //                                                               select c).ToList();
+
+            //                            if (tvItemStatList.Count > 0)
+            //                            {
+            //                                db2.TVItemStats.RemoveRange(tvItemStatList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMSites");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting MWQMSamples
+            //                        foreach (TVItemModel tvItemModelSite in tvItemModelSiteList)
+            //                        {
+            //                            List<MWQMSample> mwqmSampleList = (from c in db2.MWQMSamples
+            //                                                               where c.MWQMSiteTVItemID == tvItemModelSite.TVItemID
+            //                                                               select c).ToList();
+
+            //                            if (mwqmSampleList.Count > 0)
+            //                            {
+            //                                db2.MWQMSamples.RemoveRange(mwqmSampleList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete Sample");
+            //                                }
+            //                            }
+            //                        }
+
+
+            //                        // Deleting MapInfos for MWQMSites
+            //                        foreach (TVItemModel tvItemModelSite in tvItemModelSiteList)
+            //                        {
+            //                            List<MapInfo> MapInfoList = (from c in db2.MapInfos
+            //                                                         where c.TVItemID == tvItemModelSite.TVItemID
+            //                                                         select c).ToList();
+
+
+            //                            if (MapInfoList.Count > 0)
+            //                            {
+            //                                db2.MapInfos.RemoveRange(MapInfoList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete MapInfos for MWQMSites");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting MapInfos for PSS
+            //                        foreach (TVItemModel tvItemModelPSS in tvItemModelPSSList)
+            //                        {
+            //                            List<MapInfo> MapInfoList = (from c in db2.MapInfos
+            //                                                         where c.TVItemID == tvItemModelPSS.TVItemID
+            //                                                         select c).ToList();
+
+
+            //                            if (MapInfoList.Count > 0)
+            //                            {
+            //                                db2.MapInfos.RemoveRange(MapInfoList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete MapInfos for PSS");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting MWQMSites
+            //                        foreach (TVItemModel tvItemModelSite in tvItemModelSiteList)
+            //                        {
+            //                            List<MWQMSite> mwqmSiteList = (from c in db2.MWQMSites
+            //                                                           where c.MWQMSiteTVItemID == tvItemModelSite.TVItemID
+            //                                                           select c).ToList();
+
+            //                            if (mwqmSiteList.Count > 0)
+            //                            {
+            //                                db2.MWQMSites.RemoveRange(mwqmSiteList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting TVItems for MWQMSites
+            //                        foreach (TVItemModel tvItemModelSite in tvItemModelSiteList)
+            //                        {
+            //                            List<TVItem> TVItemList = (from c in db2.TVItems
+            //                                                       where c.TVItemID == tvItemModelSite.TVItemID
+            //                                                       select c).ToList();
+
+            //                            if (TVItemList.Count > 0)
+            //                            {
+            //                                db2.TVItems.RemoveRange(TVItemList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting PSS
+            //                        foreach (TVItemModel tvItemModelPSS in tvItemModelPSSList)
+            //                        {
+            //                            List<PolSourceSite> polSourceSiteList = (from c in db2.PolSourceSites
+            //                                                                     where c.PolSourceSiteTVItemID == tvItemModelPSS.TVItemID
+            //                                                                     select c).ToList();
+
+            //                            if (polSourceSiteList.Count > 0)
+            //                            {
+            //                                db2.PolSourceSites.RemoveRange(polSourceSiteList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete TVItems for PSS");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting TVItems for PSS
+            //                        foreach (TVItemModel tvItemModelPSS in tvItemModelPSSList)
+            //                        {
+            //                            List<TVItem> TVItemList = (from c in db2.TVItems
+            //                                                       where c.TVItemID == tvItemModelPSS.TVItemID
+            //                                                       select c).ToList();
+
+            //                            if (TVItemList.Count > 0)
+            //                            {
+            //                                db2.TVItems.RemoveRange(TVItemList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete TVItems for PSS");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting MWQMRuns
+            //                        foreach (TVItemModel tvItemModelRun in tvItemModelRunList)
+            //                        {
+            //                            List<MWQMRun> mwqmRunList = (from c in db2.MWQMRuns
+            //                                                         where c.MWQMRunTVItemID == tvItemModelRun.TVItemID
+            //                                                         select c).ToList();
+
+            //                            if (mwqmRunList.Count > 0)
+            //                            {
+            //                                db2.MWQMRuns.RemoveRange(mwqmRunList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting TVItems for MWQMRuns
+            //                        foreach (TVItemModel tvItemModelRun in tvItemModelRunList)
+            //                        {
+            //                            List<TVItem> TVItemList = (from c in db2.TVItems
+            //                                                       where c.TVItemID == tvItemModelRun.TVItemID
+            //                                                       select c).ToList();
+
+            //                            if (TVItemList.Count > 0)
+            //                            {
+            //                                db2.TVItems.RemoveRange(TVItemList);
+
+            //                                try
+            //                                {
+            //                                    db2.SaveChanges();
+            //                                }
+            //                                catch (Exception ex)
+            //                                {
+            //                                    richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMRuns");
+            //                                }
+            //                            }
+            //                        }
+
+            //                        // Deleting TVItemStats of TVItemModelss
+            //                        List<TVItemStat> tvItemStatList3 = (from c in db2.TVItemStats
+            //                                                            where c.TVItemID == tvItemModelss.TVItemID
+            //                                                            select c).ToList();
+
+            //                        if (tvItemStatList3.Count > 0)
+            //                        {
+            //                            db2.TVItemStats.RemoveRange(tvItemStatList3);
+
+            //                            try
+            //                            {
+            //                                db2.SaveChanges();
+            //                            }
+            //                            catch (Exception ex)
+            //                            {
+            //                                richTextBoxStatus.AppendText($"Could not delete TVItemStats of TVItemModelss");
+            //                            }
+            //                        }
+
+            //                        // Deleting MapInfos of TVItemModelss
+            //                        List<MapInfo> MapInfoList3 = (from c in db2.MapInfos
+            //                                                      where c.TVItemID == tvItemModelss.TVItemID
+            //                                                      select c).ToList();
+
+
+            //                        if (MapInfoList3.Count > 0)
+            //                        {
+            //                            db2.MapInfos.RemoveRange(MapInfoList3);
+
+            //                            try
+            //                            {
+            //                                db2.SaveChanges();
+            //                            }
+            //                            catch (Exception ex)
+            //                            {
+            //                                richTextBoxStatus.AppendText($"Could not delete MapInfos of TVItemModelss");
+            //                            }
+            //                        }
+
+            //                        // Deleting MWQMSubsectors for TVItemModelss
+            //                        List<MWQMSubsector> mwqmSubsectorList = (from c in db2.MWQMSubsectors
+            //                                                                 where c.MWQMSubsectorTVItemID == tvItemModelss.TVItemID
+            //                                                                 select c).ToList();
+
+            //                        if (mwqmSubsectorList.Count > 0)
+            //                        {
+            //                            db2.MWQMSubsectors.RemoveRange(mwqmSubsectorList);
+
+            //                            try
+            //                            {
+            //                                db2.SaveChanges();
+            //                            }
+            //                            catch (Exception ex)
+            //                            {
+            //                                richTextBoxStatus.AppendText($"Could not delete MWQMSubsectors for TVItemModelss");
+            //                            }
+            //                        }
+
+            //                        // Deleting UseOfSites for TVItemModelss
+            //                        List<UseOfSite> UseOfSiteList = (from c in db2.UseOfSites
+            //                                                                 where c.SubsectorTVItemID == tvItemModelss.TVItemID
+            //                                                                 select c).ToList();
+
+            //                        if (UseOfSiteList.Count > 0)
+            //                        {
+            //                            db2.UseOfSites.RemoveRange(UseOfSiteList);
+
+            //                            try
+            //                            {
+            //                                db2.SaveChanges();
+            //                            }
+            //                            catch (Exception ex)
+            //                            {
+            //                                richTextBoxStatus.AppendText($"Could not delete UseOfSites for TVItemModelss");
+            //                            }
+            //                        }
+
+
+            //                        // Deleting TVItems for TVItemModelss
+            //                        List<TVItem> TVItemList3 = (from c in db2.TVItems
+            //                                                    where c.TVItemID == tvItemModelss.TVItemID
+            //                                                    select c).ToList();
+
+            //                        if (TVItemList3.Count > 0)
+            //                        {
+            //                            db2.TVItems.RemoveRange(TVItemList3);
+
+            //                            try
+            //                            {
+            //                                db2.SaveChanges();
+            //                            }
+            //                            catch (Exception ex)
+            //                            {
+            //                                richTextBoxStatus.AppendText($"Could not delete TVItems for TVItemModelss");
+            //                            }
+            //                        }
+            //                    }
+            //                }
+
+            //                // now we should be able to remove the sector
+            //                using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //                {
+            //                    // Deleting TVItemStats of tvItemModel
+            //                    List<TVItemStat> tvItemStatList2 = (from c in db2.TVItemStats
+            //                                                        where c.TVItemID == tvItemModel.TVItemID
+            //                                                        select c).ToList();
+
+            //                    if (tvItemStatList2.Count > 0)
+            //                    {
+            //                        db2.TVItemStats.RemoveRange(tvItemStatList2);
+
+            //                        try
+            //                        {
+            //                            db2.SaveChanges();
+            //                        }
+            //                        catch (Exception ex)
+            //                        {
+            //                            richTextBoxStatus.AppendText($"Could not delete TVItemStats of tvItemModel");
+            //                        }
+            //                    }
+
+            //                    // Deleting MapInfos of tvItemModel
+            //                    List<MapInfo> MapInfoList2 = (from c in db2.MapInfos
+            //                                                  where c.TVItemID == tvItemModel.TVItemID
+            //                                                  select c).ToList();
+
+
+            //                    if (MapInfoList2.Count > 0)
+            //                    {
+            //                        db2.MapInfos.RemoveRange(MapInfoList2);
+
+            //                        try
+            //                        {
+            //                            db2.SaveChanges();
+            //                        }
+            //                        catch (Exception ex)
+            //                        {
+            //                            richTextBoxStatus.AppendText($"Could not delete MapInfos of tvItemModel");
+            //                        }
+            //                    }
+            //                    // Deleting TVItems for tvItemModel
+            //                    List<TVItem> TVItemList2 = (from c in db2.TVItems
+            //                                                where c.TVItemID == tvItemModel.TVItemID
+            //                                                select c).ToList();
+
+            //                    if (TVItemList2.Count > 0)
+            //                    {
+            //                        db2.TVItems.RemoveRange(TVItemList2);
+
+            //                        try
+            //                        {
+            //                            db2.SaveChanges();
+            //                        }
+            //                        catch (Exception ex)
+            //                        {
+            //                            richTextBoxStatus.AppendText($"Could not delete TVItems for tvItemModel");
+            //                        }
+            //                    }
+            //                }
+
+            //            }
+            //        }
+            //    }
+
+            //    //foreach (string s in SectorList2)
+            //    //{
+            //    //    if (!SectorList.Contains(s))
+            //    //    {
+            //    //        richTextBoxStatus.AppendText($"{s}\r\n");
+
+            //    //        // need to start deleting everything under
+
+            //    //        // PSS, Monitoring Site, Sample
+
+            //    //        List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+
+            //    //        foreach (TVItemModel tvItemModelss in tvItemModelSubsectorList)
+            //    //        {
+
+            //    //        }
+
+            //    //    }
+            //    //}
+
+            //    lblStatus.Text = "done...";
+            //    //foreach (var geo_stations_p in geo_stations_pList)
+            //    //{
+            //    //    lblStatus.Text = $"{geo_stations_p.secteur}";
+            //    //    lblStatus.Refresh();
+            //    //    Application.DoEvents();
+
+
+            //    //    richTextBoxStatus.AppendText($"{geo_stations_p.secteur}\t{geo_stations_p.station}\r\n");
+
+
+            //    //}
+            //}
+
+
+            /// -----------------------------------------------------------------
+            /// ------ Add all new sectors and under info that are not in QC DB --
+            /// -----------------------------------------------------------------
+            using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
             {
-                foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
+                var geo_stations_pList = (from c in dbQC.geo_stations_p
+                                          where c.secteur != null
+                                          && c.secteur.StartsWith("M") == false
+                                          orderby c.secteur, c.station
+                                          select new { c.id_geo_station_p, c.station, c.secteur }).ToList();
+
+                List<string> AreaList = (from c in geo_stations_pList
+                                         select c.secteur).Distinct().ToList();
+
+                List<string> SectorList = new List<string>();
+                foreach (string s in AreaList)
                 {
-                    lblStatus.Text = tvItemModel.TVText;
-                    lblStatus.Refresh();
-                    Application.DoEvents();
+                    if (s.Length > 3)
+                    {
+                        string sector = s.Substring(0, 4);
 
-                    int count = (from s in db2.MWQMSamples
-                                 from c in db2.MWQMSites
-                                 from t in db2.TVItems
-                                 where c.MWQMSiteTVItemID == t.TVItemID
-                                 && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
-                                 && t.ParentID == tvItemModel.TVItemID
-                                 && t.TVType == (int)TVTypeEnum.MWQMSite
-                                 select s).Count();
-
-                    int count2 = (from s in db2.MWQMSamples
-                                  from c in db2.MWQMSites
-                                  from t in db2.TVItems
-                                  where c.MWQMSiteTVItemID == t.TVItemID
-                                  && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
-                                  && t.ParentID == tvItemModel.TVItemID
-                                  && t.TVType == (int)TVTypeEnum.MWQMSite
-                                  && s.UseForOpenData == true
-                                  select s).Count();
-
-                    richTextBoxStatus.AppendText($"{tvItemModel.TVText} -- [{count}] -- [{count2}]\r\n");
-                    TotalCount += count;
-                    TotalCount2 += count2;
+                        if (!SectorList.Contains(sector))
+                        {
+                            SectorList.Add(sector);
+                        }
+                    }
                 }
 
-                richTextBoxStatus.AppendText($"Total Count -- [{TotalCount}] -- [{TotalCount2}]\r\n");
+                List<TVItemModel> tvItemModelSectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Sector);
+
+                foreach (string sector in SectorList)
+                {
+                    if (sector != "MS")
+                    {
+                        if (!tvItemModelSectorList.Where(c => c.TVText.StartsWith(sector)))
+                        {
+                            // need to create the sector
+                            TVItemModel tvItemModelNew = tvItemService
+
+                        }
+                    }
+
+                }
+
+                //foreach (string s in SectorList2)
+                //{
+                //    if (!SectorList.Contains(s))
+                //    {
+                //        richTextBoxStatus.AppendText($"{s}\r\n");
+
+                //        // need to start deleting everything under
+
+                //        // PSS, Monitoring Site, Sample
+
+                //        List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+
+                //        foreach (TVItemModel tvItemModelss in tvItemModelSubsectorList)
+                //        {
+
+                //        }
+
+                //    }
+                //}
+
+                lblStatus.Text = "done...";
+                //foreach (var geo_stations_p in geo_stations_pList)
+                //{
+                //    lblStatus.Text = $"{geo_stations_p.secteur}";
+                //    lblStatus.Refresh();
+                //    Application.DoEvents();
+
+
+                //    richTextBoxStatus.AppendText($"{geo_stations_p.secteur}\t{geo_stations_p.station}\r\n");
+
+
+                //}
             }
+
         }
 
+        public class SubsectorAndSite
+        {
+            public SubsectorAndSite()
+            {
+
+            }
+
+            public string Subsector { get; set; }
+            public string MWQMSite { get; set; }
+
+            public int Count { get; set; }
+        }
 
         //private void button18_Click(object sender, EventArgs e)
         //{
