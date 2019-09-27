@@ -96,6 +96,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.butCompareQCAndCSSP = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -755,11 +756,22 @@
             this.butCompareQCAndCSSP.UseVisualStyleBackColor = true;
             this.butCompareQCAndCSSP.Click += new System.EventHandler(this.ButCompareQCAndCSSP_Click);
             // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(439, 32);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(258, 23);
+            this.button18.TabIndex = 224;
+            this.button18.Text = "Atlantic Runs Sites Samples counts";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.button18);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox2);
@@ -902,6 +914,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button butCompareQCAndCSSP;
+        private System.Windows.Forms.Button button18;
     }
 }
 

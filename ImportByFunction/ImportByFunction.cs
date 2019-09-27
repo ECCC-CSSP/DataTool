@@ -9295,21 +9295,21 @@ namespace ImportByFunction
                     }
                 }
 
-                List<TVItemModel> tvItemModelSectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Sector);
+                //List<TVItemModel> tvItemModelSectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Sector);
 
-                foreach (string sector in SectorList)
-                {
-                    if (sector != "MS")
-                    {
-                        if (!tvItemModelSectorList.Where(c => c.TVText.StartsWith(sector)))
-                        {
-                            // need to create the sector
-                            TVItemModel tvItemModelNew = tvItemService
+                //foreach (string sector in SectorList)
+                //{
+                //    if (sector != "MS")
+                //    {
+                //        if (!tvItemModelSectorList.Where(c => c.TVText.StartsWith(sector)))
+                //        {
+                //            // need to create the sector
+                //            TVItemModel tvItemModelNew = tvItemService
 
-                        }
-                    }
+                //        }
+                //    }
 
-                }
+                //}
 
                 //foreach (string s in SectorList2)
                 //{
@@ -9358,6 +9358,132 @@ namespace ImportByFunction
             public string MWQMSite { get; set; }
 
             public int Count { get; set; }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+
+            richTextBoxStatus.AppendText("Locator\tSubsector name\t2000\t2001\t2002\t2003\t2004\t2005\t2006\t2007\t2008\t2009\t2010\t2011\t2012\t2013\t2014\t2015\t2016\t2017\t2018\t2019 YTD\r\n");
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+
+                foreach (int TVItemID in new List<int>() { 7, 10, 8, 9 })
+                {
+                    TVItemModel tvItemModelProv = tvItemService.GetTVItemModelWithTVItemIDDB(TVItemID);
+                    if (!string.IsNullOrWhiteSpace(tvItemModelProv.Error))
+                    {
+                        richTextBoxStatus.Text = "Error could not find TVItemID = 7";
+                        return;
+                    }
+
+                    List<TVItemModel> tvItemModelList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(TVItemID, TVTypeEnum.Subsector);
+
+                    foreach (TVItemModel tvItemModel in tvItemModelList)
+                    {
+                        string subsector = tvItemModel.TVText;
+                        string Desc = "";
+                        if (subsector.Contains(" "))
+                        {
+                            int pos = subsector.IndexOf(" ");
+                            subsector = subsector.Substring(0, pos);
+
+                            Desc = tvItemModel.TVText.Substring(pos).Trim();
+
+                            if (Desc.StartsWith("("))
+                            {
+                                Desc = Desc.Substring(1);
+                            }
+
+                            if (Desc.EndsWith(")"))
+                            {
+                                Desc = Desc.Substring(0, Desc.Length - 1);
+                            }
+                        }
+
+                        lblStatus.Text = subsector;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        //List<MWQMRunModel> MWQMRunModelList = mwqmRunService.GetMWQMRunModelListWithSubsectorTVItemIDDB(tvItemModel.TVItemID);
+                        //List<MWQMSiteModel> MWQMSiteModelList = mwqmSiteService.GetMWQMSiteModelListWithSubsectorTVItemIDDB(tvItemModel.TVItemID);
+                        //List<MWQMSampleModel> MWQMSampleModelList = mwqmSampleService.GetMWQMSampleModelListWithSubsectorTVItemIDDB(tvItemModel.TVItemID);
+
+                        StringBuilder sb = new StringBuilder();
+                        bool HasBiggerThan0 = false;
+
+                        for (int i = 2000; i < 2020; i++)
+                        {
+
+
+                            //// doing run
+                            //int Count = (from c in db2.MWQMRuns
+                            //             where c.SubsectorTVItemID == tvItemModel.TVItemID
+                            //             && c.RunSampleType == (int)SampleTypeEnum.Routine
+                            //             && c.DateTime_Local.Year == i
+                            //             select c).Count();
+
+                            //sb.Append($"{Count}\t");
+
+                            //if (Count > 0)
+                            //{
+                            //    HasBiggerThan0 = true;
+                            //}
+
+
+                            //// doing site
+                            //int Count = (from c in db2.MWQMSites
+                            //             from s in db2.MWQMSamples
+                            //             from t in db2.TVItems
+                            //             where c.MWQMSiteTVItemID == t.TVItemID
+                            //             && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
+                            //             && s.SampleDateTime_Local.Year == i
+                            //             && s.SampleTypesText.Contains("109,")
+                            //             && t.ParentID == tvItemModel.TVItemID
+                            //             select c).Distinct().Count();
+
+                            //sb.Append($"{Count}\t");
+
+                            //if (Count > 0)
+                            //{
+                            //    HasBiggerThan0 = true;
+                            //}
+
+
+                            // doing sample
+                            int Count = (from c in db2.MWQMSites
+                                         from s in db2.MWQMSamples
+                                         from t in db2.TVItems
+                                         where c.MWQMSiteTVItemID == t.TVItemID
+                                         && c.MWQMSiteTVItemID == s.MWQMSiteTVItemID
+                                         && s.SampleDateTime_Local.Year == i
+                                         && s.SampleTypesText.Contains("109,")
+                                         && t.ParentID == tvItemModel.TVItemID
+                                         select s).Distinct().Count();
+
+                            sb.Append($"{Count}\t");
+
+                            if (Count > 0)
+                            {
+                                HasBiggerThan0 = true;
+                            }
+
+
+                        }
+                        if (HasBiggerThan0)
+                        {
+                            richTextBoxStatus.AppendText($"{subsector}\t{Desc}\t{sb.ToString()}\r\n");
+                        }
+                    }
+                }
+            }
+
+
+
         }
 
         //private void button18_Click(object sender, EventArgs e)
