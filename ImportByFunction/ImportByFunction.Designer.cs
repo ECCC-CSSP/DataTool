@@ -97,6 +97,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.butCompareQCAndCSSP = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -766,11 +767,22 @@
             this.button18.UseVisualStyleBackColor = true;
             this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(711, 129);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(208, 23);
+            this.button19.TabIndex = 225;
+            this.button19.Text = "Get NS site lat lng";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.button19);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -915,6 +927,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button butCompareQCAndCSSP;
         private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button19;
     }
 }
 
