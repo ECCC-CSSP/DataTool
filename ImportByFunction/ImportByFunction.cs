@@ -10901,102 +10901,251 @@ namespace ImportByFunction
             #endregion Add all new MWQMSample that are in QC DB and not in CSSPDB
 
             #region Add all new MWQMSubsectors with proper tide info
-            /// -----------------------------------------------------------------
-            /// ------ Add all new MWQMSubsectors with proper tide info --
-            /// -----------------------------------------------------------------
+            ///// -----------------------------------------------------------------
+            ///// ------ Add all new MWQMSubsectors with proper tide info --
+            ///// -----------------------------------------------------------------
 
-            using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
-            {
+            //List<TideLocation> tideLocationList = new List<TideLocation>();
+            //using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //{
+            //    tideLocationList = (from c in db2.TideLocations
+            //                        select c).ToList();
+            //}
 
-                var secteurSiteList = (from c in dbQC.geo_stations_p
-                                       where c.secteur != null
-                                       select c.secteur).Distinct().OrderBy(c => c).ToList();
+            //List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
 
-                var secteurPSSList = (from c in dbQC.geo_pollution_p
-                                      where c.secteur != null
-                                      select c.secteur).Distinct().OrderBy(c => c).ToList();
+            //foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
+            //{
+            //    string subsector = tvItemModelSS.TVText;
+            //    if (subsector.Contains(" "))
+            //    {
+            //        subsector = subsector.Substring(0, subsector.IndexOf(" "));
+            //    }
+
+            //    lblStatus.Text = subsector;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
 
 
-                var secteurList = (from c in dbQC.geo_secteur_s
-                                   where c.secteur != null
-                                   select new { c.secteur, c.secteur_nom, c.secteur_nom_a }).Distinct().OrderBy(c => c).ToList();
+            //    MWQMSubsectorModel mwqmSubsectorModel = mwqmSubsectorService.GetMWQMSubsectorModelWithMWQMSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
 
-                richTextBoxStatus.AppendText($"Secteur utilisé dans geo_stations_p mais qu'ils n'existe aucune référence dans geo_secteur_s\r\n");
-                foreach (var s in secteurSiteList)
-                {
-                    if (!secteurList.Where(c => c.secteur == s).Any())
-                    {
-                        richTextBoxStatus.AppendText($"{s}\r\n");
-                    }
-                }
+            //    if (!string.IsNullOrWhiteSpace(mwqmSubsectorModel.Error))
+            //    {
+            //        string TideLocationSIDText = "";
+            //        List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Point);
+            //        if (mapInfoPointModelList.Count > 0)
+            //        {
+            //            double Lat = mapInfoPointModelList[0].Lat;
+            //            double Lng = mapInfoPointModelList[0].Lng;
 
-                richTextBoxStatus.AppendText($"Secteur utilisé dans geo_pollution_p mais qu'ils n'existe aucune référence dans geo_secteur_s\r\n");
-                foreach (var s in secteurPSSList)
-                {
-                    if (!secteurList.Where(c => c.secteur == s).Any())
-                    {
-                        richTextBoxStatus.AppendText($"{s}\r\n");
-                    }
-                }
+            //            var tideLocation3List = (from c in tideLocationList
+            //                                     let d = ((c.Lat - Lat) * (c.Lat - Lat)) + ((c.Lng - Lng) * (c.Lng - Lng))
+            //                                     orderby d
+            //                                     select new { c, d }).Take(3).ToList();
 
-                richTextBoxStatus.AppendText($"Secteur mentionné dans geo_secteur_s mais qu'ils ne sont pas utilisé dans geo_pollution_p ou geo_stations_p\r\n");
-                foreach (var s in secteurList)
-                {
-                    if (!secteurSiteList.Where(c => c == s.secteur).Any() && !secteurPSSList.Where(c => c == s.secteur).Any())
-                    {
-                        richTextBoxStatus.AppendText($"{s.secteur}\r\n");
-                    }
-                }
+            //            if (tideLocation3List.Count != 3)
+            //            {
+            //                richTextBoxStatus.AppendText($"tideLocatiion3List count is not equal to 3\r\n");
+            //                return;
+            //            }
 
-                richTextBoxStatus.AppendText($"Secteur mentionné dans geo_secteur_s mais qu'ils n'ont pas de secteur_nom et/ou secteur_nom_a\r\n");
-                foreach (var s in secteurList)
-                {
-                    if (s.secteur_nom == null || s.secteur_nom_a == null)
-                    {
-                        richTextBoxStatus.AppendText($"{s.secteur}\r\n");
-                    }
-                }
+            //            foreach (var tideLocation3 in tideLocation3List)
+            //            {
+            //                TideLocationSIDText = TideLocationSIDText + tideLocation3.c.sid + ",";
+            //            }
 
-                return;
+            //            TideLocationSIDText = TideLocationSIDText.Substring(0, TideLocationSIDText.Length - 1);
 
-                //List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+            //        }
 
-                //foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
-                //{
-                //    string subsector = tvItemModelSS.TVText;
-                //    if (subsector.Contains(" "))
-                //    {
-                //        subsector = subsector.Substring(0, subsector.IndexOf(" "));
-                //    }
+            //        MWQMSubsectorModel mwqmSubsectorModelNew = new MWQMSubsectorModel()
+            //        {
+            //            MWQMSubsectorTVItemID = tvItemModelSS.TVItemID,
+            //            MWQMSubsectorTVText = subsector,
+            //            SubsectorDesc = "Todo",
+            //            SubsectorHistoricKey = subsector,
+            //            TideLocationSIDText = TideLocationSIDText
+            //        };
+            //        MWQMSubsectorModel mwqmSubsectormodelRet = mwqmSubsectorService.PostAddMWQMSubsectorDB(mwqmSubsectorModelNew);
+            //        if (!string.IsNullOrWhiteSpace(mwqmSubsectormodelRet.Error))
+            //        {
+            //            richTextBoxStatus.AppendText($"{mwqmSubsectormodelRet.Error}\r\n");
+            //            return;
+            //        }
+            //    }
 
-                //    lblStatus.Text = subsector;
-                //    lblStatus.Refresh();
-                //    Application.DoEvents();
-
-                //    MWQMSubsectorModel mwqmSubsectorModel = mwqmSubsectorService.GetMWQMSubsectorModelWithMWQMSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
-
-                //    if (!string.IsNullOrWhiteSpace(mwqmSubsectorModel.Error))
-                //    {
-                //        MWQMSubsectorModel mwqmSubsectorModelNew = new MWQMSubsectorModel()
-                //        {
-                //            MWQMSubsectorTVItemID = tvItemModelSS.TVItemID,
-                //            MWQMSubsectorTVText = subsector,
-                //            SubsectorDesc = "Todo",
-                //            SubsectorHistoricKey = subsector,
-                //            TideLocationSIDText = TideLocationSIDText
-                //        };
-                //        MWQMSubsectorModel mwqmSubsectormodelRet = mwqmSubsectorService.PostAddMWQMSubsectorDB(mwqmSubsectorModelNew);
-                //        if (!string.IsNullOrWhiteSpace(mwqmSubsectormodelRet.Error))
-                //        {
-                //            richTextBoxStatus.AppendText($"{mwqmSubsectormodelRet.Error}\r\n");
-                //            return;
-                //        }
-                //    }
-
-                //    lblStatus.Text = "done...";
-                //}
-            }
+            //    lblStatus.Text = "done...";
+            //}
             #endregion Add all new MWQMSubsectors with proper tide info
+
+            #region Delete all subsector that should not be in MWQMSubsectors table
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector);
+            //List<MWQMSubsectorModel> mwqmSubsectorModelList = mwqmSubsectorService.GetAllMWQMSubsectorModelDB();
+
+            foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
+            {
+                if (tvItemModel.TVText.StartsWith("NB-") || tvItemModel.TVText.StartsWith("NS-") || tvItemModel.TVText.StartsWith("NL-") || tvItemModel.TVText.StartsWith("PE-"))
+                {
+                    if (tvItemModel.IsActive)
+                    {
+                        string subsector = tvItemModel.TVText;
+                        if (subsector.Contains(" "))
+                        {
+                            subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                        }
+                        richTextBoxStatus.AppendText($"{subsector}\r\n");
+                    }
+                }
+            }
+            //foreach (MWQMSubsectorModel mwqmSubsectorModel in mwqmSubsectorModelList)
+            //{
+            //    if (!tvItemModelSubsectorList.Where(c => c.TVItemID == mwqmSubsectorModel.MWQMSubsectorTVItemID).Any())
+            //    {
+            //        richTextBoxStatus.AppendText($"{mwqmSubsectorModel.SubsectorHistoricKey} should be removed\r\n");
+            //    }
+            //}
+
+            #endregion Delete all subsector that should not be in MWQMSubsectors table
+
+            #region Create KML file with all the subsector ID and TideLocation selected
+            ///// -----------------------------------------------------------------
+            ///// ------ Create KML file with all the subsector ID and TideLocation selected --
+            ///// -----------------------------------------------------------------
+
+            //List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Subsector);
+            //List<MWQMSubsectorModel> mwqmSubsectorModelList = mwqmSubsectorService.GetAllMWQMSubsectorModelDB();
+
+            //List<TideLocation> tideLocationList = new List<TideLocation>();
+            //using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //{
+            //    tideLocationList = (from c in db2.TideLocations
+            //                        select c).ToList();
+            //}
+
+            //StringBuilder sb = new StringBuilder();
+
+            //sb.AppendLine($@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+            //sb.AppendLine($@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+            //sb.AppendLine($@"<Document>");
+            //sb.AppendLine($@"	<name>KmlFile</name>");
+            //sb.AppendLine($@"	<Style id=""s_ylw-pushpin_hl"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<scale>1.3</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"	</Style>");
+            //sb.AppendLine($@"	<StyleMap id=""m_ylw-pushpin"">");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>normal</key>");
+            //sb.AppendLine($@"			<styleUrl>#s_ylw-pushpin</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"		<Pair>");
+            //sb.AppendLine($@"			<key>highlight</key>");
+            //sb.AppendLine($@"			<styleUrl>#s_ylw-pushpin_hl</styleUrl>");
+            //sb.AppendLine($@"		</Pair>");
+            //sb.AppendLine($@"	</StyleMap>");
+            //sb.AppendLine($@"	<Style id=""s_ylw-pushpin"">");
+            //sb.AppendLine($@"		<IconStyle>");
+            //sb.AppendLine($@"			<scale>1.1</scale>");
+            //sb.AppendLine($@"			<Icon>");
+            //sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            //sb.AppendLine($@"			</Icon>");
+            //sb.AppendLine($@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            //sb.AppendLine($@"		</IconStyle>");
+            //sb.AppendLine($@"	</Style>");
+
+
+
+
+            //foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
+            //{
+            //    string subsector = tvItemModelSS.TVText;
+            //    if (subsector.Contains(" "))
+            //    {
+            //        subsector = subsector.Substring(0, subsector.IndexOf(" "));
+            //    }
+
+            //    lblStatus.Text = subsector;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    sb.AppendLine($@"	<Folder>");
+            //    sb.AppendLine($@"		<name>{subsector}</name>");
+
+            //    MWQMSubsectorModel mwqmSubsectorModel = (from c in mwqmSubsectorModelList
+            //                                             where c.MWQMSubsectorTVItemID == tvItemModelSS.TVItemID
+            //                                             select c).FirstOrDefault();
+
+            //    if (mwqmSubsectorModel == null)
+            //    {
+            //        richTextBoxStatus.AppendText($"Could not find mwqmSubsectorModel\r\n");
+            //        return;
+            //    }
+            //    List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Point);
+            //    if (mapInfoPointModelList.Count == 0)
+            //    {
+            //        richTextBoxStatus.AppendText($"Could not find mapInfoPointModelList\r\n");
+            //        return;
+            //    }
+
+            //    sb.AppendLine($@"	    <Placemark>");
+            //    sb.AppendLine($@"	    	<name>{subsector}</name>");
+            //    sb.AppendLine($@"	    	<styleUrl>#m_ylw-pushpin</styleUrl>");
+            //    sb.AppendLine($@"	    	<Point>");
+            //    sb.AppendLine($@"	    		<coordinates>{mapInfoPointModelList[0].Lng},{mapInfoPointModelList[0].Lat},0</coordinates>");
+            //    sb.AppendLine($@"	    	</Point>");
+            //    sb.AppendLine($@"	    </Placemark>");
+
+            //    List<int> sidList = new List<int>();
+
+            //    List<string> sidTextList = mwqmSubsectorModel.TideLocationSIDText.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            //    if (sidTextList.Count == 0)
+            //    {
+            //        richTextBoxStatus.AppendText($"Could not find sidTextList\r\n");
+            //        return;
+            //    }
+
+            //    foreach (string s in sidTextList)
+            //    {
+            //        if (!int.TryParse(s, out int sid))
+            //        {
+            //            sidList.Add(sid);
+            //        }
+            //    }
+
+            //    List<TideLocation> tideLocation3List = (from c in tideLocationList
+            //                                            from s in sidList
+            //                                            where c.TideLocationID == s
+            //                                            select c).ToList();
+
+            //    foreach (TideLocation tideLocation3 in tideLocation3List)
+            //    {
+            //        sb.AppendLine($@"	    <Placemark>");
+            //        sb.AppendLine($@"	    	<name>{tideLocation3.sid}</name>");
+            //        sb.AppendLine($@"	    	<styleUrl>#m_ylw-pushpin</styleUrl>");
+            //        sb.AppendLine($@"	    	<Point>");
+            //        sb.AppendLine($@"	    		<coordinates>{tideLocation3.Lng},{tideLocation3.Lat},0</coordinates>");
+            //        sb.AppendLine($@"	    	</Point>");
+            //        sb.AppendLine($@"	    </Placemark>");
+            //    }
+
+            //    sb.AppendLine($@"	</Folder>");
+
+            //    sb.AppendLine($@"</Document>");
+            //    sb.AppendLine($@"</kml>");
+
+            //    FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\testingtidelocation.kml");
+            //    StreamWriter sw = fi.CreateText();
+            //    sw.Write(sb.ToString());
+            //    sw.Close();
+
+            //    lblStatus.Text = "done...";
+            //}
+            #endregion Create KML file with all the subsector ID and TideLocation selected
 
         }
 
