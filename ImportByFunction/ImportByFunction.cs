@@ -9762,97 +9762,164 @@ namespace ImportByFunction
             #endregion Add all new subsectors that are in QC DB and not in CSSPDB
 
             #region Add all new MWQMSites that are in QC DB and not in CSSPDB
-            ///// -----------------------------------------------------------------
-            ///// ------ Add all new MWQMSites that are in QC DB and not in CSSPDB --
-            ///// -----------------------------------------------------------------
+            /// -----------------------------------------------------------------
+            /// ------ Add all new MWQMSites that are in QC DB and not in CSSPDB --
+            /// -----------------------------------------------------------------
 
-            //List<TVItemModel> tvItemModelSectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Sector);
-            //List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+            List<TVItemModel> tvItemModelSectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Sector);
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
 
-            //using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
-            //{
-            //    var geo_stations_pList = (from c in dbQC.geo_stations_p
-            //                              where c.secteur != null
-            //                              orderby c.secteur, c.station
-            //                              select new { c.id_geo_station_p, c.station, c.secteur, c.x, c.y }).ToList();
+            using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
+            {
+                var geo_stations_pList = (from c in dbQC.geo_stations_p
+                                          where c.secteur != null
+                                          orderby c.secteur, c.station
+                                          select new { c.id_geo_station_p, c.station, c.secteur, c.x, c.y }).ToList();
 
-            //    List<string> SubsectorListQC = (from c in geo_stations_pList
-            //                                    select c.secteur).Distinct().ToList();
+                List<string> SubsectorListQC = (from c in geo_stations_pList
+                                                select c.secteur).Distinct().ToList();
 
-            //    List<string> SubsectorList = new List<string>();
-            //    foreach (string s in SubsectorListQC)
-            //    {
-            //        if (s.Length > 3)
-            //        {
-            //            if (!SubsectorList.Contains(s))
-            //            {
-            //                SubsectorList.Add(s);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            if (s == "S")
-            //            {
-            //                SubsectorList.Add(s);
-            //            }
-            //        }
-            //    }
+                List<string> SubsectorList = new List<string>();
+                foreach (string s in SubsectorListQC)
+                {
+                    if (s.Length > 3)
+                    {
+                        if (!SubsectorList.Contains(s))
+                        {
+                            SubsectorList.Add(s);
+                        }
+                    }
+                    else
+                    {
+                        if (s == "S")
+                        {
+                            SubsectorList.Add(s);
+                        }
+                    }
+                }
 
-            //    richTextBoxStatus.AppendText($"------------------- QC Subsector ------------\r\n");
-            //    foreach (string subsector in SubsectorList)
-            //    {
-            //        lblStatus.Text = subsector;
-            //        lblStatus.Refresh();
-            //        Application.DoEvents();
+                richTextBoxStatus.AppendText($"------------------- QC Subsector ------------\r\n");
+                foreach (string subsector in SubsectorList)
+                {
+                    lblStatus.Text = subsector;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
 
-            //        TVItemModel tvItemModelSubsector = tvItemModelSubsectorList.Where(c => c.TVText.StartsWith(subsector + " ")).FirstOrDefault();
-            //        if (tvItemModelSubsector == null)
-            //        {
-            //            richTextBoxStatus.AppendText($"{subsector} could not be found\r\n");
-            //            return;
-            //        }
+                    TVItemModel tvItemModelSubsector = tvItemModelSubsectorList.Where(c => c.TVText.StartsWith(subsector + " ")).FirstOrDefault();
+                    if (tvItemModelSubsector == null)
+                    {
+                        richTextBoxStatus.AppendText($"{subsector} could not be found\r\n");
+                        return;
+                    }
 
-            //        var QCSites = (from c in geo_stations_pList
-            //                       where c.secteur == subsector
-            //                       select c).ToList();
+                    var QCSites = (from c in geo_stations_pList
+                                   where c.secteur == subsector
+                                   orderby c.station
+                                   select c).ToList();
 
-            //        foreach (var qcsite in QCSites)
-            //        {
-            //            lblStatus.Text = subsector + " -- " + ((int)qcsite.station).ToString();
-            //            lblStatus.Refresh();
-            //            Application.DoEvents();
+                    List<MWQMSiteModel> mwqmSiteModelList = mwqmSiteService.GetMWQMSiteModelListWithSubsectorTVItemIDDB(tvItemModelSubsector.TVItemID);
 
-            //            string MWQMSiteTVText = "0000".Substring(0, 4 - qcsite.station.ToString().Length) + qcsite.station.ToString();
+                    int ordinal = 0;
+                    foreach (var qcsite in QCSites)
+                    {
+                        lblStatus.Text = subsector + " -- " + ((int)qcsite.station).ToString();
+                        lblStatus.Refresh();
+                        Application.DoEvents();
 
-            //            TVItemModel tvItemModelSite = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelSubsector.TVItemID, MWQMSiteTVText, TVTypeEnum.MWQMSite);
-            //            if (!string.IsNullOrWhiteSpace(tvItemModelSite.Error))
-            //            {
+                        string MWQMSiteTVText = "0000".Substring(0, 4 - qcsite.station.ToString().Length) + qcsite.station.ToString();
 
-            //                TVItemModel tvItemModelSiteRet = tvItemService.PostAddChildTVItemDB(tvItemModelSubsector.TVItemID, MWQMSiteTVText, TVTypeEnum.MWQMSite);
-            //                if (!string.IsNullOrWhiteSpace(tvItemModelSiteRet.Error))
-            //                {
-            //                    richTextBoxStatus.AppendText($"{tvItemModelSiteRet.Error}\r\n");
-            //                    return;
-            //                }
+                        TVItemModel tvItemModelSite = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelSubsector.TVItemID, MWQMSiteTVText, TVTypeEnum.MWQMSite);
+                        if (!string.IsNullOrWhiteSpace(tvItemModelSite.Error))
+                        {
 
-            //                List<Coord> coordList = new List<Coord>()
-            //                {
-            //                    new Coord() { Lat = (float)(qcsite.y), Lng = (float)(qcsite.x), Ordinal = 0 },
-            //                };
+                            tvItemModelSite = tvItemService.PostAddChildTVItemDB(tvItemModelSubsector.TVItemID, MWQMSiteTVText, TVTypeEnum.MWQMSite);
+                            if (!string.IsNullOrWhiteSpace(tvItemModelSite.Error))
+                            {
+                                richTextBoxStatus.AppendText($"{tvItemModelSite.Error}\r\n");
+                                return;
+                            }
 
-            //                MapInfoModel mapInfoModel = tvItemService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.MWQMSite, tvItemModelSiteRet.TVItemID);
-            //                if (!string.IsNullOrWhiteSpace(mapInfoModel.Error))
-            //                {
-            //                    richTextBoxStatus.AppendText($"{mapInfoModel.Error}\r\n");
-            //                    return;
-            //                }
-            //            }
-            //        }
+                            List<Coord> coordList = new List<Coord>()
+                                {
+                                new Coord() { Lat = (float)(qcsite.y), Lng = (float)(qcsite.x), Ordinal = 0 },
+                                };
 
-            //    }
+                            MapInfoModel mapInfoModel = tvItemService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.MWQMSite, tvItemModelSite.TVItemID);
+                            if (!string.IsNullOrWhiteSpace(mapInfoModel.Error))
+                            {
+                                richTextBoxStatus.AppendText($"{mapInfoModel.Error}\r\n");
+                                return;
+                            }
+                        }
 
-            //    lblStatus.Text = "done...";
-            //}
+                        if (string.IsNullOrWhiteSpace(tvItemModelSite.Error))
+                        {
+                            MWQMSiteModel mwqmSiteModelExist = (from c in mwqmSiteModelList
+                                                                where c.MWQMSiteTVItemID == tvItemModelSite.TVItemID
+                                                                select c).FirstOrDefault();
+
+                            if (mwqmSiteModelExist == null)
+                            {
+                                MWQMSiteModel mwqmSiteModelNew = new MWQMSiteModel()
+                                {
+                                    MWQMSiteTVItemID = tvItemModelSite.TVItemID,
+                                    MWQMSiteDescription = "--",
+                                    MWQMSiteLatestClassification = 0,
+                                    MWQMSiteNumber = tvItemModelSite.TVText,
+                                    MWQMSiteTVText = tvItemModelSite.TVText,
+                                    Ordinal = ordinal,
+                                };
+
+                                MWQMSiteModel mwqmSiteModelRet = mwqmSiteService.PostAddMWQMSiteDB(mwqmSiteModelNew);
+                                if (!string.IsNullOrWhiteSpace(mwqmSiteModelRet.Error))
+                                {
+                                    richTextBoxStatus.AppendText($"{mwqmSiteModelRet.Error}\r\n");
+                                    return;
+                                }
+                                ordinal += 1;
+                            }
+                            else
+                            {
+                                bool ShouldUpdate = false;
+                                if (mwqmSiteModelExist.MWQMSiteDescription != "--")
+                                {
+                                    mwqmSiteModelExist.MWQMSiteDescription = "--";
+                                    ShouldUpdate = true;
+                                }
+                                if (mwqmSiteModelExist.MWQMSiteLatestClassification != 0)
+                                {
+                                    mwqmSiteModelExist.MWQMSiteLatestClassification = 0;
+                                    ShouldUpdate = true;
+                                }
+                                if (mwqmSiteModelExist.MWQMSiteNumber != tvItemModelSite.TVText)
+                                {
+                                    mwqmSiteModelExist.MWQMSiteNumber = tvItemModelSite.TVText;
+                                    ShouldUpdate = true;
+                                }
+                                if (mwqmSiteModelExist.Ordinal != ordinal)
+                                {
+                                    mwqmSiteModelExist.Ordinal = ordinal;
+                                    ShouldUpdate = true;
+                                }
+
+                                if (ShouldUpdate)
+                                {
+                                    MWQMSiteModel mwqmSiteModelRet = mwqmSiteService.PostUpdateMWQMSiteDB(mwqmSiteModelExist);
+                                    if (!string.IsNullOrWhiteSpace(mwqmSiteModelRet.Error))
+                                    {
+                                        richTextBoxStatus.AppendText($"{mwqmSiteModelRet.Error}\r\n");
+                                        return;
+                                    }
+                                }
+                                ordinal += 1;
+                            }
+                        }
+                    }
+
+                }
+
+                lblStatus.Text = "done...";
+            }
             #endregion Add all new MWQMSites that are in QC DB and not in CSSPDB
 
             #region Add all new Runs that are in QC DB and not in CSSPDB
