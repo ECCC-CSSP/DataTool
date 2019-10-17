@@ -95,7 +95,7 @@
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.butCompareQCAndCSSP = new System.Windows.Forms.Button();
+            this.butImportQCWQMonitoringToCSSPDB = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
@@ -739,7 +739,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.butCompareQCAndCSSP);
+            this.groupBox2.Controls.Add(this.butImportQCWQMonitoringToCSSPDB);
             this.groupBox2.Location = new System.Drawing.Point(504, 314);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(230, 178);
@@ -747,15 +747,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "New QC Import and Test Tool";
             // 
-            // butCompareQCAndCSSP
+            // butImportQCWQMonitoringToCSSPDB
             // 
-            this.butCompareQCAndCSSP.Location = new System.Drawing.Point(30, 19);
-            this.butCompareQCAndCSSP.Name = "butCompareQCAndCSSP";
-            this.butCompareQCAndCSSP.Size = new System.Drawing.Size(163, 23);
-            this.butCompareQCAndCSSP.TabIndex = 0;
-            this.butCompareQCAndCSSP.Text = "Compare QC and CSSP";
-            this.butCompareQCAndCSSP.UseVisualStyleBackColor = true;
-            this.butCompareQCAndCSSP.Click += new System.EventHandler(this.ButCompareQCAndCSSP_Click);
+            this.butImportQCWQMonitoringToCSSPDB.Location = new System.Drawing.Point(6, 19);
+            this.butImportQCWQMonitoringToCSSPDB.Name = "butImportQCWQMonitoringToCSSPDB";
+            this.butImportQCWQMonitoringToCSSPDB.Size = new System.Drawing.Size(218, 23);
+            this.butImportQCWQMonitoringToCSSPDB.TabIndex = 0;
+            this.butImportQCWQMonitoringToCSSPDB.Text = "Import QC WQ monitoring to CSSPDB";
+            this.butImportQCWQMonitoringToCSSPDB.UseVisualStyleBackColor = true;
+            this.butImportQCWQMonitoringToCSSPDB.Click += new System.EventHandler(this.ButImportQCWQMonitoringToCSSPDB_Click);
             // 
             // button18
             // 
@@ -925,7 +925,7 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button butCompareQCAndCSSP;
+        private System.Windows.Forms.Button butImportQCWQMonitoringToCSSPDB;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
     }
