@@ -67,6 +67,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoCoRaHSModel\CoCoRaHSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoCoRaHSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoCoRaHSModel\CoCoRaHSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoCoRaHSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoCoRaHSModel\CoCoRaHSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoCoRaHSModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CoCoRaHSModel\CoCoRaHSSite.cs">
+      <DependentUpon>CoCoRaHSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoCoRaHSModel\CoCoRaHSValue.cs">
+      <DependentUpon>CoCoRaHSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ImportByFunction.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +133,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EntityDeploy Include="CoCoRaHSModel\CoCoRaHSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CoCoRaHSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CoCoRaHSModel\CoCoRaHSModel.edmx.diagram">
+      <DependentUpon>CoCoRaHSModel.edmx</DependentUpon>
+    </None>
     <None Include="Data_inputs\Areas_Sectors_Subsectors.kml" />
     <None Include="Data_inputs\Areas_Sectors_SubsectorsFinal.kml" />
     <None Include="Data_inputs\BC Area.kml" />
@@ -222,6 +250,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CoCoRaHSModel\CoCoRaHSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CoCoRaHSModel.edmx</DependentUpon>
+      <LastGenOutput>CoCoRaHSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CoCoRaHSModel\CoCoRaHSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CoCoRaHSModel.edmx</DependentUpon>
+      <LastGenOutput>CoCoRaHSModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Data_inputs\LocationNameLatLong.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

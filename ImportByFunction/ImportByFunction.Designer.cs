@@ -98,6 +98,7 @@
             this.butImportQCWQMonitoringToCSSPDB = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -777,11 +778,22 @@
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(475, 108);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(184, 24);
+            this.button20.TabIndex = 226;
+            this.button20.Text = "Load in CoCoRaHS DB";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.button20);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.groupBox2);
@@ -928,6 +940,7 @@
         private System.Windows.Forms.Button butImportQCWQMonitoringToCSSPDB;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button20;
     }
 }
 

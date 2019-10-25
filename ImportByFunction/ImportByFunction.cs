@@ -11341,7 +11341,7 @@ namespace ImportByFunction
 
             return "";
         }
-       
+
         private void ButImportQCWQMonitoringToCSSPDB_Click(object sender, EventArgs e)
         {
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -12098,6 +12098,438 @@ namespace ImportByFunction
             //        }
             //    }
             //}
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            #region Remove Washington and Maine state CoCoRaHS site that are more than 100 km from NB and BC Subsectors
+
+            List<string> SubsectorNameList = new List<string>()
+            {
+                "NB-18-010-001",
+                "VI01"
+            };
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            MapInfoPointService mapInfoPointService = new MapInfoPointService(LanguageEnum.en, user);
+
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                richTextBoxStatus.AppendText($"Error: {tvItemModelRoot.Error}\r\n");
+                return;
+            }
+
+            foreach (string SubsectorName in SubsectorNameList)
+            {
+                string StartWith = "ME-";
+
+                if (SubsectorName == "VI01")
+                {
+                    StartWith = "WA-";
+                }
+
+                TVItemModel tvItemModelSS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, SubsectorName, TVTypeEnum.Subsector);
+                if (!string.IsNullOrWhiteSpace(tvItemModelSS.Error))
+                {
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelSS.Error}\r\n");
+                    return;
+                }
+
+                List<MapInfoPointModel> mapInfoPointModelList = mapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Point);
+                if (mapInfoPointModelList.Count == 0)
+                {
+                    richTextBoxStatus.AppendText($"Error: mapInfoPointModelList count should not be 0\r\n");
+                    return;
+                }
+
+                double ssLat = mapInfoPointModelList[0].Lat;
+                double ssLng = mapInfoPointModelList[0].Lng;
+
+                using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
+                {
+
+                    List<CoCoRaHSModel.CoCoRaHSSite> cocorahsSiteList = (from c in db.CoCoRaHSSites
+                                                                         where c.StationNumber.StartsWith(StartWith)
+                                                                         orderby c.StationNumber
+                                                                         select c).ToList();
+
+                    int count = 0;
+                    foreach (CoCoRaHSModel.CoCoRaHSSite cocorahsSite in cocorahsSiteList)
+                    {
+                        count += 1;
+
+                        lblStatus.Text = cocorahsSite.StationNumber + " --- " + count;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        double dist = mapInfoService.CalculateDistance(ssLat * mapInfoService.d2r, ssLng * mapInfoService.d2r, cocorahsSite.Latitude * mapInfoService.d2r,
+                            cocorahsSite.Longitude * mapInfoService.d2r, mapInfoService.R);
+
+                        if (dist > 100000)
+                        {
+                            richTextBoxStatus.AppendText($"Should delete {cocorahsSite.StationNumber} --- {count}\r\n");
+
+                            db.CoCoRaHSSites.Remove(cocorahsSite);
+
+                            try
+                            {
+                                db.SaveChanges();
+                            }
+                            catch (Exception ex)
+                            {
+                                richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+            using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
+            {
+
+                List<string> cocorahsStationNumberExistList = (from c in db.CoCoRaHSSites
+                                                               orderby c.StationNumber
+                                                               select c.StationNumber).Distinct().ToList();
+
+                List<string> cocorahsStationNumberList = (from c in db.CoCoRaHSValues
+                                                          orderby c.StationNumber
+                                                          select c.StationNumber).Distinct().ToList();
+
+                int count = 0;
+                foreach (string StationNumber in cocorahsStationNumberList)
+                {
+                    count += 1;
+
+                    lblStatus.Text = "Deleting CoCoRaHSValues with " + StationNumber + " --- " + count;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    if (!cocorahsStationNumberExistList.Contains(StationNumber))
+                    {
+                        using (CoCoRaHSModel.CoCoRaHSEntities db2 = new CoCoRaHSModel.CoCoRaHSEntities())
+                        {
+                            List<CoCoRaHSModel.CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
+                                                                                   where c.StationNumber == StationNumber
+                                                                                   select c).ToList();
+
+                            try
+                            {
+                                db2.CoCoRaHSValues.RemoveRange(cocorahsValueList);
+                                db2.SaveChanges();
+                            }
+                            catch (Exception)
+                            {
+                                richTextBoxStatus.AppendText($"Error: Deleting CoCoRaHSValues with StationNumber {StationNumber}\r\n");
+                                return;
+
+                            }
+                        }
+                    }
+                }
+
+            }
+
+
+            using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
+            {
+
+                List<CoCoRaHSModel.CoCoRaHSSite> cocorahsSiteList = (from c in db.CoCoRaHSSites
+                                                                     orderby c.StationNumber
+                                                                     select c).ToList();
+
+                int count = 0;
+                foreach (CoCoRaHSModel.CoCoRaHSSite coCoRaHSSite in cocorahsSiteList)
+                {
+                    count += 1;
+
+                    lblStatus.Text = coCoRaHSSite.StationNumber + " --- " + count;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    using (CoCoRaHSModel.CoCoRaHSEntities db2 = new CoCoRaHSModel.CoCoRaHSEntities())
+                    {
+
+                        List<CoCoRaHSModel.CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
+                                                                               where c.StationNumber == coCoRaHSSite.StationNumber
+                                                                               select c).ToList();
+
+                        foreach (CoCoRaHSModel.CoCoRaHSValue coCoRaHSValue in cocorahsValueList)
+                        {
+                            coCoRaHSValue.CoCoRaHSSiteID = coCoRaHSSite.CoCoRaHSSiteID;
+                        }
+
+                        try
+                        {
+                            db2.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+                            return;
+                        }
+
+                    }
+
+                }
+
+
+            }
+            lblStatus.Text = "done...";
+            #endregion Remove Washington and Maine state CoCoRaHS site that are more than 100 km from NB and BC Subsectors
+
+            #region Loading all CoCoRaHS values in CoCoRaHS database
+            //List<string> FirstCharList = new List<string>()
+            //{
+            //    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+            //};
+
+            //string dir = @"C:\Users\leblancc\Desktop\CoCoRaHS\";
+
+            //DirectoryInfo di = new DirectoryInfo(dir);
+
+            //List<FileInfo> fileInfoList = di.GetFiles().Where(c => c.Name.EndsWith(".csv")).ToList();
+
+            //foreach (FileInfo fi in fileInfoList)
+            //{
+            //    List<CoCoRaHSModel.CoCoRaHSValue> CoCoRaHSValueList = new List<CoCoRaHSModel.CoCoRaHSValue>();
+
+            //    if (!fi.Exists)
+            //    {
+            //        richTextBoxStatus.AppendText($"[{fi.FullName}] does not exist\r\n");
+            //        return;
+            //    }
+
+            //    lblStatus.Text = fi.FullName;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    TextReader tr = fi.OpenText();
+
+            //    string LineTxt = tr.ReadLine(); // this will remove the first row
+            //    LineTxt = tr.ReadLine();
+            //    int countLine = 0;
+            //    while (!string.IsNullOrWhiteSpace(LineTxt))
+            //    {
+            //        if (countLine % 1000 == 0)
+            //        {
+            //            lblStatus.Text = countLine + " --- " + fi.FullName;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
+            //            {
+            //                try
+            //                {
+            //                    db.CoCoRaHSValues.AddRange(CoCoRaHSValueList);
+            //                    db.SaveChanges();
+            //                }
+            //                catch (Exception ex)
+            //                {
+            //                    richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+            //                    return;
+            //                }
+            //            }
+
+            //            CoCoRaHSValueList = new List<CoCoRaHSModel.CoCoRaHSValue>();
+            //        }
+
+            //        countLine += 1;
+            //        List<string> valList = LineTxt.Split(",".ToCharArray(), StringSplitOptions.None).Select(c => c.Trim()).ToList();
+
+            //        if (valList.Count != 13)
+            //        {
+            //            richTextBoxStatus.AppendText($"LineTxt {countLine} of document [{fi.FullName}] does not have 13 elements\r\n");
+            //            return;
+            //        }
+
+            //        if (!DateTime.TryParse(valList[0], out DateTime ObservationDateAndTime))
+            //        {
+            //            richTextBoxStatus.AppendText($"Could not parse LineTxt {countLine} of document [{fi.FullName}] element [0] to DateTime\r\n");
+            //            return;
+            //        }
+
+            //        if (!int.TryParse(valList[1].Substring(0, 2), out int Hour))
+            //        {
+            //            richTextBoxStatus.AppendText($"Could not parse LineTxt {countLine} of document [{fi.FullName}] element [1] first two characters to int\r\n");
+            //            return;
+            //        }
+
+            //        if (!int.TryParse(valList[1].Substring(3, 2), out int Min))
+            //        {
+            //            richTextBoxStatus.AppendText($"Could not parse LineTxt {countLine} of document [{fi.FullName}] element [1] characters 3 to 5 to int\r\n");
+            //            return;
+            //        }
+
+            //        string AmPm = valList[1].Substring(6, 2);
+            //        if (AmPm == "PM")
+            //        {
+            //            Hour += 12;
+            //        }
+            //        else
+            //        {
+            //            if (AmPm != "AM")
+            //            {
+            //                richTextBoxStatus.AppendText($"Could not parse LineTxt {countLine} of document [{fi.FullName}] element [1] to proper AM PM\r\n");
+            //                return;
+            //            }
+            //        }
+
+            //        ObservationDateAndTime = ObservationDateAndTime.AddHours(Hour);
+
+            //        ObservationDateAndTime = ObservationDateAndTime.AddMinutes(Min);
+
+            //        string StationNumber = valList[3];
+            //        string StationName = valList[4];
+
+            //        if (!double.TryParse(valList[5], out double Latitude))
+            //        {
+            //            richTextBoxStatus.AppendText($"Could not parse LineTxt {countLine} of document [{fi.FullName}] element [5] (Latitude) to double\r\n");
+            //            return;
+            //        }
+
+            //        if (!double.TryParse(valList[6], out double Longitude))
+            //        {
+            //            richTextBoxStatus.AppendText($"Could not parse LineTxt {countLine} of document [{fi.FullName}] element [6] (Longitude) to double\r\n");
+            //            return;
+            //        }
+
+            //        // getting TotalPrecipAmt
+            //        double? TotalPrecipAmt = null;
+            //        double? TotalPrecipAmtInInches = null;
+            //        string FirstChar = valList[7].Substring(0, 1);
+            //        if (FirstCharList.Contains(FirstChar))
+            //        {
+            //            // should be a number
+            //            TotalPrecipAmtInInches = double.Parse(valList[7]);
+            //        }
+            //        else
+            //        {
+            //            if (FirstChar == "T")
+            //            {
+            //                TotalPrecipAmtInInches = 0;
+            //            }
+            //        }
+
+            //        TotalPrecipAmt = TotalPrecipAmtInInches * 25.4;
+
+            //        // getting NewSnowDepth
+            //        double? NewSnowDepth = null;
+            //        double? NewSnowDepthInInches = null;
+            //        FirstChar = valList[8].Substring(0, 1);
+            //        if (FirstCharList.Contains(FirstChar))
+            //        {
+            //            // should be a number
+            //            NewSnowDepthInInches = double.Parse(valList[8]);
+            //            NewSnowDepth = NewSnowDepthInInches * 25.4;
+            //        }
+            //        else
+            //        {
+            //            if (FirstChar == "N")
+            //            {
+            //                NewSnowDepthInInches = null;
+            //            }
+            //        }
+
+            //        // getting NewSnowSWE
+            //        double? NewSnowSWE = null;
+            //        double? NewSnowSWEInInches = null;
+            //        FirstChar = valList[9].Substring(0, 1);
+            //        if (FirstCharList.Contains(FirstChar))
+            //        {
+            //            // should be a number
+            //            NewSnowSWEInInches = double.Parse(valList[9]);
+            //            NewSnowSWE = NewSnowSWEInInches * 25.4;
+            //        }
+            //        else
+            //        {
+            //            if (FirstChar == "N")
+            //            {
+            //                NewSnowSWEInInches = null;
+            //            }
+            //        }
+
+            //        // getting TotalSnowDepth
+            //        double? TotalSnowDepth = null;
+            //        double? TotalSnowDepthInInches = null;
+            //        FirstChar = valList[10].Substring(0, 1);
+            //        if (FirstCharList.Contains(FirstChar))
+            //        {
+            //            // should be a number
+            //            TotalSnowDepthInInches = double.Parse(valList[10]);
+            //            TotalSnowDepth = TotalSnowDepthInInches * 25.4;
+            //        }
+            //        else
+            //        {
+            //            if (FirstChar == "N")
+            //            {
+            //                TotalSnowDepthInInches = null;
+            //            }
+            //        }
+
+            //        // getting TotalSnowSWE
+            //        double? TotalSnowSWE = null;
+            //        double? TotalSnowSWEInInches = null;
+            //        FirstChar = valList[11].Substring(0, 1);
+            //        if (FirstCharList.Contains(FirstChar))
+            //        {
+            //            // should be a number
+            //            TotalSnowSWEInInches = double.Parse(valList[11]);
+            //            TotalSnowSWE = TotalSnowSWEInInches * 25.4;
+            //        }
+            //        else
+            //        {
+            //            if (FirstChar == "N")
+            //            {
+            //                TotalSnowSWEInInches = null;
+            //            }
+            //        }
+
+            //        CoCoRaHSModel.CoCoRaHSValue cocorahsValue = new CoCoRaHSModel.CoCoRaHSValue()
+            //        {
+            //             ObservationDateAndTime = ObservationDateAndTime,
+            //             StationNumber = StationNumber,
+            //             StationName = StationName,
+            //             Latitude = Latitude,
+            //             Longitude = Longitude,
+            //             TotalPrecipAmt = TotalPrecipAmt,
+            //             NewSnowDepth = NewSnowDepth,
+            //             NewSnowSWE = NewSnowSWE,
+            //             TotalSnowDepth = TotalSnowDepth,
+            //             TotalSnowSWE = TotalSnowSWE
+            //        };
+
+            //        CoCoRaHSValueList.Add(cocorahsValue);
+
+            //        LineTxt = tr.ReadLine();
+
+            //    }
+
+            //    tr.Close();
+
+            //    using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
+            //    {
+            //        try
+            //        {
+            //            db.CoCoRaHSValues.AddRange(CoCoRaHSValueList);
+            //            db.SaveChanges();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+            //            return;
+            //        }
+            //    }
+
+            //}
+
+            #endregion Loading all CoCoRaHS values in CoCoRaHS database
+
+
+
         }
 
         //private void button18_Click(object sender, EventArgs e)

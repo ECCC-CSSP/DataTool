@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CoCoRaHSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CoCoRaHSSites">
+          <Key>
+            <PropertyRef Name="CoCoRaHSSiteID" />
+          </Key>
+          <Property Name="CoCoRaHSSiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StationNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StationName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoCoRaHSValues">
+          <Key>
+            <PropertyRef Name="CoCoRaHSValueID" />
+          </Key>
+          <Property Name="CoCoRaHSValueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CoCoRaHSSiteID" Type="int" />
+          <Property Name="ObservationDateAndTime" Type="datetime" Nullable="false" />
+          <Property Name="StationNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalPrecipAmt" Type="float" />
+          <Property Name="NewSnowDepth" Type="float" />
+          <Property Name="NewSnowSWE" Type="float" />
+          <Property Name="TotalSnowDepth" Type="float" />
+          <Property Name="TotalSnowSWE" Type="float" />
+        </EntityType>
+        <Association Name="FK_CoCoRaHSValues_CoCoRaHSSites">
+          <End Role="CoCoRaHSSites" Type="Self.CoCoRaHSSites" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CoCoRaHSValues" Type="Self.CoCoRaHSValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoCoRaHSSites">
+              <PropertyRef Name="CoCoRaHSSiteID" />
+            </Principal>
+            <Dependent Role="CoCoRaHSValues">
+              <PropertyRef Name="CoCoRaHSSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CoCoRaHSModelStoreContainer">
+          <EntitySet Name="CoCoRaHSSites" EntityType="Self.CoCoRaHSSites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoCoRaHSValues" EntityType="Self.CoCoRaHSValues" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CoCoRaHSValues_CoCoRaHSSites" Association="Self.FK_CoCoRaHSValues_CoCoRaHSSites">
+            <End Role="CoCoRaHSSites" EntitySet="CoCoRaHSSites" />
+            <End Role="CoCoRaHSValues" EntitySet="CoCoRaHSValues" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CoCoRaHSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CoCoRaHSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CoCoRaHSSites" EntityType="CoCoRaHSModel.CoCoRaHSSite" />
+          <EntitySet Name="CoCoRaHSValues" EntityType="CoCoRaHSModel.CoCoRaHSValue" />
+          <AssociationSet Name="FK_CoCoRaHSValues_CoCoRaHSSites" Association="CoCoRaHSModel.FK_CoCoRaHSValues_CoCoRaHSSites">
+            <End Role="CoCoRaHSSite" EntitySet="CoCoRaHSSites" />
+            <End Role="CoCoRaHSValue" EntitySet="CoCoRaHSValues" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CoCoRaHSSite">
+          <Key>
+            <PropertyRef Name="CoCoRaHSSiteID" />
+          </Key>
+          <Property Name="CoCoRaHSSiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StationNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StationName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <NavigationProperty Name="CoCoRaHSValues" Relationship="CoCoRaHSModel.FK_CoCoRaHSValues_CoCoRaHSSites" FromRole="CoCoRaHSSite" ToRole="CoCoRaHSValue" />
+        </EntityType>
+        <EntityType Name="CoCoRaHSValue">
+          <Key>
+            <PropertyRef Name="CoCoRaHSValueID" />
+          </Key>
+          <Property Name="CoCoRaHSValueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CoCoRaHSSiteID" Type="Int32" />
+          <Property Name="ObservationDateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StationNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalPrecipAmt" Type="Double" />
+          <Property Name="NewSnowDepth" Type="Double" />
+          <Property Name="NewSnowSWE" Type="Double" />
+          <Property Name="TotalSnowDepth" Type="Double" />
+          <Property Name="TotalSnowSWE" Type="Double" />
+          <NavigationProperty Name="CoCoRaHSSite" Relationship="CoCoRaHSModel.FK_CoCoRaHSValues_CoCoRaHSSites" FromRole="CoCoRaHSValue" ToRole="CoCoRaHSSite" />
+        </EntityType>
+        <Association Name="FK_CoCoRaHSValues_CoCoRaHSSites">
+          <End Type="CoCoRaHSModel.CoCoRaHSSite" Role="CoCoRaHSSite" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CoCoRaHSModel.CoCoRaHSValue" Role="CoCoRaHSValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoCoRaHSSite">
+              <PropertyRef Name="CoCoRaHSSiteID" />
+            </Principal>
+            <Dependent Role="CoCoRaHSValue">
+              <PropertyRef Name="CoCoRaHSSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CoCoRaHSModelStoreContainer" CdmEntityContainer="CoCoRaHSEntities">
+          <EntitySetMapping Name="CoCoRaHSSites">
+            <EntityTypeMapping TypeName="CoCoRaHSModel.CoCoRaHSSite">
+              <MappingFragment StoreEntitySet="CoCoRaHSSites">
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="StationName" ColumnName="StationName" />
+                <ScalarProperty Name="StationNumber" ColumnName="StationNumber" />
+                <ScalarProperty Name="CoCoRaHSSiteID" ColumnName="CoCoRaHSSiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoCoRaHSValues">
+            <EntityTypeMapping TypeName="CoCoRaHSModel.CoCoRaHSValue">
+              <MappingFragment StoreEntitySet="CoCoRaHSValues">
+                <ScalarProperty Name="TotalSnowSWE" ColumnName="TotalSnowSWE" />
+                <ScalarProperty Name="TotalSnowDepth" ColumnName="TotalSnowDepth" />
+                <ScalarProperty Name="NewSnowSWE" ColumnName="NewSnowSWE" />
+                <ScalarProperty Name="NewSnowDepth" ColumnName="NewSnowDepth" />
+                <ScalarProperty Name="TotalPrecipAmt" ColumnName="TotalPrecipAmt" />
+                <ScalarProperty Name="StationNumber" ColumnName="StationNumber" />
+                <ScalarProperty Name="ObservationDateAndTime" ColumnName="ObservationDateAndTime" />
+                <ScalarProperty Name="CoCoRaHSSiteID" ColumnName="CoCoRaHSSiteID" />
+                <ScalarProperty Name="CoCoRaHSValueID" ColumnName="CoCoRaHSValueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

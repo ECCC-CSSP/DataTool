@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4d2a79b680349dca95f75f295cdd731" Name="Diagram1">
+        <EntityTypeShape EntityType="CoCoRaHSModel.CoCoRaHSSite" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CoCoRaHSModel.CoCoRaHSValue" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="CoCoRaHSModel.FK_CoCoRaHSValues_CoCoRaHSSites" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
