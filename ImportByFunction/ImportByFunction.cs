@@ -12104,138 +12104,260 @@ namespace ImportByFunction
         {
             #region Remove Washington and Maine state CoCoRaHS site that are more than 100 km from NB and BC Subsectors
 
-            List<string> SubsectorNameList = new List<string>()
-            {
-                "NB-18-010-001",
-                "VI01"
-            };
+            //List<string> SubsectorNameList = new List<string>()
+            //{
+            //    "NB-18-010-001",
+            //    "VI01"
+            //};
 
-            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
-            MapInfoPointService mapInfoPointService = new MapInfoPointService(LanguageEnum.en, user);
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            //MapInfoPointService mapInfoPointService = new MapInfoPointService(LanguageEnum.en, user);
 
 
-            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
-            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
-            {
-                richTextBoxStatus.AppendText($"Error: {tvItemModelRoot.Error}\r\n");
-                return;
-            }
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            //{
+            //    richTextBoxStatus.AppendText($"Error: {tvItemModelRoot.Error}\r\n");
+            //    return;
+            //}
 
-            foreach (string SubsectorName in SubsectorNameList)
-            {
-                string StartWith = "ME-";
+            //foreach (string SubsectorName in SubsectorNameList)
+            //{
+            //    string StartWith = "ME-";
 
-                if (SubsectorName == "VI01")
-                {
-                    StartWith = "WA-";
-                }
+            //    if (SubsectorName == "VI01")
+            //    {
+            //        StartWith = "WA-";
+            //    }
 
-                TVItemModel tvItemModelSS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, SubsectorName, TVTypeEnum.Subsector);
-                if (!string.IsNullOrWhiteSpace(tvItemModelSS.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelSS.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelSS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, SubsectorName, TVTypeEnum.Subsector);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelSS.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelSS.Error}\r\n");
+            //        return;
+            //    }
 
-                List<MapInfoPointModel> mapInfoPointModelList = mapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Point);
-                if (mapInfoPointModelList.Count == 0)
-                {
-                    richTextBoxStatus.AppendText($"Error: mapInfoPointModelList count should not be 0\r\n");
-                    return;
-                }
+            //    List<MapInfoPointModel> mapInfoPointModelList = mapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Point);
+            //    if (mapInfoPointModelList.Count == 0)
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: mapInfoPointModelList count should not be 0\r\n");
+            //        return;
+            //    }
 
-                double ssLat = mapInfoPointModelList[0].Lat;
-                double ssLng = mapInfoPointModelList[0].Lng;
+            //    double ssLat = mapInfoPointModelList[0].Lat;
+            //    double ssLng = mapInfoPointModelList[0].Lng;
 
-                using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
-                {
+            //    using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
+            //    {
 
-                    List<CoCoRaHSModel.CoCoRaHSSite> cocorahsSiteList = (from c in db.CoCoRaHSSites
-                                                                         where c.StationNumber.StartsWith(StartWith)
-                                                                         orderby c.StationNumber
-                                                                         select c).ToList();
+            //        List<CoCoRaHSModel.CoCoRaHSSite> cocorahsSiteList = (from c in db.CoCoRaHSSites
+            //                                                             where c.StationNumber.StartsWith(StartWith)
+            //                                                             orderby c.StationNumber
+            //                                                             select c).ToList();
 
-                    int count = 0;
-                    foreach (CoCoRaHSModel.CoCoRaHSSite cocorahsSite in cocorahsSiteList)
-                    {
-                        count += 1;
+            //        int count = 0;
+            //        foreach (CoCoRaHSModel.CoCoRaHSSite cocorahsSite in cocorahsSiteList)
+            //        {
+            //            count += 1;
 
-                        lblStatus.Text = cocorahsSite.StationNumber + " --- " + count;
-                        lblStatus.Refresh();
-                        Application.DoEvents();
+            //            lblStatus.Text = cocorahsSite.StationNumber + " --- " + count;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
 
-                        double dist = mapInfoService.CalculateDistance(ssLat * mapInfoService.d2r, ssLng * mapInfoService.d2r, cocorahsSite.Latitude * mapInfoService.d2r,
-                            cocorahsSite.Longitude * mapInfoService.d2r, mapInfoService.R);
+            //            double dist = mapInfoService.CalculateDistance(ssLat * mapInfoService.d2r, ssLng * mapInfoService.d2r, cocorahsSite.Latitude * mapInfoService.d2r,
+            //                cocorahsSite.Longitude * mapInfoService.d2r, mapInfoService.R);
 
-                        if (dist > 100000)
-                        {
-                            richTextBoxStatus.AppendText($"Should delete {cocorahsSite.StationNumber} --- {count}\r\n");
+            //            if (dist > 100000)
+            //            {
+            //                richTextBoxStatus.AppendText($"Should delete {cocorahsSite.StationNumber} --- {count}\r\n");
 
-                            db.CoCoRaHSSites.Remove(cocorahsSite);
+            //                db.CoCoRaHSSites.Remove(cocorahsSite);
 
-                            try
-                            {
-                                db.SaveChanges();
-                            }
-                            catch (Exception ex)
-                            {
-                                richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
-                                return;
-                            }
-                        }
-                    }
-                }
-            }
+            //                try
+            //                {
+            //                    db.SaveChanges();
+            //                }
+            //                catch (Exception ex)
+            //                {
+            //                    richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+            //                    return;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            //using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
+            //{
+
+            //    List<string> cocorahsStationNumberExistList = (from c in db.CoCoRaHSSites
+            //                                                   orderby c.StationNumber
+            //                                                   select c.StationNumber).Distinct().ToList();
+
+            //    List<string> cocorahsStationNumberList = (from c in db.CoCoRaHSValues
+            //                                              orderby c.StationNumber
+            //                                              select c.StationNumber).Distinct().ToList();
+
+            //    int count = 0;
+            //    foreach (string StationNumber in cocorahsStationNumberList)
+            //    {
+            //        count += 1;
+
+            //        lblStatus.Text = "Deleting CoCoRaHSValues with " + StationNumber + " --- " + count;
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
+
+            //        if (!cocorahsStationNumberExistList.Contains(StationNumber))
+            //        {
+            //            using (CoCoRaHSModel.CoCoRaHSEntities db2 = new CoCoRaHSModel.CoCoRaHSEntities())
+            //            {
+            //                List<CoCoRaHSModel.CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
+            //                                                                       where c.StationNumber == StationNumber
+            //                                                                       select c).ToList();
+
+            //                try
+            //                {
+            //                    db2.CoCoRaHSValues.RemoveRange(cocorahsValueList);
+            //                    db2.SaveChanges();
+            //                }
+            //                catch (Exception)
+            //                {
+            //                    richTextBoxStatus.AppendText($"Error: Deleting CoCoRaHSValues with StationNumber {StationNumber}\r\n");
+            //                    return;
+
+            //                }
+            //            }
+            //        }
+            //    }
+
+            //}
+
+
+            //using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
+            //{
+
+            //    List<CoCoRaHSModel.CoCoRaHSSite> cocorahsSiteList = (from c in db.CoCoRaHSSites
+            //                                                         orderby c.StationNumber
+            //                                                         select c).ToList();
+
+            //    int count = 0;
+            //    foreach (CoCoRaHSModel.CoCoRaHSSite coCoRaHSSite in cocorahsSiteList)
+            //    {
+            //        count += 1;
+
+            //        lblStatus.Text = coCoRaHSSite.StationNumber + " --- " + count;
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
+
+            //        using (CoCoRaHSModel.CoCoRaHSEntities db2 = new CoCoRaHSModel.CoCoRaHSEntities())
+            //        {
+
+            //            List<CoCoRaHSModel.CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
+            //                                                                   where c.StationNumber == coCoRaHSSite.StationNumber
+            //                                                                   select c).ToList();
+
+            //            foreach (CoCoRaHSModel.CoCoRaHSValue coCoRaHSValue in cocorahsValueList)
+            //            {
+            //                coCoRaHSValue.CoCoRaHSSiteID = coCoRaHSSite.CoCoRaHSSiteID;
+            //            }
+
+            //            try
+            //            {
+            //                db2.SaveChanges();
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+            //                return;
+            //            }
+
+            //        }
+
+            //    }
+
+
+            //}
+
 
             using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
             {
+                TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+                ClimateSiteService climateSiteService = new ClimateSiteService(LanguageEnum.en, user);
+                MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+                MapInfoPointService mapInfoPointService = new MapInfoPointService(LanguageEnum.en, user);
 
-                List<string> cocorahsStationNumberExistList = (from c in db.CoCoRaHSSites
-                                                               orderby c.StationNumber
-                                                               select c.StationNumber).Distinct().ToList();
-
-                List<string> cocorahsStationNumberList = (from c in db.CoCoRaHSValues
-                                                          orderby c.StationNumber
-                                                          select c.StationNumber).Distinct().ToList();
-
-                int count = 0;
-                foreach (string StationNumber in cocorahsStationNumberList)
+                TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+                if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
                 {
-                    count += 1;
-
-                    lblStatus.Text = "Deleting CoCoRaHSValues with " + StationNumber + " --- " + count;
-                    lblStatus.Refresh();
-                    Application.DoEvents();
-
-                    if (!cocorahsStationNumberExistList.Contains(StationNumber))
-                    {
-                        using (CoCoRaHSModel.CoCoRaHSEntities db2 = new CoCoRaHSModel.CoCoRaHSEntities())
-                        {
-                            List<CoCoRaHSModel.CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
-                                                                                   where c.StationNumber == StationNumber
-                                                                                   select c).ToList();
-
-                            try
-                            {
-                                db2.CoCoRaHSValues.RemoveRange(cocorahsValueList);
-                                db2.SaveChanges();
-                            }
-                            catch (Exception)
-                            {
-                                richTextBoxStatus.AppendText($"Error: Deleting CoCoRaHSValues with StationNumber {StationNumber}\r\n");
-                                return;
-
-                            }
-                        }
-                    }
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelRoot.Error}\r\n");
+                    return;
                 }
 
-            }
+                TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "New Brunswick", TVTypeEnum.Province);
+                if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+                {
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelNB.Error}\r\n");
+                    return;
+                }
 
+                TVItemModel tvItemModelNL = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Newfoundland and Labrador", TVTypeEnum.Province);
+                if (!string.IsNullOrWhiteSpace(tvItemModelNL.Error))
+                {
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelNL.Error}\r\n");
+                    return;
+                }
 
-            using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
-            {
+                TVItemModel tvItemModelNS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Nova Scotia", TVTypeEnum.Province);
+                if (!string.IsNullOrWhiteSpace(tvItemModelNS.Error))
+                {
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelNS.Error}\r\n");
+                    return;
+                }
+
+                TVItemModel tvItemModelPE = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
+                if (!string.IsNullOrWhiteSpace(tvItemModelPE.Error))
+                {
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelPE.Error}\r\n");
+                    return;
+                }
+
+                TVItemModel tvItemModelQC = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Québec", TVTypeEnum.Province);
+                if (!string.IsNullOrWhiteSpace(tvItemModelQC.Error))
+                {
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelQC.Error}\r\n");
+                    return;
+                }
+
+                TVItemModel tvItemModelBC = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "British Columbia", TVTypeEnum.Province);
+                if (!string.IsNullOrWhiteSpace(tvItemModelBC.Error))
+                {
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelBC.Error}\r\n");
+                    return;
+                }
+
+                TVItemModel tvItemModelME = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Maine", TVTypeEnum.Province);
+                if (!string.IsNullOrWhiteSpace(tvItemModelME.Error))
+                {
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelME.Error}\r\n");
+                    return;
+                }
+
+                TVItemModel tvItemModelWA = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Washington", TVTypeEnum.Province);
+                if (!string.IsNullOrWhiteSpace(tvItemModelWA.Error))
+                {
+                    richTextBoxStatus.AppendText($"Error: {tvItemModelWA.Error}\r\n");
+                    return;
+                }
+
+                TVItemModel tvItemModelProvince = null;
+
+                List<ClimateSite> climateSiteList = new List<ClimateSite>();
+                using (CSSPDBEntities db2 = new CSSPDBEntities())
+                {
+                    climateSiteList = (from c in db2.ClimateSites
+                                       select c).ToList();
+                }
 
                 List<CoCoRaHSModel.CoCoRaHSSite> cocorahsSiteList = (from c in db.CoCoRaHSSites
                                                                      orderby c.StationNumber
@@ -12254,30 +12376,149 @@ namespace ImportByFunction
                     {
 
                         List<CoCoRaHSModel.CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
-                                                                               where c.StationNumber == coCoRaHSSite.StationNumber
+                                                                               where c.CoCoRaHSSiteID == coCoRaHSSite.CoCoRaHSSiteID
                                                                                select c).ToList();
 
-                        foreach (CoCoRaHSModel.CoCoRaHSValue coCoRaHSValue in cocorahsValueList)
+                        DateTime FirstDate = (from c in cocorahsValueList
+                                              orderby c.ObservationDateAndTime ascending
+                                              select c.ObservationDateAndTime).FirstOrDefault();
+
+                        DateTime LastDate = (from c in cocorahsValueList
+                                             orderby c.ObservationDateAndTime descending
+                                             select c.ObservationDateAndTime).FirstOrDefault();
+
+                        bool DailyNow = false;
+                        if (LastDate.Date > new DateTime(2019, 10, 10))
                         {
-                            coCoRaHSValue.CoCoRaHSSiteID = coCoRaHSSite.CoCoRaHSSiteID;
+                            DailyNow = true;
                         }
 
-                        try
-                        {
-                            db2.SaveChanges();
-                        }
-                        catch (Exception ex)
-                        {
-                            richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
-                            return;
-                        }
+                        ClimateSite climateSite = (from c in climateSiteList
+                                                   where c.ClimateID == coCoRaHSSite.StationNumber
+                                                   select c).FirstOrDefault();
 
+                        if (climateSite == null)
+                        {
+                            string Prov = "";
+                            if (coCoRaHSSite.StationNumber.StartsWith("CAN-"))
+                            {
+                                if (coCoRaHSSite.StationNumber.StartsWith("CAN-NB"))
+                                {
+                                    Prov = "NB";
+                                    tvItemModelProvince = tvItemModelNB;
+                                }
+                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NL"))
+                                {
+                                    Prov = "NL";
+                                    tvItemModelProvince = tvItemModelNL;
+                                }
+                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NS"))
+                                {
+                                    Prov = "NS";
+                                    tvItemModelProvince = tvItemModelNS;
+                                }
+                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-PE"))
+                                {
+                                    Prov = "PE";
+                                    tvItemModelProvince = tvItemModelPE;
+                                }
+                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-QC"))
+                                {
+                                    Prov = "QC";
+                                    tvItemModelProvince = tvItemModelQC;
+                                }
+                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-BC"))
+                                {
+                                    Prov = "BC";
+                                    tvItemModelProvince = tvItemModelBC;
+                                }
+                                else
+                                {
+                                    richTextBoxStatus.AppendText($"Error: CoCoRaHSSite.StationNumber does not start with [CAN-NB, CAN-NL, CAN-NS, CAN-PE, CAN-NB, CAN-NB, CAN-NB, ]\r\n");
+                                    return;
+                                }
+                            }
+                            else if (coCoRaHSSite.StationNumber.StartsWith("WA-"))
+                            {
+                                Prov = "WA";
+                                tvItemModelProvince = tvItemModelWA;
+                            }
+                            else if (coCoRaHSSite.StationNumber.StartsWith("ME-"))
+                            {
+                                Prov = "ME";
+                                tvItemModelProvince = tvItemModelME;
+                            }
+                            else
+                            {
+                                richTextBoxStatus.AppendText($"Error: CoCoRaHSSite.StationNumber does not start with [CAN-, WA, ME]\r\n");
+                                return;
+                            }
+
+                            string TVText = "CoCoRaHS " + coCoRaHSSite.StationName + "(" + coCoRaHSSite.StationNumber + ")";
+
+                            TVItemModel tvItemModelClimateSite = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
+                            if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
+                            {
+                                tvItemModelClimateSite = tvItemService.PostAddChildTVItemDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
+                                if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
+                                {
+                                    richTextBoxStatus.AppendText($"Error: Could not create new TVItemModelClimateSite with TVItemID [{tvItemModelProvince.TVItemID}] and TVText [{TVText}]\r\n");
+                                    return;
+                                }
+                            }
+
+                            MapInfoModel mapInfoModel = new MapInfoModel();
+
+                            List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelClimateSite.TVItemID);
+                            mapInfoModel = (from c in mapInfoModelList
+                                            where c.MapInfoDrawType == MapInfoDrawTypeEnum.Point
+                                            && c.TVType == TVTypeEnum.ClimateSite
+                                            select c).FirstOrDefault();
+
+                            if (mapInfoModel == null)
+                            {
+
+                                List<Coord> coordList = new List<Coord>()
+                                {
+                                    new Coord() { Lat = (float)coCoRaHSSite.Latitude, Lng = (float)coCoRaHSSite.Longitude, Ordinal = 0 },
+                                };
+
+                                mapInfoModel = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.ClimateSite, tvItemModelClimateSite.TVItemID);
+                                if (!string.IsNullOrWhiteSpace(mapInfoModel.Error))
+                                {
+                                    richTextBoxStatus.AppendText($"Error: Could not create new MapInfo with StationName [{coCoRaHSSite.StationName}] and StationNumber [{coCoRaHSSite.StationNumber}]\r\n");
+                                    return;
+                                }
+                            }
+
+                            ClimateSiteModel climateSiteModelNew = new ClimateSiteModel()
+                            {
+                                ClimateSiteTVItemID = tvItemModelClimateSite.TVItemID,
+                                ClimateSiteName = coCoRaHSSite.StationName,
+                                Province = Prov,
+                                ClimateID = coCoRaHSSite.StationNumber,
+                                DailyStartDate_Local = FirstDate,
+                                DailyEndDate_Local = LastDate,
+                                DailyNow = DailyNow,
+                            };
+
+                            ClimateSiteModel climateSiteModelExist = climateSiteService.GetClimateSiteModelExistDB(climateSiteModelNew);
+                            if (!string.IsNullOrWhiteSpace(climateSiteModelExist.Error))
+                            {
+                                ClimateSiteModel climateSiteModelRet = climateSiteService.PostAddClimateSiteDB(climateSiteModelNew);
+                                if (!string.IsNullOrWhiteSpace(climateSiteModelRet.Error))
+                                {
+                                    richTextBoxStatus.AppendText($"Error: Could not create new ClimateSite with StationName [{coCoRaHSSite.StationName}] and StationNumber [{coCoRaHSSite.StationNumber}]\r\n");
+                                    return;
+                                }
+                            }
+                        }
                     }
-
                 }
-
-
             }
+
+
+
             lblStatus.Text = "done...";
             #endregion Remove Washington and Maine state CoCoRaHS site that are more than 100 km from NB and BC Subsectors
 

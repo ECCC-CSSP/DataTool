@@ -20,9 +20,8 @@
             <PropertyRef Name="CoCoRaHSValueID" />
           </Key>
           <Property Name="CoCoRaHSValueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CoCoRaHSSiteID" Type="int" />
+          <Property Name="CoCoRaHSSiteID" Type="int" Nullable="false" />
           <Property Name="ObservationDateAndTime" Type="datetime" Nullable="false" />
-          <Property Name="StationNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TotalPrecipAmt" Type="float" />
           <Property Name="NewSnowDepth" Type="float" />
           <Property Name="NewSnowSWE" Type="float" />
@@ -30,7 +29,7 @@
           <Property Name="TotalSnowSWE" Type="float" />
         </EntityType>
         <Association Name="FK_CoCoRaHSValues_CoCoRaHSSites">
-          <End Role="CoCoRaHSSites" Type="Self.CoCoRaHSSites" Multiplicity="0..1">
+          <End Role="CoCoRaHSSites" Type="Self.CoCoRaHSSites" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="CoCoRaHSValues" Type="Self.CoCoRaHSValues" Multiplicity="*" />
@@ -79,9 +78,8 @@
             <PropertyRef Name="CoCoRaHSValueID" />
           </Key>
           <Property Name="CoCoRaHSValueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CoCoRaHSSiteID" Type="Int32" />
+          <Property Name="CoCoRaHSSiteID" Type="Int32" Nullable="false" />
           <Property Name="ObservationDateAndTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="StationNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TotalPrecipAmt" Type="Double" />
           <Property Name="NewSnowDepth" Type="Double" />
           <Property Name="NewSnowSWE" Type="Double" />
@@ -90,7 +88,7 @@
           <NavigationProperty Name="CoCoRaHSSite" Relationship="CoCoRaHSModel.FK_CoCoRaHSValues_CoCoRaHSSites" FromRole="CoCoRaHSValue" ToRole="CoCoRaHSSite" />
         </EntityType>
         <Association Name="FK_CoCoRaHSValues_CoCoRaHSSites">
-          <End Type="CoCoRaHSModel.CoCoRaHSSite" Role="CoCoRaHSSite" Multiplicity="0..1">
+          <End Type="CoCoRaHSModel.CoCoRaHSSite" Role="CoCoRaHSSite" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Type="CoCoRaHSModel.CoCoRaHSValue" Role="CoCoRaHSValue" Multiplicity="*" />
@@ -128,7 +126,6 @@
                 <ScalarProperty Name="NewSnowSWE" ColumnName="NewSnowSWE" />
                 <ScalarProperty Name="NewSnowDepth" ColumnName="NewSnowDepth" />
                 <ScalarProperty Name="TotalPrecipAmt" ColumnName="TotalPrecipAmt" />
-                <ScalarProperty Name="StationNumber" ColumnName="StationNumber" />
                 <ScalarProperty Name="ObservationDateAndTime" ColumnName="ObservationDateAndTime" />
                 <ScalarProperty Name="CoCoRaHSSiteID" ColumnName="CoCoRaHSSiteID" />
                 <ScalarProperty Name="CoCoRaHSValueID" ColumnName="CoCoRaHSValueID" />

@@ -15,9 +15,8 @@ namespace ImportByFunction.CoCoRaHSModel
     public partial class CoCoRaHSValue
     {
         public int CoCoRaHSValueID { get; set; }
-        public Nullable<int> CoCoRaHSSiteID { get; set; }
+        public int CoCoRaHSSiteID { get; set; }
         public System.DateTime ObservationDateAndTime { get; set; }
-        public string StationNumber { get; set; }
         public Nullable<double> TotalPrecipAmt { get; set; }
         public Nullable<double> NewSnowDepth { get; set; }
         public Nullable<double> NewSnowSWE { get; set; }
