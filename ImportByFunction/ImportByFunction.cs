@@ -12280,246 +12280,242 @@ namespace ImportByFunction
             //}
 
 
-            using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
-            {
-                TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-                ClimateSiteService climateSiteService = new ClimateSiteService(LanguageEnum.en, user);
-                MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
-                MapInfoPointService mapInfoPointService = new MapInfoPointService(LanguageEnum.en, user);
+            //using (CoCoRaHSModel.CoCoRaHSEntities db = new CoCoRaHSModel.CoCoRaHSEntities())
+            //{
+            //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //    ClimateSiteService climateSiteService = new ClimateSiteService(LanguageEnum.en, user);
+            //    MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            //    MapInfoPointService mapInfoPointService = new MapInfoPointService(LanguageEnum.en, user);
 
-                TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
-                if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelRoot.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelRoot.Error}\r\n");
+            //        return;
+            //    }
 
-                TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "New Brunswick", TVTypeEnum.Province);
-                if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelNB.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "New Brunswick", TVTypeEnum.Province);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelNB.Error}\r\n");
+            //        return;
+            //    }
 
-                TVItemModel tvItemModelNL = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Newfoundland and Labrador", TVTypeEnum.Province);
-                if (!string.IsNullOrWhiteSpace(tvItemModelNL.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelNL.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelNL = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Newfoundland and Labrador", TVTypeEnum.Province);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelNL.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelNL.Error}\r\n");
+            //        return;
+            //    }
 
-                TVItemModel tvItemModelNS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Nova Scotia", TVTypeEnum.Province);
-                if (!string.IsNullOrWhiteSpace(tvItemModelNS.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelNS.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelNS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Nova Scotia", TVTypeEnum.Province);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelNS.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelNS.Error}\r\n");
+            //        return;
+            //    }
 
-                TVItemModel tvItemModelPE = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
-                if (!string.IsNullOrWhiteSpace(tvItemModelPE.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelPE.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelPE = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelPE.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelPE.Error}\r\n");
+            //        return;
+            //    }
 
-                TVItemModel tvItemModelQC = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Québec", TVTypeEnum.Province);
-                if (!string.IsNullOrWhiteSpace(tvItemModelQC.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelQC.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelQC = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Québec", TVTypeEnum.Province);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelQC.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelQC.Error}\r\n");
+            //        return;
+            //    }
 
-                TVItemModel tvItemModelBC = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "British Columbia", TVTypeEnum.Province);
-                if (!string.IsNullOrWhiteSpace(tvItemModelBC.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelBC.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelBC = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "British Columbia", TVTypeEnum.Province);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelBC.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelBC.Error}\r\n");
+            //        return;
+            //    }
 
-                TVItemModel tvItemModelME = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Maine", TVTypeEnum.Province);
-                if (!string.IsNullOrWhiteSpace(tvItemModelME.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelME.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelME = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Maine", TVTypeEnum.Province);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelME.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelME.Error}\r\n");
+            //        return;
+            //    }
 
-                TVItemModel tvItemModelWA = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Washington", TVTypeEnum.Province);
-                if (!string.IsNullOrWhiteSpace(tvItemModelWA.Error))
-                {
-                    richTextBoxStatus.AppendText($"Error: {tvItemModelWA.Error}\r\n");
-                    return;
-                }
+            //    TVItemModel tvItemModelWA = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, "Washington", TVTypeEnum.Province);
+            //    if (!string.IsNullOrWhiteSpace(tvItemModelWA.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"Error: {tvItemModelWA.Error}\r\n");
+            //        return;
+            //    }
 
-                TVItemModel tvItemModelProvince = null;
+            //    TVItemModel tvItemModelProvince = null;
 
-                List<ClimateSite> climateSiteList = new List<ClimateSite>();
-                using (CSSPDBEntities db2 = new CSSPDBEntities())
-                {
-                    climateSiteList = (from c in db2.ClimateSites
-                                       select c).ToList();
-                }
+            //    List<ClimateSite> climateSiteList = new List<ClimateSite>();
+            //    using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //    {
+            //        climateSiteList = (from c in db2.ClimateSites
+            //                           select c).ToList();
+            //    }
 
-                List<CoCoRaHSModel.CoCoRaHSSite> cocorahsSiteList = (from c in db.CoCoRaHSSites
-                                                                     orderby c.StationNumber
-                                                                     select c).ToList();
+            //    List<CoCoRaHSModel.CoCoRaHSSite> cocorahsSiteList = (from c in db.CoCoRaHSSites
+            //                                                         orderby c.StationNumber
+            //                                                         select c).ToList();
 
-                int count = 0;
-                foreach (CoCoRaHSModel.CoCoRaHSSite coCoRaHSSite in cocorahsSiteList)
-                {
-                    count += 1;
+            //    int count = 0;
+            //    foreach (CoCoRaHSModel.CoCoRaHSSite coCoRaHSSite in cocorahsSiteList)
+            //    {
+            //        count += 1;
 
-                    lblStatus.Text = coCoRaHSSite.StationNumber + " --- " + count;
-                    lblStatus.Refresh();
-                    Application.DoEvents();
+            //        lblStatus.Text = coCoRaHSSite.StationNumber + " --- " + count;
+            //        lblStatus.Refresh();
+            //        Application.DoEvents();
 
-                    using (CoCoRaHSModel.CoCoRaHSEntities db2 = new CoCoRaHSModel.CoCoRaHSEntities())
-                    {
+            //        using (CoCoRaHSModel.CoCoRaHSEntities db2 = new CoCoRaHSModel.CoCoRaHSEntities())
+            //        {
 
-                        List<CoCoRaHSModel.CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
-                                                                               where c.CoCoRaHSSiteID == coCoRaHSSite.CoCoRaHSSiteID
-                                                                               select c).ToList();
+            //            List<CoCoRaHSModel.CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
+            //                                                                   where c.CoCoRaHSSiteID == coCoRaHSSite.CoCoRaHSSiteID
+            //                                                                   select c).ToList();
 
-                        DateTime FirstDate = (from c in cocorahsValueList
-                                              orderby c.ObservationDateAndTime ascending
-                                              select c.ObservationDateAndTime).FirstOrDefault();
+            //            DateTime FirstDate = (from c in cocorahsValueList
+            //                                  orderby c.ObservationDateAndTime ascending
+            //                                  select c.ObservationDateAndTime).FirstOrDefault();
 
-                        DateTime LastDate = (from c in cocorahsValueList
-                                             orderby c.ObservationDateAndTime descending
-                                             select c.ObservationDateAndTime).FirstOrDefault();
+            //            DateTime LastDate = (from c in cocorahsValueList
+            //                                 orderby c.ObservationDateAndTime descending
+            //                                 select c.ObservationDateAndTime).FirstOrDefault();
 
-                        bool DailyNow = false;
-                        if (LastDate.Date > new DateTime(2019, 10, 10))
-                        {
-                            DailyNow = true;
-                        }
+            //            bool DailyNow = false;
+            //            if (LastDate.Date > new DateTime(2019, 10, 10))
+            //            {
+            //                DailyNow = true;
+            //            }
 
-                        ClimateSite climateSite = (from c in climateSiteList
-                                                   where c.ClimateID == coCoRaHSSite.StationNumber
-                                                   select c).FirstOrDefault();
+            //            ClimateSite climateSite = (from c in climateSiteList
+            //                                       where c.ClimateID == coCoRaHSSite.StationNumber
+            //                                       select c).FirstOrDefault();
 
-                        if (climateSite == null)
-                        {
-                            string Prov = "";
-                            if (coCoRaHSSite.StationNumber.StartsWith("CAN-"))
-                            {
-                                if (coCoRaHSSite.StationNumber.StartsWith("CAN-NB"))
-                                {
-                                    Prov = "NB";
-                                    tvItemModelProvince = tvItemModelNB;
-                                }
-                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NL"))
-                                {
-                                    Prov = "NL";
-                                    tvItemModelProvince = tvItemModelNL;
-                                }
-                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NS"))
-                                {
-                                    Prov = "NS";
-                                    tvItemModelProvince = tvItemModelNS;
-                                }
-                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-PE"))
-                                {
-                                    Prov = "PE";
-                                    tvItemModelProvince = tvItemModelPE;
-                                }
-                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-QC"))
-                                {
-                                    Prov = "QC";
-                                    tvItemModelProvince = tvItemModelQC;
-                                }
-                                else if (coCoRaHSSite.StationNumber.StartsWith("CAN-BC"))
-                                {
-                                    Prov = "BC";
-                                    tvItemModelProvince = tvItemModelBC;
-                                }
-                                else
-                                {
-                                    richTextBoxStatus.AppendText($"Error: CoCoRaHSSite.StationNumber does not start with [CAN-NB, CAN-NL, CAN-NS, CAN-PE, CAN-NB, CAN-NB, CAN-NB, ]\r\n");
-                                    return;
-                                }
-                            }
-                            else if (coCoRaHSSite.StationNumber.StartsWith("WA-"))
-                            {
-                                Prov = "WA";
-                                tvItemModelProvince = tvItemModelWA;
-                            }
-                            else if (coCoRaHSSite.StationNumber.StartsWith("ME-"))
-                            {
-                                Prov = "ME";
-                                tvItemModelProvince = tvItemModelME;
-                            }
-                            else
-                            {
-                                richTextBoxStatus.AppendText($"Error: CoCoRaHSSite.StationNumber does not start with [CAN-, WA, ME]\r\n");
-                                return;
-                            }
+            //            if (climateSite == null)
+            //            {
+            //                string Prov = "";
+            //                if (coCoRaHSSite.StationNumber.StartsWith("CAN-"))
+            //                {
+            //                    if (coCoRaHSSite.StationNumber.StartsWith("CAN-NB"))
+            //                    {
+            //                        Prov = "NB";
+            //                        tvItemModelProvince = tvItemModelNB;
+            //                    }
+            //                    else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NL"))
+            //                    {
+            //                        Prov = "NL";
+            //                        tvItemModelProvince = tvItemModelNL;
+            //                    }
+            //                    else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NS"))
+            //                    {
+            //                        Prov = "NS";
+            //                        tvItemModelProvince = tvItemModelNS;
+            //                    }
+            //                    else if (coCoRaHSSite.StationNumber.StartsWith("CAN-PE"))
+            //                    {
+            //                        Prov = "PE";
+            //                        tvItemModelProvince = tvItemModelPE;
+            //                    }
+            //                    else if (coCoRaHSSite.StationNumber.StartsWith("CAN-QC"))
+            //                    {
+            //                        Prov = "QC";
+            //                        tvItemModelProvince = tvItemModelQC;
+            //                    }
+            //                    else if (coCoRaHSSite.StationNumber.StartsWith("CAN-BC"))
+            //                    {
+            //                        Prov = "BC";
+            //                        tvItemModelProvince = tvItemModelBC;
+            //                    }
+            //                    else
+            //                    {
+            //                        richTextBoxStatus.AppendText($"Error: CoCoRaHSSite.StationNumber does not start with [CAN-NB, CAN-NL, CAN-NS, CAN-PE, CAN-NB, CAN-NB, CAN-NB, ]\r\n");
+            //                        return;
+            //                    }
+            //                }
+            //                else if (coCoRaHSSite.StationNumber.StartsWith("WA-"))
+            //                {
+            //                    Prov = "WA";
+            //                    tvItemModelProvince = tvItemModelWA;
+            //                }
+            //                else if (coCoRaHSSite.StationNumber.StartsWith("ME-"))
+            //                {
+            //                    Prov = "ME";
+            //                    tvItemModelProvince = tvItemModelME;
+            //                }
+            //                else
+            //                {
+            //                    richTextBoxStatus.AppendText($"Error: CoCoRaHSSite.StationNumber does not start with [CAN-, WA, ME]\r\n");
+            //                    return;
+            //                }
 
-                            string TVText = "CoCoRaHS " + coCoRaHSSite.StationName + "(" + coCoRaHSSite.StationNumber + ")";
+            //                string TVText = "CoCoRaHS " + coCoRaHSSite.StationName + "(" + coCoRaHSSite.StationNumber + ")";
 
-                            TVItemModel tvItemModelClimateSite = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
-                            if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
-                            {
-                                tvItemModelClimateSite = tvItemService.PostAddChildTVItemDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
-                                if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
-                                {
-                                    richTextBoxStatus.AppendText($"Error: Could not create new TVItemModelClimateSite with TVItemID [{tvItemModelProvince.TVItemID}] and TVText [{TVText}]\r\n");
-                                    return;
-                                }
-                            }
+            //                TVItemModel tvItemModelClimateSite = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
+            //                if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
+            //                {
+            //                    tvItemModelClimateSite = tvItemService.PostAddChildTVItemDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
+            //                    if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
+            //                    {
+            //                        richTextBoxStatus.AppendText($"Error: Could not create new TVItemModelClimateSite with TVItemID [{tvItemModelProvince.TVItemID}] and TVText [{TVText}]\r\n");
+            //                        return;
+            //                    }
+            //                }
 
-                            MapInfoModel mapInfoModel = new MapInfoModel();
+            //                MapInfoModel mapInfoModel = new MapInfoModel();
 
-                            List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelClimateSite.TVItemID);
-                            mapInfoModel = (from c in mapInfoModelList
-                                            where c.MapInfoDrawType == MapInfoDrawTypeEnum.Point
-                                            && c.TVType == TVTypeEnum.ClimateSite
-                                            select c).FirstOrDefault();
+            //                List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelClimateSite.TVItemID);
+            //                mapInfoModel = (from c in mapInfoModelList
+            //                                where c.MapInfoDrawType == MapInfoDrawTypeEnum.Point
+            //                                && c.TVType == TVTypeEnum.ClimateSite
+            //                                select c).FirstOrDefault();
 
-                            if (mapInfoModel == null)
-                            {
+            //                if (mapInfoModel == null)
+            //                {
 
-                                List<Coord> coordList = new List<Coord>()
-                                {
-                                    new Coord() { Lat = (float)coCoRaHSSite.Latitude, Lng = (float)coCoRaHSSite.Longitude, Ordinal = 0 },
-                                };
+            //                    List<Coord> coordList = new List<Coord>()
+            //                    {
+            //                        new Coord() { Lat = (float)coCoRaHSSite.Latitude, Lng = (float)coCoRaHSSite.Longitude, Ordinal = 0 },
+            //                    };
 
-                                mapInfoModel = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.ClimateSite, tvItemModelClimateSite.TVItemID);
-                                if (!string.IsNullOrWhiteSpace(mapInfoModel.Error))
-                                {
-                                    richTextBoxStatus.AppendText($"Error: Could not create new MapInfo with StationName [{coCoRaHSSite.StationName}] and StationNumber [{coCoRaHSSite.StationNumber}]\r\n");
-                                    return;
-                                }
-                            }
+            //                    mapInfoModel = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.ClimateSite, tvItemModelClimateSite.TVItemID);
+            //                    if (!string.IsNullOrWhiteSpace(mapInfoModel.Error))
+            //                    {
+            //                        richTextBoxStatus.AppendText($"Error: Could not create new MapInfo with StationName [{coCoRaHSSite.StationName}] and StationNumber [{coCoRaHSSite.StationNumber}]\r\n");
+            //                        return;
+            //                    }
+            //                }
 
-                            ClimateSiteModel climateSiteModelNew = new ClimateSiteModel()
-                            {
-                                ClimateSiteTVItemID = tvItemModelClimateSite.TVItemID,
-                                ClimateSiteName = coCoRaHSSite.StationName,
-                                Province = Prov,
-                                ClimateID = coCoRaHSSite.StationNumber,
-                                DailyStartDate_Local = FirstDate,
-                                DailyEndDate_Local = LastDate,
-                                DailyNow = DailyNow,
-                            };
+            //                ClimateSiteModel climateSiteModelNew = new ClimateSiteModel()
+            //                {
+            //                    ClimateSiteTVItemID = tvItemModelClimateSite.TVItemID,
+            //                    ClimateSiteName = coCoRaHSSite.StationName,
+            //                    Province = Prov,
+            //                    ClimateID = coCoRaHSSite.StationNumber,
+            //                    DailyStartDate_Local = FirstDate,
+            //                    DailyEndDate_Local = LastDate,
+            //                    DailyNow = DailyNow,
+            //                };
 
-                            ClimateSiteModel climateSiteModelExist = climateSiteService.GetClimateSiteModelExistDB(climateSiteModelNew);
-                            if (!string.IsNullOrWhiteSpace(climateSiteModelExist.Error))
-                            {
-                                ClimateSiteModel climateSiteModelRet = climateSiteService.PostAddClimateSiteDB(climateSiteModelNew);
-                                if (!string.IsNullOrWhiteSpace(climateSiteModelRet.Error))
-                                {
-                                    richTextBoxStatus.AppendText($"Error: Could not create new ClimateSite with StationName [{coCoRaHSSite.StationName}] and StationNumber [{coCoRaHSSite.StationNumber}]\r\n");
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-
-
-            lblStatus.Text = "done...";
+            //                ClimateSiteModel climateSiteModelExist = climateSiteService.GetClimateSiteModelExistDB(climateSiteModelNew);
+            //                if (!string.IsNullOrWhiteSpace(climateSiteModelExist.Error))
+            //                {
+            //                    ClimateSiteModel climateSiteModelRet = climateSiteService.PostAddClimateSiteDB(climateSiteModelNew);
+            //                    if (!string.IsNullOrWhiteSpace(climateSiteModelRet.Error))
+            //                    {
+            //                        richTextBoxStatus.AppendText($"Error: Could not create new ClimateSite with StationName [{coCoRaHSSite.StationName}] and StationNumber [{coCoRaHSSite.StationNumber}]\r\n");
+            //                        return;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
             #endregion Remove Washington and Maine state CoCoRaHS site that are more than 100 km from NB and BC Subsectors
 
             #region Loading all CoCoRaHS values in CoCoRaHS database
@@ -12769,9 +12765,707 @@ namespace ImportByFunction
 
             #endregion Loading all CoCoRaHS values in CoCoRaHS database
 
+            string dir = @"C:\Users\leblancc\Desktop\CoCoRaHS\";
 
+            DirectoryInfo di = new DirectoryInfo(dir);
+
+            List<FileInfo> fileInfoList = di.GetFiles().Where(c => c.Name.EndsWith(".csv")).ToList();
+
+            foreach (FileInfo fi in fileInfoList)
+            {
+                if (!fi.Exists)
+                {
+                    richTextBoxStatus.AppendText($"[{fi.FullName}] does not exist\r\n");
+                    return;
+                }
+
+                lblStatus.Text = fi.FullName;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                TextReader tr = fi.OpenText();
+
+                string cocoPrecipData = tr.ReadToEnd();
+
+                if (fi.FullName.Contains("_ME_"))
+                {
+                    ParseCoCoRaHSExportData(cocoPrecipData, "ME");
+                }
+                else if (fi.FullName.Contains("_WA_"))
+                {
+                    ParseCoCoRaHSExportData(cocoPrecipData, "WA");
+                }
+                else
+                {
+                    ParseCoCoRaHSExportData(cocoPrecipData, "CAN");
+                }
+            }
+
+
+
+            lblStatus.Text = "done...";
 
         }
+
+        public void ParseCoCoRaHSExportData(string str, string Country)
+        {
+            string NotUsed = "";
+            List<string> FirstCharList = new List<string>()
+            {
+                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+            };
+
+            //MapInfoService mapInfoService = new MapInfoService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
+            //CoCoRaHSSiteService coCoRaHSSiteService = new CoCoRaHSSiteService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
+            //CoCoRaHSValueService coCoRaHSValueService = new CoCoRaHSValueService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
+
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            CoCoRaHSSiteService coCoRaHSSiteService = new CoCoRaHSSiteService(LanguageEnum.en, user);
+            CoCoRaHSValueService coCoRaHSValueService = new CoCoRaHSValueService(LanguageEnum.en, user);
+
+            List<CoCoRaHSSite> cocoRaHSSiteNewlyAddedList = new List<CoCoRaHSSite>();
+            List<CoCoRaHSSite> cocoRaHSSiteList = new List<CoCoRaHSSite>();
+
+            List<ClimateSite> climateSiteList = new List<ClimateSite>();
+
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                climateSiteList = (from c in mapInfoService.db.ClimateSites
+                                   select c).ToList();
+            }
+
+            using (CoCoRaHSEntities dbcoco = new CoCoRaHSEntities())
+            {
+                cocoRaHSSiteList = (from c in dbcoco.CoCoRaHSSites
+                                    where c.StationNumber.StartsWith(Country)
+                                    select c).ToList();
+            }
+
+            using (TextReader tr = new StringReader(str))
+            {
+                string LineStr = tr.ReadLine();
+                List<string> varNameList = new List<string>()
+                {
+                    "ObservationDate","ObservationTime","EntryDateTime","StationNumber","StationName","Latitude","Longitude","TotalPrecipAmt","NewSnowDepth","NewSnowSWE","TotalSnowDepth","TotalSnowSWE","DateTimeStamp"
+                };
+
+                // testing first line
+                List<string> LineStrList = LineStr.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
+                if (LineStrList.Count != 13)
+                {
+                    //NotUsed = TaskRunnerServiceRes.CoCoRaHSParseLineDoesNotHave13Items;
+                    //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageList("CoCoRaHSParseLineDoesNotHave13Items");
+                    return;
+                }
+
+                for (int i = 0; i < 13; i++)
+                {
+                    if (LineStrList[i] != varNameList[i])
+                    {
+                        //NotUsed = string.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_ShouldBe_, i.ToString(), varNameList[0]);
+                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_ShouldBe_", i.ToString(), varNameList[0]);
+                        return;
+                    }
+                }
+
+                while (!string.IsNullOrWhiteSpace(LineStr))
+                {
+                    LineStr = tr.ReadLine();
+
+                    if (LineStr == null)
+                    {
+                        break;
+                    }
+
+                    // parsing a data line
+
+                    LineStrList = LineStr.Split(",".ToCharArray(), StringSplitOptions.None).Select(c => c.Trim()).ToList();
+                    if (LineStrList.Count != 13)
+                    {
+                        //NotUsed = TaskRunnerServiceRes.CoCoRaHSParseLineDoesNotHave13Items;
+                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageList("CoCoRaHSParseLineDoesNotHave13Items");
+                        return;
+                    }
+
+                    if (!DateTime.TryParse(LineStrList[0], out DateTime ObservationDateAndTime))
+                    {
+                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "0", "DateTime");
+                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "0", "DateTime");
+                        return;
+                    }
+
+                    if (!int.TryParse(LineStrList[1].Substring(0, 2), out int Hour))
+                    {
+                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "[1].Substring(0, 2)", "int");
+                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "[1].Substring(0, 2)", "int");
+                        return;
+                    }
+
+                    if (!int.TryParse(LineStrList[1].Substring(3, 2), out int Min))
+                    {
+                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "[1].Substring(3, 2)", "int");
+                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "[1].Substring(3, 2)", "int");
+                        return;
+                    }
+
+                    string AmPm = LineStrList[1].Substring(6, 2);
+                    if (AmPm == "PM")
+                    {
+                        Hour += 12;
+                    }
+                    else
+                    {
+                        if (AmPm != "AM")
+                        {
+                            //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "[1].Substring(6, 2)", "[AM,PM] ");
+                            //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "[1].Substring(6, 2)", "[AM,PM]");
+                            return;
+                        }
+                    }
+
+                    ObservationDateAndTime = ObservationDateAndTime.AddHours(Hour);
+
+                    ObservationDateAndTime = ObservationDateAndTime.AddMinutes(Min);
+
+                    string StationNumber = LineStrList[3];
+                    string StationName = LineStrList[4];
+
+                    if (!double.TryParse(LineStrList[5], out double Latitude))
+                    {
+                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "5", "double");
+                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "5", "double");
+                        return;
+                    }
+
+                    if (!double.TryParse(LineStrList[6], out double Longitude))
+                    {
+                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "6", "double");
+                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "6", "double");
+                        return;
+                    }
+
+                    // getting TotalPrecipAmt
+                    double? TotalPrecipAmt = null;
+                    double? TotalPrecipAmtInInches = null;
+                    string FirstChar = LineStrList[7].Substring(0, 1);
+                    if (FirstCharList.Contains(FirstChar))
+                    {
+                        // should be a number
+                        TotalPrecipAmtInInches = double.Parse(LineStrList[7]);
+                    }
+                    else
+                    {
+                        if (FirstChar == "T")
+                        {
+                            TotalPrecipAmtInInches = 0;
+                        }
+                    }
+
+                    TotalPrecipAmt = TotalPrecipAmtInInches * 25.4;
+
+                    // getting NewSnowDepth
+                    double? NewSnowDepth = null;
+                    double? NewSnowDepthInInches = null;
+                    FirstChar = LineStrList[8].Substring(0, 1);
+                    if (FirstCharList.Contains(FirstChar))
+                    {
+                        // should be a number
+                        NewSnowDepthInInches = double.Parse(LineStrList[8]);
+                        NewSnowDepth = NewSnowDepthInInches * 25.4;
+                    }
+                    else
+                    {
+                        if (FirstChar == "N")
+                        {
+                            NewSnowDepthInInches = null;
+                        }
+                    }
+
+                    // getting NewSnowSWE
+                    double? NewSnowSWE = null;
+                    double? NewSnowSWEInInches = null;
+                    FirstChar = LineStrList[9].Substring(0, 1);
+                    if (FirstCharList.Contains(FirstChar))
+                    {
+                        // should be a number
+                        NewSnowSWEInInches = double.Parse(LineStrList[9]);
+                        NewSnowSWE = NewSnowSWEInInches * 25.4;
+                    }
+                    else
+                    {
+                        if (FirstChar == "N")
+                        {
+                            NewSnowSWEInInches = null;
+                        }
+                    }
+
+                    // getting TotalSnowDepth
+                    double? TotalSnowDepth = null;
+                    double? TotalSnowDepthInInches = null;
+                    FirstChar = LineStrList[10].Substring(0, 1);
+                    if (FirstCharList.Contains(FirstChar))
+                    {
+                        // should be a number
+                        TotalSnowDepthInInches = double.Parse(LineStrList[10]);
+                        TotalSnowDepth = TotalSnowDepthInInches * 25.4;
+                    }
+                    else
+                    {
+                        if (FirstChar == "N")
+                        {
+                            TotalSnowDepthInInches = null;
+                        }
+                    }
+
+                    // getting TotalSnowSWE
+                    double? TotalSnowSWE = null;
+                    double? TotalSnowSWEInInches = null;
+                    FirstChar = LineStrList[11].Substring(0, 1);
+                    if (FirstCharList.Contains(FirstChar))
+                    {
+                        // should be a number
+                        TotalSnowSWEInInches = double.Parse(LineStrList[11]);
+                        TotalSnowSWE = TotalSnowSWEInInches * 25.4;
+                    }
+                    else
+                    {
+                        if (FirstChar == "N")
+                        {
+                            TotalSnowSWEInInches = null;
+                        }
+                    }
+
+                    CoCoRaHSSite cocoRaHSSite = (from c in cocoRaHSSiteList
+                                                 where c.StationNumber == StationNumber
+                                                 select c).FirstOrDefault();
+
+                    if (cocoRaHSSite == null)
+                    {
+                        if (Country == "ME" || Country == "WA" || Country == "CAN")
+                        {
+                            double dist = 0.0D;
+                            if (Country == "ME" || Country == "WA")
+                            {
+                                // ME 
+                                double LatCan = 44.936506D;
+                                double LngCan = -66.986644D;
+
+                                if (Country == "WA")
+                                {
+                                    LatCan = 48.307404D;
+                                    LngCan = -123.335096D;
+                                }
+
+                                dist = mapInfoService.CalculateDistance(Latitude * mapInfoService.d2r, Longitude * mapInfoService.d2r, LatCan * mapInfoService.d2r, LngCan * mapInfoService.d2r, mapInfoService.R);
+
+                            }
+
+                            if (dist < 100000)
+                            {
+                                if (StationNumber.StartsWith("ME")
+                                    || StationNumber.StartsWith("WA")
+                                    || StationNumber.StartsWith("CAN-NB")
+                                    || StationNumber.StartsWith("CAN-NL")
+                                    || StationNumber.StartsWith("CAN-NS")
+                                    || StationNumber.StartsWith("CAN-PE")
+                                    || StationNumber.StartsWith("CAN-BC")
+                                    || StationNumber.StartsWith("CAN-QC"))
+                                {
+                                    CoCoRaHSSiteModel cocoRaHSSiteModelNew = new CoCoRaHSSiteModel()
+                                    {
+                                        StationNumber = StationNumber,
+                                        StationName = StationName,
+                                        Latitude = Latitude,
+                                        Longitude = Longitude,
+                                    };
+
+                                    CoCoRaHSSiteModel cocoRaHSSiteModelRet = coCoRaHSSiteService.PostAddCoCoRaHSSiteDB(cocoRaHSSiteModelNew);
+                                    if (!string.IsNullOrWhiteSpace(cocoRaHSSiteModelRet.Error))
+                                    {
+                                        //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.CoCoRaHSSite, cocoRaHSSiteModelRet.Error);
+                                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.CoCoRaHSSite, cocoRaHSSiteModelRet.Error);
+                                        return;
+                                    }
+
+                                    using (CoCoRaHSEntities dbcoco = new CoCoRaHSEntities())
+                                    {
+                                        cocoRaHSSite = (from c in dbcoco.CoCoRaHSSites
+                                                        where c.StationNumber == StationNumber
+                                                        select c).FirstOrDefault();
+                                    }
+
+                                    if (cocoRaHSSite == null)
+                                    {
+                                        //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_Equal_, TaskRunnerServiceRes.CoCoRaHSSite, TaskRunnerServiceRes.StationNumber, StationNumber);
+                                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_Equal_", TaskRunnerServiceRes.CoCoRaHSSite, TaskRunnerServiceRes.StationNumber, StationNumber);
+                                        return;
+                                    }
+
+                                    if (!(from c in cocoRaHSSiteList
+                                          where c.StationNumber == cocoRaHSSite.StationNumber
+                                          select c).Any())
+                                    {
+                                        cocoRaHSSiteList.Add(cocoRaHSSite);
+                                    }
+
+                                    if (!(from c in cocoRaHSSiteNewlyAddedList
+                                          where c.StationNumber == cocoRaHSSite.StationNumber
+                                          select c).Any())
+                                    {
+                                        cocoRaHSSiteNewlyAddedList.Add(cocoRaHSSite);
+                                    }
+                                }
+                            }
+                        }
+
+                        if (cocoRaHSSite != null)
+                        {
+                            CoCoRaHSValueModel cocorahsValueModelNew = new CoCoRaHSValueModel()
+                            {
+                                CoCoRaHSSiteID = cocoRaHSSite.CoCoRaHSSiteID,
+                                ObservationDateAndTime = ObservationDateAndTime,
+                                TotalPrecipAmt = TotalPrecipAmt,
+                                NewSnowDepth = NewSnowDepth,
+                                NewSnowSWE = NewSnowSWE,
+                                TotalSnowDepth = TotalSnowDepth,
+                                TotalSnowSWE = TotalSnowSWE
+                            };
+
+                            CoCoRaHSValueModel coCoRaHSValueModel = coCoRaHSValueService.GetCoCoRaHSValueModelExistDB(cocorahsValueModelNew);
+                            if (!string.IsNullOrWhiteSpace(coCoRaHSValueModel.Error))
+                            {
+                                coCoRaHSValueModel = coCoRaHSValueService.PostAddCoCoRaHSValueDB(cocorahsValueModelNew);
+                                if (!string.IsNullOrWhiteSpace(coCoRaHSValueModel.Error))
+                                {
+                                    //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.CoCoRaHSValue, coCoRaHSValueModel.Error);
+                                    //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.CoCoRaHSValue, coCoRaHSValueModel.Error);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ClimateSite climateSite = (from c in climateSiteList
+                                                   where c.ClimateID == StationNumber
+                                                   select c).FirstOrDefault();
+
+                        if (climateSite == null)
+                        {
+                            if (!(from c in cocoRaHSSiteNewlyAddedList
+                                  where c.StationNumber == cocoRaHSSite.StationNumber
+                                  select c).Any())
+                            {
+                                cocoRaHSSiteNewlyAddedList.Add(cocoRaHSSite);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (cocoRaHSSiteNewlyAddedList.Count > 0)
+            {
+                CreateNewCoCoRaHSSiteInCSSPDB(cocoRaHSSiteNewlyAddedList);
+                //if (_TaskRunnerBaseService._BWObj.TextLanguageList.Count > 0)
+                //{
+                //    return;
+                //}
+            }
+        }
+
+        public void CreateNewCoCoRaHSSiteInCSSPDB(List<CoCoRaHSSite> coCoRaHSSiteList)
+        {
+            if (coCoRaHSSiteList.Count == 0)
+            {
+                return;
+            }
+
+            string NotUsed = "";
+            List<string> EnglishProvNameList = new List<string>()
+            {
+                "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "British Columbia", "Québec", "Maine", "Washington"
+            };
+
+            //TVItemService tvItemService = new TVItemService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
+            //ClimateSiteService climateSiteService = new ClimateSiteService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
+            //MapInfoService mapInfoService = new MapInfoService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
+            //MapInfoPointService mapInfoPointService = new MapInfoPointService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
+
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            ClimateSiteService climateSiteService = new ClimateSiteService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            MapInfoPointService mapInfoPointService = new MapInfoPointService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                //NotUsed = TaskRunnerServiceRes.CouldNotFindTVItemRoot;
+                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageList("CouldNotFindTVItemRoot");
+                return;
+            }
+
+            CultureInfo CurrentCultureInfo = Thread.CurrentThread.CurrentCulture;
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-CA");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-CA");
+
+            List<TVItemModel> tvItemModelProvinces = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Province);
+
+            Thread.CurrentThread.CurrentCulture = CurrentCultureInfo;
+            Thread.CurrentThread.CurrentUICulture = CurrentCultureInfo;
+
+
+            TVItemModel tvItemModelNB = (from c in tvItemModelProvinces
+                                         where c.TVText == "New Brunswick"
+                                         select c).FirstOrDefault();
+
+            if (tvItemModelNB == null)
+            {
+                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "New Brunswick");
+                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "New Brunswick");
+                return;
+            }
+
+            TVItemModel tvItemModelNL = (from c in tvItemModelProvinces
+                                         where c.TVText == "Newfoundland and Labrador"
+                                         select c).FirstOrDefault();
+
+            if (tvItemModelNL == null)
+            {
+                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Newfoundland and Labrador");
+                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Newfoundland and Labrador");
+                return;
+            }
+
+            TVItemModel tvItemModelNS = (from c in tvItemModelProvinces
+                                         where c.TVText == "Nova Scotia"
+                                         select c).FirstOrDefault();
+
+            if (tvItemModelNS == null)
+            {
+                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Nova Scotia");
+                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Nova Scotia");
+                return;
+            }
+
+            TVItemModel tvItemModelPE = (from c in tvItemModelProvinces
+                                         where c.TVText == "Prince Edward Island"
+                                         select c).FirstOrDefault();
+
+            if (tvItemModelPE == null)
+            {
+                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Prince Edward Island");
+                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Prince Edward Island");
+                return;
+            }
+
+            TVItemModel tvItemModelQC = (from c in tvItemModelProvinces
+                                         where c.TVText == "Québec"
+                                         select c).FirstOrDefault();
+
+            if (tvItemModelQC == null)
+            {
+                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Québec");
+                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Québec");
+                return;
+            }
+
+            TVItemModel tvItemModelBC = (from c in tvItemModelProvinces
+                                         where c.TVText == "British Columbia"
+                                         select c).FirstOrDefault();
+
+            if (tvItemModelBC == null)
+            {
+                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "British Columbia");
+                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "British Columbia");
+                return;
+            }
+
+            TVItemModel tvItemModelME = (from c in tvItemModelProvinces
+                                         where c.TVText == "Maine"
+                                         select c).FirstOrDefault();
+
+            if (tvItemModelME == null)
+            {
+                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Maine");
+                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Maine");
+                return;
+            }
+
+            TVItemModel tvItemModelWA = (from c in tvItemModelProvinces
+                                         where c.TVText == "Washington"
+                                         select c).FirstOrDefault();
+
+            if (tvItemModelWA == null)
+            {
+                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Washington");
+                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Washington");
+                return;
+            }
+
+            TVItemModel tvItemModelProvince = null;
+
+            List<ClimateSite> climateSiteList = new List<ClimateSite>();
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                climateSiteList = (from c in db2.ClimateSites
+                                   select c).ToList();
+            }
+
+            using (CoCoRaHSEntities db2 = new CoCoRaHSEntities())
+            {
+                foreach (CoCoRaHSSite coCoRaHSSite in coCoRaHSSiteList)
+                {
+                    List<CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
+                                                             where c.CoCoRaHSSiteID == coCoRaHSSite.CoCoRaHSSiteID
+                                                             select c).ToList();
+
+                    DateTime FirstDate = (from c in cocorahsValueList
+                                          orderby c.ObservationDateAndTime ascending
+                                          select c.ObservationDateAndTime).FirstOrDefault();
+
+                    DateTime LastDate = (from c in cocorahsValueList
+                                         orderby c.ObservationDateAndTime descending
+                                         select c.ObservationDateAndTime).FirstOrDefault();
+
+                    bool DailyNow = false;
+                    if (LastDate.Date > new DateTime(2019, 10, 10))
+                    {
+                        DailyNow = true;
+                    }
+
+                    ClimateSite climateSite = (from c in climateSiteList
+                                               where c.ClimateID == coCoRaHSSite.StationNumber
+                                               select c).FirstOrDefault();
+
+                    if (climateSite == null)
+                    {
+                        string Prov = "";
+                        if (coCoRaHSSite.StationNumber.StartsWith("CAN-"))
+                        {
+                            if (coCoRaHSSite.StationNumber.StartsWith("CAN-NB"))
+                            {
+                                Prov = "NB";
+                                tvItemModelProvince = tvItemModelNB;
+                            }
+                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NL"))
+                            {
+                                Prov = "NL";
+                                tvItemModelProvince = tvItemModelNL;
+                            }
+                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NS"))
+                            {
+                                Prov = "NS";
+                                tvItemModelProvince = tvItemModelNS;
+                            }
+                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-PE"))
+                            {
+                                Prov = "PE";
+                                tvItemModelProvince = tvItemModelPE;
+                            }
+                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-QC"))
+                            {
+                                Prov = "QC";
+                                tvItemModelProvince = tvItemModelQC;
+                            }
+                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-BC"))
+                            {
+                                Prov = "BC";
+                                tvItemModelProvince = tvItemModelBC;
+                            }
+                            else
+                            {
+                                //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSStationNumberDoesNotStartWith_, "[CAN-NB, CAN-NL, CAN-NS, CAN-PE, CAN-BC, CAN-QC]");
+                                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat1List("CoCoRaHSStationNumberDoesNotStartWith_", "[CAN-NB, CAN-NL, CAN-NS, CAN-PE, CAN-BC, CAN-QC]");
+                                return;
+                            }
+                        }
+                        else if (coCoRaHSSite.StationNumber.StartsWith("WA-"))
+                        {
+                            Prov = "WA";
+                            tvItemModelProvince = tvItemModelWA;
+                        }
+                        else if (coCoRaHSSite.StationNumber.StartsWith("ME-"))
+                        {
+                            Prov = "ME";
+                            tvItemModelProvince = tvItemModelME;
+                        }
+                        else
+                        {
+                            //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSStationNumberDoesNotStartWith_, "[CAN-, WA, ME]");
+                            //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat1List("CoCoRaHSStationNumberDoesNotStartWith_", "[CAN-, WA, ME]");
+                            return;
+                        }
+
+                        string TVText = "CoCoRaHS " + coCoRaHSSite.StationName + "(" + coCoRaHSSite.StationNumber + ")";
+
+                        TVItemModel tvItemModelClimateSite = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
+                        if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
+                        {
+                            tvItemModelClimateSite = tvItemService.PostAddChildTVItemDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
+                            if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
+                            {
+                                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.TVItem, tvItemModelClimateSite.Error);
+                                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.TVItem, tvItemModelClimateSite.Error);
+                                return;
+                            }
+                        }
+
+                        MapInfoModel mapInfoModel = new MapInfoModel();
+
+                        List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelClimateSite.TVItemID);
+                        mapInfoModel = (from c in mapInfoModelList
+                                        where c.MapInfoDrawType == MapInfoDrawTypeEnum.Point
+                                        && c.TVType == TVTypeEnum.ClimateSite
+                                        select c).FirstOrDefault();
+
+                        if (mapInfoModel == null)
+                        {
+
+                            List<Coord> coordList = new List<Coord>()
+                                {
+                                    new Coord() { Lat = (float)coCoRaHSSite.Latitude, Lng = (float)coCoRaHSSite.Longitude, Ordinal = 0 },
+                                };
+
+                            mapInfoModel = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.ClimateSite, tvItemModelClimateSite.TVItemID);
+                            if (!string.IsNullOrWhiteSpace(mapInfoModel.Error))
+                            {
+                                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.MapInfo, mapInfoModel.Error);
+                                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.MapInfo, mapInfoModel.Error);
+                                return;
+                            }
+                        }
+
+                        ClimateSiteModel climateSiteModelNew = new ClimateSiteModel()
+                        {
+                            ClimateSiteTVItemID = tvItemModelClimateSite.TVItemID,
+                            ClimateSiteName = coCoRaHSSite.StationName,
+                            Province = Prov,
+                            ClimateID = coCoRaHSSite.StationNumber,
+                            DailyStartDate_Local = FirstDate,
+                            DailyEndDate_Local = LastDate,
+                            DailyNow = DailyNow,
+                        };
+
+                        ClimateSiteModel climateSiteModelExist = climateSiteService.GetClimateSiteModelExistDB(climateSiteModelNew);
+                        if (!string.IsNullOrWhiteSpace(climateSiteModelExist.Error))
+                        {
+                            ClimateSiteModel climateSiteModelRet = climateSiteService.PostAddClimateSiteDB(climateSiteModelNew);
+                            if (!string.IsNullOrWhiteSpace(climateSiteModelRet.Error))
+                            {
+                                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.ClimateSite, climateSiteModelRet.Error);
+                                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.ClimateSite, climateSiteModelRet.Error);
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return;
+        }
+
 
         //private void button18_Click(object sender, EventArgs e)
         //{
@@ -12904,21 +13598,6 @@ namespace ImportByFunction
         public string Name { get; set; }
     }
 
-    public class CoCoRaHSSite
-    {
-        public string id { get; set; }
-        public string st_num { get; set; }
-        public string st_name { get; set; }
-        public DateTime obs_date { get; set; }
-        public string obs_time { get; set; }
-        public float lat { get; set; }
-        public float lng { get; set; }
-        public float prcp { get; set; }
-        public string snowfall { get; set; }
-        public string snowfallswe { get; set; }
-        public string snowdepth { get; set; }
-        public string snowdepthswe { get; set; }
-    }
 
     public class StationQC
     {
