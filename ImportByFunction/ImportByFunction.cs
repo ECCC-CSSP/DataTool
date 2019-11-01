@@ -12765,43 +12765,46 @@ namespace ImportByFunction
 
             #endregion Loading all CoCoRaHS values in CoCoRaHS database
 
-            string dir = @"C:\Users\leblancc\Desktop\CoCoRaHS\";
+            #region Temp Loading CoCoRaHS site and value in CoCoRaHS DB and CSSPDB
 
-            DirectoryInfo di = new DirectoryInfo(dir);
+            //string dir = @"C:\Users\leblancc\Desktop\CoCoRaHS\";
 
-            List<FileInfo> fileInfoList = di.GetFiles().Where(c => c.Name.EndsWith(".csv")).ToList();
+            //DirectoryInfo di = new DirectoryInfo(dir);
 
-            foreach (FileInfo fi in fileInfoList)
-            {
-                if (!fi.Exists)
-                {
-                    richTextBoxStatus.AppendText($"[{fi.FullName}] does not exist\r\n");
-                    return;
-                }
+            //List<FileInfo> fileInfoList = di.GetFiles().Where(c => c.Name.EndsWith(".csv")).ToList();
 
-                lblStatus.Text = fi.FullName;
-                lblStatus.Refresh();
-                Application.DoEvents();
+            //foreach (FileInfo fi in fileInfoList)
+            //{
+            //    if (!fi.Exists)
+            //    {
+            //        richTextBoxStatus.AppendText($"[{fi.FullName}] does not exist\r\n");
+            //        return;
+            //    }
 
-                TextReader tr = fi.OpenText();
+            //    lblStatus.Text = fi.FullName;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
 
-                string cocoPrecipData = tr.ReadToEnd();
+            //    TextReader tr = fi.OpenText();
 
-                if (fi.FullName.Contains("_ME_"))
-                {
-                    ParseCoCoRaHSExportData(cocoPrecipData, "ME");
-                }
-                else if (fi.FullName.Contains("_WA_"))
-                {
-                    ParseCoCoRaHSExportData(cocoPrecipData, "WA");
-                }
-                else
-                {
-                    ParseCoCoRaHSExportData(cocoPrecipData, "CAN");
-                }
-            }
+            //    string cocoPrecipData = tr.ReadToEnd();
+
+            //    if (fi.FullName.Contains("_ME_"))
+            //    {
+            //        ParseCoCoRaHSExportData(cocoPrecipData, "ME");
+            //    }
+            //    else if (fi.FullName.Contains("_WA_"))
+            //    {
+            //        ParseCoCoRaHSExportData(cocoPrecipData, "WA");
+            //    }
+            //    else
+            //    {
+            //        ParseCoCoRaHSExportData(cocoPrecipData, "CAN");
+            //    }
+            //}
 
 
+            #endregion Temp Loading CoCoRaHS site and value in CoCoRaHS DB and CSSPDB
 
             lblStatus.Text = "done...";
 
