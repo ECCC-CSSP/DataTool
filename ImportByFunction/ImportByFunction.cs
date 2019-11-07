@@ -12808,665 +12808,207 @@ namespace ImportByFunction
 
             lblStatus.Text = "done...";
 
-        }
-
-        public void ParseCoCoRaHSExportData(string str, string Country)
-        {
-            string NotUsed = "";
-            List<string> FirstCharList = new List<string>()
-            {
-                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
-            };
-
-            //MapInfoService mapInfoService = new MapInfoService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
-            //CoCoRaHSSiteService coCoRaHSSiteService = new CoCoRaHSSiteService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
-            //CoCoRaHSValueService coCoRaHSValueService = new CoCoRaHSValueService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
-
-            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
-            CoCoRaHSSiteService coCoRaHSSiteService = new CoCoRaHSSiteService(LanguageEnum.en, user);
-            CoCoRaHSValueService coCoRaHSValueService = new CoCoRaHSValueService(LanguageEnum.en, user);
-
-            List<CoCoRaHSSite> cocoRaHSSiteNewlyAddedList = new List<CoCoRaHSSite>();
-            List<CoCoRaHSSite> cocoRaHSSiteList = new List<CoCoRaHSSite>();
-
-            List<ClimateSite> climateSiteList = new List<ClimateSite>();
-
-            using (CSSPDBEntities db2 = new CSSPDBEntities())
-            {
-                climateSiteList = (from c in mapInfoService.db.ClimateSites
-                                   select c).ToList();
-            }
-
-            using (CoCoRaHSEntities dbcoco = new CoCoRaHSEntities())
-            {
-                cocoRaHSSiteList = (from c in dbcoco.CoCoRaHSSites
-                                    where c.StationNumber.StartsWith(Country)
-                                    select c).ToList();
-            }
-
-            using (TextReader tr = new StringReader(str))
-            {
-                string LineStr = tr.ReadLine();
-                List<string> varNameList = new List<string>()
-                {
-                    "ObservationDate","ObservationTime","EntryDateTime","StationNumber","StationName","Latitude","Longitude","TotalPrecipAmt","NewSnowDepth","NewSnowSWE","TotalSnowDepth","TotalSnowSWE","DateTimeStamp"
-                };
-
-                // testing first line
-                List<string> LineStrList = LineStr.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
-                if (LineStrList.Count != 13)
-                {
-                    //NotUsed = TaskRunnerServiceRes.CoCoRaHSParseLineDoesNotHave13Items;
-                    //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageList("CoCoRaHSParseLineDoesNotHave13Items");
-                    return;
-                }
-
-                for (int i = 0; i < 13; i++)
-                {
-                    if (LineStrList[i] != varNameList[i])
-                    {
-                        //NotUsed = string.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_ShouldBe_, i.ToString(), varNameList[0]);
-                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_ShouldBe_", i.ToString(), varNameList[0]);
-                        return;
-                    }
-                }
-
-                while (!string.IsNullOrWhiteSpace(LineStr))
-                {
-                    LineStr = tr.ReadLine();
-
-                    if (LineStr == null)
-                    {
-                        break;
-                    }
-
-                    // parsing a data line
-
-                    LineStrList = LineStr.Split(",".ToCharArray(), StringSplitOptions.None).Select(c => c.Trim()).ToList();
-                    if (LineStrList.Count != 13)
-                    {
-                        //NotUsed = TaskRunnerServiceRes.CoCoRaHSParseLineDoesNotHave13Items;
-                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageList("CoCoRaHSParseLineDoesNotHave13Items");
-                        return;
-                    }
-
-                    if (!DateTime.TryParse(LineStrList[0], out DateTime ObservationDateAndTime))
-                    {
-                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "0", "DateTime");
-                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "0", "DateTime");
-                        return;
-                    }
-
-                    if (!int.TryParse(LineStrList[1].Substring(0, 2), out int Hour))
-                    {
-                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "[1].Substring(0, 2)", "int");
-                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "[1].Substring(0, 2)", "int");
-                        return;
-                    }
-
-                    if (!int.TryParse(LineStrList[1].Substring(3, 2), out int Min))
-                    {
-                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "[1].Substring(3, 2)", "int");
-                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "[1].Substring(3, 2)", "int");
-                        return;
-                    }
-
-                    string AmPm = LineStrList[1].Substring(6, 2);
-                    if (AmPm == "PM")
-                    {
-                        Hour += 12;
-                    }
-                    else
-                    {
-                        if (AmPm != "AM")
-                        {
-                            //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "[1].Substring(6, 2)", "[AM,PM] ");
-                            //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "[1].Substring(6, 2)", "[AM,PM]");
-                            return;
-                        }
-                    }
-
-                    ObservationDateAndTime = ObservationDateAndTime.AddHours(Hour);
-
-                    ObservationDateAndTime = ObservationDateAndTime.AddMinutes(Min);
-
-                    string StationNumber = LineStrList[3];
-                    string StationName = LineStrList[4];
-
-                    if (!double.TryParse(LineStrList[5], out double Latitude))
-                    {
-                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "5", "double");
-                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "5", "double");
-                        return;
-                    }
-
-                    if (!double.TryParse(LineStrList[6], out double Longitude))
-                    {
-                        //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSParseItem_CouldNotBeConvertedTo_, "6", "double");
-                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CoCoRaHSParseItem_CouldNotBeConvertedTo_", "6", "double");
-                        return;
-                    }
-
-                    // getting TotalPrecipAmt
-                    double? TotalPrecipAmt = null;
-                    double? TotalPrecipAmtInInches = null;
-                    string FirstChar = LineStrList[7].Substring(0, 1);
-                    if (FirstCharList.Contains(FirstChar))
-                    {
-                        // should be a number
-                        TotalPrecipAmtInInches = double.Parse(LineStrList[7]);
-                    }
-                    else
-                    {
-                        if (FirstChar == "T")
-                        {
-                            TotalPrecipAmtInInches = 0;
-                        }
-                    }
-
-                    TotalPrecipAmt = TotalPrecipAmtInInches * 25.4;
-
-                    // getting NewSnowDepth
-                    double? NewSnowDepth = null;
-                    double? NewSnowDepthInInches = null;
-                    FirstChar = LineStrList[8].Substring(0, 1);
-                    if (FirstCharList.Contains(FirstChar))
-                    {
-                        // should be a number
-                        NewSnowDepthInInches = double.Parse(LineStrList[8]);
-                        NewSnowDepth = NewSnowDepthInInches * 25.4;
-                    }
-                    else
-                    {
-                        if (FirstChar == "N")
-                        {
-                            NewSnowDepthInInches = null;
-                        }
-                    }
-
-                    // getting NewSnowSWE
-                    double? NewSnowSWE = null;
-                    double? NewSnowSWEInInches = null;
-                    FirstChar = LineStrList[9].Substring(0, 1);
-                    if (FirstCharList.Contains(FirstChar))
-                    {
-                        // should be a number
-                        NewSnowSWEInInches = double.Parse(LineStrList[9]);
-                        NewSnowSWE = NewSnowSWEInInches * 25.4;
-                    }
-                    else
-                    {
-                        if (FirstChar == "N")
-                        {
-                            NewSnowSWEInInches = null;
-                        }
-                    }
-
-                    // getting TotalSnowDepth
-                    double? TotalSnowDepth = null;
-                    double? TotalSnowDepthInInches = null;
-                    FirstChar = LineStrList[10].Substring(0, 1);
-                    if (FirstCharList.Contains(FirstChar))
-                    {
-                        // should be a number
-                        TotalSnowDepthInInches = double.Parse(LineStrList[10]);
-                        TotalSnowDepth = TotalSnowDepthInInches * 25.4;
-                    }
-                    else
-                    {
-                        if (FirstChar == "N")
-                        {
-                            TotalSnowDepthInInches = null;
-                        }
-                    }
-
-                    // getting TotalSnowSWE
-                    double? TotalSnowSWE = null;
-                    double? TotalSnowSWEInInches = null;
-                    FirstChar = LineStrList[11].Substring(0, 1);
-                    if (FirstCharList.Contains(FirstChar))
-                    {
-                        // should be a number
-                        TotalSnowSWEInInches = double.Parse(LineStrList[11]);
-                        TotalSnowSWE = TotalSnowSWEInInches * 25.4;
-                    }
-                    else
-                    {
-                        if (FirstChar == "N")
-                        {
-                            TotalSnowSWEInInches = null;
-                        }
-                    }
-
-                    CoCoRaHSSite cocoRaHSSite = (from c in cocoRaHSSiteList
-                                                 where c.StationNumber == StationNumber
-                                                 select c).FirstOrDefault();
-
-                    if (cocoRaHSSite == null)
-                    {
-                        if (Country == "ME" || Country == "WA" || Country == "CAN")
-                        {
-                            double dist = 0.0D;
-                            if (Country == "ME" || Country == "WA")
-                            {
-                                // ME 
-                                double LatCan = 44.936506D;
-                                double LngCan = -66.986644D;
-
-                                if (Country == "WA")
-                                {
-                                    LatCan = 48.307404D;
-                                    LngCan = -123.335096D;
-                                }
-
-                                dist = mapInfoService.CalculateDistance(Latitude * mapInfoService.d2r, Longitude * mapInfoService.d2r, LatCan * mapInfoService.d2r, LngCan * mapInfoService.d2r, mapInfoService.R);
-
-                            }
-
-                            if (dist < 100000)
-                            {
-                                if (StationNumber.StartsWith("ME")
-                                    || StationNumber.StartsWith("WA")
-                                    || StationNumber.StartsWith("CAN-NB")
-                                    || StationNumber.StartsWith("CAN-NL")
-                                    || StationNumber.StartsWith("CAN-NS")
-                                    || StationNumber.StartsWith("CAN-PE")
-                                    || StationNumber.StartsWith("CAN-BC")
-                                    || StationNumber.StartsWith("CAN-QC"))
-                                {
-                                    CoCoRaHSSiteModel cocoRaHSSiteModelNew = new CoCoRaHSSiteModel()
-                                    {
-                                        StationNumber = StationNumber,
-                                        StationName = StationName,
-                                        Latitude = Latitude,
-                                        Longitude = Longitude,
-                                    };
-
-                                    CoCoRaHSSiteModel cocoRaHSSiteModelRet = coCoRaHSSiteService.PostAddCoCoRaHSSiteDB(cocoRaHSSiteModelNew);
-                                    if (!string.IsNullOrWhiteSpace(cocoRaHSSiteModelRet.Error))
-                                    {
-                                        //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.CoCoRaHSSite, cocoRaHSSiteModelRet.Error);
-                                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.CoCoRaHSSite, cocoRaHSSiteModelRet.Error);
-                                        return;
-                                    }
-
-                                    using (CoCoRaHSEntities dbcoco = new CoCoRaHSEntities())
-                                    {
-                                        cocoRaHSSite = (from c in dbcoco.CoCoRaHSSites
-                                                        where c.StationNumber == StationNumber
-                                                        select c).FirstOrDefault();
-                                    }
-
-                                    if (cocoRaHSSite == null)
-                                    {
-                                        //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_Equal_, TaskRunnerServiceRes.CoCoRaHSSite, TaskRunnerServiceRes.StationNumber, StationNumber);
-                                        //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_Equal_", TaskRunnerServiceRes.CoCoRaHSSite, TaskRunnerServiceRes.StationNumber, StationNumber);
-                                        return;
-                                    }
-
-                                    if (!(from c in cocoRaHSSiteList
-                                          where c.StationNumber == cocoRaHSSite.StationNumber
-                                          select c).Any())
-                                    {
-                                        cocoRaHSSiteList.Add(cocoRaHSSite);
-                                    }
-
-                                    if (!(from c in cocoRaHSSiteNewlyAddedList
-                                          where c.StationNumber == cocoRaHSSite.StationNumber
-                                          select c).Any())
-                                    {
-                                        cocoRaHSSiteNewlyAddedList.Add(cocoRaHSSite);
-                                    }
-                                }
-                            }
-                        }
-
-                        if (cocoRaHSSite != null)
-                        {
-                            CoCoRaHSValueModel cocorahsValueModelNew = new CoCoRaHSValueModel()
-                            {
-                                CoCoRaHSSiteID = cocoRaHSSite.CoCoRaHSSiteID,
-                                ObservationDateAndTime = ObservationDateAndTime,
-                                TotalPrecipAmt = TotalPrecipAmt,
-                                NewSnowDepth = NewSnowDepth,
-                                NewSnowSWE = NewSnowSWE,
-                                TotalSnowDepth = TotalSnowDepth,
-                                TotalSnowSWE = TotalSnowSWE
-                            };
-
-                            CoCoRaHSValueModel coCoRaHSValueModel = coCoRaHSValueService.GetCoCoRaHSValueModelExistDB(cocorahsValueModelNew);
-                            if (!string.IsNullOrWhiteSpace(coCoRaHSValueModel.Error))
-                            {
-                                coCoRaHSValueModel = coCoRaHSValueService.PostAddCoCoRaHSValueDB(cocorahsValueModelNew);
-                                if (!string.IsNullOrWhiteSpace(coCoRaHSValueModel.Error))
-                                {
-                                    //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.CoCoRaHSValue, coCoRaHSValueModel.Error);
-                                    //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.CoCoRaHSValue, coCoRaHSValueModel.Error);
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        ClimateSite climateSite = (from c in climateSiteList
-                                                   where c.ClimateID == StationNumber
-                                                   select c).FirstOrDefault();
-
-                        if (climateSite == null)
-                        {
-                            if (!(from c in cocoRaHSSiteNewlyAddedList
-                                  where c.StationNumber == cocoRaHSSite.StationNumber
-                                  select c).Any())
-                            {
-                                cocoRaHSSiteNewlyAddedList.Add(cocoRaHSSite);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (cocoRaHSSiteNewlyAddedList.Count > 0)
-            {
-                CreateNewCoCoRaHSSiteInCSSPDB(cocoRaHSSiteNewlyAddedList);
-                //if (_TaskRunnerBaseService._BWObj.TextLanguageList.Count > 0)
-                //{
-                //    return;
-                //}
-            }
-        }
-
-        public void CreateNewCoCoRaHSSiteInCSSPDB(List<CoCoRaHSSite> coCoRaHSSiteList)
-        {
-            if (coCoRaHSSiteList.Count == 0)
-            {
-                return;
-            }
-
-            string NotUsed = "";
-            List<string> EnglishProvNameList = new List<string>()
-            {
-                "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "British Columbia", "Québec", "Maine", "Washington"
-            };
-
-            //TVItemService tvItemService = new TVItemService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
-            //ClimateSiteService climateSiteService = new ClimateSiteService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
-            //MapInfoService mapInfoService = new MapInfoService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
-            //MapInfoPointService mapInfoPointService = new MapInfoPointService(_TaskRunnerBaseService._BWObj.appTaskModel.Language, _TaskRunnerBaseService._User);
-
-
-            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-            ClimateSiteService climateSiteService = new ClimateSiteService(LanguageEnum.en, user);
-            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
-            MapInfoPointService mapInfoPointService = new MapInfoPointService(LanguageEnum.en, user);
-
-            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
-            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
-            {
-                //NotUsed = TaskRunnerServiceRes.CouldNotFindTVItemRoot;
-                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageList("CouldNotFindTVItemRoot");
-                return;
-            }
-
-            CultureInfo CurrentCultureInfo = Thread.CurrentThread.CurrentCulture;
-
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-CA");
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-CA");
-
-            List<TVItemModel> tvItemModelProvinces = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Province);
-
-            Thread.CurrentThread.CurrentCulture = CurrentCultureInfo;
-            Thread.CurrentThread.CurrentUICulture = CurrentCultureInfo;
-
-
-            TVItemModel tvItemModelNB = (from c in tvItemModelProvinces
-                                         where c.TVText == "New Brunswick"
-                                         select c).FirstOrDefault();
-
-            if (tvItemModelNB == null)
-            {
-                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "New Brunswick");
-                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "New Brunswick");
-                return;
-            }
-
-            TVItemModel tvItemModelNL = (from c in tvItemModelProvinces
-                                         where c.TVText == "Newfoundland and Labrador"
-                                         select c).FirstOrDefault();
-
-            if (tvItemModelNL == null)
-            {
-                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Newfoundland and Labrador");
-                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Newfoundland and Labrador");
-                return;
-            }
-
-            TVItemModel tvItemModelNS = (from c in tvItemModelProvinces
-                                         where c.TVText == "Nova Scotia"
-                                         select c).FirstOrDefault();
-
-            if (tvItemModelNS == null)
-            {
-                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Nova Scotia");
-                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Nova Scotia");
-                return;
-            }
-
-            TVItemModel tvItemModelPE = (from c in tvItemModelProvinces
-                                         where c.TVText == "Prince Edward Island"
-                                         select c).FirstOrDefault();
-
-            if (tvItemModelPE == null)
-            {
-                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Prince Edward Island");
-                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Prince Edward Island");
-                return;
-            }
-
-            TVItemModel tvItemModelQC = (from c in tvItemModelProvinces
-                                         where c.TVText == "Québec"
-                                         select c).FirstOrDefault();
-
-            if (tvItemModelQC == null)
-            {
-                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Québec");
-                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Québec");
-                return;
-            }
-
-            TVItemModel tvItemModelBC = (from c in tvItemModelProvinces
-                                         where c.TVText == "British Columbia"
-                                         select c).FirstOrDefault();
-
-            if (tvItemModelBC == null)
-            {
-                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "British Columbia");
-                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "British Columbia");
-                return;
-            }
-
-            TVItemModel tvItemModelME = (from c in tvItemModelProvinces
-                                         where c.TVText == "Maine"
-                                         select c).FirstOrDefault();
-
-            if (tvItemModelME == null)
-            {
-                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Maine");
-                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Maine");
-                return;
-            }
-
-            TVItemModel tvItemModelWA = (from c in tvItemModelProvinces
-                                         where c.TVText == "Washington"
-                                         select c).FirstOrDefault();
-
-            if (tvItemModelWA == null)
-            {
-                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotFind_With_StartingWith_, TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID, "Washington");
-                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat3List("CouldNotFind_With_StartingWith_", TaskRunnerServiceRes.TVItem, tvItemModelRoot.TVItemID.ToString(), "Washington");
-                return;
-            }
-
-            TVItemModel tvItemModelProvince = null;
-
-            List<ClimateSite> climateSiteList = new List<ClimateSite>();
-            using (CSSPDBEntities db2 = new CSSPDBEntities())
-            {
-                climateSiteList = (from c in db2.ClimateSites
-                                   select c).ToList();
-            }
-
-            using (CoCoRaHSEntities db2 = new CoCoRaHSEntities())
-            {
-                foreach (CoCoRaHSSite coCoRaHSSite in coCoRaHSSiteList)
-                {
-                    List<CoCoRaHSValue> cocorahsValueList = (from c in db2.CoCoRaHSValues
-                                                             where c.CoCoRaHSSiteID == coCoRaHSSite.CoCoRaHSSiteID
-                                                             select c).ToList();
-
-                    DateTime FirstDate = (from c in cocorahsValueList
-                                          orderby c.ObservationDateAndTime ascending
-                                          select c.ObservationDateAndTime).FirstOrDefault();
-
-                    DateTime LastDate = (from c in cocorahsValueList
-                                         orderby c.ObservationDateAndTime descending
-                                         select c.ObservationDateAndTime).FirstOrDefault();
-
-                    bool DailyNow = false;
-                    if (LastDate.Date > new DateTime(2019, 10, 10))
-                    {
-                        DailyNow = true;
-                    }
-
-                    ClimateSite climateSite = (from c in climateSiteList
-                                               where c.ClimateID == coCoRaHSSite.StationNumber
-                                               select c).FirstOrDefault();
-
-                    if (climateSite == null)
-                    {
-                        string Prov = "";
-                        if (coCoRaHSSite.StationNumber.StartsWith("CAN-"))
-                        {
-                            if (coCoRaHSSite.StationNumber.StartsWith("CAN-NB"))
-                            {
-                                Prov = "NB";
-                                tvItemModelProvince = tvItemModelNB;
-                            }
-                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NL"))
-                            {
-                                Prov = "NL";
-                                tvItemModelProvince = tvItemModelNL;
-                            }
-                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-NS"))
-                            {
-                                Prov = "NS";
-                                tvItemModelProvince = tvItemModelNS;
-                            }
-                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-PE"))
-                            {
-                                Prov = "PE";
-                                tvItemModelProvince = tvItemModelPE;
-                            }
-                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-QC"))
-                            {
-                                Prov = "QC";
-                                tvItemModelProvince = tvItemModelQC;
-                            }
-                            else if (coCoRaHSSite.StationNumber.StartsWith("CAN-BC"))
-                            {
-                                Prov = "BC";
-                                tvItemModelProvince = tvItemModelBC;
-                            }
-                            else
-                            {
-                                //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSStationNumberDoesNotStartWith_, "[CAN-NB, CAN-NL, CAN-NS, CAN-PE, CAN-BC, CAN-QC]");
-                                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat1List("CoCoRaHSStationNumberDoesNotStartWith_", "[CAN-NB, CAN-NL, CAN-NS, CAN-PE, CAN-BC, CAN-QC]");
-                                return;
-                            }
-                        }
-                        else if (coCoRaHSSite.StationNumber.StartsWith("WA-"))
-                        {
-                            Prov = "WA";
-                            tvItemModelProvince = tvItemModelWA;
-                        }
-                        else if (coCoRaHSSite.StationNumber.StartsWith("ME-"))
-                        {
-                            Prov = "ME";
-                            tvItemModelProvince = tvItemModelME;
-                        }
-                        else
-                        {
-                            //NotUsed = String.Format(TaskRunnerServiceRes.CoCoRaHSStationNumberDoesNotStartWith_, "[CAN-, WA, ME]");
-                            //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat1List("CoCoRaHSStationNumberDoesNotStartWith_", "[CAN-, WA, ME]");
-                            return;
-                        }
-
-                        string TVText = "CoCoRaHS " + coCoRaHSSite.StationName + "(" + coCoRaHSSite.StationNumber + ")";
-
-                        TVItemModel tvItemModelClimateSite = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
-                        if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
-                        {
-                            tvItemModelClimateSite = tvItemService.PostAddChildTVItemDB(tvItemModelProvince.TVItemID, TVText, TVTypeEnum.ClimateSite);
-                            if (!string.IsNullOrEmpty(tvItemModelClimateSite.Error)) // climate site does not exist
-                            {
-                                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.TVItem, tvItemModelClimateSite.Error);
-                                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.TVItem, tvItemModelClimateSite.Error);
-                                return;
-                            }
-                        }
-
-                        MapInfoModel mapInfoModel = new MapInfoModel();
-
-                        List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelClimateSite.TVItemID);
-                        mapInfoModel = (from c in mapInfoModelList
-                                        where c.MapInfoDrawType == MapInfoDrawTypeEnum.Point
-                                        && c.TVType == TVTypeEnum.ClimateSite
-                                        select c).FirstOrDefault();
-
-                        if (mapInfoModel == null)
-                        {
-
-                            List<Coord> coordList = new List<Coord>()
-                                {
-                                    new Coord() { Lat = (float)coCoRaHSSite.Latitude, Lng = (float)coCoRaHSSite.Longitude, Ordinal = 0 },
-                                };
-
-                            mapInfoModel = mapInfoService.CreateMapInfoObjectDB(coordList, MapInfoDrawTypeEnum.Point, TVTypeEnum.ClimateSite, tvItemModelClimateSite.TVItemID);
-                            if (!string.IsNullOrWhiteSpace(mapInfoModel.Error))
-                            {
-                                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.MapInfo, mapInfoModel.Error);
-                                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.MapInfo, mapInfoModel.Error);
-                                return;
-                            }
-                        }
-
-                        ClimateSiteModel climateSiteModelNew = new ClimateSiteModel()
-                        {
-                            ClimateSiteTVItemID = tvItemModelClimateSite.TVItemID,
-                            ClimateSiteName = coCoRaHSSite.StationName,
-                            Province = Prov,
-                            ClimateID = coCoRaHSSite.StationNumber,
-                            DailyStartDate_Local = FirstDate,
-                            DailyEndDate_Local = LastDate,
-                            DailyNow = DailyNow,
-                        };
-
-                        ClimateSiteModel climateSiteModelExist = climateSiteService.GetClimateSiteModelExistDB(climateSiteModelNew);
-                        if (!string.IsNullOrWhiteSpace(climateSiteModelExist.Error))
-                        {
-                            ClimateSiteModel climateSiteModelRet = climateSiteService.PostAddClimateSiteDB(climateSiteModelNew);
-                            if (!string.IsNullOrWhiteSpace(climateSiteModelRet.Error))
-                            {
-                                //NotUsed = String.Format(TaskRunnerServiceRes.CouldNotAdd_Error_, TaskRunnerServiceRes.ClimateSite, climateSiteModelRet.Error);
-                                //_TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageFormat2List("CouldNotAdd_Error_", TaskRunnerServiceRes.ClimateSite, climateSiteModelRet.Error);
-                                return;
-                            }
-                        }
-                    }
-                }
-            }
-
-            return;
+            #region Creating Xlsx file with subsectors, runs, climate site and climate values
+            //StringBuilder sb = new StringBuilder();
+
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            //UseOfSiteService useOfSiteService = new UseOfSiteService(LanguageEnum.en, user);
+            //ClimateSiteService climateSiteService = new ClimateSiteService(LanguageEnum.en, user);
+            //ClimateDataValueService climateDataValueService = new ClimateDataValueService(LanguageEnum.en, user);
+            //MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            //{
+            //    richTextBoxStatus.AppendText($"Could not find TVItemModelRoot");
+            //    return;
+            //}
+
+            //string ProvInit = "";
+            //using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //{
+            //    var ClimateSiteAndLocationList = (from c in db2.ClimateSites
+            //                                      from mi in db2.MapInfos
+            //                                      from mip in db2.MapInfoPoints
+            //                                      where c.ClimateSiteTVItemID == mi.TVItemID
+            //                                      && mi.MapInfoID == mip.MapInfoID
+            //                                      && mi.TVType == (int)TVTypeEnum.ClimateSite
+            //                                      && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+            //                                      select new { c, mi, mip }).ToList();
+
+            //    var SubsectorAndLocationList = (from c in db2.TVItems
+            //                                    from mi in db2.MapInfos
+            //                                    from mip in db2.MapInfoPoints
+            //                                    where c.TVItemID == mi.TVItemID
+            //                                    && mi.MapInfoID == mip.MapInfoID
+            //                                    && mi.TVType == (int)TVTypeEnum.Subsector
+            //                                    && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+            //                                    && c.TVType == (int)TVTypeEnum.Subsector
+            //                                    && c.TVPath.StartsWith(tvItemModelRoot.TVPath + "p")
+            //                                    select new { c, mi, mip }).ToList();
+
+            //    List<string> ProvList = new List<string>()
+            //    {
+            //        //"New Brunswick",
+            //        //"Newfoundland and Labrador",
+            //        //"Nova Scotia",
+            //        "Prince Edward Island"
+            //    };
+
+            //    List<string> ProvInitList = new List<string>()
+            //    {
+            //        //"NB",
+            //        //"NL",
+            //        //"NS",
+            //        "PE"
+            //    };
+
+            //    sb.AppendLine($"Subsector,Year,Month,Day,Climate_Site_Name,ClimateID,Dist_km,D0,DM1,DM2,DM3,DM4,DM5,DM6,DM7,DM8,DM9,DM10");
+
+            //    for (int p = 0; p < ProvList.Count; p++)
+            //    {
+            //        ProvInit = ProvInitList[p];
+
+            //        TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, ProvList[p], TVTypeEnum.Province);
+            //        if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            //        {
+            //            richTextBoxStatus.AppendText($"Could not find TVItemModelRoot");
+            //            return;
+            //        }
+
+            //        List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+
+            //        foreach (TVItemModel tvItemModelss in tvItemModelSubsectorList.OrderBy(c => c.TVText))
+            //        {
+            //            string subsector = tvItemModelss.TVText;
+            //            if (subsector.Contains(" "))
+            //            {
+            //                subsector = subsector.Substring(0, subsector.IndexOf(" "));
+            //            }
+
+            //            lblStatus.Text = subsector;
+            //            lblStatus.Refresh();
+            //            Application.DoEvents();
+
+            //            List<UseOfSiteModel> useOfSiteModelList = useOfSiteService.GetUseOfSiteModelListWithTVTypeAndSubsectorTVItemIDDB(TVTypeEnum.ClimateSite, tvItemModelss.TVItemID);
+
+            //            List<ClimateSiteModel> climateSiteModelList = new List<ClimateSiteModel>();
+
+            //            foreach (UseOfSiteModel useOfSiteModel in useOfSiteModelList)
+            //            {
+            //                ClimateSiteModel climateSiteModel = climateSiteService.GetClimateSiteModelWithClimateSiteTVItemIDDB(useOfSiteModel.SiteTVItemID);
+            //                if (string.IsNullOrWhiteSpace(climateSiteModel.Error))
+            //                {
+            //                    climateSiteModelList.Add(climateSiteModel);
+            //                }
+            //            }
+            //            List<MWQMRunModel> mwqmRunModelList = mwqmRunService.GetMWQMRunModelListWithSubsectorTVItemIDDB(tvItemModelss.TVItemID);
+
+            //            List<ClimateDataValueModel> climateDataValueModelList = new List<ClimateDataValueModel>();
+
+            //            foreach (ClimateSiteModel climateSiteModel in climateSiteModelList)
+            //            {
+            //                List<ClimateDataValueModel> climateDataValueModelList2 = climateDataValueService.GetClimateDataValueModelWithClimateSiteIDDB(climateSiteModel.ClimateSiteID);
+
+            //                climateDataValueModelList.AddRange(climateDataValueModelList2);
+            //            }
+
+            //            foreach (MWQMRunModel mwqmRunModel in mwqmRunModelList.OrderByDescending(c => c.MWQMRunTVText))
+            //            {
+            //                string run = mwqmRunModel.MWQMRunTVText;
+            //                string year = run.Substring(0, 4);
+            //                string month = run.Substring(5, 2);
+            //                string day = run.Substring(8, 2);
+
+            //                lblStatus.Text = subsector + " --- " + run;
+            //                lblStatus.Refresh();
+            //                Application.DoEvents();
+
+            //                DateTime StartDate = mwqmRunModel.DateTime_Local;
+            //                DateTime EndDate = mwqmRunModel.DateTime_Local.AddDays(-10);
+
+            //                string RD0 = mwqmRunModel.RainDay0_mm == null ? "" : ((double)mwqmRunModel.RainDay0_mm).ToString("F1");
+            //                string RD1 = mwqmRunModel.RainDay1_mm == null ? "" : ((double)mwqmRunModel.RainDay1_mm).ToString("F1");
+            //                string RD2 = mwqmRunModel.RainDay2_mm == null ? "" : ((double)mwqmRunModel.RainDay2_mm).ToString("F1");
+            //                string RD3 = mwqmRunModel.RainDay3_mm == null ? "" : ((double)mwqmRunModel.RainDay3_mm).ToString("F1");
+            //                string RD4 = mwqmRunModel.RainDay4_mm == null ? "" : ((double)mwqmRunModel.RainDay4_mm).ToString("F1");
+            //                string RD5 = mwqmRunModel.RainDay5_mm == null ? "" : ((double)mwqmRunModel.RainDay5_mm).ToString("F1");
+            //                string RD6 = mwqmRunModel.RainDay6_mm == null ? "" : ((double)mwqmRunModel.RainDay6_mm).ToString("F1");
+            //                string RD7 = mwqmRunModel.RainDay7_mm == null ? "" : ((double)mwqmRunModel.RainDay7_mm).ToString("F1");
+            //                string RD8 = mwqmRunModel.RainDay8_mm == null ? "" : ((double)mwqmRunModel.RainDay8_mm).ToString("F1");
+            //                string RD9 = mwqmRunModel.RainDay9_mm == null ? "" : ((double)mwqmRunModel.RainDay9_mm).ToString("F1");
+            //                string RD10 = mwqmRunModel.RainDay10_mm == null ? "" : ((double)mwqmRunModel.RainDay10_mm).ToString("F1");
+
+            //                sb.AppendLine($"{subsector},{year},{month},{day},-------,----------,------,{RD0},{RD1},{RD2},{RD3},{RD4},{RD5},{RD6},{RD7},{RD8},{RD9},{RD10}");
+
+            //                foreach (ClimateSiteModel climateSiteModel in climateSiteModelList)
+            //                {
+            //                    string climateSiteName = climateSiteModel.ClimateSiteName;
+            //                    string climateID = climateSiteModel.ClimateID;
+
+
+            //                    List<ClimateDataValueModel> climateDataValueModelsList = (from c in climateDataValueModelList
+            //                                                                              where c.ClimateSiteID == climateSiteModel.ClimateSiteID
+            //                                                                              && c.DateTime_Local <= StartDate
+            //                                                                              && c.DateTime_Local >= EndDate
+            //                                                                              orderby c.DateTime_Local descending
+            //                                                                              select c).ToList();
+
+            //                    bool hasValue = false;
+            //                    StringBuilder DataValues = new StringBuilder();
+            //                    for (int i = 0; i < climateDataValueModelsList.Count; i++)
+            //                    {
+            //                        if (climateDataValueModelsList[i].TotalPrecip_mm_cm == null)
+            //                        {
+            //                            DataValues.Append(",");
+            //                        }
+            //                        else
+            //                        {
+            //                            hasValue = true;
+            //                            DataValues.Append("," + ((double)(climateDataValueModelsList[i].TotalPrecip_mm_cm)).ToString("F1"));
+            //                        }
+            //                    }
+
+            //                    if (hasValue)
+            //                    {
+            //                        var climateCoord = (from r in ClimateSiteAndLocationList
+            //                                            where r.c.ClimateID == climateID
+            //                                            select new { r.mip.Lat, r.mip.Lng }).FirstOrDefault();
+
+            //                        var subsectorCoord = (from r in SubsectorAndLocationList
+            //                                              where r.c.TVItemID == tvItemModelss.TVItemID
+            //                                              select new { r.mip.Lat, r.mip.Lng }).FirstOrDefault();
+
+            //                        string distText = "";
+            //                        if (climateCoord != null && subsectorCoord != null)
+            //                        {
+            //                            double dist = mapInfoService.CalculateDistance(climateCoord.Lat * mapInfoService.d2r, climateCoord.Lng * mapInfoService.d2r, subsectorCoord.Lat * mapInfoService.d2r, subsectorCoord.Lng * mapInfoService.d2r, mapInfoService.R);
+
+            //                            dist = dist / 1000.0D;
+
+            //                            distText = dist.ToString("F0");
+            //                        }
+
+            //                        // DataValues already has the starting comma
+            //                        sb.AppendLine($"{subsector},{year},{month},{day},{climateSiteName},{climateID},{distText}{DataValues}");
+            //                    }
+            //                }
+            //            }
+            //        }
+
+            //    }
+
+            //    FileInfo fi = new FileInfo($@"C:\Users\leblancc\Desktop\{ProvInit}_ClimateData.csv");
+
+            //    StreamWriter sw = fi.CreateText();
+            //    sw.WriteLine(sb.ToString());
+            //    sw.Close();
+
+            //    richTextBoxStatus.Text = sb.ToString();
+
+            //}
+            #endregion Creating Xlsx file with subsectors, runs, climate site and climate values
         }
 
 
