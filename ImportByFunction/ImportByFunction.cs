@@ -3241,7 +3241,7 @@ namespace ImportByFunction
             //        TVItem tvItemSS = (from t in dd.TVItems
             //                           from c in dd.TVItemLanguages
             //                           where t.TVItemID == c.TVItemID
-            //                           && c.TVText.StartsWith(Subsector)
+            //                           && c.TVText.StartsWith(Subsector + " ")
             //                           && c.Language == (int)LanguageEnum.en
             //                           select t).FirstOrDefault();
 
@@ -9807,6 +9807,197 @@ namespace ImportByFunction
             return "";
         }
 
+        private string RemoveAllMWQMSitesThatNoLongerExistInQCDB(List<StationQC> stationList, TVItemService tvItemService, TVItemModel tvItemModelQC, MWQMSiteService mwqmSiteService)
+        {
+            /// -----------------------------------------------------------------
+            /// ------ Remove all MWQMSites from CSSPDB that no longer exist in QC DB --
+            /// -----------------------------------------------------------------
+
+            List<TVItemModel> tvItemModelSectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Sector);
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+
+            List<string> SubsectorListQC = (from c in stationList
+                                            select c.secteur).Distinct().ToList();
+
+            List<string> SubsectorList = new List<string>();
+            foreach (string s in SubsectorListQC)
+            {
+                if (s.Length > 3)
+                {
+                    if (!SubsectorList.Contains(s))
+                    {
+                        SubsectorList.Add(s);
+                    }
+                }
+                else
+                {
+                    SubsectorList.Add(s);
+                }
+            }
+
+            foreach (string subsector in SubsectorList)
+            {
+                lblStatus.Text = subsector;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                TVItemModel tvItemModelSubsector = tvItemModelSubsectorList.Where(c => c.TVText.StartsWith(subsector + " ")).FirstOrDefault();
+                if (tvItemModelSubsector == null)
+                {
+                    richTextBoxStatus.AppendText($"{subsector} could not be found\r\n");
+                    return $"{subsector} could not be found";
+                }
+
+                List<StationQC> QCSites = (from c in stationList
+                                           where c.secteur == subsector
+                                           orderby c.station
+                                           select c).ToList();
+
+                List<string> siteList = new List<string>();
+
+                foreach (var qcsite in QCSites)
+                {
+                    string MWQMSiteTVText = "0000".Substring(0, 4 - qcsite.station.ToString().Length) + qcsite.station.ToString();
+
+                    siteList.Add(MWQMSiteTVText);
+                }
+
+                List<MWQMSiteModel> mwqmSiteModelList = mwqmSiteService.GetMWQMSiteModelListWithSubsectorTVItemIDDB(tvItemModelSubsector.TVItemID);
+                List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSubsector.TVItemID, TVTypeEnum.MWQMSite);
+
+                foreach (TVItemModel tvItemModel in tvItemModelMWQMSiteList)
+                {
+                    lblStatus.Text = subsector + " -- " + tvItemModel.TVText;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    string siteExist = (from c in siteList
+                                        where c == tvItemModel.TVText
+                                        select c).FirstOrDefault();
+
+                    if (siteExist == null)
+                    {
+                        richTextBoxStatus.AppendText($"{subsector} site {tvItemModel.TVText} does not exist in QC DB\r\n");
+
+                        using (CSSPDBEntities db2 = new CSSPDBEntities())
+                        {
+                            // Deleting TVItemStats of MWQMSite
+                            List<TVItemStat> tvItemStatList = (from c in db2.TVItemStats
+                                                               where c.TVItemID == tvItemModel.TVItemID
+                                                               select c).ToList();
+
+                            if (tvItemStatList.Count > 0)
+                            {
+                                db2.TVItemStats.RemoveRange(tvItemStatList);
+
+                                try
+                                {
+                                    db2.SaveChanges();
+                                }
+                                catch (Exception ex)
+                                {
+                                    richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMSites");
+                                    return $"Could not delete TVItemStats of MWQMSites";
+                                }
+                            }
+
+                            // Might have to delete runs that would not be attached to any MWQMSample
+
+
+                            // Deleting MWQMSamples associated to the MWQMSite
+                            lblStatus.Text = subsector + " -- " + tvItemModel.TVText + " samples delete";
+                            lblStatus.Refresh();
+                            Application.DoEvents();
+
+                            List<MWQMSample> mwqmSampleList = (from c in db2.MWQMSamples
+                                                               where c.MWQMSiteTVItemID == tvItemModel.TVItemID
+                                                               select c).ToList();
+
+                            if (mwqmSampleList.Count > 0)
+                            {
+                                db2.MWQMSamples.RemoveRange(mwqmSampleList);
+
+                                try
+                                {
+                                    db2.SaveChanges();
+                                }
+                                catch (Exception ex)
+                                {
+                                    richTextBoxStatus.AppendText($"Could not delete Sample");
+                                    return $"Could not delete Sample";
+                                }
+                            }
+
+
+                            // Deleting MapInfos for MWQMSite
+                            List<MapInfo> MapInfoList = (from c in db2.MapInfos
+                                                         where c.TVItemID == tvItemModel.TVItemID
+                                                         select c).ToList();
+
+
+                            if (MapInfoList.Count > 0)
+                            {
+                                db2.MapInfos.RemoveRange(MapInfoList);
+
+                                try
+                                {
+                                    db2.SaveChanges();
+                                }
+                                catch (Exception ex)
+                                {
+                                    richTextBoxStatus.AppendText($"Could not delete MapInfos for MWQMSites");
+                                    return $"Could not delete MapInfos for MWQMSites";
+                                }
+                            }
+
+                            // Deleting MWQMSite
+                            List<MWQMSite> mwqmSiteList = (from c in db2.MWQMSites
+                                                           where c.MWQMSiteTVItemID == tvItemModel.TVItemID
+                                                           select c).ToList();
+
+                            if (mwqmSiteList.Count > 0)
+                            {
+                                db2.MWQMSites.RemoveRange(mwqmSiteList);
+
+                                try
+                                {
+                                    db2.SaveChanges();
+                                }
+                                catch (Exception ex)
+                                {
+                                    richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
+                                    return $"Could not delete TVItems for MWQMSites";
+                                }
+                            }
+
+                            // Deleting TVItems for MWQMSite
+                            List<TVItem> TVItemList = (from c in db2.TVItems
+                                                       where c.TVItemID == tvItemModel.TVItemID
+                                                       select c).ToList();
+
+                            if (TVItemList.Count > 0)
+                            {
+                                db2.TVItems.RemoveRange(TVItemList);
+
+                                try
+                                {
+                                    db2.SaveChanges();
+                                }
+                                catch (Exception ex)
+                                {
+                                    richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
+                                    return $"Could not delete TVItems for MWQMSites";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            lblStatus.Text = "done...";
+
+            return "";
+        }
         private string AddAllNewRunsFoundInQCDB(List<StationQC> stationList, List<SampleQC> sampleList, List<PCCSM.db_tournee> tourneeList, TVItemService tvItemService, TVItemModel tvItemModelQC, MWQMSiteService mwqmSiteService, MWQMRunService mwqmRunService)
         {
             /// -----------------------------------------------------------------
@@ -9845,7 +10036,7 @@ namespace ImportByFunction
                 Application.DoEvents();
 
                 TVItemModel tvItemModelSubsector = (from c in tvItemModelSubsectorList
-                                                    where c.TVText.StartsWith(subsector)
+                                                    where c.TVText.StartsWith(subsector + " ")
                                                     select c).FirstOrDefault();
 
                 if (tvItemModelSubsector == null)
@@ -10327,13 +10518,18 @@ namespace ImportByFunction
                 }
             }
 
+            lblStatus.Text = "done...";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
             return "";
         }
 
         private string AddAllNewSampleFoundInQCDB(List<StationQC> stationList, List<SampleQC> sampleList, List<PCCSM.db_tournee> tourneeList, TVItemService tvItemService, TVItemModel tvItemModelQC, MWQMSiteService mwqmSiteService, MWQMRunService mwqmRunService)
         {
             /// -----------------------------------------------------------------
-            /// ------ Add all new MWQMSample found in QC DB and not in CSSPDB --
+            /// Add all new MWQMSample found in QC DB and not in CSSPDB 
+            /// while removing dupliates of orther sample not belonging there
             /// -----------------------------------------------------------------
 
             List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
@@ -10354,18 +10550,18 @@ namespace ImportByFunction
 
             foreach (string subsector in subsectorList)
             {
+                lblStatus.Text = subsector;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
                 if (Cancel)
                 {
                     richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
                     return $"Pressed Cancel";
                 }
 
-                lblStatus.Text = subsector;
-                lblStatus.Refresh();
-                Application.DoEvents();
-
                 TVItemModel tvItemModelSubsector = (from c in tvItemModelSubsectorList
-                                                    where c.TVText.StartsWith(subsector)
+                                                    where c.TVText.StartsWith(subsector + " ")
                                                     select c).FirstOrDefault();
 
                 if (tvItemModelSubsector == null)
@@ -10413,6 +10609,7 @@ namespace ImportByFunction
 
                     List<SampleQC> dbMesureList = (from m in sampleList
                                                    where m.id_geo_station_p == geoStat.id_geo_station_p
+                                                   && m.cf != null
                                                    select m).ToList();
 
                     List<MWQMSample> mwqmSampleCSSPList = new List<MWQMSample>();
@@ -10426,9 +10623,9 @@ namespace ImportByFunction
                     List<MWQMSample> mwqmSampleListToAdd = new List<MWQMSample>();
                     List<MWQMSample> mwqmSampleListToUpdate = new List<MWQMSample>();
 
+                    List<MWQMSample> mwqmSampleListExistInQCDB = new List<MWQMSample>();
                     foreach (var dbm in dbMesureList)
                     {
-
                         Application.DoEvents();
 
                         // getting Runs
@@ -10480,7 +10677,8 @@ namespace ImportByFunction
                         MWQMRunModel mwqmRunModelExist = (from c in mwqmRunModelAll
                                                           where c.SubsectorTVItemID == tvItemModelSubsector.TVItemID
                                                           && c.DateTime_Local == DateRun
-                                                          && c.RunSampleType == SampleTypeEnum.Routine
+                                                          && (c.RunSampleType == SampleTypeEnum.Routine
+                                                          || c.RunSampleType == SampleTypeEnum.Infrastructure)
                                                           && c.RunNumber == 1
                                                           select c).FirstOrDefault();
 
@@ -10546,29 +10744,25 @@ namespace ImportByFunction
                             UseForOpenData = UseForOpenData,
                         };
 
-                        if (mwqmSampleModelNew.PH == 88.180000305175781f)
+                        if (mwqmSampleModelNew.PH >= 14.0f)
                         {
-                            mwqmSampleModelNew.PH = 8.8180000305175781f;
+                            mwqmSampleModelNew.PH = null;
                         }
-
-                        if (mwqmSampleModelNew.Salinity_PPT == 99.9000015258789)
+                        if (mwqmSampleModelNew.Salinity_PPT > 40.0f)
                         {
-                            mwqmSampleModelNew.Salinity_PPT = 9.99000015258789;
+                            mwqmSampleModelNew.Salinity_PPT = null;
                         }
-                        if (mwqmSampleModelNew.Salinity_PPT == 51.799999237060547)
+                        if (mwqmSampleModelNew.WaterTemp_C > 40.0f)
                         {
-                            mwqmSampleModelNew.Salinity_PPT = 5.1799999237060547;
-                        }
-                        if (mwqmSampleModelNew.PH == 20.600000381469727)
-                        {
-                            mwqmSampleModelNew.PH = 2.0600000381469727;
+                            mwqmSampleModelNew.WaterTemp_C = null;
                         }
 
                         // new code to delet later
                         mwqmRunModelExist = (from c in mwqmRunModelAll
                                              where c.SubsectorTVItemID == tvItemModelSubsector.TVItemID
                                              && c.DateTime_Local == DateRun
-                                             && c.RunSampleType == SampleTypeEnum.Routine
+                                             && (c.RunSampleType == SampleTypeEnum.Routine
+                                             || c.RunSampleType == SampleTypeEnum.Infrastructure)
                                              && c.RunNumber == 1
                                              select c).FirstOrDefault();
 
@@ -10580,12 +10774,7 @@ namespace ImportByFunction
                             return $"Could not find MWQMRunModel ss {tvItemModelSubsector.TVText} --- {DateRun.ToString("yyyy MM dd")}";
                         }
 
-                        //if (mwqmSampleModelNew.WaterTemp_C < 0)
-                        //{
-                        //    mwqmSampleModelNew.WaterTemp_C = 0;
-                        //}
-
-                        //mwqmSampleModelNew.MWQMRunTVItemID = mwqmRunModelExist.MWQMRunTVItemID;
+                        string SampleTypeText = mwqmRunModelExist.RunSampleType == SampleTypeEnum.Routine ? "109," : "102,";
 
                         MWQMSample mwqmSampleNew = new MWQMSample()
                         {
@@ -10597,7 +10786,7 @@ namespace ImportByFunction
                             Salinity_PPT = mwqmSampleModelNew.Salinity_PPT,
                             WaterTemp_C = mwqmSampleModelNew.WaterTemp_C,
                             PH = mwqmSampleModelNew.PH,
-                            SampleTypesText = "109,",
+                            SampleTypesText = SampleTypeText,
                             SampleType_old = 4,
                             Tube_10 = null,
                             Tube_1_0 = null,
@@ -10635,29 +10824,43 @@ namespace ImportByFunction
                                                       && c.MWQMRunTVItemID == mwqmRunModelExist.MWQMRunTVItemID
                                                       && c.SampleDateTime_Local == (DateTime)SampDateTime
                                                       && c.Depth_m == mwqmSampleModelNew.Depth_m
-                                                      && c.SampleTypesText == "109,"
+                                                      && c.SampleTypesText == SampleTypeText
                                                       select c).FirstOrDefault();
 
                         if (mwqmSampleExist == null)
                         {
                             mwqmSampleListToAdd.Add(mwqmSampleNew);
                         }
-
-                        MWQMSample mwqmSampleExist2 = (from c in mwqmSampleCSSPList
-                                                       where c.MWQMSiteTVItemID == tvItemMWQMSiteExist.TVItemID
-                                                       && c.MWQMRunTVItemID == mwqmRunModelExist.MWQMRunTVItemID
-                                                       && c.SampleDateTime_Local == (DateTime)SampDateTime
-                                                       && c.Depth_m == mwqmSampleModelNew.Depth_m
-                                                       && c.SampleTypesText == "109,"
-                                                       select c).FirstOrDefault();
-
-                        if (mwqmSampleExist2 != null)
+                        else
                         {
-                            if (mwqmSampleExist2.UseForOpenData != UseForOpenData)
+                            bool changed = false;
+                            if (mwqmSampleExist.UseForOpenData != UseForOpenData)
                             {
-                                mwqmSampleExist2.UseForOpenData = UseForOpenData;
-                                mwqmSampleListToUpdate.Add(mwqmSampleExist2);
+                                mwqmSampleExist.UseForOpenData = UseForOpenData;
+                                changed = true;
                             }
+                            if (mwqmSampleExist.FecCol_MPN_100ml != dbm.cf)
+                            {
+                                mwqmSampleExist.FecCol_MPN_100ml = (int)dbm.cf;
+                                changed = true;
+                            }
+                            if (mwqmSampleExist.Salinity_PPT != Sal)
+                            {
+                                mwqmSampleExist.Salinity_PPT = Sal;
+                                changed = true;
+                            }
+                            if (mwqmSampleExist.WaterTemp_C != Temp)
+                            {
+                                mwqmSampleExist.WaterTemp_C = Temp;
+                                changed = true;
+                            }
+
+                            if (changed)
+                            {
+                                mwqmSampleListToUpdate.Add(mwqmSampleExist);
+                            }
+
+                            mwqmSampleListExistInQCDB.Add(mwqmSampleExist);
                         }
 
                     }
@@ -10670,6 +10873,11 @@ namespace ImportByFunction
                             {
                                 db2.MWQMSamples.AddRange(mwqmSampleListToAdd);
                                 db2.SaveChanges();
+
+                                foreach (MWQMSample mwqmSample in mwqmSampleListToAdd)
+                                {
+                                    mwqmSampleListExistInQCDB.Add(mwqmSample);
+                                }
                             }
                         }
                         catch (Exception)
@@ -10695,6 +10903,9 @@ namespace ImportByFunction
                                 if (mwqmSampleChanged != null)
                                 {
                                     mwqmSample.UseForOpenData = mwqmSampleChanged.UseForOpenData;
+                                    mwqmSample.FecCol_MPN_100ml = mwqmSampleChanged.FecCol_MPN_100ml;
+                                    mwqmSample.Salinity_PPT = mwqmSampleChanged.Salinity_PPT;
+                                    mwqmSample.WaterTemp_C = mwqmSampleChanged.WaterTemp_C;
                                 }
                             }
 
@@ -10706,14 +10917,42 @@ namespace ImportByFunction
                             {
                                 richTextBoxStatus.AppendText($"Could not change MWQMSampleList ss {tvItemModelSubsector.TVText} --- {tvItemMWQMSiteExist.TVText}");
                                 return $"Could not change MWQMSampleList ss {tvItemModelSubsector.TVText} --- {tvItemMWQMSiteExist.TVText}";
-
                             }
                         }
 
+                        mwqmSampleCSSPList = (from c in db2.MWQMSamples
+                                              where c.MWQMSiteTVItemID == tvItemMWQMSiteExist.TVItemID
+                                              select c).ToList();
 
+
+                        List<MWQMSample> mwqmSampleCSSPListToDelete = new List<MWQMSample>();
+
+                        foreach (MWQMSample mwqmSample in mwqmSampleCSSPList)
+                        {
+                            if (!mwqmSampleListExistInQCDB.Where(c => c.MWQMSampleID == mwqmSample.MWQMSampleID).Any())
+                            {
+                                mwqmSampleCSSPListToDelete.Add(mwqmSample);
+                            }
+                        }
+
+                        try
+                        {
+                            db2.MWQMSamples.RemoveRange(mwqmSampleCSSPListToDelete);
+                            db2.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            richTextBoxStatus.AppendText($"Could not delete the mwqmSampleCSSPListToDelete for ss {tvItemModelSubsector.TVText} and site {tvItemMWQMSiteExist.TVText}");
+                            return $"Could not delete the mwqmSampleCSSPListToDelete for ss {tvItemModelSubsector.TVText} and site {tvItemMWQMSiteExist.TVText}";
+                        }
                     }
+
                 }
             }
+
+            lblStatus.Text = "done...";
+            lblStatus.Refresh();
+            Application.DoEvents();
 
             return "";
         }
@@ -10830,24 +11069,12 @@ namespace ImportByFunction
                 if (!tvItemModelSubsectorList.Where(c => c.TVItemID == mwqmSubsectorModel.MWQMSubsectorTVItemID).Any())
                 {
                     richTextBoxStatus.AppendText($"{mwqmSubsectorModel.SubsectorHistoricKey} should be removed\r\n");
-                }
-            }
 
-            foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
-            {
-                string subsector = tvItemModel.TVText;
-                if (subsector.Contains(" "))
-                {
-                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
-                }
-
-                lblStatus.Text = subsector;
-                lblStatus.Refresh();
-                Application.DoEvents();
-
-                if (!mwqmSubsectorModelList.Where(c => c.MWQMSubsectorTVItemID == tvItemModel.TVItemID).Any())
-                {
-                    richTextBoxStatus.AppendText($"{subsector} needs to be added {tvItemModel.TVItemID}\r\n");
+                    MWQMSubsectorModel mwqmSubsectorModelRet = mwqmSubsectorService.PostDeleteMWQMSubsectorDB(mwqmSubsectorModel.MWQMSubsectorTVItemID);
+                    if (!string.IsNullOrWhiteSpace(mwqmSubsectorModelRet.Error))
+                    {
+                        richTextBoxStatus.AppendText($"ERROR {mwqmSubsectorModelRet.Error}\r\n");
+                    }
                 }
             }
 
@@ -10862,95 +11089,95 @@ namespace ImportByFunction
             /// ------ Give proper name for subsector from QC DB --
             /// -----------------------------------------------------------------
 
-            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
-            if (tvItemModelSubsectorList.Count == 0)
-            {
-                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelQC.TVText + "\r\n");
-                return "Error: could not find TVItem Subsector for " + tvItemModelQC.TVText;
-            }
+            //List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+            //if (tvItemModelSubsectorList.Count == 0)
+            //{
+            //    richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelQC.TVText + "\r\n");
+            //    return "Error: could not find TVItem Subsector for " + tvItemModelQC.TVText;
+            //}
 
-            foreach (string subsector in subsectorNameList.Select(c => c.secteur).OrderBy(c => c).Distinct().ToList())
-            {
+            //foreach (string subsector in subsectorNameList.Select(c => c.secteur).OrderBy(c => c).Distinct().ToList())
+            //{
 
-                lblStatus.Text = subsector;
-                lblStatus.Refresh();
-                Application.DoEvents();
+            //    lblStatus.Text = subsector;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
 
-                if (Cancel)
-                {
-                    richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
-                    return $"Pressed Cancel";
-                }
+            //    if (Cancel)
+            //    {
+            //        richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
+            //        return $"Pressed Cancel";
+            //    }
 
-                var nomList = subsectorNameList.Where(c => c.secteur == subsector).FirstOrDefault();
+            //    var nomList = subsectorNameList.Where(c => c.secteur == subsector).FirstOrDefault();
 
-                if (nomList != null)
-                {
-                    string nomFR = nomList.secteur_nom;
-                    string nomEN = nomList.secteur_nom_a;
+            //    if (nomList != null)
+            //    {
+            //        string nomFR = nomList.secteur_nom;
+            //        string nomEN = nomList.secteur_nom_a;
 
-                    TVItemModel tvItemModelSubsector = (from c in tvItemModelSubsectorList
-                                                        where c.TVText.StartsWith(subsector)
-                                                        select c).FirstOrDefault();
+            //        TVItemModel tvItemModelSubsector = (from c in tvItemModelSubsectorList
+            //                                            where c.TVText.StartsWith(subsector + " ")
+            //                                            select c).FirstOrDefault();
 
-                    if (tvItemModelSubsector == null)
-                    {
-                        continue;
-                    }
+            //        if (tvItemModelSubsector == null)
+            //        {
+            //            continue;
+            //        }
 
-                    if (!string.IsNullOrWhiteSpace(nomFR))
-                    {
-                        TVItemLanguageModel tvItemLanguageModelFR = tvItemLanguageService.GetTVItemLanguageModelWithTVItemIDAndLanguageDB(tvItemModelSubsector.TVItemID, LanguageEnum.fr);
-                        if (!string.IsNullOrWhiteSpace(tvItemLanguageModelFR.Error))
-                        {
-                            richTextBoxStatus.AppendText($"could not find tvItemLanguageModel (FR) for [{subsector}]\r\n");
-                            return $"could not find tvItemLanguageModel (FR) for [{subsector}]";
-                        }
+            //        if (!string.IsNullOrWhiteSpace(nomFR))
+            //        {
+            //            TVItemLanguageModel tvItemLanguageModelFR = tvItemLanguageService.GetTVItemLanguageModelWithTVItemIDAndLanguageDB(tvItemModelSubsector.TVItemID, LanguageEnum.fr);
+            //            if (!string.IsNullOrWhiteSpace(tvItemLanguageModelFR.Error))
+            //            {
+            //                richTextBoxStatus.AppendText($"could not find tvItemLanguageModel (FR) for [{subsector}]\r\n");
+            //                return $"could not find tvItemLanguageModel (FR) for [{subsector}]";
+            //            }
 
-                        string TVTextFR = subsector + " (" + nomFR + ")";
+            //            string TVTextFR = subsector + " (" + nomFR + ")";
 
-                        if (tvItemLanguageModelFR.TVText != TVTextFR)
-                        {
-                            tvItemLanguageModelFR.TVText = TVTextFR;
+            //            if (tvItemLanguageModelFR.TVText != TVTextFR)
+            //            {
+            //                tvItemLanguageModelFR.TVText = TVTextFR;
 
-                            TVItemLanguageModel tvItemLanguageModelFRRet = tvItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModelFR);
-                            if (!string.IsNullOrWhiteSpace(tvItemLanguageModelFRRet.Error))
-                            {
-                                richTextBoxStatus.AppendText($"could not update tvItemLanguageModel (FR) for [{subsector}]\r\n");
-                                return $"could not update tvItemLanguageModel (FR) for [{subsector}]";
-                            }
-                        }
+            //                TVItemLanguageModel tvItemLanguageModelFRRet = tvItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModelFR);
+            //                if (!string.IsNullOrWhiteSpace(tvItemLanguageModelFRRet.Error))
+            //                {
+            //                    richTextBoxStatus.AppendText($"could not update tvItemLanguageModel (FR) for [{subsector}]\r\n");
+            //                    return $"could not update tvItemLanguageModel (FR) for [{subsector}]";
+            //                }
+            //            }
 
-                        TVItemLanguageModel tvItemLanguageModelEN = tvItemLanguageService.GetTVItemLanguageModelWithTVItemIDAndLanguageDB(tvItemModelSubsector.TVItemID, LanguageEnum.en);
-                        if (!string.IsNullOrWhiteSpace(tvItemLanguageModelEN.Error))
-                        {
-                            richTextBoxStatus.AppendText($"could not find tvItemLanguageModel (EN) for [{subsector}]\r\n");
-                            return $"could not find tvItemLanguageModel (EN) for [{subsector}]";
-                        }
+            //            TVItemLanguageModel tvItemLanguageModelEN = tvItemLanguageService.GetTVItemLanguageModelWithTVItemIDAndLanguageDB(tvItemModelSubsector.TVItemID, LanguageEnum.en);
+            //            if (!string.IsNullOrWhiteSpace(tvItemLanguageModelEN.Error))
+            //            {
+            //                richTextBoxStatus.AppendText($"could not find tvItemLanguageModel (EN) for [{subsector}]\r\n");
+            //                return $"could not find tvItemLanguageModel (EN) for [{subsector}]";
+            //            }
 
-                        string TVTextEN = subsector + " (" + nomFR + ")";
-                        if (!string.IsNullOrWhiteSpace(nomEN))
-                        {
-                            TVTextEN = subsector + " (" + nomEN + ")";
-                        }
+            //            string TVTextEN = subsector + " (" + nomFR + ")";
+            //            if (!string.IsNullOrWhiteSpace(nomEN))
+            //            {
+            //                TVTextEN = subsector + " (" + nomEN + ")";
+            //            }
 
-                        if (tvItemLanguageModelEN.TVText != TVTextEN)
-                        {
-                            tvItemLanguageModelEN.TVText = TVTextEN;
+            //            if (tvItemLanguageModelEN.TVText != TVTextEN)
+            //            {
+            //                tvItemLanguageModelEN.TVText = TVTextEN;
 
-                            TVItemLanguageModel tvItemLanguageModelENRet = tvItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModelEN);
-                            if (!string.IsNullOrWhiteSpace(tvItemLanguageModelENRet.Error))
-                            {
-                                richTextBoxStatus.AppendText($"could not update tvItemLanguageModel (EN) for [{subsector}]\r\n");
-                                return $"could not update tvItemLanguageModel(EN) for [{ subsector}]";
-                            }
-                        }
-                    }
+            //                TVItemLanguageModel tvItemLanguageModelENRet = tvItemLanguageService.PostUpdateTVItemLanguageDB(tvItemLanguageModelEN);
+            //                if (!string.IsNullOrWhiteSpace(tvItemLanguageModelENRet.Error))
+            //                {
+            //                    richTextBoxStatus.AppendText($"could not update tvItemLanguageModel (EN) for [{subsector}]\r\n");
+            //                    return $"could not update tvItemLanguageModel(EN) for [{ subsector}]";
+            //                }
+            //            }
+            //        }
 
-                }
+            //    }
 
 
-            }
+            //}
 
             lblStatus.Text = "done...";
 
@@ -11100,248 +11327,6 @@ namespace ImportByFunction
             return "";
         }
 
-        private string RemoveSampleNotFoundInQCDB(List<string> subsectorList, List<StationQC> stationList, List<SampleQC> sampleList, List<PCCSM.db_tournee> tourneeList, TVItemService tvItemService, TVItemModel tvItemModelQC, MWQMSampleService mwqmSampleService)
-        {
-            /// -----------------------------------------------------------------
-            /// ------ Remove sample from CSSPDB not found in QC DB --
-            /// -----------------------------------------------------------------
-
-            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
-            if (tvItemModelSubsectorList.Count == 0)
-            {
-                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelQC.TVText + "\r\n");
-                return "Error: could not find TVItem Subsector for " + tvItemModelQC.TVText;
-            }
-
-            List<TVItemModel> tvItemModelSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMSite);
-            if (tvItemModelSiteList.Count == 0)
-            {
-                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelQC.TVText + "\r\n");
-                return "Error: could not find TVItem Subsector for " + tvItemModelQC.TVText;
-            }
-
-            List<TVItemModel> tvItemModelRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMRun);
-            if (tvItemModelRunList.Count == 0)
-            {
-                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelQC.TVText + "\r\n");
-                return "Error: could not find TVItem Subsector for " + tvItemModelQC.TVText;
-            }
-
-
-            // checking that all QC DB subsector exist in CSSPDB
-            foreach (string subsector in subsectorList)
-            {
-
-                lblStatus.Text = subsector;
-                lblStatus.Refresh();
-                Application.DoEvents();
-
-                if (Cancel)
-                {
-                    richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
-                    return $"Pressed Cancel";
-                }
-
-                TVItemModel tvItemModelSubsector = (from c in tvItemModelSubsectorList
-                                                    where c.TVText.StartsWith(subsector + " ")
-                                                    select c).FirstOrDefault();
-
-                if (tvItemModelSubsector == null)
-                {
-                    richTextBoxStatus.AppendText($"{subsector} QC does not exist\r\n");
-                }
-            }
-
-            // checking that all CSSPDB subsector exist in QC DB
-            foreach (TVItemModel tvItemModelSubsector in tvItemModelSubsectorList)
-            {
-                string subsector = tvItemModelSubsector.TVText;
-                if (subsector.Contains(" "))
-                {
-                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
-                }
-
-                lblStatus.Text = subsector;
-                lblStatus.Refresh();
-                Application.DoEvents();
-
-                if (Cancel)
-                {
-                    richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
-                    return $"Pressed Cancel";
-                }
-
-                string found = (from c in subsectorList
-                                where c == subsector
-                                select c).FirstOrDefault();
-
-                if (found == null)
-                {
-                    richTextBoxStatus.AppendText($"{subsector} CSSPDB does not exist\r\n");
-                }
-            }
-
-            foreach (TVItemModel tvItemModelSubsector in tvItemModelSubsectorList)
-            {
-                List<MWQMSampleModel> mwqmSampleModelList = mwqmSampleService.GetMWQMSampleModelListWithSubsectorTVItemIDDB(tvItemModelSubsector.TVItemID);
-
-                string subsector = tvItemModelSubsector.TVText;
-                if (subsector.Contains(" "))
-                {
-                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
-                }
-
-                lblStatus.Text = subsector;
-                lblStatus.Refresh();
-                Application.DoEvents();
-
-                if (Cancel)
-                {
-                    richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
-                    return $"Pressed Cancel";
-                }
-
-                string found = (from c in subsectorList
-                                where c == subsector
-                                select c).FirstOrDefault();
-
-                if (found == null)
-                {
-                    richTextBoxStatus.AppendText($"{subsector} CSSPDB does not exist\r\n");
-                }
-
-
-                List<TVItemModel> tvItemModelSusbsectorSiteList = (from c in tvItemModelSiteList
-                                                                   where c.TVPath.StartsWith(tvItemModelSubsector.TVPath + "p")
-                                                                   select c).ToList();
-
-                List<StationQC> subsectorSiteList = (from c in stationList
-                                                     where c.secteur == subsector
-                                                     select c).ToList();
-
-                if (subsectorSiteList.Count != tvItemModelSusbsectorSiteList.Count)
-                {
-                    richTextBoxStatus.AppendText($"{subsector} --- QC DB Site count [{subsectorSiteList.Count}] CSSPDB Site count [{tvItemModelSusbsectorSiteList.Count}]\r\n");
-                    //return;
-                }
-
-                var subsectorSiteQCList = (from c in stationList
-                                           where c.secteur == subsector
-                                           select c).ToList();
-
-                foreach (var tvItemModelSubsectorSite in tvItemModelSusbsectorSiteList)
-                {
-                    string site = tvItemModelSubsectorSite.TVText;
-                    if (site.Contains(" "))
-                    {
-                        site = site.Substring(0, site.IndexOf(" "));
-                    }
-
-                    lblStatus.Text = subsector + " --- " + site;
-                    lblStatus.Refresh();
-                    Application.DoEvents();
-
-                    bool Has0 = true;
-                    while (Has0)
-                    {
-                        if (site.Substring(0, 1) != "0")
-                        {
-                            Has0 = false;
-                            break;
-                        }
-
-                        site = site.Substring(1);
-                    }
-
-                    if (!int.TryParse(site, out int siteInt))
-                    {
-                        richTextBoxStatus.AppendText($"{subsector} --- {site} --- Could not convert [{site}] to an integer\r\n");
-                        //return;
-                    }
-
-                    var siteQC = (from c in subsectorSiteQCList
-                                  where c.station == siteInt
-                                  select c).FirstOrDefault();
-
-                    if (siteQC == null)
-                    {
-                        richTextBoxStatus.AppendText($"{subsector} --- {site} --- Could not find site from subsectorSiteQCList\r\n");
-                        //return;
-                    }
-
-                    var sampleValQCList = (from c in sampleList
-                                           where c.id_geo_station_p == siteQC.id_geo_station_p
-                                           select c).ToList();
-
-                    var tourneeQCList = (from c in sampleValQCList
-                                         from t in tourneeList
-                                         where c.id_geo_station_p == siteQC.id_geo_station_p
-                                         && c.id_tournee == t.ID_Tournee
-                                         orderby t.annee, t.mois, t.jour
-                                         select t).ToList();
-
-                    var sampleValList = (from c in mwqmSampleModelList
-                                         where c.MWQMSiteTVItemID == tvItemModelSubsectorSite.TVItemID
-                                         orderby c.SampleDateTime_Local
-                                         select c).ToList();
-
-                    if (sampleValQCList.Count != sampleValList.Count)
-                    {
-                        richTextBoxStatus.AppendText($"{subsector} --- {site} --- Sample Count [{sampleValQCList.Count}] is not the same as CSSPDB [{sampleValList.Count}]\r\n");
-                        //return;
-                    }
-
-                    foreach (var tourneeQC in tourneeQCList)
-                    {
-                        var sampleValQC = (from c in sampleValQCList
-                                           where c.id_tournee == tourneeQC.ID_Tournee
-                                           select c).ToList();
-
-                        if (sampleValQC.Count == 0)
-                        {
-                            richTextBoxStatus.AppendText($"{subsector} --- {site} --- sampleValQC.Count should not be 0\r\n");
-                            continue;
-                        }
-
-
-                        var sampleVal = (from c in sampleValList
-                                         where c.SampleDateTime_Local.Year == tourneeQC.annee
-                                         && c.SampleDateTime_Local.Month == tourneeQC.mois
-                                         && c.SampleDateTime_Local.Day == tourneeQC.jour
-                                         select c).ToList();
-
-                        if (sampleValQC.Count == 0)
-                        {
-                            richTextBoxStatus.AppendText($"{subsector} --- {site} --- sampleVal.Count should not be 0\r\n");
-                            continue;
-                        }
-
-                        if (sampleValQC.Count != 1)
-                        {
-                            richTextBoxStatus.AppendText($"{subsector} --- {site} --- sampleValQC.Count should = 1\r\n");
-                            //return;
-                        }
-
-                        if (sampleVal.Count != 1)
-                        {
-                            richTextBoxStatus.AppendText($"{subsector} --- {site} --- sampleVal.Count should = 1\r\n");
-                            //return;
-                        }
-
-                        if (sampleValQC[0].cf != sampleVal[0].FecCol_MPN_100ml)
-                        {
-                            richTextBoxStatus.AppendText($"{subsector} --- {site} --- Not equal -- QC cf [{sampleValQC[0].cf}] and CSSP cf [{sampleVal[0].FecCol_MPN_100ml}]\r\n");
-                            //return;
-                        }
-                    }
-                }
-            }
-
-            lblStatus.Text = "Done...";
-
-            return "";
-        }
-
         private void ButImportQCWQMonitoringToCSSPDB_Click(object sender, EventArgs e)
         {
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -11374,6 +11359,7 @@ namespace ImportByFunction
                                                where s.secteur != null
                                                && s.x != null
                                                && s.y != null
+                                               && s.status == "ok"
                                                orderby s.secteur
                                                select new StationQC
                                                {
@@ -11385,30 +11371,31 @@ namespace ImportByFunction
                                                    y = (double)s.y,
                                                }).ToList();
 
-                //List<SampleQC> sampleList = (from m in dbQC.db_mesure
-                //                             select new SampleQC
-                //                             {
-                //                                 id_geo_station_p = m.id_geo_station_p,
-                //                                 id_tournee = m.id_tournee,
-                //                                 cf = m.cf,
-                //                                 hre_echantillonnage = m.hre_echantillonnage,
-                //                                 prof = (double?)m.prof,
-                //                                 sal = (double?)m.sal,
-                //                                 temp = (double?)m.temp,
-                //                                 ph = (double?)m.ph,
-                //                                 diffusable = m.diffusable,
-                //                                 commentaire = m.commentaire,
-                //                             }).ToList();
+                List<SampleQC> sampleList = (from m in dbQC.db_mesure
+                                             where m != null
+                                             select new SampleQC
+                                             {
+                                                 id_geo_station_p = m.id_geo_station_p,
+                                                 id_tournee = m.id_tournee,
+                                                 cf = m.cf,
+                                                 hre_echantillonnage = m.hre_echantillonnage,
+                                                 prof = (double?)m.prof,
+                                                 sal = (double?)m.sal,
+                                                 temp = (double?)m.temp,
+                                                 ph = (double?)m.ph,
+                                                 diffusable = m.diffusable,
+                                                 commentaire = m.commentaire,
+                                             }).ToList();
 
-                List<SectorQC> subsectorNameList = (from s in dbQC.geo_secteur_s
-                                                    where s.secteur != null
-                                                    orderby s.secteur
-                                                    select new SectorQC
-                                                    {
-                                                        secteur = s.secteur,
-                                                        secteur_nom = s.secteur_nom,
-                                                        secteur_nom_a = s.secteur_nom_a
-                                                    }).Distinct().ToList();
+                //List<SectorQC> subsectorNameList = (from s in dbQC.geo_secteur_s
+                //                                    where s.secteur != null
+                //                                    orderby s.secteur
+                //                                    select new SectorQC
+                //                                    {
+                //                                        secteur = s.secteur,
+                //                                        secteur_nom = s.secteur_nom,
+                //                                        secteur_nom_a = s.secteur_nom_a
+                //                                    }).Distinct().ToList();
 
 
                 List<PCCSM.db_tournee> tourneeList = (from m in dbQC.db_tournee
@@ -11417,55 +11404,65 @@ namespace ImportByFunction
                 //List<string> subsectorList = (from c in stationList
                 //                              select c.secteur).Distinct().OrderBy(c => c).ToList();
 
-                lblStatus2.Text = "1 - Starting RemoveAllSectorNotInQCDB";
-                lblStatus2.Refresh();
-                Application.DoEvents();
+                //lblStatus2.Text = "1 - Starting RemoveAllSectorNotInQCDB";
+                //lblStatus2.Refresh();
+                //Application.DoEvents();
 
-                string retStr = RemoveAllSectorNotInQCDB(stationList, tvItemService, tvItemModelQC);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
+                //string retStr = RemoveAllSectorNotInQCDB(stationList, tvItemService, tvItemModelQC);
+                //if (!string.IsNullOrWhiteSpace(retStr))
+                //{
+                //    return;
+                //}
 
-                lblStatus2.Text = "2 - Starting AddAllNewSectorFoundInQCDB";
-                lblStatus2.Refresh();
-                Application.DoEvents();
+                //lblStatus2.Text = "2 - Starting AddAllNewSectorFoundInQCDB";
+                //lblStatus2.Refresh();
+                //Application.DoEvents();
 
-                retStr = AddAllNewSectorFoundInQCDB(stationList, tvItemService, tvItemModelQC);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
+                //retStr = AddAllNewSectorFoundInQCDB(stationList, tvItemService, tvItemModelQC);
+                //if (!string.IsNullOrWhiteSpace(retStr))
+                //{
+                //    return;
+                //}
 
-                lblStatus2.Text = "3 - Starting RemoveAllSubsectorNotInQCDB";
-                lblStatus2.Refresh();
-                Application.DoEvents();
+                //lblStatus2.Text = "3 - Starting RemoveAllSubsectorNotInQCDB";
+                //lblStatus2.Refresh();
+                //Application.DoEvents();
 
-                retStr = RemoveAllSubsectorNotInQCDB(stationList, tvItemService, tvItemModelQC);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
+                //retStr = RemoveAllSubsectorNotInQCDB(stationList, tvItemService, tvItemModelQC);
+                //if (!string.IsNullOrWhiteSpace(retStr))
+                //{
+                //    return;
+                //}
 
-                lblStatus2.Text = "4 - Starting AddAllNewSubsectorFoundInQCDB";
-                lblStatus2.Refresh();
-                Application.DoEvents();
+                //lblStatus2.Text = "4 - Starting AddAllNewSubsectorFoundInQCDB";
+                //lblStatus2.Refresh();
+                //Application.DoEvents();
 
-                retStr = AddAllNewSubsectorFoundInQCDB(stationList, tvItemService, tvItemModelQC);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
+                //retStr = AddAllNewSubsectorFoundInQCDB(stationList, tvItemService, tvItemModelQC);
+                //if (!string.IsNullOrWhiteSpace(retStr))
+                //{
+                //    return;
+                //}
 
-                lblStatus2.Text = "5 - Starting AddAllNewSitesFoundInQCDB";
-                lblStatus2.Refresh();
-                Application.DoEvents();
+                //lblStatus2.Text = "5 - Starting AddAllNewSitesFoundInQCDB";
+                //lblStatus2.Refresh();
+                //Application.DoEvents();
 
-                retStr = AddAllNewSitesFoundInQCDB(stationList, tvItemService, tvItemModelQC, mwqmSiteService);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
+                //string retStr = AddAllNewSitesFoundInQCDB(stationList, tvItemService, tvItemModelQC, mwqmSiteService);
+                //if (!string.IsNullOrWhiteSpace(retStr))
+                //{
+                //    return;
+                //}
+
+                //lblStatus2.Text = "5a - Starting RemoveAllSitesNotInQCDB";
+                //lblStatus2.Refresh();
+                //Application.DoEvents();
+
+                //string retStr = RemoveAllMWQMSitesThatNoLongerExistInQCDB(stationList, tvItemService, tvItemModelQC, mwqmSiteService);
+                //if (!string.IsNullOrWhiteSpace(retStr))
+                //{
+                //    return;
+                //}
 
                 //lblStatus2.Text = "6 - Starting AddAllNewRunsFoundInQCDB";
                 //lblStatus2.Refresh();
@@ -11477,65 +11474,56 @@ namespace ImportByFunction
                 //    return;
                 //}
 
-                //lblStatus2.Text = "7 - Starting AddAllNewSampleFoundInQCDB";
+                lblStatus2.Text = "7 - Starting AddAllNewSampleFoundInQCDB";
+                lblStatus2.Refresh();
+                Application.DoEvents();
+
+                string retStr = AddAllNewSampleFoundInQCDB(stationList, sampleList, tourneeList, tvItemService, tvItemModelQC, mwqmSiteService, mwqmRunService);
+                if (!string.IsNullOrWhiteSpace(retStr))
+                {
+                    return;
+                }
+
+                //lblStatus2.Text = "8 - Starting AddAllNewMWQMSubsectorTextAndTideInfoFoundInQCDB";
                 //lblStatus2.Refresh();
                 //Application.DoEvents();
 
-                //retStr = AddAllNewSampleFoundInQCDB(stationList, sampleList, tourneeList, tvItemService, tvItemModelQC, mwqmSiteService, mwqmRunService);
+                //retStr = AddAllNewMWQMSubsectorTextAndTideInfoFoundInQCDB(tvItemService, tvItemModelQC, mapInfoService, mwqmSubsectorService);
                 //if (!string.IsNullOrWhiteSpace(retStr))
                 //{
                 //    return;
                 //}
 
-                lblStatus2.Text = "8 - Starting AddAllNewMWQMSubsectorTextAndTideInfoFoundInQCDB";
-                lblStatus2.Refresh();
-                Application.DoEvents();
-
-                retStr = AddAllNewMWQMSubsectorTextAndTideInfoFoundInQCDB(tvItemService, tvItemModelQC, mapInfoService, mwqmSubsectorService);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
-
-                lblStatus2.Text = "9 - Starting CreateKMLFileWithSubsectorIDAndTideLocation";
-                lblStatus2.Refresh();
-                Application.DoEvents();
-
-                retStr = CreateKMLFileWithSubsectorIDAndTideLocation(tvItemService, tvItemModelRoot, mapInfoService, mwqmSubsectorService);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
-
-                lblStatus2.Text = "10 - Starting DeleteAllMWQMSubsectorThatShouldNotExist";
-                lblStatus2.Refresh();
-                Application.DoEvents();
-
-                retStr = DeleteAllMWQMSubsectorThatShouldNotExist(tvItemService, tvItemModelRoot, mwqmSubsectorService);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
-
-                lblStatus2.Text = "11 - Starting GiveProperNameToSubsectorFoundInQCDB";
-                lblStatus2.Refresh();
-                Application.DoEvents();
-
-                retStr = GiveProperNameToSubsectorFoundInQCDB(stationList, subsectorNameList, tvItemService, tvItemModelQC, tvItemLanguageService);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
-
-                //lblStatus2.Text = "12 - Starting RemoveSampleNotFoundInQCDB";
+                //lblStatus2.Text = "9 - Starting CreateKMLFileWithSubsectorIDAndTideLocation";
                 //lblStatus2.Refresh();
                 //Application.DoEvents();
 
-                //retStr = RemoveSampleNotFoundInQCDB(subsectorList, stationList, sampleList, tourneeList, tvItemService, tvItemModelQC, mwqmSampleService);
+                //retStr = CreateKMLFileWithSubsectorIDAndTideLocation(tvItemService, tvItemModelRoot, mapInfoService, mwqmSubsectorService);
                 //if (!string.IsNullOrWhiteSpace(retStr))
                 //{
                 //    return;
                 //}
+
+                //lblStatus2.Text = "10 - Starting DeleteAllMWQMSubsectorThatShouldNotExist";
+                //lblStatus2.Refresh();
+                //Application.DoEvents();
+
+                //retStr = DeleteAllMWQMSubsectorThatShouldNotExist(tvItemService, tvItemModelRoot, mwqmSubsectorService);
+                //if (!string.IsNullOrWhiteSpace(retStr))
+                //{
+                //    return;
+                //}
+
+                //lblStatus2.Text = "11 - Starting GiveProperNameToSubsectorFoundInQCDB";
+                //lblStatus2.Refresh();
+                //Application.DoEvents();
+
+                //retStr = GiveProperNameToSubsectorFoundInQCDB(stationList, subsectorNameList, tvItemService, tvItemModelQC, tvItemLanguageService);
+                //if (!string.IsNullOrWhiteSpace(retStr))
+                //{
+                //    return;
+                //}
+
             }
         }
 
@@ -11892,7 +11880,7 @@ namespace ImportByFunction
             //        }
 
             //        TVItemModel tvItemModelSS = (from c in tvItemModelSubsectorNSList
-            //                                     where c.TVText.StartsWith(LOCATOR)
+            //                                     where c.TVText.StartsWith(LOCATOR + " ")
             //                                     select c).FirstOrDefault();
 
             //        if (tvItemModelSS == null)
@@ -12131,7 +12119,7 @@ namespace ImportByFunction
             //        StartWith = "WA-";
             //    }
 
-            //    TVItemModel tvItemModelSS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, SubsectorName, TVTypeEnum.Subsector);
+            //    TVItemModel tvItemModelSS = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, SubsectorName + " ", TVTypeEnum.Subsector);
             //    if (!string.IsNullOrWhiteSpace(tvItemModelSS.Error))
             //    {
             //        richTextBoxStatus.AppendText($"Error: {tvItemModelSS.Error}\r\n");
@@ -13011,6 +12999,338 @@ namespace ImportByFunction
             #endregion Creating Xlsx file with subsectors, runs, climate site and climate values
         }
 
+        private void butCompareQCDBAndCSSPDB_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            TVItemLanguageService tvItemLanguageService = new TVItemLanguageService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelQC = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelQC)) return;
+
+            List<TVItemModel> tvItemModelSubsectorQCList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorQCList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Could not find TVItem Subsector under Quebec\r\n");
+                return;
+            }
+            List<TVItemModel> tvItemModelSiteQCList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMSite);
+            if (tvItemModelSiteQCList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Could not find TVItem MWQMSite under Quebec\r\n");
+                return;
+            }
+            List<TVItemModel> tvItemModelRunQCList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMRun);
+            if (tvItemModelSiteQCList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Could not find TVItem MWQMSite under Quebec\r\n");
+                return;
+            }
+
+            using (PCCSM.pccsmEntities dbQC = new PCCSM.pccsmEntities())
+            {
+                List<StationQC> stationList = (from s in dbQC.geo_stations_p
+                                               where s.secteur != null
+                                               && s.x != null
+                                               && s.y != null
+                                               orderby s.secteur
+                                               select new StationQC
+                                               {
+                                                   secteur = s.secteur,
+                                                   id_geo_station_p = s.id_geo_station_p,
+                                                   station = (int)s.station,
+                                                   type_station = s.type_station,
+                                                   x = (double)s.x,
+                                                   y = (double)s.y,
+                                               }).ToList();
+
+                List<SampleQC> sampleList = (from m in dbQC.db_mesure
+                                             select new SampleQC
+                                             {
+                                                 id_geo_station_p = m.id_geo_station_p,
+                                                 id_tournee = m.id_tournee,
+                                                 cf = m.cf,
+                                                 hre_echantillonnage = m.hre_echantillonnage,
+                                                 prof = (double?)m.prof,
+                                                 sal = (double?)m.sal,
+                                                 temp = (double?)m.temp,
+                                                 ph = (double?)m.ph,
+                                                 diffusable = m.diffusable,
+                                                 commentaire = m.commentaire,
+                                             }).ToList();
+
+                //List<SectorQC> subsectorNameList = (from s in dbQC.geo_secteur_s
+                //                                    where s.secteur != null
+                //                                    orderby s.secteur
+                //                                    select new SectorQC
+                //                                    {
+                //                                        secteur = s.secteur,
+                //                                        secteur_nom = s.secteur_nom,
+                //                                        secteur_nom_a = s.secteur_nom_a
+                //                                    }).Distinct().ToList();
+
+
+                List<PCCSM.db_tournee> tourneeList = (from m in dbQC.db_tournee
+                                                      select m).ToList();
+
+
+                List<string> subsectorQCList = (from c in stationList
+                                                select c.secteur).Distinct().ToList();
+
+                List<string> subsectorCSSPList = new List<string>();
+
+                List<SubsectorAndSiteList> subsectorAndSiteListQC = new List<SubsectorAndSiteList>();
+
+                foreach (string subsector in subsectorQCList)
+                {
+                    List<int> SiteList = (from c in stationList
+                                          where c.secteur == subsector
+                                          select c.station).Distinct().ToList();
+
+                    List<string> SiteTextList = new List<string>();
+
+                    foreach (int site in SiteList)
+                    {
+                        string siteText = site.ToString();
+                        while (siteText.Length < 4)
+                        {
+                            siteText = "0" + siteText;
+                        }
+                        SiteTextList.Add(siteText);
+                    }
+
+                    subsectorAndSiteListQC.Add(new SubsectorAndSiteList() { Subsector = subsector, SiteList = SiteTextList });
+                }
+
+                List<SubsectorAndSiteList> subsectorAndSiteListCSSP = new List<SubsectorAndSiteList>();
+
+                foreach (TVItemModel tvItemModelSubsector in tvItemModelSubsectorQCList)
+                {
+                    string subsector = tvItemModelSubsector.TVText;
+                    if (subsector.Contains(" "))
+                    {
+                        subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                    }
+
+                    subsectorCSSPList.Add(subsector);
+
+                    List<string> siteList = (from c in tvItemModelSiteQCList
+                                             where c.TVPath.StartsWith(tvItemModelSubsector.TVPath + "p")
+                                             select c.TVText).ToList();
+
+                    subsectorAndSiteListCSSP.Add(new SubsectorAndSiteList() { Subsector = subsector, SiteList = siteList });
+                }
+
+                // checking that All Subsector and Site in CSSP DB exist in QC DB
+                foreach (SubsectorAndSiteList subsectorAndSiteList in subsectorAndSiteListCSSP)
+                {
+                    lblStatus.Text = subsectorAndSiteList.Subsector;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    SubsectorAndSiteList subsectorAndSiteListExist = (from c in subsectorAndSiteListQC
+                                                                      where c.Subsector == subsectorAndSiteList.Subsector
+                                                                      select c).FirstOrDefault();
+
+                    if (subsectorAndSiteListExist == null)
+                    {
+                        richTextBoxStatus.AppendText($"{subsectorAndSiteListExist.Subsector} does not exist in QCDB\r\n");
+                    }
+
+                    foreach (string site in subsectorAndSiteList.SiteList)
+                    {
+                        string siteExist = (from c in subsectorAndSiteListExist.SiteList
+                                            where c == site
+                                            select c).FirstOrDefault();
+
+                        if (siteExist == null)
+                        {
+                            richTextBoxStatus.AppendText($"{subsectorAndSiteListExist.Subsector} site {site} does not exist in QCDB\r\n");
+                        }
+                    }
+
+                }
+
+                // checking that All Subsector and Site in QC DB exist in CSSP DB
+                foreach (SubsectorAndSiteList subsectorAndSiteList in subsectorAndSiteListQC)
+                {
+                    lblStatus.Text = subsectorAndSiteList.Subsector;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    SubsectorAndSiteList subsectorAndSiteListExist = (from c in subsectorAndSiteListCSSP
+                                                                      where c.Subsector == subsectorAndSiteList.Subsector
+                                                                      select c).FirstOrDefault();
+
+                    if (subsectorAndSiteListExist == null)
+                    {
+                        richTextBoxStatus.AppendText($"{subsectorAndSiteListExist.Subsector} does not exist in QCDB\r\n");
+                    }
+
+                    foreach (string site in subsectorAndSiteList.SiteList)
+                    {
+                        string siteExist = (from c in subsectorAndSiteListExist.SiteList
+                                            where c == site
+                                            select c).FirstOrDefault();
+
+                        if (siteExist == null)
+                        {
+                            richTextBoxStatus.AppendText($"{subsectorAndSiteListExist.Subsector} site {site} does not exist in QCDB\r\n");
+                        }
+                    }
+
+                }
+
+                // checking runs number and dates as well as samples
+                foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorQCList)
+                {
+                    List<MWQMSampleModel> mwqmSampleModelListSS = mwqmSampleService.GetMWQMSampleModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
+
+                    string subsector = tvItemModelSS.TVText;
+                    if (subsector.Contains(" "))
+                    {
+                        subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                    }
+
+                    lblStatus.Text = tvItemModelSS.TVText;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+
+                    // Checking runs
+                    List<TVItemModel> runTVTextList = (from c in tvItemModelRunQCList
+                                                       where c.TVPath.StartsWith(tvItemModelSS.TVPath + "p")
+                                                       select c).ToList();
+
+                    List<StationQC> stationQCList = (from c in stationList
+                                                     where c.secteur == subsector
+                                                     select c).ToList();
+
+                    List<SampleQC> sampleQCList = (from c in sampleList
+                                                   from s in stationQCList
+                                                   where c.id_geo_station_p == s.id_geo_station_p
+                                                   select c).ToList();
+
+                    //List<PCCSM.db_tournee> runQCList = (from c in tourneeList
+                    //                                    from st in stationQCList
+                    //                                    from sa in sampleQCList
+                    //                                    where sa.id_tournee == c.ID_Tournee
+                    //                                    && sa.id_geo_station_p == st.id_geo_station_p
+                    //                                    && c.date_echantillonnage != null
+                    //                                    select c).Distinct().ToList();
+
+
+                    //if (runTVTextList.Count != runQCList.Count)
+                    //{
+                    //    richTextBoxStatus.AppendText($"{subsector} number of runs CSSP {runTVTextList.Count} QC {runQCList.Count}\r\n");
+                    //}
+
+                    //foreach (TVItemModel tvItemModel in runTVTextList)
+                    //{
+                    //    int year = int.Parse(tvItemModel.TVText.Substring(0, 4));
+                    //    int month = int.Parse(tvItemModel.TVText.Substring(5, 2));
+                    //    int day = int.Parse(tvItemModel.TVText.Substring(8, 2));
+                    //    DateTime dateCSSP = new DateTime(year, month, day);
+
+                    //    if (!runQCList.Where(c => c.date_echantillonnage == dateCSSP).Any())
+                    //    {
+                    //        richTextBoxStatus.AppendText($"{subsector} runs date CSSP {dateCSSP.ToString("yyyy MM dd")} does not exist in QC DB\r\n");
+                    //    }
+                    //}
+
+                    // Checking samples
+                    List<MWQMSiteModel> mwqmSiteModelList = mwqmSiteService.GetMWQMSiteModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
+                    foreach (MWQMSiteModel mwqmSiteModel in mwqmSiteModelList)
+                    {
+                        lblStatus.Text = tvItemModelSS.TVText + " --- " + mwqmSiteModel.MWQMSiteTVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        int site = int.Parse(mwqmSiteModel.MWQMSiteTVText);
+
+                        StationQC stationQC = (from c in stationQCList
+                                               where c.station == site
+                                               select c).FirstOrDefault();
+
+                        if (stationQC == null)
+                        {
+                            richTextBoxStatus.AppendText($"{subsector} site {site} not found in stationQCList\r\n");
+                        }
+                        else
+                        {
+                            List<MWQMSampleModel> mwqmSampleModelList = (from c in mwqmSampleModelListSS
+                                                                         where c.MWQMSiteTVItemID == mwqmSiteModel.MWQMSiteTVItemID
+                                                                         select c).ToList();
+
+                            List<SampleQC> sampleQCList2 = (from c in sampleList
+                                                            where c.id_geo_station_p == stationQC.id_geo_station_p
+                                                            select c).ToList();
+
+
+                            if (mwqmSampleModelList.Count != sampleQCList2.Count)
+                            {
+                                richTextBoxStatus.AppendText($"{subsector} number of sample for site {site} CSSP {mwqmSampleModelList.Count} QC {sampleQCList2.Count}\r\n");
+                            }
+
+                            //for (int i = 0; i < sampleQCList2.Count; i++)
+                            //{
+                            //    int year = ((DateTime)sampleQCList2[i].r.date_echantillonnage).Year;
+                            //    int month = ((DateTime)sampleQCList2[i].r.date_echantillonnage).Month;
+                            //    int day = ((DateTime)sampleQCList2[i].r.date_echantillonnage).Day;
+
+                            //    MWQMSampleModel mwqmSampleModel = (from c in mwqmSampleModelList
+                            //                                       where c.SampleDateTime_Local.Year == year
+                            //                                       && c.SampleDateTime_Local.Month == month
+                            //                                       && c.SampleDateTime_Local.Day == day
+                            //                                       select c).FirstOrDefault();
+
+                            //    if (mwqmSampleModel == null)
+                            //    {
+                            //        richTextBoxStatus.AppendText($"{subsector} site {site} date {((DateTime)sampleQCList2[i].r.date_echantillonnage).ToString("yyyy MM dd")} not found in CSSP DB\r\n");
+                            //    }
+                            //    else
+                            //    {
+                            //        if (Math.Abs(mwqmSampleModel.FecCol_MPN_100ml - ((int)sampleQCList2[i].c.cf)) > 1)
+                            //        {
+                            //            richTextBoxStatus.AppendText($"{subsector} site {site} CF CSSP {mwqmSampleModel.FecCol_MPN_100ml} CF QC {sampleQCList2[i].c.cf}\r\n");
+                            //        }
+                            //        if (mwqmSampleModel.Salinity_PPT != null)
+                            //        {
+                            //            if (Math.Abs(((double)mwqmSampleModel.Salinity_PPT) - ((double)sampleQCList2[i].c.sal)) > 0.01)
+                            //            {
+                            //                richTextBoxStatus.AppendText($"{subsector} site {site} CF CSSP {mwqmSampleModel.Salinity_PPT} CF QC {sampleQCList2[i].c.sal}\r\n");
+                            //            }
+                            //        }
+                            //        if (mwqmSampleModel.WaterTemp_C != null)
+                            //        {
+                            //            if (Math.Abs(((double)mwqmSampleModel.WaterTemp_C) - ((double)sampleQCList2[i].c.temp)) > 0.01)
+                            //            {
+                            //                richTextBoxStatus.AppendText($"{subsector} site {site} CF CSSP {mwqmSampleModel.WaterTemp_C} CF QC {sampleQCList2[i].c.temp}\r\n");
+                            //            }
+                            //        }
+                            //    }
+                            //}
+                        }
+                    }
+                }
+            }
+
+            lblStatus.Text = "done ...";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+        }
+
 
         //private void button18_Click(object sender, EventArgs e)
         //{
@@ -13176,4 +13496,17 @@ namespace ImportByFunction
         public string secteur_nom { get; set; }
         public string secteur_nom_a { get; set; }
     }
+
+    public class SubsectorAndSiteList
+    {
+        public SubsectorAndSiteList()
+        {
+            SiteList = new List<string>();
+        }
+
+        public string Subsector { get; set; }
+        public List<string> SiteList { get; set; }
+    }
+
+
 }
