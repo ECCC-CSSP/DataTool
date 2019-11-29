@@ -10744,18 +10744,18 @@ namespace ImportByFunction
                             UseForOpenData = UseForOpenData,
                         };
 
-                        if (mwqmSampleModelNew.PH >= 14.0f)
-                        {
-                            mwqmSampleModelNew.PH = null;
-                        }
-                        if (mwqmSampleModelNew.Salinity_PPT > 40.0f)
-                        {
-                            mwqmSampleModelNew.Salinity_PPT = null;
-                        }
-                        if (mwqmSampleModelNew.WaterTemp_C > 40.0f)
-                        {
-                            mwqmSampleModelNew.WaterTemp_C = null;
-                        }
+                        //if (mwqmSampleModelNew.PH >= 14.0f)
+                        //{
+                        //    mwqmSampleModelNew.PH = null;
+                        //}
+                        //if (mwqmSampleModelNew.Salinity_PPT > 40.0f)
+                        //{
+                        //    mwqmSampleModelNew.Salinity_PPT = null;
+                        //}
+                        //if (mwqmSampleModelNew.WaterTemp_C > 40.0f)
+                        //{
+                        //    mwqmSampleModelNew.WaterTemp_C = null;
+                        //}
 
                         // new code to delet later
                         mwqmRunModelExist = (from c in mwqmRunModelAll
@@ -10969,432 +10969,323 @@ namespace ImportByFunction
             /// while removing dupliates of orther sample not belonging there
             /// -----------------------------------------------------------------
 
-            //List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
-            //if (tvItemModelSubsectorList.Count == 0)
-            //{
-            //    richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelQC.TVText + "\r\n");
-            //    return "Error: could not find TVItem Subsector for " + tvItemModelQC.TVText;
-            //}
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelQC.TVText + "\r\n");
+                return "Error: could not find TVItem Subsector for " + tvItemModelQC.TVText;
+            }
 
 
-            //List<string> subsectorList = (from s in stationList
-            //                              orderby s.secteur
-            //                              select s.secteur).Distinct().ToList();
+            List<string> subsectorList = (from s in stationList
+                                          orderby s.secteur
+                                          select s.secteur).Distinct().ToList();
 
-            //List<TVItemModel> tvItemMWQMSiteAll = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMSite);
+            List<TVItemModel> tvItemMWQMSiteAll = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMSite);
 
-            //List<TVItemModel> tvItemMWQMRunAll = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMRun);
+            List<TVItemModel> tvItemMWQMRunAll = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelQC.TVItemID, TVTypeEnum.MWQMRun);
 
-            //foreach (string subsector in subsectorList)
-            //{
-            //    lblStatus.Text = subsector;
-            //    lblStatus.Refresh();
-            //    Application.DoEvents();
+            foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
+            {
+                string subsector = tvItemModelSS.TVText;
+                if (subsector.Contains(" "))
+                {
+                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                }
 
-            //    if (Cancel)
-            //    {
-            //        richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
-            //        return $"Pressed Cancel";
-            //    }
+                lblStatus.Text = subsector;
+                lblStatus.Refresh();
+                Application.DoEvents();
 
-            //    TVItemModel tvItemModelSubsector = (from c in tvItemModelSubsectorList
-            //                                        where c.TVText.StartsWith(subsector + " ")
-            //                                        select c).FirstOrDefault();
+                if (Cancel)
+                {
+                    richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
+                    return $"Pressed Cancel";
+                }
 
-            //    if (tvItemModelSubsector == null)
-            //    {
-            //        richTextBoxStatus.AppendText($"could not find tvItemmodelSubsector [{subsector}]\r\n");
-            //        return $"could not find tvItemmodelSubsector [{subsector}]";
-            //    }
+                List<MWQMRunModel> mwqmRunModelAll = mwqmRunService.GetMWQMRunModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
 
-            //    List<MWQMRunModel> mwqmRunModelAll = mwqmRunService.GetMWQMRunModelListWithSubsectorTVItemIDDB(tvItemModelSubsector.TVItemID);
+                List<int> staNameQCList = (from c in stationList
+                                           where c.secteur == subsector
+                                           select c.station).Distinct().ToList();
 
-            //    List<StationQC> staQCList = (from c in stationList
-            //                                 where c.secteur == subsector
-            //                                 select c).ToList();
+                foreach (int site in staNameQCList)
+                {
+                    if (Cancel)
+                    {
+                        richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
+                        return $"Pressed Cancel";
+                    }
 
-            //    foreach (var geoStat in staQCList)
-            //    {
-            //        if (Cancel)
-            //        {
-            //            richTextBoxStatus.AppendText($"Pressed Cancel\r\n");
-            //            return $"Pressed Cancel";
-            //        }
+                    lblStatus.Text = subsector + " -- " + site.ToString();
+                    lblStatus.Refresh();
+                    Application.DoEvents();
 
-            //        lblStatus.Text = subsector + " -- " + geoStat.station;
-            //        lblStatus.Refresh();
-            //        Application.DoEvents();
+                    string MWQMSiteTVText = "0000".Substring(0, 4 - site.ToString().Length) + site.ToString();
 
-            //        bool IsActive = true;
-            //        if (geoStat.status != null)
-            //        {
-            //            IsActive = (geoStat.status.Substring(0, 1) == "i" ? false : true);
-            //        }
-            //        string MWQMSiteTVText = "0000".Substring(0, 4 - geoStat.station.ToString().Length) + geoStat.station.ToString();
+                    TVItemModel tvItemMWQMSiteExist = (from c in tvItemMWQMSiteAll
+                                                       where c.ParentID == tvItemModelSS.TVItemID
+                                                       && c.TVText == MWQMSiteTVText
+                                                       && c.TVType == TVTypeEnum.MWQMSite
+                                                       select c).FirstOrDefault();
 
-            //        TVItemModel tvItemMWQMSiteExist = (from c in tvItemMWQMSiteAll
-            //                                           where c.ParentID == tvItemModelSubsector.TVItemID
-            //                                           && c.TVText == MWQMSiteTVText
-            //                                           && c.TVType == TVTypeEnum.MWQMSite
-            //                                           select c).FirstOrDefault();
+                    if (tvItemMWQMSiteExist == null)
+                    {
+                        richTextBoxStatus.AppendText($"could not find MWQMSite [{MWQMSiteTVText} under subsector {subsector}]\r\n");
+                        return $"could not find MWQMSite [{MWQMSiteTVText} under subsector {subsector}]";
+                    }
 
-            //        if (tvItemMWQMSiteExist == null)
-            //        {
-            //            richTextBoxStatus.AppendText($"could not find MWQMSite [{MWQMSiteTVText} under subsector {subsector}]\r\n");
-            //            return $"could not find MWQMSite [{MWQMSiteTVText} under subsector {subsector}]";
-            //        }
+                    List<StationQC> dbStationList = (from c in stationList
+                                                     where c.secteur == subsector
+                                                     && c.station == site
+                                                     select c).ToList();
 
-            //        List<SampleQC> dbMesureList = (from m in sampleList
-            //                                       where m.id_geo_station_p == geoStat.id_geo_station_p
-            //                                       && m.cf != null
-            //                                       select m).ToList();
 
-            //        List<MWQMSample> mwqmSampleCSSPList = new List<MWQMSample>();
-            //        using (CSSPDBEntities db2 = new CSSPDBEntities())
-            //        {
-            //            mwqmSampleCSSPList = (from c in db2.MWQMSamples
-            //                                  where c.MWQMSiteTVItemID == tvItemMWQMSiteExist.TVItemID
-            //                                  select c).ToList();
-            //        }
+                    List<SampleQC> dbMesureList = new List<SampleQC>();
+                    foreach (StationQC stationQC in dbStationList)
+                    {
+                        List<SampleQC> dbMesureList2 = (from c in sampleList
+                                                        where c.id_geo_station_p == stationQC.id_geo_station_p
+                                                        && c.cf != null
+                                                        select c).ToList();
 
-            //        List<MWQMSample> mwqmSampleListToAdd = new List<MWQMSample>();
-            //        List<MWQMSample> mwqmSampleListToUpdate = new List<MWQMSample>();
+                        dbMesureList.AddRange(dbMesureList2);
 
-            //        List<MWQMSample> mwqmSampleListExistInQCDB = new List<MWQMSample>();
-            //        foreach (var dbm in dbMesureList)
-            //        {
-            //            Application.DoEvents();
+                    }
 
-            //            // getting Runs
-            //            PCCSM.db_tournee dbt = (from t in tourneeList
-            //                                    where t.ID_Tournee == dbm.id_tournee
-            //                                    select t).FirstOrDefault();
+                    List<MWQMSample> mwqmSampleCSSPList = new List<MWQMSample>();
+                    using (CSSPDBEntities db2 = new CSSPDBEntities())
+                    {
+                        mwqmSampleCSSPList = (from c in db2.MWQMSamples
+                                              where c.MWQMSiteTVItemID == tvItemMWQMSiteExist.TVItemID
+                                              select c).ToList();
+                    }
 
-            //            DateTime? SampDateTime = null;
-            //            DateTime? SampStartDateTime = null;
-            //            DateTime? SampEndDateTime = null;
-            //            if (dbm.hre_echantillonnage != null)
-            //            {
-            //                SampDateTime = (DateTime)dbm.hre_echantillonnage.Value.AddHours(1);
-            //                if (dbt.hre_fin != null)
-            //                {
-            //                    SampEndDateTime = ((DateTime)dbt.date_echantillonnage).AddHours(dbt.hre_fin.Value.Hour).AddMinutes(dbt.hre_fin.Value.Minute).AddHours(1);
-            //                }
-            //                if (dbt.hre_deb != null)
-            //                {
-            //                    SampStartDateTime = ((DateTime)dbt.date_echantillonnage).AddHours(dbt.hre_deb.Value.Hour).AddMinutes(dbt.hre_deb.Value.Minute).AddHours(1);
-            //                }
-            //            }
-            //            else
-            //            {
-            //                SampDateTime = (DateTime)dbt.date_echantillonnage;
-            //                if (dbt.hre_fin != null)
-            //                {
-            //                    SampEndDateTime = ((DateTime)dbt.date_echantillonnage).AddHours(dbt.hre_fin.Value.Hour).AddMinutes(dbt.hre_fin.Value.Minute).AddHours(1);
-            //                    SampDateTime = SampEndDateTime;
-            //                }
-            //                if (dbt.hre_deb != null)
-            //                {
-            //                    SampStartDateTime = ((DateTime)dbt.date_echantillonnage).AddHours(dbt.hre_deb.Value.Hour).AddMinutes(dbt.hre_deb.Value.Minute).AddHours(1);
-            //                    SampDateTime = SampStartDateTime;
-            //                }
-            //            }
+                    List<MWQMSample> mwqmSampleQCList = new List<MWQMSample>();
+                    foreach (SampleQC sampleQC in dbMesureList)
+                    {
+                        Application.DoEvents();
 
-            //            // making sure MWQMRunExist
-            //            DateTime DateRun = new DateTime(((DateTime)SampDateTime).Year, ((DateTime)SampDateTime).Month, ((DateTime)SampDateTime).Day);
+                        // getting Runs
+                        PCCSM.db_tournee dbt = (from t in tourneeList
+                                                where t.ID_Tournee == sampleQC.id_tournee
+                                                select t).FirstOrDefault();
 
-            //            MWQMRunModel mwqmRunModelNew = new MWQMRunModel()
-            //            {
-            //                SubsectorTVItemID = tvItemModelSubsector.TVItemID,
-            //                DateTime_Local = DateRun,
-            //                RunSampleType = SampleTypeEnum.Routine,
-            //                RunNumber = 1,
-            //            };
+                        DateTime? SampDateTime = null;
+                        DateTime? SampStartDateTime = null;
+                        DateTime? SampEndDateTime = null;
+                        if (sampleQC.hre_echantillonnage != null)
+                        {
+                            SampDateTime = (DateTime)sampleQC.hre_echantillonnage.Value.AddHours(1);
+                            if (dbt.hre_fin != null)
+                            {
+                                SampEndDateTime = ((DateTime)dbt.date_echantillonnage).AddHours(dbt.hre_fin.Value.Hour).AddMinutes(dbt.hre_fin.Value.Minute).AddHours(1);
+                            }
+                            if (dbt.hre_deb != null)
+                            {
+                                SampStartDateTime = ((DateTime)dbt.date_echantillonnage).AddHours(dbt.hre_deb.Value.Hour).AddMinutes(dbt.hre_deb.Value.Minute).AddHours(1);
+                            }
+                        }
+                        else
+                        {
+                            SampDateTime = (DateTime)dbt.date_echantillonnage;
+                            if (dbt.hre_fin != null)
+                            {
+                                SampEndDateTime = ((DateTime)dbt.date_echantillonnage).AddHours(dbt.hre_fin.Value.Hour).AddMinutes(dbt.hre_fin.Value.Minute).AddHours(1);
+                                SampDateTime = SampEndDateTime;
+                            }
+                            if (dbt.hre_deb != null)
+                            {
+                                SampStartDateTime = ((DateTime)dbt.date_echantillonnage).AddHours(dbt.hre_deb.Value.Hour).AddMinutes(dbt.hre_deb.Value.Minute).AddHours(1);
+                                SampDateTime = SampStartDateTime;
+                            }
+                        }
 
-            //            MWQMRunModel mwqmRunModelExist = (from c in mwqmRunModelAll
-            //                                              where c.SubsectorTVItemID == tvItemModelSubsector.TVItemID
-            //                                              && c.DateTime_Local == DateRun
-            //                                              && (c.RunSampleType == SampleTypeEnum.Routine
-            //                                              || c.RunSampleType == SampleTypeEnum.Infrastructure)
-            //                                              && c.RunNumber == 1
-            //                                              select c).FirstOrDefault();
+                        // making sure MWQMRunExist
+                        DateTime DateRun = new DateTime(((DateTime)SampDateTime).Year, ((DateTime)SampDateTime).Month, ((DateTime)SampDateTime).Day);
 
-            //            if (mwqmRunModelExist == null)
-            //            {
-            //                richTextBoxStatus.AppendText($"could not find Run [{DateRun} under subsector {subsector}]\r\n");
-            //                return $"could not find Run [{DateRun} under subsector {subsector}]";
-            //            }
+                        MWQMRunModel mwqmRunModelExist = (from c in mwqmRunModelAll
+                                                          where c.SubsectorTVItemID == tvItemModelSS.TVItemID
+                                                          && c.DateTime_Local == DateRun
+                                                          && (c.RunSampleType == SampleTypeEnum.Routine
+                                                          || c.RunSampleType == SampleTypeEnum.Infrastructure)
+                                                          && c.RunNumber == 1
+                                                          select c).FirstOrDefault();
 
-            //            // doing MWQMSample
+                        if (mwqmRunModelExist == null)
+                        {
+                            richTextBoxStatus.AppendText($"could not find Run [{DateRun} under subsector {subsector}]\r\n");
+                            return $"could not find Run [{DateRun} under subsector {subsector}]";
+                        }
 
-            //            double? prof = null;
-            //            if (dbm.prof != null)
-            //            {
-            //                prof = (float)dbm.prof;
-            //            }
-            //            double? Sal = null;
-            //            if (dbm.sal != null)
-            //            {
-            //                Sal = (float)dbm.sal;
-            //            }
-            //            double? Temp = null;
-            //            if (dbm.temp != null)
-            //            {
-            //                Temp = (float)dbm.temp;
-            //            }
-            //            double? PH = null;
-            //            if (dbm.ph != null)
-            //            {
-            //                PH = (float)dbm.ph;
-            //            }
 
-            //            bool UseForOpenData = true;
-            //            if (dbm.diffusable == null)
-            //            {
-            //                UseForOpenData = false;
-            //            }
-            //            else
-            //            {
-            //                if (!(bool)dbm.diffusable)
-            //                {
-            //                    UseForOpenData = false;
-            //                }
-            //            }
+                        // doing MWQMSample
 
-            //            string sampleNote = "--";
-            //            if (!string.IsNullOrWhiteSpace(dbm.commentaire))
-            //            {
-            //                sampleNote = dbm.commentaire.Trim();
-            //            }
-            //            MWQMSampleModel mwqmSampleModelNew = new MWQMSampleModel()
-            //            {
-            //                MWQMSiteTVItemID = tvItemMWQMSiteExist.TVItemID,
-            //                SampleDateTime_Local = (DateTime)SampDateTime,
-            //                Depth_m = prof,
-            //                FecCol_MPN_100ml = (int)(dbm.cf == null ? 0 : dbm.cf),
-            //                Salinity_PPT = Sal,
-            //                WaterTemp_C = Temp,
-            //                PH = PH,
-            //                MWQMSampleNote = sampleNote,
-            //                SampleTypesText = ((int)SampleTypeEnum.Routine).ToString() + ",",
-            //                SampleTypeList = new List<SampleTypeEnum>() { SampleTypeEnum.Routine },
-            //                UseForOpenData = UseForOpenData,
-            //            };
+                        double? prof = null;
+                        if (sampleQC.prof != null)
+                        {
+                            prof = (float)sampleQC.prof;
+                        }
+                        double? Sal = null;
+                        if (sampleQC.sal != null)
+                        {
+                            Sal = (float)sampleQC.sal;
+                        }
+                        double? Temp = null;
+                        if (sampleQC.temp != null)
+                        {
+                            Temp = (float)sampleQC.temp;
+                        }
+                        double? PH = null;
+                        if (sampleQC.ph != null)
+                        {
+                            PH = (float)sampleQC.ph;
+                        }
 
-            //            if (mwqmSampleModelNew.PH >= 14.0f)
-            //            {
-            //                mwqmSampleModelNew.PH = null;
-            //            }
-            //            if (mwqmSampleModelNew.Salinity_PPT > 40.0f)
-            //            {
-            //                mwqmSampleModelNew.Salinity_PPT = null;
-            //            }
-            //            if (mwqmSampleModelNew.WaterTemp_C > 40.0f)
-            //            {
-            //                mwqmSampleModelNew.WaterTemp_C = null;
-            //            }
+                        bool UseForOpenData = true;
+                        if (sampleQC.diffusable == null)
+                        {
+                            UseForOpenData = false;
+                        }
+                        else
+                        {
+                            if (!(bool)sampleQC.diffusable)
+                            {
+                                UseForOpenData = false;
+                            }
+                        }
 
-            //            // new code to delet later
-            //            mwqmRunModelExist = (from c in mwqmRunModelAll
-            //                                 where c.SubsectorTVItemID == tvItemModelSubsector.TVItemID
-            //                                 && c.DateTime_Local == DateRun
-            //                                 && (c.RunSampleType == SampleTypeEnum.Routine
-            //                                 || c.RunSampleType == SampleTypeEnum.Infrastructure)
-            //                                 && c.RunNumber == 1
-            //                                 select c).FirstOrDefault();
+                        string sampleNote = "--";
+                        if (!string.IsNullOrWhiteSpace(sampleQC.commentaire))
+                        {
+                            sampleNote = sampleQC.commentaire.Trim();
+                        }
+                        MWQMSampleModel mwqmSampleModelNew = new MWQMSampleModel()
+                        {
+                            MWQMSiteTVItemID = tvItemMWQMSiteExist.TVItemID,
+                            SampleDateTime_Local = (DateTime)SampDateTime,
+                            Depth_m = prof,
+                            FecCol_MPN_100ml = (int)(sampleQC.cf == null ? 0 : sampleQC.cf),
+                            Salinity_PPT = Sal,
+                            WaterTemp_C = Temp,
+                            PH = PH,
+                            MWQMSampleNote = sampleNote,
+                            SampleTypesText = ((int)SampleTypeEnum.Routine).ToString() + ",",
+                            SampleTypeList = new List<SampleTypeEnum>() { SampleTypeEnum.Routine },
+                            UseForOpenData = UseForOpenData,
+                        };
+
+                        if (mwqmSampleModelNew.PH >= 14.0f)
+                        {
+                            mwqmSampleModelNew.PH = null;
+                        }
+                        if (mwqmSampleModelNew.Salinity_PPT > 40.0f)
+                        {
+                            mwqmSampleModelNew.Salinity_PPT = null;
+                        }
+                        if (mwqmSampleModelNew.WaterTemp_C > 40.0f)
+                        {
+                            mwqmSampleModelNew.WaterTemp_C = null;
+                        }
+
+                        // new code to delet later
+                        mwqmRunModelExist = (from c in mwqmRunModelAll
+                                             where c.SubsectorTVItemID == tvItemModelSS.TVItemID
+                                             && c.DateTime_Local == DateRun
+                                             && (c.RunSampleType == SampleTypeEnum.Routine
+                                             || c.RunSampleType == SampleTypeEnum.Infrastructure)
+                                             && c.RunNumber == 1
+                                             select c).FirstOrDefault();
 
 
 
-            //            if (mwqmRunModelExist == null)
-            //            {
-            //                richTextBoxStatus.AppendText($"Could not find MWQMRunModel ss {tvItemModelSubsector.TVText} --- {DateRun.ToString("yyyy MM dd")}");
-            //                return $"Could not find MWQMRunModel ss {tvItemModelSubsector.TVText} --- {DateRun.ToString("yyyy MM dd")}";
-            //            }
+                        if (mwqmRunModelExist == null)
+                        {
+                            richTextBoxStatus.AppendText($"Could not find MWQMRunModel ss {tvItemModelSS.TVText} --- {DateRun.ToString("yyyy MM dd")}");
+                            return $"Could not find MWQMRunModel ss {tvItemModelSS.TVText} --- {DateRun.ToString("yyyy MM dd")}";
+                        }
 
-            //            string SampleTypeText = mwqmRunModelExist.RunSampleType == SampleTypeEnum.Routine ? "109," : "102,";
+                        string SampleTypeText = mwqmRunModelExist.RunSampleType == SampleTypeEnum.Routine ? "109," : "102,";
 
-            //            MWQMSample mwqmSampleNew = new MWQMSample()
-            //            {
-            //                MWQMSiteTVItemID = tvItemMWQMSiteExist.TVItemID,
-            //                MWQMRunTVItemID = mwqmRunModelExist.MWQMRunTVItemID,
-            //                SampleDateTime_Local = (DateTime)SampDateTime,
-            //                Depth_m = mwqmSampleModelNew.Depth_m,
-            //                FecCol_MPN_100ml = mwqmSampleModelNew.FecCol_MPN_100ml,
-            //                Salinity_PPT = mwqmSampleModelNew.Salinity_PPT,
-            //                WaterTemp_C = mwqmSampleModelNew.WaterTemp_C,
-            //                PH = mwqmSampleModelNew.PH,
-            //                SampleTypesText = SampleTypeText,
-            //                SampleType_old = 4,
-            //                Tube_10 = null,
-            //                Tube_1_0 = null,
-            //                Tube_0_1 = null,
-            //                ProcessedBy = null,
-            //                UseForOpenData = UseForOpenData,
-            //                LastUpdateDate_UTC = DateTime.UtcNow,
-            //                LastUpdateContactTVItemID = 2,
-            //            };
-
-            //            MWQMSampleLanguage mwqmSampleLanguageEnNew = new MWQMSampleLanguage()
-            //            {
-            //                Language = (int)LanguageEnum.en,
-            //                MWQMSampleNote = mwqmSampleModelNew.MWQMSampleNote,
-            //                TranslationStatus = (int)TranslationStatusEnum.Translated,
-            //                LastUpdateDate_UTC = DateTime.UtcNow,
-            //                LastUpdateContactTVItemID = 2,
-            //            };
-
-            //            mwqmSampleNew.MWQMSampleLanguages.Add(mwqmSampleLanguageEnNew);
-
-            //            MWQMSampleLanguage mwqmSampleLanguageFrNew = new MWQMSampleLanguage()
-            //            {
-            //                Language = (int)LanguageEnum.fr,
-            //                MWQMSampleNote = mwqmSampleModelNew.MWQMSampleNote,
-            //                TranslationStatus = (int)TranslationStatusEnum.NotTranslated,
-            //                LastUpdateDate_UTC = DateTime.UtcNow,
-            //                LastUpdateContactTVItemID = 2,
-            //            };
-
-            //            mwqmSampleNew.MWQMSampleLanguages.Add(mwqmSampleLanguageFrNew);
-
-            //            MWQMSample mwqmSampleExist = (from c in mwqmSampleCSSPList
-            //                                          where c.MWQMSiteTVItemID == tvItemMWQMSiteExist.TVItemID
-            //                                          && c.MWQMRunTVItemID == mwqmRunModelExist.MWQMRunTVItemID
-            //                                          && c.SampleDateTime_Local == (DateTime)SampDateTime
-            //                                          && c.Depth_m == mwqmSampleModelNew.Depth_m
-            //                                          && c.SampleTypesText == SampleTypeText
-            //                                          select c).FirstOrDefault();
-
-            //            if (mwqmSampleExist == null)
-            //            {
-            //                mwqmSampleListToAdd.Add(mwqmSampleNew);
-            //            }
-            //            else
-            //            {
-            //                bool changed = false;
-            //                if (mwqmSampleExist.UseForOpenData != UseForOpenData)
-            //                {
-            //                    mwqmSampleExist.UseForOpenData = UseForOpenData;
-            //                    changed = true;
-            //                }
-            //                if (mwqmSampleExist.FecCol_MPN_100ml != dbm.cf)
-            //                {
-            //                    mwqmSampleExist.FecCol_MPN_100ml = (int)dbm.cf;
-            //                    changed = true;
-            //                }
-            //                if (mwqmSampleExist.Salinity_PPT != Sal)
-            //                {
-            //                    mwqmSampleExist.Salinity_PPT = Sal;
-            //                    changed = true;
-            //                }
-            //                if (mwqmSampleExist.WaterTemp_C != Temp)
-            //                {
-            //                    mwqmSampleExist.WaterTemp_C = Temp;
-            //                    changed = true;
-            //                }
-            //                if (mwqmSampleExist.Depth_m != prof)
-            //                {
-            //                    mwqmSampleExist.Depth_m = prof;
-            //                    changed = true;
-            //                }
-
-            //                if (changed)
-            //                {
-            //                    mwqmSampleListToUpdate.Add(mwqmSampleExist);
-            //                }
-
-            //                mwqmSampleListExistInQCDB.Add(mwqmSampleExist);
-            //            }
-
-            //        }
-
-            //        using (CSSPDBEntities db2 = new CSSPDBEntities())
-            //        {
-            //            try
-            //            {
-            //                if (mwqmSampleListToAdd.Count > 0)
-            //                {
-            //                    db2.MWQMSamples.AddRange(mwqmSampleListToAdd);
-            //                    db2.SaveChanges();
-
-            //                    foreach (MWQMSample mwqmSample in mwqmSampleListToAdd)
-            //                    {
-            //                        mwqmSampleListExistInQCDB.Add(mwqmSample);
-            //                    }
-            //                }
-            //            }
-            //            catch (Exception)
-            //            {
-            //                richTextBoxStatus.AppendText($"Could not add MWQMSampleList ss {tvItemModelSubsector.TVText} --- {tvItemMWQMSiteExist.TVText}");
-            //                return $"Could not add MWQMSampleList ss {tvItemModelSubsector.TVText} --- {tvItemMWQMSiteExist.TVText}";
-            //            }
-
-            //            if (mwqmSampleListToUpdate.Count > 0)
-            //            {
-            //                List<int> MWQMSampleIDList = (from c in mwqmSampleListToUpdate
-            //                                              select c.MWQMSampleID).ToList();
-
-            //                List<MWQMSample> mwqmSampleToChangeList = (from c in db2.MWQMSamples
-            //                                                           from u in MWQMSampleIDList
-            //                                                           where c.MWQMSampleID == u
-            //                                                           select c).ToList();
-
-            //                foreach (MWQMSample mwqmSample in mwqmSampleToChangeList)
-            //                {
-            //                    MWQMSample mwqmSampleChanged = mwqmSampleListToUpdate.Where(c => c.MWQMSampleID == mwqmSample.MWQMSampleID).FirstOrDefault();
-
-            //                    if (mwqmSampleChanged != null)
-            //                    {
-            //                        mwqmSample.UseForOpenData = mwqmSampleChanged.UseForOpenData;
-            //                        mwqmSample.FecCol_MPN_100ml = mwqmSampleChanged.FecCol_MPN_100ml;
-            //                        mwqmSample.Salinity_PPT = mwqmSampleChanged.Salinity_PPT;
-            //                        mwqmSample.WaterTemp_C = mwqmSampleChanged.WaterTemp_C;
-            //                    }
-            //                }
-
-            //                try
-            //                {
-            //                    db2.SaveChanges();
-            //                }
-            //                catch (Exception)
-            //                {
-            //                    richTextBoxStatus.AppendText($"Could not change MWQMSampleList ss {tvItemModelSubsector.TVText} --- {tvItemMWQMSiteExist.TVText}");
-            //                    return $"Could not change MWQMSampleList ss {tvItemModelSubsector.TVText} --- {tvItemMWQMSiteExist.TVText}";
-            //                }
-            //            }
-
-            //            //mwqmSampleCSSPList = (from c in db2.MWQMSamples
-            //            //                      where c.MWQMSiteTVItemID == tvItemMWQMSiteExist.TVItemID
-            //            //                      select c).ToList();
+                        MWQMSample mwqmSampleNew = new MWQMSample()
+                        {
+                            MWQMSiteTVItemID = tvItemMWQMSiteExist.TVItemID,
+                            MWQMRunTVItemID = mwqmRunModelExist.MWQMRunTVItemID,
+                            SampleDateTime_Local = (DateTime)SampDateTime,
+                            Depth_m = mwqmSampleModelNew.Depth_m,
+                            FecCol_MPN_100ml = mwqmSampleModelNew.FecCol_MPN_100ml,
+                            Salinity_PPT = mwqmSampleModelNew.Salinity_PPT,
+                            WaterTemp_C = mwqmSampleModelNew.WaterTemp_C,
+                            PH = mwqmSampleModelNew.PH,
+                            SampleTypesText = SampleTypeText,
+                            SampleType_old = 4,
+                            Tube_10 = null,
+                            Tube_1_0 = null,
+                            Tube_0_1 = null,
+                            ProcessedBy = null,
+                            UseForOpenData = UseForOpenData,
+                            LastUpdateDate_UTC = DateTime.UtcNow,
+                            LastUpdateContactTVItemID = 2,
+                        };
 
 
-            //            //List<MWQMSample> mwqmSampleCSSPListToDelete = new List<MWQMSample>();
+                        MWQMSample mwqmSampleExist = (from c in mwqmSampleCSSPList
+                                                      where c.MWQMSiteTVItemID == tvItemMWQMSiteExist.TVItemID
+                                                      && c.MWQMRunTVItemID == mwqmRunModelExist.MWQMRunTVItemID
+                                                      && c.SampleDateTime_Local == (DateTime)SampDateTime
+                                                      && c.Depth_m == mwqmSampleModelNew.Depth_m
+                                                      && c.FecCol_MPN_100ml == mwqmSampleModelNew.FecCol_MPN_100ml
+                                                      && c.Salinity_PPT == mwqmSampleModelNew.Salinity_PPT
+                                                      && c.WaterTemp_C == mwqmSampleModelNew.WaterTemp_C
+                                                      && c.SampleTypesText == SampleTypeText
+                                                      select c).FirstOrDefault();
 
-            //            //foreach (MWQMSample mwqmSample in mwqmSampleCSSPList)
-            //            //{
-            //            //    if (!mwqmSampleListExistInQCDB.Where(c => c.MWQMSampleID == mwqmSample.MWQMSampleID).Any())
-            //            //    {
-            //            //        mwqmSampleCSSPListToDelete.Add(mwqmSample);
-            //            //    }
-            //            //}
+                        if (mwqmSampleExist == null)
+                        {
+                            richTextBoxStatus.AppendText($"{ subsector } site { site } MWQMSiteTVItemID { tvItemMWQMSiteExist.TVItemID } MWQMRunTVItemID { mwqmRunModelExist.MWQMRunTVItemID }  not found\r\n");
+                        }
+                        else
+                        {
+                            if (Math.Abs(mwqmSampleModelNew.FecCol_MPN_100ml - mwqmSampleExist.FecCol_MPN_100ml) > 1)
+                            {
+                                richTextBoxStatus.AppendText($"{ subsector } site { site } FC CSSP { mwqmSampleExist.FecCol_MPN_100ml } FC QC { mwqmSampleModelNew.FecCol_MPN_100ml }  not equal\r\n");
+                            }
+                            if (mwqmSampleModelNew.PH != null && mwqmSampleExist.PH != null)
+                            {
+                                if (Math.Abs((double)mwqmSampleModelNew.PH - (double)mwqmSampleExist.PH) > 0.1D)
+                                {
+                                    richTextBoxStatus.AppendText($"{ subsector } site { site } FC CSSP { mwqmSampleExist.PH } FC QC { mwqmSampleModelNew.PH }  not equal\r\n");
+                                }
+                            }
+                            if (mwqmSampleModelNew.Salinity_PPT != null && mwqmSampleExist.Salinity_PPT != null)
+                            {
+                                if (Math.Abs((double)mwqmSampleModelNew.Salinity_PPT - (double)mwqmSampleExist.Salinity_PPT) > 0.1D)
+                                {
+                                    richTextBoxStatus.AppendText($"{ subsector } site { site } FC CSSP { mwqmSampleExist.Salinity_PPT } FC QC { mwqmSampleModelNew.Salinity_PPT }  not equal\r\n");
+                                }
+                            }
+                            if (mwqmSampleModelNew.WaterTemp_C != null && mwqmSampleExist.WaterTemp_C != null)
+                            {
+                                if (Math.Abs((double)mwqmSampleModelNew.WaterTemp_C - (double)mwqmSampleExist.WaterTemp_C) > 0.1D)
+                                {
+                                    richTextBoxStatus.AppendText($"{ subsector } site { site } FC CSSP { mwqmSampleExist.WaterTemp_C } FC QC { mwqmSampleModelNew.WaterTemp_C }  not equal\r\n");
+                                }
+                            }
+                            if (mwqmSampleModelNew.Depth_m != null && mwqmSampleExist.Depth_m != null)
+                            {
+                                if (Math.Abs((double)mwqmSampleModelNew.Depth_m - (double)mwqmSampleExist.Depth_m) > 0.1D)
+                                {
+                                    richTextBoxStatus.AppendText($"{ subsector } site { site } FC CSSP { mwqmSampleExist.Depth_m } FC QC { mwqmSampleModelNew.Depth_m }  not equal\r\n");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
-            //            //try
-            //            //{
-            //            //    db2.MWQMSamples.RemoveRange(mwqmSampleCSSPListToDelete);
-            //            //    db2.SaveChanges();
-            //            //}
-            //            //catch (Exception ex)
-            //            //{
-            //            //    richTextBoxStatus.AppendText($"Could not delete the mwqmSampleCSSPListToDelete for ss {tvItemModelSubsector.TVText} and site {tvItemMWQMSiteExist.TVText}");
-            //            //    return $"Could not delete the mwqmSampleCSSPListToDelete for ss {tvItemModelSubsector.TVText} and site {tvItemMWQMSiteExist.TVText}";
-            //            //}
-            //        }
-
-            //    }
-            //}
-
-            //lblStatus.Text = "done...";
-            //lblStatus.Refresh();
-            //Application.DoEvents();
+            lblStatus.Text = "done...";
+            lblStatus.Refresh();
+            Application.DoEvents();
 
             return "";
         }
@@ -11925,15 +11816,15 @@ namespace ImportByFunction
                 //    return;
                 //}
 
-                lblStatus2.Text = "7 - Starting RemoveSamplesFoundFoundInQCDB";
-                lblStatus2.Refresh();
-                Application.DoEvents();
+                //lblStatus2.Text = "7 - Starting RemoveSamplesFoundFoundInQCDB";
+                //lblStatus2.Refresh();
+                //Application.DoEvents();
 
-                string retStr = RemoveSamplesFoundFoundInQCDB(stationList, sampleList, tourneeList, tvItemService, tvItemModelQC, mwqmSiteService, mwqmRunService);
-                if (!string.IsNullOrWhiteSpace(retStr))
-                {
-                    return;
-                }
+                //retStr = RemoveSamplesFoundFoundInQCDB(stationList, sampleList, tourneeList, tvItemService, tvItemModelQC, mwqmSiteService, mwqmRunService);
+                //if (!string.IsNullOrWhiteSpace(retStr))
+                //{
+                //    return;
+                //}
 
                 //lblStatus2.Text = "8 - Starting AddAllNewMWQMSubsectorTextAndTideInfoFoundInQCDB";
                 //lblStatus2.Refresh();
