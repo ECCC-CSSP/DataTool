@@ -52,6 +52,7 @@ namespace ImportByFunction
             }
             catch (Exception)
             {
+
             }
             _BaseEnumService = new BaseEnumService(LanguageEnum.en);
         }
@@ -11806,15 +11807,15 @@ namespace ImportByFunction
                 //    return;
                 //}
 
-                //lblStatus2.Text = "7 - Starting AddAllNewSampleFoundInQCDB";
-                //lblStatus2.Refresh();
-                //Application.DoEvents();
+                lblStatus2.Text = "7 - Starting AddAllNewSampleFoundInQCDB";
+                lblStatus2.Refresh();
+                Application.DoEvents();
 
-                //retStr = AddAllNewSampleFoundInQCDB(stationList, sampleList, tourneeList, tvItemService, tvItemModelQC, mwqmSiteService, mwqmRunService);
-                //if (!string.IsNullOrWhiteSpace(retStr))
-                //{
-                //    return;
-                //}
+                string retStr = AddAllNewSampleFoundInQCDB(stationList, sampleList, tourneeList, tvItemService, tvItemModelQC, mwqmSiteService, mwqmRunService);
+                if (!string.IsNullOrWhiteSpace(retStr))
+                {
+                    return;
+                }
 
                 //lblStatus2.Text = "7 - Starting RemoveSamplesFoundFoundInQCDB";
                 //lblStatus2.Refresh();
