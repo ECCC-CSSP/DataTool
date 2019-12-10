@@ -22,6 +22,10 @@ using System.Windows.Forms;
 using System.Xml;
 using TempData;
 using CSSPModelsDLL.Services;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace ImportByFunction
 {
@@ -13673,6 +13677,304 @@ namespace ImportByFunction
             Application.DoEvents();
 
         }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemServiceEN = new TVItemService(LanguageEnum.en, user);
+            TVItemLanguageService tvItemLanguageServiceEN = new TVItemLanguageService(LanguageEnum.en, user);
+            ClimateSiteService climateSiteServiceEN = new ClimateSiteService(LanguageEnum.en, user);
+            MapInfoService mapInfoServiceEN = new MapInfoService(LanguageEnum.en, user);
+
+            TVItemService tvItemServiceFR = new TVItemService(LanguageEnum.fr, user);
+            TVItemLanguageService tvItemLanguageServiceFR = new TVItemLanguageService(LanguageEnum.fr, user);
+            ClimateSiteService climateSiteServiceFR = new ClimateSiteService(LanguageEnum.fr, user);
+
+            TVItemModel tvItemModelRoot = tvItemServiceEN.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                richTextBoxStatus.AppendText($"ERROR: {tvItemModelRoot.Error}\r\n");
+                return;
+            }
+
+            StringBuilder sb = new StringBuilder();
+
+            //List<TVItemModel> tvItemModelClimateListFR = tvItemServiceFR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.ClimateSite);
+            List<TVItemModel> tvItemModelClimateListEN = tvItemServiceEN.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.ClimateSite);
+
+            List<ClimateSite> ClimateSiteList = new List<ClimateSite>();
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                ClimateSiteList = (from c in db2.ClimateSites
+                                   select c).ToList();
+            }
+
+            foreach (ClimateSite climateSite in ClimateSiteList)
+            {
+                lblStatus.Text = climateSite.ClimateSiteName + " --- " + climateSite.ClimateID;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                List<MapInfoModel> mapInfoModelList2 = mapInfoServiceEN.GetMapInfoModelListWithTVItemIDDB(climateSite.ClimateSiteTVItemID);
+
+                MapInfoModel mapInfoModel2 = (from c in mapInfoModelList2
+                                              where c.TVType == TVTypeEnum.ClimateSite
+                                              && c.MapInfoDrawType == MapInfoDrawTypeEnum.Point
+                                              select c).FirstOrDefault();
+
+                if (mapInfoModel2 == null)
+                {
+                    string TVText = "";
+                    string TVText2 = "";
+                    if (climateSite != null)
+                    {
+                        if (climateSite.IsCoCoRaHS != null && climateSite.IsCoCoRaHS == true)
+                        {
+                            TVText = "CoCoRaHS " + climateSite.ClimateSiteName + "(" + climateSite.ClimateID + ")";
+                            TVText2 = "CoCoRaHS " + climateSite.ClimateSiteName + " (" + climateSite.ClimateID + ")";
+                        }
+                        else
+                        {
+                            TVText = climateSite.ClimateSiteName + "(" + climateSite.ClimateID + ")";
+                            TVText2 = climateSite.ClimateSiteName + " (" + climateSite.ClimateID + ")";
+                        }
+                    }
+
+                    List<TVItemModel> tvItemModelClimateSiteList = (from c in tvItemModelClimateListEN
+                                                                    where c.TVText == TVText
+                                                                    select c).ToList();
+
+                    foreach (TVItemModel tvItemModelClimateSite in tvItemModelClimateSiteList)
+                    {
+                        List<MapInfoModel> mapInfoModelList3 = mapInfoServiceEN.GetMapInfoModelListWithTVItemIDDB(tvItemModelClimateSite.TVItemID);
+
+                        MapInfoModel mapInfoModel3 = (from c in mapInfoModelList3
+                                                      where c.TVType == TVTypeEnum.ClimateSite
+                                                      && c.MapInfoDrawType == MapInfoDrawTypeEnum.Point
+                                                      select c).FirstOrDefault();
+
+                        if (mapInfoModel3 != null)
+                        {
+                            sb.AppendLine($"{TVText2} no MapInfo use MapInfo of {tvItemModelClimateSite.TVText}");
+
+                            mapInfoModel2.TVItemID = mapInfoModel3.TVItemID;
+
+                            MapInfoModel mapInfoModelRet = mapInfoServiceEN.PostUpdateMapInfoDB(mapInfoModel2);
+                            if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
+                            {
+                                richTextBoxStatus.AppendText($"ERROR [{mapInfoModelRet.Error}]");
+                            }
+                        }
+
+                    }
+
+                }
+
+
+                //TVItemModel tvItemModelEN = tvItemServiceEN.GetTVItemModelWithTVItemIDDB(climateSite.ClimateSiteTVItemID);
+                //if (!string.IsNullOrWhiteSpace(tvItemModelEN.Error))
+                //{
+                //    richTextBoxStatus.AppendText($"ERROR: {tvItemModelEN.Error}\r\n");
+                //    return;
+                //}
+
+                //string TVText = "";
+                //if (climateSite != null)
+                //{
+                //    if (climateSite.IsCoCoRaHS != null && climateSite.IsCoCoRaHS == true)
+                //    {
+                //        TVText = "CoCoRaHS " + climateSite.ClimateSiteName + " (" + climateSite.ClimateID + ")";
+                //    }
+                //    else
+                //    {
+                //        TVText = climateSite.ClimateSiteName + " (" + climateSite.ClimateID + ")";
+                //    }
+                //}
+
+                //if (tvItemModelEN.TVText != TVText)
+                //{
+                //    TVItemModel tvItemModelProv = new TVItemModel();
+                //    List<TVItemModel> tvItemModelParentList = tvItemServiceEN.GetParentsTVItemModelList(tvItemModelEN.TVPath);
+                //    foreach (TVItemModel tvItemModel in tvItemModelParentList)
+                //    {
+                //        if (tvItemModel.TVType == TVTypeEnum.Province)
+                //        {
+                //            tvItemModelProv = tvItemModel;
+                //            break;
+                //        }
+                //    }
+
+                //    TVItemModel tvItemModelClimateSite = tvItemServiceEN.PostAddChildTVItemDB(tvItemModelProv.TVItemID, TVText, TVTypeEnum.ClimateSite);
+                //    if (!string.IsNullOrWhiteSpace(tvItemModelClimateSite.Error))
+                //    {
+                //        richTextBoxStatus.AppendText($"ERROR: {tvItemModelClimateSite.Error}\r\n");
+                //        return;
+                //    }
+
+                //    ClimateSiteModel climateSiteModel = climateSiteServiceEN.GetClimateSiteModelWithClimateSiteIDDB(climateSite.ClimateSiteID);
+                //    if (!string.IsNullOrWhiteSpace(climateSiteModel.Error))
+                //    {
+                //        richTextBoxStatus.AppendText($"ERROR: {climateSiteModel.Error}\r\n");
+                //        return;
+                //    }
+
+                //    climateSiteModel.ClimateSiteTVItemID = tvItemModelClimateSite.TVItemID;
+
+                //    ClimateSiteModel climateSiteModelRet = climateSiteServiceEN.PostUpdateClimateSiteDB(climateSiteModel);
+                //    if (!string.IsNullOrWhiteSpace(climateSiteModelRet.Error))
+                //    {
+                //        richTextBoxStatus.AppendText($"ERROR: {climateSiteModelRet.Error}\r\n");
+                //        return;
+                //    }
+
+                //    sb.AppendLine($"from {tvItemModelEN.TVText} to {TVText}");
+                //}
+            }
+
+            //foreach (TVItemModel tvItemModel in tvItemModelClimateListEN.Where(c => c.TVItemID > 230717).OrderBy(c => c.TVItemID))
+            //{
+            //    lblStatus.Text = tvItemModel.TVText;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    TVItemLanguageModel tvItemLanguageModelEN = tvItemLanguageServiceEN.GetTVItemLanguageModelWithTVItemIDAndLanguageDB(tvItemModel.TVItemID, LanguageEnum.en);
+            //    if (!string.IsNullOrWhiteSpace(tvItemLanguageModelEN.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"ERROR: {tvItemLanguageModelEN.Error}\r\n");
+            //        return;
+            //    }
+
+            //    TVItemLanguageModel tvItemLanguageModelFR = tvItemLanguageServiceFR.GetTVItemLanguageModelWithTVItemIDAndLanguageDB(tvItemModel.TVItemID, LanguageEnum.fr);
+            //    if (!string.IsNullOrWhiteSpace(tvItemLanguageModelFR.Error))
+            //    {
+            //        richTextBoxStatus.AppendText($"ERROR: {tvItemLanguageModelFR.Error}\r\n");
+            //        return;
+            //    }
+
+            //    ClimateSite climateSite = (from c in ClimateSiteList
+            //                               where c.ClimateSiteTVItemID == tvItemModel.TVItemID
+            //                               select c).FirstOrDefault();
+
+            //    string TVText = "";
+            //    if (climateSite != null)
+            //    {
+            //        if (climateSite.IsCoCoRaHS != null && climateSite.IsCoCoRaHS == true)
+            //        {
+            //            TVText = "CoCoRaHS " + climateSite.ClimateSiteName + " (" + climateSite.ClimateID + ")";
+            //        }
+            //        else
+            //        {
+            //            TVText = climateSite.ClimateSiteName + " (" + climateSite.ClimateID + ")";
+            //        }
+
+            //        if (tvItemLanguageModelEN.TVText != TVText)
+            //        {
+            //            tvItemLanguageModelEN.TVText = TVText;
+            //            TVItemLanguageModel tvItemLanguageModelENRet = tvItemLanguageServiceEN.PostUpdateTVItemLanguageDB(tvItemLanguageModelEN);
+
+            //            sb.AppendLine($"from {tvItemModel.TVText} to {TVText}");
+            //        }
+
+            //        if (tvItemLanguageModelFR.TVText != TVText)
+            //        {
+            //            tvItemLanguageModelFR.TVText = TVText;
+            //            TVItemLanguageModel tvItemLanguageModelFRRet = tvItemLanguageServiceFR.PostUpdateTVItemLanguageDB(tvItemLanguageModelFR);
+
+            //            sb.AppendLine($"from {tvItemModel.TVText} to {TVText}");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        string TVText2 = tvItemModel.TVText;
+            //        TVText2 = TVText2.Substring(0, TVText2.LastIndexOf("(")) + " " + TVText2.Substring(TVText2.LastIndexOf("("));
+
+            //        string TVText3 = tvItemModel.TVText;
+
+            //        TVItemModel tvItemModel2 = (from c in tvItemModelClimateListEN
+            //                                    where c.TVText == TVText2
+            //                                    select c).FirstOrDefault();
+
+            //        //List<MapInfoModel> mapInfoModelList2 = mapInfoServiceEN.GetMapInfoModelListWithTVItemIDDB(tvItemModel2.TVItemID);
+
+            //        //MapInfoModel mapInfoModel2 = (from c in mapInfoModelList2
+            //        //                              where c.TVType == TVTypeEnum.ClimateSite
+            //        //                              && c.MapInfoDrawType == MapInfoDrawTypeEnum.Point
+            //        //                              select c).FirstOrDefault();
+
+            //        TVItemModel tvItemModel3 = (from c in tvItemModelClimateListEN
+            //                                    where c.TVText == TVText3
+            //                                    select c).FirstOrDefault();
+
+            //        List<MapInfoModel> mapInfoModelList3 = mapInfoServiceEN.GetMapInfoModelListWithTVItemIDDB(tvItemModel3.TVItemID);
+
+            //        MapInfoModel mapInfoModel3 = (from c in mapInfoModelList3
+            //                                      where c.TVType == TVTypeEnum.ClimateSite
+            //                                      && c.MapInfoDrawType == MapInfoDrawTypeEnum.Point
+            //                                      select c).FirstOrDefault();
+
+            //        if (mapInfoModel3 != null && tvItemModel2 == null)
+            //        {
+            //            mapInfoModel3.TVItemID = tvItemModel.TVItemID;
+
+            //            MapInfoModel mapInfoModelRet = mapInfoServiceEN.PostUpdateMapInfoDB(mapInfoModel3);
+            //            if (!string.IsNullOrWhiteSpace(mapInfoModelRet.Error))
+            //            {
+            //                richTextBoxStatus.AppendText($"ERROR: {mapInfoModelRet.Error}");
+            //                return;
+            //            }
+            //        }
+
+
+            //        //// should delete TVItem
+            //        //TVItemModel tvItemModelRet = tvItemServiceEN.PostDeleteTVItemWithTVItemIDDB(tvItemModel.TVItemID);
+            //        //if (!string.IsNullOrWhiteSpace(tvItemModelRet.Error))
+            //        //{
+            //        //    sb.AppendLine($"ERROR: {tvItemModelRet.Error}");
+            //        //}
+
+            //        sb.AppendLine($"{ tvItemModel.TVText }");
+            //    }
+
+
+            //}
+
+            lblStatus.Text = "done...";
+
+            //List<TVItemModel> tvItemModelClimateListFR = tvItemServiceFR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.ClimateSite);
+            //foreach (TVItemModel tvItemModel in tvItemModelClimateListFR.OrderBy(c => c.TVItemID))
+            //{
+            //    sb.AppendLine($"{tvItemModel.TVText}");
+            //}
+
+            //using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //{
+            //    List<ClimateSite> climateSiteList = (from c in db2.ClimateSites
+            //                                         orderby c.ClimateSiteTVItemID
+            //                                         select c).ToList();
+
+            //    int OldClimateSiteTVItemID = 0;
+            //    string OldClimateSiteName = "";
+            //    foreach (ClimateSite climateSite in climateSiteList)
+            //    {
+            //        if (climateSite.ClimateSiteTVItemID == OldClimateSiteTVItemID)
+            //        {
+            //            if ()
+
+            //            sb.AppendLine($"ClimateSiteName old [{OldClimateSiteName}] new [{climateSite.ClimateSiteName}] --- ClimateSiteTVItemID old [{OldClimateSiteTVItemID}] new [{climateSite.ClimateSiteTVItemID}]");
+            //        }
+            //        OldClimateSiteTVItemID = climateSite.ClimateSiteTVItemID;
+            //        OldClimateSiteName = climateSite.ClimateSiteName;
+            //    }
+            //}
+
+            richTextBoxStatus.Text = sb.ToString();
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Navigate().GoToUrl(@"C:\Users\leblancc\Desktop\ClimateSiteTest.html");
+        }
+
 
 
         //private void button18_Click(object sender, EventArgs e)
