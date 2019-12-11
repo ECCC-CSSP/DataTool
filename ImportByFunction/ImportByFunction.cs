@@ -26,6 +26,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace ImportByFunction
 {
@@ -13969,10 +13971,491 @@ namespace ImportByFunction
             richTextBoxStatus.Text = sb.ToString();
         }
 
-        private void button22_Click(object sender, EventArgs e)
+        private void butUpdateClimateSites_Click(object sender, EventArgs e)
         {
-            IWebDriver driver = new ChromeDriver();
-            driver.Navigate().GoToUrl(@"C:\Users\leblancc\Desktop\ClimateSiteTest.html");
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            TVItemLanguageService tvItemLanguageService = new TVItemLanguageService(LanguageEnum.en, user);
+            ClimateSiteService climateSiteService = new ClimateSiteService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                richTextBoxStatus.AppendText($"ERROR: {tvItemModelRoot.Error}");
+                return;
+            }
+
+            List<TVItemModel> tvItemModelClimateSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.ClimateSite);
+            List<ClimateSite> climateSiteList = new List<ClimateSite>();
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                climateSiteList = (from c in db2.ClimateSites
+                                   select c).ToList();
+            }
+
+            #region Getting all Climate Sites Info from https://climate.weather.gc.ca/....
+            //HttpClient httpClient = new HttpClient();
+
+            //List<string> provList = new List<string>()
+            //{
+            //    "NB", "NL", "NS", "PE", "QC", "BC"
+            //};
+            //foreach (string prov in provList)
+            //{
+            //    for (int i = 0; i < 10000; i = i + 100)
+            //    {
+            //        Task<string> taskRes = httpClient.GetStringAsync("https://climate.weather.gc.ca/historical_data/search_historic_data_stations_e.html?searchType=stnProv&timeframe=1&" +
+            //            "lstProvince=" + prov + "&optLimit=yearRange&StartYear=1840&EndYear=2019&Year=2019&Month=12&Day=11&selRowPerPage=100" +
+            //            "&txtCentralLatMin=0&txtCentralLatSec=0&txtCentralLongMin=0&txtCentralLongSec=0&startRow=" + i.ToString() + "");
+
+            //        string res = taskRes.Result.ToString();
+
+            //        if (res.Contains("/climate_data/interform_e.html"))
+            //        {
+            //            res = res.Replace("<link", "<NOlink");
+            //            res = res.Replace("<script", "<NOscript");
+
+            //            FileInfo fi = new FileInfo($@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Assets\ClimateMetaData\{prov}_{i}.html");
+            //            StreamWriter sw = fi.CreateText();
+            //            sw.WriteLine(res);
+            //            sw.Close();
+            //        }
+            //        else
+            //        {
+            //            break;
+            //        }
+            //    }
+            //}
+            #endregion Getting all Climate Sites Info from https://climate.weather.gc.ca/....
+
+            #region Parsing all assets files C:\CSSP Latest Code Old\DataTool\ImportByFunction\Assets\ClimateMetaData
+            //StringBuilder sb = new StringBuilder();
+            //using (IWebDriver driver = new ChromeDriver())
+            //{
+            //    List<string> provList = new List<string>()
+            //    {
+            //        "NB", "NL", "NS", "PE", "QC", "BC"
+            //    };
+
+            //    foreach (string prov in provList)
+            //    {
+            //        for (int i = 0; i < 10000; i = i + 100)
+            //        {
+            //            string fileName = @"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Assets\ClimateMetaData\" + prov + "_" + i.ToString() + ".html";
+            //            FileInfo fi = new FileInfo(fileName);
+            //            if (fi.Exists)
+            //            {
+            //                driver.Navigate().GoToUrl(fileName);
+
+            //                IReadOnlyCollection<IWebElement> webElements = driver.FindElements(By.TagName("form"));
+            //                int count = 0;
+            //                foreach (IWebElement webElement in webElements)
+            //                {
+            //                    if (webElement.GetAttribute("action").Contains("/climate_data/interform_e.html"))
+            //                    {
+            //                        if (!webElement.GetAttribute("id").EndsWith("sm"))
+            //                        {
+            //                            count++;
+            //                            sb.AppendLine($"{webElement.TagName} --- {count} -- {webElement.GetAttribute("id")}");
+            //                            string hlyRange = webElement.FindElement(By.CssSelector("input[name='hlyRange']")).GetAttribute("value");
+            //                            hlyRange = hlyRange.Trim();
+            //                            DateTime? hlyStartDate = null;
+            //                            DateTime? hlyEndDate = null;
+            //                            string ret = SetupDate(hlyRange, ref hlyStartDate, ref hlyEndDate);
+            //                            if (!string.IsNullOrEmpty(ret))
+            //                            {
+            //                                richTextBoxStatus.AppendText(ret);
+            //                                return;
+            //                            }
+
+            //                            string dlyRange = webElement.FindElement(By.CssSelector("input[name='dlyRange']")).GetAttribute("value");
+            //                            dlyRange = dlyRange.Trim();
+            //                            DateTime? dlyStartDate = null;
+            //                            DateTime? dlyEndDate = null;
+            //                            ret = SetupDate(dlyRange, ref dlyStartDate, ref dlyEndDate);
+            //                            if (!string.IsNullOrEmpty(ret))
+            //                            {
+            //                                richTextBoxStatus.AppendText(ret);
+            //                                return;
+            //                            }
+
+            //                            string mlyRange = webElement.FindElement(By.CssSelector("input[name='mlyRange']")).GetAttribute("value");
+            //                            mlyRange = mlyRange.Trim();
+            //                            DateTime? mlyStartDate = null;
+            //                            DateTime? mlyEndDate = null;
+            //                            ret = SetupDate(mlyRange, ref mlyStartDate, ref mlyEndDate);
+            //                            if (!string.IsNullOrEmpty(ret))
+            //                            {
+            //                                richTextBoxStatus.AppendText(ret);
+            //                                return;
+            //                            }
+
+            //                            string StationID = webElement.FindElement(By.CssSelector("input[name='StationID']")).GetAttribute("value");
+            //                            string Prov = webElement.FindElement(By.CssSelector("input[name='Prov']")).GetAttribute("value");
+            //                            string Name = webElement.FindElements(By.CssSelector("div")).First().GetAttribute("innerHTML");
+
+            //                            string hStartDate = "";
+            //                            string hEndDate = "";
+            //                            if (hlyStartDate != null)
+            //                            {
+            //                                hStartDate = ((DateTime)hlyStartDate).ToString("yyyy MM dd");
+            //                                hEndDate = ((DateTime)hlyEndDate).ToString("yyyy MM dd");
+            //                            }
+            //                            string dStartDate = "";
+            //                            string dEndDate = "";
+            //                            if (dlyStartDate != null)
+            //                            {
+            //                                dStartDate = ((DateTime)dlyStartDate).ToString("yyyy MM dd");
+            //                                dEndDate = ((DateTime)dlyEndDate).ToString("yyyy MM dd");
+            //                            }
+
+            //                            string mStartDate = "";
+            //                            string mEndDate = "";
+            //                            if (mlyStartDate != null)
+            //                            {
+            //                                mStartDate = ((DateTime)mlyStartDate).ToString("yyyy MM dd");
+            //                                mEndDate = ((DateTime)mlyEndDate).ToString("yyyy MM dd");
+            //                            }
+
+            //                            sb.AppendLine($"\t{hStartDate}|{hEndDate}\t{dStartDate}|{dEndDate}\t{mStartDate}|{mEndDate}\t{StationID}\t{Prov}\t{Name}");
+            //                        }
+            //                    }
+            //                }
+            //            }
+            //            break; // just doing one document
+            //        }
+            //        break; // just doing one province
+            //    }
+
+            //}
+
+            //richTextBoxStatus.Text = sb.ToString();
+            #endregion Parsing all assets files C:\CSSP Latest Code Old\DataTool\ImportByFunction\Assets\ClimateMetaData
+
+            #region Parsing ClimateSites.csv 
+            // Name,Province,ClimateID,WMOID,TCID,Lat,Lng,Elev,hlyStartYear,hlyEndYear,dlyStartYear,dlyEndYear,mlyStartYear,mlyEndYear
+            // ACTIVE PASS,BC,1010066,,,48.87,-123.28,4,,,1984,1996,1984,1996
+
+            List<string> ProvList = new List<string>()
+            {
+                "British Columbia", "Québec", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island"
+            };
+            List<string> ProvInit = new List<string>()
+            {
+                "BC", "QC", "NB", "NL", "NS", "PE"
+            };
+            List<float> ProvTimeOffset = new List<float>()
+            {
+                -8.0f, -5.0f, -4.0f, -3.5f, -4.0f, -4.0f
+            };
+            List<TVItemModel> tvItemModelProvList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.Province);
+
+            TVItemModel tvItemModelProv = new TVItemModel();
+            float TimeOffset = -8.0f;
+
+            FileInfo fi = new FileInfo(@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Assets\ClimateSites.csv");
+            if (!fi.Exists)
+            {
+                richTextBoxStatus.AppendText($"ERROR: Could not find file [{fi.FullName}]\r\n");
+                return;
+            }
+
+            using (StreamReader sr = fi.OpenText())
+            {
+                string lineStr = sr.ReadLine(); // reading first line of csv file
+                List<string> paramList = lineStr.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
+                if (paramList.Count != 14)
+                {
+                    richTextBoxStatus.AppendText($"ERROR: paramList does not have 14 items\r\n");
+                    sr.Close();
+                    return;
+                }
+                List<string> itemList = new List<string>()
+                {
+                    "Name","Province","ClimateID","WMOID","TCID","Lat","Lng","Elev","hlyStartYear","hlyEndYear","dlyStartYear","dlyEndYear","mlyStartYear","mlyEndYear"
+                };
+
+                for (int i = 0; i < paramList.Count; i++)
+                {
+                    if (paramList[i] != itemList[i])
+                    {
+                        richTextBoxStatus.AppendText($"ERROR: paramList[{i}] = {paramList[i]} is not equal to itemList[{i}] = {itemList[i]}\r\n");
+                        sr.Close();
+                        return;
+                    }
+                }
+                bool ok = true;
+                while (ok)
+                {
+                    lineStr = sr.ReadLine();
+                    if (string.IsNullOrEmpty(lineStr))
+                    {
+                        break;
+                    }
+
+                    List<string> valueList = lineStr.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
+                    if (valueList.Count != 14)
+                    {
+                        richTextBoxStatus.AppendText($"ERROR: valueList does not have 14 items\r\n");
+                        richTextBoxStatus.AppendText($"{lineStr}\r\n");
+                        sr.Close();
+                        return;
+                    }
+
+                    string ClimateSiteName = valueList[0];
+
+                    lblStatus.Text = ClimateSiteName;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    string Province = valueList[1];
+                    string ClimateID = valueList[2];
+                    int? WMOID = null;
+                    if (!string.IsNullOrEmpty(valueList[3].Trim()))
+                    {
+                        if (int.TryParse(valueList[3], out int tempWMOID))
+                        {
+                            WMOID = tempWMOID;
+                        };
+                    }
+                    string TCID = valueList[4];
+                    if (!float.TryParse(valueList[5], out float Lat))
+                    {
+                        richTextBoxStatus.AppendText($"ERROR: valueList could not parse Lat [{valueList[5]}]\r\n");
+                        sr.Close();
+                        return;
+                    }
+                    if (!float.TryParse(valueList[6], out float Lng))
+                    {
+                        richTextBoxStatus.AppendText($"ERROR: valueList could not parse Lng [{valueList[6]}]\r\n");
+                        sr.Close();
+                        return;
+                    }
+
+                    float? Elevation_m = null;
+                    if (!string.IsNullOrEmpty(valueList[7]))
+                    {
+                        if (!float.TryParse(valueList[7], out float tempElevation_m))
+                        {
+                            richTextBoxStatus.AppendText($"ERROR: valueList could not parse Elev [{valueList[7]}]\r\n");
+                            sr.Close();
+                            return;
+                        }
+                        Elevation_m = tempElevation_m;
+                    }
+
+                    // hourly start and end year
+                    int? hylStartYear = null;
+                    if (!string.IsNullOrEmpty(valueList[8]))
+                    {
+                        if (!int.TryParse(valueList[8], out int temphylStartYear))
+                        {
+                            richTextBoxStatus.AppendText($"ERROR: valueList could not parse Elev [{valueList[8]}]\r\n");
+                            sr.Close();
+                            return;
+                        }
+                        hylStartYear = temphylStartYear;
+                    }
+
+                    int? hylEndYear = null;
+                    if (!string.IsNullOrEmpty(valueList[9]))
+                    {
+                        if (!int.TryParse(valueList[9], out int temphylEndYear))
+                        {
+                            richTextBoxStatus.AppendText($"ERROR: valueList could not parse Elev [{valueList[9]}]\r\n");
+                            sr.Close();
+                            return;
+                        }
+                        hylEndYear = temphylEndYear;
+                    }
+
+
+                    // hourly start and end year
+                    int? dylStartYear = null;
+                    if (!string.IsNullOrEmpty(valueList[10]))
+                    {
+                        if (!int.TryParse(valueList[10], out int tempdylStartYear))
+                        {
+                            richTextBoxStatus.AppendText($"ERROR: valueList could not parse Elev [{valueList[10]}]\r\n");
+                            sr.Close();
+                            return;
+                        }
+                        dylStartYear = tempdylStartYear;
+                    }
+
+                    int? dylEndYear = null;
+                    if (!string.IsNullOrEmpty(valueList[11]))
+                    {
+                        if (!int.TryParse(valueList[11], out int tempdylEndYear))
+                        {
+                            richTextBoxStatus.AppendText($"ERROR: valueList could not parse Elev [{valueList[11]}]\r\n");
+                            sr.Close();
+                            return;
+                        }
+                        dylEndYear = tempdylEndYear;
+                    }
+
+                    // hourly start and end year
+                    int? mylStartYear = null;
+                    if (!string.IsNullOrEmpty(valueList[12]))
+                    {
+                        if (!int.TryParse(valueList[12], out int tempmylStartYear))
+                        {
+                            richTextBoxStatus.AppendText($"ERROR: valueList could not parse Elev [{valueList[12]}]\r\n");
+                            sr.Close();
+                            return;
+                        }
+                        mylStartYear = tempmylStartYear;
+                    }
+
+                    int? mylEndYear = null;
+                    if (!string.IsNullOrEmpty(valueList[13]))
+                    {
+                        if (!int.TryParse(valueList[13], out int tempmylEndYear))
+                        {
+                            richTextBoxStatus.AppendText($"ERROR: valueList could not parse Elev [{valueList[13]}]\r\n");
+                            sr.Close();
+                            return;
+                        }
+                        mylEndYear = tempmylEndYear;
+                    }
+
+                    ClimateSite climateSiteExist = (from c in climateSiteList
+                                                    where c.ClimateID == ClimateID
+                                                    select c).FirstOrDefault();
+
+                    if (climateSiteExist == null)
+                    {
+                        richTextBoxStatus.AppendText($"{ClimateSiteName} with ClimateID [{ClimateID}] does not exist\r\n");
+
+                        for (int i = 0; i < ProvInit.Count; i++)
+                        {
+                            if (Province == ProvInit[i])
+                            {
+                                tvItemModelProv = (from c in tvItemModelProvList
+                                                   where c.TVText == ProvList[i]
+                                                   select c).FirstOrDefault();
+
+                                if (tvItemModelProv == null)
+                                {
+                                    richTextBoxStatus.AppendText($"ERROR: Could not find TVItemModel for province {Province}\r\n");
+                                    sr.Close();
+                                    return;
+                                }
+
+                                TimeOffset = ProvTimeOffset[i];
+                                break;
+                            }
+                        }
+
+                        string TVText = ClimateSiteName + " (" + ClimateID + ")";
+
+                        TVItemModel tvItemModelClimateSite = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProv.TVItemID, TVText, TVTypeEnum.ClimateSite);
+                        if (!string.IsNullOrWhiteSpace(tvItemModelClimateSite.Error))
+                        {
+                            tvItemModelClimateSite = tvItemService.PostAddChildTVItemDB(tvItemModelProv.TVItemID, TVText, TVTypeEnum.ClimateSite);
+                            if (!string.IsNullOrWhiteSpace(tvItemModelClimateSite.Error))
+                            {
+                                richTextBoxStatus.AppendText($"ERROR: {tvItemModelClimateSite.Error}\r\n");
+                                sr.Close();
+                                return;
+                            }
+                        }
+
+                        ClimateSiteModel climateSiteModelNew = new ClimateSiteModel()
+                        {
+                            ClimateSiteTVItemID = tvItemModelClimateSite.TVItemID,
+                            ECDBID = null,
+                            ClimateSiteName = ClimateSiteName,
+                            Province = Province,
+                            Elevation_m = Elevation_m,
+                            ClimateID = ClimateID,
+                            WMOID = WMOID,
+                            TCID = TCID,
+                            IsQuebecSite = null,
+                            IsCoCoRaHS = null,
+                            TimeOffset_hour = TimeOffset,
+                            HourlyStartDate_Local = null,
+                            HourlyEndDate_Local = null,
+                            HourlyNow = null,
+                            DailyStartDate_Local = null,
+                            DailyEndDate_Local = null,
+                            DailyNow = null,
+                            MonthlyStartDate_Local = null,
+                            MonthlyEndDate_Local = null,
+                            MonthlyNow = null
+                        };
+
+                        ClimateSiteModel climateSiteModelExist = climateSiteService.GetClimateSiteModelExistDB(climateSiteModelNew);
+                        if (!string.IsNullOrWhiteSpace(climateSiteModelExist.Error))
+                        {
+                            ClimateSiteModel climateSiteModelRet = climateSiteService.PostAddClimateSiteDB(climateSiteModelNew);
+                            if (!string.IsNullOrWhiteSpace(climateSiteModelRet.Error))
+                            {
+                                richTextBoxStatus.AppendText($"ERROR: {climateSiteModelRet.Error}\r\n");
+                                sr.Close();
+                                return;
+                            }
+                        }
+
+
+                        //sr.Close();
+                        //return;
+                    }
+
+                    if (sr.EndOfStream)
+                    {
+                        ok = false;
+                    }
+                }
+                sr.Close();
+            }
+
+            #endregion Parsing ClimateSites.csv
+
+            lblStatus.Text = "done...";
+        }
+
+        private string SetupDate(string DateString, ref DateTime? StartDate, ref DateTime? EndDate)
+        {
+            if (DateString.StartsWith("|"))
+            {
+                StartDate = null;
+                EndDate = null;
+            }
+            else
+            { //Example: "1962-01-01|1962-11-30"
+                string errMessage = $"ERROR: Could not parse hlyRange {DateString}";
+
+                if (!int.TryParse(DateString.Substring(0, 4), out int yearStart))
+                {
+                    return errMessage;
+                }
+                if (!int.TryParse(DateString.Substring(5, 2), out int monthStart))
+                {
+                    return errMessage;
+                }
+                if (!int.TryParse(DateString.Substring(8, 2), out int dayStart))
+                {
+                    return errMessage;
+                }
+                if (!int.TryParse(DateString.Substring(11, 4), out int yearEnd))
+                {
+                    return errMessage;
+                }
+                if (!int.TryParse(DateString.Substring(16, 2), out int monthEnd))
+                {
+                    return errMessage;
+                }
+                if (!int.TryParse(DateString.Substring(19, 2), out int dayEnd))
+                {
+                    return errMessage;
+                }
+                StartDate = new DateTime(yearStart, monthStart, dayStart);
+                EndDate = new DateTime(yearEnd, monthEnd, dayEnd);
+            }
+
+            return "";
         }
 
 
