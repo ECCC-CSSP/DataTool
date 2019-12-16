@@ -2902,7 +2902,9 @@ namespace ImportByFunction
 
         private void button15_Click(object sender, EventArgs e) // button climate1
         {
-            string StartTextSubsector = "NS-";
+            string StartTextSubsector = "A-";
+            string JumpBeforeSubsector = "A-16.1";
+
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -2922,7 +2924,7 @@ namespace ImportByFunction
             bool start = false;
             foreach (TVItemModel tvItemModel in tvItemModelSubsectorList)
             {
-                if (tvItemModel.TVText.StartsWith("NS-15-010-002"))
+                if (tvItemModel.TVText.StartsWith(JumpBeforeSubsector))
                 {
                     start = true;
                 }
