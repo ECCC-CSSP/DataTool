@@ -2902,9 +2902,8 @@ namespace ImportByFunction
 
         private void button15_Click(object sender, EventArgs e) // button climate1
         {
-            string StartTextSubsector = "A-";
-            string JumpBeforeSubsector = "A-16.1";
-
+            string StartTextSubsector = "S-";
+            string JumpBeforeSubsector = "S-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -2987,11 +2986,12 @@ namespace ImportByFunction
                     }
                 }
             }
+            lblStatus.Text = "done...";
         }
 
         private void button16_Click(object sender, EventArgs e) // button climate2
         {
-            string StartTextSubsector = "NS-";
+            string StartTextSubsector = "S-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMSubsectorService mwqmSubsectorService = new MWQMSubsectorService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
@@ -3046,11 +3046,14 @@ namespace ImportByFunction
                     }
                 }
             }
+
+            lblStatus.Text = "done...";
+
         }
 
         private void button17_Click(object sender, EventArgs e) // button climate3
         {
-            string StartTextSubsector = "NS-";
+            string StartTextSubsector = "PE-";
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
             MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
             AppTaskService appTaskService = new AppTaskService(LanguageEnum.en, user);
