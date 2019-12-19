@@ -101,6 +101,7 @@
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.butUpdateClimateSites = new System.Windows.Forms.Button();
+            this.butSetClassForMWQMSites = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -811,11 +812,22 @@
             this.butUpdateClimateSites.UseVisualStyleBackColor = true;
             this.butUpdateClimateSites.Click += new System.EventHandler(this.butUpdateClimateSites_Click);
             // 
+            // butSetClassForMWQMSites
+            // 
+            this.butSetClassForMWQMSites.Location = new System.Drawing.Point(750, 66);
+            this.butSetClassForMWQMSites.Name = "butSetClassForMWQMSites";
+            this.butSetClassForMWQMSites.Size = new System.Drawing.Size(153, 23);
+            this.butSetClassForMWQMSites.TabIndex = 228;
+            this.butSetClassForMWQMSites.Text = "Set Class for MWQM sites";
+            this.butSetClassForMWQMSites.UseVisualStyleBackColor = true;
+            this.butSetClassForMWQMSites.Click += new System.EventHandler(this.butSetClassForMWQMSites_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.butSetClassForMWQMSites);
             this.Controls.Add(this.butUpdateClimateSites);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.button19);
@@ -967,6 +979,7 @@
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button butCompareQCDBAndCSSPDB;
         private System.Windows.Forms.Button butUpdateClimateSites;
+        private System.Windows.Forms.Button butSetClassForMWQMSites;
     }
 }
 

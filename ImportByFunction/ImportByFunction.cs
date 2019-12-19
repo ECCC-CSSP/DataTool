@@ -14723,6 +14723,229 @@ namespace ImportByFunction
             return "";
         }
 
+        private void butSetClassForMWQMSites_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
+            {
+                richTextBoxStatus.AppendText($"{tvItemModelRoot.Error}");
+                return;
+            }
+
+            List<MWQMSite> mwqmSiteList = new List<MWQMSite>();
+            List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelRoot.TVItemID, TVTypeEnum.MWQMSite);
+
+            using (CSSPDBEntities db3 = new CSSPDBEntities())
+            {
+                mwqmSiteList = (from c in db3.MWQMSites
+                                select c).ToList();
+
+                FileInfo fi = new FileInfo(@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Assets\NationalClassification\NationalClassification2019.kml");
+
+                if (!fi.Exists)
+                {
+                    richTextBoxStatus.AppendText($"could not find [{fi.FullName}]");
+                    return;
+                }
+
+                XmlDocument doc = new XmlDocument();
+                doc.Load(fi.FullName);
+
+                XmlNodeList xmlNodePlacmarkList = doc.GetElementsByTagName("Placemark");
+                int cc = 0;
+                foreach (XmlNode n1 in xmlNodePlacmarkList)
+                {
+                    cc++;
+
+                    if (cc > 1) //50880)
+                    {
+                        break;
+                    }
+
+                    sb.AppendLine($"{n1.Name} -- {n1.Attributes["id"].Value}");
+
+                    lblStatus.Text = n1.Attributes["id"].Value;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    string classEN = "";
+                    List<Coord> coordList = new List<Coord>();
+                    foreach (XmlNode n2 in n1.ChildNodes)
+                    {
+                        if (n2.Name == "description")
+                        {
+                            string descText = n2.InnerText;
+                            int posStart = descText.IndexOf("<td>class_en</td>") + "<td>class_en</td>".Length;
+                            int posEnd = descText.IndexOf("</tr>", posStart);
+                            descText = descText.Substring(posStart, posEnd - posStart);
+                            descText = descText.Replace("<td>", "");
+                            descText = descText.Replace("</td>", "");
+                            descText = descText.Trim();
+
+                            classEN = descText;
+                        }
+
+                        if (n2.Name == "MultiGeometry")
+                        {
+                            foreach (XmlNode n3 in n2.ChildNodes)
+                            {
+                                if (n3.Name == "Polygon")
+                                {
+                                    foreach (XmlNode n4 in n3.ChildNodes)
+                                    {
+                                        if (n4.Name == "outerBoundaryIs")
+                                        {
+                                            foreach (XmlNode n5 in n4.ChildNodes)
+                                            {
+                                                if (n5.Name == "LinearRing")
+                                                {
+                                                    foreach (XmlNode n6 in n5.ChildNodes)
+                                                    {
+                                                        if (n6.Name == "coordinates")
+                                                        {
+                                                            string coordText = n6.InnerText.Trim();
+                                                            List<string> pointTextList = coordText.Split(" ".ToCharArray(), StringSplitOptions.None).ToList();
+                                                            int count = 0;
+                                                            foreach (string s in pointTextList)
+                                                            {
+                                                                List<string> pointText = s.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
+
+                                                                if (pointText.Count != 3)
+                                                                {
+                                                                    richTextBoxStatus.AppendText($"{pointText.Count} should be 3");
+                                                                    return;
+                                                                }
+
+                                                                float Lng = float.Parse(pointText[0]);
+                                                                float Lat = float.Parse(pointText[1]);
+
+                                                                coordList.Add(new Coord() { Lat = Lat, Lng = Lng, Ordinal = count });
+                                                                count++;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            float MinLat = (from c in coordList
+                                            select c.Lat).Min();
+                            float MaxLat = (from c in coordList
+                                            select c.Lat).Max();
+
+                            float MinLng = (from c in coordList
+                                            select c.Lng).Min();
+                            float MaxLng = (from c in coordList
+                                            select c.Lng).Max();
+
+                            using (CSSPDBEntities db2 = new CSSPDBEntities())
+                            {
+                                var mapInfoMWQMSiteList = (from mi in db2.MapInfos
+                                                           from mip in db2.MapInfoPoints
+                                                           where mi.MapInfoID == mip.MapInfoID
+                                                           && mi.LatMin >= MinLat
+                                                           && mi.LatMax <= MaxLat
+                                                           && mi.LngMin >= MinLng
+                                                           && mi.LngMax <= MaxLng
+                                                           && mi.TVType == (int)TVTypeEnum.MWQMSite
+                                                           && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                                           select new { mi, mip }).ToList();
+
+                                foreach (var miMWQMSite in mapInfoMWQMSiteList)
+                                {
+                                    if (miMWQMSite.mip != null)
+                                    {
+                                        Coord coord = new Coord() { Lat = ((float)miMWQMSite.mip.Lat), Lng = ((float)miMWQMSite.mip.Lng), Ordinal = 0 };
+                                        if (mapInfoService.CoordInPolygon(coordList, coord))
+                                        {
+                                            MWQMSite mwqmSite = (from c in mwqmSiteList
+                                                                 where c.MWQMSiteTVItemID == miMWQMSite.mi.TVItemID
+                                                                 select c).FirstOrDefault();
+
+                                            TVItemModel tvItemModelMWQMSite = (from c in tvItemModelMWQMSiteList
+                                                                               where c.TVItemID == miMWQMSite.mi.TVItemID
+                                                                               select c).FirstOrDefault();
+
+                                            if (mwqmSite != null && tvItemModelMWQMSite != null)
+                                            {
+                                                MWQMSiteLatestClassificationEnum latestClass = MWQMSiteLatestClassificationEnum.Error;
+                                                switch (classEN)
+                                                {
+                                                    case "Approved":
+                                                        {
+                                                            latestClass = MWQMSiteLatestClassificationEnum.Approved;
+                                                        }
+                                                        break;
+                                                    case "Prohibited":
+                                                        {
+                                                            latestClass = MWQMSiteLatestClassificationEnum.Prohibited;
+                                                        }
+                                                        break;
+                                                    case "Conditionally Approved":
+                                                        {
+                                                            latestClass = MWQMSiteLatestClassificationEnum.ConditionallyApproved;
+                                                        }
+                                                        break;
+                                                    case "Conditionally Restricted":
+                                                        {
+                                                            latestClass = MWQMSiteLatestClassificationEnum.ConditionallyRestricted;
+                                                        }
+                                                        break;
+                                                    case "Restricted":
+                                                        {
+                                                            latestClass = MWQMSiteLatestClassificationEnum.Restricted;
+                                                        }
+                                                        break;
+                                                    case "Unclassified":
+                                                        {
+                                                            latestClass = MWQMSiteLatestClassificationEnum.Unclassified;
+                                                        }
+                                                        break;
+                                                    default:
+                                                        {
+                                                            richTextBoxStatus.AppendText($"{classEN} not recognized");
+                                                            return;
+                                                        }
+                                                }
+
+                                                mwqmSite.MWQMSiteLatestClassification = (int)latestClass;
+
+                                                sb.AppendLine($"\t{miMWQMSite.mi.TVItemID} --- {mwqmSite.MWQMSiteTVItemID} --- {tvItemModelMWQMSite.TVText} --- {((MWQMSiteLatestClassificationEnum)mwqmSite.MWQMSiteLatestClassification).ToString()} --- {latestClass.ToString()}");
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                try
+                {
+                    db3.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    richTextBoxStatus.AppendText($"{ex.Message}\r\n");
+                    return;
+                }
+
+                lblStatus.Text = "done...";
+
+                richTextBoxStatus.AppendText(sb.ToString());
+            }
+
+        }
+
 
 
         //private void button18_Click(object sender, EventArgs e)
