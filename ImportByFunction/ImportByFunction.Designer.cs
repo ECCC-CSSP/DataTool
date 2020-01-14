@@ -102,6 +102,7 @@
             this.button20 = new System.Windows.Forms.Button();
             this.butUpdateClimateSites = new System.Windows.Forms.Button();
             this.butSetClassForMWQMSites = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -822,6 +823,16 @@
             this.butSetClassForMWQMSites.UseVisualStyleBackColor = true;
             this.butSetClassForMWQMSites.Click += new System.EventHandler(this.butSetClassForMWQMSites_Click);
             // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(510, 519);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(240, 23);
+            this.button21.TabIndex = 81;
+            this.button21.Text = "Put BC Class Polyg in subsector";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -877,6 +888,7 @@
             this.Controls.Add(this.butLoadSanitationBC);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
+            this.Controls.Add(this.button21);
             this.Controls.Add(this.butCheckBCSubsectors);
             this.Controls.Add(this.butLoadRunsBC);
             this.Controls.Add(this.butLoadSamplesBC);
@@ -980,6 +992,7 @@
         private System.Windows.Forms.Button butCompareQCDBAndCSSPDB;
         private System.Windows.Forms.Button butUpdateClimateSites;
         private System.Windows.Forms.Button butSetClassForMWQMSites;
+        private System.Windows.Forms.Button button21;
     }
 }
 

@@ -14946,6 +14946,171 @@ namespace ImportByFunction
 
         }
 
+        private void button21_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "British Columbia", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+
+            List<SubsectorPolClass> subsectorPolClassList = new List<SubsectorPolClass>();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"C:\Users\leblancc\Desktop\ClassificationPolygons_BC.kml");
+            foreach (XmlNode n1 in doc.DocumentElement.ChildNodes[0].ChildNodes)
+            {
+                if (n1.Name == "Folder")
+                {
+                    foreach (XmlNode n2 in n1.ChildNodes)
+                    {
+                        if (n2.Name == "Placemark")
+                        {
+                            SubsectorPolClass subsectorPolClass = new SubsectorPolClass();
+                            List<Coord> coordList = new List<Coord>();
+
+                            foreach (XmlNode n3 in n2.ChildNodes)
+                            {
+                                if (n3.Name == "description")
+                                {
+                                    string desc = n3.InnerText;
+
+                                    int startPos = desc.IndexOf("<td>class_code</td>") + "<td>class_code</td>".Length;
+                                    int endPos = desc.IndexOf("</td>", startPos + 1);
+
+                                    string classCode = desc.Substring(startPos, endPos - startPos);
+
+                                    classCode = classCode.Replace("<td>", "").Trim();
+
+                                    subsectorPolClass.ClassCode = classCode;
+                                }
+                                if (n3.Name == "MultiGeometry")
+                                {
+                                    foreach (XmlNode n4 in n3.ChildNodes)
+                                    {
+                                        if (n4.Name == "Polygon")
+                                        {
+                                            foreach (XmlNode n5 in n4.ChildNodes)
+                                            {
+                                                if (n5.Name == "outerBoundaryIs")
+                                                {
+                                                    foreach (XmlNode n6 in n5.ChildNodes)
+                                                    {
+                                                        if (n6.Name == "LinearRing")
+                                                        {
+                                                            foreach (XmlNode n7 in n6.ChildNodes)
+                                                            {
+                                                                if (n7.Name == "coordinates")
+                                                                {
+
+                                                                    string coordText = n7.InnerText.Trim();
+
+                                                                    List<string> pointTextList = coordText.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                                                                    int ordinal = 0;
+                                                                    foreach (string s in pointTextList)
+                                                                    {
+                                                                        List<string> pointsText = s.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
+
+                                                                        if (pointsText.Count != 3)
+                                                                        {
+                                                                            richTextBoxStatus.AppendText($"pointsText.Count [{pointsText.Count}] != 3 { pointsText[0] }");
+                                                                            return;
+                                                                        }
+
+                                                                        if (!float.TryParse(pointsText[0], out float Lng))
+                                                                        {
+                                                                            richTextBoxStatus.AppendText($"Could not parse Lng { pointsText[0] } to a float number");
+                                                                            return;
+                                                                        }
+                                                                        if (!float.TryParse(pointsText[1], out float Lat))
+                                                                        {
+                                                                            richTextBoxStatus.AppendText($"Could not parse Lat { pointsText[1] } to a float number");
+                                                                            return;
+                                                                        }
+
+                                                                        coordList.Add(new Coord() { Lat = Lat, Lng = Lng, Ordinal = ordinal });
+
+                                                                        ordinal++;
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    subsectorPolClass.CoordList = coordList;
+
+                                    float LatCentroid = (from c in coordList
+                                                         select c.Lat).Average();
+
+                                    float LngCentroid = (from c in coordList
+                                                         select c.Lng).Average();
+
+                                    subsectorPolClass.Centroid = new Coord() { Lat = LatCentroid, Lng = LngCentroid, Ordinal = 0 };
+                                }
+                            }
+
+                            subsectorPolClassList.Add(subsectorPolClass);
+                        }
+                    }
+                }
+            }
+
+
+
+            foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
+            {
+                lblStatus.Text = "Doing " + tvItemModelSS.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                List<MapInfoPointModel> mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Polygon);
+
+                List<Coord> coordList = (from c in mapInfoPointModelList
+                                         orderby c.Ordinal
+                                         select new Coord
+                                         {
+                                             Lat = (float)c.Lat,
+                                             Lng = (float)c.Lng,
+                                             Ordinal = c.Ordinal
+                                         }).ToList();
+
+                List<SubsectorPolClass> subsectorPolClassList2 = (from c in subsectorPolClassList
+                                                                  where c.Subsector == null
+                                                                  select c).ToList();
+
+                foreach (SubsectorPolClass subsectorPolClass in subsectorPolClassList2)
+                {
+                    bool InSubsector = mapInfoService.CoordInPolygon(coordList, subsectorPolClass.Centroid);
+                    if (InSubsector)
+                    {
+                        richTextBoxStatus.AppendText($"{ tvItemModelSS.TVText } --- {subsectorPolClass.ClassCode} --- { subsectorPolClass.Centroid.Lat } { subsectorPolClass.Centroid.Lng }\r\n");
+                    }
+                }
+
+            }
+
+
+        }
+
 
 
         //private void button18_Click(object sender, EventArgs e)
@@ -15124,5 +15289,17 @@ namespace ImportByFunction
         public List<string> SiteList { get; set; }
     }
 
+    public class SubsectorPolClass
+    {
+        public SubsectorPolClass()
+        {
+            CoordList = new List<Coord>();
+        }
+
+        public string Subsector { get; set; }
+        public string ClassCode { get; set; }
+        public List<Coord> CoordList { get; set; }
+        public Coord Centroid { get; set; }
+    }
 
 }
