@@ -14967,6 +14967,83 @@ namespace ImportByFunction
                 return;
             }
 
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+            sb.AppendLine(@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+            sb.AppendLine(@"<Document id=""Shellfish_Harvest_Area_Classification_in_British_Columbia___Classification_des_zones_de_récolte_des_mollusques_en_Colombie-Britannique"">");
+            sb.AppendLine(@"	<name>ClassificationPolygons_BC.kml</name>");
+            sb.AppendLine(@"	<visibility>0</visibility>");
+            sb.AppendLine(@"	<open>1</open>");
+            sb.AppendLine(@"	<Snippet maxLines=""0""></Snippet>");
+            sb.AppendLine(@"	<Style id=""PolyStyle053"">");
+            sb.AppendLine(@"		<LabelStyle>");
+            sb.AppendLine(@"			<color>00000000</color>");
+            sb.AppendLine(@"			<scale>0</scale>");
+            sb.AppendLine(@"		</LabelStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ff242424</color>");
+            sb.AppendLine(@"			<width>0.4</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>ff4f4f4f</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<Style id=""PolyStyle050"">");
+            sb.AppendLine(@"		<LabelStyle>");
+            sb.AppendLine(@"			<color>00000000</color>");
+            sb.AppendLine(@"			<scale>0</scale>");
+            sb.AppendLine(@"		</LabelStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ff395f73</color>");
+            sb.AppendLine(@"			<width>0.4</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>ff7fd3ff</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<Style id=""PolyStyle052"">");
+            sb.AppendLine(@"		<LabelStyle>");
+            sb.AppendLine(@"			<color>00000000</color>");
+            sb.AppendLine(@"			<scale>0</scale>");
+            sb.AppendLine(@"		</LabelStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ff393973</color>");
+            sb.AppendLine(@"			<width>0.4</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>ff7b7bf5</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<Style id=""PolyStyle00"">");
+            sb.AppendLine(@"		<LabelStyle>");
+            sb.AppendLine(@"			<color>00000000</color>");
+            sb.AppendLine(@"			<scale>0</scale>");
+            sb.AppendLine(@"		</LabelStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ff347373</color>");
+            sb.AppendLine(@"			<width>0.4</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>ff6ff5f5</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<Style id=""PolyStyle02"">");
+            sb.AppendLine(@"		<LabelStyle>");
+            sb.AppendLine(@"			<color>00000000</color>");
+            sb.AppendLine(@"			<scale>0</scale>");
+            sb.AppendLine(@"		</LabelStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ff347348</color>");
+            sb.AppendLine(@"			<width>0.4</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>ff74ffa3</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+
+
+
             List<SubsectorPolClass> subsectorPolClassList = new List<SubsectorPolClass>();
 
             XmlDocument doc = new XmlDocument();
@@ -14996,6 +15073,12 @@ namespace ImportByFunction
                                     classCode = classCode.Replace("<td>", "").Trim();
 
                                     subsectorPolClass.ClassCode = classCode;
+                                }
+                                if (n3.Name == "styleUrl")
+                                {
+                                    string style = n3.InnerText;
+
+                                    subsectorPolClass.StyleURL = style;
                                 }
                                 if (n3.Name == "MultiGeometry")
                                 {
@@ -15078,6 +15161,18 @@ namespace ImportByFunction
 
             foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
             {
+                string subsector = tvItemModelSS.TVText;
+                if (subsector.Contains(" "))
+                {
+                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                }
+
+                sb.AppendLine(@"	<Folder id=""FeatureLayer0"">");
+                sb.AppendLine($@"		<name>{ subsector }</name>");
+                sb.AppendLine(@"		<visibility>0</visibility>");
+                sb.AppendLine(@"		<open>1</open>");
+                sb.AppendLine(@"		<Snippet maxLines=""0""></Snippet>");
+
                 lblStatus.Text = "Doing " + tvItemModelSS.TVText;
                 lblStatus.Refresh();
                 Application.DoEvents();
@@ -15102,13 +15197,607 @@ namespace ImportByFunction
                     bool InSubsector = mapInfoService.CoordInPolygon(coordList, subsectorPolClass.Centroid);
                     if (InSubsector)
                     {
+                        sb.AppendLine(@"		<Placemark id=""ID_00000"">");
+                        sb.AppendLine($@"			<name>{ subsectorPolClass.ClassCode }</name>");
+                        sb.AppendLine(@"			<visibility>0</visibility>");
+                        sb.AppendLine(@"			<Snippet maxLines=""0""></Snippet>");
+                        sb.AppendLine($@"			<styleUrl>{ subsectorPolClass.StyleURL }</styleUrl>");
+                        sb.AppendLine(@"			<MultiGeometry>");
+                        sb.AppendLine(@"				<Polygon>");
+                        sb.AppendLine(@"					<outerBoundaryIs>");
+                        sb.AppendLine(@"						<LinearRing>");
+                        sb.AppendLine(@"							<coordinates>");
+                        foreach (Coord coord in subsectorPolClass.CoordList)
+                        {
+                            sb.Append($"{ coord.Lng },{ coord.Lat },0 ");
+                        }
+                        sb.AppendLine(@"							</coordinates>");
+                        sb.AppendLine(@"						</LinearRing>");
+                        sb.AppendLine(@"					</outerBoundaryIs>");
+                        sb.AppendLine(@"				</Polygon>");
+                        sb.AppendLine(@"			</MultiGeometry>");
+                        sb.AppendLine(@"		</Placemark>");
+
                         richTextBoxStatus.AppendText($"{ tvItemModelSS.TVText } --- {subsectorPolClass.ClassCode} --- { subsectorPolClass.Centroid.Lat } { subsectorPolClass.Centroid.Lng }\r\n");
                     }
                 }
 
+                sb.AppendLine(@"	</Folder>");
             }
 
 
+            sb.AppendLine(@"</Document>");
+            sb.AppendLine(@"</kml>");
+
+            FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\ClassificationPolygons_BC2.kml");
+
+            StreamWriter sw = fi.CreateText();
+            sw.WriteLine(sb.ToString());
+            sw.Close();
+
+            lblStatus.Text = "Done...";
+
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            return;
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+
+            List<SubsectorPolClass> subsectorPolClassList = new List<SubsectorPolClass>();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"C:\Users\leblancc\Desktop\ClassificationPolygons_QC.kml");
+            foreach (XmlNode n1 in doc.DocumentElement.ChildNodes[0].ChildNodes)
+            {
+                if (n1.Name == "Folder")
+                {
+                    foreach (XmlNode n2 in n1.ChildNodes)
+                    {
+                        if (n2.Name == "Placemark")
+                        {
+                            SubsectorPolClass subsectorPolClass = new SubsectorPolClass();
+                            List<Coord> coordList = new List<Coord>();
+
+                            foreach (XmlNode n3 in n2.ChildNodes)
+                            {
+                                if (n3.Name == "description")
+                                {
+                                    string desc = n3.InnerText;
+
+                                    int startPos = desc.IndexOf("<td>Class_Code</td>") + "<td>Class_Code</td>".Length;
+                                    int endPos = desc.IndexOf("</td>", startPos + 1);
+
+                                    string classCode = desc.Substring(startPos, endPos - startPos);
+
+                                    classCode = classCode.Replace("<td>", "").Trim();
+
+                                    subsectorPolClass.ClassCode = classCode;
+
+                                    int startPos2 = desc.IndexOf("<td>Sector</td>") + "<td>Sector</td>".Length;
+                                    int endPos2 = desc.IndexOf("</td>", startPos2 + 1);
+
+                                    string subsector = desc.Substring(startPos2, endPos2 - startPos2);
+
+                                    subsector = subsector.Replace("<td>", "").Trim();
+
+                                    subsectorPolClass.Subsector = subsector;
+                                }
+                                if (n3.Name == "styleUrl")
+                                {
+                                    string style = n3.InnerText;
+
+                                    subsectorPolClass.StyleURL = style;
+                                }
+                                if (n3.Name == "MultiGeometry")
+                                {
+                                    foreach (XmlNode n4 in n3.ChildNodes)
+                                    {
+                                        if (n4.Name == "Polygon")
+                                        {
+                                            foreach (XmlNode n5 in n4.ChildNodes)
+                                            {
+                                                if (n5.Name == "outerBoundaryIs")
+                                                {
+                                                    foreach (XmlNode n6 in n5.ChildNodes)
+                                                    {
+                                                        if (n6.Name == "LinearRing")
+                                                        {
+                                                            foreach (XmlNode n7 in n6.ChildNodes)
+                                                            {
+                                                                if (n7.Name == "coordinates")
+                                                                {
+
+                                                                    string coordText = n7.InnerText.Trim();
+
+                                                                    List<string> pointTextList = coordText.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                                                                    int ordinal = 0;
+                                                                    foreach (string s in pointTextList)
+                                                                    {
+                                                                        List<string> pointsText = s.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
+
+                                                                        if (pointsText.Count != 3)
+                                                                        {
+                                                                            richTextBoxStatus.AppendText($"pointsText.Count [{pointsText.Count}] != 3 { pointsText[0] }\r\n");
+                                                                            return;
+                                                                        }
+
+                                                                        if (!float.TryParse(pointsText[0], out float Lng))
+                                                                        {
+                                                                            richTextBoxStatus.AppendText($"Could not parse Lng { pointsText[0] } to a float number\r\n");
+                                                                            return;
+                                                                        }
+                                                                        if (!float.TryParse(pointsText[1], out float Lat))
+                                                                        {
+                                                                            richTextBoxStatus.AppendText($"Could not parse Lat { pointsText[1] } to a float number\r\n");
+                                                                            return;
+                                                                        }
+
+                                                                        coordList.Add(new Coord() { Lat = Lat, Lng = Lng, Ordinal = ordinal });
+
+                                                                        ordinal++;
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    subsectorPolClass.CoordList = coordList;
+
+                                    float LatCentroid = (from c in coordList
+                                                         select c.Lat).Average();
+
+                                    float LngCentroid = (from c in coordList
+                                                         select c.Lng).Average();
+
+                                    subsectorPolClass.Centroid = new Coord() { Lat = LatCentroid, Lng = LngCentroid, Ordinal = 0 };
+                                }
+                            }
+
+                            subsectorPolClassList.Add(subsectorPolClass);
+                        }
+                    }
+                }
+            }
+
+            //bool start = false;
+            foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
+            {
+                string subsector = tvItemModelSS.TVText;
+                if (subsector.Contains(" "))
+                {
+                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                }
+
+                lblStatus.Text = "Doing " + subsector;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                //if (subsector == "N-15.1.2")
+                //{
+                //    start = true;
+                //}
+
+                //if (!start)
+                //{
+                //    continue;
+                //}
+
+                List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelSS.TVItemID);
+
+                foreach (MapInfoModel mapInfoModel in mapInfoModelList)
+                {
+                    if (mapInfoModel.MapInfoDrawType == MapInfoDrawTypeEnum.Polygon)
+                    {
+                        SubsectorPolClass subsectorPolClass = (from c in subsectorPolClassList
+                                                               where c.Subsector == subsector
+                                                               select c).FirstOrDefault();
+
+                        if (subsectorPolClass == null)
+                        {
+                            richTextBoxStatus.AppendText($"Could not find subsector in classification polygons: { subsector }\r\n");
+                            continue;
+                        }
+
+                        StringBuilder sb = new StringBuilder();
+
+                        foreach (Coord coord in subsectorPolClass.CoordList)
+                        {
+                            sb.Append($"{ coord.Lat }s{ coord.Lng }p");
+                        }
+
+                        string LatLngListText = sb.ToString();
+
+                        MapInfoModel mapInfoModelret = mapInfoService.PostSavePolyDB(LatLngListText, mapInfoModel.MapInfoID);
+                        if (!string.IsNullOrWhiteSpace(mapInfoModelret.Error))
+                        {
+                            richTextBoxStatus.AppendText($"ERROR: { mapInfoModelret.Error }\r\n");
+                            return;
+                        }
+                    }
+                }
+            }
+
+            lblStatus.Text = "done...";
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelAreaList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Area);
+            if (tvItemModelAreaList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem Area for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+
+            sb.AppendLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+            sb.AppendLine(@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+            sb.AppendLine(@"<Document>");
+            sb.AppendLine(@"	<name>QC_Info.kml</name>");
+            sb.AppendLine(@"	<Style id=""sn_ylw-pushpin"">");
+            sb.AppendLine(@"		<IconStyle>");
+            sb.AppendLine(@"			<scale>1.1</scale>");
+            sb.AppendLine(@"			<Icon>");
+            sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine(@"			</Icon>");
+            sb.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine(@"		</IconStyle>");
+            sb.AppendLine(@"		<BalloonStyle>");
+            sb.AppendLine(@"		</BalloonStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ff00ff00</color>");
+            sb.AppendLine(@"			<width>2</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>00ffffff</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<Style id=""sn_ylw-pushpin0"">");
+            sb.AppendLine(@"		<IconStyle>");
+            sb.AppendLine(@"			<scale>1.1</scale>");
+            sb.AppendLine(@"			<Icon>");
+            sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine(@"			</Icon>");
+            sb.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine(@"		</IconStyle>");
+            sb.AppendLine(@"		<BalloonStyle>");
+            sb.AppendLine(@"		</BalloonStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ffff00ff</color>");
+            sb.AppendLine(@"			<width>2</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>00ffffff</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<Style id=""sh_ylw-pushpin"">");
+            sb.AppendLine(@"		<IconStyle>");
+            sb.AppendLine(@"			<scale>1.3</scale>");
+            sb.AppendLine(@"			<Icon>");
+            sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine(@"			</Icon>");
+            sb.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine(@"		</IconStyle>");
+            sb.AppendLine(@"		<BalloonStyle>");
+            sb.AppendLine(@"		</BalloonStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ffff00ff</color>");
+            sb.AppendLine(@"			<width>2</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>00ffffff</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<StyleMap id=""msn_ylw-pushpin"">");
+            sb.AppendLine(@"		<Pair>");
+            sb.AppendLine(@"			<key>normal</key>");
+            sb.AppendLine(@"			<styleUrl>#sn_ylw-pushpin</styleUrl>");
+            sb.AppendLine(@"		</Pair>");
+            sb.AppendLine(@"		<Pair>");
+            sb.AppendLine(@"			<key>highlight</key>");
+            sb.AppendLine(@"			<styleUrl>#sh_ylw-pushpin0</styleUrl>");
+            sb.AppendLine(@"		</Pair>");
+            sb.AppendLine(@"	</StyleMap>");
+            sb.AppendLine(@"	<Style id=""sh_ylw-pushpin0"">");
+            sb.AppendLine(@"		<IconStyle>");
+            sb.AppendLine(@"			<scale>1.3</scale>");
+            sb.AppendLine(@"			<Icon>");
+            sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine(@"			</Icon>");
+            sb.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine(@"		</IconStyle>");
+            sb.AppendLine(@"		<BalloonStyle>");
+            sb.AppendLine(@"		</BalloonStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ff00ff00</color>");
+            sb.AppendLine(@"			<width>2</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>00ffffff</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<StyleMap id=""msn_ylw-pushpin0"">");
+            sb.AppendLine(@"		<Pair>");
+            sb.AppendLine(@"			<key>normal</key>");
+            sb.AppendLine(@"			<styleUrl>#sn_ylw-pushpin1</styleUrl>");
+            sb.AppendLine(@"		</Pair>");
+            sb.AppendLine(@"		<Pair>");
+            sb.AppendLine(@"			<key>highlight</key>");
+            sb.AppendLine(@"			<styleUrl>#sh_ylw-pushpin1</styleUrl>");
+            sb.AppendLine(@"		</Pair>");
+            sb.AppendLine(@"	</StyleMap>");
+            sb.AppendLine(@"	<Style id=""sh_ylw-pushpin1"">");
+            sb.AppendLine(@"		<IconStyle>");
+            sb.AppendLine(@"			<scale>1.3</scale>");
+            sb.AppendLine(@"			<Icon>");
+            sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine(@"			</Icon>");
+            sb.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine(@"		</IconStyle>");
+            sb.AppendLine(@"		<BalloonStyle>");
+            sb.AppendLine(@"		</BalloonStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ff0000ff</color>");
+            sb.AppendLine(@"			<width>2</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>00ffffff</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<Style id=""sn_ylw-pushpin1"">");
+            sb.AppendLine(@"		<IconStyle>");
+            sb.AppendLine(@"			<scale>1.1</scale>");
+            sb.AppendLine(@"			<Icon>");
+            sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>");
+            sb.AppendLine(@"			</Icon>");
+            sb.AppendLine(@"			<hotSpot x=""20"" y=""2"" xunits=""pixels"" yunits=""pixels""/>");
+            sb.AppendLine(@"		</IconStyle>");
+            sb.AppendLine(@"		<BalloonStyle>");
+            sb.AppendLine(@"		</BalloonStyle>");
+            sb.AppendLine(@"		<LineStyle>");
+            sb.AppendLine(@"			<color>ff0000ff</color>");
+            sb.AppendLine(@"			<width>2</width>");
+            sb.AppendLine(@"		</LineStyle>");
+            sb.AppendLine(@"		<PolyStyle>");
+            sb.AppendLine(@"			<color>00ffffff</color>");
+            sb.AppendLine(@"		</PolyStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<StyleMap id=""msn_ylw-pushpin1"">");
+            sb.AppendLine(@"		<Pair>");
+            sb.AppendLine(@"			<key>normal</key>");
+            sb.AppendLine(@"			<styleUrl>#sn_ylw-pushpin0</styleUrl>");
+            sb.AppendLine(@"		</Pair>");
+            sb.AppendLine(@"		<Pair>");
+            sb.AppendLine(@"			<key>highlight</key>");
+            sb.AppendLine(@"			<styleUrl>#sh_ylw-pushpin</styleUrl>");
+            sb.AppendLine(@"		</Pair>");
+            sb.AppendLine(@"	</StyleMap>");
+            sb.AppendLine(@"	<Style id=""sh_placemark_circle_highlight"">");
+            sb.AppendLine(@"		<IconStyle>");
+            sb.AppendLine(@"			<scale>1.2</scale>");
+            sb.AppendLine(@"			<Icon>");
+            sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>");
+            sb.AppendLine(@"			</Icon>");
+            sb.AppendLine(@"		</IconStyle>");
+            sb.AppendLine(@"		<BalloonStyle>");
+            sb.AppendLine(@"		</BalloonStyle>");
+            sb.AppendLine(@"		<ListStyle>");
+            sb.AppendLine(@"		</ListStyle>");
+            sb.AppendLine(@"	</Style>");
+            sb.AppendLine(@"	<StyleMap id=""msn_placemark_circle"">");
+            sb.AppendLine(@"		<Pair>");
+            sb.AppendLine(@"			<key>normal</key>");
+            sb.AppendLine(@"			<styleUrl>#sn_placemark_circle</styleUrl>");
+            sb.AppendLine(@"		</Pair>");
+            sb.AppendLine(@"		<Pair>");
+            sb.AppendLine(@"			<key>highlight</key>");
+            sb.AppendLine(@"			<styleUrl>#sh_placemark_circle_highlight</styleUrl>");
+            sb.AppendLine(@"		</Pair>");
+            sb.AppendLine(@"	</StyleMap>");
+            sb.AppendLine(@"	<Style id=""sn_placemark_circle"">");
+            sb.AppendLine(@"		<IconStyle>");
+            sb.AppendLine(@"			<scale>0.8</scale>");
+            sb.AppendLine(@"			<Icon>");
+            sb.AppendLine(@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>");
+            sb.AppendLine(@"			</Icon>");
+            sb.AppendLine(@"		</IconStyle>");
+            sb.AppendLine(@"		<LabelStyle>");
+            sb.AppendLine(@"		    <scale>0.8</scale>");
+            sb.AppendLine(@"		</LabelStyle>");
+            sb.AppendLine(@"		<BalloonStyle>");
+            sb.AppendLine(@"		</BalloonStyle>");
+            sb.AppendLine(@"		<ListStyle>");
+            sb.AppendLine(@"		</ListStyle>");
+            sb.AppendLine(@"    </Style>");
+
+
+            List<MapInfoPointModel> mapInfoPointModelList = new List<MapInfoPointModel>();
+
+            foreach (TVItemModel tvItemModelArea in tvItemModelAreaList)
+            {
+                string area = tvItemModelArea.TVText;
+                if (area.Contains(" "))
+                {
+                    area = area.Substring(0, area.IndexOf(" "));
+                }
+
+                mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelArea.TVItemID, TVTypeEnum.Area, MapInfoDrawTypeEnum.Polygon);
+
+                sb.AppendLine(@"	<Folder>");
+                sb.AppendLine($@"		<name>{ area }</name>");
+                sb.AppendLine(@"		<Placemark>");
+                sb.AppendLine($@"			<name>{ area }</name>");
+                sb.AppendLine(@"			<styleUrl>#msn_ylw-pushpin1</styleUrl>");
+                sb.AppendLine(@"			<Polygon>");
+                sb.AppendLine(@"				<outerBoundaryIs>");
+                sb.AppendLine(@"					<LinearRing>");
+                sb.AppendLine(@"						<coordinates>");
+                foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
+                {
+                    sb.Append($"{ mapInfoPointModel.Lng },{ mapInfoPointModel.Lat },0 ");
+                }
+                sb.AppendLine(@"						</coordinates>");
+                sb.AppendLine(@"					</LinearRing>");
+                sb.AppendLine(@"				</outerBoundaryIs>");
+                sb.AppendLine(@"			</Polygon>");
+                sb.AppendLine(@"		</Placemark>");
+
+                List<TVItemModel> tvItemModelSectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelArea.TVItemID, TVTypeEnum.Sector);
+                if (tvItemModelSectorList.Count == 0)
+                {
+                    richTextBoxStatus.AppendText("Error: could not find TVItem Sector for " + tvItemModelArea.TVText + "\r\n");
+                    sb.AppendLine(@"	</Folder>");
+                    continue;
+                }
+
+                foreach (TVItemModel tvItemModelSec in tvItemModelSectorList)
+                {
+                    string sector = tvItemModelSec.TVText;
+                    if (sector.Contains(" "))
+                    {
+                        sector = sector.Substring(0, sector.IndexOf(" "));
+                    }
+
+                    mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSec.TVItemID, TVTypeEnum.Sector, MapInfoDrawTypeEnum.Polygon);
+
+                    sb.AppendLine(@"		<Folder>");
+                    sb.AppendLine($@"			<name>{ sector }</name>");
+                    sb.AppendLine(@"			<Placemark>");
+                    sb.AppendLine($@"				<name>{ sector }</name>");
+                    sb.AppendLine(@"				<styleUrl>#msn_ylw-pushpin</styleUrl>");
+                    sb.AppendLine(@"				<Polygon>");
+                    sb.AppendLine(@"					<outerBoundaryIs>");
+                    sb.AppendLine(@"						<LinearRing>");
+                    sb.AppendLine(@"							<coordinates>");
+                    foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
+                    {
+                        sb.Append($"{ mapInfoPointModel.Lng },{ mapInfoPointModel.Lat },0 ");
+                    }
+                    sb.AppendLine(@"							</coordinates>");
+                    sb.AppendLine(@"						</LinearRing>");
+                    sb.AppendLine(@"					</outerBoundaryIs>");
+                    sb.AppendLine(@"				</Polygon>");
+                    sb.AppendLine(@"			</Placemark>");
+
+                    List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSec.TVItemID, TVTypeEnum.Subsector);
+                    if (tvItemModelSubsectorList.Count == 0)
+                    {
+                        richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelSec.TVText + "\r\n");
+                        sb.AppendLine(@"	    </Folder>");
+                        continue;
+                    }
+
+                    foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
+                    {
+                        string subsector = tvItemModelSS.TVText;
+                        if (subsector.Contains(" "))
+                        {
+                            subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                        }
+
+                        lblStatus.Text = $"Doing { area } --- { sector } --- { subsector }";
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Polygon);
+
+                        sb.AppendLine(@"			<Folder>");
+                        sb.AppendLine($@"				<name>{ subsector }</name>");
+                        sb.AppendLine(@"				<Placemark>");
+                        sb.AppendLine($@"					<name>{ subsector }</name>");
+                        sb.AppendLine(@"					<styleUrl>#msn_ylw-pushpin0</styleUrl>");
+                        sb.AppendLine(@"					<Polygon>");
+                        sb.AppendLine(@"						<outerBoundaryIs>");
+                        sb.AppendLine(@"							<LinearRing>");
+                        sb.AppendLine(@"								<coordinates>");
+                        foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
+                        {
+                            sb.Append($"{ mapInfoPointModel.Lng },{ mapInfoPointModel.Lat },0 ");
+                        }
+                        sb.AppendLine(@"								</coordinates>");
+                        sb.AppendLine(@"							</LinearRing>");
+                        sb.AppendLine(@"						</outerBoundaryIs>");
+                        sb.AppendLine(@"					</Polygon>");
+                        sb.AppendLine(@"				</Placemark>");
+
+                        sb.AppendLine(@"		    	<Folder>");
+                        sb.AppendLine($@"		    		<name>{ subsector } MWQM Sites</name>");
+
+                        List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMSite);
+
+                        foreach (TVItemModel tvItemModelMWQMSite in tvItemModelMWQMSiteList)
+                        {
+                            mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelMWQMSite.TVItemID, TVTypeEnum.MWQMSite, MapInfoDrawTypeEnum.Point);
+
+                            if (mapInfoPointModelList.Count > 0)
+                            {
+                                sb.AppendLine(@"		    		<Placemark>");
+                                sb.AppendLine($@"		    			<name>{ tvItemModelMWQMSite.TVText }</name>");
+                                sb.AppendLine(@"		    			<styleUrl>#msn_placemark_circle</styleUrl>");
+                                sb.AppendLine(@"		    			<Point>");
+                                sb.AppendLine($@"		    				<coordinates>{ mapInfoPointModelList[0].Lng },{ mapInfoPointModelList[0].Lat },0</coordinates>");
+                                sb.AppendLine(@"		    			</Point>");
+                                sb.AppendLine(@"		    		</Placemark>");
+                            }
+                        }
+
+                        sb.AppendLine(@"		    	</Folder>");
+                        sb.AppendLine(@"			</Folder>");
+                    }
+                    sb.AppendLine(@"		</Folder>");
+                }
+                sb.AppendLine(@"	</Folder>");
+            }
+
+            sb.AppendLine(@"</Document>");
+            sb.AppendLine(@"</kml>");
+
+
+            FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\QC_Info.kml");
+
+            StreamWriter sw = fi.CreateText();
+            sw.WriteLine(sb.ToString());
+            sw.Close();
+
+            lblStatus.Text = "Done...";
         }
 
 
@@ -15297,6 +15986,7 @@ namespace ImportByFunction
         }
 
         public string Subsector { get; set; }
+        public string StyleURL { get; set; }
         public string ClassCode { get; set; }
         public List<Coord> CoordList { get; set; }
         public Coord Centroid { get; set; }

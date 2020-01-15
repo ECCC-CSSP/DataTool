@@ -103,6 +103,8 @@
             this.butUpdateClimateSites = new System.Windows.Forms.Button();
             this.butSetClassForMWQMSites = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -825,13 +827,33 @@
             // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(510, 519);
+            this.button21.Location = new System.Drawing.Point(475, 519);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(240, 23);
+            this.button21.Size = new System.Drawing.Size(275, 23);
             this.button21.TabIndex = 81;
             this.button21.Text = "Put BC Class Polyg in subsector";
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(475, 548);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(275, 23);
+            this.button22.TabIndex = 81;
+            this.button22.Text = "Set QC Subsector with Classification Polygons";
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(796, 519);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(183, 23);
+            this.button23.TabIndex = 81;
+            this.button23.Text = "QC KML of Area,Sect,Subsect";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // ImportByFunction
             // 
@@ -888,6 +910,8 @@
             this.Controls.Add(this.butLoadSanitationBC);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
+            this.Controls.Add(this.button23);
+            this.Controls.Add(this.button22);
             this.Controls.Add(this.button21);
             this.Controls.Add(this.butCheckBCSubsectors);
             this.Controls.Add(this.butLoadRunsBC);
@@ -993,6 +1017,8 @@
         private System.Windows.Forms.Button butUpdateClimateSites;
         private System.Windows.Forms.Button butSetClassForMWQMSites;
         private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
     }
 }
 
