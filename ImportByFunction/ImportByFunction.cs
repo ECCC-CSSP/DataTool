@@ -15798,6 +15798,88 @@ namespace ImportByFunction
             sw.Close();
 
             lblStatus.Text = "Done...";
+
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem Area for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+            List<MapInfoPointModel> mapInfoPointModelList = new List<MapInfoPointModel>();
+
+            sb.AppendLine($"MWQM sites found outside the subsector polygon (i.e. QC classification)");
+            sb.AppendLine($"Subsector\tMWQMSite\tLat\tLng");
+
+            foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
+            {
+                string subsector = tvItemModelSS.TVText;
+                if (subsector.Contains(" "))
+                {
+                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                }
+
+                lblStatus.Text = $"Doing { subsector }";
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Polygon);
+
+                if (mapInfoPointModelList.Count > 0)
+                {
+                    List<Coord> coordList = new List<Coord>();
+                    int Ordinal = 0;
+                    foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
+                    {
+                        coordList.Add(new Coord() { Lat = (float)mapInfoPointModel.Lat, Lng = (float)mapInfoPointModel.Lng, Ordinal = Ordinal });
+                        Ordinal++;
+                    }
+
+                    List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMSite);
+
+                    foreach (TVItemModel tvItemModelMWQMSite in tvItemModelMWQMSiteList)
+                    {
+                        if (subsector == "A-14.3.5E" && tvItemModelMWQMSite.TVText == "0074")
+                        {
+                            int slijfe = 34;
+                        }
+
+                        mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelMWQMSite.TVItemID, TVTypeEnum.MWQMSite, MapInfoDrawTypeEnum.Point);
+
+                        if (mapInfoPointModelList.Count > 0)
+                        {
+                            Coord coord = new Coord() { Lat = (float)mapInfoPointModelList[0].Lat, Lng = (float)mapInfoPointModelList[0].Lng, Ordinal = 0 };
+                            bool InPoly = mapInfoService.CoordInPolygon(coordList, coord);
+
+                            if (!InPoly)
+                            {
+                                sb.AppendLine($"{ subsector }\t{ tvItemModelMWQMSite.TVText }\t{ coord.Lat.ToString("F6") }\t{ coord.Lng.ToString("F6") }");
+                            }
+                        }
+                    }
+                }
+            }
+
+            richTextBoxStatus.Text = sb.ToString();
+
+            lblStatus.Text = "Done...";
         }
 
 
