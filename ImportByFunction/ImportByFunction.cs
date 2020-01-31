@@ -6374,56 +6374,184 @@ namespace ImportByFunction
         private void button9_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            DirectoryInfo di = new DirectoryInfo(@"C:\___Sam");
+            FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\MunicipalityWWTPAndLS_NB.kml");
 
-            if (di.Exists)
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrWhiteSpace(tvItemModelRoot.Error))
             {
-                List<FileInfo> fiList = di.GetFiles().ToList();
+                lblStatus.Text = "Could not find Root";
+                return;
+            }
 
-                //int count = 0;
-                foreach (FileInfo fi in fiList)
+            string prov = "New Brunswick";
+
+            TVItemModel tvItemModelNB = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, prov, TVTypeEnum.Province);
+            if (!string.IsNullOrWhiteSpace(tvItemModelNB.Error))
+            {
+                lblStatus.Text = $"Could not find Province {textBoxProvinceName.Text}";
+                return;
+            }
+
+            List<TVItemModel> tvItemModelMuniList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelNB.TVItemID, TVTypeEnum.Municipality);
+
+            sb.AppendLine($@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+            sb.AppendLine($@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+            sb.AppendLine($@"<Document>");
+            sb.AppendLine($@"	<name>NB Municipalities WWTP and LS</name>");
+            sb.AppendLine($@"	<Style id=""sh_placemark_circle_highlight"">");
+            sb.AppendLine($@"		<IconStyle>");
+            sb.AppendLine($@"			<scale>0.945455</scale>");
+            sb.AppendLine($@"			<Icon>");
+            sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>");
+            sb.AppendLine($@"			</Icon>");
+            sb.AppendLine($@"		</IconStyle>");
+            sb.AppendLine($@"		<LabelStyle>");
+            sb.AppendLine($@"			<scale>0.8</scale>");
+            sb.AppendLine($@"		</LabelStyle>");
+            sb.AppendLine($@"		<BalloonStyle>");
+            sb.AppendLine($@"		</BalloonStyle>");
+            sb.AppendLine($@"		<ListStyle>");
+            sb.AppendLine($@"		</ListStyle>");
+            sb.AppendLine($@"	</Style>");
+            sb.AppendLine($@"	<Style id=""sn_placemark_square"">");
+            sb.AppendLine($@"		<IconStyle>");
+            sb.AppendLine($@"			<scale>0.8</scale>");
+            sb.AppendLine($@"			<Icon>");
+            sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_square.png</href>");
+            sb.AppendLine($@"			</Icon>");
+            sb.AppendLine($@"		</IconStyle>");
+            sb.AppendLine($@"		<LabelStyle>");
+            sb.AppendLine($@"			<scale>0.8</scale>");
+            sb.AppendLine($@"		</LabelStyle>");
+            sb.AppendLine($@"		<BalloonStyle>");
+            sb.AppendLine($@"		</BalloonStyle>");
+            sb.AppendLine($@"		<ListStyle>");
+            sb.AppendLine($@"		</ListStyle>");
+            sb.AppendLine($@"	</Style>");
+            sb.AppendLine($@"	<Style id=""sn_placemark_circle"">");
+            sb.AppendLine($@"		<IconStyle>");
+            sb.AppendLine($@"			<scale>0.8</scale>");
+            sb.AppendLine($@"			<Icon>");
+            sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>");
+            sb.AppendLine($@"			</Icon>");
+            sb.AppendLine($@"		</IconStyle>");
+            sb.AppendLine($@"		<LabelStyle>");
+            sb.AppendLine($@"			<scale>0.8</scale>");
+            sb.AppendLine($@"		</LabelStyle>");
+            sb.AppendLine($@"		<BalloonStyle>");
+            sb.AppendLine($@"		</BalloonStyle>");
+            sb.AppendLine($@"		<ListStyle>");
+            sb.AppendLine($@"		</ListStyle>");
+            sb.AppendLine($@"	</Style>");
+            sb.AppendLine($@"	<StyleMap id=""msn_placemark_circle"">");
+            sb.AppendLine($@"		<Pair>");
+            sb.AppendLine($@"			<key>normal</key>");
+            sb.AppendLine($@"			<styleUrl>#sn_placemark_circle</styleUrl>");
+            sb.AppendLine($@"		</Pair>");
+            sb.AppendLine($@"		<Pair>");
+            sb.AppendLine($@"			<key>highlight</key>");
+            sb.AppendLine($@"			<styleUrl>#sh_placemark_circle_highlight</styleUrl>");
+            sb.AppendLine($@"		</Pair>");
+            sb.AppendLine($@"	</StyleMap>");
+            sb.AppendLine($@"	<StyleMap id=""msn_placemark_square"">");
+            sb.AppendLine($@"		<Pair>");
+            sb.AppendLine($@"			<key>normal</key>");
+            sb.AppendLine($@"			<styleUrl>#sn_placemark_square</styleUrl>");
+            sb.AppendLine($@"		</Pair>");
+            sb.AppendLine($@"		<Pair>");
+            sb.AppendLine($@"			<key>highlight</key>");
+            sb.AppendLine($@"			<styleUrl>#sh_placemark_square_highlight</styleUrl>");
+            sb.AppendLine($@"		</Pair>");
+            sb.AppendLine($@"	</StyleMap>");
+            sb.AppendLine($@"	<Style id=""sh_placemark_square_highlight"">");
+            sb.AppendLine($@"		<IconStyle>");
+            sb.AppendLine($@"			<scale>0.945455</scale>");
+            sb.AppendLine($@"			<Icon>");
+            sb.AppendLine($@"				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_square_highlight.png</href>");
+            sb.AppendLine($@"			</Icon>");
+            sb.AppendLine($@"		</IconStyle>");
+            sb.AppendLine($@"		<LabelStyle>");
+            sb.AppendLine($@"			<scale>0.8</scale>");
+            sb.AppendLine($@"		</LabelStyle>");
+            sb.AppendLine($@"		<BalloonStyle>");
+            sb.AppendLine($@"		</BalloonStyle>");
+            sb.AppendLine($@"		<ListStyle>");
+            sb.AppendLine($@"		</ListStyle>");
+            sb.AppendLine($@"	</Style>");
+
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                var infMapInfoList = (from c in db2.TVItems
+                                      from t in db2.TVItemLanguages
+                                      from mi in db2.MapInfos
+                                      from mip in db2.MapInfoPoints
+                                      from inf in db2.Infrastructures
+                                      where c.TVItemID == t.TVItemID
+                                      && t.Language == (int)LanguageEnum.en                                     
+                                      && c.TVItemID == inf.InfrastructureTVItemID
+                                      && c.TVType == (int)TVTypeEnum.Infrastructure
+                                      && c.TVItemID == mi.TVItemID
+                                      && mi.MapInfoID == mip.MapInfoID
+                                      && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                      && c.TVPath.StartsWith(tvItemModelNB.TVPath + "p")
+                                      && mi.TVType != (int)TVTypeEnum.Outfall
+                                      select new {c, t, mi, mip, inf }).ToList();
+
+                foreach (TVItemModel tvItemModel in tvItemModelMuniList)
                 {
-                    lblStatus.Text = fi.FullName;
-                    lblStatus.Refresh();
-                    Application.DoEvents();
 
 
-                    StreamReader sr = fi.OpenText();
-                    //if (count == 0)
-                    //{
-                    //    string ret = sr.ReadToEnd();
-                    //    sb.AppendLine(ret);
-                    //    count += 1;
-                    //}
-                    //else
-                    //{
-                    bool skip = true;
-                    while (!sr.EndOfStream)
+                    var InfMapInfoList2 = (from c in infMapInfoList
+                                           where c.c.ParentID == tvItemModel.TVItemID
+                                           select c).ToList();
+
+                    if (InfMapInfoList2.Count > 0)
                     {
-                        string line = sr.ReadLine();
-                        if (!skip)
+                        sb.AppendLine($@"	<Folder>");
+                        sb.AppendLine($@"		<name>{ tvItemModel.TVText }</name>");
+
+
+                        foreach (var a in InfMapInfoList2)
                         {
-                            if (string.IsNullOrWhiteSpace(line.Trim()))
+                            if (a.mip.Lat > 0 && a.mip.Lng < 0)
                             {
-                                break;
+                                sb.AppendLine($@"		<Placemark>");
+                                sb.AppendLine($@"			<name>{a.t.TVText}</name>");
+                                if (a.inf.InfrastructureType == (int)InfrastructureTypeEnum.WWTP)
+                                {
+                                    sb.AppendLine($@"			<styleUrl>#msn_placemark_circle</styleUrl>");
+                                }
+                                else if (a.inf.InfrastructureType == (int)InfrastructureTypeEnum.LiftStation)
+                                {
+                                    sb.AppendLine($@"			<styleUrl>#msn_placemark_square</styleUrl>");
+                                }
+                                else if (a.inf.InfrastructureType == (int)InfrastructureTypeEnum.LineOverflow)
+                                {
+                                    sb.AppendLine($@"			<styleUrl>#msn_placemark_square</styleUrl>");
+                                }
+                                sb.AppendLine($@"			<Point>");
+                                sb.AppendLine($@"				<coordinates>{a.mip.Lng},{a.mip.Lat},0</coordinates>");
+                                sb.AppendLine($@"			</Point>");
+                                sb.AppendLine($@"		</Placemark>");
                             }
-                            sb.AppendLine(line);
                         }
-
-                        if (line.StartsWith(@"""Date/Time") && skip == true)
-                        {
-                            skip = false;
-                        }
-
+                        sb.AppendLine($@"	</Folder>");
                     }
-                    //}
-                    sr.Close();
+
                 }
             }
 
-            StreamWriter sw = new StreamWriter(@"C:\___Sam\_StStephenAll.csv");
+            sb.AppendLine($@"</Document>");
+            sb.AppendLine($@"</kml>");
+
+            StreamWriter sw = fi.CreateText();
             sw.Write(sb.ToString());
             sw.Close();
+
+            lblStatus.Text = "done...";
         }
 
         private void butCalculateMWQMSiteVariability_Click(object sender, EventArgs e)
