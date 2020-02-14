@@ -6490,7 +6490,7 @@ namespace ImportByFunction
                                       from mip in db2.MapInfoPoints
                                       from inf in db2.Infrastructures
                                       where c.TVItemID == t.TVItemID
-                                      && t.Language == (int)LanguageEnum.en                                     
+                                      && t.Language == (int)LanguageEnum.en
                                       && c.TVItemID == inf.InfrastructureTVItemID
                                       && c.TVType == (int)TVTypeEnum.Infrastructure
                                       && c.TVItemID == mi.TVItemID
@@ -6498,7 +6498,7 @@ namespace ImportByFunction
                                       && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
                                       && c.TVPath.StartsWith(tvItemModelNB.TVPath + "p")
                                       && mi.TVType != (int)TVTypeEnum.Outfall
-                                      select new {c, t, mi, mip, inf }).ToList();
+                                      select new { c, t, mi, mip, inf }).ToList();
 
                 foreach (TVItemModel tvItemModel in tvItemModelMuniList)
                 {
@@ -16303,155 +16303,6 @@ namespace ImportByFunction
             lblStatus.Text = "done...";
             lblStatus.Refresh();
             Application.DoEvents();
-
-
-            bool a = true;
-            if (a)
-            {
-                return;
-            }
-            /*
-                            if (n22.Name == "name")
-                        {
-                            CurrentSubsector = n22.InnerText;
-                        }
-
-                        if (n22.Name == "Placemark")
-                        {
-                            CurrentGroupingMWQMSitesAndPolSourceSites = "";
-
-                            foreach (XmlNode n2 in n22)
-                            {
-
-                                if (n2.Name == "name")
-                                {
-                                    CurrentGroupingMWQMSitesAndPolSourceSites = n2.InnerText;
-                                }
-
-                                if (n2.Name == "Polygon")
-                                {
-                                    foreach (XmlNode n222 in n2.ChildNodes)
-                                    {
-                                        if (n222.Name == "outerBoundaryIs")
-                                        {
-                                            foreach (XmlNode n2222 in n222.ChildNodes)
-                                            {
-                                                if (n2222.Name == "LinearRing")
-                                                {
-                                                    PolyObj polyObj = new PolyObj();
-
-                                                    polyObj.Subsector = CurrentSubsector;
-                                                    polyObj.Classification = CurrentGroupingMWQMSitesAndPolSourceSites.ToUpper().Trim();
-
-                                                    foreach (XmlNode n3 in n2222.ChildNodes)
-                                                    {
-                                                        if (n3.Name == "coordinates")
-                                                        {
-                                                            string coordText = n3.InnerText.Trim();
-
-                                                            List<string> pointListText = coordText.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
-
-                                                            int ordinal = 0;
-                                                            foreach (string pointText in pointListText)
-                                                            {
-                                                                string pointTxt = pointText.Trim();
-
-                                                                if (!string.IsNullOrWhiteSpace(pointTxt))
-                                                                {
-                                                                    List<string> valListText = pointTxt.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
-
-                                                                    if (valListText.Count != 3)
-                                                                    {
-                                                                        NotUsed = "valListText.Count != 3";
-                                                                        _TaskRunnerBaseService._BWObj.TextLanguageList = _TaskRunnerBaseService.GetTextLanguageList("valListText.Count != 3");
-                                                                        return;
-                                                                    }
-
-                                                                    float Lng = float.Parse(valListText[0]);
-                                                                    float Lat = float.Parse(valListText[1]);
-
-                                                                    Coord coord = new Coord() { Lat = Lat, Lng = Lng, Ordinal = ordinal };
-
-                                                                    polyObj.coordList.Add(coord);
-
-                                                                    ordinal += 1;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                    if (polyObj.coordList.Count > 0)
-                                                    {
-                                                        polyObj.MinLat = polyObj.coordList.Min(c => c.Lat);
-                                                        polyObj.MaxLat = polyObj.coordList.Max(c => c.Lat);
-                                                        polyObj.MinLng = polyObj.coordList.Min(c => c.Lng);
-                                                        polyObj.MaxLng = polyObj.coordList.Max(c => c.Lng);
-                                                    }
-                                                    polyObjList.Add(polyObj);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-             * 
-             */
-
-
-            List<MapInfoPointModel> mapInfoPointModelList = new List<MapInfoPointModel>();
-
-            foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
-            {
-                string subsector = tvItemModelSS.TVText;
-                if (subsector.Contains(" "))
-                {
-                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
-                }
-
-                lblStatus.Text = $"Doing { subsector }";
-                lblStatus.Refresh();
-                Application.DoEvents();
-
-                mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.Subsector, MapInfoDrawTypeEnum.Polygon);
-
-                if (mapInfoPointModelList.Count > 0)
-                {
-                    List<Coord> coordList = new List<Coord>();
-                    int Ordinal = 0;
-                    foreach (MapInfoPointModel mapInfoPointModel in mapInfoPointModelList)
-                    {
-                        coordList.Add(new Coord() { Lat = (float)mapInfoPointModel.Lat, Lng = (float)mapInfoPointModel.Lng, Ordinal = Ordinal });
-                        Ordinal++;
-                    }
-
-                    List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSS.TVItemID, TVTypeEnum.MWQMSite);
-
-                    foreach (TVItemModel tvItemModelMWQMSite in tvItemModelMWQMSiteList)
-                    {
-                        if (subsector == "A-14.3.5E" && tvItemModelMWQMSite.TVText == "0074")
-                        {
-                            int slijfe = 34;
-                        }
-
-                        mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelMWQMSite.TVItemID, TVTypeEnum.MWQMSite, MapInfoDrawTypeEnum.Point);
-
-                        if (mapInfoPointModelList.Count > 0)
-                        {
-                            Coord coord = new Coord() { Lat = (float)mapInfoPointModelList[0].Lat, Lng = (float)mapInfoPointModelList[0].Lng, Ordinal = 0 };
-                            bool InPoly = mapInfoService.CoordInPolygon(coordList, coord);
-
-                            if (!InPoly)
-                            {
-                                sb.AppendLine($"{ subsector }\t{ tvItemModelMWQMSite.TVText }\t{ coord.Lat.ToString("F6") }\t{ coord.Lng.ToString("F6") }");
-                            }
-                        }
-                    }
-                }
-            }
-
-            richTextBoxStatus.Text = sb.ToString();
-
-            lblStatus.Text = "Done...";
         }
 
         private void GetCoordList(List<Coord> coordList, XmlNode node)
@@ -16493,6 +16344,84 @@ namespace ImportByFunction
             {
                 GetCoordList(coordList, n);
             }
+
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+
+            List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMSite);
+            if (tvItemModelMWQMSiteList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem MWQMSite for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+
+            sb.AppendLine($"Subsector\tMWQMSite\tDate\tTemp\tTemp_Count_Bet_1-6\tKeep\tLinks");
+
+            foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
+            {
+                string subsector = tvItemModelSS.TVText;
+                if (subsector.Contains(" "))
+                {
+                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
+                }
+
+                lblStatus.Text = subsector;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                foreach (TVItemModel tvItemModelMWQMSite in tvItemModelMWQMSiteList.Where(c => c.ParentID == tvItemModelSS.TVItemID))
+                {
+                    using (CSSPDBEntities db2 = new CSSPDBEntities())
+                    {
+                        List<MWQMSample> mwqmSampleList = (from c in db2.MWQMSamples
+                                                           where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                           && c.WaterTemp_C == 0
+                                                           select c).ToList();
+
+                        int count = (from c in db2.MWQMSamples
+                                     where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                     && c.WaterTemp_C > 0
+                                     && c.WaterTemp_C < 6
+                                     select c).Count();
+
+                        foreach (MWQMSample mwqmSample in mwqmSampleList)
+                        {
+                            sb.AppendLine($"{subsector}\t{tvItemModelMWQMSite.TVText}\t{mwqmSample.SampleDateTime_Local.ToString("yyyy MM dd")}\t{mwqmSample.WaterTemp_C}\t{count}\tY\t{tvItemModelMWQMSite.TVItemID}");
+                        }
+
+                    }
+
+                }
+            }
+
+            richTextBoxStatus.Text = sb.ToString();
+
+            lblStatus.Text = "Done...";
+            lblStatus.Refresh();
+            Application.DoEvents();
 
         }
 
