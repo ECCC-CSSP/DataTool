@@ -16425,6 +16425,184 @@ namespace ImportByFunction
 
         }
 
+        private void button28_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            InfrastructureService infrastructureService = new InfrastructureService(LanguageEnum.en, user);
+            TVItemLinkService tvItemLinkService = new TVItemLinkService(LanguageEnum.en, user);
+            AddressService addressService = new AddressService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelMuniList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Municipality);
+
+
+            // doing contact
+            sb.AppendLine($"Province\tMunicipality\tContact\tUnder Correct Prov");
+
+            foreach (TVItemModel tvItemModelMuni in tvItemModelMuniList)
+            {
+                lblStatus.Text = tvItemModelMuni.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                List<TVItemLinkModel> tvItemLinkModelList = tvItemLinkService.GetTVItemLinkModelListWithFromTVItemIDDB(tvItemModelMuni.TVItemID);
+
+                foreach (TVItemLinkModel tvItemLinkModel in tvItemLinkModelList)
+                {
+                    if (tvItemLinkModel.ToTVType == TVTypeEnum.Contact)
+                    {
+                        TVItemModel tvItemModelContact = tvItemService.GetTVItemModelWithTVItemIDDB(tvItemLinkModel.ToTVItemID);
+                        if (!string.IsNullOrWhiteSpace(tvItemModelContact.Error))
+                        {
+                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.Error}");
+                        }
+                        else
+                        {
+                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t");
+
+                            List<TVItemLinkModel> tvItemLinkModelList2 = tvItemLinkService.GetTVItemLinkModelListWithFromTVItemIDDB(tvItemLinkModel.ToTVItemID);
+                            foreach (TVItemLinkModel tvItemLinkModel2 in tvItemLinkModelList2)
+                            {
+                                if (tvItemLinkModel2.ToTVType == TVTypeEnum.Address)
+                                {
+                                    TVItemModel tvItemModelAddress = tvItemService.GetTVItemModelWithTVItemIDDB(tvItemLinkModel2.ToTVItemID);
+                                    if (!string.IsNullOrWhiteSpace(tvItemModelAddress.Error))
+                                    {
+                                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelAddress.Error}");
+                                    }
+                                    else
+                                    {
+                                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}");
+
+
+                                        AddressModel addressModel = addressService.GetAddressModelWithAddressTVItemIDDB((int)tvItemModelAddress.TVItemID);
+                                        if (!string.IsNullOrWhiteSpace(addressModel.Error))
+                                        {
+                                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tContactAddressTVItemID exist but can't find address");
+                                        }
+                                        else
+                                        {
+                                            if (addressModel.ProvinceTVItemID == tvItemModelProv.TVItemID)
+                                            {
+                                                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tOK");
+                                            }
+                                            else
+                                            {
+                                                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tNot OK");
+
+                                                string TVTextMuni = addressModel.MunicipalityTVText;
+
+                                                TVItemModel tvItemModelMuniOK = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProv.TVItemID, TVTextMuni, TVTypeEnum.Municipality);
+                                                if (!string.IsNullOrWhiteSpace(tvItemModelMuniOK.Error))
+                                                {
+                                                    sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tCould not find muni [{TVTextMuni}]");
+                                                }
+                                                else
+                                                {
+                                                    //addressModel.ProvinceTVItemID = tvItemModelProv.TVItemID;
+                                                    //addressModel.MunicipalityTVItemID = tvItemModelMuniOK.TVItemID;
+
+                                                    //AddressModel addressModelRet = addressService.PostUpdateAddressDB(addressModel);
+                                                    //if (!string.IsNullOrWhiteSpace(addressModelRet.Error))
+                                                    //{
+                                                    sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tCould not update new address");
+                                                    //}
+                                                }
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // doing infrastructure
+            //sb.AppendLine($"Province\tMunicipality\tInfrastructure\tUnder Correct Prov");
+
+            //foreach (TVItemModel tvItemModelMuni in tvItemModelMuniList)
+            //{
+            //    lblStatus.Text = tvItemModelMuni.TVText;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
+
+            //    List<TVItemModel> tvItemModelInfList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelMuni.TVItemID, TVTypeEnum.Infrastructure);
+
+            //    foreach (TVItemModel tvItemModelInf in tvItemModelInfList)
+            //    {
+            //        InfrastructureModel infrastructureModel = infrastructureService.GetInfrastructureModelWithInfrastructureTVItemIDDB(tvItemModelInf.TVItemID);
+            //        if (!string.IsNullOrWhiteSpace(infrastructureModel.Error))
+            //        {
+            //            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tERROR");
+            //        }
+            //        else
+            //        {
+            //            if (infrastructureModel.CivicAddressTVItemID == null)
+            //            {
+            //                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tNo Address");
+            //            }
+            //            else
+            //            {
+            //                AddressModel addressModel = addressService.GetAddressModelWithAddressTVItemIDDB((int)infrastructureModel.CivicAddressTVItemID);
+            //                if (!string.IsNullOrWhiteSpace(addressModel.Error))
+            //                {
+            //                    sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tCivicAddressTVItemID exist but can't find address");
+            //                }
+            //                else
+            //                {
+            //                    if (addressModel.ProvinceTVItemID == tvItemModelProv.TVItemID)
+            //                    {
+            //                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tOK");
+            //                    }
+            //                    else
+            //                    {
+            //                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tNot OK");
+
+            //                        string TVTextMuni = addressModel.MunicipalityTVText;
+
+            //                        TVItemModel tvItemModelMuniOK = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProv.TVItemID, TVTextMuni, TVTypeEnum.Municipality);
+            //                        if (!string.IsNullOrWhiteSpace(tvItemModelMuniOK.Error))
+            //                        {
+            //                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tCould not find muni [{TVTextMuni}]");
+            //                        }
+            //                        else
+            //                        {
+            //                            //addressModel.ProvinceTVItemID = tvItemModelProv.TVItemID;
+            //                            //addressModel.MunicipalityTVItemID = tvItemModelMuniOK.TVItemID;
+
+            //                            //AddressModel addressModelRet = addressService.PostUpdateAddressDB(addressModel);
+            //                            //if (!string.IsNullOrWhiteSpace(addressModelRet.Error))
+            //                            //{
+            //                                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tCould not update new address");
+            //                            //}
+            //                        }
+
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            richTextBoxStatus.Text = sb.ToString();
+
+            lblStatus.Text = "Done...";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+        }
+
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);

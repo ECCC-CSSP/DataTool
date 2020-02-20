@@ -108,6 +108,7 @@
             this.button24 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -888,11 +889,22 @@
             this.button27.UseVisualStyleBackColor = true;
             this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
+            // button28
+            // 
+            this.button28.Location = new System.Drawing.Point(917, 277);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(75, 23);
+            this.button28.TabIndex = 230;
+            this.button28.Text = "button28";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.button28);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.butSetClassForMWQMSites);
             this.Controls.Add(this.butUpdateClimateSites);
@@ -1058,6 +1070,7 @@
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
     }
 }
 
