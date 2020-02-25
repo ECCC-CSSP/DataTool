@@ -16361,7 +16361,7 @@ namespace ImportByFunction
             TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
             if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
 
-            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Nova Scotia", TVTypeEnum.Province);
             if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
 
             List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
@@ -16378,7 +16378,7 @@ namespace ImportByFunction
                 return;
             }
 
-            sb.AppendLine($"Subsector\tMWQMSite\tDate\tTemp\tTemp_Count_Bet_1-6\tKeep\tLinks");
+            sb.AppendLine($"Subsector\tMWQMSite\tSiteLink\tDate\tRunLink\tSal\tKeep\tAllSalValueForSiteOrderByDate");
 
             foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
             {
@@ -16398,18 +16398,25 @@ namespace ImportByFunction
                     {
                         List<MWQMSample> mwqmSampleList = (from c in db2.MWQMSamples
                                                            where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                                           && c.WaterTemp_C == 0
+                                                           && c.Salinity_PPT == 0
                                                            select c).ToList();
 
-                        int count = (from c in db2.MWQMSamples
-                                     where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
-                                     && c.WaterTemp_C > 0
-                                     && c.WaterTemp_C < 6
-                                     select c).Count();
+                        List<MWQMSample> mwqmSampleList2 = (from c in db2.MWQMSamples
+                                                            where c.MWQMSiteTVItemID == tvItemModelMWQMSite.TVItemID
+                                                            orderby c.SampleDateTime_Local
+                                                            select c).ToList();
+
+                        StringBuilder sbSalValues = new StringBuilder();
+                        foreach (MWQMSample mwqmSample in mwqmSampleList2)
+                        {
+                            string salText = mwqmSample.Salinity_PPT == null ? "" : ((float)mwqmSample.Salinity_PPT).ToString("F1");
+                            sbSalValues.Append($"{salText}|");
+                        }
+
 
                         foreach (MWQMSample mwqmSample in mwqmSampleList)
                         {
-                            sb.AppendLine($"{subsector}\t{tvItemModelMWQMSite.TVText}\t{mwqmSample.SampleDateTime_Local.ToString("yyyy MM dd")}\t{mwqmSample.WaterTemp_C}\t{count}\tY\t{tvItemModelMWQMSite.TVItemID}");
+                            sb.AppendLine($"{subsector}\t{tvItemModelMWQMSite.TVText}\t{tvItemModelMWQMSite.TVItemID}\t{mwqmSample.SampleDateTime_Local.ToString("yyyy MM dd")}\t{mwqmSample.MWQMRunTVItemID}\t{mwqmSample.Salinity_PPT}\tY\t{sbSalValues.ToString()}");
                         }
 
                     }
@@ -16427,6 +16434,8 @@ namespace ImportByFunction
 
         private void button28_Click(object sender, EventArgs e)
         {
+            return;
+
             StringBuilder sb = new StringBuilder();
 
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -16601,6 +16610,104 @@ namespace ImportByFunction
             lblStatus.Refresh();
             Application.DoEvents();
 
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "New Brunswick", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+
+            List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMSite);
+
+            //List<TVItemModel> tvItemModelMWQMRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMRun);
+
+            FileInfo fi = new FileInfo(@"C:\Users\leblancc\Desktop\NB_Sample_Temp_To_NULL.txt");
+            StreamReader sr = fi.OpenText();
+
+            string line = sr.ReadLine();
+            int count = 0;
+            while (!sr.EndOfStream)
+            {
+                count++;
+                line = sr.ReadLine();
+
+                lblStatus.Text = count + " ----- " + line;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                List<string> strList = line.Split("\t".ToCharArray(), StringSplitOptions.None).ToList();
+
+                if (strList.Count != 7)
+                {
+                    richTextBoxStatus.AppendText($"Error: Line [{count}]. Does not have 7 items");
+                    sr.Close();
+                    return;
+                }
+
+                string subsector = strList[0];
+                string site = "0000".Substring(0, "0000".Length - strList[1].Length) + strList[1];
+                DateTime date = new DateTime(int.Parse(strList[2].Substring(0, 4)), int.Parse(strList[2].Substring(5, 2)), int.Parse(strList[2].Substring(8, 2)));
+                int SiteTVItemID = int.Parse(strList[6]);
+
+                TVItemModel tvItemModelSS = tvItemModelSSList.Where(c => c.TVText.StartsWith(subsector)).FirstOrDefault();
+
+                if (tvItemModelSS == null)
+                {
+                    richTextBoxStatus.AppendText($"Error: Line [{count}]. Could not find subsector [{subsector}]");
+                    sr.Close();
+                    return;
+                }
+
+                TVItemModel tvItemModelMWQMSite = (from c in tvItemModelMWQMSiteList
+                                                   where c.TVItemID == SiteTVItemID
+                                                   select c).FirstOrDefault();
+
+                if (tvItemModelMWQMSite == null)
+                {
+                    richTextBoxStatus.AppendText($"Error: Line [{count}]. Could not find site [{site}] under subsector [{subsector}]");
+                    sr.Close();
+                    return;
+                }
+
+                List<MWQMSampleModel> mwqmSampleModelList = mwqmSampleService.GetMWQMSampleModelListWithMWQMSiteTVItemIDDB(tvItemModelMWQMSite.TVItemID);
+
+                MWQMSampleModel mwqmSampleModel = (from c in mwqmSampleModelList
+                                                   where c.SampleDateTime_Local.Year == date.Year
+                                                   && c.SampleDateTime_Local.Month == date.Month
+                                                   && c.SampleDateTime_Local.Day == date.Day
+                                                   && c.WaterTemp_C == 0
+                                                   select c).FirstOrDefault();
+
+                if (mwqmSampleModel != null)
+                {
+                    mwqmSampleModel.WaterTemp_C = null;
+
+                    MWQMSampleModel mwqmSampleModelRet = mwqmSampleService.PostUpdateMWQMSampleDB(mwqmSampleModel);
+                    if (!string.IsNullOrWhiteSpace(mwqmSampleModelRet.Error))
+                    {
+                        richTextBoxStatus.AppendText($"Error: Line [{count}]. Could not Update temp to null for site [{site}] and date [{date.ToString("yyyy MM dd")}] under subsector [{subsector}]");
+                        sr.Close();
+                        return;
+                    }
+
+                }
+            }
+
+            sr.Close();
         }
 
         //private void button18_Click(object sender, EventArgs e)
