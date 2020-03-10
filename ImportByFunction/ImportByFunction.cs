@@ -16710,36 +16710,6 @@ namespace ImportByFunction
             sr.Close();
         }
 
-        private void button30_Click(object sender, EventArgs e)
-        {
-                ReportSectionService reportSectionService = new ReportSectionService(LanguageEnum.en, user);
-
-            using (CSSPDBEntities db2 = new CSSPDBEntities())
-            {
-                List<ReportSection> reportSectionList = (from c in db2.ReportSections
-                                                       where c.Language == (int)LanguageEnum.fr
-                                                       select c).ToList();
-
-                foreach(ReportSection reportSection in reportSectionList)
-                {
-                    reportSection.ReportSectionName = "(fr) " + reportSection.ReportSectionName;
-                    reportSection.ReportSectionText = "(fr)<br /> " + reportSection.ReportSectionText;
-
-                    try
-                    {
-                        db2.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-                        int slefj = 34;
-                    }
-
-                }
-
-            }
-        }
-
-
 
         //private void button18_Click(object sender, EventArgs e)
         //{
