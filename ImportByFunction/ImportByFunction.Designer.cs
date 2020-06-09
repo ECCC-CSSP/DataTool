@@ -110,6 +110,11 @@
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
+            this.butCreateCSVOfMWQMSites = new System.Windows.Forms.Button();
+            this.butCreateCSVOfMWQMSamples = new System.Windows.Forms.Button();
+            this.butCreateCSVOfMWQMRuns = new System.Windows.Forms.Button();
+            this.butCreateKMZOfMWQMSites = new System.Windows.Forms.Button();
+            this.butCleanRunDuplicates = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -782,7 +787,7 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(439, 32);
+            this.button18.Location = new System.Drawing.Point(460, 12);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(258, 23);
             this.button18.TabIndex = 224;
@@ -910,6 +915,56 @@
             this.button29.UseVisualStyleBackColor = true;
             this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
+            // butCreateCSVOfMWQMSites
+            // 
+            this.butCreateCSVOfMWQMSites.Location = new System.Drawing.Point(12, 43);
+            this.butCreateCSVOfMWQMSites.Name = "butCreateCSVOfMWQMSites";
+            this.butCreateCSVOfMWQMSites.Size = new System.Drawing.Size(168, 23);
+            this.butCreateCSVOfMWQMSites.TabIndex = 209;
+            this.butCreateCSVOfMWQMSites.Text = "CreateCSVOfMWQMSites";
+            this.butCreateCSVOfMWQMSites.UseVisualStyleBackColor = true;
+            this.butCreateCSVOfMWQMSites.Click += new System.EventHandler(this.butCreateCSVOfMWQMSites_Click);
+            // 
+            // butCreateCSVOfMWQMSamples
+            // 
+            this.butCreateCSVOfMWQMSamples.Location = new System.Drawing.Point(189, 42);
+            this.butCreateCSVOfMWQMSamples.Name = "butCreateCSVOfMWQMSamples";
+            this.butCreateCSVOfMWQMSamples.Size = new System.Drawing.Size(168, 23);
+            this.butCreateCSVOfMWQMSamples.TabIndex = 209;
+            this.butCreateCSVOfMWQMSamples.Text = "CreateCSVOfMWQMSamples";
+            this.butCreateCSVOfMWQMSamples.UseVisualStyleBackColor = true;
+            this.butCreateCSVOfMWQMSamples.Click += new System.EventHandler(this.butCreateCSVOfMWQMSamples_Click);
+            // 
+            // butCreateCSVOfMWQMRuns
+            // 
+            this.butCreateCSVOfMWQMRuns.Location = new System.Drawing.Point(15, 72);
+            this.butCreateCSVOfMWQMRuns.Name = "butCreateCSVOfMWQMRuns";
+            this.butCreateCSVOfMWQMRuns.Size = new System.Drawing.Size(168, 23);
+            this.butCreateCSVOfMWQMRuns.TabIndex = 209;
+            this.butCreateCSVOfMWQMRuns.Text = "CreateCSVOfMWQMRuns";
+            this.butCreateCSVOfMWQMRuns.UseVisualStyleBackColor = true;
+            this.butCreateCSVOfMWQMRuns.Click += new System.EventHandler(this.butCreateCSVOfMWQMRuns_Click);
+            // 
+            // butCreateKMZOfMWQMSites
+            // 
+            this.butCreateKMZOfMWQMSites.Location = new System.Drawing.Point(189, 71);
+            this.butCreateKMZOfMWQMSites.Name = "butCreateKMZOfMWQMSites";
+            this.butCreateKMZOfMWQMSites.Size = new System.Drawing.Size(168, 23);
+            this.butCreateKMZOfMWQMSites.TabIndex = 209;
+            this.butCreateKMZOfMWQMSites.Text = "CreateKMZOfMWQMSites";
+            this.butCreateKMZOfMWQMSites.UseVisualStyleBackColor = true;
+            this.butCreateKMZOfMWQMSites.Click += new System.EventHandler(this.butCreateKMZOfMWQMSites_Click);
+            // 
+            // butCleanRunDuplicates
+            // 
+            this.butCleanRunDuplicates.Location = new System.Drawing.Point(401, 66);
+            this.butCleanRunDuplicates.Name = "butCleanRunDuplicates";
+            this.butCleanRunDuplicates.Size = new System.Drawing.Size(168, 23);
+            this.butCleanRunDuplicates.TabIndex = 209;
+            this.butCleanRunDuplicates.Text = "CleanRunDuplicates";
+            this.butCleanRunDuplicates.UseVisualStyleBackColor = true;
+            this.butCleanRunDuplicates.Click += new System.EventHandler(this.butCleanRunDuplicates_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -942,6 +997,11 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.butCreateKMZOfMWQMSites);
+            this.Controls.Add(this.butCleanRunDuplicates);
+            this.Controls.Add(this.butCreateCSVOfMWQMRuns);
+            this.Controls.Add(this.butCreateCSVOfMWQMSamples);
+            this.Controls.Add(this.butCreateCSVOfMWQMSites);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button43);
             this.Controls.Add(this.button41);
@@ -1084,6 +1144,11 @@
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button butCreateCSVOfMWQMSites;
+        private System.Windows.Forms.Button butCreateCSVOfMWQMSamples;
+        private System.Windows.Forms.Button butCreateCSVOfMWQMRuns;
+        private System.Windows.Forms.Button butCreateKMZOfMWQMSites;
+        private System.Windows.Forms.Button butCleanRunDuplicates;
     }
 }
 

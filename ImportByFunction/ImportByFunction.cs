@@ -16710,6 +16710,707 @@ namespace ImportByFunction
             sr.Close();
         }
 
+        private void butCreateCSVOfMWQMSites_Click(object sender, EventArgs e)
+        {
+            CreateCSVOfMWQMSites();
+        }
+
+        private void butCreateCSVOfMWQMSamples_Click(object sender, EventArgs e)
+        {
+            CreateCSVOfMWQMSamples();
+        }
+
+        private void butCreateCSVOfMWQMRuns_Click(object sender, EventArgs e)
+        {
+            CreateCSVOfMWQMRuns();
+        }
+
+        private void butCreateKMZOfMWQMSites_Click(object sender, EventArgs e)
+        {
+            CreateKMZOfMWQMSites();
+        }
+
+        public void CreateCSVOfMWQMSites()
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            string ProvInit = "";
+            List<string> ProvInitList = new List<string>()
+            {
+                "BC", "NB", "NL", "NS", "PE", "QC",
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "British Columbia", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            };
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrEmpty(tvItemModelRoot.Error))
+            {
+                return;
+            }
+
+            foreach (string prov in ProvList)
+            {
+
+                TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, prov, TVTypeEnum.Province);
+                for (int i = 0, countProv = ProvList.Count; i < countProv; i++)
+                {
+                    if (ProvList[i] == tvItemModelProv.TVText)
+                    {
+                        ProvInit = ProvInitList[i];
+                        break;
+                    }
+                }
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.AppendLine("Province,SectorID,Sector,SiteID,Site,Latitude,Longitude");
+
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    var tvItemSSList = (from t in db.TVItems
+                                        from tl in db.TVItemLanguages
+                                        where t.TVItemID == tl.TVItemID
+                                        && tl.Language == (int)LanguageEnum.en
+                                        && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                        && t.TVType == (int)TVTypeEnum.Subsector
+                                        orderby tl.TVText
+                                        select new { t, tl }).ToList();
+
+                    var MonitoringSiteList = (from t in db.TVItems
+                                              from tl in db.TVItemLanguages
+                                              from mi in db.MapInfos
+                                              from mip in db.MapInfoPoints
+                                              let hasSample = (from c in db.MWQMSamples
+                                                               where c.MWQMSiteTVItemID == t.TVItemID
+                                                               && c.UseForOpenData == true
+                                                               select c).Any()
+                                              where t.TVItemID == tl.TVItemID
+                                              && mi.TVItemID == t.TVItemID
+                                              && mip.MapInfoID == mi.MapInfoID
+                                              && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                              && t.TVType == (int)TVTypeEnum.MWQMSite
+                                              && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                              && mi.TVType == (int)TVTypeEnum.MWQMSite
+                                              && hasSample == true
+                                              && tl.Language == (int)LanguageEnum.en
+                                              select new { t, tl, mip, hasSample }).ToList();
+
+
+                    int TotalCount2 = tvItemSSList.Count;
+                    foreach (var tvItemSS in tvItemSSList.OrderBy(c => c.tl.TVText))
+                    {
+                        string SubsectorID = tvItemSS.t.TVItemID.ToString();
+                        string Subsector = tvItemSS.tl.TVText;
+                        if (Subsector.Contains(" "))
+                        {
+                            Subsector = Subsector.Substring(0, Subsector.IndexOf(" "));
+                        }
+
+                        lblStatus.Text = Subsector;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        foreach (var mwqmSite in MonitoringSiteList.Where(c => c.t.ParentID == tvItemSS.t.TVItemID).OrderBy(c => c.tl.TVText))
+                        {
+                            string SiteID = mwqmSite.t.TVItemID.ToString();
+                            string MN = mwqmSite.tl.TVText;
+                            string Lat = (mwqmSite.mip != null ? mwqmSite.mip.Lat.ToString("F6") : "");
+                            string Lng = (mwqmSite.mip != null ? mwqmSite.mip.Lng.ToString("F6") : "");
+                            sb.AppendLine($"{ProvInit},{SubsectorID},{Subsector},{SiteID},{ProvInit}_{MN},{Lat.Replace(",", ".")},{Lng.Replace(",", ".")}");
+                        }
+                    }
+                }
+
+                FileInfo fi = new FileInfo(@"C:\CSSP\ASEC_DATA\Sites_" + ProvInit + ".csv");
+
+                using (StreamWriter sw = fi.CreateText())
+                {
+                    sw.WriteLine(sb.ToString());
+                    sw.Close();
+                }
+
+                lblStatus.Text = "done ... " + ProvInit;
+            }
+
+        }
+
+        public void CreateCSVOfMWQMSamples()
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            string ProvInit = "";
+            List<string> ProvInitList = new List<string>()
+            {
+                "BC", "NB", "NL", "NS", "PE", "QC",
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "British Columbia", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            };
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrEmpty(tvItemModelRoot.Error))
+            {
+                return;
+            }
+
+            foreach (string prov in ProvList)
+            {
+
+                TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, prov, TVTypeEnum.Province);
+                for (int i = 0, countProv = ProvList.Count; i < countProv; i++)
+                {
+                    if (ProvList[i] == tvItemModelProv.TVText)
+                    {
+                        ProvInit = ProvInitList[i];
+                        break;
+                    }
+                }
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.AppendLine("Province,RunID,SectorID,Sector,SiteID,Site,Date,FC_MPN_100_mL,Temp_C,Sal_PPT,Depth_m");
+
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    var tvItemSSList = (from t in db.TVItems
+                                        from tl in db.TVItemLanguages
+                                        where t.TVItemID == tl.TVItemID
+                                        && tl.Language == (int)LanguageEnum.en
+                                        && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                        && t.TVType == (int)TVTypeEnum.Subsector
+                                        orderby tl.TVText
+                                        select new { t, tl }).ToList();
+
+                    var MonitoringSiteList = (from t in db.TVItems
+                                              from tl in db.TVItemLanguages
+                                              let hasSample = (from c in db.MWQMSamples
+                                                               where c.MWQMSiteTVItemID == t.TVItemID
+                                                               && c.UseForOpenData == true
+                                                               select c).Any()
+                                              where t.TVItemID == tl.TVItemID
+                                              && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                              && t.TVType == (int)TVTypeEnum.MWQMSite
+                                              && hasSample == true
+                                              && tl.Language == (int)LanguageEnum.en
+                                              select new { t, tl, hasSample }).ToList();
+
+                    int TotalCount2 = tvItemSSList.Count;
+                    foreach (var tvItemSS in tvItemSSList.OrderBy(c => c.tl.TVText))
+                    {
+                        string SubsectorID = tvItemSS.t.TVItemID.ToString();
+                        string Subsector = tvItemSS.tl.TVText;
+                        if (Subsector.Contains(" "))
+                        {
+                            Subsector = Subsector.Substring(0, Subsector.IndexOf(" "));
+                        }
+
+                        lblStatus.Text = Subsector;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        foreach (var mwqmSite in MonitoringSiteList.Where(c => c.t.ParentID == tvItemSS.t.TVItemID).OrderBy(c => c.tl.TVText))
+                        {
+                            string SiteID = mwqmSite.t.TVItemID.ToString();
+                            string MN = mwqmSite.tl.TVText;
+                            using (CSSPDBEntities db2 = new CSSPDBEntities())
+                            {
+                                List<MWQMSample> sampleList = (from c in db2.MWQMSamples
+                                                               where c.MWQMSiteTVItemID == mwqmSite.t.TVItemID
+                                                               && c.UseForOpenData == true
+                                                               orderby c.SampleDateTime_Local ascending
+                                                               select c).ToList();
+
+                                foreach (MWQMSample mwqmSample in sampleList)
+                                {
+                                    string RunID = mwqmSample.MWQMRunTVItemID.ToString();
+                                    DateTime Date_Local = mwqmSample.SampleDateTime_Local;
+                                    string Date_Local_Text = Date_Local.ToString("yyyy-MM-dd HH:mm:ss");
+
+                                    string FC = mwqmSample.FecCol_MPN_100ml < 2 ? "1.9" : mwqmSample.FecCol_MPN_100ml.ToString().Replace(",", ".");
+                                    string Temp = mwqmSample.WaterTemp_C != null ? ((double)mwqmSample.WaterTemp_C).ToString("F1").Replace(",", ".") : "";
+                                    string Sal = mwqmSample.Salinity_PPT != null ? ((double)mwqmSample.Salinity_PPT).ToString("F1").Replace(",", ".") : "";
+                                    string pH = mwqmSample.PH != null ? ((double)mwqmSample.PH).ToString("F1").Replace(",", ".") : "";
+                                    string Depth = mwqmSample.Depth_m != null ? ((double)mwqmSample.Depth_m).ToString("F3").Replace(",", ".") : "";
+                                    sb.AppendLine($"{ProvInit},{RunID},{SubsectorID},{Subsector},{SiteID},{ProvInit}_{MN},{Date_Local_Text},{FC},{Temp},{Sal},{Depth}");
+                                }
+                            }
+                        }
+                    }
+                }
+
+                FileInfo fi = new FileInfo(@"C:\CSSP\ASEC_DATA\Samples_" + ProvInit + ".csv");
+
+                using (StreamWriter sw = fi.CreateText())
+                {
+                    sw.WriteLine(sb.ToString());
+                    sw.Close();
+                }
+
+                lblStatus.Text = "done ... " + ProvInit;
+            }
+        }
+
+        public void CreateCSVOfMWQMRuns()
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            string ProvInit = "";
+            List<string> ProvInitList = new List<string>()
+            {
+                "BC", "NB", "NL", "NS", "PE", "QC",
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "British Columbia", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            };
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrEmpty(tvItemModelRoot.Error))
+            {
+                return;
+            }
+
+            foreach (string prov in ProvList)
+            {
+
+                TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, prov, TVTypeEnum.Province);
+                for (int i = 0, countProv = ProvList.Count; i < countProv; i++)
+                {
+                    if (ProvList[i] == tvItemModelProv.TVText)
+                    {
+                        ProvInit = ProvInitList[i];
+                        break;
+                    }
+                }
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.AppendLine("Province,RunID,SectorID,Sector,Date,RainDay0_mm,RainDay1_mm,RainDay2_mm,RainDay3_mm,RainDay4_mm,RainDay5_mm,RainDay6_mm,RainDay7_mm,RainDay8_mm,RainDay9_mm,RainDay10_mm");
+
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    var tvItemSSList = (from t in db.TVItems
+                                        from tl in db.TVItemLanguages
+                                        where t.TVItemID == tl.TVItemID
+                                        && tl.Language == (int)LanguageEnum.en
+                                        && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                        && t.TVType == (int)TVTypeEnum.Subsector
+                                        orderby tl.TVText
+                                        select new { t, tl }).ToList();
+
+                    var RunList = (from t in db.TVItems
+                                    from tl in db.TVItemLanguages
+                                    from r in db.MWQMRuns
+                                    where t.TVItemID == tl.TVItemID
+                                    && t.TVItemID == r.MWQMRunTVItemID
+                                    && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                    && t.TVType == (int)TVTypeEnum.MWQMRun
+                                    && tl.Language == (int)LanguageEnum.en
+                                    select new { t, tl, r }).ToList();
+
+                    int TotalCount2 = tvItemSSList.Count;
+                    foreach (var tvItemSS in tvItemSSList.OrderBy(c => c.tl.TVText))
+                    {
+                        string SubsectorID = tvItemSS.tl.TVItemID.ToString();
+                        string Subsector = tvItemSS.tl.TVText;
+                        if (Subsector.Contains(" "))
+                        {
+                            Subsector = Subsector.Substring(0, Subsector.IndexOf(" "));
+                        }
+
+                        lblStatus.Text = Subsector;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        foreach (var run in RunList.Where(c => c.t.ParentID == tvItemSS.t.TVItemID).OrderBy(c => c.r.DateTime_Local))
+                        {
+                            string RunID = run.r.MWQMRunTVItemID.ToString();
+                            DateTime Date_Local = run.r.DateTime_Local;
+                            string Date_Local_Text = Date_Local.ToString("yyyy-MM-dd");
+                            string RainDay0_mmText = run.r.RainDay0_mm != null ? ((float)run.r.RainDay0_mm).ToString("F1") : "";
+                            string RainDay1_mmText = run.r.RainDay1_mm != null ? ((float)run.r.RainDay1_mm).ToString("F1") : "";
+                            string RainDay2_mmText = run.r.RainDay2_mm != null ? ((float)run.r.RainDay2_mm).ToString("F1") : "";
+                            string RainDay3_mmText = run.r.RainDay3_mm != null ? ((float)run.r.RainDay3_mm).ToString("F1") : "";
+                            string RainDay4_mmText = run.r.RainDay4_mm != null ? ((float)run.r.RainDay4_mm).ToString("F1") : "";
+                            string RainDay5_mmText = run.r.RainDay5_mm != null ? ((float)run.r.RainDay5_mm).ToString("F1") : "";
+                            string RainDay6_mmText = run.r.RainDay6_mm != null ? ((float)run.r.RainDay6_mm).ToString("F1") : "";
+                            string RainDay7_mmText = run.r.RainDay7_mm != null ? ((float)run.r.RainDay7_mm).ToString("F1") : "";
+                            string RainDay8_mmText = run.r.RainDay8_mm != null ? ((float)run.r.RainDay8_mm).ToString("F1") : "";
+                            string RainDay9_mmText = run.r.RainDay9_mm != null ? ((float)run.r.RainDay9_mm).ToString("F1") : "";
+                            string RainDay10_mmText = run.r.RainDay10_mm != null ? ((float)run.r.RainDay10_mm).ToString("F1") : "";
+
+                            sb.AppendLine($"{ProvInit},{RunID},{SubsectorID},{Subsector},{Date_Local_Text},{RainDay0_mmText},{RainDay1_mmText},{RainDay2_mmText},{RainDay3_mmText},{RainDay4_mmText},{RainDay5_mmText},{RainDay6_mmText},{RainDay7_mmText},{RainDay8_mmText},{RainDay9_mmText},{RainDay10_mmText}");
+                        }
+                    }
+                }
+
+                FileInfo fi = new FileInfo(@"C:\CSSP\ASEC_DATA\Runs_" + ProvInit + ".csv");
+
+                using (StreamWriter sw = fi.CreateText())
+                {
+                    sw.WriteLine(sb.ToString());
+                    sw.Close();
+                }
+
+                lblStatus.Text = "done ... " + ProvInit;
+
+            }
+        }
+
+        public void CreateKMZOfMWQMSites()
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            string ProvInit = "";
+            List<string> ProvInitList = new List<string>()
+            {
+                "BC", "NB", "NL", "NS", "PE", "QC",
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "British Columbia", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            };
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrEmpty(tvItemModelRoot.Error))
+            {
+                return;
+            }
+
+            foreach (string prov in ProvList)
+            {
+
+                TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, prov, TVTypeEnum.Province);
+
+                for (int i = 0, countProv = ProvList.Count; i < countProv; i++)
+                {
+                    if (ProvList[i] == tvItemModelProv.TVText)
+                    {
+                        ProvInit = ProvInitList[i];
+                        break;
+                    }
+                }
+
+                FileInfo fi = new FileInfo(@"C:\CSSP\ASEC_DATA\SectorSites_" + ProvInit + ".kml");
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.AppendLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+                sb.AppendLine(@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+                sb.AppendLine(@"<Document>");
+                sb.AppendLine(@"	<name>" + fi.Name + "</name>");
+
+                sb.AppendLine(@"<StyleMap id=""m_ylw-pushpin"">");
+                sb.AppendLine(@"	<Pair>");
+                sb.AppendLine(@"		<key>normal</key>");
+                sb.AppendLine(@"		<styleUrl>#s_ylw-pushpin</styleUrl>");
+                sb.AppendLine(@"	</Pair>");
+                sb.AppendLine(@"	<Pair>");
+                sb.AppendLine(@"		<key>highlight</key>");
+                sb.AppendLine(@"		<styleUrl>#s_ylw-pushpin_hl</styleUrl>");
+                sb.AppendLine(@"	</Pair>");
+                sb.AppendLine(@"</StyleMap>");
+                sb.AppendLine(@"<Style id=""s_ylw-pushpin"">");
+                sb.AppendLine(@"	<IconStyle>");
+                sb.AppendLine(@"		<color>ff00ff00</color>");
+                sb.AppendLine(@"		<scale>0.8</scale>");
+                sb.AppendLine(@"		<Icon>");
+                sb.AppendLine(@"			<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>");
+                sb.AppendLine(@"		</Icon>");
+                sb.AppendLine(@"	</IconStyle>");
+                sb.AppendLine(@"	<LabelStyle>");
+                sb.AppendLine(@"		<scale>0.8</scale>");
+                sb.AppendLine(@"	</LabelStyle>");
+                sb.AppendLine(@"	<LineStyle>");
+                sb.AppendLine(@"		<color>ff00ff00</color>");
+                sb.AppendLine(@"		<width>2</width>");
+                sb.AppendLine(@"	</LineStyle>");
+                sb.AppendLine(@"	<PolyStyle>");
+                sb.AppendLine(@"		<color>00ffffff</color>");
+                sb.AppendLine(@"	</PolyStyle>");
+                sb.AppendLine(@"</Style>");
+                sb.AppendLine(@"<Style id=""s_ylw-pushpin_hl"">");
+                sb.AppendLine(@"	<IconStyle>");
+                sb.AppendLine(@"		<color>ff00ff00</color>");
+                sb.AppendLine(@"		<scale>0.8</scale>");
+                sb.AppendLine(@"		<Icon>");
+                sb.AppendLine(@"			<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>");
+                sb.AppendLine(@"		</Icon>");
+                sb.AppendLine(@"	</IconStyle>");
+                sb.AppendLine(@"	<LabelStyle>");
+                sb.AppendLine(@"		<scale>0.8</scale>");
+                sb.AppendLine(@"	</LabelStyle>");
+                sb.AppendLine(@"	<LineStyle>");
+                sb.AppendLine(@"		<color>ff00ff00</color>");
+                sb.AppendLine(@"		<width>2</width>");
+                sb.AppendLine(@"	</LineStyle>");
+                sb.AppendLine(@"	<PolyStyle>");
+                sb.AppendLine(@"		<color>00ffffff</color>");
+                sb.AppendLine(@"	</PolyStyle>");
+                sb.AppendLine(@"</Style>");
+
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    var tvItemSSList = (from t in db.TVItems
+                                        from tl in db.TVItemLanguages
+                                        let mip = (from mi in db.MapInfos
+                                                   from mip in db.MapInfoPoints
+                                                   orderby mip.Ordinal ascending
+                                                   where mi.TVItemID == t.TVItemID
+                                                   && mi.MapInfoID == mip.MapInfoID
+                                                   && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Polygon
+                                                   && mi.TVType == (int)TVTypeEnum.Subsector
+                                                   select mip).ToList()
+                                        where t.TVItemID == tl.TVItemID
+                                        && tl.Language == (int)LanguageEnum.en
+                                        && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                        && t.TVType == (int)TVTypeEnum.Subsector
+                                        orderby tl.TVText
+                                        select new { t, mip, tl }).ToList();
+
+                    var MonitoringSiteList = (from t in db.TVItems
+                                              from tl in db.TVItemLanguages
+                                              from mi in db.MapInfos
+                                              from mip in db.MapInfoPoints
+                                              let hasSample = (from c in db.MWQMSamples
+                                                               where c.MWQMSiteTVItemID == t.TVItemID
+                                                               && c.UseForOpenData == true
+                                                               select c).Any()
+                                              where t.TVItemID == tl.TVItemID
+                                              && mi.TVItemID == t.TVItemID
+                                              && mip.MapInfoID == mi.MapInfoID
+                                              && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                              && t.TVType == (int)TVTypeEnum.MWQMSite
+                                              && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                              && mi.TVType == (int)TVTypeEnum.MWQMSite
+                                              && hasSample == true
+                                              && tl.Language == (int)LanguageEnum.en
+                                              select new { t, tl, mip, hasSample }).ToList();
+
+
+                    int TotalCount2 = tvItemSSList.Count;
+                    int Count2 = 0;
+                    foreach (var tvItemSS in tvItemSSList.OrderBy(c => c.tl.TVText))
+                    {
+                        string SubsectorID = tvItemSS.tl.TVItemID.ToString();
+                        string Subsector = tvItemSS.tl.TVText;
+                        if (Subsector.Contains(" "))
+                        {
+                            Subsector = Subsector.Substring(0, Subsector.IndexOf(" "));
+                        }
+
+                        lblStatus.Text = Subsector;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        bool HasSample = false;
+                        foreach (var mwqmSite in MonitoringSiteList.Where(c => c.t.ParentID == tvItemSS.t.TVItemID))
+                        {
+                            if (mwqmSite.hasSample)
+                            {
+                                HasSample = true;
+                                break;
+                            }
+                        }
+
+                        string More = "";
+                        if (HasSample)
+                        {
+                            More = " (+)";
+                        }
+
+                        sb.AppendLine(@"	<Folder>");
+                        sb.AppendLine($@"		<name>{Subsector}{More}</name>");
+                        sb.AppendLine($@"		<visibility>0</visibility>");
+
+                        Count2 += 1;
+
+                        if (tvItemSS.mip.Count > 0)
+                        {
+
+                            sb.AppendLine(@"	    <Placemark>");
+                            sb.AppendLine($@"	    	<name>{Subsector}</name>");
+                            sb.AppendLine($@"	    	<visibility>0</visibility>");
+                            sb.AppendLine(@"	    	<styleUrl>#m_ylw-pushpin</styleUrl>");
+                            sb.AppendLine(@"	    	<Polygon>");
+                            sb.AppendLine(@"	    	    <outerBoundaryIs>");
+                            sb.AppendLine(@"	    	        <LinearRing>");
+                            sb.AppendLine($@"	    		        <coordinates>");
+                            foreach (MapInfoPoint mipm in tvItemSS.mip)
+                            {
+                                sb.AppendLine($@"{mipm.Lng},{mipm.Lat},0 ");
+                            }
+                            sb.AppendLine($@"{tvItemSS.mip[0].Lng},{tvItemSS.mip[0].Lat},0 ");
+
+                            sb.AppendLine($@"	    		        </coordinates>");
+                            sb.AppendLine(@"	    	        </LinearRing>");
+                            sb.AppendLine(@"	    	    </outerBoundaryIs>");
+                            sb.AppendLine(@"	    	</Polygon>");
+                            sb.AppendLine(@"	    </Placemark>");
+
+                        }
+
+                        foreach (var mwqmSite in MonitoringSiteList.Where(c => c.t.ParentID == tvItemSS.t.TVItemID).OrderBy(c => c.tl.TVText))
+                        {
+                            string TVText = mwqmSite.tl.TVText;
+                            //string MS = mwqmSite.t.TVItemID.ToString();
+                            string Lat = mwqmSite.mip != null ? mwqmSite.mip.Lat.ToString("F6").Replace(",", ".") : "";
+                            string Lng = mwqmSite.mip != null ? mwqmSite.mip.Lng.ToString("F6").Replace(",", ".") : "";
+
+                            sb.AppendLine(@"	    <Placemark>");
+                            sb.AppendLine($@"	    	<name>{ProvInit}_{TVText} - [{mwqmSite.t.TVItemID}]</name>");
+                            sb.AppendLine($@"	    	<visibility>0</visibility>");
+                            sb.AppendLine(@"	    	<styleUrl>#m_ylw-pushpin</styleUrl>");
+                            sb.AppendLine(@"	    	<Point>");
+                            sb.AppendLine($@"	    		<coordinates>{Lng},{Lat},0</coordinates>");
+                            sb.AppendLine(@"	    	</Point>");
+                            sb.AppendLine(@"	    </Placemark>");
+                        }
+
+                        sb.AppendLine(@"	</Folder>");
+                    }
+                }
+
+                sb.AppendLine(@"</Document>");
+                sb.AppendLine(@"</kml>");
+
+//                FileInfo fi = new FileInfo(@"C:\CSSP\ASEC_DATA\SubsectorSites_" + ProvInit + ".csv");
+
+                using (StreamWriter sw = fi.CreateText())
+                {
+                    sw.WriteLine(sb.ToString());
+                    sw.Close();
+                }
+
+                lblStatus.Text = "done ... " + ProvInit;
+
+
+            }
+        }
+
+        private void butCleanRunDuplicates_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            string ProvInit = "";
+            List<string> ProvInitList = new List<string>()
+            {
+                "BC", "NB", "NL", "NS", "PE", "QC",
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "British Columbia", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            };
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrEmpty(tvItemModelRoot.Error))
+            {
+                return;
+            }
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Province,RunID,SectorID,Sector,Date,RainDay0_mm,RainDay1_mm,RainDay2_mm,RainDay3_mm,RainDay4_mm,RainDay5_mm,RainDay6_mm,RainDay7_mm,RainDay8_mm,RainDay9_mm,RainDay10_mm");
+
+            foreach (string prov in ProvList)
+            {
+
+                TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, prov, TVTypeEnum.Province);
+                for (int i = 0, countProv = ProvList.Count; i < countProv; i++)
+                {
+                    if (ProvList[i] == tvItemModelProv.TVText)
+                    {
+                        ProvInit = ProvInitList[i];
+                        break;
+                    }
+                }
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    var tvItemSSList = (from t in db.TVItems
+                                        from tl in db.TVItemLanguages
+                                        where t.TVItemID == tl.TVItemID
+                                        && tl.Language == (int)LanguageEnum.en
+                                        && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                        && t.TVType == (int)TVTypeEnum.Subsector
+                                        orderby tl.TVText
+                                        select new { t, tl }).ToList();
+
+                    var RunList = (from t in db.TVItems
+                                   from tl in db.TVItemLanguages
+                                   from r in db.MWQMRuns
+                                   where t.TVItemID == tl.TVItemID
+                                   && t.TVItemID == r.MWQMRunTVItemID
+                                   && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                   && t.TVType == (int)TVTypeEnum.MWQMRun
+                                   && tl.Language == (int)LanguageEnum.en
+                                   select new { t, tl, r }).ToList();
+
+                    int TotalCount2 = tvItemSSList.Count;
+                    foreach (var tvItemSS in tvItemSSList.OrderBy(c => c.tl.TVText))
+                    {
+                        string SubsectorID = tvItemSS.tl.TVItemID.ToString();
+                        string Subsector = tvItemSS.tl.TVText;
+                        if (Subsector.Contains(" "))
+                        {
+                            Subsector = Subsector.Substring(0, Subsector.IndexOf(" "));
+                        }
+
+                        lblStatus.Text = Subsector;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        DateTime OldDate = new DateTime();
+                        string oldText = "";
+                        foreach (var run in RunList.Where(c => c.t.ParentID == tvItemSS.t.TVItemID).OrderBy(c => c.r.DateTime_Local))
+                        {
+                            string RunID = run.r.MWQMRunTVItemID.ToString();
+                            DateTime Date_Local = run.r.DateTime_Local;
+                            string Date_Local_Text = Date_Local.ToString("yyyy-MM-dd");
+                            string RainDay0_mmText = run.r.RainDay0_mm != null ? run.r.RainDay0_mm.ToString() : "";
+                            string RainDay1_mmText = run.r.RainDay1_mm != null ? run.r.RainDay1_mm.ToString() : "";
+                            string RainDay2_mmText = run.r.RainDay2_mm != null ? run.r.RainDay2_mm.ToString() : "";
+                            string RainDay3_mmText = run.r.RainDay3_mm != null ? run.r.RainDay3_mm.ToString() : "";
+                            string RainDay4_mmText = run.r.RainDay4_mm != null ? run.r.RainDay4_mm.ToString() : "";
+                            string RainDay5_mmText = run.r.RainDay5_mm != null ? run.r.RainDay5_mm.ToString() : "";
+                            string RainDay6_mmText = run.r.RainDay6_mm != null ? run.r.RainDay6_mm.ToString() : "";
+                            string RainDay7_mmText = run.r.RainDay7_mm != null ? run.r.RainDay7_mm.ToString() : "";
+                            string RainDay8_mmText = run.r.RainDay8_mm != null ? run.r.RainDay8_mm.ToString() : "";
+                            string RainDay9_mmText = run.r.RainDay9_mm != null ? run.r.RainDay9_mm.ToString() : "";
+                            string RainDay10_mmText = run.r.RainDay10_mm != null ? run.r.RainDay10_mm.ToString() : "";
+
+                            if (OldDate == run.r.DateTime_Local)
+                            {
+                                sb.AppendLine(oldText);
+                                sb.AppendLine($"{ProvInit},{RunID},{SubsectorID},{Subsector},{Date_Local_Text},{RainDay0_mmText},{RainDay1_mmText},{RainDay2_mmText},{RainDay3_mmText},{RainDay4_mmText},{RainDay5_mmText},{RainDay6_mmText},{RainDay7_mmText},{RainDay8_mmText},{RainDay9_mmText},{RainDay10_mmText}");
+                            }
+
+                            oldText = $"{ProvInit},{RunID},{SubsectorID},{Subsector},{Date_Local_Text},{RainDay0_mmText},{RainDay1_mmText},{RainDay2_mmText},{RainDay3_mmText},{RainDay4_mmText},{RainDay5_mmText},{RainDay6_mmText},{RainDay7_mmText},{RainDay8_mmText},{RainDay9_mmText},{RainDay10_mmText}";
+                            OldDate = run.r.DateTime_Local;
+                        }
+                    }
+                }
+
+                //FileInfo fi = new FileInfo(@"C:\CSSP\ASEC_DATA\Runs_" + ProvInit + ".csv");
+
+                //using (StreamWriter sw = fi.CreateText())
+                //{
+                //    sw.WriteLine(sb.ToString());
+                //    sw.Close();
+                //}
+
+                richTextBoxStatus.Text = sb.ToString();
+
+                lblStatus.Text = "done ... " + ProvInit;
+
+            }
+        }
 
         //private void button18_Click(object sender, EventArgs e)
         //{
