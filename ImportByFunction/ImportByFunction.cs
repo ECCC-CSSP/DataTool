@@ -16710,6 +16710,134 @@ namespace ImportByFunction
             sr.Close();
         }
 
+        private void button30_Click(object sender, EventArgs e)
+        {
+            return;
+
+            StringBuilder sb = new StringBuilder();
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "New Brunswick", TVTypeEnum.Province);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Newfoundland and Labrador", TVTypeEnum.Province);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Nova Scotia", TVTypeEnum.Province);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+
+            //List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMSite);
+
+            //List<TVItemModel> tvItemModelMWQMRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMRun);
+
+            //sb.AppendLine($"\t\t\t\tActive Sites\t");
+            //sb.AppendLine($"Locator\tSubsector Name\tLast Run Date\tRouting Last Run Date\tCount Approved\tCount Conditionally Approved\tCount Restricted\tCount Conditionally Restricted\tProhibited\tUnclassified or unknown\ttotal");
+
+            foreach (TVItemModel tvItemModel in tvItemModelSSList)
+            {
+                string locator = tvItemModel.TVText;
+                string name = "";
+                if (locator.Contains(" "))
+                {
+                    name = locator.Substring(locator.IndexOf(" ")).Trim();
+                    locator = locator.Substring(0, locator.IndexOf(" ")).Trim();
+                }
+
+                lblStatus.Text = locator;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                using (CSSPDBEntities db2 = new CSSPDBEntities())
+                {
+                    MWQMRun mwqmRun = (from c in db2.MWQMRuns
+                                       from t in db2.TVItems
+                                       where c.MWQMRunTVItemID == t.TVItemID
+                                       && t.TVType == (int)TVTypeEnum.MWQMRun
+                                       && t.ParentID == tvItemModel.TVItemID
+                                       orderby c.DateTime_Local descending
+                                       select c).FirstOrDefault();
+
+                    MWQMRun mwqmRunRoutine = (from c in db2.MWQMRuns
+                                              from t in db2.TVItems
+                                              where c.MWQMRunTVItemID == t.TVItemID
+                                              && t.TVType == (int)TVTypeEnum.MWQMRun
+                                              && t.ParentID == tvItemModel.TVItemID
+                                              && c.RunSampleType == (int)SampleTypeEnum.Routine
+                                              orderby c.DateTime_Local descending
+                                              select c).FirstOrDefault();
+
+                    List<MWQMSite> mwqmSiteList = (from c in db2.MWQMSites
+                                                   from t in db2.TVItems
+                                                   where c.MWQMSiteTVItemID == t.TVItemID
+                                                   && t.TVType == (int)TVTypeEnum.MWQMSite
+                                                   && t.ParentID == tvItemModel.TVItemID
+                                                   && t.IsActive == true
+                                                   select c).ToList();
+
+                    if (mwqmRun != null)
+                    {
+                        string dateStr = mwqmRun.DateTime_Local.ToString("yyyy MM dd");
+                        string dateRoutineStr = mwqmRunRoutine.DateTime_Local.ToString("yyyy MM dd");
+                        if (mwqmSiteList.Count > 0)
+                        {
+                            int countA = (from a in mwqmSiteList
+                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Approved
+                                                 select a).Count();
+
+                            int countCA = (from a in mwqmSiteList
+                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyApproved
+                                                 select a).Count();
+
+                            int countR = (from a in mwqmSiteList
+                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Restricted
+                                                 select a).Count();
+
+                            int countCR = (from a in mwqmSiteList
+                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyRestricted
+                                                 select a).Count();
+
+                            int countP = (from a in mwqmSiteList
+                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Prohibited
+                                                 select a).Count();
+
+                            int countU = (from a in mwqmSiteList
+                                          where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Error
+                                          select a).Count();
+
+
+                            sb.AppendLine($"{locator}\t{name}\t{dateStr}\t{dateRoutineStr}\t{countA}\t{countCA}\t{countR}\t{countCR}\t{countP}\t{countU}\t{mwqmSiteList.Count}");
+                        }
+                        else
+                        {
+                            sb.AppendLine($"{locator}\t{name}\t{dateStr}\t{dateRoutineStr}");
+                        }
+                    }
+                    else
+                    {
+                        sb.AppendLine($"{locator}\t{name}");
+                    }
+                }
+            }
+
+            lblStatus.Text = "done...";
+
+            richTextBoxStatus.Text = sb.ToString();
+        }
+
 
         //private void button18_Click(object sender, EventArgs e)
         //{
