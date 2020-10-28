@@ -17005,14 +17005,14 @@ namespace ImportByFunction
                                         select new { t, tl }).ToList();
 
                     var RunList = (from t in db.TVItems
-                                    from tl in db.TVItemLanguages
-                                    from r in db.MWQMRuns
-                                    where t.TVItemID == tl.TVItemID
-                                    && t.TVItemID == r.MWQMRunTVItemID
-                                    && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
-                                    && t.TVType == (int)TVTypeEnum.MWQMRun
-                                    && tl.Language == (int)LanguageEnum.en
-                                    select new { t, tl, r }).ToList();
+                                   from tl in db.TVItemLanguages
+                                   from r in db.MWQMRuns
+                                   where t.TVItemID == tl.TVItemID
+                                   && t.TVItemID == r.MWQMRunTVItemID
+                                   && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                   && t.TVType == (int)TVTypeEnum.MWQMRun
+                                   && tl.Language == (int)LanguageEnum.en
+                                   select new { t, tl, r }).ToList();
 
                     int TotalCount2 = tvItemSSList.Count;
                     foreach (var tvItemSS in tvItemSSList.OrderBy(c => c.tl.TVText))
@@ -17280,7 +17280,7 @@ namespace ImportByFunction
                 sb.AppendLine(@"</Document>");
                 sb.AppendLine(@"</kml>");
 
-//                FileInfo fi = new FileInfo(@"C:\CSSP\ASEC_DATA\SubsectorSites_" + ProvInit + ".csv");
+                //                FileInfo fi = new FileInfo(@"C:\CSSP\ASEC_DATA\SubsectorSites_" + ProvInit + ".csv");
 
                 using (StreamWriter sw = fi.CreateText())
                 {
@@ -17410,6 +17410,296 @@ namespace ImportByFunction
                 lblStatus.Text = "done ... " + ProvInit;
 
             }
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            string ProvInit = "";
+            List<string> ProvInitList = new List<string>()
+            {
+               "NB", //"PE", "BC", "NL", "NS", "QC",
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "New Brunswick", //"Prince Edward Island", "British Columbia", "Newfoundland and Labrador", "Nova Scotia", "Québec",
+            };
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrEmpty(tvItemModelRoot.Error))
+            {
+                return;
+            }
+
+            foreach (string prov in ProvList)
+            {
+
+                TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, prov, TVTypeEnum.Province);
+                for (int i = 0, countProv = ProvList.Count; i < countProv; i++)
+                {
+                    if (ProvList[i] == tvItemModelProv.TVText)
+                    {
+                        ProvInit = ProvInitList[i];
+                        break;
+                    }
+                }
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.AppendLine("Province,Locator,Site,Latitude,Longitude,Date,Temp_C,Sal_PPT");
+
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    var tvItemSSList = (from t in db.TVItems
+                                        from tl in db.TVItemLanguages
+                                        where t.TVItemID == tl.TVItemID
+                                        && tl.Language == (int)LanguageEnum.en
+                                        && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                        && t.TVType == (int)TVTypeEnum.Subsector
+                                        && (tl.TVText.StartsWith("NB-04") ||
+                                        tl.TVText.StartsWith("NB-05") || tl.TVText.StartsWith("NB-06"))
+                                        orderby tl.TVText
+                                        select new { t, tl }).ToList();
+
+                    var MonitoringSiteList = (from t in db.TVItems
+                                              from tl in db.TVItemLanguages
+                                              let hasSample = (from c in db.MWQMSamples
+                                                               where c.MWQMSiteTVItemID == t.TVItemID
+                                                               && c.UseForOpenData == true
+                                                               select c).Any()
+                                              where t.TVItemID == tl.TVItemID
+                                              && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                              && t.TVType == (int)TVTypeEnum.MWQMSite
+                                              && hasSample == true
+                                              && tl.Language == (int)LanguageEnum.en
+                                              select new { t, tl, hasSample }).ToList();
+
+                    var MapInfoList = (from t in db.TVItems
+                                       from mi in db.MapInfos
+                                       from mip in db.MapInfoPoints
+                                       where t.TVItemID == mi.TVItemID
+                                       && mi.MapInfoID == mip.MapInfoID
+                                       && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                       && t.TVType == (int)TVTypeEnum.MWQMSite
+                                       && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                       select new { mi, mip }).ToList();
+
+
+                    int TotalCount2 = tvItemSSList.Count;
+                    foreach (var tvItemSS in tvItemSSList.OrderBy(c => c.tl.TVText))
+                    {
+                        string SubsectorID = tvItemSS.t.TVItemID.ToString();
+                        string Subsector = tvItemSS.tl.TVText;
+                        if (Subsector.Contains(" "))
+                        {
+                            Subsector = Subsector.Substring(0, Subsector.IndexOf(" "));
+                        }
+
+                        lblStatus.Text = Subsector;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        foreach (var mwqmSite in MonitoringSiteList.Where(c => c.t.ParentID == tvItemSS.t.TVItemID).OrderBy(c => c.tl.TVText))
+                        {
+                            double lat = (from c in MapInfoList
+                                          where c.mi.TVItemID == mwqmSite.t.TVItemID
+                                          select c.mip.Lat).FirstOrDefault();
+
+                            double lng = (from c in MapInfoList
+                                          where c.mi.TVItemID == mwqmSite.t.TVItemID
+                                          select c.mip.Lng).FirstOrDefault();
+
+                            string MN = mwqmSite.tl.TVText;
+                            using (CSSPDBEntities db2 = new CSSPDBEntities())
+                            {
+                                DateTime StartDate = new DateTime(2020, 06, 01);
+                                DateTime EndDate = new DateTime(2020, 11, 01);
+
+                                List<MWQMSample> sampleList = (from c in db2.MWQMSamples
+                                                               where c.MWQMSiteTVItemID == mwqmSite.t.TVItemID
+                                                               //&& c.UseForOpenData == true
+                                                               && c.SampleDateTime_Local >= StartDate
+                                                               && c.SampleDateTime_Local <= EndDate
+                                                               orderby c.SampleDateTime_Local ascending
+                                                               select c).ToList();
+
+                                foreach (MWQMSample mwqmSample in sampleList)
+                                {
+                                    DateTime Date_Local = mwqmSample.SampleDateTime_Local;
+                                    string Date_Local_Text = Date_Local.ToString("yyyy-MM-dd HH:mm:ss");
+
+                                    string Temp = mwqmSample.WaterTemp_C != null ? ((double)mwqmSample.WaterTemp_C).ToString("F1").Replace(",", ".") : "";
+                                    string Sal = mwqmSample.Salinity_PPT != null ? ((double)mwqmSample.Salinity_PPT).ToString("F1").Replace(",", ".") : "";
+                                    sb.AppendLine($"{ProvInit},{Subsector},{MN},{lat},{lng},{Date_Local_Text},{Temp},{Sal}");
+                                }
+                            }
+                        }
+                    }
+                }
+
+                FileInfo fi = new FileInfo(@"C:\CSSP\DATA_REQUEST\Samples_" + ProvInit + ".csv");
+
+                using (StreamWriter sw = fi.CreateText())
+                {
+                    sw.WriteLine(sb.ToString());
+                    sw.Close();
+                }
+
+                lblStatus.Text = "done ... " + ProvInit;
+            }
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            string ProvInit = "";
+            List<string> ProvInitList = new List<string>()
+            {
+               "NS" //"NB", "PE", "BC", "NL", "NS", "QC",
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "Nova Scotia" //"New Brunswick", "Prince Edward Island", "British Columbia", "Newfoundland and Labrador", "Nova Scotia", "Québec",
+            };
+
+            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            if (!string.IsNullOrEmpty(tvItemModelRoot.Error))
+            {
+                return;
+            }
+
+            foreach (string prov in ProvList)
+            {
+
+                TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, prov, TVTypeEnum.Province);
+                for (int i = 0, countProv = ProvList.Count; i < countProv; i++)
+                {
+                    if (ProvList[i] == tvItemModelProv.TVText)
+                    {
+                        ProvInit = ProvInitList[i];
+                        break;
+                    }
+                }
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.AppendLine("Province\tMunicipality\tWWPTorLS\tInfrastructure_Name\tLatitude\tLongitude\tOutfall_Lat\tOutfall_Lng");
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    var tvItemMuniList = (from t in db.TVItems
+                                          from tl in db.TVItemLanguages
+                                          where t.TVItemID == tl.TVItemID
+                                          && tl.Language == (int)LanguageEnum.en
+                                          && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
+                                          && t.TVType == (int)TVTypeEnum.Municipality
+                                          orderby tl.TVText
+                                          select new { t, tl }).ToList();
+
+                    foreach(var tvItemMuni in tvItemMuniList)
+                    {
+                        var InfList = (from t in db.TVItems
+                                       from tl in db.TVItemLanguages
+                                       from inf in db.Infrastructures
+                                       where t.TVItemID == tl.TVItemID
+                                       && t.TVItemID == inf.InfrastructureTVItemID
+                                       && t.TVPath.StartsWith(tvItemMuni.t.TVPath + "p")
+                                       && t.TVType == (int)TVTypeEnum.Infrastructure
+                                       && tl.Language == (int)LanguageEnum.en
+                                       select new { t, tl, inf }).ToList();
+
+                        foreach(var infrastructure in InfList)
+                        {
+                            var MapInfoList = (from mi in db.MapInfos
+                                               from mip in db.MapInfoPoints
+                                               where mi.MapInfoID == mip.MapInfoID
+                                               && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                               && mi.TVItemID == infrastructure.t.TVItemID
+                                               select new { mi, mip }).ToList();
+
+                            string provInit = ProvInit;
+                            string municipality = tvItemMuni.tl.TVText;
+                            string wwtpOrLS = "";
+                            string infName = "";
+                            string latitude = "";
+                            string longitude = "";
+                            string outfall_lat = "";
+                            string outfall_lng = "";
+
+                            infName = infrastructure.tl.TVText;
+
+                            if (infrastructure.inf.InfrastructureType == (int)InfrastructureTypeEnum.WWTP)
+                            {
+                                wwtpOrLS = "WWTP";
+
+                                var mapInfo = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.WasteWaterTreatmentPlant).FirstOrDefault();
+                                if (mapInfo != null)
+                                {
+                                    latitude = mapInfo.mip.Lat.ToString();
+                                    longitude = mapInfo.mip.Lng.ToString();
+                                }
+
+                                var mapInfoOutfall = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.Outfall).FirstOrDefault();
+                                if (mapInfoOutfall != null)
+                                {
+                                    outfall_lat = mapInfoOutfall.mip.Lat.ToString();
+                                    outfall_lng = mapInfoOutfall.mip.Lng.ToString();
+                                }
+                            }
+                            else if (infrastructure.inf.InfrastructureType == (int)InfrastructureTypeEnum.LiftStation)
+                            {
+                                wwtpOrLS = "LS";
+
+                                var mapInfo = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.LiftStation).FirstOrDefault();
+                                if (mapInfo != null)
+                                {
+                                    latitude = mapInfo.mip.Lat.ToString();
+                                    longitude = mapInfo.mip.Lng.ToString();
+                                }
+
+                                var mapInfoOutfall = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.Outfall).FirstOrDefault();
+                                if (mapInfoOutfall != null)
+                                {
+                                    outfall_lat = mapInfoOutfall.mip.Lat.ToString();
+                                    outfall_lng = mapInfoOutfall.mip.Lng.ToString();
+                                }
+                            }
+                            else if (infrastructure.inf.InfrastructureType == (int)InfrastructureTypeEnum.LineOverflow)
+                            {
+                                wwtpOrLS = "Line Overflow";
+
+                                var mapInfo = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.LineOverflow).FirstOrDefault();
+                                if (mapInfo != null)
+                                {
+                                    latitude = mapInfo.mip.Lat.ToString();
+                                    longitude = mapInfo.mip.Lng.ToString();
+                                }
+
+                                var mapInfoOutfall = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.Outfall).FirstOrDefault();
+                                if (mapInfoOutfall != null)
+                                {
+                                    outfall_lat = mapInfoOutfall.mip.Lat.ToString();
+                                    outfall_lng = mapInfoOutfall.mip.Lng.ToString();
+                                }
+                            }
+                            else
+                            {
+                                continue;
+                            }
+
+                            sb.AppendLine($"{provInit}\t{municipality}\t{wwtpOrLS}\t{infName}\t{latitude}\t{longitude}\t{outfall_lat}\t{outfall_lng}");
+
+                            richTextBoxStatus.Text = sb.ToString();
+                        }
+                    }
+                }
+
+                lblStatus.Text = "done ... " + ProvInit;
+            }
+
         }
 
         //private void button18_Click(object sender, EventArgs e)
