@@ -8041,7 +8041,7 @@ namespace ImportByFunction
                                         db2.MWQMSamples.Add(mwqmSampleNew);
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText("Could not Add mwqmSampleNew\r\n");
                                         return;
@@ -8074,7 +8074,7 @@ namespace ImportByFunction
                                         db2.MWQMSampleLanguages.Add(mwqmSampleLanguageNewFR);
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText("Could not Add mwqmSampleLanguageNewEN and FR\r\n");
                                         return;
@@ -8131,7 +8131,7 @@ namespace ImportByFunction
                                     {
                                         dd.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText("Could not update SampleExist\r\n");
                                         return;
@@ -8157,7 +8157,7 @@ namespace ImportByFunction
                                             {
                                                 dd.SaveChanges();
                                             }
-                                            catch (Exception ex)
+                                            catch (Exception)
                                             {
                                                 richTextBoxStatus.AppendText("Could not update mwqmSampleLanguageEN\r\n");
                                                 return;
@@ -8183,7 +8183,7 @@ namespace ImportByFunction
                                             dd.MWQMSampleLanguages.Add(mwqmSampleLanguageNewEN);
                                             dd.SaveChanges();
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
                                             richTextBoxStatus.AppendText("Could not Add mwqmSampleLanguageNewEN and FR\r\n");
                                             return;
@@ -8207,7 +8207,7 @@ namespace ImportByFunction
                                             {
                                                 dd.SaveChanges();
                                             }
-                                            catch (Exception ex)
+                                            catch (Exception)
                                             {
                                                 richTextBoxStatus.AppendText("Could not update mwqmSampleLanguageFR\r\n");
                                                 return;
@@ -8233,7 +8233,7 @@ namespace ImportByFunction
                                             dd.MWQMSampleLanguages.Add(mwqmSampleLanguageNewFR);
                                             dd.SaveChanges();
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
                                             richTextBoxStatus.AppendText("Could not Add mwqmSampleLanguageNewEN and FR\r\n");
                                             return;
@@ -8683,7 +8683,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMSites");
                                     }
@@ -8705,7 +8705,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception )
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMRuns");
                                     }
@@ -8727,7 +8727,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMSites");
                                     }
@@ -8749,7 +8749,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete Sample");
                                     }
@@ -8773,7 +8773,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete MapInfos for MWQMSites");
                                     }
@@ -8796,7 +8796,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete MapInfos for PSS");
                                     }
@@ -8818,7 +8818,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
                                     }
@@ -8840,7 +8840,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
                                     }
@@ -8862,7 +8862,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for PSS");
                                     }
@@ -8884,7 +8884,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for PSS");
                                     }
@@ -8906,7 +8906,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
                                     }
@@ -8928,7 +8928,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMRuns");
                                     }
@@ -8948,7 +8948,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete TVItemStats of TVItemModelss");
                                 }
@@ -8968,7 +8968,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete MapInfos of TVItemModelss");
                                 }
@@ -8987,7 +8987,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete MWQMSubsectors for TVItemModelss");
                                 }
@@ -9006,7 +9006,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete UseOfSites for TVItemModelss");
                                 }
@@ -9026,7 +9026,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete TVItems for TVItemModelss");
                                 }
@@ -9050,7 +9050,7 @@ namespace ImportByFunction
                             {
                                 db2.SaveChanges();
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 richTextBoxStatus.AppendText($"Could not delete TVItemStats of tvItemModel");
                             }
@@ -9070,7 +9070,7 @@ namespace ImportByFunction
                             {
                                 db2.SaveChanges();
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 richTextBoxStatus.AppendText($"Could not delete MapInfos of tvItemModel");
                             }
@@ -9088,7 +9088,7 @@ namespace ImportByFunction
                             {
                                 db2.SaveChanges();
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 richTextBoxStatus.AppendText($"Could not delete TVItems for tvItemModel");
                             }
@@ -9295,7 +9295,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMSites");
                                         return $"Could not delete TVItemStats of MWQMSites";
@@ -9318,7 +9318,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMRuns");
                                         return $"Could not delete TVItemStats of MWQMRuns";
@@ -9341,7 +9341,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMSites");
                                         return $"Could not delete TVItemStats of MWQMSites";
@@ -9368,7 +9368,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete Sample");
                                         return $"Could not delete Sample";
@@ -9393,7 +9393,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete MapInfos for MWQMSites");
                                         return $"Could not delete MapInfos for MWQMSites";
@@ -9417,7 +9417,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete MapInfos for PSS");
                                         return $"Could not delete MapInfos for PSS";
@@ -9440,7 +9440,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
                                         return $"Could not delete TVItems for MWQMSites";
@@ -9463,7 +9463,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
                                         return $"Could not delete TVItems for MWQMSites";
@@ -9486,7 +9486,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for PSS");
                                         return $"Could not delete TVItems for PSS";
@@ -9509,7 +9509,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for PSS");
                                         return $"Could not delete TVItems for PSS";
@@ -9532,7 +9532,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
                                         return $"Could not delete TVItems for MWQMSites";
@@ -9555,7 +9555,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMRuns");
                                         return $"Could not delete TVItems for MWQMRuns";
@@ -9576,7 +9576,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete TVItemStats of TVItemModel");
                                     return $"Could not delete TVItemStats of TVItemModel";
@@ -9597,7 +9597,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete MapInfos of TVItemModel");
                                     return $"Could not delete MapInfos of TVItemModel";
@@ -9617,7 +9617,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete MWQMSubsectors for TVItemModel");
                                     return $"Could not delete MWQMSubsectors for TVItemModel";
@@ -9637,7 +9637,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete UseOfSites for TVItemModelss");
                                     return $"Could not delete UseOfSites for TVItemModelss";
@@ -9658,7 +9658,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete TVItems for TVItemModel");
                                     return $"Could not delete TVItems for TVItemModel";
@@ -10034,7 +10034,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMSites");
                                     return $"Could not delete TVItemStats of MWQMSites";
@@ -10061,7 +10061,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete Sample");
                                     return $"Could not delete Sample";
@@ -10083,7 +10083,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete MapInfos for MWQMSites");
                                     return $"Could not delete MapInfos for MWQMSites";
@@ -10103,7 +10103,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
                                     return $"Could not delete TVItems for MWQMSites";
@@ -10123,7 +10123,7 @@ namespace ImportByFunction
                                 {
                                     db2.SaveChanges();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     richTextBoxStatus.AppendText($"Could not delete TVItems for MWQMSites");
                                     return $"Could not delete TVItems for MWQMSites";
@@ -15371,206 +15371,206 @@ namespace ImportByFunction
         {
             return;
 
-            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-            MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //MapInfoService mapInfoService = new MapInfoService(LanguageEnum.en, user);
 
-            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
-            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
 
-            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
-            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+            //TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
 
-            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
-            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Québec", TVTypeEnum.Province);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
 
-            List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
-            if (tvItemModelSubsectorList.Count == 0)
-            {
-                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
-                return;
-            }
+            //List<TVItemModel> tvItemModelSubsectorList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            //if (tvItemModelSubsectorList.Count == 0)
+            //{
+            //    richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+            //    return;
+            //}
 
-            List<SubsectorPolClass> subsectorPolClassList = new List<SubsectorPolClass>();
+            //List<SubsectorPolClass> subsectorPolClassList = new List<SubsectorPolClass>();
 
-            XmlDocument doc = new XmlDocument();
-            doc.Load(@"C:\Users\leblancc\Desktop\ClassificationPolygons_QC.kml");
-            foreach (XmlNode n1 in doc.DocumentElement.ChildNodes[0].ChildNodes)
-            {
-                if (n1.Name == "Folder")
-                {
-                    foreach (XmlNode n2 in n1.ChildNodes)
-                    {
-                        if (n2.Name == "Placemark")
-                        {
-                            SubsectorPolClass subsectorPolClass = new SubsectorPolClass();
-                            List<Coord> coordList = new List<Coord>();
+            //XmlDocument doc = new XmlDocument();
+            //doc.Load(@"C:\Users\leblancc\Desktop\ClassificationPolygons_QC.kml");
+            //foreach (XmlNode n1 in doc.DocumentElement.ChildNodes[0].ChildNodes)
+            //{
+            //    if (n1.Name == "Folder")
+            //    {
+            //        foreach (XmlNode n2 in n1.ChildNodes)
+            //        {
+            //            if (n2.Name == "Placemark")
+            //            {
+            //                SubsectorPolClass subsectorPolClass = new SubsectorPolClass();
+            //                List<Coord> coordList = new List<Coord>();
 
-                            foreach (XmlNode n3 in n2.ChildNodes)
-                            {
-                                if (n3.Name == "description")
-                                {
-                                    string desc = n3.InnerText;
+            //                foreach (XmlNode n3 in n2.ChildNodes)
+            //                {
+            //                    if (n3.Name == "description")
+            //                    {
+            //                        string desc = n3.InnerText;
 
-                                    int startPos = desc.IndexOf("<td>Class_Code</td>") + "<td>Class_Code</td>".Length;
-                                    int endPos = desc.IndexOf("</td>", startPos + 1);
+            //                        int startPos = desc.IndexOf("<td>Class_Code</td>") + "<td>Class_Code</td>".Length;
+            //                        int endPos = desc.IndexOf("</td>", startPos + 1);
 
-                                    string classCode = desc.Substring(startPos, endPos - startPos);
+            //                        string classCode = desc.Substring(startPos, endPos - startPos);
 
-                                    classCode = classCode.Replace("<td>", "").Trim();
+            //                        classCode = classCode.Replace("<td>", "").Trim();
 
-                                    subsectorPolClass.ClassCode = classCode;
+            //                        subsectorPolClass.ClassCode = classCode;
 
-                                    int startPos2 = desc.IndexOf("<td>Sector</td>") + "<td>Sector</td>".Length;
-                                    int endPos2 = desc.IndexOf("</td>", startPos2 + 1);
+            //                        int startPos2 = desc.IndexOf("<td>Sector</td>") + "<td>Sector</td>".Length;
+            //                        int endPos2 = desc.IndexOf("</td>", startPos2 + 1);
 
-                                    string subsector = desc.Substring(startPos2, endPos2 - startPos2);
+            //                        string subsector = desc.Substring(startPos2, endPos2 - startPos2);
 
-                                    subsector = subsector.Replace("<td>", "").Trim();
+            //                        subsector = subsector.Replace("<td>", "").Trim();
 
-                                    subsectorPolClass.Subsector = subsector;
-                                }
-                                if (n3.Name == "styleUrl")
-                                {
-                                    string style = n3.InnerText;
+            //                        subsectorPolClass.Subsector = subsector;
+            //                    }
+            //                    if (n3.Name == "styleUrl")
+            //                    {
+            //                        string style = n3.InnerText;
 
-                                    subsectorPolClass.StyleURL = style;
-                                }
-                                if (n3.Name == "MultiGeometry")
-                                {
-                                    foreach (XmlNode n4 in n3.ChildNodes)
-                                    {
-                                        if (n4.Name == "Polygon")
-                                        {
-                                            foreach (XmlNode n5 in n4.ChildNodes)
-                                            {
-                                                if (n5.Name == "outerBoundaryIs")
-                                                {
-                                                    foreach (XmlNode n6 in n5.ChildNodes)
-                                                    {
-                                                        if (n6.Name == "LinearRing")
-                                                        {
-                                                            foreach (XmlNode n7 in n6.ChildNodes)
-                                                            {
-                                                                if (n7.Name == "coordinates")
-                                                                {
+            //                        subsectorPolClass.StyleURL = style;
+            //                    }
+            //                    if (n3.Name == "MultiGeometry")
+            //                    {
+            //                        foreach (XmlNode n4 in n3.ChildNodes)
+            //                        {
+            //                            if (n4.Name == "Polygon")
+            //                            {
+            //                                foreach (XmlNode n5 in n4.ChildNodes)
+            //                                {
+            //                                    if (n5.Name == "outerBoundaryIs")
+            //                                    {
+            //                                        foreach (XmlNode n6 in n5.ChildNodes)
+            //                                        {
+            //                                            if (n6.Name == "LinearRing")
+            //                                            {
+            //                                                foreach (XmlNode n7 in n6.ChildNodes)
+            //                                                {
+            //                                                    if (n7.Name == "coordinates")
+            //                                                    {
 
-                                                                    string coordText = n7.InnerText.Trim();
+            //                                                        string coordText = n7.InnerText.Trim();
 
-                                                                    List<string> pointTextList = coordText.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+            //                                                        List<string> pointTextList = coordText.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
 
-                                                                    int ordinal = 0;
-                                                                    foreach (string s in pointTextList)
-                                                                    {
-                                                                        List<string> pointsText = s.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
+            //                                                        int ordinal = 0;
+            //                                                        foreach (string s in pointTextList)
+            //                                                        {
+            //                                                            List<string> pointsText = s.Split(",".ToCharArray(), StringSplitOptions.None).ToList();
 
-                                                                        if (pointsText.Count != 3)
-                                                                        {
-                                                                            richTextBoxStatus.AppendText($"pointsText.Count [{pointsText.Count}] != 3 { pointsText[0] }\r\n");
-                                                                            return;
-                                                                        }
+            //                                                            if (pointsText.Count != 3)
+            //                                                            {
+            //                                                                richTextBoxStatus.AppendText($"pointsText.Count [{pointsText.Count}] != 3 { pointsText[0] }\r\n");
+            //                                                                return;
+            //                                                            }
 
-                                                                        if (!float.TryParse(pointsText[0], out float Lng))
-                                                                        {
-                                                                            richTextBoxStatus.AppendText($"Could not parse Lng { pointsText[0] } to a float number\r\n");
-                                                                            return;
-                                                                        }
-                                                                        if (!float.TryParse(pointsText[1], out float Lat))
-                                                                        {
-                                                                            richTextBoxStatus.AppendText($"Could not parse Lat { pointsText[1] } to a float number\r\n");
-                                                                            return;
-                                                                        }
+            //                                                            if (!float.TryParse(pointsText[0], out float Lng))
+            //                                                            {
+            //                                                                richTextBoxStatus.AppendText($"Could not parse Lng { pointsText[0] } to a float number\r\n");
+            //                                                                return;
+            //                                                            }
+            //                                                            if (!float.TryParse(pointsText[1], out float Lat))
+            //                                                            {
+            //                                                                richTextBoxStatus.AppendText($"Could not parse Lat { pointsText[1] } to a float number\r\n");
+            //                                                                return;
+            //                                                            }
 
-                                                                        coordList.Add(new Coord() { Lat = Lat, Lng = Lng, Ordinal = ordinal });
+            //                                                            coordList.Add(new Coord() { Lat = Lat, Lng = Lng, Ordinal = ordinal });
 
-                                                                        ordinal++;
+            //                                                            ordinal++;
 
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
+            //                                                        }
+            //                                                    }
+            //                                                }
+            //                                            }
+            //                                        }
+            //                                    }
+            //                                }
+            //                            }
+            //                        }
 
-                                    subsectorPolClass.CoordList = coordList;
+            //                        subsectorPolClass.CoordList = coordList;
 
-                                    float LatCentroid = (from c in coordList
-                                                         select c.Lat).Average();
+            //                        float LatCentroid = (from c in coordList
+            //                                             select c.Lat).Average();
 
-                                    float LngCentroid = (from c in coordList
-                                                         select c.Lng).Average();
+            //                        float LngCentroid = (from c in coordList
+            //                                             select c.Lng).Average();
 
-                                    subsectorPolClass.Centroid = new Coord() { Lat = LatCentroid, Lng = LngCentroid, Ordinal = 0 };
-                                }
-                            }
+            //                        subsectorPolClass.Centroid = new Coord() { Lat = LatCentroid, Lng = LngCentroid, Ordinal = 0 };
+            //                    }
+            //                }
 
-                            subsectorPolClassList.Add(subsectorPolClass);
-                        }
-                    }
-                }
-            }
+            //                subsectorPolClassList.Add(subsectorPolClass);
+            //            }
+            //        }
+            //    }
+            //}
 
-            //bool start = false;
-            foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
-            {
-                string subsector = tvItemModelSS.TVText;
-                if (subsector.Contains(" "))
-                {
-                    subsector = subsector.Substring(0, subsector.IndexOf(" "));
-                }
+            ////bool start = false;
+            //foreach (TVItemModel tvItemModelSS in tvItemModelSubsectorList)
+            //{
+            //    string subsector = tvItemModelSS.TVText;
+            //    if (subsector.Contains(" "))
+            //    {
+            //        subsector = subsector.Substring(0, subsector.IndexOf(" "));
+            //    }
 
-                lblStatus.Text = "Doing " + subsector;
-                lblStatus.Refresh();
-                Application.DoEvents();
+            //    lblStatus.Text = "Doing " + subsector;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
 
-                //if (subsector == "N-15.1.2")
-                //{
-                //    start = true;
-                //}
+            //    //if (subsector == "N-15.1.2")
+            //    //{
+            //    //    start = true;
+            //    //}
 
-                //if (!start)
-                //{
-                //    continue;
-                //}
+            //    //if (!start)
+            //    //{
+            //    //    continue;
+            //    //}
 
-                List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelSS.TVItemID);
+            //    List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelListWithTVItemIDDB(tvItemModelSS.TVItemID);
 
-                foreach (MapInfoModel mapInfoModel in mapInfoModelList)
-                {
-                    if (mapInfoModel.MapInfoDrawType == MapInfoDrawTypeEnum.Polygon)
-                    {
-                        SubsectorPolClass subsectorPolClass = (from c in subsectorPolClassList
-                                                               where c.Subsector == subsector
-                                                               select c).FirstOrDefault();
+            //    foreach (MapInfoModel mapInfoModel in mapInfoModelList)
+            //    {
+            //        if (mapInfoModel.MapInfoDrawType == MapInfoDrawTypeEnum.Polygon)
+            //        {
+            //            SubsectorPolClass subsectorPolClass = (from c in subsectorPolClassList
+            //                                                   where c.Subsector == subsector
+            //                                                   select c).FirstOrDefault();
 
-                        if (subsectorPolClass == null)
-                        {
-                            richTextBoxStatus.AppendText($"Could not find subsector in classification polygons: { subsector }\r\n");
-                            continue;
-                        }
+            //            if (subsectorPolClass == null)
+            //            {
+            //                richTextBoxStatus.AppendText($"Could not find subsector in classification polygons: { subsector }\r\n");
+            //                continue;
+            //            }
 
-                        StringBuilder sb = new StringBuilder();
+            //            StringBuilder sb = new StringBuilder();
 
-                        foreach (Coord coord in subsectorPolClass.CoordList)
-                        {
-                            sb.Append($"{ coord.Lat }s{ coord.Lng }p");
-                        }
+            //            foreach (Coord coord in subsectorPolClass.CoordList)
+            //            {
+            //                sb.Append($"{ coord.Lat }s{ coord.Lng }p");
+            //            }
 
-                        string LatLngListText = sb.ToString();
+            //            string LatLngListText = sb.ToString();
 
-                        MapInfoModel mapInfoModelret = mapInfoService.PostSavePolyDB(LatLngListText, mapInfoModel.MapInfoID);
-                        if (!string.IsNullOrWhiteSpace(mapInfoModelret.Error))
-                        {
-                            richTextBoxStatus.AppendText($"ERROR: { mapInfoModelret.Error }\r\n");
-                            return;
-                        }
-                    }
-                }
-            }
+            //            MapInfoModel mapInfoModelret = mapInfoService.PostSavePolyDB(LatLngListText, mapInfoModel.MapInfoID);
+            //            if (!string.IsNullOrWhiteSpace(mapInfoModelret.Error))
+            //            {
+            //                richTextBoxStatus.AppendText($"ERROR: { mapInfoModelret.Error }\r\n");
+            //                return;
+            //            }
+            //        }
+            //    }
+            //}
 
-            lblStatus.Text = "done...";
+            //lblStatus.Text = "done...";
         }
 
         private void button23_Click(object sender, EventArgs e)
@@ -15986,7 +15986,7 @@ namespace ImportByFunction
                     {
                         if (subsector == "A-14.3.5E" && tvItemModelMWQMSite.TVText == "0074")
                         {
-                            int slijfe = 34;
+                            //int slijfe = 34;
                         }
 
                         mapInfoPointModelList = mapInfoService._MapInfoPointService.GetMapInfoPointModelListWithTVItemIDAndTVTypeAndMapInfoDrawTypeDB(tvItemModelMWQMSite.TVItemID, TVTypeEnum.MWQMSite, MapInfoDrawTypeEnum.Point);
@@ -16436,109 +16436,27 @@ namespace ImportByFunction
         {
             return;
 
-            StringBuilder sb = new StringBuilder();
+            //StringBuilder sb = new StringBuilder();
 
-            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-            InfrastructureService infrastructureService = new InfrastructureService(LanguageEnum.en, user);
-            TVItemLinkService tvItemLinkService = new TVItemLinkService(LanguageEnum.en, user);
-            AddressService addressService = new AddressService(LanguageEnum.en, user);
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //InfrastructureService infrastructureService = new InfrastructureService(LanguageEnum.en, user);
+            //TVItemLinkService tvItemLinkService = new TVItemLinkService(LanguageEnum.en, user);
+            //AddressService addressService = new AddressService(LanguageEnum.en, user);
 
-            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
-            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
 
-            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
-            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+            //TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
 
-            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
-            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
 
-            List<TVItemModel> tvItemModelMuniList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Municipality);
-
-
-            // doing contact
-            sb.AppendLine($"Province\tMunicipality\tContact\tUnder Correct Prov");
-
-            foreach (TVItemModel tvItemModelMuni in tvItemModelMuniList)
-            {
-                lblStatus.Text = tvItemModelMuni.TVText;
-                lblStatus.Refresh();
-                Application.DoEvents();
-
-                List<TVItemLinkModel> tvItemLinkModelList = tvItemLinkService.GetTVItemLinkModelListWithFromTVItemIDDB(tvItemModelMuni.TVItemID);
-
-                foreach (TVItemLinkModel tvItemLinkModel in tvItemLinkModelList)
-                {
-                    if (tvItemLinkModel.ToTVType == TVTypeEnum.Contact)
-                    {
-                        TVItemModel tvItemModelContact = tvItemService.GetTVItemModelWithTVItemIDDB(tvItemLinkModel.ToTVItemID);
-                        if (!string.IsNullOrWhiteSpace(tvItemModelContact.Error))
-                        {
-                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.Error}");
-                        }
-                        else
-                        {
-                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t");
-
-                            List<TVItemLinkModel> tvItemLinkModelList2 = tvItemLinkService.GetTVItemLinkModelListWithFromTVItemIDDB(tvItemLinkModel.ToTVItemID);
-                            foreach (TVItemLinkModel tvItemLinkModel2 in tvItemLinkModelList2)
-                            {
-                                if (tvItemLinkModel2.ToTVType == TVTypeEnum.Address)
-                                {
-                                    TVItemModel tvItemModelAddress = tvItemService.GetTVItemModelWithTVItemIDDB(tvItemLinkModel2.ToTVItemID);
-                                    if (!string.IsNullOrWhiteSpace(tvItemModelAddress.Error))
-                                    {
-                                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelAddress.Error}");
-                                    }
-                                    else
-                                    {
-                                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}");
+            //List<TVItemModel> tvItemModelMuniList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Municipality);
 
 
-                                        AddressModel addressModel = addressService.GetAddressModelWithAddressTVItemIDDB((int)tvItemModelAddress.TVItemID);
-                                        if (!string.IsNullOrWhiteSpace(addressModel.Error))
-                                        {
-                                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tContactAddressTVItemID exist but can't find address");
-                                        }
-                                        else
-                                        {
-                                            if (addressModel.ProvinceTVItemID == tvItemModelProv.TVItemID)
-                                            {
-                                                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tOK");
-                                            }
-                                            else
-                                            {
-                                                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tNot OK");
-
-                                                string TVTextMuni = addressModel.MunicipalityTVText;
-
-                                                TVItemModel tvItemModelMuniOK = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProv.TVItemID, TVTextMuni, TVTypeEnum.Municipality);
-                                                if (!string.IsNullOrWhiteSpace(tvItemModelMuniOK.Error))
-                                                {
-                                                    sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tCould not find muni [{TVTextMuni}]");
-                                                }
-                                                else
-                                                {
-                                                    //addressModel.ProvinceTVItemID = tvItemModelProv.TVItemID;
-                                                    //addressModel.MunicipalityTVItemID = tvItemModelMuniOK.TVItemID;
-
-                                                    //AddressModel addressModelRet = addressService.PostUpdateAddressDB(addressModel);
-                                                    //if (!string.IsNullOrWhiteSpace(addressModelRet.Error))
-                                                    //{
-                                                    sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tCould not update new address");
-                                                    //}
-                                                }
-
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            // doing infrastructure
-            //sb.AppendLine($"Province\tMunicipality\tInfrastructure\tUnder Correct Prov");
+            //// doing contact
+            //sb.AppendLine($"Province\tMunicipality\tContact\tUnder Correct Prov");
 
             //foreach (TVItemModel tvItemModelMuni in tvItemModelMuniList)
             //{
@@ -16546,69 +16464,151 @@ namespace ImportByFunction
             //    lblStatus.Refresh();
             //    Application.DoEvents();
 
-            //    List<TVItemModel> tvItemModelInfList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelMuni.TVItemID, TVTypeEnum.Infrastructure);
+            //    List<TVItemLinkModel> tvItemLinkModelList = tvItemLinkService.GetTVItemLinkModelListWithFromTVItemIDDB(tvItemModelMuni.TVItemID);
 
-            //    foreach (TVItemModel tvItemModelInf in tvItemModelInfList)
+            //    foreach (TVItemLinkModel tvItemLinkModel in tvItemLinkModelList)
             //    {
-            //        InfrastructureModel infrastructureModel = infrastructureService.GetInfrastructureModelWithInfrastructureTVItemIDDB(tvItemModelInf.TVItemID);
-            //        if (!string.IsNullOrWhiteSpace(infrastructureModel.Error))
+            //        if (tvItemLinkModel.ToTVType == TVTypeEnum.Contact)
             //        {
-            //            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tERROR");
-            //        }
-            //        else
-            //        {
-            //            if (infrastructureModel.CivicAddressTVItemID == null)
+            //            TVItemModel tvItemModelContact = tvItemService.GetTVItemModelWithTVItemIDDB(tvItemLinkModel.ToTVItemID);
+            //            if (!string.IsNullOrWhiteSpace(tvItemModelContact.Error))
             //            {
-            //                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tNo Address");
+            //                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.Error}");
             //            }
             //            else
             //            {
-            //                AddressModel addressModel = addressService.GetAddressModelWithAddressTVItemIDDB((int)infrastructureModel.CivicAddressTVItemID);
-            //                if (!string.IsNullOrWhiteSpace(addressModel.Error))
-            //                {
-            //                    sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tCivicAddressTVItemID exist but can't find address");
-            //                }
-            //                else
-            //                {
-            //                    if (addressModel.ProvinceTVItemID == tvItemModelProv.TVItemID)
-            //                    {
-            //                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tOK");
-            //                    }
-            //                    else
-            //                    {
-            //                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tNot OK");
+            //                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t");
 
-            //                        string TVTextMuni = addressModel.MunicipalityTVText;
-
-            //                        TVItemModel tvItemModelMuniOK = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProv.TVItemID, TVTextMuni, TVTypeEnum.Municipality);
-            //                        if (!string.IsNullOrWhiteSpace(tvItemModelMuniOK.Error))
+            //                List<TVItemLinkModel> tvItemLinkModelList2 = tvItemLinkService.GetTVItemLinkModelListWithFromTVItemIDDB(tvItemLinkModel.ToTVItemID);
+            //                foreach (TVItemLinkModel tvItemLinkModel2 in tvItemLinkModelList2)
+            //                {
+            //                    if (tvItemLinkModel2.ToTVType == TVTypeEnum.Address)
+            //                    {
+            //                        TVItemModel tvItemModelAddress = tvItemService.GetTVItemModelWithTVItemIDDB(tvItemLinkModel2.ToTVItemID);
+            //                        if (!string.IsNullOrWhiteSpace(tvItemModelAddress.Error))
             //                        {
-            //                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tCould not find muni [{TVTextMuni}]");
+            //                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelAddress.Error}");
             //                        }
             //                        else
             //                        {
-            //                            //addressModel.ProvinceTVItemID = tvItemModelProv.TVItemID;
-            //                            //addressModel.MunicipalityTVItemID = tvItemModelMuniOK.TVItemID;
+            //                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}");
 
-            //                            //AddressModel addressModelRet = addressService.PostUpdateAddressDB(addressModel);
-            //                            //if (!string.IsNullOrWhiteSpace(addressModelRet.Error))
-            //                            //{
-            //                                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tCould not update new address");
-            //                            //}
+
+            //                            AddressModel addressModel = addressService.GetAddressModelWithAddressTVItemIDDB((int)tvItemModelAddress.TVItemID);
+            //                            if (!string.IsNullOrWhiteSpace(addressModel.Error))
+            //                            {
+            //                                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tContactAddressTVItemID exist but can't find address");
+            //                            }
+            //                            else
+            //                            {
+            //                                if (addressModel.ProvinceTVItemID == tvItemModelProv.TVItemID)
+            //                                {
+            //                                    sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tOK");
+            //                                }
+            //                                else
+            //                                {
+            //                                    sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tNot OK");
+
+            //                                    string TVTextMuni = addressModel.MunicipalityTVText;
+
+            //                                    TVItemModel tvItemModelMuniOK = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProv.TVItemID, TVTextMuni, TVTypeEnum.Municipality);
+            //                                    if (!string.IsNullOrWhiteSpace(tvItemModelMuniOK.Error))
+            //                                    {
+            //                                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tCould not find muni [{TVTextMuni}]");
+            //                                    }
+            //                                    else
+            //                                    {
+            //                                        //addressModel.ProvinceTVItemID = tvItemModelProv.TVItemID;
+            //                                        //addressModel.MunicipalityTVItemID = tvItemModelMuniOK.TVItemID;
+
+            //                                        //AddressModel addressModelRet = addressService.PostUpdateAddressDB(addressModel);
+            //                                        //if (!string.IsNullOrWhiteSpace(addressModelRet.Error))
+            //                                        //{
+            //                                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelContact.TVText}\t{tvItemModelAddress.TVText}\tCould not update new address");
+            //                                        //}
+            //                                    }
+
+            //                                }
+            //                            }
             //                        }
-
             //                    }
             //                }
             //            }
             //        }
             //    }
             //}
+            //// doing infrastructure
+            ////sb.AppendLine($"Province\tMunicipality\tInfrastructure\tUnder Correct Prov");
 
-            richTextBoxStatus.Text = sb.ToString();
+            ////foreach (TVItemModel tvItemModelMuni in tvItemModelMuniList)
+            ////{
+            ////    lblStatus.Text = tvItemModelMuni.TVText;
+            ////    lblStatus.Refresh();
+            ////    Application.DoEvents();
 
-            lblStatus.Text = "Done...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            ////    List<TVItemModel> tvItemModelInfList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelMuni.TVItemID, TVTypeEnum.Infrastructure);
+
+            ////    foreach (TVItemModel tvItemModelInf in tvItemModelInfList)
+            ////    {
+            ////        InfrastructureModel infrastructureModel = infrastructureService.GetInfrastructureModelWithInfrastructureTVItemIDDB(tvItemModelInf.TVItemID);
+            ////        if (!string.IsNullOrWhiteSpace(infrastructureModel.Error))
+            ////        {
+            ////            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tERROR");
+            ////        }
+            ////        else
+            ////        {
+            ////            if (infrastructureModel.CivicAddressTVItemID == null)
+            ////            {
+            ////                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tNo Address");
+            ////            }
+            ////            else
+            ////            {
+            ////                AddressModel addressModel = addressService.GetAddressModelWithAddressTVItemIDDB((int)infrastructureModel.CivicAddressTVItemID);
+            ////                if (!string.IsNullOrWhiteSpace(addressModel.Error))
+            ////                {
+            ////                    sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tCivicAddressTVItemID exist but can't find address");
+            ////                }
+            ////                else
+            ////                {
+            ////                    if (addressModel.ProvinceTVItemID == tvItemModelProv.TVItemID)
+            ////                    {
+            ////                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tOK");
+            ////                    }
+            ////                    else
+            ////                    {
+            ////                        sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tNot OK");
+
+            ////                        string TVTextMuni = addressModel.MunicipalityTVText;
+
+            ////                        TVItemModel tvItemModelMuniOK = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelProv.TVItemID, TVTextMuni, TVTypeEnum.Municipality);
+            ////                        if (!string.IsNullOrWhiteSpace(tvItemModelMuniOK.Error))
+            ////                        {
+            ////                            sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tCould not find muni [{TVTextMuni}]");
+            ////                        }
+            ////                        else
+            ////                        {
+            ////                            //addressModel.ProvinceTVItemID = tvItemModelProv.TVItemID;
+            ////                            //addressModel.MunicipalityTVItemID = tvItemModelMuniOK.TVItemID;
+
+            ////                            //AddressModel addressModelRet = addressService.PostUpdateAddressDB(addressModel);
+            ////                            //if (!string.IsNullOrWhiteSpace(addressModelRet.Error))
+            ////                            //{
+            ////                                sb.AppendLine($"{tvItemModelProv.TVText}\t{tvItemModelMuni.TVText}\t{tvItemModelInf.TVText}\tCould not update new address");
+            ////                            //}
+            ////                        }
+
+            ////                    }
+            ////                }
+            ////            }
+            ////        }
+            ////    }
+            ////}
+
+            //richTextBoxStatus.Text = sb.ToString();
+
+            //lblStatus.Text = "Done...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
         }
 
@@ -17559,11 +17559,11 @@ namespace ImportByFunction
             string ProvInit = "";
             List<string> ProvInitList = new List<string>()
             {
-               "NS" //"NB", "PE", "BC", "NL", "NS", "QC",
+               "NL" //"NB", "PE", "BC", "NL", "NS", "QC",
             };
             List<string> ProvList = new List<string>()
             {
-                "Nova Scotia" //"New Brunswick", "Prince Edward Island", "British Columbia", "Newfoundland and Labrador", "Nova Scotia", "Québec",
+                  "Newfoundland and Labrador" //"New Brunswick", "Prince Edward Island", "British Columbia", "Newfoundland and Labrador", "Nova Scotia", "Québec",
             };
 
             TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
