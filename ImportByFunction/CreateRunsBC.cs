@@ -289,10 +289,10 @@ namespace ImportByFunction
                                     break;
                             }
 
-                            if (mwqmRunModelNew.SubsectorTVItemID == null)
-                            {
-                                int sleifj = 234;
-                            }
+                            //if (mwqmRunModelNew.SubsectorTVItemID == null)
+                            //{
+                            //    int sleifj = 234;
+                            //}
                             MWQMRunModel mwqmRunModelRet = mwqmRunService.PostAddMWQMRunDB(mwqmRunModelNew);
                             if (!CheckModelOK<MWQMRunModel>(mwqmRunModelRet)) return false;
                         }
@@ -483,10 +483,10 @@ namespace ImportByFunction
 
                             if (ShouldUpdate2)
                             {
-                                if (mwqmRunModelNew.SubsectorTVItemID == null)
-                                {
-                                    int sleifj = 234;
-                                }
+                                //if (mwqmRunModelNew.SubsectorTVItemID == null)
+                                //{
+                                //    int sleifj = 234;
+                                //}
                                 MWQMRunModel mwqmRunModelRet = mwqmRunService.PostUpdateMWQMRunDB(mwqmRunModelExist);
                                 if (!CheckModelOK<MWQMRunModel>(mwqmRunModelRet)) return false;
                             }
@@ -751,10 +751,10 @@ namespace ImportByFunction
                                     break;
                             }
 
-                            if (mwqmRunModelNew.SubsectorTVItemID == null)
-                            {
-                                int sleifj = 234;
-                            }
+                            //if (mwqmRunModelNew.SubsectorTVItemID == null)
+                            //{
+                            //    int sleifj = 234;
+                            //}
 
                             MWQMRunModel mwqmRunModelRet = mwqmRunService.PostAddMWQMRunDB(mwqmRunModelNew);
                             if (!CheckModelOK<MWQMRunModel>(mwqmRunModelRet)) return false;
@@ -1000,10 +1000,10 @@ namespace ImportByFunction
 
                             if (ShouldUpdate)
                             {
-                                if (mwqmRunModelNew.SubsectorTVItemID == null)
-                                {
-                                    int sleifj = 234;
-                                }
+                                //if (mwqmRunModelNew.SubsectorTVItemID == null)
+                                //{
+                                //    int sleifj = 234;
+                                //}
 
                                 MWQMRunModel mwqmRunModelRet = mwqmRunService.PostUpdateMWQMRunDB(mwqmRunModelExist);
                                 if (!CheckModelOK<MWQMRunModel>(mwqmRunModelRet)) return false;
