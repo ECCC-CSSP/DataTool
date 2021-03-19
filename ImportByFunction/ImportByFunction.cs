@@ -8705,7 +8705,7 @@ namespace ImportByFunction
                                     {
                                         db2.SaveChanges();
                                     }
-                                    catch (Exception )
+                                    catch (Exception)
                                     {
                                         richTextBoxStatus.AppendText($"Could not delete TVItemStats of MWQMRuns");
                                     }
@@ -16795,24 +16795,24 @@ namespace ImportByFunction
                         if (mwqmSiteList.Count > 0)
                         {
                             int countA = (from a in mwqmSiteList
-                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Approved
-                                                 select a).Count();
+                                          where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Approved
+                                          select a).Count();
 
                             int countCA = (from a in mwqmSiteList
-                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyApproved
-                                                 select a).Count();
+                                           where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyApproved
+                                           select a).Count();
 
                             int countR = (from a in mwqmSiteList
-                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Restricted
-                                                 select a).Count();
+                                          where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Restricted
+                                          select a).Count();
 
                             int countCR = (from a in mwqmSiteList
-                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyRestricted
-                                                 select a).Count();
+                                           where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyRestricted
+                                           select a).Count();
 
                             int countP = (from a in mwqmSiteList
-                                                 where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Prohibited
-                                                 select a).Count();
+                                          where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Prohibited
+                                          select a).Count();
 
                             int countU = (from a in mwqmSiteList
                                           where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Error
@@ -16838,10 +16838,88 @@ namespace ImportByFunction
             richTextBoxStatus.Text = sb.ToString();
         }
 
+        private void button31_Click(object sender, EventArgs e)
+        {
+            DoButton31();
+        }
 
-<<<<<<< HEAD
-=======
-        private void button37_Click(object sender,  EventArgs e)
+        private async Task DoButton31()
+        {
+            List<string> ProvInitList = new List<string>()
+            {
+                "BC", "ME", "NB", "NL", "NS", "PE", "QC",
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "British Columbia", "Maine", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            };
+
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                TVItem tvItem = (from c in db2.TVItems
+                                 where c.TVItemID == 1
+                                 select c).FirstOrDefault();
+
+                for (int i = 0; i < ProvList.Count; i++)
+                {
+                    string prov = ProvList[i];
+                    TVItem tvItemProv = (from c in db2.TVItems
+                                         from cl in db2.TVItemLanguages
+                                         where c.TVItemID == cl.TVItemID
+                                         && cl.Language == (int)LanguageEnum.en
+                                         && c.TVType == (int)TVTypeEnum.Province
+                                         && cl.TVText == prov
+                                         select c).FirstOrDefault();
+
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.AppendLine("Prov,Muni,Lat,Lng");
+
+                    var tvItemMuniList = (from c in db2.TVItems
+                                          from cl in db2.TVItemLanguages
+                                          where c.TVItemID == cl.TVItemID
+                                          && cl.Language == (int)LanguageEnum.en
+                                          && c.TVType == (int)TVTypeEnum.Municipality
+                                          && c.TVPath.Contains(tvItemProv.TVPath + "p")
+                                          orderby cl.TVText ascending
+                                          select new { c, cl }).ToList();
+
+                    foreach (var muni in tvItemMuniList)
+                    {
+                        lblStatus.Text = muni.cl.TVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        var mapInfoPoint = (from mi in db2.MapInfos
+                                            from mip in db2.MapInfoPoints
+                                            where mi.MapInfoID == mip.MapInfoID
+                                            && mi.TVItemID == muni.c.TVItemID
+                                            && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                            select mip).FirstOrDefault();
+
+                        if (mapInfoPoint != null)
+                        {
+                            sb.AppendLine($"{ProvInitList[i]},{muni.cl.TVText},{mapInfoPoint.Lat}{mapInfoPoint.Lng}");
+                        }
+                        else
+                        {
+                            HttpClient httpClient = new HttpClient();
+                            string url = $@"https://maps.googleapis.com/maps/api/geocode/json?address=" + muni.cl.TVText + "%20" + ProvInitList[i] + "%20canada&key=AIzaSyAwPGpdSM6z0A7DFdWPbS3vIDTk2mxINaA";
+                            var res = await httpClient.GetStringAsync(url);
+                            string resStr = res.ToString();
+                            sb.AppendLine($"{ProvInitList[i]},{muni.cl.TVText},0,0");
+                        }
+                    }
+
+                    FileInfo fi = new FileInfo($@"C:\CSSP\{ProvInitList[i]}_Muni_Coord.csv");
+                    StreamWriter sw = fi.CreateText();
+                    sw.WriteLine(sb.ToString());
+                    sw.Close();
+                }
+            }
+        }
+
+        private void button37_Click(object sender, EventArgs e)
         {
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
@@ -16889,7 +16967,7 @@ namespace ImportByFunction
                                           orderby tl.TVText
                                           select new { t, tl }).ToList();
 
-                    foreach(var tvItemMuni in tvItemMuniList)
+                    foreach (var tvItemMuni in tvItemMuniList)
                     {
                         var InfList = (from t in db.TVItems
                                        from tl in db.TVItemLanguages
@@ -16901,7 +16979,7 @@ namespace ImportByFunction
                                        && tl.Language == (int)LanguageEnum.en
                                        select new { t, tl, inf }).ToList();
 
-                        foreach(var infrastructure in InfList)
+                        foreach (var infrastructure in InfList)
                         {
                             var MapInfoList = (from mi in db.MapInfos
                                                from mip in db.MapInfoPoints
@@ -16992,7 +17070,6 @@ namespace ImportByFunction
 
         }
 
->>>>>>> 32a91c17a976d96ff3aee9c71b6f9c2e0a2ad180
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
