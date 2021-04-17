@@ -16845,13 +16845,21 @@ namespace ImportByFunction
 
         private async Task DoButton31()
         {
+            //List<string> ProvInitList = new List<string>()
+            //{
+            //    "BC", "ME", "NB", "NL", "NS", "PE", "QC",
+            //};
+            //List<string> ProvList = new List<string>()
+            //{
+            //    "British Columbia", "Maine", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            //};
             List<string> ProvInitList = new List<string>()
             {
-                "BC", "ME", "NB", "NL", "NS", "PE", "QC",
+                "NB", "NL", "NS", "PE"
             };
             List<string> ProvList = new List<string>()
             {
-                "British Columbia", "Maine", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+                "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island"
             };
 
             using (CSSPDBEntities db2 = new CSSPDBEntities())
@@ -16871,50 +16879,97 @@ namespace ImportByFunction
                                          && cl.TVText == prov
                                          select c).FirstOrDefault();
 
-                    StringBuilder sb = new StringBuilder();
+                    StringBuilder sbSite = new StringBuilder();
+                    StringBuilder sbRun = new StringBuilder();
+                    StringBuilder sbSample = new StringBuilder();
 
-                    sb.AppendLine("Prov,Muni,Lat,Lng");
+                    sbSite.AppendLine("Prov,Locator,Subsector,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020");
+                    sbRun.AppendLine("Prov,Locator,Subsector,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020");
+                    sbSample.AppendLine("Prov,Locator,Subsector,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020");
 
-                    var tvItemMuniList = (from c in db2.TVItems
-                                          from cl in db2.TVItemLanguages
-                                          where c.TVItemID == cl.TVItemID
-                                          && cl.Language == (int)LanguageEnum.en
-                                          && c.TVType == (int)TVTypeEnum.Municipality
-                                          && c.TVPath.Contains(tvItemProv.TVPath + "p")
-                                          orderby cl.TVText ascending
-                                          select new { c, cl }).ToList();
+                    var subsectorList = (from c in db2.TVItems
+                                         from cl in db2.TVItemLanguages
+                                         where c.TVItemID == cl.TVItemID
+                                         && cl.Language == (int)LanguageEnum.en
+                                         && c.TVType == (int)TVTypeEnum.Subsector
+                                         && c.TVPath.Contains(tvItemProv.TVPath + "p")
+                                         orderby cl.TVText ascending
+                                         select new { c, cl }).ToList();
 
-                    foreach (var muni in tvItemMuniList)
+                    foreach (var subsector in subsectorList)
                     {
-                        lblStatus.Text = muni.cl.TVText;
+                        lblStatus.Text = subsector.cl.TVText;
                         lblStatus.Refresh();
                         Application.DoEvents();
 
-                        var mapInfoPoint = (from mi in db2.MapInfos
-                                            from mip in db2.MapInfoPoints
-                                            where mi.MapInfoID == mip.MapInfoID
-                                            && mi.TVItemID == muni.c.TVItemID
-                                            && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
-                                            select mip).FirstOrDefault();
+                        string provInit = ProvInitList[i];
+                        string tvText = subsector.cl.TVText;
+                        string locator = tvText;
+                        string name = tvText;
 
-                        if (mapInfoPoint != null)
+                        if (tvText.Contains(" "))
                         {
-                            sb.AppendLine($"{ProvInitList[i]},{muni.cl.TVText},{mapInfoPoint.Lat}{mapInfoPoint.Lng}");
+                            locator = tvText.Substring(0, tvText.IndexOf(" "));
+                            name = tvText.Substring(tvText.IndexOf(" ") + 1);
                         }
-                        else
+
+                        List<MWQMSample> mwqmSampleList = (from c in db2.TVItems
+                                                           from s in db2.MWQMSamples
+                                                           where c.TVItemID == s.MWQMSiteTVItemID
+                                                           && c.TVType == (int)TVTypeEnum.MWQMSite
+                                                           && c.TVPath.Contains(subsector.c.TVPath + "p")
+                                                           select s).ToList();
+
+                        // doing site
+                        List<int> countSiteList = new List<int>();
+                        for (int j = 2010; j < 2021; j++)
                         {
-                            HttpClient httpClient = new HttpClient();
-                            string url = $@"https://maps.googleapis.com/maps/api/geocode/json?address=" + muni.cl.TVText + "%20" + ProvInitList[i] + "%20canada&key=AIzaSyAwPGpdSM6z0A7DFdWPbS3vIDTk2mxINaA";
-                            var res = await httpClient.GetStringAsync(url);
-                            string resStr = res.ToString();
-                            sb.AppendLine($"{ProvInitList[i]},{muni.cl.TVText},0,0");
+                            countSiteList.Add((from c in mwqmSampleList
+                                           where c.SampleDateTime_Local.Year == j
+                                           select c.MWQMSiteTVItemID).Distinct().Count());
                         }
+
+
+                        sbSite.AppendLine($"{provInit},{locator},{name.Replace(",","_")},{countSiteList[0]},{countSiteList[1]},{countSiteList[2]},{countSiteList[3]},{countSiteList[4]},{countSiteList[5]},{countSiteList[6]},{countSiteList[7]},{countSiteList[8]},{countSiteList[9]},{countSiteList[10]}");
+
+                        // doing run
+                        List<int> countRunList = new List<int>();
+                        for (int j = 2010; j < 2021; j++)
+                        {
+                            countRunList.Add((from c in mwqmSampleList
+                                               where c.SampleDateTime_Local.Year == j
+                                               select c.MWQMRunTVItemID).Distinct().Count());
+                        }
+
+                        sbRun.AppendLine($"{provInit},{locator},{name.Replace(",", "_")},{countRunList[0]},{countRunList[1]},{countRunList[2]},{countRunList[3]},{countRunList[4]},{countRunList[5]},{countRunList[6]},{countRunList[7]},{countRunList[8]},{countRunList[9]},{countRunList[10]}");
+
+                        // doing sample
+                        List<int> countSampleList = new List<int>();
+                        for (int j = 2010; j < 2021; j++)
+                        {
+                            countSampleList.Add((from c in mwqmSampleList
+                                              where c.SampleDateTime_Local.Year == j
+                                              select c).Count());
+                        }
+
+                        sbSample.AppendLine($"{provInit},{locator},{name.Replace(",", "_")},{countSampleList[0]},{countSampleList[1]},{countSampleList[2]},{countSampleList[3]},{countSampleList[4]},{countSampleList[5]},{countSampleList[6]},{countSampleList[7]},{countSampleList[8]},{countSampleList[9]},{countSampleList[10]}");
+
                     }
 
-                    FileInfo fi = new FileInfo($@"C:\CSSP\{ProvInitList[i]}_Muni_Coord.csv");
+                    FileInfo fi = new FileInfo($@"C:\CSSP\SiteNumber_{ProvInitList[i]}.csv");
                     StreamWriter sw = fi.CreateText();
-                    sw.WriteLine(sb.ToString());
+                    sw.WriteLine(sbSite.ToString());
                     sw.Close();
+
+                    FileInfo fi2 = new FileInfo($@"C:\CSSP\RunNumber_{ProvInitList[i]}.csv");
+                    StreamWriter sw2 = fi2.CreateText();
+                    sw2.WriteLine(sbRun.ToString());
+                    sw2.Close();
+
+                    FileInfo fi3 = new FileInfo($@"C:\CSSP\SampleNumber_{ProvInitList[i]}.csv");
+                    StreamWriter sw3 = fi3.CreateText();
+                    sw3.WriteLine(sbSample.ToString());
+                    sw3.Close();
                 }
             }
         }
