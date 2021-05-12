@@ -112,6 +112,7 @@
             this.button29 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
+            this.button32 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -914,7 +915,7 @@
             // 
             // button30
             // 
-            this.button30.Location = new System.Drawing.Point(287, 48);
+            this.button30.Location = new System.Drawing.Point(168, 66);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(75, 23);
             this.button30.TabIndex = 232;
@@ -924,7 +925,7 @@
             // 
             // button31
             // 
-            this.button31.Location = new System.Drawing.Point(321, 14);
+            this.button31.Location = new System.Drawing.Point(262, 47);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(75, 23);
             this.button31.TabIndex = 233;
@@ -932,11 +933,22 @@
             this.button31.UseVisualStyleBackColor = true;
             this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
+            // button32
+            // 
+            this.button32.Location = new System.Drawing.Point(321, 13);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(75, 23);
+            this.button32.TabIndex = 233;
+            this.button32.Text = "button32";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 766);
+            this.Controls.Add(this.button32);
             this.Controls.Add(this.button31);
             this.Controls.Add(this.button30);
             this.Controls.Add(this.button29);
@@ -1110,6 +1122,7 @@
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.Button button32;
     }
 }
 

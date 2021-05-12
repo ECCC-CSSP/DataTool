@@ -16925,20 +16925,20 @@ namespace ImportByFunction
                         for (int j = 2010; j < 2021; j++)
                         {
                             countSiteList.Add((from c in mwqmSampleList
-                                           where c.SampleDateTime_Local.Year == j
-                                           select c.MWQMSiteTVItemID).Distinct().Count());
+                                               where c.SampleDateTime_Local.Year == j
+                                               select c.MWQMSiteTVItemID).Distinct().Count());
                         }
 
 
-                        sbSite.AppendLine($"{provInit},{locator},{name.Replace(",","_")},{countSiteList[0]},{countSiteList[1]},{countSiteList[2]},{countSiteList[3]},{countSiteList[4]},{countSiteList[5]},{countSiteList[6]},{countSiteList[7]},{countSiteList[8]},{countSiteList[9]},{countSiteList[10]}");
+                        sbSite.AppendLine($"{provInit},{locator},{name.Replace(",", "_")},{countSiteList[0]},{countSiteList[1]},{countSiteList[2]},{countSiteList[3]},{countSiteList[4]},{countSiteList[5]},{countSiteList[6]},{countSiteList[7]},{countSiteList[8]},{countSiteList[9]},{countSiteList[10]}");
 
                         // doing run
                         List<int> countRunList = new List<int>();
                         for (int j = 2010; j < 2021; j++)
                         {
                             countRunList.Add((from c in mwqmSampleList
-                                               where c.SampleDateTime_Local.Year == j
-                                               select c.MWQMRunTVItemID).Distinct().Count());
+                                              where c.SampleDateTime_Local.Year == j
+                                              select c.MWQMRunTVItemID).Distinct().Count());
                         }
 
                         sbRun.AppendLine($"{provInit},{locator},{name.Replace(",", "_")},{countRunList[0]},{countRunList[1]},{countRunList[2]},{countRunList[3]},{countRunList[4]},{countRunList[5]},{countRunList[6]},{countRunList[7]},{countRunList[8]},{countRunList[9]},{countRunList[10]}");
@@ -16948,8 +16948,8 @@ namespace ImportByFunction
                         for (int j = 2010; j < 2021; j++)
                         {
                             countSampleList.Add((from c in mwqmSampleList
-                                              where c.SampleDateTime_Local.Year == j
-                                              select c).Count());
+                                                 where c.SampleDateTime_Local.Year == j
+                                                 select c).Count());
                         }
 
                         sbSample.AppendLine($"{provInit},{locator},{name.Replace(",", "_")},{countSampleList[0]},{countSampleList[1]},{countSampleList[2]},{countSampleList[3]},{countSampleList[4]},{countSampleList[5]},{countSampleList[6]},{countSampleList[7]},{countSampleList[8]},{countSampleList[9]},{countSampleList[10]}");
@@ -17124,6 +17124,115 @@ namespace ImportByFunction
             }
 
         }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            DoButton32();
+        }
+
+        private async Task DoButton32()
+        {
+            //List<string> ProvInitList = new List<string>()
+            //{
+            //    "BC", "ME", "NB", "NL", "NS", "PE", "QC",
+            //};
+            //List<string> ProvList = new List<string>()
+            //{
+            //    "British Columbia", "Maine", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            //};
+            List<string> ProvInitList = new List<string>()
+            {
+                "NB", "NL", "NS", "PE"
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island"
+            };
+
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                TVItem tvItem = (from c in db2.TVItems
+                                 where c.TVItemID == 1
+                                 select c).FirstOrDefault();
+
+                for (int i = 0; i < ProvList.Count; i++)
+                {
+                    string prov = ProvList[i];
+                    TVItem tvItemProv = (from c in db2.TVItems
+                                         from cl in db2.TVItemLanguages
+                                         where c.TVItemID == cl.TVItemID
+                                         && cl.Language == (int)LanguageEnum.en
+                                         && c.TVType == (int)TVTypeEnum.Province
+                                         && cl.TVText == prov
+                                         select c).FirstOrDefault();
+
+                    StringBuilder sbSite = new StringBuilder();
+
+                    sbSite.AppendLine("Province,Sector_Secteur,Site,status,Latitude,Longitude,Pub");
+
+                    var subsectorList = (from c in db2.TVItems
+                                         from cl in db2.TVItemLanguages
+                                         where c.TVItemID == cl.TVItemID
+                                         && cl.Language == (int)LanguageEnum.en
+                                         && c.TVType == (int)TVTypeEnum.Subsector
+                                         && c.TVPath.Contains(tvItemProv.TVPath + "p")
+                                         orderby cl.TVText ascending
+                                         select new { c, cl }).ToList();
+
+                    foreach (var subsector in subsectorList)
+                    {
+                        lblStatus.Text = subsector.cl.TVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        string provInit = ProvInitList[i];
+                        string tvText = subsector.cl.TVText;
+                        string locator = tvText;
+
+                        if (tvText.Contains(" "))
+                        {
+                            locator = tvText.Substring(0, tvText.IndexOf(" "));
+                        }
+
+                        DateTime dateTimeStart = new DateTime(2020, 1, 1);
+
+                        var valList = (from t in db2.TVItems
+                                       from tl in db2.TVItemLanguages
+                                       from s in db2.MWQMSamples
+                                       let mip = (from c in db2.MapInfos
+                                                  from cp in db2.MapInfoPoints
+                                                  where c.TVItemID == t.TVItemID
+                                                  && c.MapInfoID == cp.MapInfoID
+                                                  && c.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
+                                                  select cp).FirstOrDefault()
+                                       where t.TVItemID == tl.TVItemID
+                                       && t.TVItemID == s.MWQMSiteTVItemID
+                                       && t.TVType == (int)TVTypeEnum.MWQMSite
+                                       && t.TVPath.Contains(subsector.c.TVPath + "p")
+                                       && s.SampleDateTime_Local > dateTimeStart
+                                       && tl.Language == (int)LanguageEnum.en
+                                       && mip != null
+                                       orderby tl.TVText
+                                       select new { t.TVItemID, tl.TVText, mip.Lat, mip.Lng }).Distinct().ToList();
+
+                        foreach (var val in valList)
+                        {
+                            string Lat = val.Lat.ToString("F6");
+                            string Lng = val.Lng.ToString("F6");
+
+                            sbSite.AppendLine($"{provInit},{locator},{provInit}_{val.TVText},1,{Lat},{Lng},y");
+                        }
+
+                    }
+
+                    FileInfo fi = new FileInfo($@"C:\CSSP\Site_{ProvInitList[i]}_2020_2021.csv");
+                    StreamWriter sw = fi.CreateText();
+                    sw.WriteLine(sbSite.ToString());
+                    sw.Close();
+                }
+            }
+        }
+
 
         //private void button18_Click(object sender, EventArgs e)
         //{
