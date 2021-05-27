@@ -17167,6 +17167,14 @@ namespace ImportByFunction
                                          select c).FirstOrDefault();
 
                     StringBuilder sbSite = new StringBuilder();
+                    StringBuilder sbkml = new StringBuilder();
+
+                    string provInit = ProvInitList[i];
+
+                    sbkml.AppendLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+                    sbkml.AppendLine(@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+                    sbkml.AppendLine(@"<Document>");
+                    sbkml.AppendLine($@"	<name>{provInit} - 2020 active site</name>");
 
                     sbSite.AppendLine("Province,Sector_Secteur,Site,status,Latitude,Longitude,Pub");
 
@@ -17185,7 +17193,6 @@ namespace ImportByFunction
                         lblStatus.Refresh();
                         Application.DoEvents();
 
-                        string provInit = ProvInitList[i];
                         string tvText = subsector.cl.TVText;
                         string locator = tvText;
 
@@ -17193,6 +17200,9 @@ namespace ImportByFunction
                         {
                             locator = tvText.Substring(0, tvText.IndexOf(" "));
                         }
+
+                        sbkml.AppendLine(@"    <Folder>");
+                        sbkml.AppendLine($@"	<name>{locator}</name>");
 
                         DateTime dateTimeStart = new DateTime(2020, 1, 1);
 
@@ -17221,14 +17231,32 @@ namespace ImportByFunction
                             string Lng = val.Lng.ToString("F6");
 
                             sbSite.AppendLine($"{provInit},{locator},{provInit}_{val.TVText},1,{Lat},{Lng},y");
+
+                            sbkml.AppendLine(@"	<Placemark>");
+                            sbkml.AppendLine($@"		<name>{val.TVText}</name>");
+                            sbkml.AppendLine(@"		<Point>");
+                            sbkml.AppendLine($@"			<coordinates>{Lng},{Lat},0</coordinates>");
+                            sbkml.AppendLine(@"		</Point>");
+                            sbkml.AppendLine(@"	</Placemark>");
+
                         }
 
+                        sbkml.AppendLine(@"    </Folder>");
                     }
 
                     FileInfo fi = new FileInfo($@"C:\CSSP\Site_{ProvInitList[i]}_2020_2021.csv");
                     StreamWriter sw = fi.CreateText();
                     sw.WriteLine(sbSite.ToString());
                     sw.Close();
+
+
+                    sbkml.AppendLine(@"</Document>");
+                    sbkml.AppendLine(@"</kml>");
+
+                    FileInfo fikml = new FileInfo($@"C:\CSSP\{ProvInitList[i]}_2020_Active_Site.kml");
+                    StreamWriter swkml = fikml.CreateText();
+                    swkml.WriteLine(sbkml.ToString());
+                    swkml.Close();
                 }
             }
         }
