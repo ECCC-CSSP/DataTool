@@ -28,6 +28,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace ImportByFunction
 {
@@ -17127,7 +17128,107 @@ namespace ImportByFunction
 
         private void button32_Click(object sender, EventArgs e)
         {
-            DoButton32();
+            //ClearMultipleSpaceInTVItemLanguageTVText();
+            ClearEndParentheseOnSomeMWQMRunTVText();
+            //DoButton32();
+        }
+        private void ClearEndParentheseOnSomeMWQMRunTVText()
+        {
+            TVTypeEnum tvType = TVTypeEnum.MWQMRun;
+
+            string str = "(";
+            string str2 = ")";
+
+            lblStatus.Text = "Running ClearEndParentheseOnSomeMWQMRunTVText ...";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+            Boolean exist = true;
+            while (exist)
+            {
+                using (CSSPDBEntities db2 = new CSSPDBEntities())
+                {
+                    List<TVItemLanguage> tvItemLanguageList = (from c in db2.TVItems
+                                                               from cl in db2.TVItemLanguages
+                                                               where c.TVItemID == cl.TVItemID
+                                                               && c.TVType == (int)TVTypeEnum.MWQMRun
+                                                               && !cl.TVText.Contains(str)
+                                                               && cl.TVText.EndsWith(str2)
+                                                               select cl).Take(5000).ToList();
+
+                    foreach (TVItemLanguage tvItemLanguage in tvItemLanguageList)
+                    {
+                        tvItemLanguage.TVText = tvItemLanguage.TVText.Substring(0, tvItemLanguage.TVText.Length - 1);
+                    }
+
+                    try
+                    {
+                        db2.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        richTextBoxStatus.AppendText($"ERROR: {ex.Message}");
+                        break;
+                    }
+
+                    if (tvItemLanguageList.Count == 0)
+                    {
+                        lblStatus.Text = "Done Running ClearEndParentheseOnSomeMWQMRunTVText ...";
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void ClearMultipleSpaceInTVItemLanguageTVText()
+        {
+            string str = "" + Convert.ToChar(160);
+            string str2 = "  " + Convert.ToChar(160);
+
+            lblStatus.Text = "Running ClearMultipleSpaceInTVItemLanguageTVText ...";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+            Boolean exist = true;
+            while (exist)
+            {
+                using (CSSPDBEntities db2 = new CSSPDBEntities())
+                {
+                    List<TVItemLanguage> tvItemLanguageList = (from c in db2.TVItemLanguages
+                                                               where c.TVText.Contains(str)
+                                                               || c.TVText.Contains(str2)
+                                                               select c).Take(5000).ToList();
+
+                    foreach (TVItemLanguage tvItemLanguage in tvItemLanguageList)
+                    {
+                        tvItemLanguage.TVText = tvItemLanguage.TVText.Replace(Convert.ToChar(160), ' ');
+
+                        RegexOptions options = RegexOptions.None;
+                        Regex regex = new Regex("[ ]{2,}", options);
+                        tvItemLanguage.TVText = regex.Replace(tvItemLanguage.TVText, " ");
+                    }
+
+                    try
+                    {
+                        db2.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        richTextBoxStatus.AppendText($"ERROR: {ex.Message}");
+                        break;
+                    }
+
+                    if (tvItemLanguageList.Count == 0)
+                    {
+                        lblStatus.Text = "Done Running ClearMultipleSpaceInTVItemLanguageTVText ...";
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+                        break;
+                    }
+                }
+            }
         }
 
         private async Task DoButton32()
