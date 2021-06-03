@@ -17129,8 +17129,8 @@ namespace ImportByFunction
         private void button32_Click(object sender, EventArgs e)
         {
             //ClearMultipleSpaceInTVItemLanguageTVText();
-            ClearEndParentheseOnSomeMWQMRunTVText();
-            //DoButton32();
+            //ClearEndParentheseOnSomeMWQMRunTVText();
+            DoButton32();
         }
         private void ClearEndParentheseOnSomeMWQMRunTVText()
         {
@@ -17275,7 +17275,7 @@ namespace ImportByFunction
                     sbkml.AppendLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
                     sbkml.AppendLine(@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
                     sbkml.AppendLine(@"<Document>");
-                    sbkml.AppendLine($@"	<name>{provInit} - 2020 active site</name>");
+                    sbkml.AppendLine($@"	<name>{provInit} - 2021 active site</name>");
 
                     sbSite.AppendLine("Province,Sector_Secteur,Site,status,Latitude,Longitude,Pub");
 
@@ -17309,7 +17309,6 @@ namespace ImportByFunction
 
                         var valList = (from t in db2.TVItems
                                        from tl in db2.TVItemLanguages
-                                       from s in db2.MWQMSamples
                                        let mip = (from c in db2.MapInfos
                                                   from cp in db2.MapInfoPoints
                                                   where c.TVItemID == t.TVItemID
@@ -17317,11 +17316,10 @@ namespace ImportByFunction
                                                   && c.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
                                                   select cp).FirstOrDefault()
                                        where t.TVItemID == tl.TVItemID
-                                       && t.TVItemID == s.MWQMSiteTVItemID
                                        && t.TVType == (int)TVTypeEnum.MWQMSite
                                        && t.TVPath.Contains(subsector.c.TVPath + "p")
-                                       && s.SampleDateTime_Local > dateTimeStart
                                        && tl.Language == (int)LanguageEnum.en
+                                       && t.IsActive == true
                                        && mip != null
                                        orderby tl.TVText
                                        select new { t.TVItemID, tl.TVText, mip.Lat, mip.Lng }).Distinct().ToList();
@@ -17345,7 +17343,7 @@ namespace ImportByFunction
                         sbkml.AppendLine(@"    </Folder>");
                     }
 
-                    FileInfo fi = new FileInfo($@"C:\CSSP\Site_{ProvInitList[i]}_2020_2021.csv");
+                    FileInfo fi = new FileInfo($@"C:\CSSP\{ProvInitList[i]}_2021_Active_Sites.csv");
                     StreamWriter sw = fi.CreateText();
                     sw.WriteLine(sbSite.ToString());
                     sw.Close();
@@ -17354,7 +17352,7 @@ namespace ImportByFunction
                     sbkml.AppendLine(@"</Document>");
                     sbkml.AppendLine(@"</kml>");
 
-                    FileInfo fikml = new FileInfo($@"C:\CSSP\{ProvInitList[i]}_2020_Active_Site.kml");
+                    FileInfo fikml = new FileInfo($@"C:\CSSP\{ProvInitList[i]}_2021_Active_Sites.kml");
                     StreamWriter swkml = fikml.CreateText();
                     swkml.WriteLine(sbkml.ToString());
                     swkml.Close();
