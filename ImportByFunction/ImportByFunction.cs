@@ -16841,7 +16841,8 @@ namespace ImportByFunction
 
         private void button31_Click(object sender, EventArgs e)
         {
-            DoButton31();
+            //DoButton31();
+            DoButton31_b();
         }
 
         private void DoButton31()
@@ -16968,6 +16969,137 @@ namespace ImportByFunction
                     sw2.Close();
 
                     FileInfo fi3 = new FileInfo($@"C:\CSSP\SampleNumber_{ProvInitList[i]}.csv");
+                    StreamWriter sw3 = fi3.CreateText();
+                    sw3.WriteLine(sbSample.ToString());
+                    sw3.Close();
+                }
+            }
+        }
+
+        private void DoButton31_b()
+        {
+            List<string> ProvInitList = new List<string>()
+            {
+                "BC", "ME", "NB", "NL", "NS", "PE", "QC",
+            };
+            List<string> ProvList = new List<string>()
+            {
+                "British Columbia", "Maine", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            };
+            //List<string> ProvInitList = new List<string>()
+            //{
+            //    "NB", "NL", "NS", "PE"
+            //};
+            //List<string> ProvList = new List<string>()
+            //{
+            //    "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island"
+            //};
+
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                TVItem tvItem = (from c in db2.TVItems
+                                 where c.TVItemID == 1
+                                 select c).FirstOrDefault();
+
+                for (int i = 0; i < ProvList.Count; i++)
+                {
+                    string prov = ProvList[i];
+                    TVItem tvItemProv = (from c in db2.TVItems
+                                         from cl in db2.TVItemLanguages
+                                         where c.TVItemID == cl.TVItemID
+                                         && cl.Language == (int)LanguageEnum.en
+                                         && c.TVType == (int)TVTypeEnum.Province
+                                         && cl.TVText == prov
+                                         select c).FirstOrDefault();
+
+                    StringBuilder sbSite = new StringBuilder();
+                    StringBuilder sbRun = new StringBuilder();
+                    StringBuilder sbSample = new StringBuilder();
+
+                    sbSite.AppendLine("Prov,Locator,Subsector,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec");
+                    sbRun.AppendLine("Prov,Locator,Subsector,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec");
+                    sbSample.AppendLine("Prov,Locator,Subsector,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec");
+
+                    var subsectorList = (from c in db2.TVItems
+                                         from cl in db2.TVItemLanguages
+                                         where c.TVItemID == cl.TVItemID
+                                         && cl.Language == (int)LanguageEnum.en
+                                         && c.TVType == (int)TVTypeEnum.Subsector
+                                         && c.TVPath.Contains(tvItemProv.TVPath + "p")
+                                         orderby cl.TVText ascending
+                                         select new { c, cl }).ToList();
+
+                    foreach (var subsector in subsectorList)
+                    {
+                        lblStatus.Text = subsector.cl.TVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        string provInit = ProvInitList[i];
+                        string tvText = subsector.cl.TVText;
+                        string locator = tvText;
+                        string name = tvText;
+
+                        if (tvText.Contains(" "))
+                        {
+                            locator = tvText.Substring(0, tvText.IndexOf(" "));
+                            name = tvText.Substring(tvText.IndexOf(" ") + 1);
+                        }
+
+                        List<MWQMSample> mwqmSampleList = (from c in db2.TVItems
+                                                           from s in db2.MWQMSamples
+                                                           where c.TVItemID == s.MWQMSiteTVItemID
+                                                           && c.TVType == (int)TVTypeEnum.MWQMSite
+                                                           && c.TVPath.Contains(subsector.c.TVPath + "p")
+                                                           select s).ToList();
+
+                        // doing site
+                        List<int> countSiteList = new List<int>();
+                        for (int j = 1; j < 13; j++)
+                        {
+                            countSiteList.Add((from c in mwqmSampleList
+                                               where c.SampleDateTime_Local.Month == j
+                                               select c.MWQMSiteTVItemID).Distinct().Count());
+                        }
+
+
+                        sbSite.AppendLine($"{provInit},{locator},{name.Replace(",", "_")},{countSiteList[0]},{countSiteList[1]},{countSiteList[2]},{countSiteList[3]},{countSiteList[4]},{countSiteList[5]},{countSiteList[6]},{countSiteList[7]},{countSiteList[8]},{countSiteList[9]},{countSiteList[10]}");
+
+                        // doing run
+                        List<int> countRunList = new List<int>();
+                        for (int j = 1; j < 13; j++)
+                        {
+                            countRunList.Add((from c in mwqmSampleList
+                                              where c.SampleDateTime_Local.Month == j
+                                              select c.MWQMRunTVItemID).Distinct().Count());
+                        }
+
+                        sbRun.AppendLine($"{provInit},{locator},{name.Replace(",", "_")},{countRunList[0]},{countRunList[1]},{countRunList[2]},{countRunList[3]},{countRunList[4]},{countRunList[5]},{countRunList[6]},{countRunList[7]},{countRunList[8]},{countRunList[9]},{countRunList[10]}");
+
+                        // doing sample
+                        List<int> countSampleList = new List<int>();
+                        for (int j = 1; j < 13; j++)
+                        {
+                            countSampleList.Add((from c in mwqmSampleList
+                                                 where c.SampleDateTime_Local.Month == j
+                                                 select c).Count());
+                        }
+
+                        sbSample.AppendLine($"{provInit},{locator},{name.Replace(",", "_")},{countSampleList[0]},{countSampleList[1]},{countSampleList[2]},{countSampleList[3]},{countSampleList[4]},{countSampleList[5]},{countSampleList[6]},{countSampleList[7]},{countSampleList[8]},{countSampleList[9]},{countSampleList[10]},{countSampleList[11]}");
+
+                    }
+
+                    FileInfo fi = new FileInfo($@"C:\CSSP\SiteNumber_ByMonth_{ProvInitList[i]}.csv");
+                    StreamWriter sw = fi.CreateText();
+                    sw.WriteLine(sbSite.ToString());
+                    sw.Close();
+
+                    FileInfo fi2 = new FileInfo($@"C:\CSSP\RunNumber_ByMonth_{ProvInitList[i]}.csv");
+                    StreamWriter sw2 = fi2.CreateText();
+                    sw2.WriteLine(sbRun.ToString());
+                    sw2.Close();
+
+                    FileInfo fi3 = new FileInfo($@"C:\CSSP\SampleNumber_ByMonth_{ProvInitList[i]}.csv");
                     StreamWriter sw3 = fi3.CreateText();
                     sw3.WriteLine(sbSample.ToString());
                     sw3.Close();
@@ -17129,8 +17261,9 @@ namespace ImportByFunction
         private void button32_Click(object sender, EventArgs e)
         {
             //ClearMultipleSpaceInTVItemLanguageTVText();
-            ClearEndParentheseOnSomeMWQMRunTVText();
+            //ClearEndParentheseOnSomeMWQMRunTVText();
             //DoButton32();
+            DoButton31_b();
         }
         private void ClearEndParentheseOnSomeMWQMRunTVText()
         {
