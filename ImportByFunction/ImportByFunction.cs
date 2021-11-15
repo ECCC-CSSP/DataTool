@@ -17516,6 +17516,777 @@ namespace ImportByFunction
             }
         }
 
+        private void button33_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            StringBuilder sb = new StringBuilder();
+            int BeforeYear = 1989;
+            int NumberOfRuns = 30;
+            bool OnlyActiveSubsector = true;
+            bool OnlyActiveMWQMSite = true;
+
+            sb.AppendLine("<!DOCTYPE html>");
+            sb.AppendLine("");
+            sb.AppendLine(@"<html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">");
+            sb.AppendLine("<head>");
+            sb.AppendLine(@"    <meta charset=""utf-8"" />");
+            sb.AppendLine("    <title></title>");
+            sb.AppendLine("    <style>");
+            sb.AppendLine("        th {");
+            sb.AppendLine("            border: 1px solid black;");
+            sb.AppendLine("        }");
+            sb.AppendLine("    </style>");
+            sb.AppendLine("</head>");
+            sb.AppendLine("<body>");
+            sb.AppendLine("<table>");
+            sb.AppendLine("<tr>");
+            sb.AppendLine("<th colspan=17>");
+            sb.AppendLine("Data extrated from Webtools on DATE  (All-All-All, N= 30, Full year)");
+            sb.AppendLine("</th>");
+            sb.AppendLine("</tr>");
+            sb.AppendLine("<tr>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Subsector Code");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Subsector Name");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Stations Classified as Approved with Red A to F rating");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Stations Classified as Approved with Green F rating");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with red F rating");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with purple A-F rating");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with green A to D rating");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Stations Classified\nas Unclassified");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Number of Rain runs\n(12mm or more on Run day)");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Number of Rain runs (12mm or more 0-24 hrs)");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Number of Rain runs\n(12mm or more 24-48 hrs)");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Missing\nRain data in Webtools (Yes/No)");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Last Relay\nrequest year");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Last depuration\nrequest year");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("More Rain Runs Needed");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Action suggested");
+            sb.AppendLine("</th>");
+            sb.AppendLine("<th>");
+            sb.AppendLine("Initials/Date reviewed");
+            sb.AppendLine("</th>");
+            sb.AppendLine("</tr>");
+
+            List<string> ProvInitList = new List<string>()
+            {
+                /*"BC", "ME", */"NB"/*, "NL", "NS", "PE", "QC",*/
+            };
+            List<string> ProvList = new List<string>()
+            {
+                /*"British Columbia", "Maine", */"New Brunswick"/*, "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",*/
+            };
+
+            using (CSSPDBEntities db2 = new CSSPDBEntities())
+            {
+                TVItem tvItem = (from c in db2.TVItems
+                                 where c.TVItemID == 1
+                                 select c).FirstOrDefault();
+
+                for (int i = 0; i < ProvList.Count; i++)
+                {
+                    string prov = ProvList[i];
+                    TVItem tvItemProv = (from c in db2.TVItems
+                                         from cl in db2.TVItemLanguages
+                                         where c.TVItemID == cl.TVItemID
+                                         && cl.Language == (int)LanguageEnum.en
+                                         && c.TVType == (int)TVTypeEnum.Province
+                                         && cl.TVText == prov
+                                         select c).FirstOrDefault();
+
+                    var subsectorList = (from c in db2.TVItems
+                                         from cl in db2.TVItemLanguages
+                                         where c.TVItemID == cl.TVItemID
+                                         && cl.Language == (int)LanguageEnum.en
+                                         && c.TVType == (int)TVTypeEnum.Subsector
+                                         && c.TVPath.Contains(tvItemProv.TVPath + "p")
+                                         && (c.IsActive == true
+                                         || c.IsActive == OnlyActiveSubsector)
+                                         orderby cl.TVText ascending
+                                         select new { c, cl }).ToList();
+
+                    foreach (var subsector in subsectorList)
+                    {
+                        lblStatus.Text = subsector.cl.TVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        string provInit = ProvInitList[i];
+                        string tvText = subsector.cl.TVText;
+                        string locator = tvText;
+                        string name = tvText;
+
+                        if (tvText.Contains(" "))
+                        {
+                            locator = tvText.Substring(0, tvText.IndexOf(" "));
+                            name = tvText.Substring(tvText.IndexOf(" ") + 1);
+                        }
+
+                        name = name.Trim();
+
+                        if (!string.IsNullOrWhiteSpace(name) && name.StartsWith("("))
+                        {
+                            name = name.Substring(1);
+                        }
+                        if (!string.IsNullOrWhiteSpace(name) && name.StartsWith("("))
+                        {
+                            name = name.Substring(1);
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(name) && name.EndsWith(")"))
+                        {
+                            name = name.Substring(0, name.Length - 1);
+                        }
+                        if (!string.IsNullOrWhiteSpace(name) && name.EndsWith(")"))
+                        {
+                            name = name.Substring(0, name.Length - 1);
+                        }
+
+                        List<MWQMSite> mwqmSiteList = (from c in db2.TVItems
+                                                       from s in db2.MWQMSites
+                                                       where c.TVItemID == s.MWQMSiteTVItemID
+                                                       && c.TVType == (int)TVTypeEnum.MWQMSite
+                                                       && c.TVPath.Contains(subsector.c.TVPath + "p")
+                                                       && (c.IsActive == true
+                                                       || c.IsActive == OnlyActiveMWQMSite)
+                                                       orderby s.MWQMSiteNumber ascending
+                                                       select s).ToList();
+
+                        List<int> mwqmSiteTVItemIDList = (from c in mwqmSiteList
+                                                          select c.MWQMSiteTVItemID).Distinct().ToList();
+
+                        string routine = $"{ (int)SampleTypeEnum.Routine },";
+                        List<MWQMSample> mwqmSampleList = (from s in db2.MWQMSamples
+                                                           from c in mwqmSiteTVItemIDList
+                                                           where s.MWQMSiteTVItemID == c
+                                                           && s.SampleTypesText.Contains(routine)
+                                                           && s.SampleDateTime_Local.Year > BeforeYear
+                                                           select s).ToList();
+
+                        List<int> mwqmRunTVItemIDList = (from c in mwqmSampleList
+                                                         select c.MWQMRunTVItemID).Distinct().ToList();
+
+                        List<MWQMRun> mwqmRunList = (from r in db2.MWQMRuns
+                                                     from c in mwqmRunTVItemIDList
+                                                     where r.MWQMRunTVItemID == c
+                                                     && r.DateTime_Local.Year > BeforeYear
+                                                     && r.RunSampleType == (int)SampleTypeEnum.Routine
+                                                     select r).Distinct().ToList();
+
+
+                        List<MWQMSiteClassStat> MWQMSiteClassStatList = new List<MWQMSiteClassStat>();
+                        foreach (MWQMSite mwqmSite in mwqmSiteList)
+                        {
+                            if (locator == "NB-04-040-001" && mwqmSite.MWQMSiteNumber.Contains("18"))
+                            {
+                                int sleifj = 34;
+                            }
+                            MWQMSiteClassStat mwqmSiteClassStat = new MWQMSiteClassStat();
+                            mwqmSiteClassStat.MWQMSite = mwqmSite;
+
+                            var mwqmSampleListForMWQMSite = (from c in mwqmSampleList
+                                                             where c.MWQMSiteTVItemID == mwqmSite.MWQMSiteTVItemID
+                                                             orderby c.SampleDateTime_Local descending
+                                                             select c).ToList();
+
+                            int count = 0;
+                            int lastYear = 0;
+                            foreach (MWQMSample mwqmSample in mwqmSampleListForMWQMSite)
+                            {
+                                count += 1;
+
+                                if (count > NumberOfRuns)
+                                {
+                                    if (lastYear != mwqmSample.SampleDateTime_Local.Year)
+                                    {
+                                        break;
+                                    }
+                                }
+
+                                mwqmSiteClassStat.MWQMSampleList.Add(mwqmSample);
+
+                                lastYear = mwqmSample.SampleDateTime_Local.Year;
+                            }
+
+                            mwqmSiteClassStat.MWQMRunList = (from c in mwqmSiteClassStat.MWQMSampleList
+                                                             from r in mwqmRunList
+                                                             where c.MWQMRunTVItemID == r.MWQMRunTVItemID
+                                                             && c.MWQMSiteTVItemID == mwqmSite.MWQMSiteTVItemID
+                                                             select r).Distinct().ToList();
+
+                            if (mwqmSampleList.Count > 3)
+                            {
+                                List<double> mwqmSampleFCList = (from c in mwqmSiteClassStat.MWQMSampleList
+                                                                 where c.MWQMSiteTVItemID == mwqmSite.MWQMSiteTVItemID
+                                                                 orderby c.SampleDateTime_Local descending
+                                                                 select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
+
+
+                                double P90 = tvItemService.GetP90(mwqmSampleFCList);
+                                double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
+                                double Median = tvItemService.GetMedian(mwqmSampleFCList);
+                                double PercOver43 = ((((double)mwqmSiteClassStat.MWQMSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleFCList.Count()) * 100.0D);
+                                double PercOver260 = ((((double)mwqmSiteClassStat.MWQMSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleFCList.Count()) * 100.0D);
+                                int MinYear = mwqmSiteClassStat.MWQMSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
+                                int MaxYear = mwqmSiteClassStat.MWQMSampleList.Select(c => c.SampleDateTime_Local).Max().Year;
+
+                                LetterColorName letterColorName = new LetterColorName();
+
+                                if ((GeoMean > 88) || (Median > 88) || (P90 > 260) || (PercOver260 > 10))
+                                {
+                                    if ((GeoMean > 181) || (Median > 181) || (P90 > 460) || (PercOver260 > 18))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "F", Color = "Purple", Name = "NoDepuration" };
+                                    }
+                                    else if ((GeoMean > 163) || (Median > 163) || (P90 > 420) || (PercOver260 > 17))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "E", Color = "Purple", Name = "NoDepuration" };
+                                    }
+                                    else if ((GeoMean > 144) || (Median > 144) || (P90 > 380) || (PercOver260 > 15))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "D", Color = "Purple", Name = "NoDepuration" };
+                                    }
+                                    else if ((GeoMean > 125) || (Median > 125) || (P90 > 340) || (PercOver260 > 13))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "C", Color = "Purple", Name = "NoDepuration" };
+                                    }
+                                    else if ((GeoMean > 107) || (Median > 107) || (P90 > 300) || (PercOver260 > 12))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "B", Color = "Purple", Name = "NoDepuration" };
+                                    }
+                                    else
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "A", Color = "Purple", Name = "NoDepuration" };
+                                    }
+                                }
+                                else if ((GeoMean > 14) || (Median > 14) || (P90 > 43) || (PercOver43 > 10))
+                                {
+                                    if ((GeoMean > 76) || (Median > 76) || (P90 > 224) || (PercOver43 > 27))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "F", Color = "Red", Name = "Fail" };
+                                    }
+                                    else if ((GeoMean > 63) || (Median > 63) || (P90 > 188) || (PercOver43 > 23))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "E", Color = "Red", Name = "Fail" };
+                                    }
+                                    else if ((GeoMean > 51) || (Median > 51) || (P90 > 152) || (PercOver43 > 20))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "D", Color = "Red", Name = "Fail" };
+                                    }
+                                    else if ((GeoMean > 39) || (Median > 39) || (P90 > 115) || (PercOver43 > 17))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "C", Color = "Red", Name = "Fail" };
+                                    }
+                                    else if ((GeoMean > 26) || (Median > 26) || (P90 > 79) || (PercOver43 > 13))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "B", Color = "Red", Name = "Fail" };
+                                    }
+                                    else
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "A", Color = "Red", Name = "Fail" };
+                                    }
+                                }
+                                else
+                                {
+                                    if ((GeoMean > 12) || (Median > 12) || (P90 > 36) || (PercOver43 > 8))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "F", Color = "Green", Name = "Pass" };
+                                    }
+                                    else if ((GeoMean > 9) || (Median > 9) || (P90 > 29) || (PercOver43 > 7))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "E", Color = "Green", Name = "Pass" };
+                                    }
+                                    else if ((GeoMean > 7) || (Median > 7) || (P90 > 22) || (PercOver43 > 5))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "D", Color = "Green", Name = "Pass" };
+                                    }
+                                    else if ((GeoMean > 5) || (Median > 5) || (P90 > 14) || (PercOver43 > 3))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "C", Color = "Green", Name = "Pass" };
+                                    }
+                                    else if ((GeoMean > 2) || (Median > 2) || (P90 > 7) || (PercOver43 > 2))
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "B", Color = "Green", Name = "Pass" };
+                                    }
+                                    else
+                                    {
+                                        letterColorName = new LetterColorName() { Letter = "A", Color = "Green", Name = "Pass" };
+                                    }
+                                }
+
+                                mwqmSiteClassStat.LetterColorName = letterColorName;
+                            }
+                            else
+                            {
+                                mwqmSiteClassStat.LetterColorName = new LetterColorName() { Color = "ND", Letter = "ND", Name = "ND" };
+                            }
+
+                            MWQMSiteClassStatList.Add(mwqmSiteClassStat);
+                        }
+
+                        sb.AppendLine("<tr>");
+                        sb.AppendLine("<td>");
+                        sb.Append($@"<a href=""http://wmon01dtchlebl2/csspwebtools/en-CA/#!View/a|||");
+                        sb.Append($@"{ subsector.c.TVItemID }|||00000000001000000000000000000000"">{ locator }</a>");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine($"{ name }");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        if (mwqmSampleList.Count > 3)
+                        {
+                            foreach (MWQMSiteClassStat mwqmSiteClassStat in MWQMSiteClassStatList)
+                            {
+                                if (mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.Approved)
+                                {
+                                    if (mwqmSiteClassStat.LetterColorName.Color == "Red")
+                                    {
+                                        sb.Append($"{ RemoveStart0(mwqmSiteClassStat.MWQMSite.MWQMSiteNumber)},");
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            sb.AppendLine("ND");
+                        }
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        if (mwqmSampleList.Count > 3)
+                        {
+                            foreach (MWQMSiteClassStat mwqmSiteClassStat in MWQMSiteClassStatList)
+                            {
+                                if (mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.Approved)
+                                {
+                                    if (mwqmSiteClassStat.LetterColorName.Color == "Green" && mwqmSiteClassStat.LetterColorName.Letter == "F")
+                                    {
+                                        sb.Append($"{ RemoveStart0(mwqmSiteClassStat.MWQMSite.MWQMSiteNumber)},");
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            sb.AppendLine("ND");
+                        }
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        if (mwqmSampleList.Count > 3)
+                        {
+                            foreach (MWQMSiteClassStat mwqmSiteClassStat in MWQMSiteClassStatList)
+                            {
+                                if (mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.Restricted
+                                    || mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.ConditionallyRestricted)
+                                {
+                                    if (mwqmSiteClassStat.LetterColorName.Color == "Red" && mwqmSiteClassStat.LetterColorName.Letter == "F")
+                                    {
+                                        sb.Append($"{ RemoveStart0(mwqmSiteClassStat.MWQMSite.MWQMSiteNumber)},");
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            sb.AppendLine("ND");
+                        }
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        if (mwqmSampleList.Count > 3)
+                        {
+                            foreach (MWQMSiteClassStat mwqmSiteClassStat in MWQMSiteClassStatList)
+                            {
+                                if (mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.Restricted
+                                    || mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.ConditionallyRestricted)
+                                {
+                                    if (mwqmSiteClassStat.LetterColorName.Color == "Purple")
+                                    {
+                                        sb.Append($"{ RemoveStart0(mwqmSiteClassStat.MWQMSite.MWQMSiteNumber)},");
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            sb.AppendLine("ND");
+                        }
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        if (mwqmSampleList.Count > 3)
+                        {
+                            foreach (MWQMSiteClassStat mwqmSiteClassStat in MWQMSiteClassStatList)
+                            {
+                                if (mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.Restricted
+                                    || mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.ConditionallyRestricted)
+                                {
+                                    if (mwqmSiteClassStat.LetterColorName.Color == "Green" && !(mwqmSiteClassStat.LetterColorName.Letter == "F"))
+                                    {
+                                        sb.Append($"{ RemoveStart0(mwqmSiteClassStat.MWQMSite.MWQMSiteNumber)},");
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            sb.AppendLine("ND");
+                        }
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        foreach (MWQMSiteClassStat mwqmSiteClassStat in MWQMSiteClassStatList)
+                        {
+                            if (mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification == (int)MWQMSiteLatestClassificationEnum.Error)
+                            {
+                                sb.Append($"{ RemoveStart0(mwqmSiteClassStat.MWQMSite.MWQMSiteNumber)},");
+                            }
+                        }
+                        sb.AppendLine("</td>");
+                        int countRainDay = 0;
+                        int countRainDay24h = 0;
+                        int countRainDay48h = 0;
+                        bool rainDataMissing = false;
+
+                        List<MWQMRun> MWQMRunList = new List<MWQMRun>();
+
+                        foreach (MWQMSiteClassStat mwqmSiteClassStat in MWQMSiteClassStatList)
+                        {
+                            foreach (MWQMSample mwqmSample in mwqmSiteClassStat.MWQMSampleList)
+                            {
+                                MWQMRun mwqmRun = (from c in mwqmSiteClassStat.MWQMRunList
+                                                   where c.MWQMRunTVItemID == mwqmSample.MWQMRunTVItemID
+                                                   select c).FirstOrDefault();
+
+                                if (!MWQMRunList.Where(c => c.MWQMRunTVItemID == mwqmRun.MWQMRunTVItemID).Any())
+                                {
+                                    MWQMRunList.Add(mwqmRun);
+                                }
+                            }
+                        }
+
+                        foreach (MWQMRun mwqmRun in MWQMRunList)
+                        {
+                            if (mwqmRun.RainDay0_mm == null || mwqmRun.RainDay1_mm == null || mwqmRun.RainDay2_mm == null)
+                            {
+                                rainDataMissing = true;
+                            }
+
+                            if (mwqmRun.RainDay0_mm >= 12)
+                            {
+                                countRainDay += 1;
+                            }
+
+                            if (mwqmRun.RainDay1_mm >= 12)
+                            {
+                                countRainDay24h += 1;
+                            }
+
+                            if (mwqmRun.RainDay2_mm >= 12)
+                            {
+                                countRainDay48h += 1;
+                            }
+                        }
+
+                        sb.AppendLine("<td>");
+                        sb.AppendLine($"{ countRainDay }");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine($"{ countRainDay24h }");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine($"{ countRainDay48h }");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine(rainDataMissing ? "Yes" : "No");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine("");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine("");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine("");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine("");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine("");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("</tr>");
+
+                    }
+                }
+            }
+
+            sb.AppendLine("</table>");
+            sb.AppendLine("</body>");
+            sb.AppendLine("</html>");
+
+            FileInfo fi = new FileInfo(@"C:\Users\charl\JulieAnne.html");
+
+            StreamWriter sw = fi.CreateText();
+            sw.WriteLine(sb.ToString());
+            sw.Close();
+
+            richTextBoxStatus.Text = sb.ToString();
+        }
+        private string RemoveStart0(string TVText)
+        {
+            while (TVText.StartsWith("0"))
+            {
+                TVText = TVText.Substring(1);
+            }
+
+            return TVText;
+        }
+        public class MWQMSiteClassStat
+        {
+            public MWQMSite MWQMSite { get; set; }
+            public List<MWQMSample> MWQMSampleList { get; set; }
+            public List<MWQMRun> MWQMRunList { get; set; }
+            public LetterColorName LetterColorName { get; set; }
+
+            public MWQMSiteClassStat()
+            {
+                MWQMSampleList = new List<MWQMSample>();
+                MWQMRunList = new List<MWQMRun>();
+            }
+        }
+        public MWQMSubsectorAnalysisModel GetMWQMSubsectorAnalysisModel(int SubsectorTVItemID, string TVText)
+        {
+            MWQMSubsectorAnalysisModel mwqmSubsectorAnalysisModel = new MWQMSubsectorAnalysisModel();
+
+            LanguageEnum LanguageRequest = LanguageEnum.en;
+
+            using (CSSPDBEntities db = new CSSPDBEntities())
+            {
+                MWQMSubsectorModel mwqmSubsectorModel = (from c in db.MWQMSubsectors
+                                                         from cl in db.MWQMSubsectorLanguages
+                                                         where c.MWQMSubsectorID == cl.MWQMSubsectorID
+                                                         && c.MWQMSubsectorTVItemID == SubsectorTVItemID
+                                                         && cl.Language == (int)LanguageRequest
+                                                         select new MWQMSubsectorModel
+                                                         {
+                                                             Error = "",
+                                                             MWQMSubsectorID = c.MWQMSubsectorID,
+                                                             DBCommand = (DBCommandEnum)c.DBCommand,
+                                                             MWQMSubsectorTVItemID = c.MWQMSubsectorTVItemID,
+                                                             MWQMSubsectorTVText = TVText,
+                                                             SubsectorHistoricKey = c.SubsectorHistoricKey,
+                                                             SubsectorDesc = cl.SubsectorDesc,
+                                                             TideLocationSIDText = c.TideLocationSIDText,
+                                                             LastUpdateDate_UTC = c.LastUpdateDate_UTC,
+                                                             LastUpdateContactTVItemID = c.LastUpdateContactTVItemID,
+                                                         }).FirstOrDefault();
+
+                if (!string.IsNullOrWhiteSpace(mwqmSubsectorModel.Error))
+                {
+                    return mwqmSubsectorAnalysisModel;
+                }
+
+                List<MWQMSiteAnalysisModel> mwqmSiteAnalysisModelList = (from c in db.MWQMSites
+                                                                         from t in db.TVItems
+                                                                         from tl in db.TVItemLanguages
+                                                                         where t.TVItemID == tl.TVItemID
+                                                                         && c.MWQMSiteTVItemID == t.TVItemID
+                                                                         && t.ParentID == SubsectorTVItemID
+                                                                         && tl.Language == (int)LanguageRequest
+                                                                         && t.TVType == (int)TVTypeEnum.MWQMSite
+                                                                         orderby tl.TVText
+                                                                         select new MWQMSiteAnalysisModel
+                                                                         {
+                                                                             Error = "",
+                                                                             MWQMSiteID = c.MWQMSiteID,
+                                                                             DBCommand = (DBCommandEnum)c.DBCommand,
+                                                                             MWQMSiteTVItemID = c.MWQMSiteTVItemID,
+                                                                             MWQMSiteTVText = tl.TVText,
+                                                                             MWQMSiteNumber = c.MWQMSiteNumber,
+                                                                             MWQMSiteDescription = c.MWQMSiteDescription,
+                                                                             MWQMSiteLatestClassification = (MWQMSiteLatestClassificationEnum)c.MWQMSiteLatestClassification,
+                                                                             Ordinal = c.Ordinal,
+                                                                             IsActive = t.IsActive,
+                                                                             LastUpdateDate_UTC = c.LastUpdateDate_UTC,
+                                                                             LastUpdateContactTVItemID = c.LastUpdateContactTVItemID,
+                                                                         }).ToList();
+
+                List<MWQMRunAnalysisModel> mwqmRunAnalysisModelList = (from c in db.MWQMRuns
+                                                                       from cl in db.MWQMRunLanguages
+                                                                       from t in db.TVItems
+                                                                       from tl in db.TVItemLanguages
+                                                                       where t.TVItemID == tl.TVItemID
+                                                                       && c.MWQMRunID == cl.MWQMRunID
+                                                                       && c.MWQMRunTVItemID == t.TVItemID
+                                                                       && cl.Language == (int)LanguageRequest
+                                                                       && t.ParentID == SubsectorTVItemID
+                                                                       && tl.Language == (int)LanguageRequest
+                                                                       && t.TVType == (int)TVTypeEnum.MWQMRun
+                                                                       && c.RunSampleType == (int)SampleTypeEnum.Routine
+                                                                       orderby c.DateTime_Local descending, c.RunNumber descending
+                                                                       select new MWQMRunAnalysisModel
+                                                                       {
+                                                                           Error = "",
+                                                                           MWQMRunID = c.MWQMRunID,
+                                                                           DBCommand = (DBCommandEnum)c.DBCommand,
+                                                                           SubsectorTVItemID = c.SubsectorTVItemID,
+                                                                           SubsectorTVText = TVText,
+                                                                           MWQMRunTVItemID = (int)c.MWQMRunTVItemID,
+                                                                           MWQMRunTVText = tl.TVText,
+                                                                           RunSampleType = (SampleTypeEnum)c.RunSampleType,
+                                                                           DateTime_Local = c.DateTime_Local,
+                                                                           RunNumber = c.RunNumber,
+                                                                           StartDateTime_Local = c.StartDateTime_Local,
+                                                                           EndDateTime_Local = c.EndDateTime_Local,
+                                                                           LabReceivedDateTime_Local = c.LabReceivedDateTime_Local,
+                                                                           TemperatureControl1_C = c.TemperatureControl1_C,
+                                                                           TemperatureControl2_C = c.TemperatureControl2_C,
+                                                                           SeaStateAtStart_BeaufortScale = (BeaufortScaleEnum)c.SeaStateAtStart_BeaufortScale,
+                                                                           SeaStateAtEnd_BeaufortScale = (BeaufortScaleEnum)c.SeaStateAtEnd_BeaufortScale,
+                                                                           WaterLevelAtBrook_m = c.WaterLevelAtBrook_m,
+                                                                           WaveHightAtEnd_m = c.WaveHightAtEnd_m,
+                                                                           WaveHightAtStart_m = c.WaveHightAtStart_m,
+                                                                           SampleCrewInitials = c.SampleCrewInitials,
+                                                                           AnalyzeMethod = (AnalyzeMethodEnum)c.AnalyzeMethod,
+                                                                           SampleMatrix = (SampleMatrixEnum)c.SampleMatrix,
+                                                                           Laboratory = (LaboratoryEnum)c.Laboratory,
+                                                                           SampleStatus = (SampleStatusEnum)c.SampleStatus,
+                                                                           LabSampleApprovalContactTVItemID = c.LabSampleApprovalContactTVItemID,
+                                                                           LabAnalyzeBath1IncubationStartDateTime_Local = c.LabAnalyzeBath1IncubationStartDateTime_Local,
+                                                                           LabAnalyzeBath2IncubationStartDateTime_Local = c.LabAnalyzeBath2IncubationStartDateTime_Local,
+                                                                           LabAnalyzeBath3IncubationStartDateTime_Local = c.LabAnalyzeBath3IncubationStartDateTime_Local,
+                                                                           LabRunSampleApprovalDateTime_Local = c.LabRunSampleApprovalDateTime_Local,
+                                                                           Tide_Start = (TideTextEnum)c.Tide_Start,
+                                                                           Tide_End = (TideTextEnum)c.Tide_End,
+                                                                           RainDay0_mm = (float?)c.RainDay0_mm,
+                                                                           RainDay1_mm = (float?)c.RainDay1_mm,
+                                                                           RainDay2_mm = (float?)c.RainDay2_mm,
+                                                                           RainDay3_mm = (float?)c.RainDay3_mm,
+                                                                           RainDay4_mm = (float?)c.RainDay4_mm,
+                                                                           RainDay5_mm = (float?)c.RainDay5_mm,
+                                                                           RainDay6_mm = (float?)c.RainDay6_mm,
+                                                                           RainDay7_mm = (float?)c.RainDay7_mm,
+                                                                           RainDay8_mm = (float?)c.RainDay8_mm,
+                                                                           RainDay9_mm = (float?)c.RainDay9_mm,
+                                                                           RainDay10_mm = (float?)c.RainDay10_mm,
+                                                                           RemoveFromStat = c.RemoveFromStat,
+                                                                           RunComment = cl.RunComment,
+                                                                           RunWeatherComment = cl.RunWeatherComment,
+                                                                           IsActive = t.IsActive,
+                                                                           ValidatorContactTVText = (from cl in db.TVItemLanguages
+                                                                                                     where cl.TVItemID == c.LabSampleApprovalContactTVItemID
+                                                                                                     && cl.Language == (int)LanguageRequest
+                                                                                                     select cl.TVText).FirstOrDefault(),
+                                                                           LastUpdateDate_UTC = c.LastUpdateDate_UTC,
+                                                                           LastUpdateContactTVItemID = c.LastUpdateContactTVItemID,
+                                                                       }).ToList();
+
+
+                mwqmSubsectorAnalysisModel.MWQMSubsectorModel = mwqmSubsectorModel;
+                mwqmSubsectorAnalysisModel.MWQMSiteAnalysisModelList = mwqmSiteAnalysisModelList;
+                mwqmSubsectorAnalysisModel.MWQMRunAnalysisModelList = mwqmRunAnalysisModelList;
+
+                List<int> SiteTVItemIDList = mwqmSiteAnalysisModelList.Select(c => c.MWQMSiteTVItemID).Distinct().ToList();
+                List<int> RunTVItemIDList = mwqmRunAnalysisModelList.Select(c => c.MWQMRunTVItemID).Distinct().ToList();
+
+                List<MWQMSampleAnalysisModel> mwqmSampleAnalysisModelList = new List<MWQMSampleAnalysisModel>();
+                if (mwqmSiteAnalysisModelList.Count > 0 && mwqmRunAnalysisModelList.Count > 0)
+                {
+                    string routineNumberText = ((int)SampleTypeEnum.Routine).ToString() + ",";
+                    mwqmSampleAnalysisModelList = (from c in db.MWQMSamples
+                                                   from cl in db.MWQMSampleLanguages
+                                                   from siteTVItemID in SiteTVItemIDList
+                                                   from runTVItemID in RunTVItemIDList
+                                                   where c.MWQMSampleID == cl.MWQMSampleID
+                                                   && c.MWQMRunTVItemID == runTVItemID
+                                                   && c.MWQMSiteTVItemID == siteTVItemID
+                                                   && cl.Language == (int)LanguageRequest
+                                                   && c.SampleTypesText.Contains(routineNumberText)
+                                                   orderby c.SampleDateTime_Local descending
+                                                   select new MWQMSampleAnalysisModel
+                                                   {
+                                                       Error = "",
+                                                       MWQMSampleID = c.MWQMSampleID,
+                                                       DBCommand = (DBCommandEnum)c.DBCommand,
+                                                       MWQMSampleNote = cl.MWQMSampleNote,
+                                                       MWQMSiteTVItemID = c.MWQMSiteTVItemID,
+                                                       MWQMSiteTVText = (from sl in db.TVItemLanguages
+                                                                         where sl.TVItemID == siteTVItemID
+                                                                         && sl.Language == (int)LanguageRequest
+                                                                         select sl.TVText).FirstOrDefault(),
+                                                       MWQMRunTVItemID = c.MWQMRunTVItemID,
+                                                       MWQMRunTVText = (from sl in db.TVItemLanguages
+                                                                        where sl.TVItemID == runTVItemID
+                                                                        && sl.Language == (int)LanguageRequest
+                                                                        select sl.TVText).FirstOrDefault(),
+                                                       Depth_m = c.Depth_m,
+                                                       FecCol_MPN_100ml = c.FecCol_MPN_100ml,
+                                                       PH = c.PH,
+                                                       Salinity_PPT = c.Salinity_PPT,
+                                                       SampleDateTime_Local = c.SampleDateTime_Local,
+                                                       WaterTemp_C = c.WaterTemp_C,
+                                                       SampleTypesText = c.SampleTypesText,
+                                                       Tube_10 = c.Tube_10,
+                                                       Tube_1_0 = c.Tube_1_0,
+                                                       Tube_0_1 = c.Tube_0_1,
+                                                       ProcessedBy = c.ProcessedBy,
+                                                       LastUpdateDate_UTC = c.LastUpdateDate_UTC,
+                                                       LastUpdateContactTVItemID = c.LastUpdateContactTVItemID,
+                                                   }).ToList();
+
+                    foreach (MWQMSampleAnalysisModel mwqmSampleAnalysisModel in mwqmSampleAnalysisModelList)
+                    {
+                        if (!string.IsNullOrWhiteSpace(mwqmSampleAnalysisModel.SampleTypesText))
+                        {
+                            if (mwqmSampleAnalysisModel.SampleTypesText.Contains(((int)SampleTypeEnum.Routine).ToString() + ","))
+                            {
+                                mwqmSampleAnalysisModel.SampleTypesText = SampleTypeEnum.Routine.ToString();
+                            }
+                            else
+                            {
+                                string FirstSampleTypeNumber = mwqmSampleAnalysisModel.SampleTypesText.Substring(0, mwqmSampleAnalysisModel.SampleTypesText.IndexOf(","));
+                                mwqmSampleAnalysisModel.SampleTypesText = ((SampleTypeEnum)(int.Parse(FirstSampleTypeNumber))).ToString();
+                            }
+                        }
+                    }
+
+                    mwqmSubsectorAnalysisModel.MWQMSampleAnalysisModelList = mwqmSampleAnalysisModelList;
+
+                }
+            }
+
+
+            return mwqmSubsectorAnalysisModel;
+        }
+
 
         //private void button18_Click(object sender, EventArgs e)
         //{
