@@ -17526,79 +17526,6 @@ namespace ImportByFunction
             bool OnlyActiveSubsector = true;
             bool OnlyActiveMWQMSite = true;
 
-            sb.AppendLine("<!DOCTYPE html>");
-            sb.AppendLine("");
-            sb.AppendLine(@"<html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">");
-            sb.AppendLine("<head>");
-            sb.AppendLine(@"    <meta charset=""utf-8"" />");
-            sb.AppendLine("    <title></title>");
-            sb.AppendLine("    <style>");
-            sb.AppendLine("        th {");
-            sb.AppendLine("            border: 1px solid black;");
-            sb.AppendLine("        }");
-            sb.AppendLine("    </style>");
-            sb.AppendLine("</head>");
-            sb.AppendLine("<body>");
-            sb.AppendLine("<table>");
-            sb.AppendLine("<tr>");
-            sb.AppendLine("<th colspan=17>");
-            sb.AppendLine("Data extrated from Webtools on DATE  (All-All-All, N= 30, Full year)");
-            sb.AppendLine("</th>");
-            sb.AppendLine("</tr>");
-            sb.AppendLine("<tr>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Subsector Code");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Subsector Name");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Stations Classified as Approved with Red A to F rating");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Stations Classified as Approved with Green F rating");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with red F rating");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with purple A-F rating");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with green A to D rating");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Stations Classified\nas Unclassified");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Number of Rain runs\n(12mm or more on Run day)");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Number of Rain runs (12mm or more 0-24 hrs)");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Number of Rain runs\n(12mm or more 24-48 hrs)");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Missing\nRain data in Webtools (Yes/No)");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Last Relay\nrequest year");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Last depuration\nrequest year");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("More Rain Runs Needed");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Action suggested");
-            sb.AppendLine("</th>");
-            sb.AppendLine("<th>");
-            sb.AppendLine("Initials/Date reviewed");
-            sb.AppendLine("</th>");
-            sb.AppendLine("</tr>");
-
             List<string> ProvInitList = new List<string>()
             {
                 /*"BC", "ME", */"NB"/*, "NL", "NS", "PE", "QC",*/
@@ -17616,6 +17543,80 @@ namespace ImportByFunction
 
                 for (int i = 0; i < ProvList.Count; i++)
                 {
+                    sb.AppendLine("<!DOCTYPE html>");
+                    sb.AppendLine("");
+                    sb.AppendLine(@"<html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">");
+                    sb.AppendLine("<head>");
+                    sb.AppendLine(@"    <meta charset=""utf-8"" />");
+                    sb.AppendLine("    <title></title>");
+                    sb.AppendLine("    <style>");
+                    sb.AppendLine("        th {");
+                    sb.AppendLine("            border: 1px solid black;");
+                    sb.AppendLine("        }");
+                    sb.AppendLine("    </style>");
+                    sb.AppendLine("</head>");
+                    sb.AppendLine("<body>");
+                    sb.AppendLine("<table>");
+                    sb.AppendLine("<tr>");
+                    sb.AppendLine("<th colspan=17>");
+                    sb.AppendLine("Data extrated from Webtools on DATE  (All-All-All, N= 30, Full year)");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("</tr>");
+                    sb.AppendLine("<tr>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Subsector Code");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Subsector Name");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Stations Classified as Approved with Red A to F rating");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Stations Classified as Approved with Green F rating");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with red F rating");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with purple A-F rating");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with green A to D rating");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Stations Classified\nas Unclassified");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Number of Rain runs\n(12mm or more on Run day)");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Number of Rain runs (12mm or more 0-24 hrs)");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Number of Rain runs\n(12mm or more 24-48 hrs)");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Missing\nRain data in Webtools (Yes/No)");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Last Relay\nrequest year");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Last depuration\nrequest year");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("More Rain Runs Needed");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Action suggested");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Initials/Date reviewed");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("</tr>");
+
+                    string provInit = ProvInitList[i];
                     string prov = ProvList[i];
                     TVItem tvItemProv = (from c in db2.TVItems
                                          from cl in db2.TVItemLanguages
@@ -17642,7 +17643,6 @@ namespace ImportByFunction
                         lblStatus.Refresh();
                         Application.DoEvents();
 
-                        string provInit = ProvInitList[i];
                         string tvText = subsector.cl.TVText;
                         string locator = tvText;
                         string name = tvText;
@@ -18045,20 +18045,20 @@ namespace ImportByFunction
                         sb.AppendLine("</tr>");
 
                     }
+
+                    sb.AppendLine("</table>");
+                    sb.AppendLine("</body>");
+                    sb.AppendLine("</html>");
+
+                    FileInfo fi = new FileInfo($@"C:\CSSP\{ provInit } Subsector Review.html");
+
+                    StreamWriter sw = fi.CreateText();
+                    sw.WriteLine(sb.ToString());
+                    sw.Close();
+
+                    richTextBoxStatus.Text = sb.ToString();
                 }
             }
-
-            sb.AppendLine("</table>");
-            sb.AppendLine("</body>");
-            sb.AppendLine("</html>");
-
-            FileInfo fi = new FileInfo(@"C:\Users\charl\JulieAnne.html");
-
-            StreamWriter sw = fi.CreateText();
-            sw.WriteLine(sb.ToString());
-            sw.Close();
-
-            richTextBoxStatus.Text = sb.ToString();
         }
         private string RemoveStart0(string TVText)
         {
