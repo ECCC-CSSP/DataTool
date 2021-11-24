@@ -17521,10 +17521,13 @@ namespace ImportByFunction
             TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
             StringBuilder sb = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder();
+
             int BeforeYear = 1989;
             int NumberOfRuns = 30;
             bool OnlyActiveSubsector = true;
             bool OnlyActiveMWQMSite = true;
+            bool FullYear = true;
 
             List<string> ProvInitList = new List<string>()
             {
@@ -17549,8 +17552,8 @@ namespace ImportByFunction
                     sb.AppendLine("<head>");
                     sb.AppendLine(@"    <meta charset=""utf-8"" />");
                     sb.AppendLine("    <title></title>");
-                    sb.AppendLine("    <style>");
-                    sb.AppendLine("        th {");
+                    sb.AppendLine(@"    <style type=""text/css"">");
+                    sb.AppendLine("        th,td {");
                     sb.AppendLine("            border: 1px solid black;");
                     sb.AppendLine("        }");
                     sb.AppendLine("    </style>");
@@ -17558,52 +17561,58 @@ namespace ImportByFunction
                     sb.AppendLine("<body>");
                     sb.AppendLine("<table>");
                     sb.AppendLine("<tr>");
-                    sb.AppendLine("<th colspan=17>");
+                    sb.AppendLine("<th colspan=19>");
                     sb.AppendLine("Data extrated from Webtools on DATE  (All-All-All, N= 30, Full year)");
                     sb.AppendLine("</th>");
                     sb.AppendLine("</tr>");
                     sb.AppendLine("<tr>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Subsector Code");
+                    sb.AppendLine("Locator");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Subsector Name");
+                    sb.AppendLine("Name");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Stations Classified as Approved with Red A to F rating");
+                    sb.AppendLine("Max <br/># Samples");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Stations Classified as Approved with Green F rating");
+                    sb.AppendLine("Max-Min<br/>Years");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with red F rating");
+                    sb.AppendLine("Sites Classified as <br/>Approved <br/>with Red A to F rating");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with purple A-F rating");
+                    sb.AppendLine("Sites Classified as <br/>Approved <br/>with Green F rating");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Stations Classified as Restricted or Conditional Restricted with green A to D rating");
+                    sb.AppendLine("Sites Classified as <br/>Restricted or Conditional Restricted <br/>with red F rating");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Stations Classified\nas Unclassified");
+                    sb.AppendLine("Sites Classified as <br/>Restricted or Conditional Restricted <br/>with purple A-F rating");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Number of Rain runs\n(12mm or more on Run day)");
+                    sb.AppendLine("Sites Classified as <br/>Restricted or Conditional Restricted <br/>with green A to D rating");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Number of Rain runs (12mm or more 0-24 hrs)");
+                    sb.AppendLine("Sites Classified as <br/>Unclassified");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Number of Rain runs\n(12mm or more 24-48 hrs)");
+                    sb.AppendLine("# Rain runs<br/> &ge; 12mm <br/>on Run day");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Missing\nRain data in Webtools (Yes/No)");
+                    sb.AppendLine("# Rain runs<br/> &ge; 12mm <br/>0-24 hrs");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Last Relay\nrequest year");
+                    sb.AppendLine("# Rain runs<br/> &ge; 12mm <br/>24-48 hrs");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
-                    sb.AppendLine("Last depuration\nrequest year");
+                    sb.AppendLine("Missing Rain data <br/>in Webtools <br/>(Yes/No)");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Last Relay<br/>request year");
+                    sb.AppendLine("</th>");
+                    sb.AppendLine("<th>");
+                    sb.AppendLine("Last depuration<br/>request year");
                     sb.AppendLine("</th>");
                     sb.AppendLine("<th>");
                     sb.AppendLine("More Rain Runs Needed");
@@ -17615,6 +17624,52 @@ namespace ImportByFunction
                     sb.AppendLine("Initials/Date reviewed");
                     sb.AppendLine("</th>");
                     sb.AppendLine("</tr>");
+
+                    sb2.AppendLine("<!DOCTYPE html>");
+                    sb2.AppendLine("");
+                    sb2.AppendLine(@"<html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">");
+                    sb2.AppendLine("<head>");
+                    sb2.AppendLine(@"    <meta charset=""utf-8"" />");
+                    sb2.AppendLine("    <title></title>");
+                    sb2.AppendLine(@"    <style type=""text/css"">");
+                    sb2.AppendLine("        th,td {");
+                    sb2.AppendLine("            border: 1px solid black;");
+                    sb2.AppendLine("        }");
+                    sb2.AppendLine("    </style>");
+                    sb2.AppendLine("</head>");
+                    sb2.AppendLine("<body>");
+                    sb2.AppendLine("<table>");
+                    sb2.AppendLine("<tr>");
+                    sb2.AppendLine("<th colspan=8>");
+                    sb2.AppendLine("Data extrated from Webtools on DATE  (All-All-All, N= 30, Full year) by site");
+                    sb2.AppendLine("</th>");
+                    sb2.AppendLine("</tr>");
+                    sb2.AppendLine("<tr>");
+                    sb2.AppendLine("<th>");
+                    sb2.AppendLine("Locator");
+                    sb2.AppendLine("</th>");
+                    sb2.AppendLine("<th>");
+                    sb2.AppendLine("Name");
+                    sb2.AppendLine("</th>");
+                    sb2.AppendLine("<th>");
+                    sb2.AppendLine("# Samples");
+                    sb2.AppendLine("</th>");
+                    sb2.AppendLine("<th>");
+                    sb2.AppendLine("Years");
+                    sb2.AppendLine("</th>");
+                    sb2.AppendLine("<th>");
+                    sb2.AppendLine("Site");
+                    sb2.AppendLine("</th>");
+                    sb2.AppendLine("<th>");
+                    sb2.AppendLine("Currently <br/>Classified");
+                    sb2.AppendLine("</th>");
+                    sb2.AppendLine("<th>");
+                    sb2.AppendLine("Stat <br/>Color");
+                    sb2.AppendLine("</th>");
+                    sb2.AppendLine("<th>");
+                    sb2.AppendLine("Stat <br/>Letter");
+                    sb2.AppendLine("</th>");
+                    sb2.AppendLine("</tr>");
 
                     string provInit = ProvInitList[i];
                     string prov = ProvList[i];
@@ -17706,12 +17761,13 @@ namespace ImportByFunction
 
 
                         List<MWQMSiteClassStat> MWQMSiteClassStatList = new List<MWQMSiteClassStat>();
+
+                        int MaxNumberOfSample = 0;
+                        int SampleMaxYear = 0;
+                        int SampleMinYear = 100000;
+
                         foreach (MWQMSite mwqmSite in mwqmSiteList)
                         {
-                            if (locator == "NB-04-040-001" && mwqmSite.MWQMSiteNumber.Contains("18"))
-                            {
-                                int sleifj = 34;
-                            }
                             MWQMSiteClassStat mwqmSiteClassStat = new MWQMSiteClassStat();
                             mwqmSiteClassStat.MWQMSite = mwqmSite;
 
@@ -17728,6 +17784,11 @@ namespace ImportByFunction
 
                                 if (count > NumberOfRuns)
                                 {
+                                    if (!FullYear)
+                                    {
+                                        break;
+                                    }
+
                                     if (lastYear != mwqmSample.SampleDateTime_Local.Year)
                                     {
                                         break;
@@ -17752,104 +17813,207 @@ namespace ImportByFunction
                                                                  orderby c.SampleDateTime_Local descending
                                                                  select (c.FecCol_MPN_100ml < 2 ? 1.9D : (double)c.FecCol_MPN_100ml)).ToList<double>();
 
-
-                                double P90 = tvItemService.GetP90(mwqmSampleFCList);
-                                double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
-                                double Median = tvItemService.GetMedian(mwqmSampleFCList);
-                                double PercOver43 = ((((double)mwqmSiteClassStat.MWQMSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleFCList.Count()) * 100.0D);
-                                double PercOver260 = ((((double)mwqmSiteClassStat.MWQMSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleFCList.Count()) * 100.0D);
-                                int MinYear = mwqmSiteClassStat.MWQMSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
-                                int MaxYear = mwqmSiteClassStat.MWQMSampleList.Select(c => c.SampleDateTime_Local).Max().Year;
-
-                                LetterColorName letterColorName = new LetterColorName();
-
-                                if ((GeoMean > 88) || (Median > 88) || (P90 > 260) || (PercOver260 > 10))
+                                if (mwqmSampleFCList.Count > 3)
                                 {
-                                    if ((GeoMean > 181) || (Median > 181) || (P90 > 460) || (PercOver260 > 18))
+                                    if (MaxNumberOfSample < mwqmSampleFCList.Count)
                                     {
-                                        letterColorName = new LetterColorName() { Letter = "F", Color = "Purple", Name = "NoDepuration" };
+                                        MaxNumberOfSample = mwqmSampleFCList.Count;
                                     }
-                                    else if ((GeoMean > 163) || (Median > 163) || (P90 > 420) || (PercOver260 > 17))
+
+                                    double P90 = tvItemService.GetP90(mwqmSampleFCList);
+                                    double GeoMean = tvItemService.GeometricMean(mwqmSampleFCList);
+                                    double Median = tvItemService.GetMedian(mwqmSampleFCList);
+                                    double PercOver43 = ((((double)mwqmSiteClassStat.MWQMSampleList.Where(c => c.FecCol_MPN_100ml > 43).Count()) / (double)mwqmSampleFCList.Count()) * 100.0D);
+                                    double PercOver260 = ((((double)mwqmSiteClassStat.MWQMSampleList.Where(c => c.FecCol_MPN_100ml > 260).Count()) / (double)mwqmSampleFCList.Count()) * 100.0D);
+                                    int MinYear = mwqmSiteClassStat.MWQMSampleList.Select(c => c.SampleDateTime_Local).Min().Year;
+                                    int MaxYear = mwqmSiteClassStat.MWQMSampleList.Select(c => c.SampleDateTime_Local).Max().Year;
+
+                                    if (SampleMaxYear < MaxYear)
                                     {
-                                        letterColorName = new LetterColorName() { Letter = "E", Color = "Purple", Name = "NoDepuration" };
+                                        SampleMaxYear = MaxYear;
                                     }
-                                    else if ((GeoMean > 144) || (Median > 144) || (P90 > 380) || (PercOver260 > 15))
+
+                                    if (SampleMinYear > MinYear)
                                     {
-                                        letterColorName = new LetterColorName() { Letter = "D", Color = "Purple", Name = "NoDepuration" };
+                                        SampleMinYear = MinYear;
                                     }
-                                    else if ((GeoMean > 125) || (Median > 125) || (P90 > 340) || (PercOver260 > 13))
+
+                                    LetterColorName letterColorName = new LetterColorName();
+
+                                    if ((GeoMean > 88) || (Median > 88) || (P90 > 260) || (PercOver260 > 10))
                                     {
-                                        letterColorName = new LetterColorName() { Letter = "C", Color = "Purple", Name = "NoDepuration" };
+                                        if ((GeoMean > 181) || (Median > 181) || (P90 > 460) || (PercOver260 > 18))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "F", Color = "Purple", Name = "NoDepuration" };
+                                        }
+                                        else if ((GeoMean > 163) || (Median > 163) || (P90 > 420) || (PercOver260 > 17))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "E", Color = "Purple", Name = "NoDepuration" };
+                                        }
+                                        else if ((GeoMean > 144) || (Median > 144) || (P90 > 380) || (PercOver260 > 15))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "D", Color = "Purple", Name = "NoDepuration" };
+                                        }
+                                        else if ((GeoMean > 125) || (Median > 125) || (P90 > 340) || (PercOver260 > 13))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "C", Color = "Purple", Name = "NoDepuration" };
+                                        }
+                                        else if ((GeoMean > 107) || (Median > 107) || (P90 > 300) || (PercOver260 > 12))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "B", Color = "Purple", Name = "NoDepuration" };
+                                        }
+                                        else
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "A", Color = "Purple", Name = "NoDepuration" };
+                                        }
                                     }
-                                    else if ((GeoMean > 107) || (Median > 107) || (P90 > 300) || (PercOver260 > 12))
+                                    else if ((GeoMean > 14) || (Median > 14) || (P90 > 43) || (PercOver43 > 10))
                                     {
-                                        letterColorName = new LetterColorName() { Letter = "B", Color = "Purple", Name = "NoDepuration" };
+                                        if ((GeoMean > 76) || (Median > 76) || (P90 > 224) || (PercOver43 > 27))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "F", Color = "Red", Name = "Fail" };
+                                        }
+                                        else if ((GeoMean > 63) || (Median > 63) || (P90 > 188) || (PercOver43 > 23))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "E", Color = "Red", Name = "Fail" };
+                                        }
+                                        else if ((GeoMean > 51) || (Median > 51) || (P90 > 152) || (PercOver43 > 20))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "D", Color = "Red", Name = "Fail" };
+                                        }
+                                        else if ((GeoMean > 39) || (Median > 39) || (P90 > 115) || (PercOver43 > 17))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "C", Color = "Red", Name = "Fail" };
+                                        }
+                                        else if ((GeoMean > 26) || (Median > 26) || (P90 > 79) || (PercOver43 > 13))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "B", Color = "Red", Name = "Fail" };
+                                        }
+                                        else
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "A", Color = "Red", Name = "Fail" };
+                                        }
                                     }
                                     else
                                     {
-                                        letterColorName = new LetterColorName() { Letter = "A", Color = "Purple", Name = "NoDepuration" };
+                                        if ((GeoMean > 12) || (Median > 12) || (P90 > 36) || (PercOver43 > 8))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "F", Color = "Green", Name = "Pass" };
+                                        }
+                                        else if ((GeoMean > 9) || (Median > 9) || (P90 > 29) || (PercOver43 > 7))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "E", Color = "Green", Name = "Pass" };
+                                        }
+                                        else if ((GeoMean > 7) || (Median > 7) || (P90 > 22) || (PercOver43 > 5))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "D", Color = "Green", Name = "Pass" };
+                                        }
+                                        else if ((GeoMean > 5) || (Median > 5) || (P90 > 14) || (PercOver43 > 3))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "C", Color = "Green", Name = "Pass" };
+                                        }
+                                        else if ((GeoMean > 2) || (Median > 2) || (P90 > 7) || (PercOver43 > 2))
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "B", Color = "Green", Name = "Pass" };
+                                        }
+                                        else
+                                        {
+                                            letterColorName = new LetterColorName() { Letter = "A", Color = "Green", Name = "Pass" };
+                                        }
                                     }
-                                }
-                                else if ((GeoMean > 14) || (Median > 14) || (P90 > 43) || (PercOver43 > 10))
-                                {
-                                    if ((GeoMean > 76) || (Median > 76) || (P90 > 224) || (PercOver43 > 27))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "F", Color = "Red", Name = "Fail" };
-                                    }
-                                    else if ((GeoMean > 63) || (Median > 63) || (P90 > 188) || (PercOver43 > 23))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "E", Color = "Red", Name = "Fail" };
-                                    }
-                                    else if ((GeoMean > 51) || (Median > 51) || (P90 > 152) || (PercOver43 > 20))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "D", Color = "Red", Name = "Fail" };
-                                    }
-                                    else if ((GeoMean > 39) || (Median > 39) || (P90 > 115) || (PercOver43 > 17))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "C", Color = "Red", Name = "Fail" };
-                                    }
-                                    else if ((GeoMean > 26) || (Median > 26) || (P90 > 79) || (PercOver43 > 13))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "B", Color = "Red", Name = "Fail" };
-                                    }
-                                    else
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "A", Color = "Red", Name = "Fail" };
-                                    }
+
+                                    mwqmSiteClassStat.LetterColorName = letterColorName;
+                                    
+                                    sb2.AppendLine("<tr>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ locator }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ name }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ mwqmSampleFCList.Count }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ MaxYear }-{ MinYear }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ RemoveStart0(mwqmSiteClassStat.MWQMSite.MWQMSiteNumber) }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ ((MWQMSiteLatestClassificationEnum)mwqmSiteClassStat.MWQMSite.MWQMSiteLatestClassification).ToString() }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ mwqmSiteClassStat.LetterColorName.Color }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ mwqmSiteClassStat.LetterColorName.Letter }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("</tr>");
+
                                 }
                                 else
                                 {
-                                    if ((GeoMean > 12) || (Median > 12) || (P90 > 36) || (PercOver43 > 8))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "F", Color = "Green", Name = "Pass" };
-                                    }
-                                    else if ((GeoMean > 9) || (Median > 9) || (P90 > 29) || (PercOver43 > 7))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "E", Color = "Green", Name = "Pass" };
-                                    }
-                                    else if ((GeoMean > 7) || (Median > 7) || (P90 > 22) || (PercOver43 > 5))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "D", Color = "Green", Name = "Pass" };
-                                    }
-                                    else if ((GeoMean > 5) || (Median > 5) || (P90 > 14) || (PercOver43 > 3))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "C", Color = "Green", Name = "Pass" };
-                                    }
-                                    else if ((GeoMean > 2) || (Median > 2) || (P90 > 7) || (PercOver43 > 2))
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "B", Color = "Green", Name = "Pass" };
-                                    }
-                                    else
-                                    {
-                                        letterColorName = new LetterColorName() { Letter = "A", Color = "Green", Name = "Pass" };
-                                    }
-                                }
+                                    mwqmSiteClassStat.LetterColorName = new LetterColorName() { Color = "ND", Letter = "ND", Name = "ND" };
 
-                                mwqmSiteClassStat.LetterColorName = letterColorName;
+                                    sb2.AppendLine("<tr>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ locator }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine($"{ name }");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine("ND");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine("ND");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine("ND");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine("ND");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine("ND");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("<th>");
+                                    sb2.AppendLine("ND");
+                                    sb2.AppendLine("</th>");
+                                    sb2.AppendLine("</tr>");
+                                }
                             }
                             else
                             {
                                 mwqmSiteClassStat.LetterColorName = new LetterColorName() { Color = "ND", Letter = "ND", Name = "ND" };
+
+                                sb2.AppendLine("<tr>");
+                                sb2.AppendLine("<th>");
+                                sb2.AppendLine($"{ locator }");
+                                sb2.AppendLine("</th>");
+                                sb2.AppendLine("<th>");
+                                sb2.AppendLine($"{ name }");
+                                sb2.AppendLine("</th>");
+                                sb2.AppendLine("<th>");
+                                sb2.AppendLine("ND");
+                                sb2.AppendLine("</th>");
+                                sb2.AppendLine("<th>");
+                                sb2.AppendLine("ND");
+                                sb2.AppendLine("</th>");
+                                sb2.AppendLine("<th>");
+                                sb2.AppendLine("ND");
+                                sb2.AppendLine("</th>");
+                                sb2.AppendLine("<th>");
+                                sb2.AppendLine("ND");
+                                sb2.AppendLine("</th>");
+                                sb2.AppendLine("<th>");
+                                sb2.AppendLine("ND");
+                                sb2.AppendLine("</th>");
+                                sb2.AppendLine("<th>");
+                                sb2.AppendLine("ND");
+                                sb2.AppendLine("</th>");
+                                sb2.AppendLine("</tr>");
                             }
 
                             MWQMSiteClassStatList.Add(mwqmSiteClassStat);
@@ -17862,6 +18026,12 @@ namespace ImportByFunction
                         sb.AppendLine("</td>");
                         sb.AppendLine("<td>");
                         sb.AppendLine($"{ name }");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine($"{ MaxNumberOfSample }");
+                        sb.AppendLine("</td>");
+                        sb.AppendLine("<td>");
+                        sb.AppendLine($"{ SampleMaxYear }-{ SampleMinYear }");
                         sb.AppendLine("</td>");
                         sb.AppendLine("<td>");
                         if (mwqmSampleList.Count > 3)
@@ -17985,9 +18155,12 @@ namespace ImportByFunction
                                                    where c.MWQMRunTVItemID == mwqmSample.MWQMRunTVItemID
                                                    select c).FirstOrDefault();
 
-                                if (!MWQMRunList.Where(c => c.MWQMRunTVItemID == mwqmRun.MWQMRunTVItemID).Any())
+                                if (mwqmRun != null)
                                 {
-                                    MWQMRunList.Add(mwqmRun);
+                                    if (!MWQMRunList.Where(c => c.MWQMRunTVItemID == mwqmRun.MWQMRunTVItemID).Any())
+                                    {
+                                        MWQMRunList.Add(mwqmRun);
+                                    }
                                 }
                             }
                         }
@@ -18055,6 +18228,12 @@ namespace ImportByFunction
                     StreamWriter sw = fi.CreateText();
                     sw.WriteLine(sb.ToString());
                     sw.Close();
+
+                    FileInfo fiSite = new FileInfo($@"C:\CSSP\{ provInit } Subsector Review By Site.html");
+
+                    StreamWriter swSite = fiSite.CreateText();
+                    swSite.WriteLine(sb2.ToString());
+                    swSite.Close();
 
                     richTextBoxStatus.Text = sb.ToString();
                 }
