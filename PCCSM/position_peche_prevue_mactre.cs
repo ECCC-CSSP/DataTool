@@ -24,5 +24,6 @@ namespace PCCSM
         public Nullable<decimal> x { get; set; }
         public string date_visee { get; set; }
         public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
+        public Nullable<int> annee { get; set; }
     }
 }

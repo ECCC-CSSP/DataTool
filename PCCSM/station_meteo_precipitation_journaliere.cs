@@ -24,5 +24,6 @@ namespace PCCSM
         public string precipitation24hmm_indicateur_octobre { get; set; }
         public Nullable<decimal> precipitation24hmm_novembre { get; set; }
         public string precipitation24hmm_indicateur_novembre { get; set; }
+        public string commentaire { get; set; }
     }
 }

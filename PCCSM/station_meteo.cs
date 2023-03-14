@@ -24,13 +24,7 @@ namespace PCCSM
         public Nullable<int> omm { get; set; }
         public string mddep { get; set; }
         public Nullable<int> climatoID { get; set; }
-        public string climatoECAtl_2011_effacer { get; set; }
-        public string URLClimatoEC_effacer { get; set; }
-        public string URLCSVannuel_effacer { get; set; }
-        public string URLECATL_effacer { get; set; }
-        public string exclure { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
         public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
+        public Nullable<int> IdentificationStation { get; set; }
     }
 }

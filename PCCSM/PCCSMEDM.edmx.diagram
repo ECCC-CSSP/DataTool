@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="60c1b5418ea84087996c6e46c1cc267f" Name="Diagram1">
+      <Diagram DiagramId="60c1b5418ea84087996c6e46c1cc267f" Name="Diagram1" ZoomLevel="52">
         <EntityTypeShape EntityType="pccsmModel.C2013_Municipalité" Width="1.5" PointX="12.75" PointY="9.25" />
         <EntityTypeShape EntityType="pccsmModel.C2013_Toponymes_officiels" Width="1.5" PointX="8.75" PointY="14.25" />
         <EntityTypeShape EntityType="pccsmModel.C2013_TypesEntitesToponymiques" Width="1.5" PointX="12.75" PointY="2.25" />
@@ -62,7 +62,6 @@
         <EntityTypeShape EntityType="pccsmModel.geo_terrain_p" Width="1.5" PointX="24.75" PointY="10.25" />
         <EntityTypeShape EntityType="pccsmModel.geo_transect_l" Width="1.5" PointX="3" PointY="12.125" />
         <EntityTypeShape EntityType="pccsmModel.geometry_columns" Width="1.5" PointX="28.75" PointY="32.25" />
-        <EntityTypeShape EntityType="pccsmModel.gps_log" Width="1.5" PointX="30.75" PointY="31.25" />
         <EntityTypeShape EntityType="pccsmModel.groupe_secteur" Width="1.5" PointX="10" PointY="10.375" />
         <EntityTypeShape EntityType="pccsmModel.hyperlien" Width="1.5" PointX="18" PointY="23.5" />
         <EntityTypeShape EntityType="pccsmModel.Inf_Infrastructures" Width="1.5" PointX="8" PointY="31.875" />
@@ -80,8 +79,6 @@
         <EntityTypeShape EntityType="pccsmModel.modele" Width="1.5" PointX="10.25" PointY="23.5" />
         <EntityTypeShape EntityType="pccsmModel.modele_contamination_s" Width="1.5" PointX="32.75" PointY="28.25" />
         <EntityTypeShape EntityType="pccsmModel.modele_dilution" Width="1.5" PointX="12.5" PointY="27" />
-        <EntityTypeShape EntityType="pccsmModel.modele_region" Width="1.5" PointX="32.75" PointY="32.25" />
-        <EntityTypeShape EntityType="pccsmModel.NetworkID" Width="1.5" PointX="12.75" PointY="24.25" />
         <EntityTypeShape EntityType="pccsmModel.No_Civ_region_ll83mdb" Width="1.5" PointX="33.75" PointY="2.25" />
         <EntityTypeShape EntityType="pccsmModel.organisation" Width="1.5" PointX="9.75" PointY="8.25" />
         <EntityTypeShape EntityType="pccsmModel.PCCSM_CSSP_Tools_ID" Width="1.5" PointX="12.75" PointY="35.25" />
@@ -95,7 +92,6 @@
         <EntityTypeShape EntityType="pccsmModel.QC_MRNF_SIEF_PEEFO_CLP_CO" Width="1.5" PointX="24.75" PointY="36.25" />
         <EntityTypeShape EntityType="pccsmModel.releve_sanitaire" Width="1.5" PointX="22.75" PointY="22.5" />
         <EntityTypeShape EntityType="pccsmModel.releve_sanitaire_secteur" Width="1.5" PointX="25" PointY="22.75" />
-        <EntityTypeShape EntityType="pccsmModel.reseau_isle_verte__polyline" Width="1.5" PointX="26.75" PointY="36.25" />
         <EntityTypeShape EntityType="pccsmModel.romm_espece_code" Width="1.5" PointX="28.75" PointY="36.25" />
         <EntityTypeShape EntityType="pccsmModel.romm_observation" Width="1.5" PointX="30.75" PointY="36.25" />
         <EntityTypeShape EntityType="pccsmModel.romm_site_observation_p" Width="1.5" PointX="35.75" PointY="2.25" />
@@ -115,7 +111,6 @@
         <EntityTypeShape EntityType="pccsmModel.station_hydrometrique" Width="1.5" PointX="22.75" PointY="3.25" />
         <EntityTypeShape EntityType="pccsmModel.station_hydrometrique_debit" Width="1.5" PointX="25" PointY="5.5" />
         <EntityTypeShape EntityType="pccsmModel.station_hydrometrique_secteur" Width="1.5" PointX="25" PointY="2.625" />
-        <EntityTypeShape EntityType="pccsmModel.station_maree" Width="1.5" PointX="10.75" PointY="38.25" />
         <EntityTypeShape EntityType="pccsmModel.station_maree_moyenne_marnage" Width="1.5" PointX="36.75" PointY="14.25" />
         <EntityTypeShape EntityType="pccsmModel.station_maree_port_secondaire_diff" Width="1.5" PointX="36.75" PointY="18.25" />
         <EntityTypeShape EntityType="pccsmModel.station_maree_secteur" Width="1.5" PointX="16.75" PointY="38.25" />

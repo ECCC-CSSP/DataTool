@@ -23,5 +23,6 @@ namespace PCCSM
         public Nullable<int> ID_Infrastructures_source { get; set; }
         public Nullable<int> ID_reseau { get; set; }
         public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
+        public Nullable<bool> Status { get; set; }
     }
 }

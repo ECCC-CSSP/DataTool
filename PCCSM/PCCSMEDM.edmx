@@ -192,6 +192,7 @@ warning 6002: The table/view 'pccsm.dbo.box_model_dilution_s' does not have a pr
           <Property Name="nom_user" Type="nvarchar" MaxLength="20" />
           <Property Name="commentaire" Type="ntext" />
           <Property Name="ID_Infra" Type="int" />
+          <Property Name="etat" Type="int" />
         </EntityType>
         <EntityType Name="contact_groupe">
           <Key>
@@ -311,7 +312,7 @@ warning 6002: The table/view 'pccsm.dbo.box_model_dilution_s' does not have a pr
           <Property Name="id_db_echantillonnage_planification" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_geo_station_p" Type="int" Nullable="false" />
           <Property Name="planification" Type="int" Nullable="false" />
-          <Property Name="commentaire" Type="ntext" />
+          <Property Name="commentaire" Type="nvarchar(max)" />
           <Property Name="tournee_planification_id" Type="int" />
         </EntityType>
         <EntityType Name="db_echantillonnage_planification_mensuelle">
@@ -425,8 +426,8 @@ warning 6002: The table/view 'pccsm.dbo.box_model_dilution_s' does not have a pr
           <Property Name="sal" Type="decimal" Precision="18" Scale="1" />
           <Property Name="ph" Type="decimal" Precision="18" Scale="1" />
           <Property Name="valide" Type="bit" />
-          <Property Name="x" Type="float" />
-          <Property Name="y" Type="float" />
+          <Property Name="x" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="y" Type="decimal" Precision="18" Scale="6" />
           <Property Name="commentaire" Type="varchar(max)" />
           <Property Name="geographie" Type="geography" />
           <Property Name="diffusable" Type="bit" />
@@ -453,24 +454,27 @@ warning 6002: The table/view 'pccsm.dbo.box_model_dilution_s' does not have a pr
           <Property Name="maree_ve" Type="bit" />
           <Property Name="maree_me" Type="bit" />
           <Property Name="marnage" Type="decimal" Precision="18" Scale="1" />
-          <Property Name="precipit" Type="float" />
-          <Property Name="precipit_2jant" Type="float" />
-          <Property Name="precipit_3jant" Type="float" />
-          <Property Name="precipit_oct" Type="float" />
-          <Property Name="precipit_3jant_oct" Type="float" />
-          <Property Name="t_air_deb" Type="float" />
-          <Property Name="t_air_fin" Type="float" />
-          <Property Name="v_vent_deb" Type="float" />
-          <Property Name="v_vent_fin" Type="float" />
+          <Property Name="precipit" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="precipit_jour2" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="precipit_jour3" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="precipit_jour4" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="precipit_2jant" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="precipit_3jant" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="precipit_oct" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="precipit_3jant_oct" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="t_air_deb" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="t_air_fin" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="v_vent_deb" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="v_vent_fin" Type="decimal" Precision="18" Scale="1" />
           <Property Name="vent_direction_debut" Type="int" />
           <Property Name="vent_direction_fin" Type="int" />
-          <Property Name="couvert_nuage" Type="float" />
-          <Property Name="couvert_nuage_fin" Type="float" />
-          <Property Name="mer_etat" Type="float" />
-          <Property Name="mer_etat_fin" Type="float" />
+          <Property Name="couvert_nuage" Type="int" />
+          <Property Name="couvert_nuage_fin" Type="int" />
+          <Property Name="mer_etat" Type="int" />
+          <Property Name="mer_etat_fin" Type="int" />
           <Property Name="niveau_eau" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="vague_hauteur" Type="float" />
-          <Property Name="vague_hauteur_fin" Type="float" />
+          <Property Name="vague_hauteur" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="vague_hauteur_fin" Type="decimal" Precision="18" Scale="1" />
           <Property Name="consultant" Type="nvarchar" MaxLength="50" />
           <Property Name="commentaire" Type="nvarchar(max)" />
           <Property Name="date_creation" Type="datetime" />
@@ -620,24 +624,6 @@ warning 6002: The table/view 'pccsm.dbo.box_model_dilution_s' does not have a pr
           <Property Name="annee" Type="int" />
           <Property Name="Status" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.dbo.gaspe_permis_2008_2012' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="gaspe_permis_2008_2012">
-          <Property Name="permis" Type="nvarchar" MaxLength="15" />
-          <Property Name="date_emission" Type="datetime" />
-          <Property Name="secteur" Type="nvarchar" MaxLength="255" />
-          <Property Name="emplacement" Type="nvarchar" MaxLength="255" />
-          <Property Name="id" Type="int" />
-          <Property Name="rue_designation" Type="nvarchar" MaxLength="255" />
-          <Property Name="adresse" Type="int" />
-          <Property Name="adresse_lettre" Type="nvarchar" MaxLength="1" />
-          <Property Name="matricule" Type="nvarchar" MaxLength="50" />
-          <Property Name="Propriétaire" Type="nvarchar" MaxLength="255" />
-          <Property Name="fin_des_travaux_" Type="datetime" />
-          <Property Name="etat_du_dossier" Type="nvarchar" MaxLength="255" />
-          <Property Name="x" Type="float" />
-          <Property Name="y" Type="float" />
-        </EntityType>-->
         <EntityType Name="geo_banc_coquillier_s">
           <Key>
             <PropertyRef Name="id_geo_banc_coquillier_s" />
@@ -900,6 +886,8 @@ warning 6013: The table/view 'pccsm.dbo.gaspe_permis_2008_2012' does not have a 
           <Property Name="x" Type="float" />
           <Property Name="y" Type="float" />
           <Property Name="geographie" Type="geography" />
+          <Property Name="Vidan_2015" Type="nvarchar" MaxLength="255" />
+          <Property Name="Inclu_2015" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="geo_ressource_coquillliere_s">
           <Key>
@@ -1109,20 +1097,6 @@ warning 6013: The table/view 'pccsm.dbo.gaspe_permis_2008_2012' does not have a 
           <Property Name="srid" Type="int" Nullable="false" />
           <Property Name="geometry_type" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <EntityType Name="gps_log">
-          <Key>
-            <PropertyRef Name="id_gps_log" />
-          </Key>
-          <Property Name="id_gps_log" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="x" Type="float" />
-          <Property Name="y" Type="float" />
-          <Property Name="gps_time" Type="datetime" />
-          <Property Name="local_time" Type="datetime" />
-          <Property Name="altitude" Type="int" />
-          <Property Name="usager" Type="nvarchar" MaxLength="15" />
-          <Property Name="commentaire" Type="nvarchar" MaxLength="100" />
-          <Property Name="geographie" Type="geography" />
-        </EntityType>
         <EntityType Name="groupe_secteur">
           <Key>
             <PropertyRef Name="groupe_secteur_id" />
@@ -1285,19 +1259,6 @@ warning 6013: The table/view 'pccsm.dbo.gaspe_permis_2008_2012' does not have a 
           <Property Name="MM_GM" Type="nvarchar" MaxLength="2" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.dbo.Maree_CAM' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Maree_CAM">
-          <Property Name="elevation" Type="decimal" Precision="38" Scale="3" />
-          <Property Name="x" Type="decimal" Precision="38" Scale="6" />
-          <Property Name="y" Type="decimal" Precision="38" Scale="6" />
-          <Property Name="annee" Type="smallint" />
-          <Property Name="mois" Type="smallint" />
-          <Property Name="jour" Type="smallint" />
-          <Property Name="heure" Type="smallint" />
-          <Property Name="minute" Type="smallint" />
-          <Property Name="seconde" Type="smallint" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'pccsm.dbo.MarineChartIndex' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MarineChartIndex">
           <Key>
@@ -1318,20 +1279,6 @@ warning 6002: The table/view 'pccsm.dbo.MarineChartIndex' does not have a primar
           <Property Name="AvailableChart" Type="nvarchar" MaxLength="4" />
           <Property Name="geographie" Type="geography" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.dbo.mddelcc_sites_contamines_temp' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="mddelcc_sites_contamines_temp">
-          <Property Name="fiche" Type="int" />
-          <Property Name="nom_du_dossier" Type="nvarchar" MaxLength="255" />
-          <Property Name="Adresse" Type="nvarchar" MaxLength="255" />
-          <Property Name="MRC" Type="nvarchar" MaxLength="255" />
-          <Property Name="y" Type="float" />
-          <Property Name="x" Type="float" />
-          <Property Name="contaminants_eau_souterraine" Type="nvarchar" MaxLength="255" />
-          <Property Name="contaminant_sol" Type="nvarchar" MaxLength="255" />
-          <Property Name="Rehabilitation_R_Qualité_Q" Type="nvarchar" MaxLength="255" />
-          <Property Name="date_creation_ou_a_jour" Type="datetime" />
-        </EntityType>-->
         <EntityType Name="methode_description">
           <Key>
             <PropertyRef Name="methode_description_id" />
@@ -1380,12 +1327,13 @@ warning 6013: The table/view 'pccsm.dbo.mddelcc_sites_contamines_temp' does not 
           <Property Name="ID_Infrastructures_source" Type="int" />
           <Property Name="ID_reseau" Type="int" />
           <Property Name="geographie" Type="geography" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="modele_dilution">
           <Key>
             <PropertyRef Name="id_modele_dilution" />
           </Key>
-          <Property Name="id_modele_dilution" Type="int" Nullable="false" />
+          <Property Name="id_modele_dilution" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_modele" Type="int" />
           <Property Name="dilution" Type="nvarchar" MaxLength="15" />
           <Property Name="maree" Type="int" />
@@ -1393,29 +1341,7 @@ warning 6013: The table/view 'pccsm.dbo.mddelcc_sites_contamines_temp' does not 
           <Property Name="distance_minimale" Type="float" />
           <Property Name="diffuser" Type="bit" />
           <Property Name="ID_Infrastructure" Type="int" />
-        </EntityType>
-        <EntityType Name="modele_region">
-          <Key>
-            <PropertyRef Name="Id2" />
-          </Key>
-          <Property Name="Id2" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="S" Type="bigint" />
-          <Property Name="CARTO" Type="bigint" />
-          <Property Name="CONTAMINAT" Type="bigint" />
-          <Property Name="DESCRIPTIO" Type="nvarchar" MaxLength="255" />
-          <Property Name="REJET" Type="bigint" />
-          <Property Name="SOURCE" Type="bigint" />
-          <Property Name="ID_RESEAU" Type="bigint" />
           <Property Name="geographie" Type="geography" />
-        </EntityType>
-        <EntityType Name="NetworkID">
-          <Key>
-            <PropertyRef Name="EntityID" />
-          </Key>
-          <Property Name="EntityID" Type="int" Nullable="false" />
-          <Property Name="ParentID" Type="int" />
-          <Property Name="EntityTypeID" Type="int" />
-          <Property Name="NetworkID" Type="int" />
         </EntityType>
         <EntityType Name="No_Civ_region_ll83mdb">
           <Key>
@@ -1457,12 +1383,6 @@ warning 6013: The table/view 'pccsm.dbo.mddelcc_sites_contamines_temp' does not 
           <Property Name="x" Type="float" />
           <Property Name="geographie" Type="geography" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.dbo.NPP' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="NPP">
-          <Property Name="CRP" Type="int" />
-          <Property Name="NPP100ml" Type="int" />
-        </EntityType>-->
         <EntityType Name="organisation">
           <Key>
             <PropertyRef Name="ID_organisation" />
@@ -1510,6 +1430,7 @@ warning 6013: The table/view 'pccsm.dbo.NPP' does not have a primary key defined
           <Property Name="annee" Type="int" />
           <Property Name="engin" Type="nvarchar" MaxLength="255" />
           <Property Name="zone" Type="nvarchar" MaxLength="255" />
+          <Property Name="gisement" Type="nvarchar" MaxLength="255" />
           <Property Name="date_capture" Type="datetime" />
           <Property Name="lat_debut" Type="decimal" Precision="38" Scale="6" />
           <Property Name="lon_debut" Type="decimal" Precision="38" Scale="6" />
@@ -1532,6 +1453,7 @@ warning 6013: The table/view 'pccsm.dbo.NPP' does not have a primary key defined
           <Property Name="y" Type="decimal" Precision="18" Scale="6" />
           <Property Name="x" Type="decimal" Precision="18" Scale="6" />
           <Property Name="date_visee" Type="nvarchar" MaxLength="255" />
+          <Property Name="annee" Type="int" />
           <Property Name="geographie" Type="geography" />
         </EntityType>
         <EntityType Name="position_peche_prevue_mactre_l">
@@ -1541,15 +1463,9 @@ warning 6013: The table/view 'pccsm.dbo.NPP' does not have a primary key defined
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="liste_des_points" Type="nvarchar" MaxLength="255" />
           <Property Name="description" Type="nvarchar" MaxLength="255" />
+          <Property Name="annee" Type="int" />
           <Property Name="geographie" Type="geography" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.dbo.proximite_secteur_annee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="proximite_secteur_annee">
-          <Property Name="id_evaluation_risque" Type="int" />
-          <Property Name="id_geo_secteur_s" Type="int" />
-          <Property Name="annee" Type="int" />
-        </EntityType>-->
         <EntityType Name="QC_MRNF_SIEF_PEEFO">
           <Key>
             <PropertyRef Name="MAPINFO_ID" />
@@ -1655,14 +1571,6 @@ warning 6013: The table/view 'pccsm.dbo.proximite_secteur_annee' does not have a
           <Property Name="secteur_id" Type="int" />
           <Property Name="type_releve" Type="nvarchar" MaxLength="50" />
           <Property Name="commentaire" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="reseau_isle_verte__polyline">
-          <Key>
-            <PropertyRef Name="Ids" />
-          </Key>
-          <Property Name="Ids" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID" Type="bigint" />
-          <Property Name="geographie" Type="geography" />
         </EntityType>
         <EntityType Name="romm_espece_code">
           <Key>
@@ -1852,12 +1760,6 @@ warning 6002: The table/view 'pccsm.dbo.secteur_epsg3857' does not have a primar
           <Property Name="y_min" Type="float" />
           <Property Name="y_max" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.dbo.secteur_exploitation' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="secteur_exploitation">
-          <Property Name="Secteur" Type="nvarchar" MaxLength="15" />
-          <Property Name="Exploitation" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <EntityType Name="secteur_point_legal">
           <Key>
             <PropertyRef Name="secteur_point_legal_id" />
@@ -1979,21 +1881,6 @@ warning 6002: The table/view 'pccsm.dbo.station_dans_buffer' does not have a pri
           <Property Name="station_secteur_no" Type="int" />
           <Property Name="annee" Type="int" />
         </EntityType>
-        <EntityType Name="station_maree">
-          <Key>
-            <PropertyRef Name="Station" />
-          </Key>
-          <Property Name="Station" Type="int" Nullable="false" />
-          <Property Name="PortDeReferenceID" Type="int" />
-          <Property Name="PortDeReference" Type="nvarchar" MaxLength="255" />
-          <Property Name="Localite" Type="nvarchar" MaxLength="255" />
-          <Property Name="province" Type="nvarchar" MaxLength="255" />
-          <Property Name="Latitude" Type="float" />
-          <Property Name="Longitude" Type="float" />
-          <Property Name="Prevision" Type="bit" />
-          <Property Name="prediction" Type="bit" Nullable="false" />
-          <Property Name="geographie" Type="geography" />
-        </EntityType>
         <EntityType Name="station_maree_moyenne_marnage">
           <Key>
             <PropertyRef Name="station_meree_marnage_ID" />
@@ -2053,10 +1940,7 @@ warning 6002: The table/view 'pccsm.dbo.station_dans_buffer' does not have a pri
           <Property Name="omm" Type="int" />
           <Property Name="mddep" Type="nvarchar" MaxLength="15" />
           <Property Name="climatoID" Type="int" />
-          <Property Name="climatoECAtl_2011_effacer" Type="nvarchar" MaxLength="1" />
-          <Property Name="URLClimatoEC_effacer" Type="nvarchar" MaxLength="500" />
-          <Property Name="URLCSVannuel_effacer" Type="nvarchar" MaxLength="500" />
-          <Property Name="URLECATL_effacer" Type="nvarchar" MaxLength="500" />
+          <Property Name="IdentificationStation" Type="int" />
           <Property Name="exclure" Type="nvarchar" MaxLength="1" />
           <Property Name="x" Type="float" />
           <Property Name="y" Type="float" />
@@ -2076,12 +1960,6 @@ warning 6002: The table/view 'pccsm.dbo.station_dans_buffer' does not have a pri
           <Property Name="ouverture" Type="datetime" />
           <Property Name="Pluviometre_a_auget" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.dbo.station_meteo_pccsm_correspondance' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="station_meteo_pccsm_correspondance">
-          <Property Name="id" Type="int" />
-          <Property Name="station_o" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <EntityType Name="station_meteo_precipitation_journaliere">
           <Key>
             <PropertyRef Name="station_meteo_precipitation_journaliere" />
@@ -2096,6 +1974,7 @@ warning 6013: The table/view 'pccsm.dbo.station_meteo_pccsm_correspondance' does
           <Property Name="precipitation24hmm_indicateur_octobre" Type="nvarchar" MaxLength="50" />
           <Property Name="precipitation24hmm_novembre" Type="decimal" Precision="18" Scale="1" />
           <Property Name="precipitation24hmm_indicateur_novembre" Type="nvarchar" MaxLength="50" />
+          <Property Name="commentaire" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -2199,13 +2078,8 @@ warning 6002: The table/view 'pccsm.dbo.temp_mactre_station_max_annee' does not 
           <Property Name="VentViolent" Type="int" />
           <Property Name="Verglas" Type="int" />
           <Property Name="Visibilite" Type="int" />
+          <Property Name="station_de_remplacement_ID" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.dbo.temp_secteur_ms' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="temp_secteur_ms">
-          <Property Name="secteur" Type="nvarchar" MaxLength="15" />
-          <Property Name="geographie" Type="geography" />
-        </EntityType>-->
         <EntityType Name="test_date_format">
           <Key>
             <PropertyRef Name="id" />
@@ -2270,13 +2144,6 @@ warning 6013: The table/view 'pccsm.dbo.temp_secteur_ms' does not have a primary
           <Property Name="upsize_ts" Type="binary" MaxLength="8" />
           <Property Name="type" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.dbo.tr_document_repertoire' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tr_document_repertoire">
-          <Property Name="repertoire" Type="nvarchar" MaxLength="250" />
-          <Property Name="region" Type="nvarchar" MaxLength="20" />
-          <Property Name="theme" Type="nvarchar" MaxLength="20" />
-        </EntityType>-->
         <EntityType Name="tr_espece">
           <Key>
             <PropertyRef Name="id_tr_espece" />
@@ -2326,6 +2193,7 @@ warning 6002: The table/view 'pccsm.dbo.tr_espece_codification' does not have a 
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="type_operation_fr" Type="nvarchar" MaxLength="100" />
+          <Property Name="groupe_id" Type="int" />
         </EntityType>
         <EntityType Name="tr_llc_typecouv">
           <Key>
@@ -2414,30 +2282,6 @@ warning 6002: The table/view 'pccsm.dbo.tr_espece_codification' does not have a 
           <Property Name="description" Type="nvarchar" MaxLength="1000" />
           <Property Name="geographie" Type="geography" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="MAPINFO_MAPCATALOG">
-          <Property Name="SPATIALTYPE" Type="float" />
-          <Property Name="TABLENAME" Type="varchar" MaxLength="32" />
-          <Property Name="OWNERNAME" Type="varchar" MaxLength="32" />
-          <Property Name="SPATIALCOLUMN" Type="varchar" MaxLength="32" />
-          <Property Name="DB_X_LL" Type="float" />
-          <Property Name="DB_Y_LL" Type="float" />
-          <Property Name="DB_X_UR" Type="float" />
-          <Property Name="DB_Y_UR" Type="float" />
-          <Property Name="COORDINATESYSTEM" Type="varchar" MaxLength="254" />
-          <Property Name="SYMBOL" Type="varchar" MaxLength="254" />
-          <Property Name="XCOLUMNNAME" Type="varchar" MaxLength="32" />
-          <Property Name="YCOLUMNNAME" Type="varchar" MaxLength="32" />
-          <Property Name="RENDITIONTYPE" Type="int" />
-          <Property Name="RENDITIONCOLUMN" Type="varchar" MaxLength="32" />
-          <Property Name="RENDITIONTABLE" Type="varchar" MaxLength="32" />
-          <Property Name="NUMBER_ROWS" Type="int" />
-          <Property Name="VIEW_X_LL" Type="float" />
-          <Property Name="VIEW_Y_LL" Type="float" />
-          <Property Name="VIEW_X_UR" Type="float" />
-          <Property Name="VIEW_Y_UR" Type="float" />
-        </EntityType>-->
         <Association Name="FK_codification_description_codification">
           <End Role="codification" Type="Self.codification" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -3162,7 +3006,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySet Name="geo_terrain_p" EntityType="Self.geo_terrain_p" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="geo_transect_l" EntityType="Self.geo_transect_l" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="geometry_columns" EntityType="Self.geometry_columns" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="gps_log" EntityType="Self.gps_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="groupe_secteur" EntityType="Self.groupe_secteur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hyperlien" EntityType="Self.hyperlien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inf_Infrastructures" EntityType="Self.Inf_Infrastructures" Schema="dbo" store:Type="Tables" />
@@ -3180,8 +3023,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySet Name="modele" EntityType="Self.modele" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="modele_contamination_s" EntityType="Self.modele_contamination_s" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="modele_dilution" EntityType="Self.modele_dilution" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="modele_region" EntityType="Self.modele_region" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NetworkID" EntityType="Self.NetworkID" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="No_Civ_region_ll83mdb" EntityType="Self.No_Civ_region_ll83mdb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="organisation" EntityType="Self.organisation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PCCSM_CSSP_Tools_ID" EntityType="Self.PCCSM_CSSP_Tools_ID" Schema="dbo" store:Type="Tables" />
@@ -3195,7 +3036,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySet Name="QC_MRNF_SIEF_PEEFO_CLP_CO" EntityType="Self.QC_MRNF_SIEF_PEEFO_CLP_CO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="releve_sanitaire" EntityType="Self.releve_sanitaire" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="releve_sanitaire_secteur" EntityType="Self.releve_sanitaire_secteur" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="reseau_isle_verte__polyline" EntityType="Self.reseau_isle_verte__polyline" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="romm_espece_code" EntityType="Self.romm_espece_code" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="romm_observation" EntityType="Self.romm_observation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="romm_site_observation_p" EntityType="Self.romm_site_observation_p" Schema="dbo" store:Type="Tables" />
@@ -3215,7 +3055,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySet Name="station_hydrometrique" EntityType="Self.station_hydrometrique" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="station_hydrometrique_debit" EntityType="Self.station_hydrometrique_debit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="station_hydrometrique_secteur" EntityType="Self.station_hydrometrique_secteur" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="station_maree" EntityType="Self.station_maree" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="station_maree_moyenne_marnage" EntityType="Self.station_maree_moyenne_marnage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="station_maree_port_secondaire_diff" EntityType="Self.station_maree_port_secondaire_diff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="station_maree_secteur" EntityType="Self.station_maree_secteur" Schema="dbo" store:Type="Tables" />
@@ -3632,7 +3471,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySet Name="geo_terrain_p" EntityType="pccsmModel.geo_terrain_p" />
           <EntitySet Name="geo_transect_l" EntityType="pccsmModel.geo_transect_l" />
           <EntitySet Name="geometry_columns" EntityType="pccsmModel.geometry_columns" />
-          <EntitySet Name="gps_log" EntityType="pccsmModel.gps_log" />
           <EntitySet Name="groupe_secteur" EntityType="pccsmModel.groupe_secteur" />
           <EntitySet Name="hyperliens" EntityType="pccsmModel.hyperlien" />
           <EntitySet Name="Inf_Infrastructures" EntityType="pccsmModel.Inf_Infrastructures" />
@@ -3650,8 +3488,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySet Name="modeles" EntityType="pccsmModel.modele" />
           <EntitySet Name="modele_contamination_s" EntityType="pccsmModel.modele_contamination_s" />
           <EntitySet Name="modele_dilution" EntityType="pccsmModel.modele_dilution" />
-          <EntitySet Name="modele_region" EntityType="pccsmModel.modele_region" />
-          <EntitySet Name="NetworkIDs" EntityType="pccsmModel.NetworkID" />
           <EntitySet Name="No_Civ_region_ll83mdb" EntityType="pccsmModel.No_Civ_region_ll83mdb" />
           <EntitySet Name="organisations" EntityType="pccsmModel.organisation" />
           <EntitySet Name="PCCSM_CSSP_Tools_ID" EntityType="pccsmModel.PCCSM_CSSP_Tools_ID" />
@@ -3665,7 +3501,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySet Name="QC_MRNF_SIEF_PEEFO_CLP_CO" EntityType="pccsmModel.QC_MRNF_SIEF_PEEFO_CLP_CO" />
           <EntitySet Name="releve_sanitaire" EntityType="pccsmModel.releve_sanitaire" />
           <EntitySet Name="releve_sanitaire_secteur" EntityType="pccsmModel.releve_sanitaire_secteur" />
-          <EntitySet Name="reseau_isle_verte__polyline" EntityType="pccsmModel.reseau_isle_verte__polyline" />
           <EntitySet Name="romm_espece_code" EntityType="pccsmModel.romm_espece_code" />
           <EntitySet Name="romm_observation" EntityType="pccsmModel.romm_observation" />
           <EntitySet Name="romm_site_observation_p" EntityType="pccsmModel.romm_site_observation_p" />
@@ -3685,7 +3520,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySet Name="station_hydrometrique" EntityType="pccsmModel.station_hydrometrique" />
           <EntitySet Name="station_hydrometrique_debit" EntityType="pccsmModel.station_hydrometrique_debit" />
           <EntitySet Name="station_hydrometrique_secteur" EntityType="pccsmModel.station_hydrometrique_secteur" />
-          <EntitySet Name="station_maree" EntityType="pccsmModel.station_maree" />
           <EntitySet Name="station_maree_moyenne_marnage" EntityType="pccsmModel.station_maree_moyenne_marnage" />
           <EntitySet Name="station_maree_port_secondaire_diff" EntityType="pccsmModel.station_maree_port_secondaire_diff" />
           <EntitySet Name="station_maree_secteur" EntityType="pccsmModel.station_maree_secteur" />
@@ -4110,6 +3944,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <NavigationProperty Name="contact_groupe" Relationship="pccsmModel.FK_contact_groupe_contact" FromRole="contact" ToRole="contact_groupe" />
           <NavigationProperty Name="db_banc_source_info" Relationship="pccsmModel.FK_db_banc_source_info_contact" FromRole="contact" ToRole="db_banc_source_info" />
           <NavigationProperty Name="laboratoire_operateur" Relationship="pccsmModel.FK_laboratoire_operateur_contact" FromRole="contact" ToRole="laboratoire_operateur" />
+          <Property Name="etat" Type="Int32" />
         </EntityType>
         <EntityType Name="contact_groupe">
           <Key>
@@ -4367,10 +4202,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="prof" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="temp" Type="Decimal" Precision="18" Scale="1" />
           <Property Name="sal" Type="Decimal" Precision="18" Scale="1" />
-          <Property Name="ph" Type="Decimal" Precision="18" Scale="1" />
           <Property Name="valide" Type="Boolean" />
-          <Property Name="x" Type="Double" />
-          <Property Name="y" Type="Double" />
           <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="geographie" Type="Geography" />
           <Property Name="diffusable" Type="Boolean" />
@@ -4399,24 +4231,9 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="maree_ve" Type="Boolean" />
           <Property Name="maree_me" Type="Boolean" />
           <Property Name="marnage" Type="Decimal" Precision="18" Scale="1" />
-          <Property Name="precipit" Type="Double" />
-          <Property Name="precipit_2jant" Type="Double" />
-          <Property Name="precipit_3jant" Type="Double" />
-          <Property Name="precipit_oct" Type="Double" />
-          <Property Name="precipit_3jant_oct" Type="Double" />
-          <Property Name="t_air_deb" Type="Double" />
-          <Property Name="t_air_fin" Type="Double" />
-          <Property Name="v_vent_deb" Type="Double" />
-          <Property Name="v_vent_fin" Type="Double" />
           <Property Name="vent_direction_debut" Type="Int32" />
           <Property Name="vent_direction_fin" Type="Int32" />
-          <Property Name="couvert_nuage" Type="Double" />
-          <Property Name="couvert_nuage_fin" Type="Double" />
-          <Property Name="mer_etat" Type="Double" />
-          <Property Name="mer_etat_fin" Type="Double" />
           <Property Name="niveau_eau" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="vague_hauteur" Type="Double" />
-          <Property Name="vague_hauteur_fin" Type="Double" />
           <Property Name="consultant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="date_creation" Type="DateTime" Precision="3" />
@@ -4432,6 +4249,9 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="approbation_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="db_mesure" Relationship="pccsmModel.FK_db_mesure_db_tournee" FromRole="db_tournee" ToRole="db_mesure" />
           <NavigationProperty Name="laboratoire_operateur" Relationship="pccsmModel.FK_db_tournee_laboratoire_operateur" FromRole="db_tournee" ToRole="laboratoire_operateur" />
+          <Property Name="precipit_jour2" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="precipit_jour3" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="precipit_jour4" Type="Decimal" Precision="18" Scale="1" />
         </EntityType>
         <EntityType Name="db_tournee_maree_temporaire">
           <Key>
@@ -4845,6 +4665,8 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="x" Type="Double" />
           <Property Name="y" Type="Double" />
           <Property Name="geographie" Type="Geography" />
+          <Property Name="Vidan_2015" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Inclu_2015" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="geo_ressource_coquillliere_s">
           <Key>
@@ -5059,20 +4881,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="coord_dimension" Type="Int32" Nullable="false" />
           <Property Name="srid" Type="Int32" Nullable="false" />
           <Property Name="geometry_type" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="gps_log">
-          <Key>
-            <PropertyRef Name="id_gps_log" />
-          </Key>
-          <Property Name="id_gps_log" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="x" Type="Double" />
-          <Property Name="y" Type="Double" />
-          <Property Name="gps_time" Type="DateTime" Precision="3" />
-          <Property Name="local_time" Type="DateTime" Precision="3" />
-          <Property Name="altitude" Type="Int32" />
-          <Property Name="usager" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="commentaire" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="geographie" Type="Geography" />
         </EntityType>
         <EntityType Name="groupe_secteur">
           <Key>
@@ -5302,6 +5110,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="ID_Infrastructures_source" Type="Int32" />
           <Property Name="ID_reseau" Type="Int32" />
           <Property Name="geographie" Type="Geography" />
+          <Property Name="Status" Type="Boolean" />
         </EntityType>
         <EntityType Name="modele_dilution">
           <Key>
@@ -5316,29 +5125,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="diffuser" Type="Boolean" />
           <Property Name="ID_Infrastructure" Type="Int32" />
           <NavigationProperty Name="modele" Relationship="pccsmModel.FK_modele_dilution_modele" FromRole="modele_dilution" ToRole="modele" />
-        </EntityType>
-        <EntityType Name="modele_region">
-          <Key>
-            <PropertyRef Name="Id2" />
-          </Key>
-          <Property Name="Id2" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="S" Type="Int64" />
-          <Property Name="CARTO" Type="Int64" />
-          <Property Name="CONTAMINAT" Type="Int64" />
-          <Property Name="DESCRIPTIO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="REJET" Type="Int64" />
-          <Property Name="SOURCE" Type="Int64" />
-          <Property Name="ID_RESEAU" Type="Int64" />
           <Property Name="geographie" Type="Geography" />
-        </EntityType>
-        <EntityType Name="NetworkID">
-          <Key>
-            <PropertyRef Name="EntityID" />
-          </Key>
-          <Property Name="EntityID" Type="Int32" Nullable="false" />
-          <Property Name="ParentID" Type="Int32" />
-          <Property Name="EntityTypeID" Type="Int32" />
-          <Property Name="NetworkID1" Type="Int32" />
         </EntityType>
         <EntityType Name="No_Civ_region_ll83mdb">
           <Key>
@@ -5436,6 +5223,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="origine" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="espece" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="geographie" Type="Geography" />
+          <Property Name="gisement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="position_peche_prevue_mactre">
           <Key>
@@ -5451,6 +5239,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="x" Type="Decimal" Precision="18" Scale="6" />
           <Property Name="date_visee" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="geographie" Type="Geography" />
+          <Property Name="annee" Type="Int32" />
         </EntityType>
         <EntityType Name="position_peche_prevue_mactre_l">
           <Key>
@@ -5460,6 +5249,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="liste_des_points" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="geographie" Type="Geography" />
+          <Property Name="annee" Type="Int32" />
         </EntityType>
         <EntityType Name="QC_MRNF_SIEF_PEEFO">
           <Key>
@@ -5568,14 +5358,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="type_releve" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="releve_sanitaire" Relationship="pccsmModel.FK_releve_sanitaire_secteur_releve_sanitaire" FromRole="releve_sanitaire_secteur" ToRole="releve_sanitaire" />
-        </EntityType>
-        <EntityType Name="reseau_isle_verte__polyline">
-          <Key>
-            <PropertyRef Name="Ids" />
-          </Key>
-          <Property Name="Ids" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID" Type="Int64" />
-          <Property Name="geographie" Type="Geography" />
         </EntityType>
         <EntityType Name="romm_espece_code">
           <Key>
@@ -5841,21 +5623,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="annee" Type="Int32" />
           <NavigationProperty Name="station_hydrometrique" Relationship="pccsmModel.FK_station_hydrometrique_secteur_station_hydrometrique" FromRole="station_hydrometrique_secteur" ToRole="station_hydrometrique" />
         </EntityType>
-        <EntityType Name="station_maree">
-          <Key>
-            <PropertyRef Name="Station" />
-          </Key>
-          <Property Name="Station" Type="Int32" Nullable="false" />
-          <Property Name="PortDeReferenceID" Type="Int32" />
-          <Property Name="PortDeReference" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Localite" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="province" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Latitude" Type="Double" />
-          <Property Name="Longitude" Type="Double" />
-          <Property Name="Prevision" Type="Boolean" />
-          <Property Name="prediction" Type="Boolean" Nullable="false" />
-          <Property Name="geographie" Type="Geography" />
-        </EntityType>
         <EntityType Name="station_maree_moyenne_marnage">
           <Key>
             <PropertyRef Name="station_meree_marnage_ID" />
@@ -5915,14 +5682,8 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="omm" Type="Int32" />
           <Property Name="mddep" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="climatoID" Type="Int32" />
-          <Property Name="climatoECAtl_2011_effacer" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="URLClimatoEC_effacer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="URLCSVannuel_effacer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="URLECATL_effacer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="exclure" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="x" Type="Double" />
-          <Property Name="y" Type="Double" />
           <Property Name="geographie" Type="Geography" />
+          <Property Name="IdentificationStation" Type="Int32" />
         </EntityType>
         <EntityType Name="station_meteo_mddep">
           <Key>
@@ -5952,6 +5713,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="precipitation24hmm_indicateur_octobre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="precipitation24hmm_novembre" Type="Decimal" Precision="18" Scale="1" />
           <Property Name="precipitation24hmm_indicateur_novembre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -6012,6 +5774,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <Property Name="VentViolent" Type="Int32" />
           <Property Name="Verglas" Type="Int32" />
           <Property Name="Visibilite" Type="Int32" />
+          <Property Name="station_de_remplacement_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="test_date_format">
           <Key>
@@ -6114,6 +5877,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="type_operation_fr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="groupe_id" Type="Int32" />
         </EntityType>
         <EntityType Name="tr_llc_typecouv">
           <Key>
@@ -7180,6 +6944,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="contacts">
             <EntityTypeMapping TypeName="pccsmModel.contact">
               <MappingFragment StoreEntitySet="contact">
+                <ScalarProperty Name="etat" ColumnName="etat" />
                 <ScalarProperty Name="ID_Infra" ColumnName="ID_Infra" />
                 <ScalarProperty Name="commentaire" ColumnName="commentaire" />
                 <ScalarProperty Name="nom_user" ColumnName="nom_user" />
@@ -7437,10 +7202,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
                 <ScalarProperty Name="diffusable" ColumnName="diffusable" />
                 <ScalarProperty Name="geographie" ColumnName="geographie" />
                 <ScalarProperty Name="commentaire" ColumnName="commentaire" />
-                <ScalarProperty Name="y" ColumnName="y" />
-                <ScalarProperty Name="x" ColumnName="x" />
                 <ScalarProperty Name="valide" ColumnName="valide" />
-                <ScalarProperty Name="ph" ColumnName="ph" />
                 <ScalarProperty Name="sal" ColumnName="sal" />
                 <ScalarProperty Name="temp" ColumnName="temp" />
                 <ScalarProperty Name="prof" ColumnName="prof" />
@@ -7457,6 +7219,9 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="db_tournee">
             <EntityTypeMapping TypeName="pccsmModel.db_tournee">
               <MappingFragment StoreEntitySet="db_tournee">
+                <ScalarProperty Name="precipit_jour4" ColumnName="precipit_jour4" />
+                <ScalarProperty Name="precipit_jour3" ColumnName="precipit_jour3" />
+                <ScalarProperty Name="precipit_jour2" ColumnName="precipit_jour2" />
                 <ScalarProperty Name="approbation_date" ColumnName="approbation_date" />
                 <ScalarProperty Name="approbation" ColumnName="approbation" />
                 <ScalarProperty Name="validation_datetime" ColumnName="validation_datetime" />
@@ -7470,24 +7235,9 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
                 <ScalarProperty Name="date_creation" ColumnName="date_creation" />
                 <ScalarProperty Name="commentaire" ColumnName="commentaire" />
                 <ScalarProperty Name="consultant" ColumnName="consultant" />
-                <ScalarProperty Name="vague_hauteur_fin" ColumnName="vague_hauteur_fin" />
-                <ScalarProperty Name="vague_hauteur" ColumnName="vague_hauteur" />
                 <ScalarProperty Name="niveau_eau" ColumnName="niveau_eau" />
-                <ScalarProperty Name="mer_etat_fin" ColumnName="mer_etat_fin" />
-                <ScalarProperty Name="mer_etat" ColumnName="mer_etat" />
-                <ScalarProperty Name="couvert_nuage_fin" ColumnName="couvert_nuage_fin" />
-                <ScalarProperty Name="couvert_nuage" ColumnName="couvert_nuage" />
                 <ScalarProperty Name="vent_direction_fin" ColumnName="vent_direction_fin" />
                 <ScalarProperty Name="vent_direction_debut" ColumnName="vent_direction_debut" />
-                <ScalarProperty Name="v_vent_fin" ColumnName="v_vent_fin" />
-                <ScalarProperty Name="v_vent_deb" ColumnName="v_vent_deb" />
-                <ScalarProperty Name="t_air_fin" ColumnName="t_air_fin" />
-                <ScalarProperty Name="t_air_deb" ColumnName="t_air_deb" />
-                <ScalarProperty Name="precipit_3jant_oct" ColumnName="precipit_3jant_oct" />
-                <ScalarProperty Name="precipit_oct" ColumnName="precipit_oct" />
-                <ScalarProperty Name="precipit_3jant" ColumnName="precipit_3jant" />
-                <ScalarProperty Name="precipit_2jant" ColumnName="precipit_2jant" />
-                <ScalarProperty Name="precipit" ColumnName="precipit" />
                 <ScalarProperty Name="marnage" ColumnName="marnage" />
                 <ScalarProperty Name="maree_me" ColumnName="maree_me" />
                 <ScalarProperty Name="maree_ve" ColumnName="maree_ve" />
@@ -7907,6 +7657,8 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="geo_pollution_p_fosse_septique_gaspe">
             <EntityTypeMapping TypeName="pccsmModel.geo_pollution_p_fosse_septique_gaspe">
               <MappingFragment StoreEntitySet="geo_pollution_p_fosse_septique_gaspe">
+                <ScalarProperty Name="Inclu_2015" ColumnName="Inclu_2015" />
+                <ScalarProperty Name="Vidan_2015" ColumnName="Vidan_2015" />
                 <ScalarProperty Name="geographie" ColumnName="geographie" />
                 <ScalarProperty Name="y" ColumnName="y" />
                 <ScalarProperty Name="x" ColumnName="x" />
@@ -8140,21 +7892,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="gps_log">
-            <EntityTypeMapping TypeName="pccsmModel.gps_log">
-              <MappingFragment StoreEntitySet="gps_log">
-                <ScalarProperty Name="geographie" ColumnName="geographie" />
-                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
-                <ScalarProperty Name="usager" ColumnName="usager" />
-                <ScalarProperty Name="altitude" ColumnName="altitude" />
-                <ScalarProperty Name="local_time" ColumnName="local_time" />
-                <ScalarProperty Name="gps_time" ColumnName="gps_time" />
-                <ScalarProperty Name="y" ColumnName="y" />
-                <ScalarProperty Name="x" ColumnName="x" />
-                <ScalarProperty Name="id_gps_log" ColumnName="id_gps_log" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="groupe_secteur">
             <EntityTypeMapping TypeName="pccsmModel.groupe_secteur">
               <MappingFragment StoreEntitySet="groupe_secteur">
@@ -8369,6 +8106,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="modele_contamination_s">
             <EntityTypeMapping TypeName="pccsmModel.modele_contamination_s">
               <MappingFragment StoreEntitySet="modele_contamination_s">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="geographie" ColumnName="geographie" />
                 <ScalarProperty Name="ID_reseau" ColumnName="ID_reseau" />
                 <ScalarProperty Name="ID_Infrastructures_source" ColumnName="ID_Infrastructures_source" />
@@ -8384,6 +8122,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="modele_dilution">
             <EntityTypeMapping TypeName="pccsmModel.modele_dilution">
               <MappingFragment StoreEntitySet="modele_dilution">
+                <ScalarProperty Name="geographie" ColumnName="geographie" />
                 <ScalarProperty Name="ID_Infrastructure" ColumnName="ID_Infrastructure" />
                 <ScalarProperty Name="diffuser" ColumnName="diffuser" />
                 <ScalarProperty Name="distance_minimale" ColumnName="distance_minimale" />
@@ -8392,31 +8131,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
                 <ScalarProperty Name="dilution" ColumnName="dilution" />
                 <ScalarProperty Name="id_modele" ColumnName="id_modele" />
                 <ScalarProperty Name="id_modele_dilution" ColumnName="id_modele_dilution" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="modele_region">
-            <EntityTypeMapping TypeName="pccsmModel.modele_region">
-              <MappingFragment StoreEntitySet="modele_region">
-                <ScalarProperty Name="geographie" ColumnName="geographie" />
-                <ScalarProperty Name="ID_RESEAU" ColumnName="ID_RESEAU" />
-                <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
-                <ScalarProperty Name="REJET" ColumnName="REJET" />
-                <ScalarProperty Name="DESCRIPTIO" ColumnName="DESCRIPTIO" />
-                <ScalarProperty Name="CONTAMINAT" ColumnName="CONTAMINAT" />
-                <ScalarProperty Name="CARTO" ColumnName="CARTO" />
-                <ScalarProperty Name="S" ColumnName="S" />
-                <ScalarProperty Name="Id2" ColumnName="Id2" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NetworkIDs">
-            <EntityTypeMapping TypeName="pccsmModel.NetworkID">
-              <MappingFragment StoreEntitySet="NetworkID">
-                <ScalarProperty Name="NetworkID1" ColumnName="NetworkID" />
-                <ScalarProperty Name="EntityTypeID" ColumnName="EntityTypeID" />
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="EntityID" ColumnName="EntityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8507,6 +8221,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="position_peche_espece_ziff_l">
             <EntityTypeMapping TypeName="pccsmModel.position_peche_espece_ziff_l">
               <MappingFragment StoreEntitySet="position_peche_espece_ziff_l">
+                <ScalarProperty Name="gisement" ColumnName="gisement" />
                 <ScalarProperty Name="geographie" ColumnName="geographie" />
                 <ScalarProperty Name="espece" ColumnName="espece" />
                 <ScalarProperty Name="origine" ColumnName="origine" />
@@ -8525,6 +8240,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="position_peche_prevue_mactre">
             <EntityTypeMapping TypeName="pccsmModel.position_peche_prevue_mactre">
               <MappingFragment StoreEntitySet="position_peche_prevue_mactre">
+                <ScalarProperty Name="annee" ColumnName="annee" />
                 <ScalarProperty Name="geographie" ColumnName="geographie" />
                 <ScalarProperty Name="date_visee" ColumnName="date_visee" />
                 <ScalarProperty Name="x" ColumnName="x" />
@@ -8541,6 +8257,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="position_peche_prevue_mactre_l">
             <EntityTypeMapping TypeName="pccsmModel.position_peche_prevue_mactre_l">
               <MappingFragment StoreEntitySet="position_peche_prevue_mactre_l">
+                <ScalarProperty Name="annee" ColumnName="annee" />
                 <ScalarProperty Name="geographie" ColumnName="geographie" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="liste_des_points" ColumnName="liste_des_points" />
@@ -8656,15 +8373,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
                 <ScalarProperty Name="secteur_id" ColumnName="secteur_id" />
                 <ScalarProperty Name="releve_sanitaire_id" ColumnName="releve_sanitaire_id" />
                 <ScalarProperty Name="releve_sanitaire_secteur_id" ColumnName="releve_sanitaire_secteur_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="reseau_isle_verte__polyline">
-            <EntityTypeMapping TypeName="pccsmModel.reseau_isle_verte__polyline">
-              <MappingFragment StoreEntitySet="reseau_isle_verte__polyline">
-                <ScalarProperty Name="geographie" ColumnName="geographie" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Ids" ColumnName="Ids" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8937,22 +8645,6 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="station_maree">
-            <EntityTypeMapping TypeName="pccsmModel.station_maree">
-              <MappingFragment StoreEntitySet="station_maree">
-                <ScalarProperty Name="geographie" ColumnName="geographie" />
-                <ScalarProperty Name="prediction" ColumnName="prediction" />
-                <ScalarProperty Name="Prevision" ColumnName="Prevision" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="province" ColumnName="province" />
-                <ScalarProperty Name="Localite" ColumnName="Localite" />
-                <ScalarProperty Name="PortDeReference" ColumnName="PortDeReference" />
-                <ScalarProperty Name="PortDeReferenceID" ColumnName="PortDeReferenceID" />
-                <ScalarProperty Name="Station" ColumnName="Station" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="station_maree_moyenne_marnage">
             <EntityTypeMapping TypeName="pccsmModel.station_maree_moyenne_marnage">
               <MappingFragment StoreEntitySet="station_maree_moyenne_marnage">
@@ -9004,14 +8696,8 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="station_meteo">
             <EntityTypeMapping TypeName="pccsmModel.station_meteo">
               <MappingFragment StoreEntitySet="station_meteo">
+                <ScalarProperty Name="IdentificationStation" ColumnName="IdentificationStation" />
                 <ScalarProperty Name="geographie" ColumnName="geographie" />
-                <ScalarProperty Name="y" ColumnName="y" />
-                <ScalarProperty Name="x" ColumnName="x" />
-                <ScalarProperty Name="exclure" ColumnName="exclure" />
-                <ScalarProperty Name="URLECATL_effacer" ColumnName="URLECATL_effacer" />
-                <ScalarProperty Name="URLCSVannuel_effacer" ColumnName="URLCSVannuel_effacer" />
-                <ScalarProperty Name="URLClimatoEC_effacer" ColumnName="URLClimatoEC_effacer" />
-                <ScalarProperty Name="climatoECAtl_2011_effacer" ColumnName="climatoECAtl_2011_effacer" />
                 <ScalarProperty Name="climatoID" ColumnName="climatoID" />
                 <ScalarProperty Name="mddep" ColumnName="mddep" />
                 <ScalarProperty Name="omm" ColumnName="omm" />
@@ -9043,6 +8729,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="station_meteo_precipitation_journaliere">
             <EntityTypeMapping TypeName="pccsmModel.station_meteo_precipitation_journaliere">
               <MappingFragment StoreEntitySet="station_meteo_precipitation_journaliere">
+                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
                 <ScalarProperty Name="precipitation24hmm_indicateur_novembre" ColumnName="precipitation24hmm_indicateur_novembre" />
                 <ScalarProperty Name="precipitation24hmm_novembre" ColumnName="precipitation24hmm_novembre" />
                 <ScalarProperty Name="precipitation24hmm_indicateur_octobre" ColumnName="precipitation24hmm_indicateur_octobre" />
@@ -9090,6 +8777,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="temp_precipitation_journaliere">
             <EntityTypeMapping TypeName="pccsmModel.temp_precipitation_journaliere">
               <MappingFragment StoreEntitySet="temp_precipitation_journaliere">
+                <ScalarProperty Name="station_de_remplacement_ID" ColumnName="station_de_remplacement_ID" />
                 <ScalarProperty Name="Visibilite" ColumnName="Visibilite" />
                 <ScalarProperty Name="Verglas" ColumnName="Verglas" />
                 <ScalarProperty Name="VentViolent" ColumnName="VentViolent" />
@@ -9223,6 +8911,7 @@ warning 6013: The table/view 'pccsm.MAPINFO.MAPINFO_MAPCATALOG' does not have a 
           <EntitySetMapping Name="tr_histo_type_operation">
             <EntityTypeMapping TypeName="pccsmModel.tr_histo_type_operation">
               <MappingFragment StoreEntitySet="tr_histo_type_operation">
+                <ScalarProperty Name="groupe_id" ColumnName="groupe_id" />
                 <ScalarProperty Name="type_operation_fr" ColumnName="type_operation_fr" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

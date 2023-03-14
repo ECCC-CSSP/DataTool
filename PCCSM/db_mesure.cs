@@ -24,10 +24,7 @@ namespace PCCSM
         public Nullable<decimal> prof { get; set; }
         public Nullable<decimal> temp { get; set; }
         public Nullable<decimal> sal { get; set; }
-        public Nullable<decimal> ph { get; set; }
         public Nullable<bool> valide { get; set; }
-        public Nullable<double> x { get; set; }
-        public Nullable<double> y { get; set; }
         public string commentaire { get; set; }
         public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
         public Nullable<bool> diffusable { get; set; }

@@ -38,6 +38,7 @@ namespace PCCSM
         public string nom_user { get; set; }
         public string commentaire { get; set; }
         public Nullable<int> ID_Infra { get; set; }
+        public Nullable<int> etat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contact_groupe> contact_groupe { get; set; }

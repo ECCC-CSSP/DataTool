@@ -115,6 +115,15 @@ namespace ImportByFunction
                                                     where c.TVText.StartsWith(qcSubsectAss.SubsectorText)
                                                     select c).FirstOrDefault();
 
+                if (tvItemModelSubsector == null)
+                {
+                    richTextBoxStatus.AppendText("could not find subsector" + geoStat.secteur + "\r\n");
+                    //return false;
+                    continue;
+                }
+
+                continue;
+
                 if (TVItemIDSSOld != tvItemModelSubsector.TVItemID)
                 {
                     using (CSSPDBEntities db2 = new CSSPDBEntities())
@@ -129,14 +138,7 @@ namespace ImportByFunction
                     }
 
                     TVItemIDSSOld = tvItemModelSubsector.TVItemID;
-                }
-
-                if (tvItemModelSubsector == null)
-                {
-                    richTextBoxStatus.AppendText("could not find subsector" + geoStat.secteur + "\r\n");
-                    //return false;
-                    continue;
-                }
+                }              
 
                 bool IsActive = true;
                 if (geoStat.status != null)
@@ -181,6 +183,7 @@ namespace ImportByFunction
                 List<MapInfoModel> mapInfoModelList = mapInfoService.GetMapInfoModelWithLatAndLngInPolygonWithTVTypeDB((float)geoStat.y, (float)geoStat.x, TVTypeEnum.Subsector);
                 if (mapInfoModelList.Count == 0)
                 {
+                    richTextBoxStatus.AppendText($"{geoStat.x}, {geoStat.y}, {geoStat.station}, {geoStat.secteur}\r\n");
                     //return false;
                     continue;
                 }

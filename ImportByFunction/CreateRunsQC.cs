@@ -287,22 +287,22 @@ namespace ImportByFunction
                                 }
                                 mwqmRunModelNew.Laboratory = null;
                                 mwqmRunModelNew.SampleMatrix = null;
-                                if (dbt.mer_etat_fin == null)
-                                {
-                                    mwqmRunModelNew.SeaStateAtEnd_BeaufortScale = null;
-                                }
-                                else
-                                {
-                                    mwqmRunModelNew.SeaStateAtEnd_BeaufortScale = (BeaufortScaleEnum)dbt.mer_etat_fin;
-                                }
-                                if (dbt.mer_etat == null)
-                                {
-                                    mwqmRunModelNew.SeaStateAtStart_BeaufortScale = null;
-                                }
-                                else
-                                {
-                                    mwqmRunModelNew.SeaStateAtStart_BeaufortScale = (BeaufortScaleEnum)dbt.mer_etat;
-                                }
+                                //if (dbt.mer_etat_fin == null)
+                                //{
+                                //    mwqmRunModelNew.SeaStateAtEnd_BeaufortScale = null;
+                                //}
+                                //else
+                                //{
+                                //    mwqmRunModelNew.SeaStateAtEnd_BeaufortScale = (BeaufortScaleEnum)dbt.mer_etat_fin;
+                                //}
+                                //if (dbt.mer_etat == null)
+                                //{
+                                //    mwqmRunModelNew.SeaStateAtStart_BeaufortScale = null;
+                                //}
+                                //else
+                                //{
+                                //    mwqmRunModelNew.SeaStateAtStart_BeaufortScale = (BeaufortScaleEnum)dbt.mer_etat;
+                                //}
                                 mwqmRunModelNew.SampleStatus = null;
                                 if (dbt.temp_glace_recep == null)
                                 {
@@ -337,22 +337,22 @@ namespace ImportByFunction
                                 {
                                     mwqmRunModelNew.WaterLevelAtBrook_m = (double)dbt.niveau_eau;
                                 }
-                                if (dbt.vague_hauteur_fin == null)
-                                {
-                                    mwqmRunModelNew.WaveHightAtEnd_m = null;
-                                }
-                                else
-                                {
-                                    mwqmRunModelNew.WaveHightAtEnd_m = dbt.vague_hauteur_fin;
-                                }
-                                if (dbt.vague_hauteur == null)
-                                {
-                                    mwqmRunModelNew.WaveHightAtStart_m = null;
-                                }
-                                else
-                                {
-                                    mwqmRunModelNew.WaveHightAtStart_m = dbt.vague_hauteur;
-                                }
+                                //if (dbt.vague_hauteur_fin == null)
+                                //{
+                                //    mwqmRunModelNew.WaveHightAtEnd_m = null;
+                                //}
+                                //else
+                                //{
+                                //    mwqmRunModelNew.WaveHightAtEnd_m = dbt.vague_hauteur_fin;
+                                //}
+                                //if (dbt.vague_hauteur == null)
+                                //{
+                                //    mwqmRunModelNew.WaveHightAtStart_m = null;
+                                //}
+                                //else
+                                //{
+                                //    mwqmRunModelNew.WaveHightAtStart_m = dbt.vague_hauteur;
+                                //}
 
                                 string TextEN = "--";
                                 if (!string.IsNullOrWhiteSpace(dbt.commentaire))
@@ -360,22 +360,22 @@ namespace ImportByFunction
                                     TextEN = dbt.commentaire.Trim();
                                 }
 
-                                if (dbt.precipit == null)
-                                {
-                                    mwqmRunModelNew.RainDay1_mm = null;
-                                }
-                                else
-                                {
-                                    mwqmRunModelNew.RainDay1_mm = dbt.precipit;
-                                }
-                                if (dbt.precipit_3jant == null)
-                                {
-                                    mwqmRunModelNew.RainDay3_mm = null;
-                                }
-                                else
-                                {
-                                    mwqmRunModelNew.RainDay3_mm = dbt.precipit_3jant;
-                                }
+                                //if (dbt.precipit == null)
+                                //{
+                                //    mwqmRunModelNew.RainDay1_mm = null;
+                                //}
+                                //else
+                                //{
+                                //    mwqmRunModelNew.RainDay1_mm = (double)dbt.precipit;
+                                //}
+                                //if (dbt.precipit_3jant == null)
+                                //{
+                                //    mwqmRunModelNew.RainDay3_mm = null;
+                                //}
+                                //else
+                                //{
+                                //    mwqmRunModelNew.RainDay3_mm = dbt.precipit_3jant;
+                                //}
 
 
                                 mwqmRunModelNew.Tide_Start = TideTextEnum.MidTide;

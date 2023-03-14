@@ -40,5 +40,6 @@ namespace PCCSM
         public Nullable<int> VentViolent { get; set; }
         public Nullable<int> Verglas { get; set; }
         public Nullable<int> Visibilite { get; set; }
+        public string station_de_remplacement_ID { get; set; }
     }
 }

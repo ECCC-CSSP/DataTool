@@ -29,5 +29,7 @@ namespace PCCSM
         public Nullable<double> x { get; set; }
         public Nullable<double> y { get; set; }
         public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
+        public string Vidan_2015 { get; set; }
+        public string Inclu_2015 { get; set; }
     }
 }

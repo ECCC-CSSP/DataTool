@@ -16,5 +16,6 @@ namespace PCCSM
     {
         public int id { get; set; }
         public string type_operation_fr { get; set; }
+        public Nullable<int> groupe_id { get; set; }
     }
 }

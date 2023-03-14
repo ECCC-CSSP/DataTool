@@ -82,7 +82,6 @@ namespace PCCSM
         public virtual DbSet<geo_terrain_p> geo_terrain_p { get; set; }
         public virtual DbSet<geo_transect_l> geo_transect_l { get; set; }
         public virtual DbSet<geometry_columns> geometry_columns { get; set; }
-        public virtual DbSet<gps_log> gps_log { get; set; }
         public virtual DbSet<groupe_secteur> groupe_secteur { get; set; }
         public virtual DbSet<hyperlien> hyperliens { get; set; }
         public virtual DbSet<Inf_Infrastructures> Inf_Infrastructures { get; set; }
@@ -100,8 +99,6 @@ namespace PCCSM
         public virtual DbSet<modele> modeles { get; set; }
         public virtual DbSet<modele_contamination_s> modele_contamination_s { get; set; }
         public virtual DbSet<modele_dilution> modele_dilution { get; set; }
-        public virtual DbSet<modele_region> modele_region { get; set; }
-        public virtual DbSet<NetworkID> NetworkIDs { get; set; }
         public virtual DbSet<No_Civ_region_ll83mdb> No_Civ_region_ll83mdb { get; set; }
         public virtual DbSet<organisation> organisations { get; set; }
         public virtual DbSet<PCCSM_CSSP_Tools_ID> PCCSM_CSSP_Tools_ID { get; set; }
@@ -115,7 +112,6 @@ namespace PCCSM
         public virtual DbSet<QC_MRNF_SIEF_PEEFO_CLP_CO> QC_MRNF_SIEF_PEEFO_CLP_CO { get; set; }
         public virtual DbSet<releve_sanitaire> releve_sanitaire { get; set; }
         public virtual DbSet<releve_sanitaire_secteur> releve_sanitaire_secteur { get; set; }
-        public virtual DbSet<reseau_isle_verte__polyline> reseau_isle_verte__polyline { get; set; }
         public virtual DbSet<romm_espece_code> romm_espece_code { get; set; }
         public virtual DbSet<romm_observation> romm_observation { get; set; }
         public virtual DbSet<romm_site_observation_p> romm_site_observation_p { get; set; }
@@ -135,7 +131,6 @@ namespace PCCSM
         public virtual DbSet<station_hydrometrique> station_hydrometrique { get; set; }
         public virtual DbSet<station_hydrometrique_debit> station_hydrometrique_debit { get; set; }
         public virtual DbSet<station_hydrometrique_secteur> station_hydrometrique_secteur { get; set; }
-        public virtual DbSet<station_maree> station_maree { get; set; }
         public virtual DbSet<station_maree_moyenne_marnage> station_maree_moyenne_marnage { get; set; }
         public virtual DbSet<station_maree_port_secondaire_diff> station_maree_port_secondaire_diff { get; set; }
         public virtual DbSet<station_maree_secteur> station_maree_secteur { get; set; }

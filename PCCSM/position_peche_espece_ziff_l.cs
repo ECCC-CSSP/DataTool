@@ -26,5 +26,6 @@ namespace PCCSM
         public string origine { get; set; }
         public string espece { get; set; }
         public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
+        public string gisement { get; set; }
     }
 }

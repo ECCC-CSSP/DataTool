@@ -18,5 +18,6 @@ namespace PCCSM
         public string liste_des_points { get; set; }
         public string description { get; set; }
         public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
+        public Nullable<int> annee { get; set; }
     }
 }

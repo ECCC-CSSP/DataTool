@@ -38,24 +38,9 @@ namespace PCCSM
         public Nullable<bool> maree_ve { get; set; }
         public Nullable<bool> maree_me { get; set; }
         public Nullable<decimal> marnage { get; set; }
-        public Nullable<double> precipit { get; set; }
-        public Nullable<double> precipit_2jant { get; set; }
-        public Nullable<double> precipit_3jant { get; set; }
-        public Nullable<double> precipit_oct { get; set; }
-        public Nullable<double> precipit_3jant_oct { get; set; }
-        public Nullable<double> t_air_deb { get; set; }
-        public Nullable<double> t_air_fin { get; set; }
-        public Nullable<double> v_vent_deb { get; set; }
-        public Nullable<double> v_vent_fin { get; set; }
         public Nullable<int> vent_direction_debut { get; set; }
         public Nullable<int> vent_direction_fin { get; set; }
-        public Nullable<double> couvert_nuage { get; set; }
-        public Nullable<double> couvert_nuage_fin { get; set; }
-        public Nullable<double> mer_etat { get; set; }
-        public Nullable<double> mer_etat_fin { get; set; }
         public Nullable<decimal> niveau_eau { get; set; }
-        public Nullable<double> vague_hauteur { get; set; }
-        public Nullable<double> vague_hauteur_fin { get; set; }
         public string consultant { get; set; }
         public string commentaire { get; set; }
         public Nullable<System.DateTime> date_creation { get; set; }
@@ -69,6 +54,9 @@ namespace PCCSM
         public Nullable<System.DateTime> validation_datetime { get; set; }
         public Nullable<int> approbation { get; set; }
         public Nullable<System.DateTime> approbation_date { get; set; }
+        public Nullable<decimal> precipit_jour2 { get; set; }
+        public Nullable<decimal> precipit_jour3 { get; set; }
+        public Nullable<decimal> precipit_jour4 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<db_mesure> db_mesure { get; set; }

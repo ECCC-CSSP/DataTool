@@ -20,7 +20,7 @@ namespace PCCSM
             this.db_echantillonnage_planification = new HashSet<db_echantillonnage_planification>();
             this.db_mesure = new HashSet<db_mesure>();
         }
-
+    
         public int id_geo_station_p { get; set; }
         public Nullable<int> station { get; set; }
         public string zone_e { get; set; }
@@ -48,7 +48,7 @@ namespace PCCSM
         public Nullable<decimal> pourcentage_260_15_tournee { get; set; }
         public Nullable<decimal> pourcentage_260_5_tournee { get; set; }
         public Nullable<int> dernier_cf { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<db_echantillonnage_planification> db_echantillonnage_planification { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -22,6 +22,7 @@ namespace PCCSM
         public Nullable<double> distance_minimale { get; set; }
         public Nullable<bool> diffuser { get; set; }
         public Nullable<int> ID_Infrastructure { get; set; }
+        public System.Data.Entity.Spatial.DbGeography geographie { get; set; }
     
         public virtual modele modele { get; set; }
     }
