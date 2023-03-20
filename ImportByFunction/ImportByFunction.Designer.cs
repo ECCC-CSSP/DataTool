@@ -87,13 +87,13 @@
             this.butCheckBCSamples = new System.Windows.Forms.Button();
             this.textBoxStartSubsectorName = new System.Windows.Forms.TextBox();
             this.labelStartSubsectorName = new System.Windows.Forms.Label();
-            this.butViewSubsectorNames = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button34 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.butCompareQCDBAndCSSPDB = new System.Windows.Forms.Button();
             this.butImportQCWQMonitoringToCSSPDB = new System.Windows.Forms.Button();
@@ -123,9 +123,9 @@
             // richTextBoxStatus
             // 
             this.richTextBoxStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBoxStatus.Location = new System.Drawing.Point(0, 611);
+            this.richTextBoxStatus.Location = new System.Drawing.Point(0, 458);
             this.richTextBoxStatus.Name = "richTextBoxStatus";
-            this.richTextBoxStatus.Size = new System.Drawing.Size(1162, 68);
+            this.richTextBoxStatus.Size = new System.Drawing.Size(1163, 68);
             this.richTextBoxStatus.TabIndex = 2;
             this.richTextBoxStatus.Text = "";
             // 
@@ -134,9 +134,9 @@
             this.panelStatus.Controls.Add(this.labelStatusLabel2);
             this.panelStatus.Controls.Add(this.lblStatus2);
             this.panelStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelStatus.Location = new System.Drawing.Point(0, 586);
+            this.panelStatus.Location = new System.Drawing.Point(0, 433);
             this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(1162, 25);
+            this.panelStatus.Size = new System.Drawing.Size(1163, 25);
             this.panelStatus.TabIndex = 3;
             // 
             // labelStatusLabel2
@@ -190,9 +190,9 @@
             this.panelStatus2.Controls.Add(this.lblStatus);
             this.panelStatus2.Controls.Add(this.labelStatusLabel);
             this.panelStatus2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelStatus2.Location = new System.Drawing.Point(0, 561);
+            this.panelStatus2.Location = new System.Drawing.Point(0, 408);
             this.panelStatus2.Name = "panelStatus2";
-            this.panelStatus2.Size = new System.Drawing.Size(1162, 25);
+            this.panelStatus2.Size = new System.Drawing.Size(1163, 25);
             this.panelStatus2.TabIndex = 38;
             // 
             // label3
@@ -691,16 +691,6 @@
             this.labelStartSubsectorName.TabIndex = 18;
             this.labelStartSubsectorName.Text = "Start Subsector Name";
             // 
-            // butViewSubsectorNames
-            // 
-            this.butViewSubsectorNames.Location = new System.Drawing.Point(23, 125);
-            this.butViewSubsectorNames.Name = "butViewSubsectorNames";
-            this.butViewSubsectorNames.Size = new System.Drawing.Size(121, 23);
-            this.butViewSubsectorNames.TabIndex = 81;
-            this.butViewSubsectorNames.Text = "View BC Subsector Names";
-            this.butViewSubsectorNames.UseVisualStyleBackColor = true;
-            this.butViewSubsectorNames.Click += new System.EventHandler(this.ButViewBCSubsectorNames_Click);
-            // 
             // button12
             // 
             this.button12.Location = new System.Drawing.Point(12, 159);
@@ -749,7 +739,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.butViewSubsectorNames);
+            this.groupBox1.Controls.Add(this.button34);
             this.groupBox1.Controls.Add(this.labelStartSubsectorName);
             this.groupBox1.Controls.Add(this.butCheckBCSamples);
             this.groupBox1.Controls.Add(this.button12);
@@ -761,6 +751,17 @@
             this.groupBox1.TabIndex = 222;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "New BC Import and Test Tool";
+            // 
+            // button34
+            // 
+            this.button34.Location = new System.Drawing.Point(70, 116);
+            this.button34.Margin = new System.Windows.Forms.Padding(2);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(91, 25);
+            this.button34.TabIndex = 213;
+            this.button34.Text = "button34";
+            this.button34.UseVisualStyleBackColor = true;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
             // 
             // groupBox2
             // 
@@ -967,7 +968,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 679);
+            this.ClientSize = new System.Drawing.Size(1163, 526);
             this.Controls.Add(this.button33);
             this.Controls.Add(this.button32);
             this.Controls.Add(this.button31);
@@ -1044,6 +1045,7 @@
             this.Controls.Add(this.richTextBoxStatus);
             this.Name = "ImportByFunction";
             this.Text = "Import by function";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ImportByFunction_Load);
             this.panelStatus.ResumeLayout(false);
             this.panelStatus.PerformLayout();
@@ -1117,7 +1119,6 @@
         private System.Windows.Forms.Button butCheckBCSamples;
         private System.Windows.Forms.TextBox textBoxStartSubsectorName;
         private System.Windows.Forms.Label labelStartSubsectorName;
-        private System.Windows.Forms.Button butViewSubsectorNames;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.TextBox textBox1;
@@ -1144,6 +1145,7 @@
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button32;
         private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button button34;
     }
 }
 

@@ -32,6 +32,7 @@ using System.Text.RegularExpressions;
 using System.Security.Policy;
 
 
+
 namespace ImportByFunction
 {
     public partial class ImportByFunction : Form
@@ -7439,7 +7440,7 @@ namespace ImportByFunction
                     lblStatus.Text = "Doing " + tvItemModelSubsector.TVText;
                     lblStatus.Refresh();
                     Application.DoEvents();
-                    
+
                     if (Cancel) break;
 
                     string subsector = tvItemModelSubsector.TVText;
@@ -8254,11 +8255,6 @@ namespace ImportByFunction
 
                 }
             }
-
-        }
-
-        private void ButViewBCSubsectorNames_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -11661,16 +11657,16 @@ namespace ImportByFunction
                                                            && (c.sal == null || (c.sal > mwqmSample.Salinity_PPT - 0.1
                                                            && c.sal < mwqmSample.Salinity_PPT + 0.1))
                                                            && (c.temp == null || (c.temp > mwqmSample.WaterTemp_C - 0.1
-                                                           && c.temp  < mwqmSample.WaterTemp_C + 0.1))
+                                                           && c.temp < mwqmSample.WaterTemp_C + 0.1))
                                                            select c).ToList();
 
                             if (sampleQCList.Count != 0)
                             {
-                            //    richTextBoxStatus.AppendText($"{subsector} - {tvItemMWQMSite.TVText} - {mwqmSample.SampleDateTime_Local.Year} - {mwqmSample.SampleDateTime_Local.Month} - {mwqmSample.SampleDateTime_Local.Day}\r\n");
-                            //    //return $"";
-                            //}
-                            //else
-                            //{
+                                //    richTextBoxStatus.AppendText($"{subsector} - {tvItemMWQMSite.TVText} - {mwqmSample.SampleDateTime_Local.Year} - {mwqmSample.SampleDateTime_Local.Month} - {mwqmSample.SampleDateTime_Local.Day}\r\n");
+                                //    //return $"";
+                                //}
+                                //else
+                                //{
                                 foreach (SampleQC sampleQC in sampleQCList)
                                 {
                                     PCCSM.db_tournee dbt = (from t in tourneeList
@@ -11682,11 +11678,11 @@ namespace ImportByFunction
 
                                     if (dbt != null)
                                     {
-                                    //    richTextBoxStatus.AppendText($"{subsector} - {tvItemMWQMSite.TVText} - {mwqmSample.SampleDateTime_Local.Year} - {mwqmSample.SampleDateTime_Local.Month} - {mwqmSample.SampleDateTime_Local.Day}\r\n");
-                                    //    //return $"";
-                                    //}
-                                    //else
-                                    //{
+                                        //    richTextBoxStatus.AppendText($"{subsector} - {tvItemMWQMSite.TVText} - {mwqmSample.SampleDateTime_Local.Year} - {mwqmSample.SampleDateTime_Local.Month} - {mwqmSample.SampleDateTime_Local.Day}\r\n");
+                                        //    //return $"";
+                                        //}
+                                        //else
+                                        //{
                                         found = true;
                                         break;
                                     }
@@ -18987,6 +18983,173 @@ namespace ImportByFunction
             return mwqmSubsectorAnalysisModel;
         }
 
+        private void button34_Click(object sender, EventArgs e)
+        {
+            List<string> ProvList = new List<string>()
+            {
+                "British Columbia", "Maine", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Québec",
+            };
+
+            string ProvStr = ProvList[0];
+
+            TVItemService tvItemServiceR = new TVItemService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemServiceR.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            TVItemModel tvItemModelProv = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, ProvStr, TVTypeEnum.Province);
+            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            List<TVItemModel> tvItemModelSubsectorList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            if (tvItemModelSubsectorList.Count == 0)
+            {
+                richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                return;
+            }
+
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+            bool Jump = false;
+
+            List<BCMarineSample> BCSampleListAll = new List<BCMarineSample>();
+
+            using (TempData.TempDataToolDBEntities dbDT = new TempData.TempDataToolDBEntities())
+            {
+                BCSampleListAll = (from c in dbDT.BCMarineSamples
+                                   select c).ToList();
+            }
+
+            //List<MWQMSample> mwqmSampleList = new List<MWQMSample>();
+
+            //using (CSSPDBEntities dd = new CSSPDBEntities())
+            //{
+            //    mwqmSampleList = (from c in dd.MWQMSamples select c).ToList();
+            //}
+
+            foreach (TVItemModel tvItemModelSubsector in tvItemModelSubsectorList)
+            {
+                lblStatus.Text = "Doing " + tvItemModelSubsector.TVText;
+                lblStatus.Refresh();
+                Application.DoEvents();
+
+                string subsector = tvItemModelSubsector.TVText;
+                if (tvItemModelSubsector.TVText.Contains(" "))
+                {
+                    subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
+                }
+
+                if (subsector == textBoxStartSubsectorName.Text)
+                {
+                    Jump = false;
+                }
+
+                if (Jump)
+                {
+                    continue;
+                }
+
+                List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelSubsector.TVItemID, TVTypeEnum.MWQMSite);
+                List<MWQMRunModel> runModelList = mwqmRunService.GetMWQMRunModelListWithSubsectorTVItemIDDB(tvItemModelSubsector.TVItemID);
+
+                using (CSSPDBEntities dd = new CSSPDBEntities())
+                {
+                    List<MWQMSample> mwqmSampleList = (from c in dd.MWQMSamples
+                                                       from ts in dd.TVItems
+                                                       from tr in dd.TVItems
+                                                       where c.MWQMSiteTVItemID == ts.TVItemID
+                                                       && c.MWQMRunTVItemID == tr.TVItemID
+                                                       && ts.ParentID == tvItemModelSubsector.TVItemID
+                                                       && tr.ParentID == tvItemModelSubsector.TVItemID
+                                                       select c).Distinct().ToList();
+
+                    foreach (TVItemModel tvItemModelSite in tvItemModelMWQMSiteList)
+                    {
+                        lblStatus.Text = $"Doing {tvItemModelSubsector.TVText} --- {tvItemModelSite.TVText}";
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        List<BCMarineSample> BCSampleListSite = (from c in BCSampleListAll
+                                                                 where c.SR_STATION_CODE == tvItemModelSite.TVText
+                                                                 select c).ToList();
+
+                        List<MWQMSample> mwqmSampleListSite = (from c in mwqmSampleList
+                                                               where c.MWQMSiteTVItemID == tvItemModelSite.TVItemID
+                                                               select c).ToList();
+
+                        foreach (MWQMSample mwqmSample in mwqmSampleListSite)
+                        {
+                            //lblStatus.Text = $"Doing {tvItemModelSubsector.TVText} --- {tvItemModelSite.TVText} --- {mwqmSample.FecCol_MPN_100ml}";
+                            //lblStatus.Refresh();
+                            //Application.DoEvents();
+
+                            string sampleType = "W";
+                            switch (mwqmSample.SampleTypesText)
+                            {
+
+                                case "113":
+                                    sampleType = "B";
+                                    break;
+                                case "112":
+                                    sampleType = "S";
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            if (!(from c in BCSampleListSite
+                                  where c.SampleDateTime.Value.Year == mwqmSample.SampleDateTime_Local.Year
+                                  && c.SampleDateTime.Value.Month == mwqmSample.SampleDateTime_Local.Month
+                                  && c.SampleDateTime.Value.Day == mwqmSample.SampleDateTime_Local.Day
+                                  && c.SR_SAMPLE_TYPE == sampleType
+                                  && c.SR_FECAL_COLIFORM == mwqmSample.FecCol_MPN_100ml
+                                  && c.SR_SALINITY == mwqmSample.Salinity_PPT
+                                  && c.SR_TEMPERATURE == mwqmSample.WaterTemp_C
+                                  select c).Any())
+                            {
+                                richTextBoxStatus.AppendText($"Wrong RunSampleType - {tvItemModelSubsector.TVText} - {tvItemModelSite.TVText} - {mwqmSample.SampleDateTime_Local.ToString("yyyy-MMM-dd")} - {mwqmSample.FecCol_MPN_100ml}\r\n");
+                                continue;
+                            }
+
+
+
+                            //MWQMRunModel mwqmRunModel = (from c in runModelList
+                            //                             where c.MWQMRunTVItemID == mwqmSample.MWQMRunTVItemID
+                            //                             select c).FirstOrDefault();
+
+                            //if (mwqmRunModel == null)
+                            //{
+                            //    richTextBoxStatus.AppendText($"Could not find run - {tvItemModelSubsector.TVText} - {tvItemModelSite.TVText} - {mwqmSample.SampleDateTime_Local.ToString("yyyy-MMM-dd")} - {mwqmSample.FecCol_MPN_100ml}\r\n");
+                            //    continue;
+                            //}
+
+                            //string runTypeStr = ((int)mwqmRunModel.RunSampleType).ToString();
+
+                            //if (!mwqmSample.SampleTypesText.Contains(runTypeStr))
+                            //{
+                            //    richTextBoxStatus.AppendText($"Wrong RunSampleType - {tvItemModelSubsector.TVText} - {tvItemModelSite.TVText} - {mwqmSample.SampleDateTime_Local.ToString("yyyy-MMM-dd")} - {mwqmSample.FecCol_MPN_100ml}\r\n");
+                            //    continue;
+                            //}
+
+                            //if (mwqmSample.FecCol_MPN_100ml > 1700)
+                            //{
+                            //    richTextBoxStatus.AppendText($"{tvItemModelSubsector.TVText} - {tvItemModelSite.TVText} - {mwqmSample.SampleDateTime_Local.ToString("yyyy-MMM-dd")} - {mwqmSample.FecCol_MPN_100ml}\r\n");
+                            //}
+                        }
+                    }
+                }
+            }
+
+            lblStatus.Text = $"Done...";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+        }    
 
         //private void button18_Click(object sender, EventArgs e)
         //{
