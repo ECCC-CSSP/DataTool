@@ -19168,7 +19168,7 @@ namespace ImportByFunction
             if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
 
             #region doing Site_xx.csv
-            for (int i = 10; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 StringBuilder sb = new StringBuilder();
 
@@ -19205,6 +19205,28 @@ namespace ImportByFunction
                             subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
                         }
 
+                        if (subsector == "B-01.4") continue;
+                        if (subsector == "G-01.1") continue;
+                        if (subsector == "G-01.2") continue;
+                        if (subsector == "G-01.3") continue;
+                        if (subsector == "G-01.5") continue;
+                        if (subsector == "G-04.6E") continue;
+                        if (subsector == "G-04.8E") continue;
+                        if (subsector == "G-04.9E") continue;
+                        if (subsector == "G-06.3") continue;
+                        if (subsector == "G-20.1.2") continue;
+                        if (subsector == "N-05.1.2") continue;
+                        if (subsector == "N-05.1.3.1") continue;
+                        if (subsector == "N-05.1.3.2") continue;
+                        if (subsector == "N-18.3.1") continue;
+                        if (subsector == "N-18.3.2") continue;
+                        if (subsector == "N-18.3.3") continue;
+                        if (subsector == "N-24.1") continue;
+                        if (subsector == "N-24.2") continue;
+                        if (subsector == "N-22.3") continue;
+                        if (subsector == "N-24.3") continue;
+                        if (subsector == "N-28") continue;
+                     
                         var SiteList = (from c in db.TVItems
                                         from cl in db.TVItemLanguages
                                         from mi in db.MapInfos
@@ -19227,8 +19249,9 @@ namespace ImportByFunction
 
                             if (ProvInit == "BC" && site.TVText.EndsWith("F")) continue;
                             if (ProvInit == "QC" && site.TVText.EndsWith("E")) continue;
-
-                            sb.AppendLine($"{ProvInit},{TVItemIDSS},{subsector},{site.TVItemID},{ProvInit}_{site.TVText},{site.Lat},{site.Lng}");
+                            if (ProvInit == "QC" && site.TVText.EndsWith("R")) continue;
+                     
+                            sb.AppendLine($"{ProvInit},{TVItemIDSS},{subsector},{site.TVItemID},{ProvInit}_{site.TVText},{site.Lat.ToString("F6")},{site.Lng.ToString("F6")}");
                         }
                     }
                 }
@@ -19243,7 +19266,7 @@ namespace ImportByFunction
             #endregion doing Site_xx.csv
 
             #region doing SectorSite_xx.kml
-            for (int i = 10; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 StringBuilder sb = new StringBuilder();
 
@@ -19332,6 +19355,28 @@ namespace ImportByFunction
                             subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
                         }
 
+                        if (subsector == "B-01.4") continue;
+                        if (subsector == "G-01.1") continue;
+                        if (subsector == "G-01.2") continue;
+                        if (subsector == "G-01.3") continue;
+                        if (subsector == "G-01.5") continue;
+                        if (subsector == "G-04.6E") continue;
+                        if (subsector == "G-04.8E") continue;
+                        if (subsector == "G-04.9E") continue;
+                        if (subsector == "G-06.3") continue;
+                        if (subsector == "G-20.1.2") continue;
+                        if (subsector == "N-05.1.2") continue;
+                        if (subsector == "N-05.1.3.1") continue;
+                        if (subsector == "N-05.1.3.2") continue;
+                        if (subsector == "N-18.3.1") continue;
+                        if (subsector == "N-18.3.2") continue;
+                        if (subsector == "N-18.3.3") continue;
+                        if (subsector == "N-24.1") continue;
+                        if (subsector == "N-24.2") continue;
+                        if (subsector == "N-22.3") continue;
+                        if (subsector == "N-24.3") continue;
+                        if (subsector == "N-28") continue;
+
                         var SiteList = (from c in db.TVItems
                                         from cl in db.TVItemLanguages
                                         from mi in db.MapInfos
@@ -19370,7 +19415,7 @@ namespace ImportByFunction
 
                         foreach (MapInfoPoint mip in mapInfoPointListSS)
                         {
-                            sb.AppendLine($"{mip.Lng},{mip.Lat},0 ");
+                            sb.AppendLine($"{mip.Lng.ToString("F6")},{mip.Lat.ToString("F6")},0 ");
                         }
 
 
@@ -19388,13 +19433,14 @@ namespace ImportByFunction
 
                             if (ProvInit == "BC" && site.TVText.EndsWith("F")) continue;
                             if (ProvInit == "QC" && site.TVText.EndsWith("E")) continue;
+                            if (ProvInit == "QC" && site.TVText.EndsWith("R")) continue;
 
                             sb.AppendLine("		<Placemark>");
                             sb.AppendLine($"			<name>{ProvInit}_{site.TVText} - [{site.TVItemID}]</name>");
                             sb.AppendLine("			<visibility>0</visibility>");
                             sb.AppendLine("			<styleUrl>#m_ylw-pushpin</styleUrl>");
                             sb.AppendLine("			<Point>");
-                            sb.AppendLine($"				<coordinates>{site.Lng},{site.Lat},0</coordinates>");
+                            sb.AppendLine($"				<coordinates>{site.Lng.ToString("F6")},{site.Lat.ToString("F6")},0</coordinates>");
                             sb.AppendLine("			</Point>");
                             sb.AppendLine("		</Placemark>");
 
@@ -19416,7 +19462,7 @@ namespace ImportByFunction
             #endregion doing SectorSite_xx.kml
 
             #region doing Run_xx.csv
-            for (int i = 10; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 StringBuilder sb = new StringBuilder();
 
@@ -19453,6 +19499,28 @@ namespace ImportByFunction
                             subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
                         }
 
+                        if (subsector == "B-01.4") continue;
+                        if (subsector == "G-01.1") continue;
+                        if (subsector == "G-01.2") continue;
+                        if (subsector == "G-01.3") continue;
+                        if (subsector == "G-01.5") continue;
+                        if (subsector == "G-04.6E") continue;
+                        if (subsector == "G-04.8E") continue;
+                        if (subsector == "G-04.9E") continue;
+                        if (subsector == "G-06.3") continue;
+                        if (subsector == "G-20.1.2") continue;
+                        if (subsector == "N-05.1.2") continue;
+                        if (subsector == "N-05.1.3.1") continue;
+                        if (subsector == "N-05.1.3.2") continue;
+                        if (subsector == "N-18.3.1") continue;
+                        if (subsector == "N-18.3.2") continue;
+                        if (subsector == "N-18.3.3") continue;
+                        if (subsector == "N-24.1") continue;
+                        if (subsector == "N-24.2") continue;
+                        if (subsector == "N-22.3") continue;
+                        if (subsector == "N-24.3") continue;
+                        if (subsector == "N-28") continue;
+
                         List<MWQMRun> RunList = (from r in db.MWQMRuns
                                                  where r.SubsectorTVItemID == tvItemModelSubsector.TVItemID
                                                  orderby r.DateTime_Local
@@ -19479,7 +19547,7 @@ namespace ImportByFunction
             #endregion doing Run_xx.csv
 
             #region doing Samples_xx.csv
-            for (int i = 10; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 StringBuilder sb = new StringBuilder();
 
@@ -19516,6 +19584,28 @@ namespace ImportByFunction
                             subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
                         }
 
+                        if (subsector == "B-01.4") continue;
+                        if (subsector == "G-01.1") continue;
+                        if (subsector == "G-01.2") continue;
+                        if (subsector == "G-01.3") continue;
+                        if (subsector == "G-01.5") continue;
+                        if (subsector == "G-04.6E") continue;
+                        if (subsector == "G-04.8E") continue;
+                        if (subsector == "G-04.9E") continue;
+                        if (subsector == "G-06.3") continue;
+                        if (subsector == "G-20.1.2") continue;
+                        if (subsector == "N-05.1.2") continue;
+                        if (subsector == "N-05.1.3.1") continue;
+                        if (subsector == "N-05.1.3.2") continue;
+                        if (subsector == "N-18.3.1") continue;
+                        if (subsector == "N-18.3.2") continue;
+                        if (subsector == "N-18.3.3") continue;
+                        if (subsector == "N-24.1") continue;
+                        if (subsector == "N-24.2") continue;
+                        if (subsector == "N-22.3") continue;
+                        if (subsector == "N-24.3") continue;
+                        if (subsector == "N-28") continue;
+
                         var SiteList = (from c in db.TVItems
                                         from cl in db.TVItemLanguages
                                         where c.TVItemID == cl.TVItemID
@@ -19533,6 +19623,7 @@ namespace ImportByFunction
 
                             if (ProvInit == "BC" && site.cl.TVText.EndsWith("F")) continue;
                             if (ProvInit == "QC" && site.cl.TVText.EndsWith("E")) continue;
+                            if (ProvInit == "QC" && site.cl.TVText.EndsWith("R")) continue;
 
                             List<MWQMSample> mwqmSampleList = (from c in db.MWQMSamples
                                                                where c.MWQMSiteTVItemID == site.c.TVItemID
@@ -19600,6 +19691,27 @@ namespace ImportByFunction
                         {
                             subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
                         }
+
+                        if (subsector == "B-01.4") continue;
+                        if (subsector == "G-01.1") continue;
+                        if (subsector == "G-01.2") continue;
+                        if (subsector == "G-01.3") continue;
+                        if (subsector == "G-04.6E") continue;
+                        if (subsector == "G-04.8E") continue;
+                        if (subsector == "G-04.9E") continue;
+                        if (subsector == "G-06.3") continue;
+                        if (subsector == "G-20.1.2") continue;
+                        if (subsector == "N-05.1.2") continue;
+                        if (subsector == "N-05.1.3.1") continue;
+                        if (subsector == "N-05.1.3.2") continue;
+                        if (subsector == "N-18.3.1") continue;
+                        if (subsector == "N-18.3.2") continue;
+                        if (subsector == "N-18.3.3") continue;
+                        if (subsector == "N-24.1") continue;
+                        if (subsector == "N-24.2") continue;
+                        if (subsector == "N-22.3") continue;
+                        if (subsector == "N-24.3") continue;
+                        if (subsector == "N-28") continue;
 
                         var SiteList = (from c in db.TVItems
                                         from cl in db.TVItemLanguages
