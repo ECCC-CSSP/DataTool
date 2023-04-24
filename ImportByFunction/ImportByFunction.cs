@@ -19247,6 +19247,7 @@ namespace ImportByFunction
                             lblStatus.Refresh();
                             Application.DoEvents();
 
+                            if (ProvInit == "BC" && site.TVText.StartsWith("LM")) continue;
                             if (ProvInit == "BC" && site.TVText.EndsWith("F")) continue;
                             if (ProvInit == "QC" && site.TVText.EndsWith("E")) continue;
                             if (ProvInit == "QC" && site.TVText.EndsWith("R")) continue;
@@ -19431,6 +19432,7 @@ namespace ImportByFunction
                             lblStatus.Refresh();
                             Application.DoEvents();
 
+                            if (ProvInit == "BC" && site.TVText.StartsWith("LM")) continue;
                             if (ProvInit == "BC" && site.TVText.EndsWith("F")) continue;
                             if (ProvInit == "QC" && site.TVText.EndsWith("E")) continue;
                             if (ProvInit == "QC" && site.TVText.EndsWith("R")) continue;
@@ -19621,6 +19623,7 @@ namespace ImportByFunction
                             lblStatus.Refresh();
                             Application.DoEvents();
 
+                            if (ProvInit == "BC" && site.cl.TVText.StartsWith("LM")) continue;
                             if (ProvInit == "BC" && site.cl.TVText.EndsWith("F")) continue;
                             if (ProvInit == "QC" && site.cl.TVText.EndsWith("E")) continue;
                             if (ProvInit == "QC" && site.cl.TVText.EndsWith("R")) continue;
@@ -19728,8 +19731,10 @@ namespace ImportByFunction
                             lblStatus.Refresh();
                             Application.DoEvents();
 
+                            if (ProvInit == "BC" && site.cl.TVText.StartsWith("LM")) continue;
                             if (ProvInit == "BC" && site.cl.TVText.EndsWith("F")) continue;
                             if (ProvInit == "QC" && site.cl.TVText.EndsWith("E")) continue;
+                            if (ProvInit == "QC" && site.cl.TVText.EndsWith("R")) continue;
 
                             List<MWQMSample> mwqmSampleList = (from c in db.MWQMSamples
                                                                where c.MWQMSiteTVItemID == site.c.TVItemID
