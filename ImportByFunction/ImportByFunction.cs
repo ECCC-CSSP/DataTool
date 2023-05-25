@@ -20065,11 +20065,11 @@ namespace ImportByFunction
             Application.DoEvents();
             #endregion Loading coordList with North East Pacific
 
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Province,SectorID,Sector,Date,h0,h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30");
+            //StringBuilder sb = new StringBuilder();
+            //sb.AppendLine("Province,SectorID,Sector,Date,h0,h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30");
 
             #region Getting Subsector sites mean lat, lng
-            for (int i = 0; i < 1; i++)
+            for (int i = 1; i < 2; i++)
             {
                 string ProvStr = ProvList[i];
                 string ProvInit = ProvInitList[i];
@@ -20275,27 +20275,130 @@ namespace ImportByFunction
                                     return;
                                 }
 
-                                StringBuilder sbReslt = new StringBuilder();
+                                //StringBuilder sbReslt = new StringBuilder();
+                                int tideCount = 0;
                                 foreach (TidesAndCurrents.InputAndResult mi in tnc.InputAndResultList)
                                 {
-                                    sbReslt.Append("," + mi.Reslt.ToString("F2"));
-                                    //if (tnc.WLTrueCurFalse)
-                                    //{
-                                    //sb.AppendLine(string.Format("{0:yyyy/MM/dd HH:mm:ss}\t{3:F4}", mi.Date, mi.Longitude, mi.Latitude, mi.Reslt));
-                                    //}
-                                    //else
-                                    //{
-                                    //    sb.AppendLine(string.Format("{0:yyyy/MM/dd HH:mm:ss}\t{3:F4}\t{4:F4}", mi.Date, mi.Longitude, mi.Latitude, mi.Reslt, mi.Reslt2));
-                                    //}
+                                    //sbReslt.Append("," + mi.Reslt.ToString("F2"));
+
+                                    float tideValue = float.Parse(mi.Reslt.ToString("F2"));
+
+                                    switch (tideCount)
+                                    {
+                                        case 0:
+                                            mwqmRun.Tide_h0_m = tideValue;
+                                            break;
+                                        case 1:
+                                            mwqmRun.Tide_h1_m = tideValue;
+                                            break;
+                                        case 2:
+                                            mwqmRun.Tide_h2_m = tideValue;
+                                            break;
+                                        case 3:
+                                            mwqmRun.Tide_h3_m = tideValue;
+                                            break;
+                                        case 4:
+                                            mwqmRun.Tide_h4_m = tideValue;
+                                            break;
+                                        case 5:
+                                            mwqmRun.Tide_h5_m = tideValue;
+                                            break;
+                                        case 6:
+                                            mwqmRun.Tide_h6_m = tideValue;
+                                            break;
+                                        case 7:
+                                            mwqmRun.Tide_h7_m = tideValue;
+                                            break;
+                                        case 8:
+                                            mwqmRun.Tide_h8_m = tideValue;
+                                            break;
+                                        case 9:
+                                            mwqmRun.Tide_h9_m = tideValue;
+                                            break;
+                                        case 10:
+                                            mwqmRun.Tide_h10_m = tideValue;
+                                            break;
+                                        case 11:
+                                            mwqmRun.Tide_h11_m = tideValue;
+                                            break;
+                                        case 12:
+                                            mwqmRun.Tide_h12_m = tideValue;
+                                            break;
+                                        case 13:
+                                            mwqmRun.Tide_h13_m = tideValue;
+                                            break;
+                                        case 14:
+                                            mwqmRun.Tide_h14_m = tideValue;
+                                            break;
+                                        case 15:
+                                            mwqmRun.Tide_h15_m = tideValue;
+                                            break;
+                                        case 16:
+                                            mwqmRun.Tide_h16_m = tideValue;
+                                            break;
+                                        case 17:
+                                            mwqmRun.Tide_h17_m = tideValue;
+                                            break;
+                                        case 18:
+                                            mwqmRun.Tide_h18_m = tideValue;
+                                            break;
+                                        case 19:
+                                            mwqmRun.Tide_h19_m = tideValue;
+                                            break;
+                                        case 20:
+                                            mwqmRun.Tide_h20_m = tideValue;
+                                            break;
+                                        case 21:
+                                            mwqmRun.Tide_h21_m = tideValue;
+                                            break;
+                                        case 22:
+                                            mwqmRun.Tide_h22_m = tideValue;
+                                            break;
+                                        case 23:
+                                            mwqmRun.Tide_h23_m = tideValue;
+                                            break;
+                                        case 24:
+                                            mwqmRun.Tide_h24_m = tideValue;
+                                            break;
+                                        case 25:
+                                            mwqmRun.Tide_h25_m = tideValue;
+                                            break;
+                                        case 26:
+                                            mwqmRun.Tide_h26_m = tideValue;
+                                            break;
+                                        case 27:
+                                            mwqmRun.Tide_h27_m = tideValue;
+                                            break;
+                                        case 28:
+                                            mwqmRun.Tide_h28_m = tideValue;
+                                            break;
+                                        case 29:
+                                            mwqmRun.Tide_h29_m = tideValue;
+                                            break;
+                                        case 30:
+                                            mwqmRun.Tide_h30_m = tideValue;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    tideCount += 1;
                                 }
-                                string StartDateTxt = tnc.StartDate.ToString("yyyy-MMM-dd");
-                                sb.AppendLine($"{ProvInit},{TVItemIDSS},{subsector},{StartDateTxt}{sbReslt}");
-
-                                //sb.AppendLine($"{ProvInit},{TVItemIDSS},{subsector},{lat.ToString("F6")},{lng.ToString("F6")},{webTideName},{nearCoord.Lat.ToString("F6")},{nearCoord.Lng.ToString("F6")},{dist.ToString("F6")}");
-
+                                //string StartDateTxt = tnc.StartDate.ToString("yyyy-MMM-dd");
+                                //sb.AppendLine($"{ProvInit},{TVItemIDSS},{subsector},{StartDateTxt}{sbReslt}");                            
                             }
 
                             oldWebTideName = webTideName;
+
+                            try
+                            {
+                                db.SaveChanges();
+                            }
+                            catch (Exception ex)
+                            {
+                                lblStatus.Text = ex.Message;
+                                return;
+                            }
+
                         }
                         else
                         {
@@ -20312,7 +20415,7 @@ namespace ImportByFunction
                 //sw.Close();
 
             }
-            richTextBoxStatus.Text = sb.ToString();
+            //richTextBoxStatus.Text = sb.ToString();
 
             #endregion Getting Subsector sites mean lat, lng
 
