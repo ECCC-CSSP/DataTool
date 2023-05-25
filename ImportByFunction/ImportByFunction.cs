@@ -30,8 +30,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Security.Policy;
-
-
+using System.Xml.Linq;
 
 namespace ImportByFunction
 {
@@ -17231,130 +17230,128 @@ namespace ImportByFunction
 
         private void button30_Click(object sender, EventArgs e)
         {
-            return;
+            //StringBuilder sb = new StringBuilder();
 
-            StringBuilder sb = new StringBuilder();
+            //TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            //MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+            //MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
 
-            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
-            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            //TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
+            //if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
 
-            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
-            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+            //TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            //if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
 
-            TVItemModel tvItemModelCanada = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
-            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+            ////TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "New Brunswick", TVTypeEnum.Province);
+            ////if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
 
-            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "New Brunswick", TVTypeEnum.Province);
+            ////TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Newfoundland and Labrador", TVTypeEnum.Province);
+            ////if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            ////TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Nova Scotia", TVTypeEnum.Province);
+            ////if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
             //if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
 
-            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Newfoundland and Labrador", TVTypeEnum.Province);
-            //if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+            //List<TVItemModel> tvItemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
 
-            //TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Nova Scotia", TVTypeEnum.Province);
-            //if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+            ////List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMSite);
 
-            TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, "Prince Edward Island", TVTypeEnum.Province);
-            if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+            ////List<TVItemModel> tvItemModelMWQMRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMRun);
 
-            List<TVItemModel> tvItemModelSSList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+            ////sb.AppendLine($"\t\t\t\tActive Sites\t");
+            ////sb.AppendLine($"Locator\tSubsector Name\tLast Run Date\tRouting Last Run Date\tCount Approved\tCount Conditionally Approved\tCount Restricted\tCount Conditionally Restricted\tProhibited\tUnclassified or unknown\ttotal");
 
-            //List<TVItemModel> tvItemModelMWQMSiteList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMSite);
+            //foreach (TVItemModel tvItemModel in tvItemModelSSList)
+            //{
+            //    string locator = tvItemModel.TVText;
+            //    string name = "";
+            //    if (locator.Contains(" "))
+            //    {
+            //        name = locator.Substring(locator.IndexOf(" ")).Trim();
+            //        locator = locator.Substring(0, locator.IndexOf(" ")).Trim();
+            //    }
 
-            //List<TVItemModel> tvItemModelMWQMRunList = tvItemService.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.MWQMRun);
+            //    lblStatus.Text = locator;
+            //    lblStatus.Refresh();
+            //    Application.DoEvents();
 
-            //sb.AppendLine($"\t\t\t\tActive Sites\t");
-            //sb.AppendLine($"Locator\tSubsector Name\tLast Run Date\tRouting Last Run Date\tCount Approved\tCount Conditionally Approved\tCount Restricted\tCount Conditionally Restricted\tProhibited\tUnclassified or unknown\ttotal");
+            //    using (CSSPDBEntities db2 = new CSSPDBEntities())
+            //    {
+            //        MWQMRun mwqmRun = (from c in db2.MWQMRuns
+            //                           from t in db2.TVItems
+            //                           where c.MWQMRunTVItemID == t.TVItemID
+            //                           && t.TVType == (int)TVTypeEnum.MWQMRun
+            //                           && t.ParentID == tvItemModel.TVItemID
+            //                           orderby c.DateTime_Local descending
+            //                           select c).FirstOrDefault();
 
-            foreach (TVItemModel tvItemModel in tvItemModelSSList)
-            {
-                string locator = tvItemModel.TVText;
-                string name = "";
-                if (locator.Contains(" "))
-                {
-                    name = locator.Substring(locator.IndexOf(" ")).Trim();
-                    locator = locator.Substring(0, locator.IndexOf(" ")).Trim();
-                }
+            //        MWQMRun mwqmRunRoutine = (from c in db2.MWQMRuns
+            //                                  from t in db2.TVItems
+            //                                  where c.MWQMRunTVItemID == t.TVItemID
+            //                                  && t.TVType == (int)TVTypeEnum.MWQMRun
+            //                                  && t.ParentID == tvItemModel.TVItemID
+            //                                  && c.RunSampleType == (int)SampleTypeEnum.Routine
+            //                                  orderby c.DateTime_Local descending
+            //                                  select c).FirstOrDefault();
 
-                lblStatus.Text = locator;
-                lblStatus.Refresh();
-                Application.DoEvents();
+            //        List<MWQMSite> mwqmSiteList = (from c in db2.MWQMSites
+            //                                       from t in db2.TVItems
+            //                                       where c.MWQMSiteTVItemID == t.TVItemID
+            //                                       && t.TVType == (int)TVTypeEnum.MWQMSite
+            //                                       && t.ParentID == tvItemModel.TVItemID
+            //                                       && t.IsActive == true
+            //                                       select c).ToList();
 
-                using (CSSPDBEntities db2 = new CSSPDBEntities())
-                {
-                    MWQMRun mwqmRun = (from c in db2.MWQMRuns
-                                       from t in db2.TVItems
-                                       where c.MWQMRunTVItemID == t.TVItemID
-                                       && t.TVType == (int)TVTypeEnum.MWQMRun
-                                       && t.ParentID == tvItemModel.TVItemID
-                                       orderby c.DateTime_Local descending
-                                       select c).FirstOrDefault();
+            //        if (mwqmRun != null)
+            //        {
+            //            string dateStr = mwqmRun.DateTime_Local.ToString("yyyy MM dd");
+            //            string dateRoutineStr = mwqmRunRoutine.DateTime_Local.ToString("yyyy MM dd");
+            //            if (mwqmSiteList.Count > 0)
+            //            {
+            //                int countA = (from a in mwqmSiteList
+            //                              where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Approved
+            //                              select a).Count();
 
-                    MWQMRun mwqmRunRoutine = (from c in db2.MWQMRuns
-                                              from t in db2.TVItems
-                                              where c.MWQMRunTVItemID == t.TVItemID
-                                              && t.TVType == (int)TVTypeEnum.MWQMRun
-                                              && t.ParentID == tvItemModel.TVItemID
-                                              && c.RunSampleType == (int)SampleTypeEnum.Routine
-                                              orderby c.DateTime_Local descending
-                                              select c).FirstOrDefault();
+            //                int countCA = (from a in mwqmSiteList
+            //                               where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyApproved
+            //                               select a).Count();
 
-                    List<MWQMSite> mwqmSiteList = (from c in db2.MWQMSites
-                                                   from t in db2.TVItems
-                                                   where c.MWQMSiteTVItemID == t.TVItemID
-                                                   && t.TVType == (int)TVTypeEnum.MWQMSite
-                                                   && t.ParentID == tvItemModel.TVItemID
-                                                   && t.IsActive == true
-                                                   select c).ToList();
+            //                int countR = (from a in mwqmSiteList
+            //                              where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Restricted
+            //                              select a).Count();
 
-                    if (mwqmRun != null)
-                    {
-                        string dateStr = mwqmRun.DateTime_Local.ToString("yyyy MM dd");
-                        string dateRoutineStr = mwqmRunRoutine.DateTime_Local.ToString("yyyy MM dd");
-                        if (mwqmSiteList.Count > 0)
-                        {
-                            int countA = (from a in mwqmSiteList
-                                          where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Approved
-                                          select a).Count();
+            //                int countCR = (from a in mwqmSiteList
+            //                               where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyRestricted
+            //                               select a).Count();
 
-                            int countCA = (from a in mwqmSiteList
-                                           where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyApproved
-                                           select a).Count();
+            //                int countP = (from a in mwqmSiteList
+            //                              where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Prohibited
+            //                              select a).Count();
 
-                            int countR = (from a in mwqmSiteList
-                                          where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Restricted
-                                          select a).Count();
-
-                            int countCR = (from a in mwqmSiteList
-                                           where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.ConditionallyRestricted
-                                           select a).Count();
-
-                            int countP = (from a in mwqmSiteList
-                                          where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Prohibited
-                                          select a).Count();
-
-                            int countU = (from a in mwqmSiteList
-                                          where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Error
-                                          select a).Count();
+            //                int countU = (from a in mwqmSiteList
+            //                              where a.MWQMSiteLatestClassification == (int)ClassificationTypeEnum.Error
+            //                              select a).Count();
 
 
-                            sb.AppendLine($"{locator}\t{name}\t{dateStr}\t{dateRoutineStr}\t{countA}\t{countCA}\t{countR}\t{countCR}\t{countP}\t{countU}\t{mwqmSiteList.Count}");
-                        }
-                        else
-                        {
-                            sb.AppendLine($"{locator}\t{name}\t{dateStr}\t{dateRoutineStr}");
-                        }
-                    }
-                    else
-                    {
-                        sb.AppendLine($"{locator}\t{name}");
-                    }
-                }
-            }
+            //                sb.AppendLine($"{locator}\t{name}\t{dateStr}\t{dateRoutineStr}\t{countA}\t{countCA}\t{countR}\t{countCR}\t{countP}\t{countU}\t{mwqmSiteList.Count}");
+            //            }
+            //            else
+            //            {
+            //                sb.AppendLine($"{locator}\t{name}\t{dateStr}\t{dateRoutineStr}");
+            //            }
+            //        }
+            //        else
+            //        {
+            //            sb.AppendLine($"{locator}\t{name}");
+            //        }
+            //    }
+            //}
 
-            lblStatus.Text = "done...";
+            //lblStatus.Text = "done...";
 
-            richTextBoxStatus.Text = sb.ToString();
+            //richTextBoxStatus.Text = sb.ToString();
         }
 
         private void button31_Click(object sender, EventArgs e)
@@ -17782,7 +17779,7 @@ namespace ImportByFunction
             //DoButton31_b();
             DoFindInfrastructureFile();
         }
-        private async Task DoFindInfrastructureFile()
+        private void DoFindInfrastructureFile()
         {
             using (CSSPDBEntities db2 = new CSSPDBEntities())
             {
@@ -17808,7 +17805,7 @@ namespace ImportByFunction
 
         private void ClearEndParentheseOnSomeMWQMRunTVText()
         {
-            TVTypeEnum tvType = TVTypeEnum.MWQMRun;
+            //TVTypeEnum tvType = TVTypeEnum.MWQMRun;
 
             string str = "(";
             string str2 = ")";
@@ -17905,7 +17902,7 @@ namespace ImportByFunction
             }
         }
 
-        private async Task DoButton32()
+        private void DoButton32()
         {
             //List<string> ProvInitList = new List<string>()
             //{
@@ -19226,7 +19223,7 @@ namespace ImportByFunction
                         if (subsector == "N-22.3") continue;
                         if (subsector == "N-24.3") continue;
                         if (subsector == "N-28") continue;
-                     
+
                         var SiteList = (from c in db.TVItems
                                         from cl in db.TVItemLanguages
                                         from mi in db.MapInfos
@@ -19251,7 +19248,7 @@ namespace ImportByFunction
                             if (ProvInit == "BC" && site.TVText.EndsWith("F")) continue;
                             if (ProvInit == "QC" && site.TVText.EndsWith("E")) continue;
                             if (ProvInit == "QC" && site.TVText.EndsWith("R")) continue;
-                     
+
                             sb.AppendLine($"{ProvInit},{TVItemIDSS},{subsector},{site.TVItemID},{ProvInit}_{site.TVText},{site.Lat.ToString("F6")},{site.Lng.ToString("F6")}");
                         }
                     }
@@ -19393,7 +19390,7 @@ namespace ImportByFunction
                                         select new { c.TVItemID, cl.TVText, mip.Lat, mip.Lng }).ToList();
 
                         string HasSites = SiteList.Any() ? " (+)" : "";
-                   
+
                         sb.AppendLine("	<Folder>");
                         sb.AppendLine($"		<name>{subsector}{HasSites}</name>");
                         sb.AppendLine("		<visibility>0</visibility>");
@@ -19618,7 +19615,7 @@ namespace ImportByFunction
                                         select new { c, cl }).ToList();
 
                         foreach (var site in SiteList)
-                        {                    
+                        {
                             lblStatus.Text = $"Doing {subsector} --- {TVItemIDSS}";
                             lblStatus.Refresh();
                             Application.DoEvents();
@@ -19634,8 +19631,8 @@ namespace ImportByFunction
                                                                orderby c.SampleDateTime_Local
                                                                select c).ToList();
 
-                        
-                            foreach(MWQMSample mwqmSample in mwqmSampleList)
+
+                            foreach (MWQMSample mwqmSample in mwqmSampleList)
                             {
                                 string fc = mwqmSample.FecCol_MPN_100ml < 2 ? "1.9" : mwqmSample.FecCol_MPN_100ml.ToString("F0");
                                 string temp = mwqmSample.WaterTemp_C == null ? "" : ((double)mwqmSample.WaterTemp_C).ToString("F1");
@@ -19764,6 +19761,561 @@ namespace ImportByFunction
 
             }
             #endregion doing SiteToRemove_xx.csv
+
+            lblStatus.Text = $"Done...";
+            lblStatus.Refresh();
+            Application.DoEvents();
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            TidesAndCurrents tnc = new TidesAndCurrents(DateTime.Now, DateTime.Now.AddDays(7), -64.833849, 47.833140, 60, @"E:\CSSP\WebTide\data\nwatl\", true);
+
+            List<string> ProvList = new List<string>()
+            {
+                "Newfoundland and Labrador", "New Brunswick",  "Nova Scotia", "Prince Edward Island", "British Columbia", "Québec",
+            };
+            List<string> ProvInitList = new List<string>()
+            {
+                "NL", "NB",  "NS", "PE", "BC", "QC",
+            };
+
+            string baseFileName = "C:\\CSSP Latest Code Old\\AutoRunWebTide\\AutoRunWebTide\\bin\\Debug\\WebTide\\data\\";
+
+            string NorthWestAtlantic = "nwatl\\Northwest_Atlantic.kml";
+            string Brador = "brador\\Bras_d_Or_Lake.kml";
+            string ScotianShelf = "sshelf\\Scotia_Fundy_Maine.kml";
+
+            string VancouverIsland = "vigf8\\Vancouver_Island.kml";
+            string NorthEastPacific = "ne_pac4\\Northeast_Pacific.kml";
+
+            // Use NorthWest Atlantic for all of QC, NL, NB and NS except the sectors below
+            List<string> UseBrador = new List<string>() { "NS-07" };
+            List<string> UseScotianShelf = new List<string>() {
+                "NB-8", "NB-9", "NB-10", "NB-11", "NB-12", "NB-13", "NB-14", "NB-15", "NB-16", "NB-17", "NB-18", "NB-19",
+                "NS-9", "NS-10", "NS-11", "NS-12", "NS-13", "NS-14", "NS-15", "NS-16", "NS-17", "NS-18", "NS-19", "NS-20"
+            };
+
+            // Use Vancouver Island for all of BC except the sectors below
+            List<string> UseNorthEastPacific = new List<string>() { "NC", "QI" };
+
+            TVItemService tvItemServiceR = new TVItemService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemServiceR.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            List<Coord> coordListNorthWestAtlantic = new List<Coord>();
+            List<Coord> coordListBrador = new List<Coord>();
+            List<Coord> coordListScotianShelf = new List<Coord>();
+            List<Coord> coordListVancouverIsland = new List<Coord>();
+            List<Coord> coordListNorthEastPacific = new List<Coord>();
+
+            #region Loading coordList with North West Atlantic
+            lblStatus.Text = "Loading North West Atlantic";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+            int count = 0;
+            XElement root = XElement.Load($"{baseFileName}{NorthWestAtlantic}");
+
+            foreach (XElement elem in root.Descendants())
+            {
+                if (elem.Name.ToString().EndsWith("coordinates"))
+                {
+                    string elemTxt = elem.Value;
+                    List<string> coordsTxtList = elemTxt.Trim().Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                    List<float> LatList = new List<float>();
+                    List<float> LngList = new List<float>();
+
+                    foreach (string s in coordsTxtList.Skip(1))
+                    {
+                        List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                        if (pointTxtList.Count != 3)
+                        {
+                            richTextBoxStatus.AppendText("\r\nError: pointTxtList.Count != 3\r\n");
+                            return;
+                        }
+
+                        LatList.Add(float.Parse(pointTxtList[1]));
+                        LngList.Add(float.Parse(pointTxtList[0]));
+                    }
+
+                    float Lat = LatList.Average();
+                    float Lng = LngList.Average();
+
+                    count += 1;
+
+                    if (Lat < 45F) continue;
+                    if (Lat > 52F) continue;
+                    if (Lng > -52F) continue;
+
+                    coordListNorthWestAtlantic.Add(new Coord() { Lat = Lat, Lng = Lng });
+                }
+            }
+            lblStatus2.Text = $"North West Atlantic count = {coordListNorthWestAtlantic.Count()} of {count}";
+            lblStatus2.Refresh();
+            Application.DoEvents();
+            #endregion Loading coordList with North West Atlantic
+
+            #region Loading coordList with Brador
+            lblStatus.Text = "Loading Brador";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+            count = 0;
+            root = XElement.Load($"{baseFileName}{Brador}");
+
+            foreach (XElement elem in root.Descendants())
+            {
+                if (elem.Name.ToString().EndsWith("coordinates"))
+                {
+                    string elemTxt = elem.Value;
+                    List<string> coordsTxtList = elemTxt.Trim().Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                    List<float> LatList = new List<float>();
+                    List<float> LngList = new List<float>();
+
+                    foreach (string s in coordsTxtList.Skip(1))
+                    {
+                        List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                        if (pointTxtList.Count != 3)
+                        {
+                            richTextBoxStatus.AppendText("\r\nError: pointTxtList.Count != 3\r\n");
+                            return;
+                        }
+
+                        LatList.Add(float.Parse(pointTxtList[1]));
+                        LngList.Add(float.Parse(pointTxtList[0]));
+                    }
+
+                    float Lat = LatList.Average();
+                    float Lng = LngList.Average();
+
+                    count += 1;
+
+                    coordListBrador.Add(new Coord() { Lat = Lat, Lng = Lng });
+                }
+            }
+            lblStatus2.Text = $"Brador count = {coordListBrador.Count()} of {count}";
+            lblStatus2.Refresh();
+            Application.DoEvents();
+            #endregion Loading coordList with Brador
+
+            #region Loading coordList with Scotian Shelf
+            lblStatus.Text = "Loading Scotian Shelf";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+            count = 0;
+            root = XElement.Load($"{baseFileName}{ScotianShelf}");
+
+            foreach (XElement elem in root.Descendants())
+            {
+                if (elem.Name.ToString().EndsWith("coordinates"))
+                {
+                    string elemTxt = elem.Value;
+                    List<string> coordsTxtList = elemTxt.Trim().Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                    List<float> LatList = new List<float>();
+                    List<float> LngList = new List<float>();
+
+                    foreach (string s in coordsTxtList.Skip(1))
+                    {
+                        List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                        if (pointTxtList.Count != 3)
+                        {
+                            richTextBoxStatus.AppendText("\r\nError: pointTxtList.Count != 3\r\n");
+                            return;
+                        }
+
+                        LatList.Add(float.Parse(pointTxtList[1]));
+                        LngList.Add(float.Parse(pointTxtList[0]));
+                    }
+
+                    float Lat = LatList.Average();
+                    float Lng = LngList.Average();
+
+                    count += 1;
+
+                    if (Lng < -67.27F) continue;
+                    if (Lat < 43.17F) continue;
+
+                    coordListScotianShelf.Add(new Coord() { Lat = Lat, Lng = Lng });
+                }
+            }
+            lblStatus2.Text = $"Scotian Shelf count = {coordListScotianShelf.Count()} of {count}";
+            lblStatus2.Refresh();
+            Application.DoEvents();
+            #endregion Loading coordList with Scotian Shelf
+
+            #region Loading coordList with Vancouver Island
+            lblStatus.Text = "Loading Vancouver Island";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+            count = 0;
+            root = XElement.Load($"{baseFileName}{VancouverIsland}");
+
+            foreach (XElement elem in root.Descendants())
+            {
+                if (elem.Name.ToString().EndsWith("coordinates"))
+                {
+                    string elemTxt = elem.Value;
+                    List<string> coordsTxtList = elemTxt.Trim().Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                    List<float> LatList = new List<float>();
+                    List<float> LngList = new List<float>();
+
+                    foreach (string s in coordsTxtList.Skip(1))
+                    {
+                        List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                        if (pointTxtList.Count != 3)
+                        {
+                            richTextBoxStatus.AppendText("\r\nError: pointTxtList.Count != 3\r\n");
+                            return;
+                        }
+
+                        LatList.Add(float.Parse(pointTxtList[1]));
+                        LngList.Add(float.Parse(pointTxtList[0]));
+                    }
+
+                    float Lat = LatList.Average();
+                    float Lng = LngList.Average();
+
+                    count += 1;
+
+                    if (Lat > 51.15F) continue;
+                    if (Lng < -129.0F) continue;
+                    if (Lat < 50.21F && Lng < -128.08F) continue;
+                    if (Lat < 49.89F && Lng < -127.44F) continue;
+                    if (Lat < 49.47F && Lng < -126.79F) continue;
+                    if (Lat < 49.15F && Lng < -126.22F) continue;
+                    if (Lat < 48.91F && Lng < -125.74F) continue;
+                    if (Lat < 48.55F && Lng < -124.90F) continue;
+                    if (Lat < 48.26F) continue;
+                    if (Lat < 48.37F && Lng > -123.43F) continue;
+                    if (Lat < 48.66F && Lng > -123.22F) continue;
+                    if (Lat < 48.95F && Lng > -123.07F) continue;
+
+                    coordListVancouverIsland.Add(new Coord() { Lat = Lat, Lng = Lng });
+                }
+            }
+            lblStatus2.Text = $"Vancouver Island count = {coordListVancouverIsland.Count()} of {count}";
+            lblStatus2.Refresh();
+            Application.DoEvents();
+            #endregion Loading coordList with Vancouver Island
+
+            #region Loading coordList with North East Pacific
+            lblStatus.Text = "Loading North East Pacific";
+            lblStatus.Refresh();
+            Application.DoEvents();
+
+            count = 0;
+            root = XElement.Load($"{baseFileName}{NorthEastPacific}");
+
+            foreach (XElement elem in root.Descendants())
+            {
+                if (elem.Name.ToString().EndsWith("coordinates"))
+                {
+                    string elemTxt = elem.Value;
+                    List<string> coordsTxtList = elemTxt.Trim().Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                    List<float> LatList = new List<float>();
+                    List<float> LngList = new List<float>();
+
+                    foreach (string s in coordsTxtList.Skip(1))
+                    {
+                        List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                        if (pointTxtList.Count != 3)
+                        {
+                            richTextBoxStatus.AppendText("\r\nError: pointTxtList.Count != 3\r\n");
+                            return;
+                        }
+
+                        LatList.Add(float.Parse(pointTxtList[1]));
+                        LngList.Add(float.Parse(pointTxtList[0]));
+                    }
+
+                    float Lat = LatList.Average();
+                    float Lng = LngList.Average();
+
+                    count += 1;
+
+                    if (Lat > 54.60F) continue;
+                    if (Lng < -133.5F) continue;
+                    if (Lat < 51.15F) continue;
+
+                    coordListNorthEastPacific.Add(new Coord() { Lat = Lat, Lng = Lng });
+                }
+            }
+            lblStatus2.Text = $"North East Pacific count = {coordListNorthEastPacific.Count()} of {count}";
+            lblStatus2.Refresh();
+            Application.DoEvents();
+            #endregion Loading coordList with North East Pacific
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Province,SectorID,Sector,Date,h0,h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30");
+
+            #region Getting Subsector sites mean lat, lng
+            for (int i = 0; i < 1; i++)
+            {
+                string ProvStr = ProvList[i];
+                string ProvInit = ProvInitList[i];
+
+                TVItemModel tvItemModelProv = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, ProvStr, TVTypeEnum.Province);
+                if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+                List<TVItemModel> tvItemModelSubsectorList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+                if (tvItemModelSubsectorList.Count == 0)
+                {
+                    richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                    return;
+                }
+
+                TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    foreach (TVItemModel tvItemModelSubsector in tvItemModelSubsectorList)
+                    {
+                        int TVItemIDSS = tvItemModelSubsector.TVItemID;
+
+                        lblStatus.Text = "Doing " + tvItemModelSubsector.TVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        string subsector = tvItemModelSubsector.TVText;
+                        if (tvItemModelSubsector.TVText.Contains(" "))
+                        {
+                            subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
+                        }
+
+                        var SiteList = (from c in db.TVItems
+                                        from cl in db.TVItemLanguages
+                                        from mi in db.MapInfos
+                                        from mip in db.MapInfoPoints
+                                            //let lat = (from aa in mip select new { aa.Lat, aa.Lng }).First()
+                                        where c.TVItemID == cl.TVItemID
+                                        && cl.Language == (int)LanguageEnum.en
+                                        && c.TVItemID == mi.TVItemID
+                                        && mi.MapInfoID == mip.MapInfoID
+                                        && c.ParentID == tvItemModelSubsector.TVItemID
+                                        && c.TVType == (int)TVTypeEnum.MWQMSite
+                                        && mip.Lat > 10.0
+                                        && mip.Lng < -10.0
+                                        orderby cl.TVText
+                                        select new { mip.Lat, mip.Lng }).ToList();
+
+                        if (SiteList.Count > 0)
+                        {
+                            double lat = (from l in SiteList
+                                          select l.Lat).Average();
+
+                            double lng = (from l in SiteList
+                                          select l.Lng).Average();
+
+                            Coord nearCoord = new Coord();
+                            double dist = 0F;
+                            string oldWebTideName = "";
+                            string webTideName = "";
+
+                            #region get nearcoord, dist and webTideName
+                            if (ProvInit == "NL" || ProvInit == "QC" || ProvInit == "PE")
+                            {
+                                var coordDist = (from c in coordListNorthWestAtlantic
+                                                 let d = Math.Sqrt((((double)c.Lat) - lat) * (((double)c.Lat) - lat) + (((double)c.Lng) - lng) * (((double)c.Lng) - lng))
+                                                 orderby d
+                                                 select new { c, d }).FirstOrDefault();
+
+                                nearCoord = coordDist.c;
+                                dist = coordDist.d;
+                                webTideName = "nwatl";
+                            }
+                            else if (ProvInit == "NS" && (from c in UseBrador
+                                                          where c.Contains(subsector.Substring(0, 5))
+                                                          select c).Any())
+                            {
+                                var coordDist = (from c in coordListBrador
+                                                 let d = Math.Sqrt((((double)c.Lat) - lat) * (((double)c.Lat) - lat) + (((double)c.Lng) - lng) * (((double)c.Lng) - lng))
+                                                 orderby d
+                                                 select new { c, d }).FirstOrDefault();
+
+                                nearCoord = coordDist.c;
+                                dist = coordDist.d;
+                                webTideName = "brador";
+                            }
+                            else if (ProvInit == "NS" && (from c in UseScotianShelf
+                                                          where c.Contains(subsector.Substring(0, 5))
+                                                          select c).Any())
+                            {
+                                var coordDist = (from c in coordListScotianShelf
+                                                 let d = Math.Sqrt((((double)c.Lat) - lat) * (((double)c.Lat) - lat) + (((double)c.Lng) - lng) * (((double)c.Lng) - lng))
+                                                 orderby d
+                                                 select new { c, d }).FirstOrDefault();
+
+                                nearCoord = coordDist.c;
+                                dist = coordDist.d;
+                                webTideName = "sshelf";
+                            }
+                            else if (ProvInit == "NS")
+                            {
+                                var coordDist = (from c in coordListNorthWestAtlantic
+                                                 let d = Math.Sqrt((((double)c.Lat) - lat) * (((double)c.Lat) - lat) + (((double)c.Lng) - lng) * (((double)c.Lng) - lng))
+                                                 orderby d
+                                                 select new { c, d }).FirstOrDefault();
+
+                                nearCoord = coordDist.c;
+                                dist = coordDist.d;
+                                webTideName = "nwatl";
+                            }
+                            else if (ProvInit == "NB" && (from c in UseScotianShelf
+                                                          where c.Contains(subsector.Substring(0, 5))
+                                                          select c).Any())
+                            {
+                                var coordDist = (from c in coordListScotianShelf
+                                                 let d = Math.Sqrt((((double)c.Lat) - lat) * (((double)c.Lat) - lat) + (((double)c.Lng) - lng) * (((double)c.Lng) - lng))
+                                                 orderby d
+                                                 select new { c, d }).FirstOrDefault();
+
+                                nearCoord = coordDist.c;
+                                dist = coordDist.d;
+                                webTideName = "sshelf";
+                            }
+                            else if (ProvInit == "NB")
+                            {
+                                var coordDist = (from c in coordListNorthWestAtlantic
+                                                 let d = Math.Sqrt((((double)c.Lat) - lat) * (((double)c.Lat) - lat) + (((double)c.Lng) - lng) * (((double)c.Lng) - lng))
+                                                 orderby d
+                                                 select new { c, d }).FirstOrDefault();
+
+                                nearCoord = coordDist.c;
+                                dist = coordDist.d;
+                                webTideName = "nwatl";
+                            }
+                            else if (ProvInit == "BC" && (from c in UseNorthEastPacific
+                                                          where c.Contains(subsector.Substring(0, 2))
+                                                          select c).Any())
+                            {
+                                var coordDist = (from c in coordListNorthEastPacific
+                                                 let d = Math.Sqrt((((double)c.Lat) - lat) * (((double)c.Lat) - lat) + (((double)c.Lng) - lng) * (((double)c.Lng) - lng))
+                                                 orderby d
+                                                 select new { c, d }).FirstOrDefault();
+
+                                nearCoord = coordDist.c;
+                                dist = coordDist.d;
+                                webTideName = "ne-pac4";
+                            }
+                            else if (ProvInit == "BC")
+                            {
+                                var coordDist = (from c in coordListVancouverIsland
+                                                 let d = Math.Sqrt((((double)c.Lat) - lat) * (((double)c.Lat) - lat) + (((double)c.Lng) - lng) * (((double)c.Lng) - lng))
+                                                 orderby d
+                                                 select new { c, d }).FirstOrDefault();
+
+                                nearCoord = coordDist.c;
+                                dist = coordDist.d;
+                                webTideName = "vigf8";
+                            }
+                            else
+                            {
+                                lblStatus.Text = $"{ProvInit} for subsector {subsector} not implemented";
+                                return;
+                            }
+                            #endregion get nearcoord, dist and webTideName
+                        
+                            tnc.Steps = 60D;
+
+                            //FileInfo fi = new FileInfo(Application.ExecutablePath);
+
+                            //DirectoryInfo di = new DirectoryInfo(fi.Directory.FullName + @"\WebTide\data\");
+
+                            //if (!di.Exists)
+                            //{
+                            //    lblStatus.Text = "The Application is searching for webtide appliation and data path.";
+                            //    lblStatus2.Text = $@"Searched in {fi.Directory.FullName + @"\WebTide\data\"}";
+                            //    return;
+                            //}
+
+                            tnc.DataPath = $"C:\\CSSP Latest Code Old\\AutoRunWebTide\\AutoRunWebTide\\bin\\Debug\\WebTide\\data\\{webTideName}\\";
+                            tnc.WLTrueCurFalse = true;
+
+                            var MWQMRunList = (from c in db.MWQMRuns
+                                               where c.SubsectorTVItemID == TVItemIDSS
+                                               orderby c.DateTime_Local
+                                               select c).ToList();
+
+                            foreach (MWQMRun mwqmRun in MWQMRunList)
+                            {
+                                lblStatus.Text = $"{ProvInit} - {subsector} - {mwqmRun.DateTime_Local}";
+                                lblStatus.Refresh();
+                                Application.DoEvents();
+
+                                tnc.StartDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day, 0, 0, 0);
+                                tnc.EndDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day, 0, 0, 0).AddDays(1).AddHours(7);
+                                tnc.Longitude = nearCoord.Lng;
+                                tnc.Latitude = nearCoord.Lat;
+
+                                bool NeedToReload = oldWebTideName != webTideName ? true : false;
+
+                                if (!tnc.RunMain(NeedToReload))
+                                {
+                                    lblStatus.Text = "Error: while running tnc.RunMain(NeedToReload)";
+                                    return;
+                                }
+
+                                StringBuilder sbReslt = new StringBuilder();
+                                foreach (TidesAndCurrents.InputAndResult mi in tnc.InputAndResultList)
+                                {
+                                    sbReslt.Append("," + mi.Reslt.ToString("F2"));
+                                    //if (tnc.WLTrueCurFalse)
+                                    //{
+                                    //sb.AppendLine(string.Format("{0:yyyy/MM/dd HH:mm:ss}\t{3:F4}", mi.Date, mi.Longitude, mi.Latitude, mi.Reslt));
+                                    //}
+                                    //else
+                                    //{
+                                    //    sb.AppendLine(string.Format("{0:yyyy/MM/dd HH:mm:ss}\t{3:F4}\t{4:F4}", mi.Date, mi.Longitude, mi.Latitude, mi.Reslt, mi.Reslt2));
+                                    //}
+                                }
+                                string StartDateTxt = tnc.StartDate.ToString("yyyy-MMM-dd");
+                                sb.AppendLine($"{ProvInit},{TVItemIDSS},{subsector},{StartDateTxt}{sbReslt}");
+
+                                //sb.AppendLine($"{ProvInit},{TVItemIDSS},{subsector},{lat.ToString("F6")},{lng.ToString("F6")},{webTideName},{nearCoord.Lat.ToString("F6")},{nearCoord.Lng.ToString("F6")},{dist.ToString("F6")}");
+
+                            }
+
+                            oldWebTideName = webTideName;
+                        }
+                        else
+                        {
+                            //sb.AppendLine($"{ProvInit},{TVItemIDSS},{subsector},{-1},{-1}");
+                        }
+                    }
+                }
+
+
+                //FileInfo fi = new FileInfo($@"C:\ASEC_DATA\Site_{ProvInit}.csv");
+                //StreamWriter sw = fi.CreateText();
+                //sw.WriteLine(sb.ToString());
+                //sw.Flush();
+                //sw.Close();
+
+            }
+            richTextBoxStatus.Text = sb.ToString();
+
+            #endregion Getting Subsector sites mean lat, lng
+
 
             lblStatus.Text = $"Done...";
             lblStatus.Refresh();

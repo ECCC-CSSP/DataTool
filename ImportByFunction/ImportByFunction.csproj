@@ -209,6 +209,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TidesAndCurrents\TidesAndCurrents\TidesAndCurrents.csproj">
+      <Project>{7797afbb-4f16-47ac-a902-606bd9b9d595}</Project>
+      <Name>TidesAndCurrents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OldClimateHydrometric\OldClimateHydrometric.csproj">
       <Project>{52e0ed02-50ab-461b-826b-9276c429e0a8}</Project>
       <Name>OldClimateHydrometric</Name>
