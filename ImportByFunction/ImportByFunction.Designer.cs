@@ -116,6 +116,7 @@
             this.button33 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.button36 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -979,20 +980,32 @@
             // 
             // button36
             // 
-            this.button36.Location = new System.Drawing.Point(887, 163);
+            this.button36.Location = new System.Drawing.Point(841, 163);
             this.button36.Margin = new System.Windows.Forms.Padding(2);
             this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(154, 36);
+            this.button36.Size = new System.Drawing.Size(75, 36);
             this.button36.TabIndex = 235;
             this.button36.Text = "button36";
             this.button36.UseVisualStyleBackColor = true;
             this.button36.Click += new System.EventHandler(this.button36_Click);
+            // 
+            // button37
+            // 
+            this.button37.Location = new System.Drawing.Point(930, 163);
+            this.button37.Margin = new System.Windows.Forms.Padding(2);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(75, 36);
+            this.button37.TabIndex = 235;
+            this.button37.Text = "button37";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
             // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1163, 526);
+            this.Controls.Add(this.button37);
             this.Controls.Add(this.button36);
             this.Controls.Add(this.button35);
             this.Controls.Add(this.button33);
@@ -1174,6 +1187,7 @@
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button37;
     }
 }
 

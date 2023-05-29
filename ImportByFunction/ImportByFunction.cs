@@ -17622,157 +17622,6 @@ namespace ImportByFunction
             }
         }
 
-        private void button37_Click(object sender, EventArgs e)
-        {
-            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
-
-            string ProvInit = "";
-            List<string> ProvInitList = new List<string>()
-            {
-               "NL" //"NB", "PE", "BC", "NL", "NS", "QC",
-            };
-            List<string> ProvList = new List<string>()
-            {
-                  "Newfoundland and Labrador" //"New Brunswick", "Prince Edward Island", "British Columbia", "Newfoundland and Labrador", "Nova Scotia", "Québec",
-            };
-
-            TVItemModel tvItemModelRoot = tvItemService.GetRootTVItemModelDB();
-            if (!string.IsNullOrEmpty(tvItemModelRoot.Error))
-            {
-                return;
-            }
-
-            foreach (string prov in ProvList)
-            {
-
-                TVItemModel tvItemModelProv = tvItemService.GetChildTVItemModelWithTVItemIDAndTVTextStartWithAndTVTypeDB(tvItemModelRoot.TVItemID, prov, TVTypeEnum.Province);
-                for (int i = 0, countProv = ProvList.Count; i < countProv; i++)
-                {
-                    if (ProvList[i] == tvItemModelProv.TVText)
-                    {
-                        ProvInit = ProvInitList[i];
-                        break;
-                    }
-                }
-
-                StringBuilder sb = new StringBuilder();
-
-                sb.AppendLine("Province\tMunicipality\tWWPTorLS\tInfrastructure_Name\tLatitude\tLongitude\tOutfall_Lat\tOutfall_Lng");
-
-                using (CSSPDBEntities db = new CSSPDBEntities())
-                {
-                    var tvItemMuniList = (from t in db.TVItems
-                                          from tl in db.TVItemLanguages
-                                          where t.TVItemID == tl.TVItemID
-                                          && tl.Language == (int)LanguageEnum.en
-                                          && t.TVPath.StartsWith(tvItemModelProv.TVPath + "p")
-                                          && t.TVType == (int)TVTypeEnum.Municipality
-                                          orderby tl.TVText
-                                          select new { t, tl }).ToList();
-
-                    foreach (var tvItemMuni in tvItemMuniList)
-                    {
-                        var InfList = (from t in db.TVItems
-                                       from tl in db.TVItemLanguages
-                                       from inf in db.Infrastructures
-                                       where t.TVItemID == tl.TVItemID
-                                       && t.TVItemID == inf.InfrastructureTVItemID
-                                       && t.TVPath.StartsWith(tvItemMuni.t.TVPath + "p")
-                                       && t.TVType == (int)TVTypeEnum.Infrastructure
-                                       && tl.Language == (int)LanguageEnum.en
-                                       select new { t, tl, inf }).ToList();
-
-                        foreach (var infrastructure in InfList)
-                        {
-                            var MapInfoList = (from mi in db.MapInfos
-                                               from mip in db.MapInfoPoints
-                                               where mi.MapInfoID == mip.MapInfoID
-                                               && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Point
-                                               && mi.TVItemID == infrastructure.t.TVItemID
-                                               select new { mi, mip }).ToList();
-
-                            string provInit = ProvInit;
-                            string municipality = tvItemMuni.tl.TVText;
-                            string wwtpOrLS = "";
-                            string infName = "";
-                            string latitude = "";
-                            string longitude = "";
-                            string outfall_lat = "";
-                            string outfall_lng = "";
-
-                            infName = infrastructure.tl.TVText;
-
-                            if (infrastructure.inf.InfrastructureType == (int)InfrastructureTypeEnum.WWTP)
-                            {
-                                wwtpOrLS = "WWTP";
-
-                                var mapInfo = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.WasteWaterTreatmentPlant).FirstOrDefault();
-                                if (mapInfo != null)
-                                {
-                                    latitude = mapInfo.mip.Lat.ToString();
-                                    longitude = mapInfo.mip.Lng.ToString();
-                                }
-
-                                var mapInfoOutfall = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.Outfall).FirstOrDefault();
-                                if (mapInfoOutfall != null)
-                                {
-                                    outfall_lat = mapInfoOutfall.mip.Lat.ToString();
-                                    outfall_lng = mapInfoOutfall.mip.Lng.ToString();
-                                }
-                            }
-                            else if (infrastructure.inf.InfrastructureType == (int)InfrastructureTypeEnum.LiftStation)
-                            {
-                                wwtpOrLS = "LS";
-
-                                var mapInfo = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.LiftStation).FirstOrDefault();
-                                if (mapInfo != null)
-                                {
-                                    latitude = mapInfo.mip.Lat.ToString();
-                                    longitude = mapInfo.mip.Lng.ToString();
-                                }
-
-                                var mapInfoOutfall = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.Outfall).FirstOrDefault();
-                                if (mapInfoOutfall != null)
-                                {
-                                    outfall_lat = mapInfoOutfall.mip.Lat.ToString();
-                                    outfall_lng = mapInfoOutfall.mip.Lng.ToString();
-                                }
-                            }
-                            else if (infrastructure.inf.InfrastructureType == (int)InfrastructureTypeEnum.LineOverflow)
-                            {
-                                wwtpOrLS = "Line Overflow";
-
-                                var mapInfo = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.LineOverflow).FirstOrDefault();
-                                if (mapInfo != null)
-                                {
-                                    latitude = mapInfo.mip.Lat.ToString();
-                                    longitude = mapInfo.mip.Lng.ToString();
-                                }
-
-                                var mapInfoOutfall = MapInfoList.Where(c => c.mi.TVType == (int)TVTypeEnum.Outfall).FirstOrDefault();
-                                if (mapInfoOutfall != null)
-                                {
-                                    outfall_lat = mapInfoOutfall.mip.Lat.ToString();
-                                    outfall_lng = mapInfoOutfall.mip.Lng.ToString();
-                                }
-                            }
-                            else
-                            {
-                                continue;
-                            }
-
-                            sb.AppendLine($"{provInit}\t{municipality}\t{wwtpOrLS}\t{infName}\t{latitude}\t{longitude}\t{outfall_lat}\t{outfall_lng}");
-
-                            richTextBoxStatus.Text = sb.ToString();
-                        }
-                    }
-                }
-
-                lblStatus.Text = "done ... " + ProvInit;
-            }
-
-        }
-
         private void button32_Click(object sender, EventArgs e)
         {
             //DoButton32();
@@ -20234,7 +20083,7 @@ namespace ImportByFunction
                                 return;
                             }
                             #endregion get nearcoord, dist and webTideName
-                        
+
                             tnc.Steps = 60D;
 
                             //FileInfo fi = new FileInfo(Application.ExecutablePath);
@@ -20253,9 +20102,18 @@ namespace ImportByFunction
 
                             var MWQMRunList = (from c in db.MWQMRuns
                                                where c.SubsectorTVItemID == TVItemIDSS
-                                               && c.Tide_h0_m == null
+                                               //&& c.Tide_h0_m == null
                                                orderby c.DateTime_Local
                                                select c).ToList();
+
+                            // the time zone running this app is Atlantic so if you run this app with a different time zone you should re-adjust the next few lines of code
+                            TimeZone tz = TimeZone.CurrentTimeZone;
+
+                            if (tz.StandardName != "Atlantic Standard Time")
+                            {
+                                lblStatus.Text = "Make sure you change the code to reflect the right time zone";
+                                return;
+                            }
 
                             foreach (MWQMRun mwqmRun in MWQMRunList)
                             {
@@ -20263,8 +20121,39 @@ namespace ImportByFunction
                                 lblStatus.Refresh();
                                 Application.DoEvents();
 
-                                tnc.StartDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day, 0, 0, 0);
-                                tnc.EndDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day, 0, 0, 0).AddDays(1).AddHours(7);
+                                TimeSpan ts = tz.GetUtcOffset(tnc.StartDate);
+
+                                int GMTDiff = ts.Hours * -1;
+                                
+                                if (ProvInit == "QC")
+                                {
+                                    tnc.StartDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff + 1);
+                                    tnc.EndDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff + 1).AddDays(1).AddHours(7);
+
+                                    if (subsector.StartsWith("A"))
+                                    {
+                                        tnc.StartDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff);
+                                        tnc.EndDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff).AddDays(1).AddHours(7);
+                                    }
+                                }
+                                else if (ProvInit == "NL")
+                                {
+                                    tnc.StartDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff - 0.5f);
+                                    tnc.EndDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff - 0.5f).AddDays(1).AddHours(7);
+                                }
+                                else if (ProvInit == "BC")
+                                {
+                                    tnc.StartDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff + 4);
+                                    tnc.EndDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff + 4).AddDays(1).AddHours(7);
+                                }
+                                else
+                                {
+                                    tnc.StartDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff);
+                                    tnc.EndDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff).AddDays(1).AddHours(7);
+                                }
+
+                                //tnc.StartDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day, 0, 0, 0);
+                                //tnc.EndDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day, 0, 0, 0).AddDays(1).AddHours(7);
                                 tnc.Longitude = nearCoord.Lng;
                                 tnc.Latitude = nearCoord.Lat;
 
@@ -20426,6 +20315,538 @@ namespace ImportByFunction
             Application.DoEvents();
         }
 
+        private void button37_Click(object sender, EventArgs e)
+        {
+            TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+            TVItemService tvItemServiceR = new TVItemService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemServiceR.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            List<string> ProvList = new List<string>()
+            {
+                "Newfoundland and Labrador", "New Brunswick",  "Nova Scotia", "Prince Edward Island", "British Columbia", "Québec",
+            };
+            List<string> ProvInitList = new List<string>()
+            {
+                "NL", "NB",  "NS", "PE", "BC", "QC",
+            };
+
+            StringBuilder sb = new StringBuilder();
+
+            #region Getting Subsector sites mean lat, lng
+            for (int i = 0; i < 6; i++)
+            {
+                string ProvStr = ProvList[i];
+                string ProvInit = ProvInitList[i];
+
+                TVItemModel tvItemModelProv = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, ProvStr, TVTypeEnum.Province);
+                if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+                List<TVItemModel> tvItemModelSubsectorList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+                if (tvItemModelSubsectorList.Count == 0)
+                {
+                    richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                    return;
+                }
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    foreach (TVItemModel tvItemModelSubsector in tvItemModelSubsectorList)
+                    {
+                        int TVItemIDSS = tvItemModelSubsector.TVItemID;
+
+                        lblStatus.Text = "Doing " + tvItemModelSubsector.TVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        string subsector = tvItemModelSubsector.TVText;
+                        if (tvItemModelSubsector.TVText.Contains(" "))
+                        {
+                            subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
+                        }
+
+
+                        List<MWQMRun> MWQMRunList = (from c in db.MWQMRuns
+                                                     where c.SubsectorTVItemID == TVItemIDSS
+                                                     && c.Tide_h0_m != null
+                                                     orderby c.DateTime_Local descending
+                                                     select c).ToList();
+
+                        List<MWQMSampleModel> MWQMSampleModelList = mwqmSampleService.GetMWQMSampleModelListWithSubsectorTVItemIDDB(TVItemIDSS);
+
+                        foreach (MWQMRun mwqmRun in MWQMRunList)
+                        {
+                            string DateText = mwqmRun.DateTime_Local.ToString("yyyy-MMM-dd");
+
+                            lblStatus.Text = $"{ProvInit} - {subsector} - {DateText}";
+                            lblStatus.Refresh();
+                            Application.DoEvents();
+
+                            #region Checking that none of the tide values is null
+                            if (mwqmRun.Tide_h0_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h0_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h1_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h1_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h2_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h2_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h3_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h3_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h4_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h4_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h5_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h5_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h6_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h6_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h7_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h7_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h8_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h8_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h9_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h9_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h10_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h10_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h11_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h11_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h12_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h12_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h13_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h13_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h14_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h14_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h15_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h15_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h16_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h16_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h17_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h17_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h18_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h18_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h19_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h19_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h20_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h20_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h21_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h21_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h22_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h22_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h23_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h23_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h24_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h24_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h25_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h25_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h26_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h26_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h27_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h27_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h28_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h28_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h29_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h29_m is null";
+                                return;
+                            }
+                            if (mwqmRun.Tide_h30_m == null)
+                            {
+                                lblStatus.Text = "mwqmRun.Tide_h30_m is null";
+                                return;
+                            }
+                            #endregion Checking that none of the tide values is null
+
+                            List<float> TideByHourList = new List<float>()
+                            {
+                                (float)mwqmRun.Tide_h0_m,
+                                (float)mwqmRun.Tide_h1_m,
+                                (float)mwqmRun.Tide_h2_m,
+                                (float)mwqmRun.Tide_h3_m,
+                                (float)mwqmRun.Tide_h4_m,
+                                (float)mwqmRun.Tide_h5_m,
+                                (float)mwqmRun.Tide_h6_m,
+                                (float)mwqmRun.Tide_h7_m,
+                                (float)mwqmRun.Tide_h8_m,
+                                (float)mwqmRun.Tide_h9_m,
+                                (float)mwqmRun.Tide_h10_m,
+                                (float)mwqmRun.Tide_h11_m,
+                                (float)mwqmRun.Tide_h12_m,
+                                (float)mwqmRun.Tide_h13_m,
+                                (float)mwqmRun.Tide_h14_m,
+                                (float)mwqmRun.Tide_h15_m,
+                                (float)mwqmRun.Tide_h16_m,
+                                (float)mwqmRun.Tide_h17_m,
+                                (float)mwqmRun.Tide_h18_m,
+                                (float)mwqmRun.Tide_h19_m,
+                                (float)mwqmRun.Tide_h20_m,
+                                (float)mwqmRun.Tide_h21_m,
+                                (float)mwqmRun.Tide_h22_m,
+                                (float)mwqmRun.Tide_h23_m,
+                                (float)mwqmRun.Tide_h24_m,
+                                (float)mwqmRun.Tide_h25_m,
+                                (float)mwqmRun.Tide_h26_m,
+                                (float)mwqmRun.Tide_h27_m,
+                                (float)mwqmRun.Tide_h28_m,
+                                (float)mwqmRun.Tide_h29_m,
+                                (float)mwqmRun.Tide_h30_m,
+                            };
+
+                            float TideMax = TideByHourList.Max();
+                            float TideMin = TideByHourList.Min();
+
+                            float MinMidTide = TideMin + ((TideMax - TideMin) * (1.0f / 3.0f));
+                            float MaxMidTide = TideMin + ((TideMax - TideMin) * (2.0f / 3.0f));
+
+                            List<MWQMSampleModel> mwqmSampleModelRunList = (from c in MWQMSampleModelList
+                                                                            where c.MWQMRunTVItemID == mwqmRun.MWQMRunTVItemID
+                                                                            orderby c.SampleDateTime_Local
+                                                                            select c).ToList();
+
+                            MWQMSampleModel mwqmSampleModelStart = (from c in mwqmSampleModelRunList
+                                                                    select c).FirstOrDefault();
+
+                            MWQMSampleModel mwqmSampleModelEnd = (from c in mwqmSampleModelRunList
+                                                                  orderby c.SampleDateTime_Local descending
+                                                                  select c).FirstOrDefault();
+
+                            if (mwqmSampleModelStart != null && mwqmSampleModelEnd != null)
+                            {
+
+                                string StartTideTxt = "";
+                                string EndTideTxt = "";
+
+                                TideTextEnum StartTide = TideTextEnum.Error;
+                                TideTextEnum EndTide = TideTextEnum.Error;
+
+                                if (mwqmSampleModelStart.SampleDateTime_Local.Hour != 0 && mwqmSampleModelEnd.SampleDateTime_Local.Hour != 0)
+                                {
+                                    int HourStart = mwqmSampleModelStart.SampleDateTime_Local.Hour;
+                                    int HourEnd = mwqmSampleModelEnd.SampleDateTime_Local.Hour;
+
+                                    if (TideByHourList[HourStart] < MinMidTide)
+                                    {
+                                        StartTideTxt = "L";
+                                    }
+                                    else if (TideByHourList[HourStart] > MaxMidTide)
+                                    {
+                                        StartTideTxt = "H";
+                                    }
+                                    else
+                                    {
+                                        StartTideTxt = "M";
+                                    }
+
+                                    if (TideByHourList[HourStart - 1] < TideByHourList[HourStart] || TideByHourList[HourStart] < TideByHourList[HourStart + 1])
+                                    {
+                                        StartTideTxt += "R";
+                                    }
+                                    else if (TideByHourList[HourStart - 1] > TideByHourList[HourStart] || TideByHourList[HourStart] > TideByHourList[HourStart + 1])
+                                    {
+                                        StartTideTxt += "F";
+                                    }
+                                    else
+                                    {
+                                        StartTideTxt += "T";
+                                    }
+
+                                    if (TideByHourList[HourEnd] < MinMidTide)
+                                    {
+                                        EndTideTxt = "L";
+                                    }
+                                    else if (TideByHourList[HourEnd] > MaxMidTide)
+                                    {
+                                        EndTideTxt = "H";
+                                    }
+                                    else
+                                    {
+                                        EndTideTxt = "M";
+                                    }
+
+                                    if (TideByHourList[HourEnd - 1] < TideByHourList[HourEnd] || TideByHourList[HourEnd] < TideByHourList[HourEnd + 1])
+                                    {
+                                        EndTideTxt += "R";
+                                    }
+                                    else if (TideByHourList[HourEnd - 1] > TideByHourList[HourEnd] || TideByHourList[HourEnd] > TideByHourList[HourEnd + 1])
+                                    {
+                                        EndTideTxt += "F";
+                                    }
+                                    else
+                                    {
+                                        EndTideTxt += "T";
+                                    }
+
+                                    switch (StartTideTxt)
+                                    {
+                                        case "LR":
+                                            StartTide = TideTextEnum.LowTideRising;
+                                            break;
+                                        case "LF":
+                                            StartTide = TideTextEnum.LowTideFalling;
+                                            break;
+                                        case "LT":
+                                            StartTide = TideTextEnum.LowTide;
+                                            break;
+                                        case "MR":
+                                            StartTide = TideTextEnum.MidTideRising;
+                                            break;
+                                        case "MF":
+                                            StartTide = TideTextEnum.MidTideFalling;
+                                            break;
+                                        case "MT":
+                                            StartTide = TideTextEnum.MidTide;
+                                            break;
+                                        case "HR":
+                                            StartTide = TideTextEnum.HighTideRising;
+                                            break;
+                                        case "HF":
+                                            StartTide = TideTextEnum.HighTideFalling;
+                                            break;
+                                        case "HT":
+                                            StartTide = TideTextEnum.HighTide;
+                                            break;
+                                        default:
+                                            break;
+
+                                    }
+
+                                    switch (EndTideTxt)
+                                    {
+                                        case "LR":
+                                            EndTide = TideTextEnum.LowTideRising;
+                                            break;
+                                        case "LF":
+                                            EndTide = TideTextEnum.LowTideFalling;
+                                            break;
+                                        case "LT":
+                                            EndTide = TideTextEnum.LowTide;
+                                            break;
+                                        case "MR":
+                                            EndTide = TideTextEnum.MidTideRising;
+                                            break;
+                                        case "MF":
+                                            EndTide = TideTextEnum.MidTideFalling;
+                                            break;
+                                        case "MT":
+                                            EndTide = TideTextEnum.MidTide;
+                                            break;
+                                        case "HR":
+                                            EndTide = TideTextEnum.HighTideRising;
+                                            break;
+                                        case "HF":
+                                            EndTide = TideTextEnum.HighTideFalling;
+                                            break;
+                                        case "HT":
+                                            EndTide = TideTextEnum.HighTide;
+                                            break;
+                                        default:
+                                            break;
+
+                                    }
+                                }
+
+                                mwqmRun.Tide_Start_From_WebTide = (int)StartTide;
+                                mwqmRun.Tide_End_From_WebTide = (int)EndTide;
+
+                                //string RunStartTideTxt = "";
+                                //string RunEndTideTxt = "";
+
+                                //switch((TideTextEnum)mwqmRun.Tide_Start)
+                                //{
+                                //    case TideTextEnum.LowTide:
+                                //        RunStartTideTxt = "LT";
+                                //        break;
+                                //    case TideTextEnum.LowTideFalling:
+                                //        RunStartTideTxt = "LF";
+                                //        break;
+                                //    case TideTextEnum.LowTideRising:
+                                //        RunStartTideTxt = "LR";
+                                //        break;
+                                //    case TideTextEnum.MidTide:
+                                //        RunStartTideTxt = "MT";
+                                //        break;
+                                //    case TideTextEnum.MidTideFalling:
+                                //        RunStartTideTxt = "MF";
+                                //        break;
+                                //    case TideTextEnum.MidTideRising:
+                                //        RunStartTideTxt = "MR";
+                                //        break;
+                                //    case TideTextEnum.HighTide:
+                                //        RunStartTideTxt = "HT";
+                                //        break;
+                                //    case TideTextEnum.HighTideFalling:
+                                //        RunStartTideTxt = "HF";
+                                //        break;
+                                //    case TideTextEnum.HighTideRising:
+                                //        RunStartTideTxt = "HR";
+                                //        break;
+                                //}
+                                //switch ((TideTextEnum)mwqmRun.Tide_End)
+                                //{
+                                //    case TideTextEnum.LowTide:
+                                //        RunEndTideTxt = "LT";
+                                //        break;
+                                //    case TideTextEnum.LowTideFalling:
+                                //        RunEndTideTxt = "LF";
+                                //        break;
+                                //    case TideTextEnum.LowTideRising:
+                                //        RunEndTideTxt = "LR";
+                                //        break;
+                                //    case TideTextEnum.MidTide:
+                                //        RunEndTideTxt = "MT";
+                                //        break;
+                                //    case TideTextEnum.MidTideFalling:
+                                //        RunEndTideTxt = "MF";
+                                //        break;
+                                //    case TideTextEnum.MidTideRising:
+                                //        RunEndTideTxt = "MR";
+                                //        break;
+                                //    case TideTextEnum.HighTide:
+                                //        RunEndTideTxt = "HT";
+                                //        break;
+                                //    case TideTextEnum.HighTideFalling:
+                                //        RunEndTideTxt = "HF";
+                                //        break;
+                                //    case TideTextEnum.HighTideRising:
+                                //        RunEndTideTxt = "HR";
+                                //        break;
+                                //}
+
+                                //bool StartOK = mwqmRun.Tide_Start == (int)StartTide ? true : false;
+                                //bool EndOK = mwqmRun.Tide_End == (int)EndTide ? true : false;
+
+                                //sb.AppendLine($"{RunStartTideTxt} - {StartTideTxt} --- {RunEndTideTxt} - {EndTideTxt}");
+                                //sb.AppendLine($"{ProvInit} - {subsector} - {DateText} - {StartOK} - {EndOK}");
+                                //sb.AppendLine($"Start Time {mwqmSampleModelStart.SampleDateTime_Local} - End Time {mwqmSampleModelEnd.SampleDateTime_Local}");
+
+                                //string TideValueText = "";
+                                //int countTideValue = 0;
+                                //foreach (float f in TideByHourList)
+                                //{
+                                //    TideValueText += countTideValue.ToString() + "[" + f.ToString("F2") + "] ";
+                                //    countTideValue += 1;
+                                //}
+                                //sb.AppendLine($"Tide Values {TideValueText}");
+
+                                //sb.AppendLine($"Start Tide In DB {((TideTextEnum)mwqmRun.Tide_Start).ToString()} - {StartTide.ToString()} - End Tide in DB {((TideTextEnum)mwqmRun.Tide_End)} - {EndTide.ToString()}");
+                                //sb.AppendLine("");
+                            }
+                        }
+
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            lblStatus.Text = ex.Message;
+                            return;
+                        }
+                    }
+
+                    richTextBoxStatus.Text = sb.ToString();
+
+                    //FileInfo fi = new FileInfo($@"C:\ASEC_DATA\Site_{ProvInit}.csv");
+                    //StreamWriter sw = fi.CreateText();
+                    //sw.WriteLine(sb.ToString());
+                    //sw.Flush();
+                    //sw.Close();
+
+                }
+                //richTextBoxStatus.Text = sb.ToString();
+            }
+            #endregion Getting Subsector sites mean lat, lng
+
+        }
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
@@ -20616,5 +21037,4 @@ namespace ImportByFunction
         public List<Coord> CoordList { get; set; }
         public Coord Centroid { get; set; }
     }
-
 }
