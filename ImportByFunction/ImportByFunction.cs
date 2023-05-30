@@ -19329,7 +19329,7 @@ namespace ImportByFunction
 
                 TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
-                sb.AppendLine("Province,RunID,SectorID,Sector,Date,RainDay0_mm,RainDay1_mm,RainDay2_mm,RainDay3_mm,RainDay4_mm,RainDay5_mm,RainDay6_mm,RainDay7_mm,RainDay8_mm,RainDay9_mm,RainDay10_mm");
+                sb.AppendLine("Province,RunID,SectorID,Sector,Date,RainDay0_mm,RainDay1_mm,RainDay2_mm,RainDay3_mm,RainDay4_mm,RainDay5_mm,RainDay6_mm,RainDay7_mm,RainDay8_mm,RainDay9_mm,RainDay10_mm,Tide_Start,Tide_End,Tide_h0,Tide_h1,Tide_h2,Tide_h3,Tide_h4,Tide_h5,Tide_h6,Tide_h7,Tide_h8,Tide_h9,Tide_h10,Tide_h11,Tide_h12,Tide_h13,Tide_h14,Tide_h15,Tide_h16,Tide_h17,Tide_h18,Tide_h19,Tide_h20,Tide_h21,Tide_h22,Tide_h23,Tide_h24,Tide_h25,Tide_h26,Tide_h27,Tide_h28,Tide_h29,Tide_h30,Tide_Start_WT,Tide_End_WT");
 
                 using (CSSPDBEntities db = new CSSPDBEntities())
                 {
@@ -19380,7 +19380,202 @@ namespace ImportByFunction
                             lblStatus.Refresh();
                             Application.DoEvents();
 
-                            sb.AppendLine($"{ProvInit},{mwqmRun.MWQMRunTVItemID},{tvItemModelSubsector.TVItemID},{subsector},{mwqmRun.DateTime_Local.ToString("yyyy-MM-dd")},{mwqmRun.RainDay0_mm},{mwqmRun.RainDay1_mm},{mwqmRun.RainDay2_mm},{mwqmRun.RainDay3_mm},{mwqmRun.RainDay4_mm},{mwqmRun.RainDay5_mm},{mwqmRun.RainDay6_mm},{mwqmRun.RainDay7_mm},{mwqmRun.RainDay8_mm},{mwqmRun.RainDay9_mm},{mwqmRun.RainDay10_mm}");
+                            string TideStartTxt = "";
+                            switch (mwqmRun.Tide_Start)
+                            {
+                                case ((int)TideTextEnum.LowTide):
+                                    TideStartTxt = "LT";
+                                    break;
+                                case ((int)TideTextEnum.LowTideFalling):
+                                    TideStartTxt = "LF";
+                                    break;
+                                case ((int)TideTextEnum.LowTideRising):
+                                    TideStartTxt = "LR";
+                                    break;
+                                case ((int)TideTextEnum.MidTide):
+                                    TideStartTxt = "MT";
+                                    break;
+                                case ((int)TideTextEnum.MidTideFalling):
+                                    TideStartTxt = "MF";
+                                    break;
+                                case ((int)TideTextEnum.MidTideRising):
+                                    TideStartTxt = "MR";
+                                    break;
+                                case ((int)TideTextEnum.HighTide):
+                                    TideStartTxt = "HT";
+                                    break;
+                                case ((int)TideTextEnum.HighTideFalling):
+                                    TideStartTxt = "HF";
+                                    break;
+                                case ((int)TideTextEnum.HighTideRising):
+                                    TideStartTxt = "HR";
+                                    break;
+                                default:
+                                    TideStartTxt = "E";
+                                    break;
+                            }
+
+                            string TideEndTxt = "";
+                            switch (mwqmRun.Tide_End)
+                            {
+                                case ((int)TideTextEnum.LowTide):
+                                    TideEndTxt = "LT";
+                                    break;
+                                case ((int)TideTextEnum.LowTideFalling):
+                                    TideEndTxt = "LF";
+                                    break;
+                                case ((int)TideTextEnum.LowTideRising):
+                                    TideEndTxt = "LR";
+                                    break;
+                                case ((int)TideTextEnum.MidTide):
+                                    TideEndTxt = "MT";
+                                    break;
+                                case ((int)TideTextEnum.MidTideFalling):
+                                    TideEndTxt = "MF";
+                                    break;
+                                case ((int)TideTextEnum.MidTideRising):
+                                    TideEndTxt = "MR";
+                                    break;
+                                case ((int)TideTextEnum.HighTide):
+                                    TideEndTxt = "HT";
+                                    break;
+                                case ((int)TideTextEnum.HighTideFalling):
+                                    TideEndTxt = "HF";
+                                    break;
+                                case ((int)TideTextEnum.HighTideRising):
+                                    TideEndTxt = "HR";
+                                    break;
+                                default:
+                                    TideEndTxt = "E";
+                                    break;
+                            }
+
+                            string TideStartWTTxt = "";
+                            switch (mwqmRun.Tide_Start)
+                            {
+                                case ((int)TideTextEnum.LowTide):
+                                    TideStartWTTxt = "LT";
+                                    break;
+                                case ((int)TideTextEnum.LowTideFalling):
+                                    TideStartWTTxt = "LF";
+                                    break;
+                                case ((int)TideTextEnum.LowTideRising):
+                                    TideStartWTTxt = "LR";
+                                    break;
+                                case ((int)TideTextEnum.MidTide):
+                                    TideStartWTTxt = "MT";
+                                    break;
+                                case ((int)TideTextEnum.MidTideFalling):
+                                    TideStartWTTxt = "MF";
+                                    break;
+                                case ((int)TideTextEnum.MidTideRising):
+                                    TideStartWTTxt = "MR";
+                                    break;
+                                case ((int)TideTextEnum.HighTide):
+                                    TideStartWTTxt = "HT";
+                                    break;
+                                case ((int)TideTextEnum.HighTideFalling):
+                                    TideStartWTTxt = "HF";
+                                    break;
+                                case ((int)TideTextEnum.HighTideRising):
+                                    TideStartWTTxt = "HR";
+                                    break;
+                                default:
+                                    TideStartWTTxt = "E";
+                                    break;
+                            }
+
+                            string TideEndWTTxt = "";
+                            switch (mwqmRun.Tide_End)
+                            {
+                                case ((int)TideTextEnum.LowTide):
+                                    TideEndWTTxt = "LT";
+                                    break;
+                                case ((int)TideTextEnum.LowTideFalling):
+                                    TideEndWTTxt = "LF";
+                                    break;
+                                case ((int)TideTextEnum.LowTideRising):
+                                    TideEndWTTxt = "LR";
+                                    break;
+                                case ((int)TideTextEnum.MidTide):
+                                    TideEndWTTxt = "MT";
+                                    break;
+                                case ((int)TideTextEnum.MidTideFalling):
+                                    TideEndWTTxt = "MF";
+                                    break;
+                                case ((int)TideTextEnum.MidTideRising):
+                                    TideEndWTTxt = "MR";
+                                    break;
+                                case ((int)TideTextEnum.HighTide):
+                                    TideEndWTTxt = "HT";
+                                    break;
+                                case ((int)TideTextEnum.HighTideFalling):
+                                    TideEndWTTxt = "HF";
+                                    break;
+                                case ((int)TideTextEnum.HighTideRising):
+                                    TideEndWTTxt = "HR";
+                                    break;
+                                default:
+                                    TideEndWTTxt = "E";
+                                    break;
+                            }
+                            //string TideStartTxt = mwqmRun.Tide_Start != null ? ((TideTextEnum)mwqmRun.Tide_Start).ToString() : TideTextEnum.Error.ToString();
+                            //string TideEndTxt = mwqmRun.Tide_End != null ? ((TideTextEnum)mwqmRun.Tide_End).ToString() : TideTextEnum.Error.ToString();
+                            //string TideStartWTTxt = mwqmRun.Tide_Start_From_WebTide != null ? ((TideTextEnum)mwqmRun.Tide_Start_From_WebTide).ToString() : TideTextEnum.Error.ToString();
+                            //string TideEndWTTxt = mwqmRun.Tide_End_From_WebTide != null ? ((TideTextEnum)mwqmRun.Tide_End_From_WebTide).ToString() : TideTextEnum.Error.ToString();
+
+                            List<string> TideHourList = new List<string>()
+                            {
+                                mwqmRun.Tide_h0_m != null ? ((float)mwqmRun.Tide_h0_m).ToString("F2") : "",
+                                mwqmRun.Tide_h1_m != null ? ((float)mwqmRun.Tide_h1_m).ToString("F2") : "",
+                                mwqmRun.Tide_h2_m != null ? ((float)mwqmRun.Tide_h2_m).ToString("F2") : "",
+                                mwqmRun.Tide_h3_m != null ? ((float)mwqmRun.Tide_h3_m).ToString("F2") : "",
+                                mwqmRun.Tide_h4_m != null ? ((float)mwqmRun.Tide_h4_m).ToString("F2") : "",
+                                mwqmRun.Tide_h5_m != null ? ((float)mwqmRun.Tide_h5_m).ToString("F2") : "",
+                                mwqmRun.Tide_h6_m != null ? ((float)mwqmRun.Tide_h6_m).ToString("F2") : "",
+                                mwqmRun.Tide_h7_m != null ? ((float)mwqmRun.Tide_h7_m).ToString("F2") : "",
+                                mwqmRun.Tide_h8_m != null ? ((float)mwqmRun.Tide_h8_m).ToString("F2") : "",
+                                mwqmRun.Tide_h9_m != null ? ((float)mwqmRun.Tide_h9_m).ToString("F2") : "",
+                                mwqmRun.Tide_h10_m != null ? ((float)mwqmRun.Tide_h10_m).ToString("F2") : "",
+                                mwqmRun.Tide_h11_m != null ? ((float)mwqmRun.Tide_h11_m).ToString("F2") : "",
+                                mwqmRun.Tide_h12_m != null ? ((float)mwqmRun.Tide_h12_m).ToString("F2") : "",
+                                mwqmRun.Tide_h13_m != null ? ((float)mwqmRun.Tide_h13_m).ToString("F2") : "",
+                                mwqmRun.Tide_h14_m != null ? ((float)mwqmRun.Tide_h14_m).ToString("F2") : "",
+                                mwqmRun.Tide_h15_m != null ? ((float)mwqmRun.Tide_h15_m).ToString("F2") : "",
+                                mwqmRun.Tide_h16_m != null ? ((float)mwqmRun.Tide_h16_m).ToString("F2") : "",
+                                mwqmRun.Tide_h17_m != null ? ((float)mwqmRun.Tide_h17_m).ToString("F2") : "",
+                                mwqmRun.Tide_h18_m != null ? ((float)mwqmRun.Tide_h18_m).ToString("F2") : "",
+                                mwqmRun.Tide_h19_m != null ? ((float)mwqmRun.Tide_h19_m).ToString("F2") : "",
+                                mwqmRun.Tide_h20_m != null ? ((float)mwqmRun.Tide_h20_m).ToString("F2") : "",
+                                mwqmRun.Tide_h21_m != null ? ((float)mwqmRun.Tide_h21_m).ToString("F2") : "",
+                                mwqmRun.Tide_h22_m != null ? ((float)mwqmRun.Tide_h22_m).ToString("F2") : "",
+                                mwqmRun.Tide_h23_m != null ? ((float)mwqmRun.Tide_h23_m).ToString("F2") : "",
+                                mwqmRun.Tide_h24_m != null ? ((float)mwqmRun.Tide_h24_m).ToString("F2") : "",
+                                mwqmRun.Tide_h25_m != null ? ((float)mwqmRun.Tide_h25_m).ToString("F2") : "",
+                                mwqmRun.Tide_h26_m != null ? ((float)mwqmRun.Tide_h26_m).ToString("F2") : "",
+                                mwqmRun.Tide_h27_m != null ? ((float)mwqmRun.Tide_h27_m).ToString("F2") : "",
+                                mwqmRun.Tide_h28_m != null ? ((float)mwqmRun.Tide_h28_m).ToString("F2") : "",
+                                mwqmRun.Tide_h29_m != null ? ((float)mwqmRun.Tide_h29_m).ToString("F2") : "",
+                                mwqmRun.Tide_h30_m != null ? ((float)mwqmRun.Tide_h30_m).ToString("F2") : "",
+                            };
+
+                            List<string> RainTxtList = new List<string>()
+                            {
+                                mwqmRun.RainDay0_mm != null ? ((float)mwqmRun.RainDay0_mm).ToString("F2") : "",
+                                mwqmRun.RainDay1_mm != null ? ((float)mwqmRun.RainDay1_mm).ToString("F2") : "",
+                                mwqmRun.RainDay2_mm != null ? ((float)mwqmRun.RainDay2_mm).ToString("F2") : "",
+                                mwqmRun.RainDay3_mm != null ? ((float)mwqmRun.RainDay3_mm).ToString("F2") : "",
+                                mwqmRun.RainDay4_mm != null ? ((float)mwqmRun.RainDay4_mm).ToString("F2") : "",
+                                mwqmRun.RainDay5_mm != null ? ((float)mwqmRun.RainDay5_mm).ToString("F2") : "",
+                                mwqmRun.RainDay6_mm != null ? ((float)mwqmRun.RainDay6_mm).ToString("F2") : "",
+                                mwqmRun.RainDay7_mm != null ? ((float)mwqmRun.RainDay7_mm).ToString("F2") : "",
+                                mwqmRun.RainDay8_mm != null ? ((float)mwqmRun.RainDay8_mm).ToString("F2") : "",
+                                mwqmRun.RainDay9_mm != null ? ((float)mwqmRun.RainDay9_mm).ToString("F2") : "",
+                                mwqmRun.RainDay10_mm != null ? ((float)mwqmRun.RainDay10_mm).ToString("F2") : "",
+                            };
+
+
+                            sb.AppendLine($"{ProvInit},{mwqmRun.MWQMRunTVItemID},{tvItemModelSubsector.TVItemID},{subsector},{mwqmRun.DateTime_Local.ToString("yyyy-MM-dd")},{RainTxtList[0]},{RainTxtList[1]},{RainTxtList[2]},{RainTxtList[3]},{RainTxtList[4]},{RainTxtList[5]},{RainTxtList[6]},{RainTxtList[7]},{RainTxtList[8]},{RainTxtList[9]},{RainTxtList[10]},{TideStartTxt},{TideEndTxt},{TideHourList[0]},{TideHourList[1]},{TideHourList[2]},{TideHourList[3]},{TideHourList[4]},{TideHourList[5]},{TideHourList[6]},{TideHourList[7]},{TideHourList[8]},{TideHourList[9]},{TideHourList[10]},{TideHourList[11]},{TideHourList[12]},{TideHourList[13]},{TideHourList[14]},{TideHourList[15]},{TideHourList[16]},{TideHourList[17]},{TideHourList[18]},{TideHourList[19]},{TideHourList[20]},{TideHourList[21]},{TideHourList[22]},{TideHourList[23]},{TideHourList[24]},{TideHourList[25]},{TideHourList[26]},{TideHourList[27]},{TideHourList[28]},{TideHourList[29]},{TideHourList[30]},{TideStartWTTxt},{TideEndWTTxt}");
                         }
                     }
                 }
@@ -19414,7 +19609,7 @@ namespace ImportByFunction
 
                 TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
 
-                sb.AppendLine("Province,RunID,SectorID,Sector,SiteID,Site,Date,FC_MPN_100_mL,Temp_C,Sal_PPT,Depth_m");
+                sb.AppendLine("Province,RunID,SectorID,Sector,SiteID,Site,DateTime,FC_MPN_100_mL,Temp_C,Sal_PPT");
 
                 using (CSSPDBEntities db = new CSSPDBEntities())
                 {
@@ -19488,7 +19683,7 @@ namespace ImportByFunction
                                 string sal = mwqmSample.Salinity_PPT == null ? "" : ((double)mwqmSample.Salinity_PPT).ToString("F1");
                                 string d = mwqmSample.Depth_m == null ? "" : ((double)mwqmSample.Depth_m).ToString("F1");
 
-                                sb.AppendLine($"{ProvInit},{mwqmSample.MWQMRunTVItemID},{tvItemModelSubsector.TVItemID},{subsector},{site.c.TVItemID},{ProvInit}_{site.cl.TVText},{mwqmSample.SampleDateTime_Local.ToString("yyyy-MM-dd HH:mm")},{fc},{temp},{sal},{d}");
+                                sb.AppendLine($"{ProvInit},{mwqmSample.MWQMRunTVItemID},{tvItemModelSubsector.TVItemID},{subsector},{site.c.TVItemID},{ProvInit}_{site.cl.TVText},{mwqmSample.SampleDateTime_Local.ToString("yyyy-MM-dd HH:mm")},{fc},{temp},{sal}");
                             }
                         }
                     }
