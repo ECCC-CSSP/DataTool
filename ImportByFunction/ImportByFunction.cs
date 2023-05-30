@@ -19451,7 +19451,7 @@ namespace ImportByFunction
                             }
 
                             string TideStartWTTxt = "";
-                            switch (mwqmRun.Tide_Start)
+                            switch (mwqmRun.Tide_Start_From_WebTide)
                             {
                                 case ((int)TideTextEnum.LowTide):
                                     TideStartWTTxt = "LT";
@@ -19486,7 +19486,7 @@ namespace ImportByFunction
                             }
 
                             string TideEndWTTxt = "";
-                            switch (mwqmRun.Tide_End)
+                            switch (mwqmRun.Tide_End_From_WebTide)
                             {
                                 case ((int)TideTextEnum.LowTide):
                                     TideEndWTTxt = "LT";
