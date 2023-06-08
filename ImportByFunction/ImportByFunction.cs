@@ -20319,7 +20319,7 @@ namespace ImportByFunction
                                 TimeSpan ts = tz.GetUtcOffset(tnc.StartDate);
 
                                 int GMTDiff = ts.Hours * -1;
-                                
+
                                 if (ProvInit == "QC")
                                 {
                                     tnc.StartDate = new DateTime(mwqmRun.DateTime_Local.Year, mwqmRun.DateTime_Local.Month, mwqmRun.DateTime_Local.Day).AddHours(GMTDiff + 1);
@@ -21040,6 +21040,224 @@ namespace ImportByFunction
                 //richTextBoxStatus.Text = sb.ToString();
             }
             #endregion Getting Subsector sites mean lat, lng
+
+        }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            List<string> ProvList = new List<string>()
+            {
+                /*"Newfoundland and Labrador", "New Brunswick",  "Nova Scotia", "Prince Edward Island", "British Columbia",*/ "Québec",
+            };
+            List<string> ProvInitList = new List<string>()
+            {
+                /*"NL", "NB",  "NS", "PE", "BC",*/ "QC",
+            };
+
+            TVItemService tvItemServiceR = new TVItemService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemServiceR.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            #region doing SectorSite_xx.kml
+            for (int i = 0; i < 1; i++)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                string ProvStr = ProvList[i];
+                string ProvInit = ProvInitList[i];
+
+                sb.AppendLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+                sb.AppendLine(@"<kml xmlns=""http://www.opengis.net/kml/2.2"" xmlns:gx=""http://www.google.com/kml/ext/2.2"" xmlns:kml=""http://www.opengis.net/kml/2.2"" xmlns:atom=""http://www.w3.org/2005/Atom"">");
+                sb.AppendLine("<Document>");
+                sb.AppendLine($"	<name>QCSectorSitesDepth.kml</name>");
+                sb.AppendLine("	<visibility>0</visibility>");
+                sb.AppendLine(@" <StyleMap id=""m_ylw-pushpin"">");
+                sb.AppendLine("		<Pair>");
+                sb.AppendLine("			<key>normal</key>");
+                sb.AppendLine("			<styleUrl>#s_ylw-pushpin</styleUrl>");
+                sb.AppendLine("		</Pair>");
+                sb.AppendLine("		<Pair>");
+                sb.AppendLine("			<key>highlight</key>");
+                sb.AppendLine("			<styleUrl>#s_ylw-pushpin_hl</styleUrl>");
+                sb.AppendLine("		</Pair>");
+                sb.AppendLine("	</StyleMap>");
+                sb.AppendLine(@" <Style id=""s_ylw-pushpin"">");
+                sb.AppendLine("		<IconStyle>");
+                sb.AppendLine("			<color>ff00ff00</color>");
+                sb.AppendLine("			<scale>0.8</scale>");
+                sb.AppendLine("			<Icon>");
+                sb.AppendLine("				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>");
+                sb.AppendLine("			</Icon>");
+                sb.AppendLine("		</IconStyle>");
+                sb.AppendLine("		<LabelStyle>");
+                sb.AppendLine("			<scale>0.8</scale>");
+                sb.AppendLine("		</LabelStyle>");
+                sb.AppendLine("		<LineStyle>");
+                sb.AppendLine("			<color>ff00ff00</color>");
+                sb.AppendLine("			<width>2</width>");
+                sb.AppendLine("		</LineStyle>");
+                sb.AppendLine("		<PolyStyle>");
+                sb.AppendLine("			<color>00ffffff</color>");
+                sb.AppendLine("		</PolyStyle>");
+                sb.AppendLine("	</Style>");
+                sb.AppendLine(@" <Style id=""s_ylw-pushpin_hl"">");
+                sb.AppendLine("		<IconStyle>");
+                sb.AppendLine("			<color>ff00ff00</color>");
+                sb.AppendLine("			<scale>0.8</scale>");
+                sb.AppendLine("			<Icon>");
+                sb.AppendLine("				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>");
+                sb.AppendLine("			</Icon>");
+                sb.AppendLine("		</IconStyle>");
+                sb.AppendLine("		<LabelStyle>");
+                sb.AppendLine("			<scale>0.8</scale>");
+                sb.AppendLine("		</LabelStyle>");
+                sb.AppendLine("		<LineStyle>");
+                sb.AppendLine("			<color>ff00ff00</color>");
+                sb.AppendLine("			<width>2</width>");
+                sb.AppendLine("		</LineStyle>");
+                sb.AppendLine("		<PolyStyle>");
+                sb.AppendLine("			<color>00ffffff</color>");
+                sb.AppendLine("		</PolyStyle>");
+                sb.AppendLine("	</Style>");
+
+                TVItemModel tvItemModelProv = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, ProvStr, TVTypeEnum.Province);
+                if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+                List<TVItemModel> tvItemModelSubsectorList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+                if (tvItemModelSubsectorList.Count == 0)
+                {
+                    richTextBoxStatus.AppendText("Error: could not find TVItem Subsector for " + tvItemModelProv.TVText + "\r\n");
+                    return;
+                }
+
+                TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+
+                using (CSSPDBEntities db = new CSSPDBEntities())
+                {
+                    foreach (TVItemModel tvItemModelSubsector in tvItemModelSubsectorList)
+                    {
+                        int TVItemIDSS = tvItemModelSubsector.TVItemID;
+
+                        lblStatus.Text = "Doing " + tvItemModelSubsector.TVText;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
+
+                        string subsector = tvItemModelSubsector.TVText;
+                        if (tvItemModelSubsector.TVText.Contains(" "))
+                        {
+                            subsector = tvItemModelSubsector.TVText.Substring(0, tvItemModelSubsector.TVText.IndexOf(" "));
+                        }
+
+                        var SiteList = (from c in db.TVItems
+                                        from cl in db.TVItemLanguages
+                                        from mi in db.MapInfos
+                                        from mip in db.MapInfoPoints
+                                            //let lat = (from aa in mip select new { aa.Lat, aa.Lng }).First()
+                                        where c.TVItemID == cl.TVItemID
+                                        && cl.Language == (int)LanguageEnum.en
+                                        && c.TVItemID == mi.TVItemID
+                                        && mi.MapInfoID == mip.MapInfoID
+                                        && c.ParentID == tvItemModelSubsector.TVItemID
+                                        && c.TVType == (int)TVTypeEnum.MWQMSite
+                                        orderby cl.TVText
+                                        select new { c.TVItemID, cl.TVText, mip.Lat, mip.Lng }).ToList();
+
+                        if (!SiteList.Any()) continue;
+
+                        //string HasSites = SiteList.Any() ? " (+)" : "";
+
+                        sb.AppendLine("	<Folder>");
+                        sb.AppendLine($"		<name>{subsector}</name>");
+                        sb.AppendLine("		<visibility>0</visibility>");
+                        //sb.AppendLine("		<Placemark>");
+                        //sb.AppendLine($"			<name>{subsector}</name>");
+                        //sb.AppendLine("			<visibility>0</visibility>");
+                        //sb.AppendLine("			<styleUrl>#m_ylw-pushpin</styleUrl>");
+                        //sb.AppendLine("			<Polygon>");
+                        //sb.AppendLine("				<outerBoundaryIs>");
+                        //sb.AppendLine("					<LinearRing>");
+                        //sb.AppendLine("						<coordinates>");
+
+                        //List<MapInfoPoint> mapInfoPointListSS = (
+                        //                from mi in db.MapInfos
+                        //                from mip in db.MapInfoPoints
+                        //                where mi.TVItemID == tvItemModelSubsector.TVItemID
+                        //                && mi.MapInfoID == mip.MapInfoID
+                        //                && mi.MapInfoDrawType == (int)MapInfoDrawTypeEnum.Polygon
+                        //                select mip).ToList();
+
+                        //foreach (MapInfoPoint mip in mapInfoPointListSS)
+                        //{
+                        //    sb.AppendLine($"{mip.Lng.ToString("F6")},{mip.Lat.ToString("F6")},0 ");
+                        //}
+
+
+                        //sb.AppendLine("						</coordinates>");
+                        //sb.AppendLine("					</LinearRing>");
+                        //sb.AppendLine("				</outerBoundaryIs>");
+                        //sb.AppendLine("			</Polygon>");
+                        //sb.AppendLine("		</Placemark>");
+
+                        foreach (var site in SiteList)
+                        {
+                            lblStatus.Text = $"Doing {subsector} --- {TVItemIDSS}";
+                            lblStatus.Refresh();
+                            Application.DoEvents();
+
+                            List<MWQMSample> mwqmSampleList = (from c in db.MWQMSamples
+                                                               where c.MWQMSiteTVItemID == site.TVItemID
+                                                               orderby c.SampleDateTime_Local
+                                                               select c).ToList();
+
+                            double? MinDepth = (from c in mwqmSampleList
+                                                where c.Depth_m != null
+                                                select c.Depth_m).Min();
+
+                            double? MaxDepth = (from c in mwqmSampleList
+                                                where c.Depth_m != null
+                                                select c.Depth_m).Max();
+
+                            if (!(MinDepth == null || MaxDepth == null))
+                            {
+                                string MinDepthTxt = MinDepth != null ? ((double)MinDepth).ToString("F1") : "0";
+                                string MaxDepthTxt = MaxDepth != null ? ((double)MaxDepth).ToString("F1") : "0";
+
+                                sb.AppendLine("		<Placemark>");
+                                sb.AppendLine($"			<name>[{MinDepthTxt}] [{MaxDepthTxt}]</name>");
+                                sb.AppendLine("			<visibility>0</visibility>");
+                                sb.AppendLine("			<styleUrl>#m_ylw-pushpin</styleUrl>");
+                                sb.AppendLine("			<Point>");
+                                sb.AppendLine($"				<coordinates>{site.Lng.ToString("F6")},{site.Lat.ToString("F6")},0</coordinates>");
+                                sb.AppendLine("			</Point>");
+                                sb.AppendLine("		</Placemark>");
+                            }
+                        }
+                        sb.AppendLine("	</Folder>");
+                    }
+                }
+
+                sb.AppendLine("</Document>");
+                sb.AppendLine("</kml>");
+
+                FileInfo fi = new FileInfo($@"C:\ASEC_DATA\QCSectorSiteDepth.kml");
+                StreamWriter sw = fi.CreateText();
+                sw.WriteLine(sb.ToString());
+                sw.Flush();
+                sw.Close();
+
+            }
+            #endregion doing SectorSite_xx.kml
+
+            lblStatus.Text = $"Done...";
+            lblStatus.Refresh();
+            Application.DoEvents();
 
         }
         //private void button18_Click(object sender, EventArgs e)
