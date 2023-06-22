@@ -21212,6 +21212,7 @@ namespace ImportByFunction
                             Application.DoEvents();
 
                             List<MWQMSample> mwqmSampleList = (from c in db.MWQMSamples
+                                                               let runs = (from r in db.MWQMSamples select r.MWQMRunTVItemID).Distinct().ToList()
                                                                where c.MWQMSiteTVItemID == site.TVItemID
                                                                orderby c.SampleDateTime_Local
                                                                select c).ToList();
@@ -21229,8 +21230,152 @@ namespace ImportByFunction
                                 string MinDepthTxt = MinDepth != null ? ((double)MinDepth).ToString("F1") : "0";
                                 string MaxDepthTxt = MaxDepth != null ? ((double)MaxDepth).ToString("F1") : "0";
 
+
+                                List<int> mwqmRunsTVItemIDList = (from c in db.MWQMSamples
+                                                                  where c.MWQMSiteTVItemID == site.TVItemID
+                                                                  select c.MWQMRunTVItemID).Distinct().ToList();
+
+                                List<MWQMRun> mwqmRunList = (from c in db.MWQMRuns
+                                                             from rid in mwqmRunsTVItemIDList
+                                                             where c.MWQMRunTVItemID == rid
+                                                             select c).ToList();
+
+                                List<double> tideValueList = new List<double>();
+                                
+                                foreach(MWQMRun mwqmRun in mwqmRunList)
+                                {
+                                    if (mwqmRun.Tide_h0_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h0_m);
+                                    }
+                                    if (mwqmRun.Tide_h1_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h1_m);
+                                    }
+                                    if (mwqmRun.Tide_h2_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h2_m);
+                                    }
+                                    if (mwqmRun.Tide_h3_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h3_m);
+                                    }
+                                    if (mwqmRun.Tide_h4_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h4_m);
+                                    }
+                                    if (mwqmRun.Tide_h5_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h5_m);
+                                    }
+                                    if (mwqmRun.Tide_h6_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h6_m);
+                                    }
+                                    if (mwqmRun.Tide_h7_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h7_m);
+                                    }
+                                    if (mwqmRun.Tide_h8_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h8_m);
+                                    }
+                                    if (mwqmRun.Tide_h9_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h9_m);
+                                    }
+                                    if (mwqmRun.Tide_h10_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h10_m);
+                                    }
+                                    if (mwqmRun.Tide_h11_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h11_m);
+                                    }
+                                    if (mwqmRun.Tide_h12_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h12_m);
+                                    }
+                                    if (mwqmRun.Tide_h13_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h13_m);
+                                    }
+                                    if (mwqmRun.Tide_h14_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h14_m);
+                                    }
+                                    if (mwqmRun.Tide_h15_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h15_m);
+                                    }
+                                    if (mwqmRun.Tide_h16_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h16_m);
+                                    }
+                                    if (mwqmRun.Tide_h17_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h17_m);
+                                    }
+                                    if (mwqmRun.Tide_h18_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h18_m);
+                                    }
+                                    if (mwqmRun.Tide_h19_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h19_m);
+                                    }
+                                    if (mwqmRun.Tide_h20_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h20_m);
+                                    }
+                                    if (mwqmRun.Tide_h21_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h21_m);
+                                    }
+                                    if (mwqmRun.Tide_h22_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h22_m);
+                                    }
+                                    if (mwqmRun.Tide_h23_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h23_m);
+                                    }
+                                    if (mwqmRun.Tide_h24_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h24_m);
+                                    }
+                                    if (mwqmRun.Tide_h25_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h25_m);
+                                    }
+                                    if (mwqmRun.Tide_h26_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h26_m);
+                                    }
+                                    if (mwqmRun.Tide_h27_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h27_m);
+                                    }
+                                    if (mwqmRun.Tide_h28_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h28_m);
+                                    }
+                                    if (mwqmRun.Tide_h29_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h29_m);
+                                    }
+                                    if (mwqmRun.Tide_h30_m != null)
+                                    {
+                                        tideValueList.Add((double)mwqmRun.Tide_h30_m);
+                                    }
+                                }
+
+                                string tideMinValueText = tideValueList.Min().ToString("F2");
+                                string tideMaxValueText = tideValueList.Max().ToString("F2");
+
+
                                 sb.AppendLine("		<Placemark>");
-                                sb.AppendLine($"			<name>[{MinDepthTxt}] [{MaxDepthTxt}]</name>");
+                                sb.AppendLine($"			<name>Depth:[{MinDepthTxt}] [{MaxDepthTxt}] Tide:[{tideMinValueText}] [{tideMaxValueText}]</name>");
                                 sb.AppendLine("			<visibility>0</visibility>");
                                 sb.AppendLine("			<styleUrl>#m_ylw-pushpin</styleUrl>");
                                 sb.AppendLine("			<Point>");
