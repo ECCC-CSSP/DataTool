@@ -21405,6 +21405,60 @@ namespace ImportByFunction
             Application.DoEvents();
 
         }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            string fileName = $@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\IDM_Bathy_kml_file.xml";
+            XElement root = XElement.Load(fileName);
+
+            foreach (XElement elem in root.Descendants())
+            {
+                if (elem.Name.LocalName == "Placemark")
+                {
+                    float depth = -999;
+                    foreach(XElement elem2 in elem.Descendants())
+                    {
+                        if (elem2.Name.LocalName == "name")
+                        {
+                            if (elem2.Value.StartsWith("--"))
+                            {
+                                depth = float.Parse(elem2.Value.Substring(1));
+                            }
+                            else
+                            {
+                                depth = float.Parse(elem2.Value);
+                            }
+                        }
+                        if (elem2.Name.LocalName == "coordinates")
+                        {
+                            string elemTxt = elem2.Value;
+                            List<string> coordsTxtList = elemTxt.Trim().Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                            foreach (string s in coordsTxtList)
+                            {
+                                List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                                if (pointTxtList.Count != 3)
+                                {
+                                    richTextBoxStatus.AppendText("\r\nError: pointTxtList.Count != 3\r\n");
+                                    return;
+                                }
+
+                                sb.AppendLine(float.Parse(pointTxtList[0]).ToString("F6") + " " + float.Parse(pointTxtList[1]).ToString("F6") + " " + depth.ToString("F2"));
+                            }
+                        }
+                    }
+                }
+            }
+            FileInfo fi = new FileInfo(fileName.Replace(".xml", ".xyz"));
+            StreamWriter sw = fi.CreateText();
+            sw.Write(sb.ToString());
+            sw.Close();
+
+            lblStatus.Text = "Done...";
+        }
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);

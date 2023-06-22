@@ -118,6 +118,7 @@
             this.button36 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
+            this.button39 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -970,7 +971,7 @@
             // 
             // button35
             // 
-            this.button35.Location = new System.Drawing.Point(677, 163);
+            this.button35.Location = new System.Drawing.Point(625, 163);
             this.button35.Margin = new System.Windows.Forms.Padding(2);
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(154, 36);
@@ -981,7 +982,7 @@
             // 
             // button36
             // 
-            this.button36.Location = new System.Drawing.Point(841, 163);
+            this.button36.Location = new System.Drawing.Point(789, 163);
             this.button36.Margin = new System.Windows.Forms.Padding(2);
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(75, 36);
@@ -992,7 +993,7 @@
             // 
             // button37
             // 
-            this.button37.Location = new System.Drawing.Point(930, 163);
+            this.button37.Location = new System.Drawing.Point(878, 163);
             this.button37.Margin = new System.Windows.Forms.Padding(2);
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(75, 36);
@@ -1003,7 +1004,7 @@
             // 
             // button38
             // 
-            this.button38.Location = new System.Drawing.Point(1025, 163);
+            this.button38.Location = new System.Drawing.Point(973, 163);
             this.button38.Margin = new System.Windows.Forms.Padding(2);
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(75, 36);
@@ -1012,11 +1013,23 @@
             this.button38.UseVisualStyleBackColor = true;
             this.button38.Click += new System.EventHandler(this.button38_Click);
             // 
+            // button39
+            // 
+            this.button39.Location = new System.Drawing.Point(1065, 163);
+            this.button39.Margin = new System.Windows.Forms.Padding(2);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(75, 36);
+            this.button39.TabIndex = 236;
+            this.button39.Text = "button39";
+            this.button39.UseVisualStyleBackColor = true;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+            // 
             // ImportByFunction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1163, 526);
+            this.Controls.Add(this.button39);
             this.Controls.Add(this.button38);
             this.Controls.Add(this.button37);
             this.Controls.Add(this.button36);
@@ -1202,6 +1215,7 @@
         private System.Windows.Forms.Button button36;
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button button39;
     }
 }
 
