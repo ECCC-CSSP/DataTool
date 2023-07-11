@@ -21436,17 +21436,45 @@ namespace ImportByFunction
                             string elemTxt = elem2.Value;
                             List<string> coordsTxtList = elemTxt.Trim().Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
 
-                            foreach (string s in coordsTxtList)
+                            if (coordsTxtList.Count == 5)
                             {
-                                List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+                                List<float> latList = new List<float>();
+                                List<float> lngList = new List<float>();
 
-                                if (pointTxtList.Count != 3)
+                                foreach (string s in coordsTxtList)
                                 {
-                                    richTextBoxStatus.AppendText("\r\nError: pointTxtList.Count != 3\r\n");
-                                    return;
+                                    List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                                    if (pointTxtList.Count != 3)
+                                    {
+                                        richTextBoxStatus.AppendText("\r\nError: pointTxtList.Count != 3\r\n");
+                                        return;
+                                    }
+
+                                    latList.Add(float.Parse(pointTxtList[1]));
+                                    lngList.Add(float.Parse(pointTxtList[0]));
+
                                 }
 
-                                sb.AppendLine(float.Parse(pointTxtList[0]).ToString("F6") + " " + float.Parse(pointTxtList[1]).ToString("F6") + " " + depth.ToString("F2"));
+                                float lat = latList.Average();
+                                float lng = lngList.Average();
+
+                                sb.AppendLine(lng.ToString("F6") + " " + lat.ToString("F6") + " " + depth.ToString("F2"));
+                            }
+                            else
+                            {
+                                foreach (string s in coordsTxtList)
+                                {
+                                    List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                                    if (pointTxtList.Count != 3)
+                                    {
+                                        richTextBoxStatus.AppendText("\r\nError: pointTxtList.Count != 3\r\n");
+                                        return;
+                                    }
+
+                                    sb.AppendLine(float.Parse(pointTxtList[0]).ToString("F6") + " " + float.Parse(pointTxtList[1]).ToString("F6") + " " + depth.ToString("F2"));
+                                }
                             }
                         }
                     }
