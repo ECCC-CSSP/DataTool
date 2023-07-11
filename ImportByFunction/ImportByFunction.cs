@@ -21441,7 +21441,7 @@ namespace ImportByFunction
                                 List<float> latList = new List<float>();
                                 List<float> lngList = new List<float>();
 
-                                foreach (string s in coordsTxtList)
+                                foreach (string s in coordsTxtList.Skip(1))
                                 {
                                     List<string> pointTxtList = s.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
 
