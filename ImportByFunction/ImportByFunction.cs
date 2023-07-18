@@ -21410,7 +21410,7 @@ namespace ImportByFunction
         {
             StringBuilder sb = new StringBuilder();
 
-            string fileName = $@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Bathymetry\IDM_Bathy_kml_file.xml";
+            string fileName = $@"C:\CSSP Latest Code Old\DataTool\ImportByFunction\Bathymetry\Chaleur_Bathy_kml_file.xml";
             XElement root = XElement.Load(fileName);
 
             foreach (XElement elem in root.Descendants())
