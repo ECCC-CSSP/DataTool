@@ -21045,6 +21045,11 @@ namespace ImportByFunction
 
         private void button38_Click(object sender, EventArgs e)
         {
+            //StringBuilder sb2 = new StringBuilder();
+            //sb2.AppendLine($"SS,Site,Depth,Depth,Tide,Tide");
+            //sb2.AppendLine($"SS,Site,Min,Max,Min,Max");
+
+
             List<string> ProvList = new List<string>()
             {
                 /*"Newfoundland and Labrador", "New Brunswick",  "Nova Scotia", "Prince Edward Island", "British Columbia",*/ "Québec",
@@ -21373,7 +21378,13 @@ namespace ImportByFunction
                                 string tideMinValueText = tideValueList.Min().ToString("F2");
                                 string tideMaxValueText = tideValueList.Max().ToString("F2");
 
+                                //string ss = tvItemModelSubsector.TVText;
+                                //if (ss.Contains(" "))
+                                //{
+                                //    ss = ss.Substring(0, ss.IndexOf(" "));
+                                //}
 
+                                //sb2.AppendLine($"{ss},{site.TVText},{MinDepthTxt},{MaxDepthTxt},{tideMinValueText},{tideMaxValueText}");
                                 sb.AppendLine("		<Placemark>");
                                 sb.AppendLine($"			<name>Depth:[{MinDepthTxt}] [{MaxDepthTxt}] Tide:[{tideMinValueText}] [{tideMaxValueText}]</name>");
                                 sb.AppendLine("			<visibility>0</visibility>");
@@ -21396,6 +21407,8 @@ namespace ImportByFunction
                 sw.WriteLine(sb.ToString());
                 sw.Flush();
                 sw.Close();
+
+                //richTextBoxStatus.Text = sb2.ToString();
 
             }
             #endregion doing SectorSite_xx.kml
