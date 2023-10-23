@@ -21246,8 +21246,8 @@ namespace ImportByFunction
                                                              select c).ToList();
 
                                 List<double> tideValueList = new List<double>();
-                                
-                                foreach(MWQMRun mwqmRun in mwqmRunList)
+
+                                foreach (MWQMRun mwqmRun in mwqmRunList)
                                 {
                                     if (mwqmRun.Tide_h0_m != null)
                                     {
@@ -21431,7 +21431,7 @@ namespace ImportByFunction
                 if (elem.Name.LocalName == "Placemark")
                 {
                     float depth = -999;
-                    foreach(XElement elem2 in elem.Descendants())
+                    foreach (XElement elem2 in elem.Descendants())
                     {
                         if (elem2.Name.LocalName == "name")
                         {
@@ -21499,6 +21499,51 @@ namespace ImportByFunction
             sw.Close();
 
             lblStatus.Text = "Done...";
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"File Name on client does not match the subsector of the information sent");
+            sb.AppendLine($"File Name\tSubsector Name in text file");
+
+
+            using (CSSPDBEntities db = new CSSPDBEntities())
+            {
+                List<LabSheet> labsheetList = (from c in db.LabSheets
+                                               where c.Year == 2023
+                                               && c.SamplingPlanName.Contains("val")
+                                               select c).ToList();
+
+                foreach (LabSheet labSheet in labsheetList)
+                {
+                    FileInfo fi = new FileInfo(labSheet.FileName);
+                    //C:\CSSPLabSheets\SamplingPlan_Subsector_Routine_A1_2023_Classification-VALORES\2023\NB-03-040-002_2023_05_12_A1_R01_C.txt
+
+                    string SubSector = fi.Name.Substring(0, fi.Name.IndexOf("_"));
+
+                    string Content = labSheet.FileContent;
+
+                  
+                    if (Content.Contains(SubSector))
+                    {
+                        //sb.AppendLine($"OK --- LabSheetID {labSheet.LabSheetID} OtherServerLabSheetID {labSheet.OtherServerLabSheetID}");
+                    }
+                    else
+                    {
+                        string firstLine = Content.Substring(0, Content.IndexOf("\n") + 1);
+                        string secondLine = Content.Substring(firstLine.Length, Content.IndexOf("\n") + 1);
+
+                        string SubsectorNameInFile = secondLine.Substring(secondLine.IndexOf("|") + 1);
+                        SubsectorNameInFile = SubsectorNameInFile.Substring(0, SubsectorNameInFile.IndexOf(" "));
+                        SubsectorNameInFile = SubsectorNameInFile.Trim();
+
+                        sb.AppendLine($"OtherServerLabSheetID{labSheet.OtherServerLabSheetID} --- {fi.Name}\t{SubsectorNameInFile}");
+                    }
+                }
+            }
+
+            richTextBoxStatus.Text = sb.ToString();
         }
         //private void button18_Click(object sender, EventArgs e)
         //{
