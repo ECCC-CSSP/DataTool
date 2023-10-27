@@ -120,6 +120,7 @@
             this.button38 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button40 = new System.Windows.Forms.Button();
+            this.button42 = new System.Windows.Forms.Button();
             this.panelStatus.SuspendLayout();
             this.panelStatus2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -129,9 +130,10 @@
             // richTextBoxStatus
             // 
             this.richTextBoxStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBoxStatus.Location = new System.Drawing.Point(0, 458);
+            this.richTextBoxStatus.Location = new System.Drawing.Point(0, 707);
+            this.richTextBoxStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.richTextBoxStatus.Name = "richTextBoxStatus";
-            this.richTextBoxStatus.Size = new System.Drawing.Size(1163, 68);
+            this.richTextBoxStatus.Size = new System.Drawing.Size(1744, 102);
             this.richTextBoxStatus.TabIndex = 2;
             this.richTextBoxStatus.Text = "";
             // 
@@ -140,52 +142,58 @@
             this.panelStatus.Controls.Add(this.labelStatusLabel2);
             this.panelStatus.Controls.Add(this.lblStatus2);
             this.panelStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelStatus.Location = new System.Drawing.Point(0, 433);
+            this.panelStatus.Location = new System.Drawing.Point(0, 669);
+            this.panelStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(1163, 25);
+            this.panelStatus.Size = new System.Drawing.Size(1744, 38);
             this.panelStatus.TabIndex = 3;
             // 
             // labelStatusLabel2
             // 
             this.labelStatusLabel2.AutoSize = true;
-            this.labelStatusLabel2.Location = new System.Drawing.Point(12, 9);
+            this.labelStatusLabel2.Location = new System.Drawing.Point(18, 14);
+            this.labelStatusLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelStatusLabel2.Name = "labelStatusLabel2";
-            this.labelStatusLabel2.Size = new System.Drawing.Size(43, 13);
+            this.labelStatusLabel2.Size = new System.Drawing.Size(64, 20);
             this.labelStatusLabel2.TabIndex = 0;
             this.labelStatusLabel2.Text = "Status: ";
             // 
             // lblStatus2
             // 
             this.lblStatus2.AutoSize = true;
-            this.lblStatus2.Location = new System.Drawing.Point(51, 9);
+            this.lblStatus2.Location = new System.Drawing.Point(76, 14);
+            this.lblStatus2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus2.Name = "lblStatus2";
-            this.lblStatus2.Size = new System.Drawing.Size(41, 13);
+            this.lblStatus2.Size = new System.Drawing.Size(60, 20);
             this.lblStatus2.TabIndex = 1;
             this.lblStatus2.Text = "[empty]";
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(51, 9);
+            this.lblStatus.Location = new System.Drawing.Point(76, 14);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(41, 13);
+            this.lblStatus.Size = new System.Drawing.Size(60, 20);
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "[empty]";
             // 
             // labelStatusLabel
             // 
             this.labelStatusLabel.AutoSize = true;
-            this.labelStatusLabel.Location = new System.Drawing.Point(12, 9);
+            this.labelStatusLabel.Location = new System.Drawing.Point(18, 14);
+            this.labelStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelStatusLabel.Name = "labelStatusLabel";
-            this.labelStatusLabel.Size = new System.Drawing.Size(43, 13);
+            this.labelStatusLabel.Size = new System.Drawing.Size(64, 20);
             this.labelStatusLabel.TabIndex = 0;
             this.labelStatusLabel.Text = "Status: ";
             // 
             // butCancel
             // 
-            this.butCancel.Location = new System.Drawing.Point(602, 509);
+            this.butCancel.Location = new System.Drawing.Point(903, 783);
+            this.butCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butCancel.Name = "butCancel";
-            this.butCancel.Size = new System.Drawing.Size(161, 23);
+            this.butCancel.Size = new System.Drawing.Size(242, 35);
             this.butCancel.TabIndex = 37;
             this.butCancel.Text = "Cancel";
             this.butCancel.UseVisualStyleBackColor = true;
@@ -196,18 +204,20 @@
             this.panelStatus2.Controls.Add(this.lblStatus);
             this.panelStatus2.Controls.Add(this.labelStatusLabel);
             this.panelStatus2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelStatus2.Location = new System.Drawing.Point(0, 408);
+            this.panelStatus2.Location = new System.Drawing.Point(0, 631);
+            this.panelStatus2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelStatus2.Name = "panelStatus2";
-            this.panelStatus2.Size = new System.Drawing.Size(1163, 25);
+            this.panelStatus2.Size = new System.Drawing.Size(1744, 38);
             this.panelStatus2.TabIndex = 38;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(791, 269);
+            this.label3.Location = new System.Drawing.Point(1186, 414);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 13);
+            this.label3.Size = new System.Drawing.Size(142, 20);
             this.label3.TabIndex = 18;
             this.label3.Text = "Load MWQM Sites";
             // 
@@ -215,9 +225,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(806, 307);
+            this.label4.Location = new System.Drawing.Point(1209, 472);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.Size = new System.Drawing.Size(111, 20);
             this.label4.TabIndex = 18;
             this.label4.Text = "Load Samples";
             // 
@@ -225,9 +236,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Enabled = false;
-            this.label5.Location = new System.Drawing.Point(821, 341);
+            this.label5.Location = new System.Drawing.Point(1232, 525);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.Size = new System.Drawing.Size(87, 20);
             this.label5.TabIndex = 18;
             this.label5.Text = "Load Runs";
             // 
@@ -235,18 +247,20 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Enabled = false;
-            this.label6.Location = new System.Drawing.Point(806, 376);
+            this.label6.Location = new System.Drawing.Point(1209, 578);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 13);
+            this.label6.Size = new System.Drawing.Size(107, 20);
             this.label6.TabIndex = 18;
             this.label6.Text = "Load Sanitary";
             // 
             // butLoadSanitationBC
             // 
             this.butLoadSanitationBC.Enabled = false;
-            this.butLoadSanitationBC.Location = new System.Drawing.Point(901, 376);
+            this.butLoadSanitationBC.Location = new System.Drawing.Point(1352, 578);
+            this.butLoadSanitationBC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butLoadSanitationBC.Name = "butLoadSanitationBC";
-            this.butLoadSanitationBC.Size = new System.Drawing.Size(46, 23);
+            this.butLoadSanitationBC.Size = new System.Drawing.Size(69, 35);
             this.butLoadSanitationBC.TabIndex = 82;
             this.butLoadSanitationBC.Text = "BC";
             this.butLoadSanitationBC.UseVisualStyleBackColor = true;
@@ -255,9 +269,10 @@
             // butLoadRunsBC
             // 
             this.butLoadRunsBC.Enabled = false;
-            this.butLoadRunsBC.Location = new System.Drawing.Point(901, 335);
+            this.butLoadRunsBC.Location = new System.Drawing.Point(1352, 515);
+            this.butLoadRunsBC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butLoadRunsBC.Name = "butLoadRunsBC";
-            this.butLoadRunsBC.Size = new System.Drawing.Size(46, 23);
+            this.butLoadRunsBC.Size = new System.Drawing.Size(69, 35);
             this.butLoadRunsBC.TabIndex = 81;
             this.butLoadRunsBC.Text = "BC";
             this.butLoadRunsBC.UseVisualStyleBackColor = true;
@@ -266,9 +281,10 @@
             // butLoadSamplesBC
             // 
             this.butLoadSamplesBC.Enabled = false;
-            this.butLoadSamplesBC.Location = new System.Drawing.Point(901, 297);
+            this.butLoadSamplesBC.Location = new System.Drawing.Point(1352, 457);
+            this.butLoadSamplesBC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butLoadSamplesBC.Name = "butLoadSamplesBC";
-            this.butLoadSamplesBC.Size = new System.Drawing.Size(46, 23);
+            this.butLoadSamplesBC.Size = new System.Drawing.Size(69, 35);
             this.butLoadSamplesBC.TabIndex = 80;
             this.butLoadSamplesBC.Text = "BC";
             this.butLoadSamplesBC.UseVisualStyleBackColor = true;
@@ -277,9 +293,10 @@
             // butLoadStationBC
             // 
             this.butLoadStationBC.Enabled = false;
-            this.butLoadStationBC.Location = new System.Drawing.Point(902, 259);
+            this.butLoadStationBC.Location = new System.Drawing.Point(1353, 398);
+            this.butLoadStationBC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butLoadStationBC.Name = "butLoadStationBC";
-            this.butLoadStationBC.Size = new System.Drawing.Size(46, 23);
+            this.butLoadStationBC.Size = new System.Drawing.Size(69, 35);
             this.butLoadStationBC.TabIndex = 79;
             this.butLoadStationBC.Text = "BC";
             this.butLoadStationBC.UseVisualStyleBackColor = true;
@@ -288,9 +305,10 @@
             // butLoadSanitationQC
             // 
             this.butLoadSanitationQC.Enabled = false;
-            this.butLoadSanitationQC.Location = new System.Drawing.Point(1039, 376);
+            this.butLoadSanitationQC.Location = new System.Drawing.Point(1558, 578);
+            this.butLoadSanitationQC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butLoadSanitationQC.Name = "butLoadSanitationQC";
-            this.butLoadSanitationQC.Size = new System.Drawing.Size(46, 23);
+            this.butLoadSanitationQC.Size = new System.Drawing.Size(69, 35);
             this.butLoadSanitationQC.TabIndex = 88;
             this.butLoadSanitationQC.Text = "QC";
             this.butLoadSanitationQC.UseVisualStyleBackColor = true;
@@ -299,9 +317,10 @@
             // butLoadRunsQC
             // 
             this.butLoadRunsQC.Enabled = false;
-            this.butLoadRunsQC.Location = new System.Drawing.Point(1039, 335);
+            this.butLoadRunsQC.Location = new System.Drawing.Point(1558, 515);
+            this.butLoadRunsQC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butLoadRunsQC.Name = "butLoadRunsQC";
-            this.butLoadRunsQC.Size = new System.Drawing.Size(46, 23);
+            this.butLoadRunsQC.Size = new System.Drawing.Size(69, 35);
             this.butLoadRunsQC.TabIndex = 87;
             this.butLoadRunsQC.Text = "QC";
             this.butLoadRunsQC.UseVisualStyleBackColor = true;
@@ -310,9 +329,10 @@
             // butLoadSamplesQC
             // 
             this.butLoadSamplesQC.Enabled = false;
-            this.butLoadSamplesQC.Location = new System.Drawing.Point(1039, 297);
+            this.butLoadSamplesQC.Location = new System.Drawing.Point(1558, 457);
+            this.butLoadSamplesQC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butLoadSamplesQC.Name = "butLoadSamplesQC";
-            this.butLoadSamplesQC.Size = new System.Drawing.Size(46, 23);
+            this.butLoadSamplesQC.Size = new System.Drawing.Size(69, 35);
             this.butLoadSamplesQC.TabIndex = 86;
             this.butLoadSamplesQC.Text = "QC";
             this.butLoadSamplesQC.UseVisualStyleBackColor = true;
@@ -321,9 +341,10 @@
             // butLoadStationQC
             // 
             this.butLoadStationQC.Enabled = false;
-            this.butLoadStationQC.Location = new System.Drawing.Point(1040, 259);
+            this.butLoadStationQC.Location = new System.Drawing.Point(1560, 398);
+            this.butLoadStationQC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butLoadStationQC.Name = "butLoadStationQC";
-            this.butLoadStationQC.Size = new System.Drawing.Size(46, 23);
+            this.butLoadStationQC.Size = new System.Drawing.Size(69, 35);
             this.butLoadStationQC.TabIndex = 85;
             this.butLoadStationQC.Text = "QC";
             this.butLoadStationQC.UseVisualStyleBackColor = true;
@@ -331,9 +352,10 @@
             // 
             // butRecalculateTVItemStat
             // 
-            this.butRecalculateTVItemStat.Location = new System.Drawing.Point(800, 474);
+            this.butRecalculateTVItemStat.Location = new System.Drawing.Point(1200, 729);
+            this.butRecalculateTVItemStat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butRecalculateTVItemStat.Name = "butRecalculateTVItemStat";
-            this.butRecalculateTVItemStat.Size = new System.Drawing.Size(168, 23);
+            this.butRecalculateTVItemStat.Size = new System.Drawing.Size(252, 35);
             this.butRecalculateTVItemStat.TabIndex = 89;
             this.butRecalculateTVItemStat.Text = "Recalculate TVItem Stat";
             this.butRecalculateTVItemStat.UseVisualStyleBackColor = true;
@@ -341,9 +363,10 @@
             // 
             // butSaveStatus
             // 
-            this.butSaveStatus.Location = new System.Drawing.Point(425, 509);
+            this.butSaveStatus.Location = new System.Drawing.Point(638, 783);
+            this.butSaveStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butSaveStatus.Name = "butSaveStatus";
-            this.butSaveStatus.Size = new System.Drawing.Size(161, 23);
+            this.butSaveStatus.Size = new System.Drawing.Size(242, 35);
             this.butSaveStatus.TabIndex = 93;
             this.butSaveStatus.Text = "Save Status";
             this.butSaveStatus.UseVisualStyleBackColor = true;
@@ -352,88 +375,98 @@
             // textBoxQCCreateStationsQC
             // 
             this.textBoxQCCreateStationsQC.Enabled = false;
-            this.textBoxQCCreateStationsQC.Location = new System.Drawing.Point(1092, 261);
+            this.textBoxQCCreateStationsQC.Location = new System.Drawing.Point(1638, 402);
+            this.textBoxQCCreateStationsQC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxQCCreateStationsQC.Name = "textBoxQCCreateStationsQC";
-            this.textBoxQCCreateStationsQC.Size = new System.Drawing.Size(67, 20);
+            this.textBoxQCCreateStationsQC.Size = new System.Drawing.Size(98, 26);
             this.textBoxQCCreateStationsQC.TabIndex = 134;
             this.textBoxQCCreateStationsQC.Text = "0";
             // 
             // textBoxBCCreateStationsBC
             // 
             this.textBoxBCCreateStationsBC.Enabled = false;
-            this.textBoxBCCreateStationsBC.Location = new System.Drawing.Point(954, 261);
+            this.textBoxBCCreateStationsBC.Location = new System.Drawing.Point(1431, 402);
+            this.textBoxBCCreateStationsBC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxBCCreateStationsBC.Name = "textBoxBCCreateStationsBC";
-            this.textBoxBCCreateStationsBC.Size = new System.Drawing.Size(67, 20);
+            this.textBoxBCCreateStationsBC.Size = new System.Drawing.Size(98, 26);
             this.textBoxBCCreateStationsBC.TabIndex = 135;
             this.textBoxBCCreateStationsBC.Text = "0";
             // 
             // textBoxQCCreateSanitaryQC
             // 
             this.textBoxQCCreateSanitaryQC.Enabled = false;
-            this.textBoxQCCreateSanitaryQC.Location = new System.Drawing.Point(1091, 376);
+            this.textBoxQCCreateSanitaryQC.Location = new System.Drawing.Point(1636, 578);
+            this.textBoxQCCreateSanitaryQC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxQCCreateSanitaryQC.Name = "textBoxQCCreateSanitaryQC";
-            this.textBoxQCCreateSanitaryQC.Size = new System.Drawing.Size(67, 20);
+            this.textBoxQCCreateSanitaryQC.Size = new System.Drawing.Size(98, 26);
             this.textBoxQCCreateSanitaryQC.TabIndex = 144;
             this.textBoxQCCreateSanitaryQC.Text = "0";
             // 
             // textBoxQCCreateRunsQC
             // 
             this.textBoxQCCreateRunsQC.Enabled = false;
-            this.textBoxQCCreateRunsQC.Location = new System.Drawing.Point(1091, 338);
+            this.textBoxQCCreateRunsQC.Location = new System.Drawing.Point(1636, 520);
+            this.textBoxQCCreateRunsQC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxQCCreateRunsQC.Name = "textBoxQCCreateRunsQC";
-            this.textBoxQCCreateRunsQC.Size = new System.Drawing.Size(67, 20);
+            this.textBoxQCCreateRunsQC.Size = new System.Drawing.Size(98, 26);
             this.textBoxQCCreateRunsQC.TabIndex = 145;
             this.textBoxQCCreateRunsQC.Text = "0";
             // 
             // textBoxQCCreateSamplesQC
             // 
             this.textBoxQCCreateSamplesQC.Enabled = false;
-            this.textBoxQCCreateSamplesQC.Location = new System.Drawing.Point(1091, 300);
+            this.textBoxQCCreateSamplesQC.Location = new System.Drawing.Point(1636, 462);
+            this.textBoxQCCreateSamplesQC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxQCCreateSamplesQC.Name = "textBoxQCCreateSamplesQC";
-            this.textBoxQCCreateSamplesQC.Size = new System.Drawing.Size(67, 20);
+            this.textBoxQCCreateSamplesQC.Size = new System.Drawing.Size(98, 26);
             this.textBoxQCCreateSamplesQC.TabIndex = 146;
             this.textBoxQCCreateSamplesQC.Text = "0";
             // 
             // textBoxBCCreateSanitaryBC
             // 
             this.textBoxBCCreateSanitaryBC.Enabled = false;
-            this.textBoxBCCreateSanitaryBC.Location = new System.Drawing.Point(953, 376);
+            this.textBoxBCCreateSanitaryBC.Location = new System.Drawing.Point(1430, 578);
+            this.textBoxBCCreateSanitaryBC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxBCCreateSanitaryBC.Name = "textBoxBCCreateSanitaryBC";
-            this.textBoxBCCreateSanitaryBC.Size = new System.Drawing.Size(67, 20);
+            this.textBoxBCCreateSanitaryBC.Size = new System.Drawing.Size(98, 26);
             this.textBoxBCCreateSanitaryBC.TabIndex = 149;
             this.textBoxBCCreateSanitaryBC.Text = "0";
             // 
             // textBoxBCCreateRunsBC
             // 
             this.textBoxBCCreateRunsBC.Enabled = false;
-            this.textBoxBCCreateRunsBC.Location = new System.Drawing.Point(953, 338);
+            this.textBoxBCCreateRunsBC.Location = new System.Drawing.Point(1430, 520);
+            this.textBoxBCCreateRunsBC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxBCCreateRunsBC.Name = "textBoxBCCreateRunsBC";
-            this.textBoxBCCreateRunsBC.Size = new System.Drawing.Size(67, 20);
+            this.textBoxBCCreateRunsBC.Size = new System.Drawing.Size(98, 26);
             this.textBoxBCCreateRunsBC.TabIndex = 150;
             this.textBoxBCCreateRunsBC.Text = "0";
             // 
             // textBoxBCCreateSamplesBC
             // 
             this.textBoxBCCreateSamplesBC.Enabled = false;
-            this.textBoxBCCreateSamplesBC.Location = new System.Drawing.Point(953, 300);
+            this.textBoxBCCreateSamplesBC.Location = new System.Drawing.Point(1430, 462);
+            this.textBoxBCCreateSamplesBC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxBCCreateSamplesBC.Name = "textBoxBCCreateSamplesBC";
-            this.textBoxBCCreateSamplesBC.Size = new System.Drawing.Size(67, 20);
+            this.textBoxBCCreateSamplesBC.Size = new System.Drawing.Size(98, 26);
             this.textBoxBCCreateSamplesBC.TabIndex = 151;
             this.textBoxBCCreateSamplesBC.Text = "0";
             // 
             // textBoxRecalculateTVItemStatStart
             // 
-            this.textBoxRecalculateTVItemStatStart.Location = new System.Drawing.Point(986, 476);
+            this.textBoxRecalculateTVItemStatStart.Location = new System.Drawing.Point(1479, 732);
+            this.textBoxRecalculateTVItemStatStart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxRecalculateTVItemStatStart.Name = "textBoxRecalculateTVItemStatStart";
-            this.textBoxRecalculateTVItemStatStart.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRecalculateTVItemStatStart.Size = new System.Drawing.Size(148, 26);
             this.textBoxRecalculateTVItemStatStart.TabIndex = 192;
             this.textBoxRecalculateTVItemStatStart.Text = "0";
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(1091, 12);
+            this.button8.Location = new System.Drawing.Point(1636, 18);
+            this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(59, 25);
+            this.button8.Size = new System.Drawing.Size(88, 38);
             this.button8.TabIndex = 198;
             this.button8.Text = "button8";
             this.button8.UseVisualStyleBackColor = true;
@@ -441,9 +474,10 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(960, 47);
+            this.button15.Location = new System.Drawing.Point(1440, 72);
+            this.button15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(59, 25);
+            this.button15.Size = new System.Drawing.Size(88, 38);
             this.button15.TabIndex = 204;
             this.button15.Text = "Climate1";
             this.button15.UseVisualStyleBackColor = true;
@@ -451,9 +485,10 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(1025, 47);
+            this.button16.Location = new System.Drawing.Point(1538, 72);
+            this.button16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(59, 25);
+            this.button16.Size = new System.Drawing.Size(88, 38);
             this.button16.TabIndex = 204;
             this.button16.Text = "Climate2";
             this.button16.UseVisualStyleBackColor = true;
@@ -461,9 +496,10 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(1090, 47);
+            this.button17.Location = new System.Drawing.Point(1635, 72);
+            this.button17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(59, 25);
+            this.button17.Size = new System.Drawing.Size(88, 38);
             this.button17.TabIndex = 204;
             this.button17.Text = "climate3";
             this.button17.UseVisualStyleBackColor = true;
@@ -471,9 +507,10 @@
             // 
             // button25
             // 
-            this.button25.Location = new System.Drawing.Point(1081, 78);
+            this.button25.Location = new System.Drawing.Point(1622, 120);
+            this.button25.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(59, 25);
+            this.button25.Size = new System.Drawing.Size(88, 38);
             this.button25.TabIndex = 204;
             this.button25.Text = "button25";
             this.button25.UseVisualStyleBackColor = true;
@@ -481,9 +518,10 @@
             // 
             // button41
             // 
-            this.button41.Location = new System.Drawing.Point(14, 239);
+            this.button41.Location = new System.Drawing.Point(21, 368);
+            this.button41.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button41.Name = "button41";
-            this.button41.Size = new System.Drawing.Size(100, 23);
+            this.button41.Size = new System.Drawing.Size(150, 35);
             this.button41.TabIndex = 207;
             this.button41.Text = "Classification";
             this.button41.UseVisualStyleBackColor = true;
@@ -491,9 +529,10 @@
             // 
             // button43
             // 
-            this.button43.Location = new System.Drawing.Point(1074, 109);
+            this.button43.Location = new System.Drawing.Point(1611, 168);
+            this.button43.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(75, 23);
+            this.button43.Size = new System.Drawing.Size(112, 35);
             this.button43.TabIndex = 208;
             this.button43.Text = "button43";
             this.button43.UseVisualStyleBackColor = true;
@@ -501,9 +540,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(54, 14);
+            this.button1.Location = new System.Drawing.Point(81, 22);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(112, 35);
             this.button1.TabIndex = 209;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -511,9 +551,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(165, 13);
+            this.button2.Location = new System.Drawing.Point(248, 20);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(112, 35);
             this.button2.TabIndex = 210;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -521,9 +562,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(54, 109);
+            this.button3.Location = new System.Drawing.Point(81, 168);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(335, 23);
+            this.button3.Size = new System.Drawing.Size(502, 35);
             this.button3.TabIndex = 209;
             this.button3.Text = "Bring Municipality Path Under Province";
             this.button3.UseVisualStyleBackColor = true;
@@ -531,9 +573,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(54, 138);
+            this.button4.Location = new System.Drawing.Point(81, 212);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(335, 23);
+            this.button4.Size = new System.Drawing.Size(502, 35);
             this.button4.TabIndex = 209;
             this.button4.Text = "Create Tide Sites under the proper province";
             this.button4.UseVisualStyleBackColor = true;
@@ -541,9 +584,10 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(54, 170);
+            this.button5.Location = new System.Drawing.Point(81, 262);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(335, 23);
+            this.button5.Size = new System.Drawing.Size(502, 35);
             this.button5.TabIndex = 209;
             this.button5.Text = "Correct Duplicate Municipalities";
             this.button5.UseVisualStyleBackColor = true;
@@ -551,43 +595,48 @@
             // 
             // textBoxFromTVItemID
             // 
-            this.textBoxFromTVItemID.Location = new System.Drawing.Point(136, 199);
+            this.textBoxFromTVItemID.Location = new System.Drawing.Point(204, 306);
+            this.textBoxFromTVItemID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxFromTVItemID.Name = "textBoxFromTVItemID";
-            this.textBoxFromTVItemID.Size = new System.Drawing.Size(67, 20);
+            this.textBoxFromTVItemID.Size = new System.Drawing.Size(98, 26);
             this.textBoxFromTVItemID.TabIndex = 135;
             this.textBoxFromTVItemID.Text = "0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 202);
+            this.label1.Location = new System.Drawing.Point(54, 311);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.Size = new System.Drawing.Size(119, 20);
             this.label1.TabIndex = 18;
             this.label1.Text = "From TVItemID";
             // 
             // textBoxToTVItemID
             // 
-            this.textBoxToTVItemID.Location = new System.Drawing.Point(321, 199);
+            this.textBoxToTVItemID.Location = new System.Drawing.Point(482, 306);
+            this.textBoxToTVItemID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxToTVItemID.Name = "textBoxToTVItemID";
-            this.textBoxToTVItemID.Size = new System.Drawing.Size(67, 20);
+            this.textBoxToTVItemID.Size = new System.Drawing.Size(98, 26);
             this.textBoxToTVItemID.TabIndex = 212;
             this.textBoxToTVItemID.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(221, 202);
+            this.label2.Location = new System.Drawing.Point(332, 311);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 211;
             this.label2.Text = "To TVItemID";
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(425, 109);
+            this.button6.Location = new System.Drawing.Point(638, 168);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.Size = new System.Drawing.Size(112, 35);
             this.button6.TabIndex = 213;
             this.button6.Text = "button6";
             this.button6.UseVisualStyleBackColor = true;
@@ -595,9 +644,10 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(425, 138);
+            this.button7.Location = new System.Drawing.Point(638, 212);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.Size = new System.Drawing.Size(112, 35);
             this.button7.TabIndex = 214;
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
@@ -605,9 +655,10 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(425, 181);
+            this.button9.Location = new System.Drawing.Point(638, 278);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.Size = new System.Drawing.Size(112, 35);
             this.button9.TabIndex = 215;
             this.button9.Text = "button9";
             this.button9.UseVisualStyleBackColor = true;
@@ -615,26 +666,29 @@
             // 
             // textBoxProvinceName
             // 
-            this.textBoxProvinceName.Location = new System.Drawing.Point(109, 281);
+            this.textBoxProvinceName.Location = new System.Drawing.Point(164, 432);
+            this.textBoxProvinceName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxProvinceName.Name = "textBoxProvinceName";
-            this.textBoxProvinceName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxProvinceName.Size = new System.Drawing.Size(148, 26);
             this.textBoxProvinceName.TabIndex = 216;
             this.textBoxProvinceName.Text = "New Brunswick";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 285);
+            this.label7.Location = new System.Drawing.Point(34, 438);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 13);
+            this.label7.Size = new System.Drawing.Size(115, 20);
             this.label7.TabIndex = 217;
             this.label7.Text = "Province Name";
             // 
             // butCalculateMWQMSiteVariability
             // 
-            this.butCalculateMWQMSiteVariability.Location = new System.Drawing.Point(26, 314);
+            this.butCalculateMWQMSiteVariability.Location = new System.Drawing.Point(39, 483);
+            this.butCalculateMWQMSiteVariability.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butCalculateMWQMSiteVariability.Name = "butCalculateMWQMSiteVariability";
-            this.butCalculateMWQMSiteVariability.Size = new System.Drawing.Size(183, 23);
+            this.butCalculateMWQMSiteVariability.Size = new System.Drawing.Size(274, 35);
             this.butCalculateMWQMSiteVariability.TabIndex = 218;
             this.butCalculateMWQMSiteVariability.Text = "Calculate MWQM Site Variability";
             this.butCalculateMWQMSiteVariability.UseVisualStyleBackColor = true;
@@ -642,9 +696,10 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(539, 148);
+            this.button10.Location = new System.Drawing.Point(808, 228);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.Size = new System.Drawing.Size(112, 35);
             this.button10.TabIndex = 219;
             this.button10.Text = "button10";
             this.button10.UseVisualStyleBackColor = true;
@@ -652,9 +707,10 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(39, 376);
+            this.button11.Location = new System.Drawing.Point(58, 578);
+            this.button11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(140, 23);
+            this.button11.Size = new System.Drawing.Size(210, 35);
             this.button11.TabIndex = 220;
             this.button11.Text = "Get CoCoRaHS Sites";
             this.button11.UseVisualStyleBackColor = true;
@@ -662,9 +718,10 @@
             // 
             // butCheckBCSubsectors
             // 
-            this.butCheckBCSubsectors.Location = new System.Drawing.Point(23, 19);
+            this.butCheckBCSubsectors.Location = new System.Drawing.Point(34, 29);
+            this.butCheckBCSubsectors.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butCheckBCSubsectors.Name = "butCheckBCSubsectors";
-            this.butCheckBCSubsectors.Size = new System.Drawing.Size(121, 23);
+            this.butCheckBCSubsectors.Size = new System.Drawing.Size(182, 35);
             this.butCheckBCSubsectors.TabIndex = 81;
             this.butCheckBCSubsectors.Text = "CheckBCSubsectors";
             this.butCheckBCSubsectors.UseVisualStyleBackColor = true;
@@ -672,9 +729,10 @@
             // 
             // butCheckBCSamples
             // 
-            this.butCheckBCSamples.Location = new System.Drawing.Point(23, 61);
+            this.butCheckBCSamples.Location = new System.Drawing.Point(34, 94);
+            this.butCheckBCSamples.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butCheckBCSamples.Name = "butCheckBCSamples";
-            this.butCheckBCSamples.Size = new System.Drawing.Size(121, 23);
+            this.butCheckBCSamples.Size = new System.Drawing.Size(182, 35);
             this.butCheckBCSamples.TabIndex = 81;
             this.butCheckBCSamples.Text = "Check BC Samples";
             this.butCheckBCSamples.UseVisualStyleBackColor = true;
@@ -682,26 +740,29 @@
             // 
             // textBoxStartSubsectorName
             // 
-            this.textBoxStartSubsectorName.Location = new System.Drawing.Point(126, 90);
+            this.textBoxStartSubsectorName.Location = new System.Drawing.Point(189, 138);
+            this.textBoxStartSubsectorName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxStartSubsectorName.Name = "textBoxStartSubsectorName";
-            this.textBoxStartSubsectorName.Size = new System.Drawing.Size(67, 20);
+            this.textBoxStartSubsectorName.Size = new System.Drawing.Size(98, 26);
             this.textBoxStartSubsectorName.TabIndex = 212;
             this.textBoxStartSubsectorName.Text = "BK01";
             // 
             // labelStartSubsectorName
             // 
             this.labelStartSubsectorName.AutoSize = true;
-            this.labelStartSubsectorName.Location = new System.Drawing.Point(9, 97);
+            this.labelStartSubsectorName.Location = new System.Drawing.Point(14, 149);
+            this.labelStartSubsectorName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelStartSubsectorName.Name = "labelStartSubsectorName";
-            this.labelStartSubsectorName.Size = new System.Drawing.Size(111, 13);
+            this.labelStartSubsectorName.Size = new System.Drawing.Size(167, 20);
             this.labelStartSubsectorName.TabIndex = 18;
             this.labelStartSubsectorName.Text = "Start Subsector Name";
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(12, 159);
+            this.button12.Location = new System.Drawing.Point(18, 245);
+            this.button12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(121, 23);
+            this.button12.Size = new System.Drawing.Size(182, 35);
             this.button12.TabIndex = 81;
             this.button12.Text = "Test BC Sample Data";
             this.button12.UseVisualStyleBackColor = true;
@@ -709,9 +770,10 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(5, 463);
+            this.button13.Location = new System.Drawing.Point(8, 712);
+            this.button13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(121, 23);
+            this.button13.Size = new System.Drawing.Size(182, 35);
             this.button13.TabIndex = 81;
             this.button13.Text = "Testing Date UTC";
             this.button13.UseVisualStyleBackColor = true;
@@ -719,25 +781,28 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(817, 529);
+            this.textBox1.Location = new System.Drawing.Point(1226, 814);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 20);
+            this.textBox1.Size = new System.Drawing.Size(224, 26);
             this.textBox1.TabIndex = 221;
             this.textBox1.Text = "2019-05-07T16:34:12";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(974, 529);
+            this.textBox2.Location = new System.Drawing.Point(1461, 814);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(145, 20);
+            this.textBox2.Size = new System.Drawing.Size(216, 26);
             this.textBox2.TabIndex = 221;
             this.textBox2.Text = "yyyy-MM-ddThh:mm:ss";
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(144, 463);
+            this.button14.Location = new System.Drawing.Point(216, 712);
+            this.button14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(121, 23);
+            this.button14.Size = new System.Drawing.Size(182, 35);
             this.button14.TabIndex = 81;
             this.button14.Text = "Test Date Format";
             this.button14.UseVisualStyleBackColor = true;
@@ -751,19 +816,20 @@
             this.groupBox1.Controls.Add(this.button12);
             this.groupBox1.Controls.Add(this.textBoxStartSubsectorName);
             this.groupBox1.Controls.Add(this.butCheckBCSubsectors);
-            this.groupBox1.Location = new System.Drawing.Point(275, 225);
+            this.groupBox1.Location = new System.Drawing.Point(412, 346);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(205, 192);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(308, 295);
             this.groupBox1.TabIndex = 222;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "New BC Import and Test Tool";
             // 
             // button34
             // 
-            this.button34.Location = new System.Drawing.Point(70, 116);
-            this.button34.Margin = new System.Windows.Forms.Padding(2);
+            this.button34.Location = new System.Drawing.Point(105, 178);
             this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(91, 25);
+            this.button34.Size = new System.Drawing.Size(136, 38);
             this.button34.TabIndex = 213;
             this.button34.Text = "button34";
             this.button34.UseVisualStyleBackColor = true;
@@ -773,18 +839,21 @@
             // 
             this.groupBox2.Controls.Add(this.butCompareQCDBAndCSSPDB);
             this.groupBox2.Controls.Add(this.butImportQCWQMonitoringToCSSPDB);
-            this.groupBox2.Location = new System.Drawing.Point(520, 239);
+            this.groupBox2.Location = new System.Drawing.Point(780, 368);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(230, 178);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Size = new System.Drawing.Size(345, 274);
             this.groupBox2.TabIndex = 223;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "New QC Import and Test Tool";
             // 
             // butCompareQCDBAndCSSPDB
             // 
-            this.butCompareQCDBAndCSSPDB.Location = new System.Drawing.Point(30, 61);
+            this.butCompareQCDBAndCSSPDB.Location = new System.Drawing.Point(45, 94);
+            this.butCompareQCDBAndCSSPDB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butCompareQCDBAndCSSPDB.Name = "butCompareQCDBAndCSSPDB";
-            this.butCompareQCDBAndCSSPDB.Size = new System.Drawing.Size(163, 23);
+            this.butCompareQCDBAndCSSPDB.Size = new System.Drawing.Size(244, 35);
             this.butCompareQCDBAndCSSPDB.TabIndex = 1;
             this.butCompareQCDBAndCSSPDB.Text = "Compare QC DB and CSSPDB";
             this.butCompareQCDBAndCSSPDB.UseVisualStyleBackColor = true;
@@ -792,9 +861,10 @@
             // 
             // butImportQCWQMonitoringToCSSPDB
             // 
-            this.butImportQCWQMonitoringToCSSPDB.Location = new System.Drawing.Point(6, 19);
+            this.butImportQCWQMonitoringToCSSPDB.Location = new System.Drawing.Point(9, 29);
+            this.butImportQCWQMonitoringToCSSPDB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butImportQCWQMonitoringToCSSPDB.Name = "butImportQCWQMonitoringToCSSPDB";
-            this.butImportQCWQMonitoringToCSSPDB.Size = new System.Drawing.Size(218, 23);
+            this.butImportQCWQMonitoringToCSSPDB.Size = new System.Drawing.Size(327, 35);
             this.butImportQCWQMonitoringToCSSPDB.TabIndex = 0;
             this.butImportQCWQMonitoringToCSSPDB.Text = "Import QC WQ monitoring to CSSPDB";
             this.butImportQCWQMonitoringToCSSPDB.UseVisualStyleBackColor = true;
@@ -802,9 +872,10 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(439, 32);
+            this.button18.Location = new System.Drawing.Point(658, 49);
+            this.button18.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(258, 23);
+            this.button18.Size = new System.Drawing.Size(387, 35);
             this.button18.TabIndex = 224;
             this.button18.Text = "Atlantic Runs Sites Samples counts";
             this.button18.UseVisualStyleBackColor = true;
@@ -812,9 +883,10 @@
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(750, 109);
+            this.button19.Location = new System.Drawing.Point(1125, 168);
+            this.button19.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(208, 23);
+            this.button19.Size = new System.Drawing.Size(312, 35);
             this.button19.TabIndex = 225;
             this.button19.Text = "Get NS site lat lng";
             this.button19.UseVisualStyleBackColor = true;
@@ -822,9 +894,10 @@
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(468, 79);
+            this.button20.Location = new System.Drawing.Point(702, 122);
+            this.button20.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(184, 24);
+            this.button20.Size = new System.Drawing.Size(276, 37);
             this.button20.TabIndex = 226;
             this.button20.Text = "Load in CoCoRaHS DB";
             this.button20.UseVisualStyleBackColor = true;
@@ -832,9 +905,10 @@
             // 
             // butUpdateClimateSites
             // 
-            this.butUpdateClimateSites.Location = new System.Drawing.Point(750, 12);
+            this.butUpdateClimateSites.Location = new System.Drawing.Point(1125, 18);
+            this.butUpdateClimateSites.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butUpdateClimateSites.Name = "butUpdateClimateSites";
-            this.butUpdateClimateSites.Size = new System.Drawing.Size(153, 23);
+            this.butUpdateClimateSites.Size = new System.Drawing.Size(230, 35);
             this.butUpdateClimateSites.TabIndex = 227;
             this.butUpdateClimateSites.Text = "Update Climate Sites";
             this.butUpdateClimateSites.UseVisualStyleBackColor = true;
@@ -842,9 +916,10 @@
             // 
             // butSetClassForMWQMSites
             // 
-            this.butSetClassForMWQMSites.Location = new System.Drawing.Point(750, 66);
+            this.butSetClassForMWQMSites.Location = new System.Drawing.Point(1125, 102);
+            this.butSetClassForMWQMSites.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.butSetClassForMWQMSites.Name = "butSetClassForMWQMSites";
-            this.butSetClassForMWQMSites.Size = new System.Drawing.Size(153, 23);
+            this.butSetClassForMWQMSites.Size = new System.Drawing.Size(230, 35);
             this.butSetClassForMWQMSites.TabIndex = 228;
             this.butSetClassForMWQMSites.Text = "Set Class for MWQM sites";
             this.butSetClassForMWQMSites.UseVisualStyleBackColor = true;
@@ -852,9 +927,10 @@
             // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(451, 426);
+            this.button21.Location = new System.Drawing.Point(676, 655);
+            this.button21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(275, 23);
+            this.button21.Size = new System.Drawing.Size(412, 35);
             this.button21.TabIndex = 81;
             this.button21.Text = "Put BC Class Polyg in subsector";
             this.button21.UseVisualStyleBackColor = true;
@@ -862,9 +938,10 @@
             // 
             // button22
             // 
-            this.button22.Location = new System.Drawing.Point(451, 455);
+            this.button22.Location = new System.Drawing.Point(676, 700);
+            this.button22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(275, 23);
+            this.button22.Size = new System.Drawing.Size(412, 35);
             this.button22.TabIndex = 81;
             this.button22.Text = "Set QC Subsector with Classification Polygons";
             this.button22.UseVisualStyleBackColor = true;
@@ -872,9 +949,10 @@
             // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(772, 426);
+            this.button23.Location = new System.Drawing.Point(1158, 655);
+            this.button23.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(183, 23);
+            this.button23.Size = new System.Drawing.Size(274, 35);
             this.button23.TabIndex = 81;
             this.button23.Text = "QC KML of Area,Sect,Subsect";
             this.button23.UseVisualStyleBackColor = true;
@@ -882,9 +960,10 @@
             // 
             // button24
             // 
-            this.button24.Location = new System.Drawing.Point(125, 426);
+            this.button24.Location = new System.Drawing.Point(188, 655);
+            this.button24.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(270, 23);
+            this.button24.Size = new System.Drawing.Size(405, 35);
             this.button24.TabIndex = 81;
             this.button24.Text = "QC test MWQMSite in subsector polygon";
             this.button24.UseVisualStyleBackColor = true;
@@ -892,9 +971,10 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(526, 196);
+            this.button26.Location = new System.Drawing.Point(789, 302);
+            this.button26.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(75, 23);
+            this.button26.Size = new System.Drawing.Size(112, 35);
             this.button26.TabIndex = 219;
             this.button26.Text = "button26";
             this.button26.UseVisualStyleBackColor = true;
@@ -902,9 +982,10 @@
             // 
             // button27
             // 
-            this.button27.Location = new System.Drawing.Point(841, 230);
+            this.button27.Location = new System.Drawing.Point(1262, 354);
+            this.button27.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(75, 23);
+            this.button27.Size = new System.Drawing.Size(112, 35);
             this.button27.TabIndex = 229;
             this.button27.Text = "button27";
             this.button27.UseVisualStyleBackColor = true;
@@ -912,9 +993,10 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(930, 230);
+            this.button28.Location = new System.Drawing.Point(1395, 354);
+            this.button28.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(75, 23);
+            this.button28.Size = new System.Drawing.Size(112, 35);
             this.button28.TabIndex = 230;
             this.button28.Text = "button28";
             this.button28.UseVisualStyleBackColor = true;
@@ -922,9 +1004,10 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(1025, 229);
+            this.button29.Location = new System.Drawing.Point(1538, 352);
+            this.button29.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(75, 23);
+            this.button29.Size = new System.Drawing.Size(112, 35);
             this.button29.TabIndex = 231;
             this.button29.Text = "button29";
             this.button29.UseVisualStyleBackColor = true;
@@ -932,9 +1015,10 @@
             // 
             // button30
             // 
-            this.button30.Location = new System.Drawing.Point(168, 66);
+            this.button30.Location = new System.Drawing.Point(252, 102);
+            this.button30.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(75, 23);
+            this.button30.Size = new System.Drawing.Size(112, 35);
             this.button30.TabIndex = 232;
             this.button30.Text = "button30";
             this.button30.UseVisualStyleBackColor = true;
@@ -942,9 +1026,10 @@
             // 
             // button31
             // 
-            this.button31.Location = new System.Drawing.Point(262, 47);
+            this.button31.Location = new System.Drawing.Point(393, 72);
+            this.button31.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(75, 23);
+            this.button31.Size = new System.Drawing.Size(112, 35);
             this.button31.TabIndex = 233;
             this.button31.Text = "button31";
             this.button31.UseVisualStyleBackColor = true;
@@ -952,9 +1037,10 @@
             // 
             // button32
             // 
-            this.button32.Location = new System.Drawing.Point(321, 18);
+            this.button32.Location = new System.Drawing.Point(482, 28);
+            this.button32.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(75, 23);
+            this.button32.Size = new System.Drawing.Size(112, 35);
             this.button32.TabIndex = 233;
             this.button32.Text = "button32";
             this.button32.UseVisualStyleBackColor = true;
@@ -962,9 +1048,10 @@
             // 
             // button33
             // 
-            this.button33.Location = new System.Drawing.Point(12, 66);
+            this.button33.Location = new System.Drawing.Point(18, 102);
+            this.button33.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(75, 23);
+            this.button33.Size = new System.Drawing.Size(112, 35);
             this.button33.TabIndex = 234;
             this.button33.Text = "button33";
             this.button33.UseVisualStyleBackColor = true;
@@ -972,10 +1059,9 @@
             // 
             // button35
             // 
-            this.button35.Location = new System.Drawing.Point(625, 163);
-            this.button35.Margin = new System.Windows.Forms.Padding(2);
+            this.button35.Location = new System.Drawing.Point(938, 251);
             this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(154, 36);
+            this.button35.Size = new System.Drawing.Size(231, 55);
             this.button35.TabIndex = 235;
             this.button35.Text = "Do Export for NRC";
             this.button35.UseVisualStyleBackColor = true;
@@ -983,10 +1069,9 @@
             // 
             // button36
             // 
-            this.button36.Location = new System.Drawing.Point(789, 163);
-            this.button36.Margin = new System.Windows.Forms.Padding(2);
+            this.button36.Location = new System.Drawing.Point(1184, 251);
             this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(75, 36);
+            this.button36.Size = new System.Drawing.Size(112, 55);
             this.button36.TabIndex = 235;
             this.button36.Text = "button36";
             this.button36.UseVisualStyleBackColor = true;
@@ -994,10 +1079,9 @@
             // 
             // button37
             // 
-            this.button37.Location = new System.Drawing.Point(878, 163);
-            this.button37.Margin = new System.Windows.Forms.Padding(2);
+            this.button37.Location = new System.Drawing.Point(1317, 251);
             this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(75, 36);
+            this.button37.Size = new System.Drawing.Size(112, 55);
             this.button37.TabIndex = 235;
             this.button37.Text = "button37";
             this.button37.UseVisualStyleBackColor = true;
@@ -1005,10 +1089,9 @@
             // 
             // button38
             // 
-            this.button38.Location = new System.Drawing.Point(973, 163);
-            this.button38.Margin = new System.Windows.Forms.Padding(2);
+            this.button38.Location = new System.Drawing.Point(1460, 251);
             this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(75, 36);
+            this.button38.Size = new System.Drawing.Size(112, 55);
             this.button38.TabIndex = 235;
             this.button38.Text = "button38";
             this.button38.UseVisualStyleBackColor = true;
@@ -1016,10 +1099,9 @@
             // 
             // button39
             // 
-            this.button39.Location = new System.Drawing.Point(1065, 163);
-            this.button39.Margin = new System.Windows.Forms.Padding(2);
+            this.button39.Location = new System.Drawing.Point(1598, 251);
             this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(75, 36);
+            this.button39.Size = new System.Drawing.Size(112, 55);
             this.button39.TabIndex = 236;
             this.button39.Text = "button39";
             this.button39.UseVisualStyleBackColor = true;
@@ -1027,20 +1109,30 @@
             // 
             // button40
             // 
-            this.button40.Location = new System.Drawing.Point(1074, 196);
-            this.button40.Margin = new System.Windows.Forms.Padding(2);
+            this.button40.Location = new System.Drawing.Point(1611, 302);
             this.button40.Name = "button40";
-            this.button40.Size = new System.Drawing.Size(75, 36);
+            this.button40.Size = new System.Drawing.Size(112, 55);
             this.button40.TabIndex = 237;
             this.button40.Text = "button40";
             this.button40.UseVisualStyleBackColor = true;
             this.button40.Click += new System.EventHandler(this.button40_Click);
             // 
+            // button42
+            // 
+            this.button42.Location = new System.Drawing.Point(1059, 318);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(146, 42);
+            this.button42.TabIndex = 238;
+            this.button42.Text = "button42";
+            this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.button42_Click_1);
+            // 
             // ImportByFunction
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1163, 526);
+            this.ClientSize = new System.Drawing.Size(1744, 809);
+            this.Controls.Add(this.button42);
             this.Controls.Add(this.button40);
             this.Controls.Add(this.button39);
             this.Controls.Add(this.button38);
@@ -1121,6 +1213,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panelStatus);
             this.Controls.Add(this.richTextBoxStatus);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ImportByFunction";
             this.Text = "Import by function";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1230,6 +1323,7 @@
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.Button button40;
+        private System.Windows.Forms.Button button42;
     }
 }
 

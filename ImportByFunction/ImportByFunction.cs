@@ -21545,6 +21545,63 @@ namespace ImportByFunction
 
             richTextBoxStatus.Text = sb.ToString();
         }
+
+        private void button42_Click_1(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Prov,SS,Year,#ofSample");
+
+            List<string> ProvList = new List<string>()
+            {
+                "Newfoundland and Labrador", "New Brunswick",  "Nova Scotia", "Prince Edward Island"/*, "British Columbia", "Québec",*/
+            };
+            List<string> ProvInitList = new List<string>()
+            {
+                "NL", "NB",  "NS", "PE"/*, "BC", "QC",*/
+            };
+
+            TVItemService tvItemServiceR = new TVItemService(LanguageEnum.en, user);
+            MWQMRunService mwqmRunService = new MWQMRunService(LanguageEnum.en, user);
+            MWQMSiteService mwqmSiteService = new MWQMSiteService(LanguageEnum.en, user);
+            MWQMSampleService mwqmSampleService = new MWQMSampleService(LanguageEnum.en, user);
+
+            TVItemModel tvItemModelRoot = tvItemServiceR.GetRootTVItemModelDB();
+            if (!CheckModelOK<TVItemModel>(tvItemModelRoot)) return;
+
+            TVItemModel tvItemModelCanada = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
+            if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
+
+            for(int provCount = 0; provCount < ProvList.Count; provCount++)
+            {
+                TVItemModel tvItemModelProv = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, ProvList[provCount], TVTypeEnum.Province);
+                if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
+
+                List<TVItemModel> tvItemModelSSList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
+
+                foreach(TVItemModel tvItemModelSS in tvItemModelSSList)
+                {
+                    lblStatus.Text = tvItemModelSS.TVText;
+                    lblStatus.Refresh();
+                    Application.DoEvents();
+
+                    List<MWQMSiteModel> mwqmSiteModelList = mwqmSiteService.GetMWQMSiteModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
+                    List<MWQMSampleModel> mwqmSampleModelList = mwqmSampleService.GetMWQMSampleModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
+
+                    for(int year = 2010; year <= 2022; year++)
+                    {
+                        int countSample = (from c in mwqmSampleModelList
+                                           where c.SampleDateTime_Local.Year == year
+                                           select c.FecCol_MPN_100ml).Count();
+
+                        sb.AppendLine($"{ProvInitList[provCount]},{tvItemModelSS.TVText},{year},{countSample}");
+                    }
+                }
+
+            }
+
+            richTextBoxStatus.Text = sb.ToString();
+        }
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
