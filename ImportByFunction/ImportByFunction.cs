@@ -31,6 +31,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Security.Policy;
 using System.Xml.Linq;
+using System.Runtime.InteropServices;
 
 namespace ImportByFunction
 {
@@ -21524,7 +21525,7 @@ namespace ImportByFunction
 
                     string Content = labSheet.FileContent;
 
-                  
+
                     if (Content.Contains(SubSector))
                     {
                         //sb.AppendLine($"OK --- LabSheetID {labSheet.LabSheetID} OtherServerLabSheetID {labSheet.OtherServerLabSheetID}");
@@ -21572,14 +21573,14 @@ namespace ImportByFunction
             TVItemModel tvItemModelCanada = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelRoot.TVItemID, "Canada", TVTypeEnum.Country);
             if (!CheckModelOK<TVItemModel>(tvItemModelCanada)) return;
 
-            for(int provCount = 0; provCount < ProvList.Count; provCount++)
+            for (int provCount = 0; provCount < ProvList.Count; provCount++)
             {
                 TVItemModel tvItemModelProv = tvItemServiceR.GetChildTVItemModelWithParentIDAndTVTextAndTVTypeDB(tvItemModelCanada.TVItemID, ProvList[provCount], TVTypeEnum.Province);
                 if (!CheckModelOK<TVItemModel>(tvItemModelProv)) return;
 
                 List<TVItemModel> tvItemModelSSList = tvItemServiceR.GetChildrenTVItemModelListWithTVItemIDAndTVTypeDB(tvItemModelProv.TVItemID, TVTypeEnum.Subsector);
 
-                foreach(TVItemModel tvItemModelSS in tvItemModelSSList)
+                foreach (TVItemModel tvItemModelSS in tvItemModelSSList)
                 {
                     lblStatus.Text = tvItemModelSS.TVText;
                     lblStatus.Refresh();
@@ -21588,7 +21589,7 @@ namespace ImportByFunction
                     List<MWQMSiteModel> mwqmSiteModelList = mwqmSiteService.GetMWQMSiteModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
                     List<MWQMSampleModel> mwqmSampleModelList = mwqmSampleService.GetMWQMSampleModelListWithSubsectorTVItemIDDB(tvItemModelSS.TVItemID);
 
-                    for(int year = 2010; year <= 2022; year++)
+                    for (int year = 2010; year <= 2022; year++)
                     {
                         int countSample = (from c in mwqmSampleModelList
                                            where c.SampleDateTime_Local.Year == year
@@ -21601,6 +21602,58 @@ namespace ImportByFunction
             }
 
             richTextBoxStatus.Text = sb.ToString();
+        }
+
+        private void button44_Click(object sender, EventArgs e)
+        {
+            ContactModel contactModel = new ContactModel() { ContactTVItemID = 2, ContactID = 1, LoginEmail = "charles.leblanc@ec.gc.ca", FirstName = "Charles", Initial = "G", LastName = "LeBlanc", WebName = "Chalres", IsAdmin = true, Disabled = false, EmailValidated = true };
+            IPrincipal user = new GenericPrincipal(new GenericIdentity(contactModel.LoginEmail, "Forms"), null);
+
+            CultureInfo culture = new CultureInfo("en-CA");
+
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+
+            MikeScenarioService _MikeScenarioService = new MikeScenarioService((culture.TwoLetterISOLanguageName == "fr" ? LanguageEnum.fr : LanguageEnum.en), user);
+
+            using (CSSPDBEntities db = new CSSPDBEntities())
+            {
+                List<TVItem> tvItemMikeScenarioList = (from c in db.TVItems
+                                                       where c.ParentID == 48790
+                                                       && c.TVPath.StartsWith("p1p5p12p48790p")
+                                                       && c.TVType == (int)TVTypeEnum.MikeScenario
+                                                       select c).ToList();
+
+                foreach (TVItem tvItemMikeScenario in tvItemMikeScenarioList)
+                {
+                    TVItemLanguage tvItemLanguage = (from c in db.TVItemLanguages
+                                                     where c.Language == (int)LanguageEnum.en
+                                                     && c.TVItemID == tvItemMikeScenario.TVItemID
+                                                     select c).FirstOrDefault();
+                    if (tvItemLanguage != null)
+                    {
+                        Console.WriteLine($"Deleting ID:{tvItemMikeScenario.TVItemID} -- Name:{tvItemLanguage.TVText}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"ERROR --ID:{tvItemMikeScenario.TVItemID} -- Name:{tvItemLanguage.TVText}");
+                        continue;
+                    }
+
+                    MikeScenarioModel mikeScenarioModel = _MikeScenarioService.PostDeleteMikeScenarioAndAllAssociationsWithMikeScenarioTVItemIDDB(tvItemMikeScenario.TVItemID);
+                    if (!string.IsNullOrWhiteSpace(mikeScenarioModel.Error))
+                    {
+                        string er = mikeScenarioModel.Error;
+                        int a = 34;
+                        Console.WriteLine($"Error deleting ID:{tvItemMikeScenario.TVItemID} -- Name:{tvItemLanguage.TVText}");
+                        Console.WriteLine($"{er}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Deleted ID:{tvItemMikeScenario.TVItemID} -- Name:{tvItemLanguage.TVText}");
+                    }
+                }
+            }
         }
         //private void button18_Click(object sender, EventArgs e)
         //{
