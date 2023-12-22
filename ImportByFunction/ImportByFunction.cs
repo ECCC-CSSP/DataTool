@@ -21624,6 +21624,9 @@ namespace ImportByFunction
                                                        && c.TVType == (int)TVTypeEnum.MikeScenario
                                                        select c).ToList();
 
+                int total = tvItemMikeScenarioList.Count;
+                int count = 0;
+
                 foreach (TVItem tvItemMikeScenario in tvItemMikeScenarioList)
                 {
                     TVItemLanguage tvItemLanguage = (from c in db.TVItemLanguages
@@ -21632,7 +21635,13 @@ namespace ImportByFunction
                                                      select c).FirstOrDefault();
                     if (tvItemLanguage != null)
                     {
-                        Console.WriteLine($"Deleting ID:{tvItemMikeScenario.TVItemID} -- Name:{tvItemLanguage.TVText}");
+                        count++;
+
+                        string doing = $"Count: {count} --- Deleting ID:{tvItemMikeScenario.TVItemID} -- Name:{tvItemLanguage.TVText}";
+                        Console.WriteLine(doing);
+                        lblStatus.Text = doing;
+                        lblStatus.Refresh();
+                        Application.DoEvents();
                     }
                     else
                     {
