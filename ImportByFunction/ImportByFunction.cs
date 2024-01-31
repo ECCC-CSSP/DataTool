@@ -21664,6 +21664,250 @@ namespace ImportByFunction
                 }
             }
         }
+
+        private void button45_Click(object sender, EventArgs e)
+        {
+            //int TVItemIDSite = 7628;
+            int TVItemIDSite = 307990;
+            int TVItemIDSSFrom = 565;
+            int TVItemIDSSTo = 564;
+
+            using (CSSPDBEntities db = new CSSPDBEntities())
+            {
+                TVItem tvItemSite = (from c in db.TVItems
+                                     where c.TVItemID == TVItemIDSite
+                                     select c).FirstOrDefault();
+
+                if (tvItemSite != null)
+                {
+                    TVItem tvItemSSFrom = (from c in db.TVItems
+                                           where c.TVItemID == TVItemIDSSFrom
+                                           select c).FirstOrDefault();
+
+                    if (tvItemSSFrom != null)
+                    {
+                        TVItem tvItemSSTo = (from c in db.TVItems
+                                             where c.TVItemID == TVItemIDSSTo
+                                             select c).FirstOrDefault();
+
+                        if (tvItemSSTo != null)
+                        {
+                            var tvItemRunToList = (from c in db.TVItems
+                                                   from cl in db.TVItemLanguages
+                                                   where c.TVItemID == cl.TVItemID
+                                                   && cl.Language == (int)LanguageEnum.en
+                                                   && c.TVPath.StartsWith(tvItemSSTo.TVPath)
+                                                   && c.TVType == (int)TVTypeEnum.MWQMRun
+                                                   select new { c, cl }).ToList();
+
+                            List<MWQMSample> mwqmSampleList = (from c in db.MWQMSamples
+                                                               where c.MWQMSiteTVItemID == TVItemIDSite
+                                                               select c).ToList();
+
+                            foreach (MWQMSample mwqmSample in mwqmSampleList)
+                            {
+                                var tvItemRunOfSample = (from c in db.TVItems
+                                                         from cl in db.TVItemLanguages
+                                                         where c.TVItemID == cl.TVItemID
+                                                         && c.TVItemID == mwqmSample.MWQMRunTVItemID
+                                                         && cl.Language == (int)LanguageEnum.en
+                                                         select new { c, cl }).FirstOrDefault();
+
+                                if (tvItemRunOfSample != null)
+                                {
+                                    var tvItemRunTo = (from c in tvItemRunToList
+                                                       where c.cl.TVText == tvItemRunOfSample.cl.TVText
+                                                       select c).FirstOrDefault();
+
+                                    if (tvItemRunTo != null)
+                                    {
+                                        richTextBoxStatus.AppendText($"Found run in other SS: {tvItemRunOfSample.cl.TVText}\r\n");
+
+                                        mwqmSample.MWQMRunTVItemID = tvItemRunTo.c.TVItemID;
+                                        try
+                                        {
+                                            db.SaveChanges();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        int runTVItemID = mwqmSample.MWQMRunTVItemID;
+
+                                        TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
+                                        TVItemModel tvItemModelNew = tvItemService.PostAddChildTVItemDB(tvItemSSTo.TVItemID, tvItemRunOfSample.cl.TVText, TVTypeEnum.MWQMRun);
+                                        if (!string.IsNullOrWhiteSpace(tvItemModelNew.Error))
+                                        {
+                                            richTextBoxStatus.AppendText($"Error: {tvItemModelNew.Error}\r\n");
+                                        }
+                                        else
+                                        {
+                                            richTextBoxStatus.AppendText($"Added run in other SS: {tvItemRunOfSample.cl.TVText}\r\n");
+
+                                            mwqmSample.MWQMRunTVItemID = tvItemModelNew.TVItemID;
+                                            try
+                                            {
+                                                db.SaveChanges();
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+                                            }
+                                        }
+
+                                        MWQMRun mwqmRunFrom = (from c in db.MWQMRuns
+                                                               where c.MWQMRunTVItemID == runTVItemID
+                                                               select c).FirstOrDefault();
+                                        if (mwqmRunFrom != null)
+                                        {
+                                            MWQMRun mwqmRunTo = new MWQMRun()
+                                            {
+                                                MWQMRunID = 0,
+                                                MWQMRunTVItemID = tvItemModelNew.TVItemID,
+                                                SubsectorTVItemID = tvItemSSTo.TVItemID,
+
+                                                AnalyzeMethod = mwqmRunFrom.AnalyzeMethod,
+                                                LabAnalyzeBath1IncubationStartDateTime_Local = mwqmRunFrom.LabAnalyzeBath1IncubationStartDateTime_Local,
+                                                LabAnalyzeBath2IncubationStartDateTime_Local = mwqmRunFrom.LabAnalyzeBath2IncubationStartDateTime_Local,
+                                                LabAnalyzeBath3IncubationStartDateTime_Local = mwqmRunFrom.LabAnalyzeBath3IncubationStartDateTime_Local,
+                                                LabRunSampleApprovalDateTime_Local = mwqmRunFrom.LabRunSampleApprovalDateTime_Local,
+                                                LabSampleApprovalContactTVItemID = mwqmRunFrom.LabSampleApprovalContactTVItemID,
+                                                SeaStateAtEnd_BeaufortScale = mwqmRunFrom.SeaStateAtEnd_BeaufortScale,
+                                                SeaStateAtStart_BeaufortScale = mwqmRunFrom.SeaStateAtStart_BeaufortScale,
+                                                WaterLevelAtBrook_m = mwqmRunFrom.WaterLevelAtBrook_m,
+                                                WaveHightAtEnd_m = mwqmRunFrom.WaveHightAtEnd_m,
+                                                WaveHightAtStart_m = mwqmRunFrom.WaveHightAtStart_m,
+                                                DateTime_Local = mwqmRunFrom.DateTime_Local,
+                                                DBCommand = mwqmRunFrom.DBCommand,
+                                                EndDateTime_Local = mwqmRunFrom.EndDateTime_Local,
+                                                Laboratory = mwqmRunFrom.Laboratory,
+                                                LabReceivedDateTime_Local = mwqmRunFrom.LabReceivedDateTime_Local,
+                                                LastUpdateContactTVItemID = mwqmRunFrom.LastUpdateContactTVItemID,
+                                                LastUpdateDate_UTC = mwqmRunFrom.LastUpdateDate_UTC,
+                                                RainDay0_mm = mwqmRunFrom.RainDay0_mm,
+                                                RainDay10_mm = mwqmRunFrom.RainDay10_mm,
+                                                RainDay1_mm = mwqmRunFrom.RainDay1_mm,
+                                                RainDay2_mm = mwqmRunFrom.RainDay2_mm,
+                                                RainDay3_mm = mwqmRunFrom.RainDay3_mm,
+                                                RainDay4_mm = mwqmRunFrom.RainDay4_mm,
+                                                RainDay5_mm = mwqmRunFrom.RainDay5_mm,
+                                                RainDay6_mm = mwqmRunFrom.RainDay6_mm,
+                                                RainDay7_mm = mwqmRunFrom.RainDay7_mm,
+                                                RainDay8_mm = mwqmRunFrom.RainDay8_mm,
+                                                RainDay9_mm = mwqmRunFrom.RainDay9_mm,
+                                                RunSampleType = mwqmRunFrom.RunSampleType,
+                                                SampleCrewInitials = mwqmRunFrom.SampleCrewInitials,
+                                                SampleMatrix = mwqmRunFrom.SampleMatrix,
+                                                SampleStatus = mwqmRunFrom.SampleStatus,
+                                                StartDateTime_Local = mwqmRunFrom.StartDateTime_Local,
+                                                RemoveFromStat = mwqmRunFrom.RemoveFromStat,
+                                                RunNumber = mwqmRunFrom.RunNumber,
+                                                TemperatureControl1_C = mwqmRunFrom.TemperatureControl1_C,
+                                                TemperatureControl2_C = mwqmRunFrom.TemperatureControl2_C,
+                                                Tide_End = mwqmRunFrom.Tide_End,
+                                                Tide_End_From_WebTide = mwqmRunFrom.Tide_End_From_WebTide,
+                                                Tide_h0_m = mwqmRunFrom.Tide_h0_m,
+                                                Tide_h1_m = mwqmRunFrom.Tide_h1_m,
+                                                Tide_h2_m = mwqmRunFrom.Tide_h2_m,
+                                                Tide_h3_m = mwqmRunFrom.Tide_h3_m,
+                                                Tide_h4_m = mwqmRunFrom.Tide_h4_m,
+                                                Tide_h5_m = mwqmRunFrom.Tide_h5_m,
+                                                Tide_h6_m = mwqmRunFrom.Tide_h6_m,
+                                                Tide_h7_m = mwqmRunFrom.Tide_h7_m,
+                                                Tide_h8_m = mwqmRunFrom.Tide_h8_m,
+                                                Tide_h9_m = mwqmRunFrom.Tide_h9_m,
+                                                Tide_h10_m = mwqmRunFrom.Tide_h10_m,
+                                                Tide_h11_m = mwqmRunFrom.Tide_h11_m,
+                                                Tide_h12_m = mwqmRunFrom.Tide_h12_m,
+                                                Tide_h13_m = mwqmRunFrom.Tide_h13_m,
+                                                Tide_h14_m = mwqmRunFrom.Tide_h14_m,
+                                                Tide_h15_m = mwqmRunFrom.Tide_h15_m,
+                                                Tide_h16_m = mwqmRunFrom.Tide_h16_m,
+                                                Tide_h17_m = mwqmRunFrom.Tide_h17_m,
+                                                Tide_h18_m = mwqmRunFrom.Tide_h18_m,
+                                                Tide_h19_m = mwqmRunFrom.Tide_h19_m,
+                                                Tide_h20_m = mwqmRunFrom.Tide_h20_m,
+                                                Tide_h21_m = mwqmRunFrom.Tide_h21_m,
+                                                Tide_h22_m = mwqmRunFrom.Tide_h22_m,
+                                                Tide_h23_m = mwqmRunFrom.Tide_h23_m,
+                                                Tide_h24_m = mwqmRunFrom.Tide_h24_m,
+                                                Tide_h25_m = mwqmRunFrom.Tide_h25_m,
+                                                Tide_h26_m = mwqmRunFrom.Tide_h26_m,
+                                                Tide_h27_m = mwqmRunFrom.Tide_h27_m,
+                                                Tide_h28_m = mwqmRunFrom.Tide_h28_m,
+                                                Tide_h29_m = mwqmRunFrom.Tide_h29_m,
+                                                Tide_h30_m = mwqmRunFrom.Tide_h30_m,
+                                                Tide_Start = mwqmRunFrom.Tide_Start,
+                                                Tide_Start_From_WebTide = mwqmRunFrom.Tide_Start_From_WebTide,
+                                            };
+
+                                            try
+                                            {
+                                                db.MWQMRuns.Add(mwqmRunTo);
+                                                db.SaveChanges();
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+                                            }
+
+                                            List<MWQMRunLanguage> mwqmRunLanguageList = (from c in db.MWQMRunLanguages
+                                                                                         where c.MWQMRunID == mwqmRunFrom.MWQMRunID
+                                                                                         select c).ToList();
+
+                                            foreach(MWQMRunLanguage mwqmRunLanguage in mwqmRunLanguageList)
+                                            {
+                                                MWQMRunLanguage mwqmRunLanguageNew = new MWQMRunLanguage()
+                                                {
+                                                    MWQMRunID = mwqmRunTo.MWQMRunID,
+
+                                                    DBCommand = mwqmRunLanguage.DBCommand,
+                                                    Language = mwqmRunLanguage.Language,
+                                                    LastUpdateContactTVItemID = mwqmRunLanguage.LastUpdateContactTVItemID,
+                                                    LastUpdateDate_UTC = mwqmRunLanguage.LastUpdateDate_UTC,
+                                                    RunComment = mwqmRunLanguage.RunComment,
+                                                    RunWeatherComment = mwqmRunLanguage.RunWeatherComment,
+                                                    TranslationStatusRunComment = mwqmRunLanguage.TranslationStatusRunComment,
+                                                    TranslationStatusRunWeatherComment = mwqmRunLanguage.TranslationStatusRunWeatherComment,
+                                                };
+
+                                                try
+                                                {
+                                                    db.MWQMRunLanguages.Add(mwqmRunLanguageNew);
+                                                    db.SaveChanges();
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+                                                }
+
+                                            }
+
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                    tvItemSite.TVPath = tvItemSite.TVPath.Replace("p" + TVItemIDSSFrom.ToString() + "p", "p" + TVItemIDSSTo.ToString() + "p");
+                    tvItemSite.ParentID = TVItemIDSSTo;
+
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        richTextBoxStatus.AppendText($"Error: {ex.Message}\r\n");
+                    }
+                }
+            }
+        }
         //private void button18_Click(object sender, EventArgs e)
         //{
         //    TVItemService tvItemService = new TVItemService(LanguageEnum.en, user);
