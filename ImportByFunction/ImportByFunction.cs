@@ -21667,10 +21667,10 @@ namespace ImportByFunction
 
         private void button45_Click(object sender, EventArgs e)
         {
-            //int TVItemIDSite = 7628;
-            int TVItemIDSite = 307990;
-            int TVItemIDSSFrom = 565;
-            int TVItemIDSSTo = 564;
+            int TVItemIDSite = 8160;
+            //int TVItemIDSite = 307990;
+            int TVItemIDSSFrom = 710;
+            int TVItemIDSSTo = 711;
 
             using (CSSPDBEntities db = new CSSPDBEntities())
             {
